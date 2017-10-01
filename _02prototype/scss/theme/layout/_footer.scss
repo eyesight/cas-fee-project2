@@ -1,0 +1,37 @@
+.zz-footer {
+  width: 100%;
+  font-size: $font-s-footer;
+  margin-top: 4rem;
+  position: absolute;
+  bottom: 0;
+  height: 60px;
+  background-color: $color-white;
+
+  &__list-group {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+
+    &__item {
+      margin-right: rem-calc(20px);
+
+      &__link {
+
+        &:after {
+          @extend .helper-underline-anim;
+        }
+
+        &:hover:after {
+          @extend .helper-underline-anim-hover;
+        }
+        &.active,
+        &:active {
+          &:after {
+            width: 0%;
+          }
+          border-bottom: $border-anchor;
+        }
+      }
+    }
+  }
+}

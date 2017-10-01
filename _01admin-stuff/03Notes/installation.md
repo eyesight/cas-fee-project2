@@ -8,7 +8,8 @@
 
 
 
-#Frontend-Framework: Bootstrap
+#Frontend-Utils
+**Framework Bootstrap**
 
 installations via npm
 - jquery 
@@ -22,6 +23,17 @@ Bootstrap for Angular-modules
 https://github.com/angular/angular-cli/issues/5665
 
 -> Solution: update angular-cli to 1.4.4?
+
+**fonts:**
+https://fonts.google.com/specimen/Open+Sans
+
+
+**helper:**
+
+- Juicy Mixins
+http://kylebrumm.com/juice/
+
+
 
 #Ordner-Structure
 **Sass-files**

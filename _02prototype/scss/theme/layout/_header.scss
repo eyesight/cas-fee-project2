@@ -1,0 +1,20 @@
+.zz-navbar{
+  background-color: $white;
+  @extend .helper-boxshadow;
+
+  &__logo{
+    height: 100px;
+
+    &__img{
+      height:100%;
+    }
+  }
+
+  &__button{
+    border:none;
+
+    &__txt{
+      font-size:$font-s-nav-button;
+    }
+  }
+}

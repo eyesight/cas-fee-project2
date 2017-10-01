@@ -1,0 +1,16 @@
+.helper-boxshadow{
+  box-shadow: 2px 2px 10px $color-gray-light;
+}
+
+.helper-underline-anim{
+  content: '';
+  display: block;
+  height: 4px;
+  width: 0;
+  transition: width .3s ease, background-color .3s ease;
+}
+
+.helper-underline-anim-hover{
+  width: 100%;
+  background: $color-primary;
+}

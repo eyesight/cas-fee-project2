@@ -76,7 +76,7 @@ $browser-prefixes: false !default;
 
 // Calculate rems from a px value
 // ------------------------------
-/*@function rem-calc($px, $base-val: $base-px-default) {
+@function rem-calc($px, $base-val: $base-px-default) {
 	@if not unitless($px) {
 		$px: strip-units($px);
 	}
@@ -84,7 +84,7 @@ $browser-prefixes: false !default;
 		$base-val: strip-units($base-val);
 	}
 	@return ($px / $base-val) * 1rem;
-}*/
+}
 
 // Calculate ems from a px value
 // ------------------------------
