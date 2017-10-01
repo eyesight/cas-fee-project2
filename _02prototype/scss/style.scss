@@ -1,0 +1,8 @@
+//bootstrap
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
+//Config: Variables, fonts, own definition to use in project
+@import 'config/main';
+
+//global Layout-Components
+@import 'theme/main';
