@@ -8,7 +8,7 @@
   <title>Prototype - Template</title>
 
   <!-- allStyles -->
-  <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">-->
+  <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">-->
   <link href="css/style.css" rel="stylesheet">
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -21,11 +21,13 @@
 <body>
 <div class="zz-page">
   <!--start navigation-->
-  <nav class="navbar sticky-top navbar-expand-lg navbar-light zz-navbar">
+  <nav class="navbar fixed-top navbar-expand-md navbar-light zz-navbar">
     <a class="navbar-brand zz-navbar__logo" href="#">
       <img src="assets/img/logo.png" alt="" class="zz-navbar__logo__img">
     </a>
-    <button class="navbar-toggler zz-navbar__button" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler zz-navbar__button" type="button" data-toggle="collapse"
+            data-target="#navbarNavDropdown" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
       <span class="zz-navbar__button__txt">menu</span>
       <span class="navbar-toggler-icon zz-navbar__button__icon"></span>
     </button>
@@ -54,20 +56,103 @@
       </ul>
     </div>
   </nav>  <!--End navigation-->
-  <div class="container zz-layout"><!--start content-->
-    <div>
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+  <!--start content-->
+  <div class="container-fluid zz-layout">
+    <div class="row justify-content-end zz-layout__row">
+      <div class="col-12 col-lg-12 col-xl-10 zz-mod-container">
+        <h1 class="zz-title">Dashboard</h1>
+        <div class="zz-mod-box zz-mod-box--first">
+          <div class="zz-mod-box__img-wrapper">
+            <img src="assets/img/dummy-portrait.png" alt="" class="zz-mod-box__img">
+          </div>
+          <p class="zz-mod-box__txt"><span class="zz-mod-box__txt-item zz-mod-box--bold">Vorname</span><span
+            class="zz-mod-box--line-right"></span><span
+            class="zz-mod-box__txt-item">Klasse XYZ</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-end zz-layout__row">
+      <div class="col-12 col-xl-5 col-lg-6 zz-mod-container">
+        <h1 class="zz-title zz-title--h2">Klassenliste</h1>
+        <div class="zz-mod-box">
+          <ul class="zz-mod-box__list-group">
+              <li class="zz-mod-box__list-item">Heidi</li>
+              <li class="zz-mod-box__list-item">dfjsdkfjsdf</li>
+              <li class="zz-mod-box__list-item">Max</li>
+              <li class="zz-mod-box__list-item">NachnameEltern</li>
+              <li class="zz-mod-box__list-item zz-mod-box--list-item-small">icon</li>
+          </ul>
+          <ul class="zz-mod-box__list-group">
+              <li class="zz-mod-box__list-item">Susi</li>
+              <li class="zz-mod-box__list-item">Hugentobler</li>
+              <li class="zz-mod-box__list-item">Hermann</li>
+              <li class="zz-mod-box__list-item">Hugentobler</li>
+              <li class="zz-mod-box__list-item zz-mod-box--list-item-small">icon</li>
+          </ul>
+          <ul class="zz-mod-box__list-group">
+            <li class="zz-mod-box__list-item">Vorname</li>
+            <li class="zz-mod-box__list-item">Nachname</li>
+            <li class="zz-mod-box__list-item">Vorname</li>
+            <li class="zz-mod-box__list-item">Nachname</li>
+            <li class="zz-mod-box__list-item zz-mod-box--list-item-small">icon</li>
+          </ul>
+          <ul class="zz-mod-box__list-group">
+              <li class="zz-mod-box__list-item">Vorname</li>
+              <li class="zz-mod-box__list-item">Nachname</li>
+              <li class="zz-mod-box__list-item">Vorname</li>
+              <li class="zz-mod-box__list-item">Nachname</li>
+              <li class="zz-mod-box__list-item zz-mod-box--list-item-small">icon</li>
+          </ul>
+          <ul class="zz-mod-box__list-group">
+            <li class="zz-mod-box__list-item">Vorname</li>
+            <li class="zz-mod-box__list-item">Nachname</li>
+            <li class="zz-mod-box__list-item">Vorname</li>
+            <li class="zz-mod-box__list-item">Nachname</li>
+            <li class="zz-mod-box__list-item zz-mod-box--list-item-small">icon</li>
+          </ul>
+          <ul class="zz-mod-box__list-group">
+            <li class="zz-mod-box__list-item">Vorname</li>
+            <li class="zz-mod-box__list-item">Nachname</li>
+            <li class="zz-mod-box__list-item">Vorname</li>
+            <li class="zz-mod-box__list-item">Nachname</li>
+            <li class="zz-mod-box__list-item zz-mod-box--list-item-small">icon</li>
+          </ul>
+          <ul class="zz-mod-box__list-group">
+            <li class="zz-mod-box__list-item">Vorname</li>
+            <li class="zz-mod-box__list-item">Nachname</li>
+            <li class="zz-mod-box__list-item">Vorname</li>
+            <li class="zz-mod-box__list-item">Nachname</li>
+            <li class="zz-mod-box__list-item zz-mod-box--list-item-small">icon</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-12 col-xl-5 col-lg-6 zz-mod-container">
+        <h1 class="zz-title zz-title--h2">Nächste Termine</h1>
+        <div class="zz-mod-box">
+          <ul class="zz-mod-box__list-group">
+            <li class="zz-mod-box__list-item">Datum</li>
+            <li class="zz-mod-box__list-item zz-mod-box--list-item-large">Terim-Beschreibung</li>
+          </ul>
+          <ul class="zz-mod-box__list-group">
+            <li class="zz-mod-box__list-item">Datum</li>
+            <li class="zz-mod-box__list-item zz-mod-box--list-item-large">Terim-Beschreibung</li>
+          </ul>
+          <ul class="zz-mod-box__list-group">
+            <li class="zz-mod-box__list-item">Datum</li>
+            <li class="zz-mod-box__list-item zz-mod-box--list-item-large">Terim-Beschreibung</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div><!--End content-->
   <footer class="zz-footer container-fluid"><!--start footer-->
-      <ul class="zz-footer__list-group ">
-        <li class="zz-footer__list-group__item"><a class="zz-footer__list-group__item__link" href="#">Copyrigh</a></li>
-        <li class="zz-footer__list-group__item"><a class="zz-footer__list-group__item__link" href="#">Impressum</a></li>
-        <li class="zz-footer__list-group__item"><a class="zz-footer__list-group__item__link" href="#">AGB</a></li>
-      </ul>
+    <ul class="zz-footer__list-group ">
+      <li class="zz-footer__list-group__item"><a class="zz-footer__list-group__item__link" href="#">Copyrigh</a></li>
+      <li class="zz-footer__list-group__item"><a class="zz-footer__list-group__item__link" href="#">Impressum</a></li>
+      <li class="zz-footer__list-group__item"><a class="zz-footer__list-group__item__link" href="#">AGB</a></li>
+    </ul>
   </footer><!--End footer-->
 </div>
-
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.min.js"></script>

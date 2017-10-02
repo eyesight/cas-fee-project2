@@ -2,7 +2,7 @@
   &__list-group{
 
     &:first-child{
-      @include media-breakpoint-down(md) {
+      @include media-breakpoint-down(sm) {
         margin-top:0.5rem;
       }
     }
@@ -13,7 +13,7 @@
       padding-top:0;
       padding-bottom:0;
 
-      @include media-breakpoint-down(md) {
+      @include media-breakpoint-down(sm) {
         margin-right: 0;
         margin-left:0;
         padding-top:1rem;
@@ -39,6 +39,7 @@
             width: 0%;
           }
           border-bottom: $border-anchor;
+          stroke-linecap: round;
         }
       }
     }
@@ -58,7 +59,7 @@
     border:none;
     background-color:inherit;
 
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(sm) {
       padding-top:0.5rem;
       float:left;
     }
@@ -69,14 +70,14 @@
       min-width:rem-calc(300px);
       padding:0;
 
-      @include media-breakpoint-down(md) {
+      @include media-breakpoint-down(sm) {
         display:block;
       }
 
       &__item{
         padding: 1rem 1.5rem;
         &:hover,
-        &:active,{
+        &:active{
           background-color:$color-primary-40;
         }
       }

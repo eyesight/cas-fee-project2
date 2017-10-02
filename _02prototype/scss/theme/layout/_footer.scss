@@ -1,11 +1,8 @@
 .zz-footer {
   width: 100%;
   font-size: $font-s-footer;
-  margin-top: 4rem;
-  position: absolute;
-  bottom: 0;
-  height: 60px;
   background-color: $color-white;
+  margin-top: rem-calc(50px);
 
   &__list-group {
     display: flex;

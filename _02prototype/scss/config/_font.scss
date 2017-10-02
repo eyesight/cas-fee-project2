@@ -7,11 +7,16 @@ $font-family-primary: 'Open Sans', sans-serif;
 //font-weight
 $font-light: 300;
 $font-regular: 400;
-$font-bold: 600;
+$font-semi-bold: 600;
 
 //font-sizes
+$font-s-h1: rem-calc(40px);
+$font-s-h2: rem-calc(27px);
+
 $font-s-copytext: rem-calc(16px);
 
 $font-s-nav-button: rem-calc(14px);
 
 $font-s-footer: rem-calc(14px);
+
+$font-s-infotext: rem-calc(14px);

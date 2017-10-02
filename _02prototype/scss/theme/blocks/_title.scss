@@ -1,0 +1,19 @@
+.zz-title{
+  font-weight: $font-semi-bold;
+  font-size: $font-s-h1;
+
+  &:before{
+    content:'';
+    width: 5%;
+    height: 5px;
+    background-color: $color-primary;
+    position: absolute;
+    left: 18px;
+    top: -10px;
+    border-radius:20px 20px 20px 20px;
+  }
+
+  &--h2{
+    font-size: $font-s-h2;
+  }
+}
