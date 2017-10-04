@@ -9,7 +9,7 @@
 -> AW: 15.10
 - TODO: Prototype fertigstellen übernehmen ins NG (Module Nav, - ohne links soweit, Footer...)
 -> CF: 12.10
-- TODO: Login/Registierung
+- TODO: Login, Registierung
 -> CF: 31.10
 
 
