@@ -1,35 +1,17 @@
 #Security-Module
 
 **Funktionen**:
-- Login
-- User-Registrierung mit E-Mail und Passwort (Name, Vorname, Adresse, PLZ, Ort, Tel-Nr.)
-- Lehrer(Admin) erfasst alle User(Daten)
-- Personen können sich registrieren, wenn es matched mit Daten in Backend (von Lehrer erfasst), sind alle Daten freigeschaltet
-- Erfassung von nur einem Responsible (Elternteil von Kind) pro Kind möglich
+- Login/Logout
+- Eltern erfassen ihre Daten, plus die Daten des Kindes
+- Sie wählen eine Klasse aus bestehender Liste (wurden vorgängig von Admin (=Schulhaus) erfasst. Admin von der Gruppe, Klasse ist der Lehrer.
+Danach sind sie via E-Mail und Passwort registriert
+- User wählt Rolle aus (Lehrer oder Schüler)
 
-Jeder kann sich grundsätzlich regis. Funktionen zu benutzen geht aber nur wenn man als Eltern/Kind vom Lehrer in eine Klasse eingeladen wurde.
+#Modul 1 Profil Verwaltung
+- User kann seine Daten updaten
 
-
-Login/Authentisierung/Autorisierung (Serverseitig sicherstellen, Kind kann nicht als Lehrer fungieren nicht als Eltern etc.) API dementsprechend auslegen.
-
-
-
-#Modul 1 Klassenliste
-
-Lehrer erstellt die Klassenliste:
-Erfassen, Mutieren Name, Vorname, Adresse, GebDatum, Gender des Schülers
-Speichern
-Anzahl Schüler anzeigen (z.B: Total = 14)
-fakultativ:
-Löschen einer Zeile (Warnung Popup)
-
-#Modul 2 Eltern erfassen in Klassenliste
-Zu jeder Schülerin eine Elternperson: verantwortliche erwachsene Person zu erfassen, mutieren.
-Beziehung ist erfassbar (Mutter, Vater, Pflegevater ...)
-
-
-Faktultativ:
-- Eltern bestehen i.d.R. nicht aus aus einer Person. 1:n Beziehungen ermöglichen
+#Modul 2 Klassenliste
+- Liste der Klasse wird angezeigt; möglichkeit die (freigegebenen) )Daten jedes einzelnen zu lesen
 
 #Modul 3 - Chat
 Der Chat ist ein general-Channel. Jede/r sieht den gleichen Inhalt. Es gibt nur ein Chat-Menu (im Hauptmenu). 
@@ -37,9 +19,8 @@ Alle können alles sehen.
 Zeitpunkt bei jedem Chat anzeigen.
 fakultativ: 
 - im Hauptmenu: Punkt Chat: Batch (anzahl unread messages). 
-- Im Chat sieht man nur die letzten (3-10: tbd) Tage sofort. Sonst muss man weiterscrollen.
 
-1) Auswahl Chat-Partner.
+1) Auswahl Chat-Partner (optional).
 2) Laden bisheriger Chat
 3) Input für neue Chat-Message (keine Bilder verwenden)
 4) ev. Mit vorgefertigen Antworten, ev. Themenorientiert -> Auswahl treffen vor Chat, Vorgefertigte Antworten vorschlagen welche matchen könnten? (Elasticmatch)(Prio2)
@@ -47,6 +28,7 @@ fakultativ:
 6) Prio 2: Auswahl eines Icons/Profilbild
 
 #Modul 3.1 Chat: alter Verlauf nachladen (Optional)
+- Im Chat sieht man nur die letzten (3-10: tbd) Tage sofort. Sonst muss man weiterscrollen.
 
 #Modul 4 - Kalender (optional)
  1) Setzen eines Termines auf Kalender
@@ -66,7 +48,6 @@ fakultativ:
 
 
 #Modul 5 - Stundenplan (optional)
-
 - Kalender in Wochenübersicht (gleiche Ansicht, wie Termine)-
 - Jede Woche sieht gleich aus
 - Lehrer erfasst Stundenplan, mit Fächer und Lehrer in Farbe
