@@ -1,7 +1,7 @@
 
 
 
-::Klassenliste:
+::Module Klassenliste:
 
 1.1.1
 classlist-item
@@ -10,7 +10,7 @@ classlist-item
 classlist
 
 
-::Registrierung (Benutzer register und Auswahl klasse )
+::Module Profil/Registrierung (Benutzer register und Auswahl klasse )
 
 2.1.1
 Login parameter (eMail, DisplayNAme, PAsswort)
@@ -24,7 +24,7 @@ Registrierung
 Profil bearbeiten
 
 
-::Chat:
+::Module:Chat:
 
 3.1.1
 chat-message
@@ -45,5 +45,13 @@ Navigation / Router
 
 
 
+::Services:
+http-service
+storage (mvc)
+
+
+::Model
+chat
+user
 
 
