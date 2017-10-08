@@ -5854,35 +5854,46 @@ html {
           width: 0%; }
 
 .zz-chat__box {
-  padding-left: 30px; }
+  padding-left: 30px;
+  padding-top: 4px;
+  padding-bottom: 4px; }
 
-.zz-chat__boller:before {
+.zz-chat__bullet:before {
   content: '';
-  width: 15px;
+  width: 0.9375rem;
   height: 15px;
   vertical-align: center;
   background-color: #55a4a4;
   position: absolute;
   border-radius: 50%;
-  left: -8px;
-  top: 8px; }
+  margin-left: -0.5rem;
+  margin-top: 0.9375rem; }
 
 .zz-chat__timeline {
   border-left: 1px dotted #6eb1b2;
   height: 100%;
-  left: 10px;
+  left: 0.625rem;
   position: relative; }
+
+.zz-chat__timeline2 {
+  border-left: 1px dotted #6eb1b2;
+  height: 15px;
+  left: 0.625rem;
+  position: relative;
+  padding-bottom: 2px; }
+  .zz-chat__timeline2:before {
+    content: ''; }
 
 .zz-chat__date {
   font-weight: 300;
-  margin-left: 30px;
-  top: 3px;
-  position: relative; }
+  margin-left: 1.875rem; }
+  .zz-chat__date--vertical-align {
+    padding-top: 0.625rem; }
 
 .zz-chat__window {
-  margin-bottom: -15px;
-  padding: -10;
-  background: #fbfbfb; }
+  background: #fbfbfb;
+  padding: 2px 5px;
+  margin-right: 10px; }
 
 .zz-mod-box {
   margin-bottom: 4rem;
