@@ -1,15 +1,38 @@
+
+
+
 .zz-btn{
-  background-color: $color-white;
-  padding:1rem;
-  border-radius: 5px;
-  border:none;
-  cursor:pointer;
+  @include mx-button-default(1rem)
   &:after{
   @extend .helper-underline-anim;
-}
+  }
 
   &:hover:after{
   @extend .helper-underline-anim-hover;
+  }
+
+  &--primary{
+    background-color: $color-primary;
+    color:white;
+
+    &:hover{
+      background-color: $color-primary-70;
+    }
+    &:hover:after{
+      @extend .helper-underline-none;
+    }
+  }
+}
+
+
+.zz-btn-small{
+  @include mx-button-default(.5rem)
+  &:after{
+    @extend .helper-underline-anim;
+  }
+
+  &:hover:after{
+    @extend .helper-underline-anim-hover;
   }
 
   &--primary{

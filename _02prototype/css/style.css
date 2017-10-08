@@ -5726,7 +5726,7 @@ a.text-dark:focus, a.text-dark:hover {
 .helper-boxshadow-light, .zz-chat__window {
   box-shadow: 0px 0px 2px #ababab; }
 
-.helper-underline-anim, .zz-nav__list-group__item__link:after, .zz-footer__list-group__item__link:after, .zz-btn:after {
+.helper-underline-anim, .zz-nav__list-group__item__link:after, .zz-footer__list-group__item__link:after, .zz-btn:after, .zz-btn-small:after {
   content: '';
   display: block;
   height: 4px;
@@ -5734,11 +5734,11 @@ a.text-dark:focus, a.text-dark:hover {
   border-radius: 20px 20px 20px 20px;
   transition: width .3s ease, background-color .3s ease; }
 
-.helper-underline-anim-hover, .zz-nav__list-group__item__link:hover:after, .zz-footer__list-group__item__link:hover:after, .zz-btn:hover:after {
+.helper-underline-anim-hover, .zz-nav__list-group__item__link:hover:after, .zz-footer__list-group__item__link:hover:after, .zz-btn:hover:after, .zz-btn-small:hover:after {
   width: 100%;
   background: #0d7e7f; }
 
-.helper-underline-none, .zz-btn--primary:hover:after {
+.helper-underline-none, .zz-btn--primary:hover:after, .zz-btn-small--primary:hover:after {
   width: 0; }
 
 html,
@@ -5875,13 +5875,13 @@ html {
   left: 0.625rem;
   position: relative; }
 
-.zz-chat__timeline2 {
+.zz-chat__timeline-end {
   border-left: 1px dotted #6eb1b2;
   height: 15px;
   left: 0.625rem;
   position: relative;
   padding-bottom: 2px; }
-  .zz-chat__timeline2:before {
+  .zz-chat__timeline-end:before {
     content: ''; }
 
 .zz-chat__date {
@@ -5894,6 +5894,23 @@ html {
   background: #fbfbfb;
   padding: 2px 5px;
   margin-right: 10px; }
+
+.zz-chat__txt-item {
+  padding-right: 1.875rem; }
+
+.zz-chat--line-right {
+  border-right: 1px solid #000;
+  margin: 0 15px 0 -15px; }
+
+.zz-chat__message-input {
+  resize: both;
+  display: inline-block;
+  border: solid 1px #cfe5e5;
+  min-height: 50px;
+  width: 100%; }
+
+.zz-chat__message-label {
+  float: left; }
 
 .zz-mod-box {
   margin-bottom: 4rem;
@@ -5949,15 +5966,27 @@ html {
     font-size: 1.6875rem; }
 
 .zz-btn {
-  background-color: #fff;
+  background-color: #0d7e7f;
   padding: 1rem;
-  border-radius: 5px;
+  border-radius: 1px;
   border: none;
   cursor: pointer; }
   .zz-btn--primary {
     background-color: #0d7e7f;
     color: white; }
     .zz-btn--primary:hover {
+      background-color: #55a4a4; }
+
+.zz-btn-small {
+  background-color: #0d7e7f;
+  padding: 0.5rem;
+  border-radius: 1px;
+  border: none;
+  cursor: pointer; }
+  .zz-btn-small--primary {
+    background-color: #0d7e7f;
+    color: white; }
+    .zz-btn-small--primary:hover {
       background-color: #55a4a4; }
 
 .zz-mod-box + .zz-btn {

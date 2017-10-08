@@ -30,7 +30,7 @@
     position:relative;
   }
 
-  &__timeline2 {
+  &__timeline-end {
     border-left: 1px dotted $color-primary-60;
     height:15px;
     left: rem-calc(10px);
@@ -46,7 +46,7 @@
     margin-left:rem-calc(30px);
     &--vertical-align{
       padding-top:rem-calc(10px);
-      //vertical-align:middle;
+
     }
   }
 
@@ -55,6 +55,27 @@
     background: $color-gray-very-light;
     padding: 2px 5px;
     margin-right:10px;
+  }
+
+  &__txt-item{
+      padding-right: rem-calc(30px);
+  }
+
+  &--line-right{
+    border-right: 1px solid $color-black;
+    margin: 0 15px 0 -15px;
+  }
+
+  &__message-input{
+    resize: both;
+    display:inline-block;
+    border: solid 1px $color-primary-20;
+    min-height: 50px;
+    width: 100%;
+  }
+
+  &__message-label{
+    float: left;
   }
 
 }
