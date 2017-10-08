@@ -1,0 +1,43 @@
+.zz-chat{
+
+
+  &__box {
+    padding-left:30px;
+    @extend .helper-boxshadow;
+
+  }
+
+
+  &__boller:before {
+    content:'';
+    width: 15px;
+    height: 15px;
+    vertical-align: center;
+    background-color: $color-primary-70;
+    position: absolute;
+    border-radius:50%;
+    left:-8px;
+    top: 8px;
+
+  }
+  &__timeline {
+    border-left: 1px dotted $color-primary-60;
+    height:100%;
+    left: 10px;
+    position:relative;
+  }
+
+  &__date {
+    font-weight: $font-weight-light;
+    margin-left:30px;
+    top: 3px;
+    position: relative;
+  }
+
+  &__window {
+    @extend .helper-boxshadow-light;
+    margin-bottom: -15px;
+    padding: -10;
+    background: $color-gray-very-light;
+  }
+}

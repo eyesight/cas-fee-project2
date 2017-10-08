@@ -5720,8 +5720,11 @@ a.text-dark:focus, a.text-dark:hover {
   src: local("Open Sans SemiBold"), local("OpenSans-SemiBold"), url(https://fonts.gstatic.com/s/opensans/v14/MTP_ySUJH_bn48VBG8sNShampu5_7CjHW5spxoeN3Vs.woff2) format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215; }
 
-.helper-boxshadow, .zz-navbar, .zz-nav .zz-nav__button__menu, .zz-mod-box {
+.helper-boxshadow, .zz-navbar, .zz-nav .zz-nav__button__menu, .zz-chat__box, .zz-mod-box {
   box-shadow: 2px 2px 10px #ababab; }
+
+.helper-boxshadow-light, .zz-chat__window {
+  box-shadow: 0px 0px 2px #ababab; }
 
 .helper-underline-anim, .zz-nav__list-group__item__link:after, .zz-footer__list-group__item__link:after, .zz-btn:after {
   content: '';
@@ -5849,6 +5852,37 @@ html {
         border-bottom: 3px solid #0d7e7f; }
         .zz-footer__list-group__item__link.active:after, .zz-footer__list-group__item__link:active:after {
           width: 0%; }
+
+.zz-chat__box {
+  padding-left: 30px; }
+
+.zz-chat__boller:before {
+  content: '';
+  width: 15px;
+  height: 15px;
+  vertical-align: center;
+  background-color: #55a4a4;
+  position: absolute;
+  border-radius: 50%;
+  left: -8px;
+  top: 8px; }
+
+.zz-chat__timeline {
+  border-left: 1px dotted #6eb1b2;
+  height: 100%;
+  left: 10px;
+  position: relative; }
+
+.zz-chat__date {
+  font-weight: 300;
+  margin-left: 30px;
+  top: 3px;
+  position: relative; }
+
+.zz-chat__window {
+  margin-bottom: -15px;
+  padding: -10;
+  background: #fbfbfb; }
 
 .zz-mod-box {
   margin-bottom: 4rem;
