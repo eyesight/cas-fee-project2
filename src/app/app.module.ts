@@ -9,6 +9,9 @@ import { ClasslistItemComponent } from './20_classlist/classlist-item/classlist-
 import { ClasslistListComponent } from './20_classlist/classlist-list/classlist-list.component';
 import { ProfileAvatarComponent } from './10_profile/profile-avatar/profile-avatar.component';
 import { ProfileFormComponent } from './10_profile/profile-form/profile-form.component';
+import { NavComponent } from './nav/nav.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { ProfileFormComponent } from './10_profile/profile-form/profile-form.com
     ClasslistItemComponent,
     ClasslistListComponent,
     ProfileAvatarComponent,
-    ProfileFormComponent
+    ProfileFormComponent,
+    NavComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule

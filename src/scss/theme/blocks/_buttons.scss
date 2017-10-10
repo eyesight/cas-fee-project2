@@ -1,0 +1,58 @@
+
+
+
+.zz-btn{
+  @include mx-button-default(1rem)
+  &:after{
+  @extend .helper-underline-anim;
+  }
+
+  &:hover:after{
+  @extend .helper-underline-anim-hover;
+  }
+
+  &--primary{
+    background-color: $color-primary;
+    color:white;
+    min-width:rem-calc(200px);
+    padding-bottom:0.75rem;
+    padding-top:0.75rem;
+
+    &:hover{
+      background-color: $color-primary-70;
+    }
+    &:hover:after{
+      @extend .helper-underline-none;
+    }
+  }
+}
+
+
+.zz-btn-small{
+  @include mx-button-default(.5rem)
+  &:after{
+    @extend .helper-underline-anim;
+  }
+
+  &:hover:after{
+    @extend .helper-underline-anim-hover;
+  }
+
+  &--primary{
+    background-color: $color-primary;
+    color:white;
+
+    &:hover{
+      background-color: $color-primary-70;
+    }
+    &:hover:after{
+      @extend .helper-underline-none;
+    }
+  }
+}
+
+//TODO: ausarbeiten der Abstände
+.zz-mod-box + .zz-btn{
+    margin-top: rem-calc(-25px);
+}
+

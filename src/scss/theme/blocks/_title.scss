@@ -1,0 +1,25 @@
+.zz-title{
+  font-weight: $font-semi-bold;
+  font-size: $font-s-h1;
+
+  &:before{
+    content:'';
+    width: 50px;
+    height: 5px;
+    background-color: $color-primary;
+    position: absolute;
+    left: 17px;
+    top: -10px;
+    border-radius:20px 20px 20px 20px;
+  }
+
+  &--h2{
+    font-size: $font-s-h2;
+  }
+  //TODO: find a formula to calculate the right left/top together with margin/padding of the surrounding layout
+  &--insideBox:before{
+    left: 57px; //18+40px padding (in file _modul-box)
+    top: 40px; //-10+50px padding (in file _modul-box)
+  }
+}
+

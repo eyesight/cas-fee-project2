@@ -1,0 +1,90 @@
+.zz-nav{
+  &__list-group{
+
+    &:first-child{
+      @include media-breakpoint-down(sm) {
+        margin-top:0.5rem;
+      }
+    }
+
+    &__item{
+      margin:auto;
+      margin-right: rem-calc(50px);
+      padding-top:0;
+      padding-bottom:0;
+
+      @include media-breakpoint-down(sm) {
+        margin-right: 0;
+        margin-left:0;
+        padding-top:1rem;
+        padding-bottom:1rem;
+        border-top: 1px solid $color-gray-light;
+
+      }
+
+      &__link{
+        color:$color-black;
+
+        &:after{
+          @extend .helper-underline-anim;
+        }
+
+        &:hover:after{
+          @extend .helper-underline-anim-hover;
+        }
+
+        &.active,
+        &:active{
+          &:after{
+            width: 0%;
+          }
+          border-bottom: $border-anchor;
+          stroke-linecap: round;
+        }
+      }
+    }
+  }
+
+  .dropdown-menu{
+    left: 0;
+    right: auto;
+
+    @include media-breakpoint-up(xs) {
+      left: auto;
+      right:0;
+    }
+  }
+
+  .zz-nav__button{
+    border:none;
+    background-color:inherit;
+
+    @include media-breakpoint-down(sm) {
+      padding-top:0.5rem;
+      float:left;
+    }
+
+    &__menu{
+      border:none;
+      @extend .helper-boxshadow;
+      min-width:rem-calc(300px);
+      padding:0;
+
+      @include media-breakpoint-down(sm) {
+        display:block;
+      }
+
+      &__item{
+        padding: 1rem 1.5rem;
+        &:hover,
+        &:active{
+          background-color:$color-primary-40;
+        }
+      }
+    }
+  }
+
+  .dropdown-divider{
+    margin:0;
+  }
+}

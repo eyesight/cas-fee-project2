@@ -1,0 +1,7 @@
+@mixin mx-button-default($padding) {
+  background-color: $color-primary;
+  padding:$padding;
+  border-radius: 1px;
+  border:none;
+  cursor:pointer;
+}

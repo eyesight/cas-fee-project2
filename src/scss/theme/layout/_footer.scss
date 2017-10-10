@@ -1,0 +1,34 @@
+.zz-footer {
+  width: 100%;
+  font-size: $font-s-footer;
+  background-color: $color-white;
+  margin-top: rem-calc(50px);
+
+  &__list-group {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+
+    &__item {
+      margin-right: rem-calc(20px);
+
+      &__link {
+
+        &:after {
+          @extend .helper-underline-anim;
+        }
+
+        &:hover:after {
+          @extend .helper-underline-anim-hover;
+        }
+        &.active,
+        &:active {
+          &:after {
+            width: 0%;
+          }
+          border-bottom: $border-anchor;
+        }
+      }
+    }
+  }
+}

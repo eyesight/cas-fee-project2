@@ -1,0 +1,12 @@
+.zz-navbar{
+  background-color: $white;
+  @extend .helper-boxshadow;
+
+  &__button{
+    border:none;
+
+    &__txt{
+      font-size:$font-s-nav-button;
+    }
+  }
+}

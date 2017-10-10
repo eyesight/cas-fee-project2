@@ -1,29 +1,107 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown link
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+<app-header></app-header>
+
+<!--
+zum Testen: bitte löschen, wenn fertig erstellt
+-->
+<!--start content-->
+<div class="container-fluid zz-layout">
+  <div class="row justify-content-end zz-layout__row">
+    <div class="col-12 col-lg-12 col-xl-10 zz-mod-container">
+      <h1 class="zz-title">Dashboard</h1>
+      <div class="zz-mod-box zz-mod-box--first">
+        <div class="zz-mod-box__img-wrapper">
+          <img src="assets/img/dummy-portrait.png" alt="" class="zz-mod-box__img">
         </div>
-      </li>
-    </ul>
+        <p class="zz-mod-box__txt"><span class="zz-mod-box__txt-item zz-mod-box--bold">Vorname</span><span
+          class="zz-mod-box--line-right"></span><span
+          class="zz-mod-box__txt-item">Klasse XYZ</span></p>
+      </div>
+    </div>
   </div>
-</nav>
+  <div class="row justify-content-end zz-layout__row">
+    <div class="col-12 col-xl-5 col-lg-6 zz-mod-container">
+      <h1 class="zz-title zz-title--h2">Klassenliste</h1>
+      <div class="zz-mod-box">
+        <ul class="zz-mod-box__list-group">
+          <li class="zz-mod-box__list-item">Heidi</li>
+          <li class="zz-mod-box__list-item">dfjsdkfjsdf</li>
+          <li class="zz-mod-box__list-item">Max</li>
+          <li class="zz-mod-box__list-item">NachnameEltern</li>
+          <li class="zz-mod-box__list-item zz-mod-box--list-item-small">icon</li>
+        </ul>
+        <ul class="zz-mod-box__list-group">
+          <li class="zz-mod-box__list-item">Susi</li>
+          <li class="zz-mod-box__list-item">Hugentobler</li>
+          <li class="zz-mod-box__list-item">Hermann</li>
+          <li class="zz-mod-box__list-item">Hugentobler</li>
+          <li class="zz-mod-box__list-item zz-mod-box--list-item-small">icon</li>
+        </ul>
+        <ul class="zz-mod-box__list-group">
+          <li class="zz-mod-box__list-item">Vorname</li>
+          <li class="zz-mod-box__list-item">Nachname</li>
+          <li class="zz-mod-box__list-item">Vorname</li>
+          <li class="zz-mod-box__list-item">Nachname</li>
+          <li class="zz-mod-box__list-item zz-mod-box--list-item-small">icon</li>
+        </ul>
+        <ul class="zz-mod-box__list-group">
+          <li class="zz-mod-box__list-item">Vorname</li>
+          <li class="zz-mod-box__list-item">Nachname</li>
+          <li class="zz-mod-box__list-item">Vorname</li>
+          <li class="zz-mod-box__list-item">Nachname</li>
+          <li class="zz-mod-box__list-item zz-mod-box--list-item-small">icon</li>
+        </ul>
+        <ul class="zz-mod-box__list-group">
+          <li class="zz-mod-box__list-item">Vorname</li>
+          <li class="zz-mod-box__list-item">Nachname</li>
+          <li class="zz-mod-box__list-item">Vorname</li>
+          <li class="zz-mod-box__list-item">Nachname</li>
+          <li class="zz-mod-box__list-item zz-mod-box--list-item-small">icon</li>
+        </ul>
+        <ul class="zz-mod-box__list-group">
+          <li class="zz-mod-box__list-item">Vorname</li>
+          <li class="zz-mod-box__list-item">Nachname</li>
+          <li class="zz-mod-box__list-item">Vorname</li>
+          <li class="zz-mod-box__list-item">Nachname</li>
+          <li class="zz-mod-box__list-item zz-mod-box--list-item-small">icon</li>
+        </ul>
+        <ul class="zz-mod-box__list-group">
+          <li class="zz-mod-box__list-item">Vorname</li>
+          <li class="zz-mod-box__list-item">Nachname</li>
+          <li class="zz-mod-box__list-item">Vorname</li>
+          <li class="zz-mod-box__list-item">Nachname</li>
+          <li class="zz-mod-box__list-item zz-mod-box--list-item-small">icon</li>
+        </ul>
+      </div>
+      <button class="zz-btn zz-btn--primary">
+        Nachricht an den Lehrer
+      </button>
+    </div>
+    <div class="col-12 col-xl-5 col-lg-6 zz-mod-container">
+      <h1 class="zz-title zz-title--h2">Nächste Termine</h1>
+      <div class="zz-mod-box">
+        <ul class="zz-mod-box__list-group">
+          <li class="zz-mod-box__list-item">Datum</li>
+          <li class="zz-mod-box__list-item zz-mod-box--list-item-large">Terim-Beschreibung</li>
+        </ul>
+        <ul class="zz-mod-box__list-group">
+          <li class="zz-mod-box__list-item">Datum</li>
+          <li class="zz-mod-box__list-item zz-mod-box--list-item-large">Terim-Beschreibung</li>
+        </ul>
+        <ul class="zz-mod-box__list-group">
+          <li class="zz-mod-box__list-item">Datum</li>
+          <li class="zz-mod-box__list-item zz-mod-box--list-item-large">Terim-Beschreibung</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-end zz-layout__row">
+    <div class="col-12 col-lg-12 col-xl-10 zz-mod-container">
+
+    </div>
+  </div>
+</div><!--End content-->
+<!--
+zum Testen: bitte löschen, wenn fertig erstellt
+-->
+<app-footer></app-footer>
+
