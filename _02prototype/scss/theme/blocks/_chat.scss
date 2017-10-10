@@ -1,0 +1,81 @@
+.zz-chat{
+
+
+  &__box {
+    padding-left:30px;
+    padding-top:4px;
+    padding-bottom:4px;
+    @extend .helper-boxshadow;
+  }
+
+
+  &__bullet:before {
+    content:'';
+    width: rem-calc(15px);
+    height: 15px;
+    vertical-align: center;
+    background-color: $color-primary-70;
+    position: absolute;
+    border-radius:50%;
+    margin-left:rem-calc(-8px);
+    margin-top: rem-calc(15px);
+
+
+
+  }
+  &__timeline {
+    border-left: 1px dotted $color-primary-60;
+    height:100%;
+    left: rem-calc(10px);
+    position:relative;
+  }
+
+  &__timeline-end {
+    border-left: 1px dotted $color-primary-60;
+    height:15px;
+    left: rem-calc(10px);
+    position:relative;
+    padding-bottom:2px;
+    &:before{
+      content: '';
+    }
+  }
+
+  &__date {
+    font-weight: $font-weight-light;
+    margin-left:rem-calc(30px);
+    &--vertical-align{
+      padding-top:rem-calc(10px);
+
+    }
+  }
+
+  &__window {
+    @extend .helper-boxshadow-light;
+    background: $color-gray-very-light;
+    padding: 2px 5px;
+    margin-right:10px;
+  }
+
+  &__txt-item{
+      padding-right: rem-calc(30px);
+  }
+
+  &--line-right{
+    border-right: 1px solid $color-black;
+    margin: 0 15px 0 -15px;
+  }
+
+  &__message-input{
+    resize: both;
+    display:inline-block;
+    border: solid 1px $color-primary-20;
+    min-height: 50px;
+    width: 100%;
+  }
+
+  &__message-label{
+    float: left;
+  }
+
+}
