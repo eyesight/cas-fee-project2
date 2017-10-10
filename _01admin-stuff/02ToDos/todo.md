@@ -1,5 +1,5 @@
-#CSS
-- TODO: FOUT einbinden für das Laden eines Webfonts (=auf Folien unterricht), https://css-tricks.com/fout-foit-foft/
+#TODO
+- FOUT einbinden für das Laden eines Webfonts (=auf Folien unterricht), https://css-tricks.com/fout-foit-foft/
 -> AW+CF
 - TODO: NG-File-Struktur (module,Componente) anlegen
 -> AW: 6.10.
