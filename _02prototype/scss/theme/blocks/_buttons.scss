@@ -15,6 +15,9 @@
   &--primary{
     background-color: $color-primary;
     color:white;
+    min-width:rem-calc(200px);
+    padding-bottom:0.75rem;
+    padding-top:0.75rem;
 
     &:hover{
       background-color: $color-primary-70;

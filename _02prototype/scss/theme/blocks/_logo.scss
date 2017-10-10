@@ -1,0 +1,17 @@
+.zz-logo{
+  height: 100px;
+
+  &__img{
+    height:100%;
+  }
+
+  &.zz-logo--position-center{
+    display:flex;
+    margin-bottom:rem-calc(50px);
+    .zz-logo__img{
+      margin:auto;
+    }
+  }
+}
+
+

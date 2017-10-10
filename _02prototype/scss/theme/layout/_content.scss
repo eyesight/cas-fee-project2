@@ -48,6 +48,12 @@ html {
       @include media-breakpoint-down(sm) {
         padding-right: rem-calc(15px);
       }
+
+      &.zz-layout--centered{
+        padding-left:0;
+        padding-right:0;
+        padding-top: rem-calc(50px);
+      }
     }
   }
 }

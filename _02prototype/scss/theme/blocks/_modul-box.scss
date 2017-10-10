@@ -61,3 +61,10 @@
     display:flex;
   }
 }
+
+.zz-layout--centered{
+  .zz-mod-box{
+    padding:rem-calc(50px) rem-calc(40px) rem-calc(40px) rem-calc(40px);
+    margin:auto;
+  }
+}

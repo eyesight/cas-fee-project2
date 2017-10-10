@@ -1,0 +1,17 @@
+.zz-infotext{
+  font-size: $font-s-infotext;
+  text-align: center;
+
+  :first-child{
+    margin-top: 2rem;
+    display: block;
+  }
+
+  &__link{
+    color: $color-primary;
+
+    &--large{
+      font-size: $font-s-copytext;
+    }
+  }
+}

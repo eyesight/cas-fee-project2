@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Prototype - Template</title>
+
+  <!-- allStyles -->
+  <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">-->
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
+  <![endif]-->
+</head>
+<body>
+<div class="zz-page">
+  <!--start content-->
+  <div class="container-fluid zz-layout zz-layout--centered">
+    <a class="navbar-brand zz-logo zz-logo--position-center" href="#">
+      <img src="assets/img/logo.png" alt="" class="zz-logo__img">
+    </a>
+    <div class="row justify-content-center zz-layout__row">
+      <div class="col-11 col-lg-8 col-xl-5 zz-mod-container">
+        <div class="zz-mod-box">
+          <h1 class="zz-title zz-title--insideBox">Anmelden</h1>
+          <form name="form" novalidate="" class="zz-form">
+            <div class="form-row">
+              <div class="col-12 zz-form__group">
+                <label class="zz-form__label" for="email">E-Mail</label>
+                <input class="zz-form__input" name="firstName" type="text"
+                       placeholder="E-Mail-Adresse oder Benutzername">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-12 zz-form__group">
+                <label class="zz-form__label" for="password">Password</label>
+                <input class="zz-form__input" name="lastName" type="text" placeholder="Password">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-12 zz-form__group zz-form__group--last">
+                <button class="zz-btn zz-btn--primary">Anmelden</button>
+              </div>
+            </div>
+          </form>
+          <div class="zz-infotext">
+            <a href="#" class="zz-infotext__link">
+              Passwort vergessen?
+            </a>
+          </div>
+        </div>
+        <div class="zz-infotext">
+          <p class="zz-infotext__txt">
+            zum ersten Mal hier?
+          </p>
+          <a href="#" class="zz-infotext__link zz-infotext__link--large">
+            Registrieren
+          </a>
+        </div>
+      </div>
+    </div>
+  </div><!--End content-->
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.min.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

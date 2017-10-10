@@ -1,0 +1,35 @@
+.zz-form {
+  margin-top: rem-calc(75px);
+
+  &__group {
+    padding: 0;
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+
+    &--last {
+      margin: 1rem 0 0 0;
+      border-radius: 5px;
+    }
+  }
+
+  &__input {
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid $color-gray-light;
+
+    &:focus {
+      border-color: $color-primary;
+      box-shadow: 0px 0px 5px $color-primary-50;
+      outline: none;
+    }
+  }
+
+  &__label,
+  &__input {
+    display: block;
+    width: 100%;
+  }
+}
+
+
