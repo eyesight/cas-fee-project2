@@ -16,6 +16,7 @@
 
 - TODO: Kontrolle Benennung Klassen und HTML-Struktur
 -> AW+CF
+https://www.w3schools.com/html/html5_semantic_elements.asp
 
 
 #TO CHECK
