@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Message } from 'app/model/message.model';
+import { User } from 'app/model/user.model';
 
 @Component({
   selector: 'app-classlist-list',
@@ -7,7 +7,7 @@ import { Message } from 'app/model/message.model';
 })
 export class ClasslistListComponent implements OnInit {
 
-  messages: Message[] = [];
+  user: User[] = [];
   constructor() { }
 
   ngOnInit() {
