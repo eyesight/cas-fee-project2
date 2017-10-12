@@ -2,11 +2,10 @@
  * Created by awedag on 11.10.17.
  */
 
-import {User} from './user.model';
-
-
+// use flat model
 export class Message {
-  user: User;
+  messageId: string;
+  userId: string;
   text: string;
   createdAt: string;
 
