@@ -7,7 +7,7 @@ import { Klasse } from '../model/klasse.model';
 
 @Component({
   selector: 'app-chat',
-  templateUrl: './chat-message.component.html'
+  templateUrl: './chat.component.html'
 })
 export class ChatComponent implements OnInit {
 

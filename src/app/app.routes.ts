@@ -4,15 +4,16 @@
 
 import { Routes } from '@angular/router';
 
-
+import { AppComponent } from './app.component';
 import { ChatComponent } from './30_chat/chat.component';
 
-/*
+
 export const ROUTES: Routes = [
-  { path: '', redirectTo: 'ChatComponent', pathMatch: 'full' },
-  { path: '30_chat', loadChildren: './30_chat#ChatComponent', data: { title: 'ClassList' } },
+  { path: '', redirectTo: 'AppComponent', pathMatch: 'full' },
+  { path: 'chat', component: ChatComponent, data: { title: 'Chat' } },
 ];
-*/
+
+
 /*
  export const ROUTES: Routes = [
  { path: '', redirectTo: 'home', pathMatch: 'full' },

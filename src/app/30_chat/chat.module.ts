@@ -1,3 +1,4 @@
+/*
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChatAddmessageComponent } from './chat-addmessage/chat-addmessage.component';
@@ -12,3 +13,4 @@ import { ChatComponent } from './chat.component';
   declarations: [ChatComponent, ChatAddmessageComponent, ChatMessageComponent, ChatThreadComponent]
 })
 export class ChatModule { }
+*/
