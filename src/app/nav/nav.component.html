@@ -15,6 +15,7 @@
       <li class="zz-nav__list-group__item">
           <a *ngFor="let navItem of navItems" [routerLink]="[navItem.path]" routerLinkActive="active">
               {{navItem.data.title}}
+
             </a>
       </li>
 

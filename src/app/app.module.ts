@@ -20,10 +20,10 @@ import { ROUTES } from './app.routes';
 @NgModule({
   declarations: [
     AppComponent,
-    ChatComponent,
+  /*  ChatComponent,
     ChatMessageComponent,
     ChatAddmessageComponent,
-    ChatThreadComponent,
+    ChatThreadComponent,*/
     NavComponent,
     HeaderComponent,
     FooterComponent

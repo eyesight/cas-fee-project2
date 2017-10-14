@@ -5,12 +5,16 @@
 import { Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { ChatComponent } from './30_chat/chat.component';
 
 
 export const ROUTES: Routes = [
-  { path: '', redirectTo: 'AppComponent', pathMatch: 'full' },
-  { path: 'chat', component: ChatComponent, data: { title: 'Chat' } },
+  { path: '', component: AppComponent, pathMatch: 'full' },
+/*  { path: 'home', component: AppComponent, data: { title: 'Home' } },*/
+
+  /*{ path: 'chat', component: ChatComponent, data: { title: 'Chat' } },
+  */
+  { path: 'chat', loadChildren: './30_chat/chat.module#ChatModule', data: {title: 'Chat'} }
+
 ];
 
 
