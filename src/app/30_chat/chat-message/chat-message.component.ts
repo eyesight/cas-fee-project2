@@ -9,11 +9,18 @@ import { User } from '../../model/user.model';
 })
 export class ChatMessageComponent implements OnInit {
 
-  message: Message;
-  klasse: Klasse;
-  user: User;
+  message: Message = new Message;
+  klasse: Klasse = new Klasse;
+  user: User = new User;
 
-  constructor() { }
+
+
+  constructor() {
+
+    this.user.childname = 'Ursli';
+    this.klasse.title = 'Ase3';
+    this.message.text = 'Lorem ';
+  }
 
   ngOnInit() {
   }
