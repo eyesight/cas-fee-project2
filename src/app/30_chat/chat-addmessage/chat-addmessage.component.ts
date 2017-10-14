@@ -7,7 +7,7 @@ import { Message } from '../../model/message.model';
   templateUrl: './chat-addmessage.component.html'
 })
 export class ChatAddmessageComponent implements OnInit {
-  message: Message;
+  message: Message = new Message;
   constructor() { }
 
   ngOnInit() {

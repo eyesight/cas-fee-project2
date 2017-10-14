@@ -12,10 +12,9 @@ import { ChatThreadComponent } from './30_chat/chat-thread/chat-thread.component
 import { NavComponent } from './nav/nav.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './home/home.component';
 import { AppRoutingKKModule} from './app-routing.module';
-import { RouterModule } from '@angular/router';
 
-import { ROUTES } from './app.routes';
 
 @NgModule({
   declarations: [
@@ -26,7 +25,8 @@ import { ROUTES } from './app.routes';
     ChatThreadComponent,*/
     NavComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
