@@ -1,25 +1,10 @@
   <ul class="navbar-nav zz-nav__list-group">
-    <li class="zz-nav__list-group__item">
-      <a class="zz-nav__list-group__item__link active" href="#">Dashboard</a>
-    </li>
-    <li class="zz-nav__list-group__item">
-      <a class="zz-nav__list-group__item__link" href="#">Klassenliste</a>
-    </li>
-    <li class="zz-nav__list-group__item">
-      <a class="zz-nav__list-group__item__link" href="#">Chat</a>
-    </li>
 
-    <ul class="navbar-nav zz-nav__list-group">
-
-
-      <li class="zz-nav__list-group__item">
-          <a *ngFor="let navItem of navItems" [routerLink]="[navItem.path]" routerLinkActive="active">
-              {{navItem.data.title}}
-
-            </a>
+      <li class="zz-nav__list-group__item" *ngFor="let navItem of navItems"  routerLinkActive="active">
+        <a class="zz-nav__list-group__item__link"[routerLink]="[navItem.path]">  {{navItem.data.title}}
+        </a>
       </li>
 
-    </ul>
 
     <li class="dropdown zz-nav__list-group__item">
       <button class="zz-nav__button" data-toggle="dropdown">
