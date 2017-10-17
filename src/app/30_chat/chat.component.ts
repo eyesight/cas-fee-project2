@@ -3,7 +3,8 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { Klasse } from '../model/klasse.model';
-
+import { MessageItemService } from '../services/messageItem.service';
+import { MessageItem} from '../model/messageItem.model';
 
 @Component({
   selector: 'app-chat',
@@ -11,11 +12,14 @@ import { Klasse } from '../model/klasse.model';
 })
 export class ChatComponent implements OnInit {
 
-  klasse: Klasse;
+  public messageItem: MessageItem[];
 
-  constructor() { }
+  constructor( private messageItemService: MessageItemService) { }
 
   ngOnInit() {
+    this.messageItemService.load()
+      .subscribe((result) => {this.messageItem = result;
+    console.log('component.ngOnInit:'+this.messageItem)});
   }
 
 }

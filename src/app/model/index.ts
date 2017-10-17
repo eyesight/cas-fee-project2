@@ -3,4 +3,5 @@
  */
 export * from './klasse.model';
 export * from './user.model';
-export * from './message.model';
+
+export * from './messageItem.model';

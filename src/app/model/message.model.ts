@@ -3,6 +3,7 @@
  */
 
 // use flat model
+  /*
 export class Message {
   messageId: string;
   userId: string;
@@ -10,3 +11,4 @@ export class Message {
   createdAt: string;
 
 }
+*/

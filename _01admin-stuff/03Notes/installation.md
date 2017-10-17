@@ -43,4 +43,6 @@ http://kylebrumm.com/juice/
 
 
 #Info for the modules
-....
+AW: Http in Service verwenden -> HttpModule muss geladen werden im hauptmodule (root-module) unter imports
+Hatte plötzlich Probleme mit autom. nachladen bei codeänderungen. Die Seite erschien nicht mehr. 
+Habe dann HttpModule einmal auskommenteirt und wieder aktiviert - dann gings

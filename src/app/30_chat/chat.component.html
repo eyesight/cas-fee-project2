@@ -31,14 +31,25 @@
         </div>
 
 
+
         <div class="zz-chat zz-chat__timeline zz-chat__bullet">
           <p class="zz-chat__date--vertical-align">
             <span class="zz-chat__date">heute</span>
           </p>
         </div>
 
-        <app-chat-thread></app-chat-thread>
+        <div *ngFor="let date of messageItem">
+          <div class="zz-chat zz-chat__timeline zz-chat__bullet">
+            <p class="zz-chat__date--vertical-align">
+              <span class="zz-chat__date">{{date.date}}</span>
+            </p>
+          </div>
+          <app-chat-message [message] *ngFor="let message of date"></app-chat-message>
 
+       <!--   <todo-item [item]="message" (checked)="onChecked($event, done)" *ngFor="let done of itemsOpen"></todo-item>
+-->
+
+        </div>
       </div>
 
     </div>
