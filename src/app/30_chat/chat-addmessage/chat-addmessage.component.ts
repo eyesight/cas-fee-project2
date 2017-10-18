@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Message } from '../../model/message.model';
+//import { Message } from '../../model/message.model';
 
 
 @Component({
@@ -7,7 +7,7 @@ import { Message } from '../../model/message.model';
   templateUrl: './chat-addmessage.component.html'
 })
 export class ChatAddmessageComponent implements OnInit {
-  message: Message = new Message;
+ // message: Message = new Message;
   constructor() { }
 
   ngOnInit() {

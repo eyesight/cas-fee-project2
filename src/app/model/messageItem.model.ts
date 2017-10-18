@@ -3,7 +3,7 @@
  */
 
 
-export interface Message {
+export class Message {
   messageId: string;
   userName: string;
   klasseName: string;
@@ -11,7 +11,10 @@ export interface Message {
   createdAt: string;
 }
 
-export interface MessageItem {
+export class MessageItem {
   date: Date;
+  dateGroup: Date;
+
   messages: Message[];
 }
+
