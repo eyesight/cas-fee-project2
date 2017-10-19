@@ -21,11 +21,8 @@ export class MessageItemService {
   }
 
   public load(): Observable<Message[]> {
-
-      console.log('logig');
     return  this.http.get('assets/mock/messageItem.json')
       .map((result ) => result.json());
-
 
 
     //    .map((result) => result.json() );

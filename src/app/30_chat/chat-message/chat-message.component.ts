@@ -14,21 +14,6 @@ export class ChatMessageComponent implements OnInit {
   @Input()
   public message: Message;
 
-
- /* message: Message = new Message;
-  klasse: Klasse = new Klasse;
-  user: User = new User;
-*/
-
-
-  constructor() {
-
-  /*  this.user.childname = 'Ursli';
-    this.klasse.title = 'Ase3';
-    this.message.text = 'Lorem ';
-*/
-  }
-
   ngOnInit() {
   }
 

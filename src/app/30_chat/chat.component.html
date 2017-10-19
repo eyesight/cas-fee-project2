@@ -40,23 +40,25 @@
 
 
         <div *ngFor="let item of messageItem">
-          <div class="zz-chat zz-chat__timeline zz-chat__bullet">
+         <!-- <div class="zz-chat zz-chat__timeline zz-chat__bullet">
             <p class="zz-chat__date--vertical-align">
               <span class="zz-chat__date">{{item.date | date}}</span>
             </p>
-          </div>
+          </div>  -->
 
-          <app-chat-message [message]="messageK" *ngFor="let messageK of item.messages"></app-chat-message>
+          <app-chat-date [messageItem]="item" ></app-chat-date>
 
-       <!--   <todo-item [item]="message" (checked)="onChecked($event, done)" *ngFor="let done of itemsOpen"></todo-item>
--->
-
-
+          <app-chat-message [message]="msg" *ngFor="let msg of item.messages"></app-chat-message>
 
         </div>
 
+        <app-chat-addmessage (send)="onSend($event)"></app-chat-addmessage>
 
-
+        <!--
+          <div class="card-row">
+        <todo-add (add)="onAdd($event)"></todo-add>
+    </div>
+         -->
 
       </div>
 
