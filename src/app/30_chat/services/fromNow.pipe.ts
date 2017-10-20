@@ -9,17 +9,32 @@ import * as moment from 'moment';
   name: 'fromNow'
 })
 export class FromNowPipe implements PipeTransform {
-   transform( date: Date): string {
-     moment.locale('de');
-     console.log(Date.now() - 25);
+
+  constructor(){
+    moment.locale('de');
+    moment.locale('de', {
+      calendar: {
+        lastDay : '[Gestern]',
+        sameDay : '[Heute]',
+        nextDay : '[morgen]',
+        lastWeek : '[letzte] dddd',
+        nextWeek : 'dddd',
+        sameElse : 'L'
+      }
+    });
+  }
+
+  transform( date: Date): string {
+
+   //  console.log('date:'+(new Date(date.toDateString())));
      const now = new Date(Date.now() - 25);
-     if (date.getUTCMilliseconds() >=  (now).getUTCMilliseconds() )
+    // if ((new Date(date.toDateString())).getUTCMilliseconds() >=  (now).getUTCMilliseconds() )
      {
-       return moment(date).fromNow();
+       return moment((new Date(date.toDateString()))).calendar();
      }
-     else
+    // else
      {
-       return moment(date).fromNow();
+    //   return moment(date).fromNow();
      }
   }
 }
