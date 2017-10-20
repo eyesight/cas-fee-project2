@@ -5905,6 +5905,7 @@ html {
 .zz-chat__message-input {
   resize: both;
   display: inline-block;
+  word-wrap: break-word;
   border: solid 1px #cfe5e5;
   min-height: 50px;
   width: 100%; }

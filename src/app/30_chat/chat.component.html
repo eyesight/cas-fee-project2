@@ -12,51 +12,18 @@
       </div>
     </div>
   </div>
-  <div class="row justify-content-end zz-layout__row">
+  <div class="row justify-content-end zz-layout__row ">
     <div class="col-12 col-lg-12 col-xl-10 zz-mod-container">
       <div class="zz-chat__box ">
 
-        <div class="zz-chat zz-chat__timeline zz-chat__bullet">
-          <p class="zz-chat__date--vertical-align">
-            <span class=" zz-chat__date">5. Juli 2017</span>
-          </p>
-        </div>
+        <div class="" *ngFor="let item of messageItem">
 
-
-
-        <div class="zz-chat zz-chat__timeline zz-chat__bullet">
-          <p class="zz-chat__date--vertical-align">
-            <span class="zz-chat__date">gestern, 2. August 2017</span>
-          </p>
-        </div>
-
-
-
-        <div class="zz-chat zz-chat__timeline zz-chat__bullet">
-          <p class="zz-chat__date--vertical-align">
-            <span class="zz-chat__date">heute</span>
-          </p>
-        </div>
-
-
-        <div *ngFor="let item of messageItem">
-          <div class="zz-chat zz-chat__timeline zz-chat__bullet">
-            <p class="zz-chat__date--vertical-align">
-              <span class="zz-chat__date">{{item.date | date}}</span>
-            </p>
-          </div>
-
-          <app-chat-message [message]="messageK" *ngFor="let messageK of item.messages"></app-chat-message>
-
-       <!--   <todo-item [item]="message" (checked)="onChecked($event, done)" *ngFor="let done of itemsOpen"></todo-item>
--->
-
-
+          <app-chat-date [messageItem]="item" ></app-chat-date>
+          <app-chat-message [message]="msg" *ngFor="let msg of item.messages"></app-chat-message>
 
         </div>
 
-
-
+        <app-chat-addmessage (send)="onSend($event)"></app-chat-addmessage>
 
       </div>
 

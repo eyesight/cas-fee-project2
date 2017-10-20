@@ -1,13 +1,13 @@
 /**
  * Created by awedag on 12.10.17.
  */
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { Klasse } from '../model/klasse.model';
 import { MessageItemService } from '../services/messageItem.service';
 import { MessageItem, Message} from '../model/messageItem.model';
-import {formatMoment} from "ngx-bootstrap/bs-moment/format";
+import {formatMoment} from 'ngx-bootstrap/bs-moment/format';
 import { dateFormat } from 'dateformat';
-import {isNullOrUndefined} from "util";
+
 
 @Component({
   selector: 'app-chat',
@@ -15,82 +15,61 @@ import {isNullOrUndefined} from "util";
 })
 export class ChatComponent implements OnInit {
 
-  public messageItem: MessageItem[] = new Array<MessageItem>();
+  public messageItem: MessageItem[];
   public message: Message[];
 
-  constructor( private messageItemService: MessageItemService) { }
+  constructor( private messageItemService: MessageItemService, private el: ElementRef) { }
 
   ngOnInit() {
     this.messageItemService.load()
       .subscribe((result) => {
 
-      // TODO: refactoring
         this.message = result;
-        this.message.forEach( (x) => console.log('x is:' + x.userName) );
-        this.message.sort(this.sortFunc);
-        this.message.forEach( (x) => {
-
-          if (this.messageItem.length === 0 ) {
-            console.log('a');
-
-            const mi: MessageItem = new MessageItem();
-            mi.date = new Date(x.createdAt);
-          //  console.log('aa');
-            mi.dateGroup = new Date(mi.date.toDateString());
-          //  console.log('bb');
-            mi.messages = new Array<Message>();
-            mi.messages.push(x);
-            this.messageItem.push(mi);
-            console.log('first:date:' + mi.dateGroup);
-
-          }
-          else {
-            const dg =  new Date(x.createdAt);
-
-            const mit = this.messageItem.find( t => t.dateGroup.toDateString() === dg.toDateString() );
-
-
-            if (mit) {
-              console.log('mit is alive:' + mit.dateGroup);
-             // mit.messages = new Array<Message>();
-              mit.messages.push(x);
-
-            }
-            else
-              {
-              console.log('mit not found');
-              const mip: MessageItem = new MessageItem();
-              mip.date = new Date(x.createdAt);
-              //  console.log('aa');
-              mip.dateGroup = new Date(mip.date.toDateString());
-              //  console.log('bb');
-              mip.messages = new Array<Message>();
-              mip.messages.push(x);
-              this.messageItem.push(mip);
-
-            }
-
-          }
-        });
-
-
-
+        this.messageItem = this.message.sort(this.sortFunc)
+          .reduce( this.reduceToGroup,  [new MessageItem(new Date)] )  // pass in a new MessageItem with a new date -> heute
+          .sort(this.sortFuncMi);
       });
-    //console.log('component.ngOnInit:'+this.messageItem)});
+
   }
 
-  public sortFunc(a: Message, b: Message) {
-   // console.log('a:'+ a.createdAt + 'b:' + b.createdAt);
+  public sortFunc(a: Message, b: Message): number {
+    // console.log('a:'+ a.createdAt + 'b:' + b.createdAt);
     const aa = new Date(a.createdAt).valueOf();
     const bb = new Date(b.createdAt).valueOf();
-   // console.log('a:'+ a.createdAt + ':aa:' + aa +  'b:' + b.createdAt + ':bb:' + bb);
-
     return (aa - bb);
 
+  }
+  public sortFuncMi(a: MessageItem, b: MessageItem): number {
+    // console.log('a:'+ a.createdAt + 'b:' + b.createdAt);
+    const aa = new Date(a.dateGroup).valueOf();
+    const bb = new Date(b.dateGroup).valueOf();
+    return (aa - bb);
 
   }
-/*
-  public findGroup(x: MessageItem, d: String) {
-    return x.dateGroup.toDateString() -  d;
-  }*/
+
+  public onSend(newText: Message) {
+    console.log('onSend on chat.component:' + newText.createdAt);
+    this.message = [...this.message, newText];
+    this.messageItem = this.reduceToGroup(this.messageItem, newText);
+    /*const scrollPane: any = this.el
+      .nativeElement.querySelector('.msg-container-base');
+    scrollPane.scrollTop = scrollPane.scrollHeight;*/
+
+  }
+  private reduceToGroup(mia, x): MessageItem[] {
+
+    const mi = mia.find(t => t.dateGroup.toDateString() === new Date(x.createdAt).toDateString());
+    if (!mi) {
+      const miNew = new MessageItem(new Date(x.createdAt));
+      miNew.messages =  [x];
+      mia = [...mia, miNew];
+    }else {
+      if (!mi.messages) {
+        mi.messages =  [x];
+      }else {
+        mi.messages = [...mi.messages, x];
+      }
+    }
+    return mia;
+  }
 }

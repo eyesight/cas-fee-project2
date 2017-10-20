@@ -7,14 +7,15 @@
 
   </div>
   <form>
-    <!-- label class="zz_chat__message-label" for="fname">Message</label>
-    <textarea [(ngModel)]="message.text" class="zz-chat__message-input" type="textarea" id="fname" name="fname"
-              placeholder="..." autofocus>
+    <label class="zz_chat__message-label" for="fname">Message</label>
+    <input class="zz-chat__message-input" type="text" id="fname" name="fname"
+           placeholder=".... " autofocus #messageText>
 
-    </textarea>  -->
+
+
   </form>
   <div class="clearfix">
-    <button class="float-right zz-btn-small zz-btn--primary">
+    <button class="float-right zz-btn-small zz-btn--primary" (click)="onSend(messageText.value)">
       Senden
     </button>
   </div>

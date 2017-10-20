@@ -12,8 +12,16 @@ export class Message {
 }
 
 export class MessageItem {
+
   date: Date;
   dateGroup: Date;
+
+  constructor(date: Date) {
+    console.log('constructor of mi');
+    this.date = date;
+    // causes to truncate time
+    this.dateGroup = new Date(date.toDateString());
+  }
 
   messages: Message[];
 }
