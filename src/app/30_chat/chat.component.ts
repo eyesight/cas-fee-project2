@@ -1,7 +1,7 @@
 /**
  * Created by awedag on 12.10.17.
  */
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { Klasse } from '../model/klasse.model';
 import { MessageItemService } from '../services/messageItem.service';
 import { MessageItem, Message} from '../model/messageItem.model';
@@ -16,10 +16,9 @@ import { dateFormat } from 'dateformat';
 export class ChatComponent implements OnInit {
 
   public messageItem: MessageItem[];
-  //= new Array<MessageItem>(new MessageItem( new Date() ));
   public message: Message[];
 
-  constructor( private messageItemService: MessageItemService) { }
+  constructor( private messageItemService: MessageItemService, private el: ElementRef) { }
 
   ngOnInit() {
     this.messageItemService.load()
@@ -27,20 +26,20 @@ export class ChatComponent implements OnInit {
 
         this.message = result;
         this.messageItem = this.message.sort(this.sortFunc)
-          .reduce( this.reduceToGroup, new Array<MessageItem>(new MessageItem( new Date() )))
+          .reduce( this.reduceToGroup,  [new MessageItem(new Date)] )  // pass in a new MessageItem with a new date -> heute
           .sort(this.sortFuncMi);
       });
 
   }
 
-  public sortFunc(a: Message, b: Message) {
+  public sortFunc(a: Message, b: Message): number {
     // console.log('a:'+ a.createdAt + 'b:' + b.createdAt);
     const aa = new Date(a.createdAt).valueOf();
     const bb = new Date(b.createdAt).valueOf();
     return (aa - bb);
 
   }
-  public sortFuncMi(a: MessageItem, b: MessageItem) {
+  public sortFuncMi(a: MessageItem, b: MessageItem): number {
     // console.log('a:'+ a.createdAt + 'b:' + b.createdAt);
     const aa = new Date(a.dateGroup).valueOf();
     const bb = new Date(b.dateGroup).valueOf();
@@ -50,11 +49,14 @@ export class ChatComponent implements OnInit {
 
   public onSend(newText: Message) {
     console.log('onSend on chat.component:' + newText.createdAt);
-    this.message.push(newText);
-    this.messageItem = this.reduceToGroup(this.messageItem,newText);
+    this.message = [...this.message, newText];
+    this.messageItem = this.reduceToGroup(this.messageItem, newText);
+    /*const scrollPane: any = this.el
+      .nativeElement.querySelector('.msg-container-base');
+    scrollPane.scrollTop = scrollPane.scrollHeight;*/
 
   }
-  private reduceToGroup = (mia, x) => {
+  private reduceToGroup(mia, x): MessageItem[] {
 
     const mi = mia.find(t => t.dateGroup.toDateString() === new Date(x.createdAt).toDateString());
     if (!mi) {
