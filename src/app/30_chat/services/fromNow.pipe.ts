@@ -25,16 +25,6 @@ export class FromNowPipe implements PipeTransform {
   }
 
   transform( date: Date): string {
-
-   //  console.log('date:'+(new Date(date.toDateString())));
-     const now = new Date(Date.now() - 25);
-    // if ((new Date(date.toDateString())).getUTCMilliseconds() >=  (now).getUTCMilliseconds() )
-     {
        return moment((new Date(date.toDateString()))).calendar();
-     }
-    // else
-     {
-    //   return moment(date).fromNow();
-     }
   }
 }

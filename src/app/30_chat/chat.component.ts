@@ -15,7 +15,8 @@ import { dateFormat } from 'dateformat';
 })
 export class ChatComponent implements OnInit {
 
-  public messageItem: MessageItem[] = new Array<MessageItem>(new MessageItem( new Date() ));
+  public messageItem: MessageItem[];
+  //= new Array<MessageItem>(new MessageItem( new Date() ));
   public message: Message[];
 
   constructor( private messageItemService: MessageItemService) { }
@@ -26,9 +27,28 @@ export class ChatComponent implements OnInit {
 
         // TODO: refactoring
         this.message = result;
-        this.message.sort(this.sortFunc)
-          .forEach((x) => this.waveInGroup(x));
-        this.messageItem.sort(this.sortFuncMi);
+        //     this.message.sort(this.sortFunc)
+        //     .forEach((x) => this.waveInGroup(x));
+        /*this.messageItem = this.message.sort(this.sortFunc)
+         .reduce((mia, x) => {
+         // const mia = new Array<MessageItem>(new MessageItem( new Date() ));
+         const mi = mia.find(t => t.dateGroup.toDateString() === new Date(x.createdAt).toDateString());
+         if (!mi) {
+         const miNew = new MessageItem(new Date(x.createdAt));
+         miNew.messages = new Array<Message>(x);
+         // mia.push(miNew);
+         mia = [...mia, miNew];
+         }else {
+         mi.messages = [...mi.messages, x];
+         }
+         return mia;
+         }, new Array<MessageItem>(new MessageItem( new Date() )));*/
+
+        this.messageItem = this.message.sort(this.sortFunc)
+          .reduce( this.reduceToGroup, new Array<MessageItem>(new MessageItem( new Date() )))
+          .sort(this.sortFuncMi);
+
+        //   this.messageItem.sort(this.sortFuncMi);
       });
 
   }
@@ -51,7 +71,8 @@ export class ChatComponent implements OnInit {
   public onSend(newText: Message) {
     console.log('onSend on chat.component:' + newText.createdAt);
     this.message.push(newText);
-    this.waveInGroup(newText);
+    //this.waveInGroup(newText);
+    this.reduceToGroup(this.messageItem,newText);
 
   }
   private waveInGroup(x: Message ) {
@@ -74,5 +95,21 @@ export class ChatComponent implements OnInit {
       this.messageItem.push(mi);
 
     }
+  }
+  private reduceToGroup = (mia, x) => {
+
+    const mi = mia.find(t => t.dateGroup.toDateString() === new Date(x.createdAt).toDateString());
+    if (!mi) {
+      const miNew = new MessageItem(new Date(x.createdAt));
+      miNew.messages =  [x];
+      mia = [...mia, miNew];
+    }else {
+      if (!mi.messages) {
+        mi.messages =  [x];
+      }else {
+        mi.messages = [...mi.messages, x];
+      }
+    }
+    return mia;
   }
 }
