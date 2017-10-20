@@ -25,30 +25,10 @@ export class ChatComponent implements OnInit {
     this.messageItemService.load()
       .subscribe((result) => {
 
-        // TODO: refactoring
         this.message = result;
-        //     this.message.sort(this.sortFunc)
-        //     .forEach((x) => this.waveInGroup(x));
-        /*this.messageItem = this.message.sort(this.sortFunc)
-         .reduce((mia, x) => {
-         // const mia = new Array<MessageItem>(new MessageItem( new Date() ));
-         const mi = mia.find(t => t.dateGroup.toDateString() === new Date(x.createdAt).toDateString());
-         if (!mi) {
-         const miNew = new MessageItem(new Date(x.createdAt));
-         miNew.messages = new Array<Message>(x);
-         // mia.push(miNew);
-         mia = [...mia, miNew];
-         }else {
-         mi.messages = [...mi.messages, x];
-         }
-         return mia;
-         }, new Array<MessageItem>(new MessageItem( new Date() )));*/
-
         this.messageItem = this.message.sort(this.sortFunc)
           .reduce( this.reduceToGroup, new Array<MessageItem>(new MessageItem( new Date() )))
           .sort(this.sortFuncMi);
-
-        //   this.messageItem.sort(this.sortFuncMi);
       });
 
   }
@@ -71,30 +51,8 @@ export class ChatComponent implements OnInit {
   public onSend(newText: Message) {
     console.log('onSend on chat.component:' + newText.createdAt);
     this.message.push(newText);
-    //this.waveInGroup(newText);
-    this.reduceToGroup(this.messageItem,newText);
+    this.messageItem = this.reduceToGroup(this.messageItem,newText);
 
-  }
-  private waveInGroup(x: Message ) {
-
-    const dg = new Date(x.createdAt);
-    const mi = this.messageItem.find(t => t.dateGroup.toDateString() === dg.toDateString());
-
-    if (mi) {
-      if (mi.messages) {
-        mi.messages.push(x);
-      }
-      else{
-        mi.messages = new Array<Message>(x);
-      }
-    }
-    else {
-      console.log('new mi');
-      const mi: MessageItem = new MessageItem(new Date(x.createdAt));
-      mi.messages = new Array<Message>(x);
-      this.messageItem.push(mi);
-
-    }
   }
   private reduceToGroup = (mia, x) => {
 
