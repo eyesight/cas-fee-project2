@@ -1,0 +1,49 @@
+<div class="container-fluid zz-layout zz-layout--centered">
+  <p class="navbar-brand zz-logo zz-logo--position-center" href="#">
+    <img src="assets/img/logo.png" alt="" class="zz-logo__img">
+  </p>
+  <div class="row justify-content-center zz-layout__row">
+    <div class="col-11 col-lg-8 col-xl-5 zz-mod-container">
+      <div class="zz-mod-box">
+        <h1 class="zz-title zz-title--insideBox">Anmelden</h1>
+        <alert></alert>
+        <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && login()" novalidate class="zz-form">
+          <div class="form-row">
+            <div class="col-12 zz-form__group" [ngClass]="{ 'has-error': f.submitted && !username.valid }"  >
+              <label class="zz-form__label" for="email">E-Mail</label>
+              <input id="email" class="zz-form__input" name="eMail" type="text" [(ngModel)]="model.username" #username="ngModel" required
+                     placeholder="E-Mail-Adresse oder Benutzername">
+              <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-12 zz-form__group" [ngClass]="{ 'has-error': f.submitted && !password.valid }" >
+              <label class="zz-form__label" for="password">Password</label>
+              <input id="password" class="zz-form__input" name="lastName" type="text" placeholder="Password" [(ngModel)]="model.password" #password="ngModel" required>
+              <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-12 zz-form__group zz-form__group--last">
+              <button [disabled]="loading" class="zz-btn zz-btn--primary">Anmelden</button>
+            </div>
+          </div>
+        </form>
+        <div class="zz-infotext">
+          <a href="#" class="zz-infotext__link">
+            Passwort vergessen?
+          </a>
+        </div>
+      </div>
+      <div class="zz-infotext">
+        <p class="zz-infotext__txt">
+          zum ersten Mal hier?
+        </p>
+        <a [routerLink]="['/registration']" class="zz-infotext__link zz-infotext__link--large">
+          Registrieren
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+

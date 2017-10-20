@@ -1,0 +1,60 @@
+<div class="container-fluid zz-layout zz-layout--centered">
+  <p class="navbar-brand zz-logo zz-logo--position-center" href="#">
+    <img src="assets/img/logo.png" alt="" class="zz-logo__img">
+  </p>
+  <div class="row justify-content-center zz-layout__row">
+    <div class="col-11 col-lg-8 col-xl-5 zz-mod-container">
+      <div class="zz-mod-box">
+        <h1 class="zz-title zz-title--insideBox">Registrieren</h1>
+        <alert></alert>
+        <form name="form" #f="ngForm" class="zz-form" (ngSubmit)="f.form.valid && register()" novalidate>
+          <div class="form-row">
+            <div class="col-6 zz-form__group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+              <label class="zz-form__label" for="first">First Name</label>
+              <input id="first" class="zz-form__input" name="firstName" type="text" [(ngModel)]="model.firstName" #firstName="ngModel" required>
+              <div *ngIf="f.submitted && !firstName.valid" class="help-block">First Name is required</div>
+            </div>
+            <div class="col-6 zz-form__group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+              <label class="zz-form__label" for="last">Last Name</label>
+              <input id="last"class="zz-form__input" name="lastName" type="text" [(ngModel)]="model.lastName" #lastName="ngModel" required>
+              <div *ngIf="f.submitted && !lastName.valid" class="help-block">Last Name is required</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-6 zz-form__group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+              <label class="zz-form__label" for="username">Username</label>
+              <input id="username" class="zz-form__input" name="username" type="text" [(ngModel)]="model.username" #username="ngModel" required>
+              <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+            </div>
+            <div class="col-6 zz-form__group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+              <label class="zz-form__label" for="password">Password</label>
+              <input id="password" class="zz-form__input" name="password" type="password" [(ngModel)]="model.password" #password="ngModel" required>
+              <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-6 zz-form__group zz-form__group--last">
+              <button class="zz-btn zz-btn--primary">Registrieren*</button>
+            </div>
+            <div class="col-6 zz-form__group zz-form__group--last">
+              <button class="zz-btn zz-btn--primary">Cancel</button>
+            </div>
+          </div>
+        </form>
+        <div class="zz-infotext">
+          <a href="#" class="zz-infotext__link">
+            * Nutzungsbedingungen lesen
+          </a>
+        </div>
+      </div>
+      <div class="zz-infotext">
+        <p class="zz-infotext__txt">
+          Schon registriert?
+        </p>
+        <a [routerLink]="['/login']" class="zz-infotext__link zz-infotext__link--large">
+          zum Login
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
