@@ -1,8 +1,3 @@
-/**
- * Created by awedag on 13.10.17.
- */
-
-
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';

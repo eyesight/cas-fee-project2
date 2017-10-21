@@ -1,7 +1,7 @@
   <ul class="navbar-nav zz-nav__list-group">
 
-      <li class="zz-nav__list-group__item" *ngFor="let navItem of navItems"  routerLinkActive="active">
-        <a class="zz-nav__list-group__item__link"[routerLink]="[navItem.path]">  {{navItem.data.title}}
+      <li class="zz-nav__list-group__item" *ngFor="let navItem of navItems" >
+        <a class="zz-nav__list-group__item__link"[routerLink]="[navItem.path]" routerLinkActive="active">  {{navItem.data.title}}
         </a>
       </li>
 
