@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthenticationService {
+  isLoggedin: boolean = false;
   constructor(private http: Http) { }
 
   login(username: string, password: string) {
@@ -14,6 +15,7 @@ export class AuthenticationService {
         if (user && user.token) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(user));
+          this.isLoggedin = true;
         }
 
         return user;
@@ -22,6 +24,8 @@ export class AuthenticationService {
 
   logout() {
     // remove user from local storage to log user out
+    //TODO: Solve Bug https://github.com/angular/angular/issues/17572
+    this.isLoggedin = false;
     localStorage.removeItem('currentUser');
   }
 }
