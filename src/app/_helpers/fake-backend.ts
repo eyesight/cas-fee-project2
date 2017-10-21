@@ -1,12 +1,14 @@
 import { Http, BaseRequestOptions, Response, ResponseOptions, RequestMethod } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
+import { User } from '../_models/user';
 
 export let fakeBackendProvider = {
   // use fake backend in place of Http service for backend-less development
   provide: Http,
   useFactory: (backend: MockBackend, options: BaseRequestOptions) => {
+
     // array in local storage for registered users
-    let users: any[] = JSON.parse(localStorage.getItem('users')) || [];
+    const users: any[] = JSON.parse(localStorage.getItem('users')) || [];
 
     // configure fake backend
     backend.connections.subscribe((connection: MockConnection) => {
