@@ -64,11 +64,7 @@ export class ChatComponent implements OnInit {
       miNew.messages =  [x];
       mia = [...mia, miNew];
     }else {
-      if (!mi.messages) {
-        mi.messages =  [x];
-      }else {
-        mi.messages = [...mi.messages, x];
-      }
+      mi.messages = [...mi.messages || [], x];
     }
     return mia;
   }
