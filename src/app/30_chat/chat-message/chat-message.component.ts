@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { MessageItem, Message } from '../../model/messageItem.model';
-import { Klasse } from '../../model/klasse.model';
+import { MessageItem, Message } from '../../_models/message.model';
+import { Klasse } from '../../_models/klasse.model';
 import { User } from '../../model/user.model';
 
 

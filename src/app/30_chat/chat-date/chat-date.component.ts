@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MessageItem } from '../../model/messageItem.model';
+import { MessageItem } from '../../_models/message.model';
 import { FromNowPipe } from '../services/fromNow.pipe';
 
 @Component({

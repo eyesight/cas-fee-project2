@@ -2,9 +2,9 @@
  * Created by awedag on 12.10.17.
  */
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { Klasse } from '../model/klasse.model';
+import { Klasse } from '../_models/klasse.model';
 import { ChatService } from '../_services/chat.service';
-import { MessageItem, Message} from '../model/messageItem.model';
+import { MessageItem, Message} from '../_models/message.model';
 import {formatMoment} from 'ngx-bootstrap/bs-moment/format';
 import { dateFormat } from 'dateformat';
 
