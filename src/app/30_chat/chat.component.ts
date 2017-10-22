@@ -15,18 +15,18 @@ import { dateFormat } from 'dateformat';
 })
 export class ChatComponent implements OnInit {
 
-  public messageItem: MessageItem[];
-  public message: Message[];
+  public messageItem: MessageItem[] = [new MessageItem(new Date)];
+  public message: Message[] ;
 
   constructor( private messageItemService: MessageItemService, private el: ElementRef) { }
 
   ngOnInit() {
+    console.log('ngOnInit in chatcOmponetn');
     this.messageItemService.load()
       .subscribe((result) => {
-
         this.message = result;
         this.messageItem = this.message.sort(this.sortFunc)
-          .reduce( this.reduceToGroup,  [new MessageItem(new Date)] )  // pass in a new MessageItem with a new date -> heute
+          .reduce( this.reduceToGroup,  [new MessageItem(new Date)] )  // pass in a new MessageItem with a new date -> today
           .sort(this.sortFuncMi);
       });
 
@@ -48,8 +48,12 @@ export class ChatComponent implements OnInit {
   }
 
   public onSend(newText: Message) {
-    console.log('onSend on chat.component:' + newText.createdAt);
-    this.message = [...this.message, newText];
+    if (this.message) {
+      this.message = [...this.message, newText];
+    }
+    else {
+      this.message = [newText];
+    }
     this.messageItem = this.reduceToGroup(this.messageItem, newText);
     /*const scrollPane: any = this.el
       .nativeElement.querySelector('.msg-container-base');

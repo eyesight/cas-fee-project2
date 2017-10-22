@@ -2,10 +2,7 @@ import { Http, BaseRequestOptions, Response, ResponseOptions, RequestMethod } fr
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { Testuser } from '../_models/testuser';
 
-export let fakeBackendProvider = {
-  // use fake backend in place of Http service for backend-less development
-  provide: Http,
-  useFactory: (backend: MockBackend, options: BaseRequestOptions) => {
+export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOptions) {  // use fake backend in place of Http service for backend-less development
 
     // creating a test-user, if nothing is initialized
     let testuserstring = JSON.stringify(new Testuser());
@@ -135,6 +132,13 @@ export let fakeBackendProvider = {
     });
 
     return new Http(backend, options);
-  },
+
+};
+
+
+export let fakeBackendProvider = {
+  // use fake backend in place of Http service for backend-less development
+  provide: Http,
+  useFactory: fakeBackendFactory,
   deps: [MockBackend, BaseRequestOptions]
 };

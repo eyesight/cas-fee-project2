@@ -12,6 +12,7 @@ export class FromNowPipe implements PipeTransform {
 
   constructor(){
     moment.locale('de');
+    // do correct formattings at sameElse
     moment.locale('de', {
       calendar: {
         lastDay : '[Gestern]',
@@ -25,6 +26,7 @@ export class FromNowPipe implements PipeTransform {
   }
 
   transform( date: Date): string {
+    // toDateString sets time to 00:00:00
        return moment((new Date(date.toDateString()))).calendar();
   }
 }
