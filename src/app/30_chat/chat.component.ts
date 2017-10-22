@@ -3,7 +3,7 @@
  */
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Klasse } from '../model/klasse.model';
-import { MessageItemService } from '../services/messageItem.service';
+import { ChatService } from '../_services/chat.service';
 import { MessageItem, Message} from '../model/messageItem.model';
 import {formatMoment} from 'ngx-bootstrap/bs-moment/format';
 import { dateFormat } from 'dateformat';
@@ -18,7 +18,7 @@ export class ChatComponent implements OnInit {
   public messageItem: MessageItem[] = [new MessageItem(new Date)];
   public message: Message[] ;
 
-  constructor( private messageItemService: MessageItemService, private el: ElementRef) { }
+  constructor( private messageItemService: ChatService, private el: ElementRef) { }
 
   ngOnInit() {
     console.log('ngOnInit in chatcOmponetn');

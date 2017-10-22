@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MessageItemService } from '../services/messageItem.service';
+import { ChatService } from '../_services/chat.service';
 import { ChatAddmessageComponent } from './chat-addmessage/chat-addmessage.component';
 import { ChatMessageComponent } from './chat-message/chat-message.component';
 import { ChatDateComponent } from './chat-date/chat-date.component';
@@ -14,7 +14,7 @@ import { FromNowPipe } from './services/fromNow.pipe';
     CommonModule, ChatRoutesModule
   ],
   declarations: [ChatComponent, ChatAddmessageComponent, ChatMessageComponent, ChatThreadComponent, ChatDateComponent, FromNowPipe],
-  providers: [MessageItemService]
+  providers: [ChatService]
 })
 export class ChatModule { }
 
