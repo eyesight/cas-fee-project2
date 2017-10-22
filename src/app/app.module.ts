@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers/fake-backend';
@@ -37,6 +37,7 @@ import { AlertComponent } from './_helpers/alert/alert.component';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingKKModule,
     // injecst Http to any service
     HttpModule

@@ -5741,6 +5741,10 @@ a.text-dark:focus, a.text-dark:hover {
 .helper-underline-none, .zz-btn--primary:hover:after, .zz-btn-small--primary:hover:after {
   width: 0; }
 
+.helper-margin-padding-to0 {
+  padding: 0;
+  margin: 0; }
+
 html,
 body {
   height: 100%;
@@ -5773,13 +5777,13 @@ html {
       @media (max-width: 767px) {
         html .zz-page .zz-layout {
           padding-right: 0.9375rem; } }
+      html .zz-page .zz-layout.zz-layout--centered {
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 3.125rem; }
 
 .zz-navbar {
   background-color: #fff; }
-  .zz-navbar__logo {
-    height: 100px; }
-    .zz-navbar__logo__img {
-      height: 100%; }
   .zz-navbar__button {
     border: none; }
     .zz-navbar__button__txt {
@@ -5905,13 +5909,22 @@ html {
 .zz-chat__message-input {
   resize: both;
   display: inline-block;
-  word-wrap: break-word;
   border: solid 1px #cfe5e5;
   min-height: 50px;
   width: 100%; }
 
 .zz-chat__message-label {
   float: left; }
+
+.zz-logo {
+  height: 100px; }
+  .zz-logo__img {
+    height: 100%; }
+  .zz-logo.zz-logo--position-center {
+    display: flex;
+    margin-bottom: 3.125rem; }
+    .zz-logo.zz-logo--position-center .zz-logo__img {
+      margin: auto; }
 
 .zz-mod-box {
   margin-bottom: 4rem;
@@ -5951,20 +5964,27 @@ html {
   .zz-mod-box--first {
     display: flex; }
 
+.zz-layout--centered .zz-mod-box {
+  padding: 3.125rem 2.5rem 2.5rem 2.5rem;
+  margin: auto; }
+
 .zz-title {
   font-weight: 600;
   font-size: 2.5rem; }
   .zz-title:before {
     content: '';
-    width: 5%;
+    width: 50px;
     height: 5px;
     background-color: #0d7e7f;
     position: absolute;
-    left: 18px;
+    left: 17px;
     top: -10px;
     border-radius: 20px 20px 20px 20px; }
   .zz-title--h2 {
     font-size: 1.6875rem; }
+  .zz-title--insideBox:before {
+    left: 57px;
+    top: 40px; }
 
 .zz-btn {
   background-color: #0d7e7f;
@@ -5974,7 +5994,10 @@ html {
   cursor: pointer; }
   .zz-btn--primary {
     background-color: #0d7e7f;
-    color: white; }
+    color: white;
+    min-width: 12.5rem;
+    padding-bottom: 0.75rem;
+    padding-top: 0.75rem; }
     .zz-btn--primary:hover {
       background-color: #55a4a4; }
 
@@ -5992,3 +6015,46 @@ html {
 
 .zz-mod-box + .zz-btn {
   margin-top: -1.5625rem; }
+
+.zz-form {
+  margin-top: 4.6875rem; }
+  .zz-form__group {
+    padding: 0;
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column; }
+    .zz-form__group--last {
+      margin: 1rem 0 0 0;
+      border-radius: 5px; }
+  .zz-form__input {
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ababab; }
+    .zz-form__input:focus {
+      border-color: #0d7e7f;
+      box-shadow: 0px 0px 5px #86bebe;
+      outline: none; }
+    .zz-form__input--error:focus {
+      border-color: #a10000;
+      box-shadow: 0px 0px 5px #a10000; }
+  .zz-form__label, .zz-form__input {
+    display: block;
+    width: 100%; }
+    .zz-form__label--error, .zz-form__input--error {
+      border-color: #a10000;
+      box-shadow: 0px 0px 5px #a10000; }
+  .zz-form__error {
+    color: #a10000;
+    font-size: 0.875rem;
+    padding-top: 0.625rem; }
+
+.zz-infotext {
+  font-size: 0.875rem;
+  text-align: center; }
+  .zz-infotext :first-child {
+    margin-top: 2rem;
+    display: block; }
+  .zz-infotext__link {
+    color: #0d7e7f; }
+    .zz-infotext__link--large {
+      font-size: 1rem; }

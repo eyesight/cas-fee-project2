@@ -23,12 +23,30 @@
       box-shadow: 0px 0px 5px $color-primary-50;
       outline: none;
     }
+
+    &--error{
+      &:focus {
+        border-color: $color-red;
+        box-shadow: 0px 0px 5px $color-red;
+      }
+    }
   }
 
   &__label,
   &__input {
     display: block;
     width: 100%;
+
+    &--error{
+      border-color: $color-red;
+      box-shadow: 0px 0px 5px $color-red;
+    }
+  }
+
+  &__error{
+    color: $color-red;
+    font-size: $font-s-infotext;
+    padding-top: rem-calc(10px);
   }
 }
 
