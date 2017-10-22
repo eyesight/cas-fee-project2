@@ -12,7 +12,7 @@ import 'rxjs/Rx';
 import { MessageItem, Message } from '../model/messageItem.model';
 
 @Injectable()
-export class MessageItemService {
+export class ChatService {
 
   public mesksage: Message[];
 
