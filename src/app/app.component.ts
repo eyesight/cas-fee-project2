@@ -14,7 +14,7 @@ export class AppComponent {
  // public navItems: Route[];
 
   constructor(
-    public authService: AuthenticationService
+    public authService: AuthenticationService,
   ) {
     // this.navItems = ROUTES.filter((route) => route.data);
   }

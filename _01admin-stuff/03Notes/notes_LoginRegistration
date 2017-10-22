@@ -1,1 +1,14 @@
 - Für Registrierung wird evt. die gleiche Strukture, das gleiche Module wie bei "Profile" benutzt.
+
+- Mock-Data für Klassenliste: 1 File für Klassenauswahl, 1 File für Eltern+Kind. Lehrer = true/false (Admin oder nicht). + ID:
+
+t.string :parent_surname
+t.string :parent_forename
+t.string :child_surname
+t.string :child_forename
+t.integer :child_gender
+t.date    :child_date_of_birth
+t.string :adress
+t.string :zip
+t.string :place
+t.string :email

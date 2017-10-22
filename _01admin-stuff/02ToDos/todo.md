@@ -13,6 +13,11 @@
 
 - TODO: Login, Registrierung
 -> CF: 31.10
+  - TODO: Formular für Registrierung
+  -> CF: 25.10
+  - TODO: Mock-Data für Klassenliste (und Registrierung und Profil)
+  (cas-fee-project2 -> src -> assets -> mock)
+    -> CF: 25.10
 
 - TODO: Abstände korrigieren, Feinheiten ausarbeiten in Sass/CSS
 -> CF: Dezember
