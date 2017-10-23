@@ -21,5 +21,9 @@
     left: 57px; //18+40px padding (in file _modul-box)
     top: 40px; //-10+50px padding (in file _modul-box)
   }
+
+  &--h3{
+    font-size: $font-s-h3;
+  }
 }
 

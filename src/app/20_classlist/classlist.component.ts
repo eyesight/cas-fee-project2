@@ -2,7 +2,7 @@
  * Created by awedag on 14.10.17.
  */
 import { Component, OnInit } from '@angular/core';
-import { Klasse } from '../model/klasse.model';
+import { Klasse } from '../_models/klasse.model';
 
 
 @Component({
