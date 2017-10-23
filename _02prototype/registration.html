@@ -26,36 +26,146 @@
       <img src="assets/img/logo.png" alt="" class="zz-logo__img">
     </a>
     <div class="row justify-content-center zz-layout__row">
-      <div class="col-11 col-lg-8 col-xl-5 zz-mod-container">
+      <div class="col-11 col-lg-11 col-xl-7 zz-mod-container">
         <div class="zz-mod-box">
           <h1 class="zz-title zz-title--insideBox">Registrieren</h1>
           <form name="form" novalidate="" class="zz-form">
             <div class="form-row">
-              <div class="col-6 zz-form__group">
-                <label class="zz-form__label" for="firstName">First Name</label>
-                <input class="zz-form__input" name="firstName" type="text">
+              <div class="col-12"><h3 class="zz-form__title">Angaben zu den Eltern</h3></div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-6 col-sm-12 zz-form__group">
+                <label class="zz-form__label" for="p-firstname">Vorname</label>
+                <input id="p-firstname" class="zz-form__input" name="firstName" type="text">
               </div>
-              <div class="col-6 zz-form__group">
-                <label class="zz-form__label" for="lastName">Last Name</label>
-                <input class="zz-form__input" name="lastName" type="text">
+              <div class="col-md-6 col-sm-12 zz-form__group">
+                <label class="zz-form__label" for="p-lastName">Nachname</label>
+                <input id="p-lastName" class="zz-form__input" name="lastName" type="text">
               </div>
             </div>
             <div class="form-row">
-              <div class="col-6 zz-form__group">
-                <label class="zz-form__label" for="username">Username</label>
-                <input class="zz-form__input" name="username" type="text">
+              <div class="col-12 zz-form__group">
+                <label class="zz-form__label" for="adress">Adresse</label>
+                <input id="adress" class="zz-form__input" name="adress" type="text">
               </div>
-              <div class="col-6 zz-form__group">
-                <label class="zz-form__label" for="password">Password</label>
-                <input class="zz-form__input" name="password" type="password">
+              <div class="col-8 zz-form__group">
+                <label class="zz-form__label" for="place">Ort</label>
+                <input id="place" class="zz-form__input" name="place" type="text">
+              </div>
+              <div class="col-4 zz-form__group">
+                <label class="zz-form__label" for="zip">PLZ</label>
+                <input id="zip" class="zz-form__input" name="zip" type="text">
               </div>
             </div>
             <div class="form-row">
-              <div class="col-6 zz-form__group zz-form__group--last">
-                <button class="zz-btn zz-btn--primary">Registrieren*</button>
+              <div class="col-12 zz-form__group">
+                <label class="zz-form__label" for="tel-privat">Telefon privat</label>
+                <input id="tel-privat" class="zz-form__input" name="tel-privat" type="text">
               </div>
-              <div class="col-6 zz-form__group zz-form__group--last">
-              <button class="zz-btn zz-btn--primary">Cancel</button>
+              <div class="col-12 zz-form__group">
+                <label class="zz-form__label" for="tel-office">Telefon geschäft <span
+                  class="zz-infotext">(optional)</span></label>
+                <input id="tel-office" class="zz-form__input" name="tel-office" type="text">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-6 col-sm-12 zz-form__group">
+                <label class="zz-form__label" for="p-gender">
+                  Anrede
+                </label>
+                <select class="zz-form__select" id="p-gender">
+                  <option>Bitte wählen</option>
+                  <option>Frau</option>
+                  <option>Herr</option>
+                </select>
+              </div>
+              <div class="col-md-6 col-sm-12 zz-form__group">
+                <label class="zz-form__label" for="language">
+                  Sprache
+                </label>
+                <select class="zz-form__select" id="language">
+                  <option>Deutsch</option>
+                  <option>Englisch</option>
+                  <option>Französisch</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-12"><h3 class="zz-form__title">Angaben zum Kind</h3></div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-6 col-sm-12 zz-form__group">
+                <label class="zz-form__label" for="c-firstname">Vorname</label>
+                <input id="c-firstname" class="zz-form__input" name="firstName" type="text">
+              </div>
+              <div class="col-md-6 col-sm-12 zz-form__group">
+                <label class="zz-form__label" for="c-lastName">Nachname</label>
+                <input id="c-lastName" class="zz-form__input" name="lastName" type="text">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-6 col-sm-12 zz-form__group">
+                <label class="zz-form__label" for="c-gender">
+                  Geschlecht
+                </label>
+                <select class="zz-form__select" id="c-gender">
+                  <option>Bitte wählen</option>
+                  <option>Mädchen</option>
+                  <option>Junge</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <label class="col-12 zz-form__label">Geburtstag</label>
+              <div class="col-4 zz-form__group">
+                <select class="zz-form__select" id="c-birthday">
+                  <option>Tag</option>
+                  <option>01</option>
+                  <option>02</option>
+                </select>
+              </div>
+              <div class="col-4 zz-form__group">
+                <select class="zz-form__select" id="c-birthday-month">
+                  <option>Monat</option>
+                  <option>Januar</option>
+                  <option>Februar</option>
+                </select>
+              </div>
+              <div class="col-4 zz-form__group">
+                <select class="zz-form__select" id="c-birthday-year">
+                  <option>Jahr</option>
+                  <option>2017</option>
+                  <option>2018</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-12"><h3 class="zz-form__title">E-Mail und Passwort</h3></div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-6 col-sm-12 zz-form__group">
+                <label class="zz-form__label" for="email">E-Mail (gilt als username)</label>
+                <input id="email" class="zz-form__input" name="email" type="text">
+              </div>
+              <div class="col-md-6 col-sm-12 zz-form__group">
+                <label class="zz-form__label" for="email-check">E-Mail wiederholen</label>
+                <input id="email-check" class="zz-form__input" name="emailcheck" type="text">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-12 zz-form__group">
+                <label class="zz-form__label" for="password">Passwort</label>
+                <input id="password" class="zz-form__input" name="password" type="password">
+                <p class="zz-infotext zz-infotext--form">Das Passwort muss zwischen 8 und 50 Zeichen lang sein sowie mindestens einen Buchstaben und mindestens eine Zahl enthalten.</p>
+              </div>
+              <div class="col-12 zz-form__group">
+                <label class="zz-form__label" for="passwordcheck">Passwort wiederholen</label>
+                <input id="passwordcheck" class="zz-form__input" name="passwordcheck" type="password">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-12 zz-form__group zz-form__group--last">
+                <button class="zz-btn zz-btn--primary">Registrieren und Nutzungsbestimmungen zustimmen</button>
               </div>
             </div>
           </form>

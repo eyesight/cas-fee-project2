@@ -14,4 +14,10 @@
       font-size: $font-s-copytext;
     }
   }
+
+  &--form{
+    text-align: left;
+    padding-top: rem-calc(5px);
+    color: $color-gray-middle;
+  }
 }
