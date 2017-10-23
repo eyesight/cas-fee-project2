@@ -49,8 +49,15 @@
       t.string :zip
       t.string :place
       t.string :email
+      t.string :password
+      t.string :language
+      t.string  :parent_gender
+      t.number :tel-privat,
+      t.number :tel-office,
       t.boolean :is_teacher, :default=>false
       t.boolean :is_active, :default=>true
       t.date :created_at
       t.date :changed_at
+      
+      t.boolean :admin-confirmed
     end

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'app/model/user.model';
+import { User } from '../../_models/user.model';
 
 @Component({
   selector: 'app-classlist-item',

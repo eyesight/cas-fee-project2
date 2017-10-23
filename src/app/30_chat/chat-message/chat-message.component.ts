@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { MessageItem, Message } from '../../_models/message.model';
 import { Klasse } from '../../_models/klasse.model';
-import { User } from '../../model/user.model';
+import { User } from '../../_models/user.model';
 
 
 @Component({
