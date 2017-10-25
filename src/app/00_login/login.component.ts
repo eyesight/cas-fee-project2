@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   model: any = {};
   loading = false;
   returnUrl: string;
-  public loginForm: FormGroup;
+  loginForm: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,12 +23,10 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.loginForm = this.fb.group(
-      {formUsername: ['', [Validators.required, Validators.minLength(3)]],
+    this.loginForm = this.fb.group({
+       formUsername: ['', [Validators.required, Validators.minLength(3)]],
        formPassword: ['', [Validators.required, Validators.minLength(3)]]
-      }
-    );
-    console.log(this.loginForm.controls.formPassword.errors);
+      });
     // reset login status
     this.authenticationService.logout();
 

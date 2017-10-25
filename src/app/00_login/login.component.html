@@ -7,14 +7,14 @@
         <h1 class="zz-title zz-title--insideBox">Anmelden</h1>
         <form name="form" [formGroup]="loginForm" (ngSubmit)="loginForm.valid && login()" novalidate #formDir="ngForm" class="zz-form">
           <div class="form-row">
-            <div class="col-12 zz-form__group" [ngClass]="{ 'has-error': loginForm.invalid && !username.valid }"  >
+            <div class="col-12 zz-form__group">
               <label class="zz-form__label" for="email">Benutzername</label>
               <input id="email" class="zz-form__input" name="eMail" type="text" [(ngModel)]="model.username" formControlName="formUsername" #username [ngClass]="{ 'zz-form__input--error': loginForm.get('formUsername').errors && !username.valid && (loginForm.get('formUsername').dirty || loginForm.get('formUsername').touched || formDir.submitted)}" placeholder="test (zum Testen)">
               <div *ngIf="loginForm.get('formUsername').errors && !username.valid && (loginForm.get('formUsername').dirty || loginForm.get('formUsername').touched || formDir.submitted)" class="zz-form__error">Benutzername fehlt oder ist ungültig.</div>
             </div>
           </div>
           <div class="form-row">
-            <div class="col-12 zz-form__group" [ngClass]="{ 'has-error': loginForm.invalid && !password.valid }" >
+            <div class="col-12 zz-form__group">
               <label class="zz-form__label" for="password">Password</label>
               <input id="password" class="zz-form__input" name="password" type="password" [(ngModel)]="model.password" #password formControlName="formPassword" [ngClass]="{ 'zz-form__input--error': loginForm.get('formPassword').errors && !username.valid && (loginForm.get('formPassword').dirty || loginForm.get('formPassword').touched || formDir.submitted) }" placeholder="test (zum Testen)">
               <div *ngIf="loginForm.get('formPassword').errors && !password.valid && (loginForm.get('formPassword').dirty || loginForm.get('formPassword').touched || formDir.submitted)" class="zz-form__error">Passwort fehlt oder ist ungültig</div>
