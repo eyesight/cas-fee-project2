@@ -55,6 +55,9 @@ export class ChatComponent implements OnInit {
       this.message = [newText];
     }
     this.messageItem = this.reduceToGroup(this.messageItem, newText);
+
+    this.messageItemService.sendMessage(newText.text);
+
     /*const scrollPane: any = this.el
       .nativeElement.querySelector('.msg-container-base');
     scrollPane.scrollTop = scrollPane.scrollHeight;*/

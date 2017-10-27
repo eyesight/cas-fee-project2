@@ -49,7 +49,7 @@ import { AlertComponent } from './_helpers/alert/alert.component';
     UserService,
 
     // providers used to create fake backend
-    fakeBackendProvider,
+    //fakeBackendProvider,
     MockBackend,
     BaseRequestOptions
   ],
