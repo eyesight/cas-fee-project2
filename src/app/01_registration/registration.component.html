@@ -17,7 +17,7 @@ Vorbereitung -> Übertragen in gesamte Form
               <label class="zz-form__label" for="p-firstname">Vorname</label>
               <input id="p-firstname" class="zz-form__input" [(ngModel)]="model.parent_firstname" type="text" formControlName="formPFirstname" [ngClass]="{ 'zz-form__input--error': formPFirstname.invalid && (formPFirstname.dirty || formPFirstname.touched)}">
               <div *ngIf="formPFirstname.invalid && formPFirstname.errors.required && (formPFirstname.dirty || formPFirstname.touched)" class="zz-form__error">
-                Vorname darf nicht leer sein
+                Feld darf nicht leer sein
               </div>
               <div *ngIf="formPFirstname.invalid && formPFirstname.errors.minlength && (formPFirstname.dirty || formPFirstname.touched)" class="zz-form__error">
                 Vorname muss mindestens zwei Zeichen haben
@@ -27,7 +27,7 @@ Vorbereitung -> Übertragen in gesamte Form
               <label class="zz-form__label" for="p-lastName">Nachname</label>
               <input id="p-lastName" class="zz-form__input" name="lastName" type="text" [(ngModel)]="model.parent_lastname" formControlName="formPLastname" [ngClass]="{ 'zz-form__input--error': formPLastname.invalid && (formPLastname.dirty || formPLastname.touched)}">
               <div *ngIf="formPLastname.invalid && formPLastname.errors.required && (formPLastname.dirty || formPLastname.touched)" class="zz-form__error">
-                Nachname darf nicht leer sein
+                Feld darf nicht leer sein
               </div>
               <div *ngIf="formPLastname.invalid && formPLastname.errors.minlength && (formPLastname.dirty || formPLastname.touched)" class="zz-form__error">
                 Nachname muss mindestens zwei Zeichen haben
@@ -39,7 +39,7 @@ Vorbereitung -> Übertragen in gesamte Form
               <label class="zz-form__label" for="adress">Adresse</label>
               <input id="adress" class="zz-form__input" name="adress" type="text" [(ngModel)]="model.adress" formControlName="formAdress" [ngClass]="{ 'zz-form__input--error': formAdress.invalid && (formAdress.dirty || formAdress.touched)}">
               <div *ngIf="formAdress.invalid && formAdress.errors.required && (formAdress.dirty || formAdress.touched)" class="zz-form__error">
-                Adresse darf nicht leer sein
+                Feld darf nicht leer sein
               </div>
               <div *ngIf="formAdress.invalid && formAdress.errors.minlength && (formAdress.dirty || formAdress.touched)" class="zz-form__error">
                 Adresse ist nicht gültig
@@ -59,7 +59,7 @@ Vorbereitung -> Übertragen in gesamte Form
               <label class="zz-form__label" for="zip">PLZ</label>
               <input id="zip" class="zz-form__input" name="zip" type="text" [(ngModel)]="model.zip" formControlName="formZip" [ngClass]="{ 'zz-form__input--error': formZip.invalid && (formZip.dirty || formZip.touched)}">
               <div *ngIf="formZip.invalid && formZip.errors.required && (formZip.dirty || formZip.touched)" class="zz-form__error">
-                Postleitzahl darf nicht leer sein
+                Feld darf nicht leer sein
               </div>
               <div *ngIf="formZip.invalid && formZip.errors.minlength && (formZip.dirty || formZip.touched)" class="zz-form__error">
                 Postleitzahl muss vier Zeichen enthalten
@@ -75,12 +75,24 @@ Vorbereitung -> Übertragen in gesamte Form
           <div class="form-row">
             <div class="col-12 zz-form__group">
               <label class="zz-form__label" for="tel-privat">Telefon privat</label>
-              <input id="tel-privat" class="zz-form__input" name="tel-privat" type="text">
+              <input id="tel-privat" class="zz-form__input" name="tel-privat" type="text" [(ngModel)]="model.tel_private" formControlName="formTelprivate" [ngClass]="{ 'zz-form__input--error': formTelprivate.invalid && (formTelprivate.dirty || formTelprivate.touched)}">
+              <div *ngIf="formTelprivate.invalid && formTelprivate.errors.required && (formTelprivate.dirty || formTelprivate.touched)" class="zz-form__error">
+                Feld darf nicht leer sein
+              </div>
+              <div *ngIf="formTelprivate.invalid && formTelprivate.errors.minlength && (formTelprivate.dirty || formTelprivate.touched)" class="zz-form__error">
+                Telefonnummer muss 10 Zeichen enthalten
+              </div>
+              <div *ngIf="formTelprivate.invalid && formTelprivate.errors.pattern && (formTelprivate.dirty || formTelprivate.touched)" class="zz-form__error">
+                Telefonnummer ist nicht gültig
+              </div>
             </div>
             <div class="col-12 zz-form__group">
               <label class="zz-form__label" for="tel-office">Telefon geschäft <span
                 class="zz-infotext">(optional)</span></label>
-              <input id="tel-office" class="zz-form__input" name="tel-office" type="text">
+              <input id="tel-office" class="zz-form__input" name="tel-office" type="text" [(ngModel)]="model.tel_office" formControlName="formTeloffice">
+              <div *ngIf="formTeloffice.invalid && (formTeloffice.dirty || formTeloffice.touched)" class="zz-form__error">
+                Die Telefonnummer ist nicht gültig; sie muss 10 Zeichen und nur Zahlen enthalten
+              </div>
             </div>
           </div>
           <div class="form-row">
@@ -88,21 +100,24 @@ Vorbereitung -> Übertragen in gesamte Form
               <label class="zz-form__label" for="p-gender">
                 Anrede
               </label>
-              <select class="zz-form__select" id="p-gender">
-                <option>Bitte wählen</option>
-                <option>Frau</option>
-                <option>Herr</option>
+              <select class="zz-form__select" id="p-gender" [(ngModel)]="model.parent_gender" formControlName="formParentGender">
+                <option value="">Bitte wählen</option>
+                <option *ngFor="let gen of gender" [value]="gen.content">{{gen.label}}</option>
               </select>
+              <div *ngIf="formParentGender.invalid && (formParentGender.dirty || formParentGender.touched)" class="zz-form__error">
+                Feld darf nicht leer sein
+              </div>
             </div>
             <div class="col-md-6 col-sm-12 zz-form__group">
               <label class="zz-form__label" for="language">
                 Sprache
               </label>
-              <select class="zz-form__select" id="language">
-                <option>Deutsch</option>
-                <option>Englisch</option>
-                <option>Französisch</option>
+              <select class="zz-form__select" id="language" [(ngModel)]="model.parent_language" formControlName="formLanguage">
+                <option *ngFor="let lang of languages" [value]="lang.content">{{lang.label}}</option>
               </select>
+              <div *ngIf="formLanguage.invalid && (formLanguage.dirty || formLanguage.touched)" class="zz-form__error">
+                Feld darf nicht leer sein
+              </div>
             </div>
           </div>
           <div class="form-row">
@@ -111,11 +126,23 @@ Vorbereitung -> Übertragen in gesamte Form
           <div class="form-row">
             <div class="col-md-6 col-sm-12 zz-form__group">
               <label class="zz-form__label" for="c-firstname">Vorname</label>
-              <input id="c-firstname" class="zz-form__input" name="firstName" type="text">
+              <input id="c-firstname" class="zz-form__input" name="firstName" type="text" [(ngModel)]="model.child_firstname" formControlName="formCFirstname" [ngClass]="{ 'zz-form__input--error': formCFirstname.invalid && (formCFirstname.dirty || formCFirstname.touched)}">
+              <div *ngIf="formCFirstname.invalid && formCFirstname.errors.required && (formCFirstname.dirty || formCFirstname.touched)" class="zz-form__error">
+                Feld darf nicht leer sein
+              </div>
+              <div *ngIf="formCFirstname.invalid && formCFirstname.errors.minlength && (formCFirstname.dirty || formCFirstname.touched)" class="zz-form__error">
+                Vorname muss mindestens zwei Zeichen haben
+              </div>
             </div>
             <div class="col-md-6 col-sm-12 zz-form__group">
               <label class="zz-form__label" for="c-lastName">Nachname</label>
-              <input id="c-lastName" class="zz-form__input" name="lastName" type="text">
+              <input id="c-lastName" class="zz-form__input" name="lastName" type="text" [(ngModel)]="model.child_lastname" formControlName="formCLastname" [ngClass]="{ 'zz-form__input--error': formCLastname.invalid && (formCLastname.dirty || formCLastname.touched)}">
+              <div *ngIf="formCLastname.invalid && formCLastname.errors.required && (formCLastname.dirty || formCLastname.touched)" class="zz-form__error">
+                Feld darf nicht leer sein
+              </div>
+              <div *ngIf="formCLastname.invalid && formCLastname.errors.minlength && (formCLastname.dirty || formCLastname.touched)" class="zz-form__error">
+                Vorname muss mindestens zwei Zeichen haben
+              </div>
             </div>
           </div>
           <div class="form-row">
@@ -123,36 +150,20 @@ Vorbereitung -> Übertragen in gesamte Form
               <label class="zz-form__label" for="c-gender">
                 Geschlecht
               </label>
-              <select class="zz-form__select" id="c-gender">
-                <option>Bitte wählen</option>
-                <option>Mädchen</option>
-                <option>Junge</option>
+              <select class="zz-form__select" id="c-gender" [(ngModel)]="model.child_gender" formControlName="formChildGender">
+                <option value="">Bitte wählen</option>
+                <option *ngFor="let gen of gender" [value]="gen.content">{{gen.labelChild}}</option>
               </select>
+              <div *ngIf="formChildGender.invalid && (formChildGender.dirty || formChildGender.touched)" class="zz-form__error">
+                Feld darf nicht leer sein
+              </div>
             </div>
           </div>
           <div class="form-row">
-            <label class="col-12 zz-form__label">Geburtstag</label>
-            <div class="col-4 zz-form__group">
-              <select class="zz-form__select" id="c-birthday">
-                <option>Tag</option>
-                <option>01</option>
-                <option>02</option>
-              </select>
-            </div>
-            <div class="col-4 zz-form__group">
-              <select class="zz-form__select" id="c-birthday-month">
-                <option>Monat</option>
-                <option>Januar</option>
-                <option>Februar</option>
-              </select>
-            </div>
-            <div class="col-4 zz-form__group">
-              <select class="zz-form__select" id="c-birthday-year">
-                <option>Jahr</option>
-                <option>2017</option>
-                <option>2018</option>
-              </select>
-            </div>
+          <div class="col-12">
+            <label class="zz-form__label">Geburtstag</label>
+            <input type="number" id="c-Birthday-Day" class="zz-form__input" name="birthday" formControlName="formCBirthday">
+          </div>
           </div>
           <div class="form-row">
             <div class="col-12"><h3 class="zz-form__title">E-Mail und Passwort</h3></div>

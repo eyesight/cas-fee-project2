@@ -21,6 +21,7 @@ import { HttpModule, BaseRequestOptions } from '@angular/http';
 import { AuthGuard } from './_guards/auth.guards';
 import { AlertService, AuthenticationService, UserService } from './_services/index';
 import { AlertComponent } from './_helpers/alert/alert.component';
+import { ShowErrorsComponent } from './_helpers/show-errors/show-errors.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { AlertComponent } from './_helpers/alert/alert.component';
     HomeComponent,
     LoginComponent,
     AlertComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ShowErrorsComponent
   ],
   imports: [
     BrowserModule,
