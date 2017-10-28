@@ -1,66 +1,90 @@
 /**
- * Created by awedag on 27.10.17.
+ * Created by awedag on 26.10.17.
  */
-"use strict";
-let express = require("express");
-var path = require('path');
-let chat_app = require('express')();
-let http = require('http').Server(chat_app);
-let io = require('socket.io')(http);
-let clientListNames = [];
 
 
-console.log(__dirname);
-chat_app.use(express.static(__dirname));
-//chat_app.use(express.static(__dirname, '/server/'));
-//chat_app.use(express.static(__dirname + "/..", '/client/'));
-chat_app.use(express.static(__dirname + '/node_modules'));
+
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+const bodyParser = require('body-parser');
+const jwt = require('express-jwt');
 
 
-chat_app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
+var db=require('./db/dbconnection'); //reference of dbconnection.js
+
+// test query
+//const store = require("./db/dbusers");
+//store.doQuery();
+
+
+
+app.use(bodyParser.json());
+const jwtSecret =  'aklsdjfklöasjdcma8sd90ziklasdföasdf$ädasöfü pi340qkrlöam,dflöäasf';
+
+app.set("jwt-secret", jwtSecret); //secret should be in a config file - or better be a private key!
+app.set("jwt-sign", {expiresIn: "7d", audience :"self", issuer : "school"});
+app.set("jwt-validate", {secret: jwtSecret, audience :"self", issuer : "school"});
+
+app.get('/', function(req, res){
+   res.sendFile(__dirname + '/index.html');
+  //  res.send('<h1>Hello world</h1>');
 });
+
+
+app.use("/", require('./routes/indexRoutes.js'));
+
+// the jwt-validate copies the jwt-info part to the req to user (see jwt.sign method)
+// after this jwt-middleware a token is required!
+app.use(jwt( app.get("jwt-validate")));
+app.use("/api", require('./routes/appRoutes.js'));
+
+
+app.use(function (err, req, res, next) {
+    if (err.name === 'UnauthorizedError') {
+        res.status(401).send('No token / ..Invalid token provided');
+    }
+    else
+    {
+        next(err);
+    }
+});
+
+io.on('connection', function(socket){
+   // console.log('a user connected');
+   // socket.on('disconnect', function(){
+   //     console.log('user disconnected');
+   // });
+
+    socket.on('chat message', function(msg){
+        io.emit('chat message', msg);
+    });
+    socket.broadcast.emit('hi');
+
+});
+
+
+http.listen(3020, function(){
+    console.log('listening on *:3020');
+});
+
+
 
 /*
-chat_app.get('/chat', function(req, res){
-  res.redirect('/');
-}); */
+*
 
+ var mysql      = require('mysql');
+ var connection = mysql.createConnection({
+ host     : 'localhost',
+ user     : 'school',
+ password : 'school',
+ database : 'school_test'
+ //  socketPath : '/Applications/MAMP/tmp/mysql/mysql.sock'
+ });
 
+ connection.query('SELECT user_name from users', function(err, rows, fields) {
+ if (err) throw err;
+ console.log('The solution is: ', rows[1].user_name);
+ });
 
-// - CHAT
-io.on('connection', function(socket){
-  console.log('connection wanted');
-  clientListNames.push(socket.handshake.query.userName);
-  io.emit("updateSocketList", clientListNames);
-  io.emit("addUserToSocketList",socket.handshake.query.userName);
-
-  socket.on('disconnect', function(){
-    let name=socket.handshake.query.userName;
-    let userIndex = clientListNames.indexOf(socket.handshake.query.userName);
-    if (userIndex != -1) {
-      clientListNames.splice(userIndex, 1);
-      io.emit("updateSocketList", clientListNames);
-      io.emit("removeUserFromSocketList",name);
-    }
-  });
-
-  socket.on('chatMessageToSocketServer', function(msg, func){
-    func("Message recieved!",socket.handshake.query.userName);
-    let name = socket.handshake.query.userName;
-    let sockectObj = {name,msg}
-    io.emit('broadcastToAll_chatMessage', sockectObj);
-  });
-
-  socket.on('message', function(msg){
-    //  func("Message recieved!",socket.handshake.query.userName);
-    console.log('msg received:' + msg);
-    let name = 'hans';
-    let sockectObj = {name,msg};
-    io.emit('broadcastToAll_chatMessage', sockectObj);
-  });
-});
-
-http.listen(3100, function(){
-  console.log('listening on *:3100');
-});
+ connection.end();*/
