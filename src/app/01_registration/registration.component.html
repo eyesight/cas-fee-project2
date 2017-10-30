@@ -80,7 +80,7 @@ Vorbereitung -> Übertragen in gesamte Form
                 Feld darf nicht leer sein
               </div>
               <div *ngIf="formTelprivate.invalid && formTelprivate.errors.minlength && (formTelprivate.dirty || formTelprivate.touched)" class="zz-form__error">
-                Telefonnummer muss 10 Zeichen enthalten
+                Telefonnummer muss 10 Zahlen enthalten
               </div>
               <div *ngIf="formTelprivate.invalid && formTelprivate.errors.pattern && (formTelprivate.dirty || formTelprivate.touched)" class="zz-form__error">
                 Telefonnummer ist nicht gültig
@@ -91,7 +91,7 @@ Vorbereitung -> Übertragen in gesamte Form
                 class="zz-infotext">(optional)</span></label>
               <input id="tel-office" class="zz-form__input" name="tel-office" type="text" [(ngModel)]="model.tel_office" formControlName="formTeloffice">
               <div *ngIf="formTeloffice.invalid && (formTeloffice.dirty || formTeloffice.touched)" class="zz-form__error">
-                Die Telefonnummer ist nicht gültig; sie muss 10 Zeichen und nur Zahlen enthalten
+                Die Telefonnummer ist nicht gültig; sie muss aus 10 Zahlen bestehen
               </div>
             </div>
           </div>
