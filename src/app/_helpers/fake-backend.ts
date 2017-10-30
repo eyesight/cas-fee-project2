@@ -41,8 +41,8 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
             body: {
               id: user.id,
               username: user.username,
-              firstName: user.firstName,
-              lastName: user.lastName,
+              parent_forename: user.parent_forename,
+              parent_surname: user.parent_surname,
               token: 'fake-jwt-token'
             }
           })));

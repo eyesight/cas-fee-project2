@@ -15,12 +15,12 @@ Vorbereitung -> Übertragen in gesamte Form
           <div class="form-row">
             <div class="col-md-6 col-sm-12 zz-form__group">
               <label class="zz-form__label" for="p-firstname">Vorname</label>
-              <input id="p-firstname" class="zz-form__input" [(ngModel)]="model.parent_firstname" type="text" formControlName="formPFirstname" [ngClass]="{ 'zz-form__input--error': formPFirstname.invalid && (formPFirstname.dirty || formPFirstname.touched)}">
+              <input id="p-firstname" class="zz-form__input" [(ngModel)]="model.parent_forename" type="text" formControlName="formPFirstname" [ngClass]="{ 'zz-form__input--error': formPFirstname.invalid && (formPFirstname.dirty || formPFirstname.touched)}">
               <app-show-errors [control]="formPFirstname"></app-show-errors>
             </div>
             <div class="col-md-6 col-sm-12 zz-form__group">
               <label class="zz-form__label" for="p-lastName">Nachname</label>
-              <input id="p-lastName" class="zz-form__input" name="lastName" type="text" [(ngModel)]="model.parent_lastname" formControlName="formPLastname" [ngClass]="{ 'zz-form__input--error': formPLastname.invalid && (formPLastname.dirty || formPLastname.touched)}">
+              <input id="p-lastName" class="zz-form__input" name="lastName" type="text" [(ngModel)]="model.parent_surname" formControlName="formPLastname" [ngClass]="{ 'zz-form__input--error': formPLastname.invalid && (formPLastname.dirty || formPLastname.touched)}">
               <app-show-errors [control]="formPLastname"></app-show-errors>
             </div>
           </div>
@@ -90,12 +90,12 @@ Vorbereitung -> Übertragen in gesamte Form
           <div class="form-row">
             <div class="col-md-6 col-sm-12 zz-form__group">
               <label class="zz-form__label" for="c-firstname">Vorname</label>
-              <input id="c-firstname" class="zz-form__input" name="firstName" type="text" [(ngModel)]="model.child_firstname" formControlName="formCFirstname" [ngClass]="{ 'zz-form__input--error': formCFirstname.invalid && (formCFirstname.dirty || formCFirstname.touched)}">
+              <input id="c-firstname" class="zz-form__input" name="firstName" type="text" [(ngModel)]="model.child_forename" formControlName="formCFirstname" [ngClass]="{ 'zz-form__input--error': formCFirstname.invalid && (formCFirstname.dirty || formCFirstname.touched)}">
               <app-show-errors [control]="formCFirstname"></app-show-errors>
             </div>
             <div class="col-md-6 col-sm-12 zz-form__group">
               <label class="zz-form__label" for="c-lastName">Nachname</label>
-              <input id="c-lastName" class="zz-form__input" name="lastName" type="text" [(ngModel)]="model.child_lastname" formControlName="formCLastname" [ngClass]="{ 'zz-form__input--error': formCLastname.invalid && (formCLastname.dirty || formCLastname.touched)}">
+              <input id="c-lastName" class="zz-form__input" name="lastName" type="text" [(ngModel)]="model.child_surname" formControlName="formCLastname" [ngClass]="{ 'zz-form__input--error': formCLastname.invalid && (formCLastname.dirty || formCLastname.touched)}">
               <app-show-errors [control]="formCLastname"></app-show-errors>
             </div>
           </div>
@@ -127,7 +127,7 @@ Vorbereitung -> Übertragen in gesamte Form
           <div class="form-row" formGroupName="formEMailConfirm">
             <div class="col-12 zz-form__group">
               <label class="zz-form__label" for="email">E-Mail (gilt als username)</label>
-              <input id="email" class="zz-form__input" name="email" type="text" formControlName="formEmail" [ngClass]="{ 'zz-form__input--error': (formEMailConfirm.invalid || formEmail.invalid) && (formEmail.dirty || formEmail.touched)}">
+              <input id="email" class="zz-form__input" name="email" type="text" formControlName="formEmail" [(ngModel)]="model.username" [ngClass]="{ 'zz-form__input--error': (formEMailConfirm.invalid || formEmail.invalid) && (formEmail.dirty || formEmail.touched)}">
               <app-show-errors [control]="formEmail"></app-show-errors>
               <div *ngIf="formEmail.invalid && formEmail.errors.email && (formEmail.dirty || formEmail.touched)" class="zz-form__error">
                 Bitte geben Sie eine gültige E-Mailadresse ein
@@ -144,7 +144,7 @@ Vorbereitung -> Übertragen in gesamte Form
           <div class="form-row" formGroupName="formPasswordConfirm">
             <div class="col-12 zz-form__group">
               <label class="zz-form__label" for="password">Passwort</label>
-              <input id="password" class="zz-form__input" name="password" type="password" formControlName="formPassword" [ngClass]="{ 'zz-form__input--error': (formPasswordConfirm.invalid || formPassword.invalid) && (formPassword.dirty || formPassword.touched)}">
+              <input id="password" class="zz-form__input" name="password" type="password" formControlName="formPassword" [(ngModel)]="model.password" [ngClass]="{ 'zz-form__input--error': (formPasswordConfirm.invalid || formPassword.invalid) && (formPassword.dirty || formPassword.touched)}">
               <app-show-errors [control]="formPassword"></app-show-errors>
               <div *ngIf="formPassword.invalid && formPassword.errors.pattern && (formPassword.dirty || formPassword.touched)" class="zz-form__error">
                 Das Passwort muss mindestens einen Buchstaben, eine Zahl und ein Sonderzeichen enthalten.
@@ -158,7 +158,7 @@ Vorbereitung -> Übertragen in gesamte Form
               </div>
             </div>
           </div>
-    <div class="form-row">
+          <div class="form-row">
             <div class="col-12 zz-form__group zz-form__group--last">
               <button class="zz-btn zz-btn--primary" [disabled]="!registrationForm.valid" >Registrieren und Nutzungsbestimmungen zustimmen*</button>
             </div>
@@ -174,7 +174,7 @@ Vorbereitung -> Übertragen in gesamte Form
         <p class="zz-infotext__txt">
           Schon registriert?
         </p>
-        <a href="#" class="zz-infotext__link zz-infotext__link--large">
+        <a [routerLink]="['/login']" class="zz-infotext__link zz-infotext__link--large">
           zum Login
         </a>
       </div>
@@ -184,13 +184,13 @@ Vorbereitung -> Übertragen in gesamte Form
 Vorbereitung -> Übertragen in gesamte Form
 -->
 
-<p class="navbar-brand zz-logo zz-logo--position-center" href="#">
+<!--<p class="navbar-brand zz-logo zz-logo&#45;&#45;position-center" href="#">
     <img src="assets/img/logo.png" alt="" class="zz-logo__img">
   </p>
   <div class="row justify-content-center zz-layout__row">
     <div class="col-11 col-lg-8 col-xl-5 zz-mod-container">
       <div class="zz-mod-box">
-        <h1 class="zz-title zz-title--insideBox">Registrieren</h1>
+        <h1 class="zz-title zz-title&#45;&#45;insideBox">Registrieren</h1>
         <form name="form" #f="ngForm" class="zz-form" (ngSubmit)="f.form.valid && register()" novalidate>
           <div class="form-row">
             <div class="col-6 zz-form__group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
@@ -217,11 +217,11 @@ Vorbereitung -> Übertragen in gesamte Form
             </div>
           </div>
           <div class="form-row">
-            <div class="col-6 zz-form__group zz-form__group--last">
-              <button class="zz-btn zz-btn--primary">Registrieren*</button>
+            <div class="col-6 zz-form__group zz-form__group&#45;&#45;last">
+              <button class="zz-btn zz-btn&#45;&#45;primary">Registrieren*</button>
             </div>
-            <div class="col-6 zz-form__group zz-form__group--last">
-              <button class="zz-btn zz-btn--primary">Cancel</button>
+            <div class="col-6 zz-form__group zz-form__group&#45;&#45;last">
+              <button class="zz-btn zz-btn&#45;&#45;primary">Cancel</button>
             </div>
           </div>
         </form>
@@ -235,9 +235,9 @@ Vorbereitung -> Übertragen in gesamte Form
         <p class="zz-infotext__txt">
           Schon registriert?
         </p>
-        <a [routerLink]="['/login']" class="zz-infotext__link zz-infotext__link--large">
+        <a [routerLink]="['/login']" class="zz-infotext__link zz-infotext__link&#45;&#45;large">
           zum Login
         </a>
       </div>
     </div>
-  </div>
+  </div>-->

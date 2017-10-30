@@ -5,13 +5,13 @@ export class User {
   firstName: string;
   lastName: string;
 
-  parent_firstname: string;
-  parent_lastname: string;
+  parent_forename: string;
+  parent_surname: string;
   parent_gender: string;
   parent_language: string;
 
-  child_firstname: string;
-  child_lastname: string;
+  child_forename: string;
+  child_surname: string;
   child_date_of_birth: number;
   child_gender: string;
 
