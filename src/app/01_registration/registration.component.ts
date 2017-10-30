@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Birthday } from '../_models/birthday.model';
-
+import { emailMatcher, passwordMatcher } from './emailmatcher';
 
 import { AlertService, UserService } from '../_services/index';
 
@@ -44,9 +44,17 @@ export class RegistrationComponent implements OnInit {
       formCFirstname: ['', [Validators.required, Validators.minLength(2)]],
       formCLastname: ['', [Validators.required, Validators.minLength(2)]],
       formChildGender: ['', [Validators.required]],
-      formCBirthdayDay: ['', [Validators.required]]
+      formCBirthday: ['', [Validators.required, Validators.pattern(/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/g)]],
+      formEMailConfirm: this.fb.group({
+        formEmail: ['', [Validators.required, Validators.email]],
+        confirmEmail: ['', [Validators.required]]
+      }, { validator: emailMatcher}),
+      formPasswordConfirm: this.fb.group({
+        formPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15), Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&_\-])[A-Za-z\d$@$!%*#?&_\-]{8,}$/g)]],
+        confirmPassword: ['', [Validators.required]]
+      }, { validator: passwordMatcher})
     });
-      console.log(this.formLanguage.status);
+      console.log(this.formPasswordConfirm.get('confirmPassword'));
   }
 
   get formPFirstname() {
@@ -85,8 +93,20 @@ export class RegistrationComponent implements OnInit {
   get formChildGender() {
     return this.registrationForm.get('formChildGender');
   }
-  get formCBirthdayDay() {
-    return this.registrationForm.get('formCBirthdayDay');
+  get formCBirthday() {
+    return this.registrationForm.get('formCBirthday');
+  }
+  get formEMailConfirm() {
+    return this.registrationForm.get('formEMailConfirm');
+  }
+  get formEmail() {
+    return this.formEMailConfirm.get('formEmail');
+  }
+  get formPasswordConfirm() {
+    return this.registrationForm.get('formPasswordConfirm');
+  }
+  get formPassword() {
+    return this.formPasswordConfirm.get('formPassword');
   }
 
 

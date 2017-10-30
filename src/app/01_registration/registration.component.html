@@ -162,36 +162,62 @@ Vorbereitung -> Übertragen in gesamte Form
           <div class="form-row">
           <div class="col-12">
             <label class="zz-form__label">Geburtstag</label>
-            <input type="number" id="c-Birthday-Day" class="zz-form__input" name="birthday" formControlName="formCBirthday">
+            <input type="number" id="c-Birthday-Day" class="zz-form__input" [(ngModel)]="model.child_date_of_birth" name="birthday" formControlName="formCBirthday" [ngClass]="{ 'zz-form__input--error': formCBirthday.invalid && (formCBirthday.dirty || formCBirthday.touched)}">
+            <div *ngIf="formCBirthday.invalid && formCBirthday.errors.required && (formCBirthday.dirty || formCBirthday.touched)" class="zz-form__error">
+              Feld darf nicht leer sein
+            </div>
+            <div *ngIf="formCBirthday.invalid && formCBirthday.errors.pattern && (formCBirthday.dirty || formCBirthday.touched)" class="zz-form__error">
+              Bitte geben Sie ein gültiges Datum ein (z.B. 00-00-0000)
+            </div>
           </div>
           </div>
           <div class="form-row">
             <div class="col-12"><h3 class="zz-form__title">E-Mail und Passwort</h3></div>
           </div>
-          <div class="form-row">
-            <div class="col-md-6 col-sm-12 zz-form__group">
+          <div class="form-row" formGroupName="formEMailConfirm">
+            <div class="col-12 zz-form__group">
               <label class="zz-form__label" for="email">E-Mail (gilt als username)</label>
-              <input id="email" class="zz-form__input" name="email" type="text">
+              <input id="email" class="zz-form__input" name="email" type="text" formControlName="formEmail" [ngClass]="{ 'zz-form__input--error': formEmail.invalid && (formEmail.dirty || formEmail.touched)}">
+              <div *ngIf="formEmail.invalid && formEmail.errors.required && (formEmail.dirty || formEmail.touched)" class="zz-form__error">
+                Feld darf nicht leer sein
+              </div>
+              <div *ngIf="formEmail.invalid && formEmail.errors.email && (formEmail.dirty || formEmail.touched)" class="zz-form__error">
+                Bitte geben Sie eine gültige E-Mailadresse ein
+              </div>
             </div>
-            <div class="col-md-6 col-sm-12 zz-form__group">
+            <div class="col-12 zz-form__group">
               <label class="zz-form__label" for="email-check">E-Mail wiederholen</label>
-              <input id="email-check" class="zz-form__input" name="emailcheck" type="text">
+              <input id="email-check" class="zz-form__input" name="emailcheck" type="text" formControlName="confirmEmail" [ngClass]="{ 'zz-form__input--error': formEMailConfirm.invalid && (formEMailConfirm.dirty || formEMailConfirm.touched)}">
+              <div *ngIf="formEMailConfirm.invalid && formEMailConfirm.hasError('nomatch') && (formEMailConfirm.dirty || formEMailConfirm.touched)" class="zz-form__error">
+                E-Mailadressen stimmen nicht überein
+              </div>
             </div>
           </div>
-          <div class="form-row">
+          <div class="form-row" formGroupName="formPasswordConfirm">
             <div class="col-12 zz-form__group">
               <label class="zz-form__label" for="password">Passwort</label>
-              <input id="password" class="zz-form__input" name="password" type="password">
-              <p class="zz-infotext zz-infotext--form">Das Passwort muss zwischen 8 und 50 Zeichen lang sein sowie mindestens einen Buchstaben und mindestens eine Zahl enthalten.</p>
+              <input id="password" class="zz-form__input" name="password" type="password" formControlName="formPassword" [ngClass]="{ 'zz-form__input--error': formPassword.invalid && (formPassword.dirty || formPassword.touched)}">
+              <div *ngIf="formPassword.invalid && formPassword.errors.required && (formPassword.dirty || formPassword.touched)" class="zz-form__error">
+                Feld darf nicht leer sein
+              </div>
+              <div *ngIf="formPassword.invalid && formPassword.errors.minLength && formPassword.errors.maxLength && (formPassword.dirty || formPassword.touched)" class="zz-form__error">
+                Das Passwort muss zwischen 8 und 15 Zeichen lang sein
+              </div>
+              <div *ngIf="formPassword.invalid && formPassword.errors.pattern && (formPassword.dirty || formPassword.touched)" class="zz-form__error">
+                Das Passwort muss mindestens einen Buchstaben, eine Zahl und ein Sonderzeichen enthalten.
+              </div>
             </div>
             <div class="col-12 zz-form__group">
               <label class="zz-form__label" for="passwordcheck">Passwort wiederholen</label>
-              <input id="passwordcheck" class="zz-form__input" name="passwordcheck" type="password">
+              <input id="passwordcheck" class="zz-form__input" name="passwordcheck" type="password" formControlName="confirmPassword" [ngClass]="{ 'zz-form__input--error': formPasswordConfirm.invalid && (formPasswordConfirm.dirty || formPasswordConfirm.touched)}">
+              <div *ngIf="formPasswordConfirm.invalid && formPasswordConfirm.hasError('nomatch') && (formPasswordConfirm.dirty || formPasswordConfirm.touched)" class="zz-form__error">
+                Passwörter stimmen nicht überein
+              </div>
             </div>
           </div>
-          <div class="form-row">
+    <div class="form-row">
             <div class="col-12 zz-form__group zz-form__group--last">
-              <button class="zz-btn zz-btn--primary">Registrieren und Nutzungsbestimmungen zustimmen*</button>
+              <button class="zz-btn zz-btn--primary" [disabled]="!registrationForm.valid" >Registrieren und Nutzungsbestimmungen zustimmen*</button>
             </div>
           </div>
         </form>
