@@ -2,24 +2,10 @@
  * Created by awedag on 27.10.17.
  */
 var db=require('./dbconnection'); //reference of dbconnection.js
-
+var ModelBase = require('./dbModelBase');
 const crypto = require('crypto');
 const cryptoUtil = require('../util/cryptoUtil');
 
-
-// TODO: move to BaseFile
-class ModelBase {
-
-  getAttributeList() {
-    return Object.values(this);
-
-  }
-
-  getClassMembers() {
-    return Object.getOwnPropertyNames(this);
-  }
-
-}
 
 class User {
 
@@ -69,7 +55,7 @@ function UserFromJson(req){
 
 }
 
-function publicRegisterUser(email, passwort, callback)
+function registerUser(email, passwort, callback)
 {
   if(!(email && passwort)) {  callback("no user", null); }
 
@@ -83,12 +69,34 @@ function publicRegisterUser(email, passwort, callback)
   });
 }
 
-function publicAuthentication(email, passwort, callback){
+
+function  updateUser(email,userModel, callback){
+
+  var sf = "update users  set "+userModel.getClassMembers().join('=?, ')+"=? where email='" + email +"'";
+  // [user.getClassMembers()].
+  // console.dir(user.getAttributeList());
+  return db.query(sf,userModel.getAttributeList(), function(err, newDoc) {
+
+    if (callback) {
+      if (newDoc) {
+        console.log('daf:' + newDoc.rows)
+      }
+      if (err) {
+        console.log('err:' + err)
+      }
+      console.log(err);
+      callback(err, newDoc.affectedRows);
+    }
+  });
+}
+
+function authenticate(email, passwort, callback){
+  console.log('user.authenticate');
   if(!(email && passwort)) {  callback(false); }
 
   this.getUserByEmail( email , function (err, doc) {
     if( (doc === null ) && !err){
-      publicRegisterUser(email, passwort, callback);
+      registerUser(email, passwort, callback);
     }
     else {
       var pwd = cryptoUtil.hashPwd(passwort);
@@ -117,26 +125,6 @@ function  getUserByEmail(email,callback){
   });
 }
 
-function  updateUser(email,user, callback){
-
-  var sf = "update users  set "+user.getClassMembers().join('=?, ')+"=? where email='" + email +"'";
-  // [user.getClassMembers()].
-  // console.dir(user.getAttributeList());
-  return db.query(sf,user.getAttributeList(), function(err, newDoc) {
-
-    if (callback) {
-      if (newDoc) {
-        console.log('daf:' + newDoc.rows)
-      }
-      if (err) {
-        console.log('err:' + err)
-      }
-      console.log(err);
-      callback(err, newDoc.affectedRows);
-    }
-  });
-}
-
 // get CurrentUser from jwt (jwt writes user into req
 function currentUser(req)
 {
@@ -152,23 +140,6 @@ function createSessionToken(name, secret, options, callback)
   jwt.sign({ name }, secret, options, (err, token) => callback(token));
 }
 
-function handleLogin(req,res)
-{
-  if (publicIsLoggedIn(req))
-  {
-    res.send(true);
-  }
-  else {
-    userService.authenticate(req.body.email, req.body.pwd, function (err, valid) {
-      if (valid) {
-        createSessionToken(req.body.email, req.app.get("jwt-secret"),req.app.get("jwt-sign"),  (token) => res.json(token));
-      }
-      else{
-        res.status("401").json(false);
-      }
-    });
-  }
-}
 
 //database testquery
 function doQuery() {
@@ -176,10 +147,10 @@ function doQuery() {
   var gg = new UserModel(1,'adf','adf','adf','adf');
   var ggg = Object.keys(gg);
   var z = 'z-String: '+ggg.join(' AW ');
-  console.log(z);
+  //console.log(z);
 
-  console.dir(Object.keys(z));
-  console.log('');
+  //console.dir(Object.keys(z));
+  //console.log('');
 
   var bb = '2017-09-10';
   return  db.query("update users  set child_date_of_birth=? where email='heidi@example.com'",
@@ -190,9 +161,9 @@ function doQuery() {
     });
 }
 
-module.exports = {handleLogin: handleLogin
-  , add : publicRegisterUser,
-  authenticate : publicAuthentication,
+module.exports = {
+   add : registerUser,
+  authenticate : authenticate,
   currentUser: currentUser, updateUser : updateUser,
   UserFromJson: UserFromJson,
   getUserByEmail : getUserByEmail, doQuery: doQuery};

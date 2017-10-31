@@ -1,24 +1,11 @@
 const jwt = require('jsonwebtoken');
-const userService = require('../db/dbusers.js');
+const dbUser = require('../db/dbuser.js');
 
-function publicIsLoggedIn(req)
+function isLoggedIn(req)
 {
-    console.log(req);
-    console.log('publicIsLoggedNid?' + req.user);
     return req.user != null;
 }
 
-function authenticated(req, res, next){
-
-    if(publicIsLoggedIn(req))
-    {
-        next();
-    }
-    else
-    {
-        res.status(401).send(false);
-    }
-}
 
 function currentUser(req)
 {
@@ -38,14 +25,14 @@ function createSessionToken(name, secret, options, callback)
 
 function handleLogin(req,res)
 {
-    console.log('handleLogin:' + req.body.email);
-    if (publicIsLoggedIn(req))
+    //console.log('handleLogin:' + req.body.email);
+    if (isLoggedIn(req))
     {
-        console.log('uesr is logged ind');
+        console.log('user is logged in');
         res.send(true);
     }
     else {
-        userService.authenticate(req.body.email, req.body.pwd, function (err, valid) {
+        dbUser.authenticate(req.body.email, req.body.pwd, function (err, valid) {
             if (valid) {
                 createSessionToken(req.body.email, req.app.get("jwt-secret"),req.app.get("jwt-sign"),  (token) => res.json(token));
             }
@@ -56,8 +43,7 @@ function handleLogin(req,res)
     }
 }
 
-module.exports = {isLoggedIn : publicIsLoggedIn,
-    handleAuthenticate :authenticated ,
-    current : currentUser,
-    createToken : createSessionToken,
+module.exports = {isLoggedIn : isLoggedIn,
+    currentUser : currentUser,
+    createSessionToken : createSessionToken,
     handleLogin : handleLogin};
