@@ -1,7 +1,7 @@
 /**
  * Created by awedag on 27.10.17.
  */
-const store = require("../db/dbuser");
+const store = require("../db/dbUser");
 const util = require("../util/security");
 
 

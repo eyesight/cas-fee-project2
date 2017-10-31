@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const dbUser = require('../db/dbuser.js');
+const dbUser = require('../db/dbUser.js');
 
 function isLoggedIn(req)
 {
