@@ -1,8 +1,5 @@
-
-
-
 .zz-btn{
-  @include mx-button-default(1rem)
+  @include mx-button-default(1rem);
   &:after{
   @extend .helper-underline-anim;
   }
@@ -23,6 +20,12 @@
     }
     &:hover:after{
       @extend .helper-underline-none;
+    }
+  }
+  &:disabled{
+    background-color: $color-primary-70;
+    &:hover{
+      cursor:not-allowed;
     }
   }
 }
@@ -55,4 +58,3 @@
 .zz-mod-box + .zz-btn{
     margin-top: rem-calc(-25px);
 }
-
