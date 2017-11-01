@@ -32,8 +32,16 @@ function handleLogin(req,res)
         res.send(true);
     }
     else {
-      //console.log(!req.body);
-      console.dir(req);
+      console.log('is req.body:' + !req.body);
+      //console.dir(req);
+      if (!req.body.email || !req.body.pwd)
+      {
+          res.status("401").json(false);
+
+      }
+      else  {
+
+
         dbUser.authenticate(req.body.email, req.body.pwd, function (err, valid) {
             if (valid) {
                 createSessionToken(req.body.email, req.app.get("jwt-secret"),req.app.get("jwt-sign"),  (token) => res.json(token));
@@ -42,7 +50,7 @@ function handleLogin(req,res)
                 res.status("401").json(false);
             }
         });
-    }
+    } }
 }
 
 module.exports = {isLoggedIn : isLoggedIn,

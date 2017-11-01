@@ -18,6 +18,11 @@ var db=require('./db/dbconnection'); //reference of dbconnection.js
 //store.doQuery();
 
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.use(bodyParser.json());
 const jwtSecret =  'aklsdjfklöasjdcma8sd90ziklasdföasdf$ädasöfü pi340qkrlöam,dflöäasf';
