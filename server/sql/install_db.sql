@@ -12,6 +12,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Datenbank: `school_test`
 --
+DROP DATABASE IF EXISTS `school_test` ;
 CREATE DATABASE `school_test` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `school_test`;
 
