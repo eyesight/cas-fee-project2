@@ -8,7 +8,7 @@ import {
   Validators,
   AbstractControlDirective
 } from '@angular/forms';
-import {CustomValidators} from '../_services/custom-validators.service';
+import {CustomValidators} from '../_services/custom.validators';
 
 
 import {AlertService, UserService} from '../_services/index';
@@ -43,21 +43,21 @@ export class RegistrationComponent implements OnInit {
       formPLastname: ['', [Validators.required, Validators.minLength(2)]],
       formAdress: ['', [Validators.required, Validators.minLength(4)]],
       formPlace: ['', [Validators.required, Validators.minLength(2)]],
-      formZip: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(6), Validators.pattern(/[^a-zA-Z]/g)]],
-      formTelprivate: ['', [Validators.required, Validators.minLength(10), Validators.pattern(/[^a-zA-Z]/g)]],
-      formTeloffice: ['', [Validators.minLength(10), Validators.pattern(/[^a-zA-Z]/g)]],
+      formZip: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4), CustomValidators.justNumbers]],
+      formTelprivate: ['', [Validators.required, Validators.minLength(10), CustomValidators.telephoneNumber]],
+      formTeloffice: ['', [Validators.minLength(10), CustomValidators.telephoneNumber]],
       formParentGender: ['', [Validators.required]],
       formLanguage: ['', [Validators.required]],
       formCFirstname: ['', [Validators.required, Validators.minLength(2)]],
       formCLastname: ['', [Validators.required, Validators.minLength(2)]],
       formChildGender: ['', [Validators.required]],
-      formCBirthday: ['', [Validators.required, Validators.pattern(/[^a-zA-Z]/g)]],
+      formCBirthday: ['', [Validators.required, CustomValidators.dateFormat]],
       formEMailConfirm: this.fb.group({
         formEmail: ['', [Validators.required, Validators.email]],
         confirmEmail: ['', [Validators.required]]
       }, {validator: CustomValidators.matcher('formEmail', 'confirmEmail')}),
       formPasswordConfirm: this.fb.group({
-        formPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15), Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&_\-])[A-Za-z\d$@$!%*#?&_\-]{8,}$/g)]],
+        formPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15), CustomValidators.passwordCheck]],
         confirmPassword: ['', [Validators.required]]
       }, {validator: Validators.compose([CustomValidators.matcher('formPassword', 'confirmPassword')])})
     });

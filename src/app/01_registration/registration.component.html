@@ -39,9 +39,6 @@ Vorbereitung -> Übertragen in gesamte Form
               <label class="zz-form__label" for="zip">PLZ</label>
               <input id="zip" class="zz-form__input" name="zip" type="text" [(ngModel)]="model.zip" formControlName="formZip" [ngClass]="{ 'zz-form__input--error': formZip.invalid && (formZip.dirty || formZip.touched)}">
               <app-show-errors [control]="formZip"></app-show-errors>
-              <p *ngIf="formZip.invalid && formZip.errors.pattern && (formZip.dirty || formZip.touched)" class="zz-form__error">
-                Postleitzahl kann keine Buchstaben enthalten
-              </p>
             </div>
           </div>
           <div class="form-row">
@@ -49,18 +46,12 @@ Vorbereitung -> Übertragen in gesamte Form
               <label class="zz-form__label" for="tel-privat">Telefon privat</label>
               <input id="tel-privat" class="zz-form__input" name="tel-privat" type="text" [(ngModel)]="model.tel_private" formControlName="formTelprivate" [ngClass]="{ 'zz-form__input--error': formTelprivate.invalid && (formTelprivate.dirty || formTelprivate.touched)}">
               <app-show-errors [control]="formTelprivate"></app-show-errors>
-              <div *ngIf="formTelprivate.invalid && formTelprivate.errors.pattern && (formTelprivate.dirty || formTelprivate.touched)" class="zz-form__error">
-                Telefonnummer ist nicht gültig
-              </div>
             </div>
             <div class="col-12 zz-form__group">
               <label class="zz-form__label" for="tel-office">Telefon geschäft <span
                 class="zz-infotext">(optional)</span></label>
               <input id="tel-office" class="zz-form__input" name="tel-office" type="text" [(ngModel)]="model.tel_office" formControlName="formTeloffice">
               <app-show-errors [control]="formTeloffice"></app-show-errors>
-              <div *ngIf="formTeloffice.invalid && (formTeloffice.dirty || formTeloffice.touched)" class="zz-form__error">
-                Die Telefonnummer ist nicht gültig; sie muss aus 10 Zahlen bestehen
-              </div>
             </div>
           </div>
           <div class="form-row">
@@ -116,9 +107,6 @@ Vorbereitung -> Übertragen in gesamte Form
             <label class="zz-form__label">Geburtstag</label>
             <input type="text" id="c-Birthday-Day" class="zz-form__input" [(ngModel)]="model.child_date_of_birth" name="birthday" formControlName="formCBirthday" [ngClass]="{ 'zz-form__input--error': formCBirthday.invalid && (formCBirthday.dirty || formCBirthday.touched)}">
             <app-show-errors [control]="formCBirthday"></app-show-errors>
-            <div *ngIf="formCBirthday.invalid && formCBirthday.errors.pattern && (formCBirthday.dirty || formCBirthday.touched)" class="zz-form__error">
-              Bitte geben Sie ein gültiges Datum ein (z.B. 00-00-0000)
-            </div>
           </div>
           </div>
           <div class="form-row">
@@ -129,9 +117,6 @@ Vorbereitung -> Übertragen in gesamte Form
               <label class="zz-form__label" for="email">E-Mail (gilt als username)</label>
               <input id="email" class="zz-form__input" name="email" type="text" formControlName="formEmail" [(ngModel)]="model.username" [ngClass]="{ 'zz-form__input--error': (formEMailConfirm.invalid || formEmail.invalid) && (formEmail.dirty || formEmail.touched)}">
               <app-show-errors [control]="formEmail"></app-show-errors>
-              <div *ngIf="formEmail.invalid && formEmail.errors.email && (formEmail.dirty || formEmail.touched)" class="zz-form__error">
-                Bitte geben Sie eine gültige E-Mailadresse ein
-              </div>
             </div>
             <div class="col-12 zz-form__group">
               <label class="zz-form__label" for="email-check">E-Mail wiederholen</label>
@@ -146,9 +131,6 @@ Vorbereitung -> Übertragen in gesamte Form
               <label class="zz-form__label" for="password">Passwort</label>
               <input id="password" class="zz-form__input" name="password" type="password" formControlName="formPassword" [(ngModel)]="model.password" [ngClass]="{ 'zz-form__input--error': (formPasswordConfirm.invalid || formPassword.invalid) && (formPassword.dirty || formPassword.touched)}">
               <app-show-errors [control]="formPassword"></app-show-errors>
-              <div *ngIf="formPassword.invalid && formPassword.errors.pattern && (formPassword.dirty || formPassword.touched)" class="zz-form__error">
-                Das Passwort muss mindestens einen Buchstaben, eine Zahl und ein Sonderzeichen enthalten.
-              </div>
             </div>
             <div class="col-12 zz-form__group">
               <label class="zz-form__label" for="passwordcheck">Passwort wiederholen</label>
@@ -180,64 +162,3 @@ Vorbereitung -> Übertragen in gesamte Form
       </div>
     </div>
   </div>
-<!--
-Vorbereitung -> Übertragen in gesamte Form
--->
-
-<!--<p class="navbar-brand zz-logo zz-logo&#45;&#45;position-center" href="#">
-    <img src="assets/img/logo.png" alt="" class="zz-logo__img">
-  </p>
-  <div class="row justify-content-center zz-layout__row">
-    <div class="col-11 col-lg-8 col-xl-5 zz-mod-container">
-      <div class="zz-mod-box">
-        <h1 class="zz-title zz-title&#45;&#45;insideBox">Registrieren</h1>
-        <form name="form" #f="ngForm" class="zz-form" (ngSubmit)="f.form.valid && register()" novalidate>
-          <div class="form-row">
-            <div class="col-6 zz-form__group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-              <label class="zz-form__label" for="first">First Name</label>
-              <input id="first" class="zz-form__input" name="firstName" type="text" [(ngModel)]="model.firstName" #firstName="ngModel" required>
-              <div *ngIf="f.submitted && !firstName.valid" class="help-block">First Name is required</div>
-            </div>
-            <div class="col-6 zz-form__group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-              <label class="zz-form__label" for="last">Last Name</label>
-              <input id="last"class="zz-form__input" name="lastName" type="text" [(ngModel)]="model.lastName" #lastName="ngModel" required>
-              <div *ngIf="f.submitted && !lastName.valid" class="help-block">Last Name is required</div>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="col-6 zz-form__group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-              <label class="zz-form__label" for="username">Username</label>
-              <input id="username" class="zz-form__input" name="username" type="text" [(ngModel)]="model.username" #username="ngModel" required>
-              <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
-            </div>
-            <div class="col-6 zz-form__group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-              <label class="zz-form__label" for="password">Password</label>
-              <input id="password" class="zz-form__input" name="password" type="password" [(ngModel)]="model.password" #password="ngModel" required>
-              <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="col-6 zz-form__group zz-form__group&#45;&#45;last">
-              <button class="zz-btn zz-btn&#45;&#45;primary">Registrieren*</button>
-            </div>
-            <div class="col-6 zz-form__group zz-form__group&#45;&#45;last">
-              <button class="zz-btn zz-btn&#45;&#45;primary">Cancel</button>
-            </div>
-          </div>
-        </form>
-        <div class="zz-infotext">
-          <a href="#" class="zz-infotext__link">
-            * Nutzungsbedingungen lesen
-          </a>
-        </div>
-      </div>
-      <div class="zz-infotext">
-        <p class="zz-infotext__txt">
-          Schon registriert?
-        </p>
-        <a [routerLink]="['/login']" class="zz-infotext__link zz-infotext__link&#45;&#45;large">
-          zum Login
-        </a>
-      </div>
-    </div>
-  </div>-->

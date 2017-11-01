@@ -11,9 +11,13 @@ export class ShowErrorsComponent {
     'required': () => 'Dieses Feld darf nicht leer gelassen werden',
     'minlength': (params) => 'Bitte geben Sie mindestens ' + params.requiredLength + ' Zeichen ein.',
     'maxlength': (params) => 'Bitte geben Sie maximal ' + params.requiredLength + ' Zeichen ein.',
-    'pattern': (params) => 'Bitte halten Sie folgende Vorgaben ein: ' + params.requiredPattern,
+    'pattern': (params) => 'Die Eingabe entspricht nicht den Vorgaben',
     'email': (params) => 'Bitte geben Sie eine gültige E-Mailadresse ein',
-    'matchIt': (params) => 'Sie stimmen nicht überein.'
+    'matchIt': (params) => 'Sie stimmen nicht überein.',
+    'telephoneNumber': (params) => 'Bitte geben Sie eine gültige Telefonnummer ein (XXX XXX XX XX)',
+    'numberCheck': (params) => 'Bitte nur Zahlen eingeben',
+    'dateFormatCheck': (params) => 'Bitte ein gültiges Datum eingeben (tt.mm.yyyy)',
+    'passwordCheck': (params) => 'Das Passwort muss mindestens einen Buchstaben, eine Zahl und ein Sonderzeichen enthalten.'
   };
 
   @Input()
