@@ -12,7 +12,8 @@ export class ShowErrorsComponent {
     'minlength': (params) => 'Bitte geben Sie mindestens ' + params.requiredLength + ' Zeichen ein.',
     'maxlength': (params) => 'Bitte geben Sie maximal ' + params.requiredLength + ' Zeichen ein.',
     'pattern': (params) => 'Bitte halten Sie folgende Vorgaben ein: ' + params.requiredPattern,
-    'email': (params) => 'Bitte geben Sie eine gültige E-Mailadresse ein'
+    'email': (params) => 'Bitte geben Sie eine gültige E-Mailadresse ein',
+    'matchIt': (params) => 'Sie stimmen nicht überein.'
   };
 
   @Input()

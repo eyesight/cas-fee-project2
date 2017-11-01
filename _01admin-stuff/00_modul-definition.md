@@ -5,10 +5,13 @@
 - Eltern erfassen ihre Daten, plus die Daten des Kindes
 - Sie wählen eine Klasse aus bestehender Liste (wurden vorgängig von Admin (=Schulhaus) erfasst. Admin von der Gruppe, Klasse ist der Lehrer.
 Danach sind sie via E-Mail und Passwort registriert
-- User wählt Rolle aus (Lehrer oder Schüler)
+- User wählt Klasse aus
+- User wählt aus, ob er Lehrer ist oder Eltern (optional)
+- User wird bestätigt von Admin (optional)
 
 #Modul 1 Profil Verwaltung
 - User kann seine Daten updaten
+- Wenn User Admin ist, kann er Klassen erfasse (optional)
 
 #Modul 2 Klassenliste
 - Liste der Klasse wird angezeigt; möglichkeit die (freigegebenen) )Daten jedes einzelnen zu lesen
