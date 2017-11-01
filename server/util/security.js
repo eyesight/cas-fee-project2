@@ -20,7 +20,7 @@ function createSessionToken(name, secret, options, callback)
     if(!name){
         return "";
     }
-    jwt.sign({ name }, secret, options, (err, token) => callback(token));
+    jwt.sign({ name }, secret, options, (err, token) => callback({email: name, token: token} ));
 }
 
 function handleLogin(req,res)
@@ -32,6 +32,8 @@ function handleLogin(req,res)
         res.send(true);
     }
     else {
+      //console.log(!req.body);
+      console.dir(req);
         dbUser.authenticate(req.body.email, req.body.pwd, function (err, valid) {
             if (valid) {
                 createSessionToken(req.body.email, req.app.get("jwt-secret"),req.app.get("jwt-sign"),  (token) => res.json(token));

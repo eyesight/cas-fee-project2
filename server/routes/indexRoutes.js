@@ -6,7 +6,7 @@ const indexController = require('../controllers/indexController');
 
 const router = express.Router();
 
-router.post("/login", function(req, res){
+router.post("/api/authenticate", function(req, res){
     console.log('routing...' + req.body.email);
     indexController.login(req,res);
 });

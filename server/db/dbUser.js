@@ -90,17 +90,17 @@ function  updateUser(email,userModel, callback){
   });
 }
 
-function authenticate(email, passwort, callback){
-  console.log('user.authenticate');
-  if(!(email && passwort)) {  callback(false); }
+function authenticate(email, password, callback){
+  console.log('user.authenticate:' + email);
+  if(!(email && password)) {  callback(false); }
 
   this.getUserByEmail( email , function (err, doc) {
     if( (doc === null ) && !err){
-      registerUser(email, passwort, callback);
+      registerUser(email, password, callback);
     }
     else {
-      var pwd = cryptoUtil.hashPwd(passwort);
-      callback(err, doc && doc[0].encrypted_password === cryptoUtil.hashPwd(passwort));
+      var pwd = cryptoUtil.hashPwd(password);
+      callback(err, doc && doc[0].encrypted_password === cryptoUtil.hashPwd(password));
     }
 
   });

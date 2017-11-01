@@ -5,7 +5,7 @@ const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
 
-router.put("/user/update", userController.updateUser);
+router.put("/api/user/update", userController.updateUser);
 
 
 /*
