@@ -56,16 +56,35 @@ app.use(function (err, req, res, next) {
 });
 
 io.on('connection', function(socket){
-   // console.log('a user connected');
+    console.log('a user connected');
    // socket.on('disconnect', function(){
    //     console.log('user disconnected');
    // });
 
+
+  /*
     socket.on('chat message', function(msg){
         io.emit('chat message', msg);
     });
     socket.broadcast.emit('hi');
+*/
 
+  socket.on('chatMessageToSocketServer', function(msg, func){
+    console.log('message received:' + msg);
+    func("Message recieved!",socket.handshake.query.userName);
+    let name = socket.handshake.query.userName;
+    let sockectObj = {name,msg}
+   // io.emit('broadcastToAll_chatMessage', sockectObj);
+    io.emit('broadcastToAll_chatMessage');
+  });
+
+ /* socket.on('message', function(msg){
+    //  func("Message recieved!",socket.handshake.query.userName);
+    console.log('msg received:' + msg);
+    let name = 'hans';
+    let sockectObj = {name,msg};
+    io.emit('broadcastToAll_chatMessage', sockectObj);
+  });*/
 });
 
 

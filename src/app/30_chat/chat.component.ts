@@ -7,6 +7,8 @@ import { ChatService } from '../_services/chat.service';
 import { MessageItem, Message} from '../_models/message.model';
 import {formatMoment} from 'ngx-bootstrap/bs-moment/format';
 import { dateFormat } from 'dateformat';
+import {Observable} from "rxjs/Observable";
+import {Subscription} from "rxjs/Subscription";
 
 
 @Component({
@@ -17,6 +19,8 @@ export class ChatComponent implements OnInit {
 
   public messageItem: MessageItem[] = [new MessageItem(new Date)];
   public message: Message[] ;
+  private chatStream: Observable<any>;
+  private chatSub: Subscription;
 
   constructor( private messageItemService: ChatService, private el: ElementRef) { }
 
@@ -29,6 +33,13 @@ export class ChatComponent implements OnInit {
           .reduce( this.reduceToGroup,  [new MessageItem(new Date)] )  // pass in a new MessageItem with a new date -> today
           .sort(this.sortFuncMi);
       });
+
+
+    this.chatStream = this.messageItemService.readMessages();
+
+    this.chatSub = this.chatStream.subscribe(res => this.addMessage(res.text));
+
+
 
   }
 
@@ -47,7 +58,8 @@ export class ChatComponent implements OnInit {
 
   }
 
-  public onSend(newText: Message) {
+  public addMessage(newText: Message){
+    console.log('addMessage: ' + newText.text);
     if (this.message) {
       this.message = [...this.message, newText];
     }
@@ -56,11 +68,13 @@ export class ChatComponent implements OnInit {
     }
     this.messageItem = this.reduceToGroup(this.messageItem, newText);
 
-    this.messageItemService.sendMessage(newText.text);
 
-    /*const scrollPane: any = this.el
-      .nativeElement.querySelector('.msg-container-base');
-    scrollPane.scrollTop = scrollPane.scrollHeight;*/
+  }
+
+  public onSend(newText: Message) {
+
+    this.addMessage(newText);
+    this.messageItemService.sendMessage(newText.text);
 
   }
   private reduceToGroup(mia, x): MessageItem[] {
