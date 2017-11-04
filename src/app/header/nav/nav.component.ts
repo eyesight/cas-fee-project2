@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Route, Router} from '@angular/router';
 
-import { ROUTES } from '../app.routes';
+import { ROUTES } from '../../app.routes';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html'

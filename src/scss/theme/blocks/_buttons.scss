@@ -32,7 +32,7 @@
 
 
 .zz-btn-small{
-  @include mx-button-default(.5rem)
+  @include mx-button-default(.5rem);
   &:after{
     @extend .helper-underline-anim;
   }

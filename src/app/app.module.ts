@@ -8,20 +8,20 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 
 import { AppComponent } from './app.component';
 
-import { NavComponent } from './nav/nav.component';
+import { NavComponent } from './header/nav/nav.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './00_login/login.component';
-import { RegistrationComponent } from './01_registration/registration.component';
+import { LoginComponent } from './login/login.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 import { AppRoutingKKModule} from './app-routing.module';
 import { HttpModule, BaseRequestOptions } from '@angular/http';
 
 import { AuthGuard } from './_guards/auth.guards';
 import { AlertService, AuthenticationService, UserService } from './_services/index';
-import { AlertComponent } from './_helpers/alert/alert.component';
-import { ShowErrorsComponent } from './_helpers/show-errors/show-errors.component';
+import { AlertComponent } from './_directives/alert/alert.component';
+import { ShowErrorsComponent } from './_directives/show-errors/show-errors.component';
 
 
 @NgModule({
