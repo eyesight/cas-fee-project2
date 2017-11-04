@@ -26,6 +26,8 @@
 -> AW+CF: Anfang November
 https://www.w3schools.com/html/html5_semantic_elements.asp
 
+- TODO: localStorage operationen in separates file: storage.service.ts
+-> AW:
 
 #TO CHECK
 - TOCHECK: Prototype fertigstellen übernehmen ins NG (Module Nav, - ohne links soweit, Footer...)

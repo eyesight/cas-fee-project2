@@ -8,4 +8,4 @@ import { ROUTES } from './app.routes';
 //  imports: [ RouterModule.forRoot(routes, {enableTracing: true}) ],
   exports: [ RouterModule ]
 })
-export class AppRoutingKKModule {}
+export class AppRoutingModule {}

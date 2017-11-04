@@ -15,7 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 
-import { AppRoutingKKModule} from './app-routing.module';
+import { AppRoutingModule} from './app-routing.module';
 import { HttpModule, BaseRequestOptions } from '@angular/http';
 
 import { AuthGuard } from './_guards/auth.guards';
@@ -40,7 +40,7 @@ import { ShowErrorsComponent } from './_directives/show-errors/show-errors.compo
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingKKModule,
+    AppRoutingModule,
     // injecst Http to any service
     HttpModule
   ],
