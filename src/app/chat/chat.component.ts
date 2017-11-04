@@ -21,6 +21,8 @@ export class ChatComponent implements OnInit {
   public message: Message[] ;
   private chatStream: Observable<any>;
   private chatSub: Subscription;
+  private chatAutho: Observable<any>;
+  private chatAuthoSub: Subscription;
 
   constructor( private messageItemService: ChatService, private el: ElementRef) { }
 
@@ -36,10 +38,10 @@ export class ChatComponent implements OnInit {
 
 
     this.chatStream = this.messageItemService.readMessages();
+    this.chatSub = this.chatStream.subscribe(res => this.addMessageFakeUser(res));
 
-    this.chatSub = this.chatStream.subscribe(res => this.addMessage(res.text));
-
-
+    this.chatAutho = this.messageItemService.authentication();
+    this.chatAuthoSub = this.chatAutho.subscribe(res => console.log(res));
 
   }
 
@@ -58,6 +60,14 @@ export class ChatComponent implements OnInit {
 
   }
 
+  public addMessageFakeUser(text: string){
+    const nm = new Message();
+    nm.userName = 'Heidi';
+    nm.text = text;
+    const d = Date();
+    nm.createdAt = d;
+    this.addMessage(nm);
+  }
   public addMessage(newText: Message){
     console.log('addMessage: ' + newText.text);
     if (this.message) {

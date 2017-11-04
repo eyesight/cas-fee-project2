@@ -7,6 +7,8 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var socketioJwt = require('socketio-jwt');
+
 const bodyParser = require('body-parser');
 const jwt = require('express-jwt');
 
@@ -32,7 +34,7 @@ app.set("jwt-sign", {expiresIn: "7d", audience :"self", issuer : "school"});
 app.set("jwt-validate", {secret: jwtSecret, audience :"self", issuer : "school"});
 
 app.get('/', function(req, res){
-   res.sendFile(__dirname + '/index.html');
+  // res.sendFile(__dirname + '/index.html');
   //  res.send('<h1>Hello world</h1>');
 });
 
@@ -45,19 +47,35 @@ app.use(jwt( app.get("jwt-validate")));
 app.use("/api", require('./routes/appRoutes.js'));
 
 
-app.use(function (err, req, res, next) {
-    if (err.name === 'UnauthorizedError') {
-        res.status(401).send('No token / ..Invalid token provided');
-    }
-    else
-    {
-        next(err);
-    }
+/*
+io.sockets.on('connection', socketioJwt.authorize({
+    secret: jwtSecret,
+    timeout: 5000 // 5 seconds to send the authentication message
+  })).on('authenticated', function(socket) {
+  //this socket is authenticated, we are good to handle more events from it.
+  console.log('connection from name:' + socket.decoded_token.name);
 });
+*/
+
+io.set('authorization', socketioJwt.authorize({
+  secret: jwtSecret,
+  handshake: true
+}));
+io.use(socketioJwt.authorize({
+  secret: jwtSecret,
+  handshake: true
+}));
+
 
 io.on('connection', function(socket){
     console.log('a user connected');
-   // socket.on('disconnect', function(){
+  //console.log(socket.handshake.decoded_token.name, 'connected');
+  //console.log('hello!', socket.handshake.decoded_token.name);
+
+  // in socket.io 1.0
+  console.log('hello! ', socket.decoded_token.name);
+
+  // socket.on('disconnect', function(){
    //     console.log('user disconnected');
    // });
 
@@ -75,7 +93,7 @@ io.on('connection', function(socket){
     let name = socket.handshake.query.userName;
     let sockectObj = {name,msg}
    // io.emit('broadcastToAll_chatMessage', sockectObj);
-    io.emit('broadcastToAll_chatMessage');
+    io.emit('broadcastToAll_chatMessage',msg);
   });
 
  /* socket.on('message', function(msg){
@@ -92,6 +110,18 @@ http.listen(3020, function(){
     console.log('listening on *:3020');
 });
 
+
+
+app.use(function (err, req, res, next) {
+  if (err.name === 'UnauthorizedError') {
+    res.status(401).send('No token / ..Invalid token provided');
+    console.log('Error ERROR error 401');
+  }
+  else
+  {
+    next(err);
+  }
+});
 
 
 /*
