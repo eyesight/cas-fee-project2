@@ -21,7 +21,7 @@ import { HttpModule, BaseRequestOptions } from '@angular/http';
 import { AuthGuard } from './_guards/auth.guards';
 import { AlertService, AuthenticationService, UserService } from './_services/index';
 import { AlertComponent } from './_directives/alert/alert.component';
-import { ShowErrorsComponent } from './_directives/alert/show-errors/show-errors.component';
+import { ShowErrorsComponent } from './_directives/show-errors/show-errors.component';
 
 
 @NgModule({
