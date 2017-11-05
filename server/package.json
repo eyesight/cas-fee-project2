@@ -10,7 +10,9 @@
   "author": "aw",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.16.2",
     "express-jwt": "^5.3.0",
-    "mysql": "^2.15.0"
+    "mysql": "^2.15.0",
+    "socketio-jwt": "^4.5.0"
   }
 }
