@@ -38,11 +38,11 @@ export class AuthenticationService {
     const json = { email: username, pwd: password };
     const body = {name: 'Brads', email: 'emaisl@example.com', pwd: 'bla'};
     const userPwd = new UserPwd(username, password);
-    console.log('JSON: ' + json.email + 'body:' + body);
+    console.log('JSON: ' + json + ' body:' + body + 'JSON of class:' +  userPwd);
     //return this.http.post('http://localhost:3020/api/authenticate', json )
 
 // instaed of json use JSON.strinfiy
-    return this.http.post('http://localhost:3020/api/authenticate', json)
+    return this.http.post('http://localhost:3020/api/authenticate', userPwd)
     //return this.http.post('http://localhost:3020/api/authenticate', "{ \"email\": username, \"pwd\": password }" )
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
