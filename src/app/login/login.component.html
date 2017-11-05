@@ -9,7 +9,7 @@
           <div class="form-row">
             <div class="col-12 zz-form__group">
               <label class="zz-form__label" for="email">Benutzername</label>
-              <input id="email" class="zz-form__input" name="eMail" type="text" [(ngModel)]="model.email" formControlName="formUsername" #username [ngClass]="{ 'zz-form__input--error': formUsername.errors && !username.valid && (formUsername.dirty || formUsername.touched || formDir.submitted)}" placeholder="test (zum Testen)">
+              <input id="email" class="zz-form__input" name="eMail" type="text" [(ngModel)]="model.username" formControlName="formUsername" #username [ngClass]="{ 'zz-form__input--error': formUsername.errors && !username.valid && (formUsername.dirty || formUsername.touched || formDir.submitted)}" placeholder="test (zum Testen)">
               <div *ngIf="formUsername.errors && !username.valid && (formUsername.dirty || formUsername.touched || formDir.submitted)" class="zz-form__error">Benutzername fehlt oder ist ungültig.</div>
             </div>
           </div>
