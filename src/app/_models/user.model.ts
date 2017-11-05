@@ -1,3 +1,25 @@
+
+
+
+export class UserPwd {
+  email: string;
+  pwd: string;
+
+  constructor(email: string, pwd: string){
+    this.email = email;
+    this.pwd = pwd;
+  }
+}
+export class UserAuth {
+  email: string;
+  token: string;
+
+  constructor(email: string, token: string){
+    this.email = email;
+    this.token = token;
+  }
+}
+
 export class User {
   id: number;
   username: string;

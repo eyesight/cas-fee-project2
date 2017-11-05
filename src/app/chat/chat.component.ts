@@ -2,13 +2,15 @@
  * Created by awedag on 12.10.17.
  */
 import { Component, OnInit, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { Klasse } from '../_models/klasse.model';
 import { ChatService } from '../_services/chat.service';
 import { MessageItem, Message} from '../_models/message.model';
 import {formatMoment} from 'ngx-bootstrap/bs-moment/format';
 import { dateFormat } from 'dateformat';
-import {Observable} from "rxjs/Observable";
-import {Subscription} from "rxjs/Subscription";
+import {Observable} from 'rxjs/Observable';
+import {Subscription} from 'rxjs/Subscription';
+import {AuthenticationService} from '../_services/authentication.service';
 
 
 @Component({
@@ -21,8 +23,13 @@ export class ChatComponent implements OnInit {
   public message: Message[] ;
   private chatStream: Observable<any>;
   private chatSub: Subscription;
+  private chatAutho: Observable<any>;
+  private chatAuthoSub: Subscription;
 
-  constructor( private messageItemService: ChatService, private el: ElementRef) { }
+  constructor( private messageItemService: ChatService
+    , private el: ElementRef
+    , private router: Router
+    , private authService: AuthenticationService) { }
 
   ngOnInit() {
     console.log('ngOnInit in chatcOmponetn');
@@ -36,10 +43,12 @@ export class ChatComponent implements OnInit {
 
 
     this.chatStream = this.messageItemService.readMessages();
+    this.chatSub = this.chatStream.subscribe(res => this.addMessageFakeUser(res));
 
-    this.chatSub = this.chatStream.subscribe(res => this.addMessage(res.text));
-
-
+    this.chatAutho = this.messageItemService.authentication();
+    this.chatAuthoSub = this.chatAutho.subscribe(res => {console.log('chat.component call authentication:'  + res);
+      this.router.navigate(['login']);
+    });
 
   }
 
@@ -58,6 +67,14 @@ export class ChatComponent implements OnInit {
 
   }
 
+  public addMessageFakeUser(text: string){
+    const nm = new Message();
+    nm.userName = 'Heidi';
+    nm.text = text;
+    const d = Date();
+    nm.createdAt = d;
+    this.addMessage(nm);
+  }
   public addMessage(newText: Message){
     console.log('addMessage: ' + newText.text);
     if (this.message) {
