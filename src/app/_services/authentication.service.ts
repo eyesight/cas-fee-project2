@@ -33,29 +33,29 @@ export class AuthenticationService {
 
      }
     * */
-    let headers    = new Headers({ 'Content-Type': 'application/json' });
-    let options    = new RequestOptions({ headers: headers });
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
     const json = { email: username, pwd: password };
-    const body = {name: 'Brads', email: 'emaisl@example.com', pwd: 'bla'};
+    const body = { name: 'Brads', email: 'emaisl@example.com', pwd: 'bla' };
     const userPwd = new UserPwd(username, password);
     console.log('JSON: ' + json.email + 'body:' + body);
-    //return this.http.post('http://localhost:3020/api/authenticate', json )
+    // return this.http.post('http://localhost:3020/api/authenticate', json )
 
 // instaed of json use JSON.strinfiy
     return this.http.post('http://localhost:3020/api/authenticate', json)
-    //return this.http.post('http://localhost:3020/api/authenticate', "{ \"email\": username, \"pwd\": password }" )
+    // return this.http.post('http://localhost:3020/api/authenticate', "{ \"email\": username, \"pwd\": password }" )
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
-        let user = response.json();
+        const user = response.json();
 
-        const userAuth = new UserAuth(user.email, user.token)
-        //response.json();
+        const userAuth = new UserAuth(user.email, user.token);
+        // response.json();
 
         console.log('userAuth ist :' + userAuth.email);
         console.dir(userAuth);
 
         if (user && user.token) {
-          //console.log(user.token);
+          // console.log(user.token);
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(userAuth));
          // const userItem = localStorage.getItem('currentUser');
@@ -70,7 +70,7 @@ export class AuthenticationService {
 
   logout() {
     // remove user from local storage to log user out
-    //TODO: Solve Bug https://github.com/angular/angular/issues/17572
+    // TODO: Solve Bug https://github.com/angular/angular/issues/17572
     this.isLoggedin = false;
     localStorage.removeItem('currentUser');
   }
@@ -82,7 +82,7 @@ export class AuthenticationService {
       if (userItem !== 'undefined') {
         const userAuth = JSON.parse(userItem);
         console.log('userAuthemail:' + userAuth.token);
-        //console.dir(userAuth);
+        // console.dir(userAuth);
         return userAuth.token;
       }
   }

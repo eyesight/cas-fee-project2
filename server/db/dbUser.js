@@ -108,6 +108,7 @@ function authenticate(email, password, callback){
 
 
 function  getUserByEmail(email,callback){
+  console.log('db'+email);
   return db.query("select encrypted_password, email from users where email=?",[email], function(err, newDoc) {
     if (callback) {
       if (newDoc.length <= 0 ) {
