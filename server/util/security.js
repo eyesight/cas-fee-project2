@@ -23,6 +23,37 @@ function createSessionToken(name, secret, options, callback)
     jwt.sign({ name }, secret, options, (err, token) => callback({email: name, token: token} ));
 }
 
+function handleRegister(req,res){
+
+  if (isLoggedIn(req))
+  {
+    console.log('user is logged in');
+    res.status("401").json(false);
+  }
+  else {
+    console.log('is req.body:' + req.body.email);
+    //console.dir(req);
+    if (!req.body.email || !req.body.pwd)
+    {
+      console.dir(req);
+      console.log('register-no-email-nopaassword');
+      res.status("401").json(false);
+
+    }
+    else  {
+    dbUser.register(req, function(err,valid){
+      console.log('register valid?:' + valid);
+      if (valid) {
+        createSessionToken(req.body.email, req.app.get("jwt-secret"),req.app.get("jwt-sign"),  (token) => res.json(token));
+      }
+      else{
+        res.status("401").json(false);
+      }
+    });
+    }
+  }
+}
+
 function handleLogin(req,res)
 {
     //console.log('handleLogin:' + req.body.email);
@@ -56,4 +87,5 @@ function handleLogin(req,res)
 module.exports = {isLoggedIn : isLoggedIn,
     currentUser : currentUser,
     createSessionToken : createSessionToken,
+    handleRegister: handleRegister,
     handleLogin : handleLogin};
