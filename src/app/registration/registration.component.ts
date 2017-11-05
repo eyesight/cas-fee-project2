@@ -23,13 +23,13 @@ export class RegistrationComponent implements OnInit {
   registrationForm: FormGroup;
 
   public gender: Array<{ content: string, label: string, labelChild: string }> = [
-    {content: 'W', label: 'Frau', labelChild: 'Mädchen'},
-    {content: 'M', label: 'Herr', labelChild: 'Junge'}];
+    {content: 'w', label: 'Frau', labelChild: 'Mädchen'},
+    {content: 'm', label: 'Herr', labelChild: 'Junge'}];
 
   public languages: Array<{ content: string, label: string }> = [
-    {content: 'D', label: 'Deutsch'},
-    {content: 'F', label: 'Französisch'},
-    {content: 'E', label: 'Englisch'}];
+    {content: 'de', label: 'Deutsch'},
+    {content: 'fr', label: 'Französisch'},
+    {content: 'en', label: 'Englisch'}];
 
   constructor(private router: Router,
               private userService: UserService,
