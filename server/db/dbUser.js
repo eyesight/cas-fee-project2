@@ -55,7 +55,7 @@ function UserFromJson(req){
 
 }
 
-function registerUser(email, passwort, callback)
+function registerUser(email, passwort, req, updateUserFunc, callback)
 {
   if(!(email && passwort)) {  callback("no user", null); }
 
@@ -63,14 +63,21 @@ function registerUser(email, passwort, callback)
 
 
   return db.query("Insert into users ( email, encrypted_password) values(?,?)",[user.email, user.encrypted_password], function(err, newDoc){
+
+
     if(callback){
-      callback(err, newDoc);
+      const um = UserFromJson(req);
+      if(updateUserFunc !== null){
+        updateUserFunc(email, um, callback);
+      }else{
+        callback(err, newDoc);
+      }
     }
   });
 }
 
 
-function  updateUser(email,userModel, callback){
+function  updateUser(email, userModel, callback){
 
   var sf = "update users  set "+userModel.getClassMembers().join('=?, ')+"=? where email='" + email +"'";
   // [user.getClassMembers()].
@@ -79,7 +86,7 @@ function  updateUser(email,userModel, callback){
 
     if (callback) {
       if (newDoc) {
-        console.log('daf:' + newDoc.rows)
+        console.log('daf:' + newDoc.affectedRows)
       }
       if (err) {
         console.log('err:' + err)
@@ -90,13 +97,41 @@ function  updateUser(email,userModel, callback){
   });
 }
 
+function register(req, callback){
+
+  console.log('dbUSer.register');
+  const email = req.body.email;
+  const password = req.body.pwd;
+  if(!(email && password)) {  callback(false); }
+
+  const user = new User(email, password);
+
+  this.registerUser(email, password, req, this.updateUser, function(err,doc){
+    callback(err,doc);
+  });
+
+
+/*
+*
+*   const um = UserFromJson(req);
+ console.log('USErfrOMJson:' + um);
+ this.updateUser(req.body.email, um, function(err,doc){
+ callback(err, doc.affectedRows);
+ });*/
+ /* return db.query("Insert into users ( email, encrypted_password) values(?,?)",[user.email, user.encrypted_password], function(err, newDoc){
+    if(callback){
+      callback(err, newDoc);
+    }
+  }); */
+}
+
 function authenticate(email, password, callback){
   console.log('user.authenticate:' + email);
   if(!(email && password)) {  callback(false); }
 
   this.getUserByEmail( email , function (err, doc) {
     if( (doc === null ) && !err){
-      registerUser(email, password, callback);
+      callback('401', 'unauthorized');
     }
     else {
       var pwd = cryptoUtil.hashPwd(password);
@@ -166,9 +201,14 @@ function doQuery() {
 module.exports = {
    add : registerUser,
   authenticate : authenticate,
-  currentUser: currentUser, updateUser : updateUser,
+  currentUser: currentUser,
+  register : register,
+  registerUser : registerUser,
+  updateUser : updateUser,
   UserFromJson: UserFromJson,
-  getUserByEmail : getUserByEmail, doQuery: doQuery};
+  getUserByEmail : getUserByEmail,
+  doQuery: doQuery
+};
 
 
 

@@ -16,7 +16,7 @@ const jwt = require('express-jwt');
 var db=require('./db/dbconnection'); //reference of dbconnection.js
 
 // test query
-const store = require("./db/dbUser");
+const store = require("./db/dbuser");
 store.doQuery();
 
 

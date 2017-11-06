@@ -1,6 +1,7 @@
 /**
  * Created by awedag on 05.11.17.
  */
+"use strict";
 
 var db=require('./dbconnection'); //reference of dbconnection.js
 var ModelBase = require('./dbModelBase');
@@ -22,22 +23,16 @@ class ChatModel extends ModelBase{
 }
 
 // create a user-object from a json-string
-function UserFromJson(req){
-  "use strict";
+function ChatFromJson(req){
   var r = req.body;
   return new UserModel(
     r.id,
     r.user_id,
     r.class_id,
     r.email,
-    r.parent_forename,
-    r.child_surname,
-    r.child_forename,
-    r.child_gender,
-    r.child_date_of_birth,
-    r.adress,
-    r.zip,
-    r.place
+    r.message,
+    r.sent_at
+
   );
 
 }
