@@ -86,7 +86,7 @@ console.log('sf:'+ sf);
     return db.query(sf,chatModel.getAttributeList(), function(err, newDoc){
 
     if(callback){
-
+        console.log('err:' + err);
         callback(err, newDoc);
       }
 
