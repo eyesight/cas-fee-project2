@@ -7,6 +7,7 @@ import { Injectable, Inject } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import * as io from 'socket.io-client';
+import { MessageJson } from '../_models/message.model';
 // need to import explicitly the map function of Rx!
 import 'rxjs/Rx';
 
@@ -100,12 +101,16 @@ export class ChatService {
 
 
   public sendMessage(msg: string){
+
+    const messageJson = new MessageJson();
+    messageJson.message = msg;
+    messageJson.created_at = Date.now().toString();
     const reference = this;
     console.log('send message :' + msg);
-    this.socket.emit('chatMessageToSocketServer', msg, function(respMsg, username){
+    this.socket.emit('chatMessageToSocketServer', messageJson, function(respMsg, username){
       reference.mm = respMsg;
       reference.userName = username;
-      console.log('sendmessage callback called:' + respMsg);
+      console.log('sendmessage callback called:' + respMsg , username);
     });
 
   }

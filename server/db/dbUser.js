@@ -162,6 +162,25 @@ function  getUserByEmail(email,callback){
   });
 }
 
+
+function  getUserIdByEmail(email,callback){
+  console.log('db'+email);
+  return db.query("select id, class_id from users where email=?",[email], function(err, newDoc) {
+    if (callback) {
+      if (newDoc.length <= 0 ) {
+        newDoc = null;
+      }
+      else {
+        if (newDoc.length > 1){
+          err = 'SQL SEVERE ERROR: more than one entry for user.email:'+email;
+        }
+      }
+
+      callback(err, newDoc);
+    }
+  });
+}
+
 // get CurrentUser from jwt (jwt writes user into req
 function currentUser(req)
 {
@@ -207,6 +226,8 @@ module.exports = {
   updateUser : updateUser,
   UserFromJson: UserFromJson,
   getUserByEmail : getUserByEmail,
+  getUserIdByEmail : getUserIdByEmail,
+
   doQuery: doQuery
 };
 
