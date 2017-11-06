@@ -100,7 +100,9 @@ function authenticate(email, password, callback){
     }
     else {
       var pwd = cryptoUtil.hashPwd(password);
+      console.log('passwor: ' + doc[0].encrypted_password + ' paswword: ' + cryptoUtil.hashPwd(password));
       callback(err, doc && doc[0].encrypted_password === cryptoUtil.hashPwd(password));
+    //  callback(err, doc && true);
     }
 
   });
@@ -119,7 +121,6 @@ function  getUserByEmail(email,callback){
           err = 'SQL SEVERE ERROR: more than one entry for user.email:'+email;
         }
       }
-
 
       callback(err, newDoc);
     }
