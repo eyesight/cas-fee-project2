@@ -18,9 +18,12 @@ function currentUser(req)
 function createSessionToken(name, secret, options, callback)
 {
     if(!name){
+      console.log('name is empty - cant create token');
         return "";
     }
-    jwt.sign({ name }, secret, options, (err, token) => callback({email: name, token: token} ));
+    //console.log('create token using: ');
+    //console.dir(options);
+    jwt.sign({ name }, secret, options, (err, token) => {console.log('token: ' + token);callback({email: name, token: token} )});
 }
 
 function handleRegister(req,res){

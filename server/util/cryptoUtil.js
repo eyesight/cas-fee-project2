@@ -6,4 +6,8 @@ function hashPwd(pwd){
         .digest('hex');
 }
 
-module.exports = {hashPwd};
+const jwtSecret =  'aklsdjfklöasjdcma8sd90ziklasdföasdf$ädasöfü pi340qkrlöam,dflöäasf';
+
+
+
+module.exports = {hashPwd, jwtSecret};

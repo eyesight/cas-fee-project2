@@ -11,6 +11,12 @@ export class Message {
   createdAt: string;
 }
 
+export class MessageJson {
+  client_uuid: string;
+  message: string;
+  created_at: string;
+}
+
 export class MessageItem {
 
   date: Date;

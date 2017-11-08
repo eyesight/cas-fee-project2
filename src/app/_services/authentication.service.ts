@@ -81,7 +81,13 @@ export class AuthenticationService {
       console.dir(userItem);
       if (userItem !== 'undefined') {
         const userAuth = JSON.parse(userItem);
-        console.log('userAuthemail:' + userAuth.token);
+        if (!userAuth) {
+          console.log('userAuth is null');
+          return null;
+        }
+        else {
+          console.log('userAuthemail:' + userAuth.token);
+        }
         // console.dir(userAuth);
         return userAuth.token;
       }

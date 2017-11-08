@@ -137,6 +137,7 @@ function authenticate(email, password, callback){
       var pwd = cryptoUtil.hashPwd(password);
       console.log('passwor: ' + doc[0].encrypted_password + ' paswword: ' + cryptoUtil.hashPwd(password));
       callback(err, doc && doc[0].encrypted_password === cryptoUtil.hashPwd(password));
+    //  callback(err, doc && true);
     }
 
   });
@@ -161,6 +162,24 @@ function  getUserByEmail(email,callback){
         }
       }
 
+      callback(err, newDoc);
+    }
+  });
+}
+
+
+function  getUserIdByEmail(email,callback){
+  console.log('db'+email);
+  return db.query("select id, class_id from users where email=?",[email], function(err, newDoc) {
+    if (callback) {
+      if (newDoc.length <= 0 ) {
+        newDoc = null;
+      }
+      else {
+        if (newDoc.length > 1){
+          err = 'SQL SEVERE ERROR: more than one entry for user.email:'+email;
+        }
+      }
 
       callback(err, newDoc);
     }
@@ -212,6 +231,8 @@ module.exports = {
   updateUser : updateUser,
   UserFromJson: UserFromJson,
   getUserByEmail : getUserByEmail,
+  getUserIdByEmail : getUserIdByEmail,
+
   doQuery: doQuery
 };
 
