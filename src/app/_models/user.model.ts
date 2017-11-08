@@ -22,10 +22,8 @@ export class UserAuth {
 
 export class User {
   id: number;
-  username: string;
-  password: string;
-  firstName: string;
-  lastName: string;
+  email: string;
+  pwd: string;
 
   parent_forename: string;
   parent_surname: string;

@@ -115,7 +115,7 @@ Vorbereitung -> Übertragen in gesamte Form
           <div class="form-row" formGroupName="formEMailConfirm">
             <div class="col-12 zz-form__group">
               <label class="zz-form__label" for="email">E-Mail (gilt als username)</label>
-              <input id="email" class="zz-form__input" name="email" type="text" formControlName="formEmail" [(ngModel)]="model.username" [ngClass]="{ 'zz-form__input--error': (formEMailConfirm.invalid || formEmail.invalid) && (formEmail.dirty || formEmail.touched)}">
+              <input id="email" class="zz-form__input" name="email" type="text" formControlName="formEmail" [(ngModel)]="model.email" [ngClass]="{ 'zz-form__input--error': (formEMailConfirm.invalid || formEmail.invalid) && (formEmail.dirty || formEmail.touched)}">
               <app-show-errors [control]="formEmail"></app-show-errors>
             </div>
             <div class="col-12 zz-form__group">
@@ -129,7 +129,7 @@ Vorbereitung -> Übertragen in gesamte Form
           <div class="form-row" formGroupName="formPasswordConfirm">
             <div class="col-12 zz-form__group">
               <label class="zz-form__label" for="password">Passwort</label>
-              <input id="password" class="zz-form__input" name="password" type="password" formControlName="formPassword" [(ngModel)]="model.password" [ngClass]="{ 'zz-form__input--error': (formPasswordConfirm.invalid || formPassword.invalid) && (formPassword.dirty || formPassword.touched)}">
+              <input id="password" class="zz-form__input" name="password" type="password" formControlName="formPassword" [(ngModel)]="model.pwd" [ngClass]="{ 'zz-form__input--error': (formPasswordConfirm.invalid || formPassword.invalid) && (formPassword.dirty || formPassword.touched)}">
               <app-show-errors [control]="formPassword"></app-show-errors>
             </div>
             <div class="col-12 zz-form__group">

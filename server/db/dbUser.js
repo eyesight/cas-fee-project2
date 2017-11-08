@@ -8,7 +8,6 @@ const cryptoUtil = require('../util/cryptoUtil');
 
 
 class User {
-
   constructor(email, password){
     this.email = email;
     this.encrypted_password = cryptoUtil.hashPwd(password);
@@ -59,7 +58,7 @@ function registerUser(email, passwort, req, updateUserFunc, callback)
 {
   if(!(email && passwort)) {  callback("no user", null); }
 
-  let user = new User(email, passwort);
+  const user = new User(email, passwort);
 
 
   return db.query("Insert into users ( email, encrypted_password) values(?,?)",[user.email, user.encrypted_password], function(err, newDoc){
@@ -69,7 +68,7 @@ function registerUser(email, passwort, req, updateUserFunc, callback)
       const um = UserFromJson(req);
       if(updateUserFunc !== null){
         updateUserFunc(email, um, callback);
-      }else{
+      } else {
         callback(err, newDoc);
       }
     }
@@ -98,7 +97,6 @@ function  updateUser(email, userModel, callback){
 }
 
 function register(req, callback){
-
   console.log('dbUSer.register');
   const email = req.body.email;
   const password = req.body.pwd;
@@ -222,8 +220,8 @@ function doQuery() {
     });
 }
 
-module.exports = {
-   add : registerUser,
+ module.exports = {
+  add : registerUser,
   authenticate : authenticate,
   currentUser: currentUser,
   register : register,
@@ -232,7 +230,6 @@ module.exports = {
   UserFromJson: UserFromJson,
   getUserByEmail : getUserByEmail,
   getUserIdByEmail : getUserIdByEmail,
-
   doQuery: doQuery
 };
 

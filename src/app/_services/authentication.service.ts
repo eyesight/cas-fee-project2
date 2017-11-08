@@ -84,8 +84,7 @@ export class AuthenticationService {
         if (!userAuth) {
           console.log('userAuth is null');
           return null;
-        }
-        else {
+        } else {
           console.log('userAuthemail:' + userAuth.token);
         }
         // console.dir(userAuth);

@@ -30,22 +30,22 @@ function handleRegister(req,res){
 
   if (isLoggedIn(req))
   {
-    console.log('user is logged in');
+    console.log('security user is logged in');
     res.status("401").json(false);
   }
   else {
-    console.log('is req.body:' + req.body.email);
+    console.log('security is req.body:' + req.body.email);
     //console.dir(req);
     if (!req.body.email || !req.body.pwd)
     {
       console.dir(req);
-      console.log('register-no-email-nopaassword');
+      console.log('security register-no-email-nopaassword');
       res.status("401").json(false);
 
     }
     else  {
     dbUser.register(req, function(err,valid){
-      console.log('register valid?:' + valid);
+      console.log('security register valid?:' + valid);
       if (valid) {
         createSessionToken(req.body.email, req.app.get("jwt-secret"),req.app.get("jwt-sign"),  (token) => res.json(token));
       }
@@ -62,33 +62,33 @@ function handleLogin(req,res)
     //console.log('handleLogin:' + req.body.email);
     if (isLoggedIn(req))
     {
-        console.log('user is logged in');
+        console.log('security user is logged in');
         res.send(true);
     }
     else {
-      console.log('is req.body:' + !req.body);
+      console.log('security is req.body:' + !req.body);
       //console.dir(req);
       if (!req.body.email || !req.body.pwd)
       {
           res.status("401").json(false);
-
       }
       else  {
-
-
         dbUser.authenticate(req.body.email, req.body.pwd, function (err, valid) {
             if (valid) {
                 createSessionToken(req.body.email, req.app.get("jwt-secret"),req.app.get("jwt-sign"),  (token) => res.json(token));
             }
             else{
+                console.log('security: 401');
                 res.status("401").json(false);
             }
         });
     } }
 }
 
-module.exports = {isLoggedIn : isLoggedIn,
+module.exports = {
+    isLoggedIn : isLoggedIn,
     currentUser : currentUser,
     createSessionToken : createSessionToken,
     handleRegister: handleRegister,
-    handleLogin : handleLogin};
+    handleLogin : handleLogin
+};

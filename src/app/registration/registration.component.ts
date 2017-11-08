@@ -134,14 +134,16 @@ export class RegistrationComponent implements OnInit {
 
   register() {
     this.loading = true;
-    console.log(this.model);
+    console.log('registration-object: '+ this.model.email);
     this.userService.create(this.model)
       .subscribe(
         data => {
+          console.log('register success' + data);
           this.alertService.success('Registration successful', true);
           this.router.navigate(['/login']);
         },
         error => {
+          console.log('register error '+ error);
           this.alertService.error(error);
           this.loading = false;
         });

@@ -5,6 +5,7 @@ const util = require('../util/security');
 
 
 module.exports.register = function(req, res) {
+  console.log('indexController register' + req + res);
     util.handleRegister(req, res);
 };
 
