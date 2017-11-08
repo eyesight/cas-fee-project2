@@ -1,6 +1,3 @@
-
-
-
 export class UserPwd {
   email: string;
   pwd: string;

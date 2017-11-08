@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { UserAuth, UserPwd } from '../_models/user.model';
+import { appConfig } from '../_helpers/app.config';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+
 @Injectable()
 export class AuthenticationService {
   isLoggedin: boolean = false;
@@ -42,7 +44,7 @@ export class AuthenticationService {
     // return this.http.post('http://localhost:3020/api/authenticate', json )
 
 // instaed of json use JSON.strinfiy
-    return this.http.post('http://localhost:3020/api/authenticate', userPwd)
+    return this.http.post(appConfig.apiUrl + '/api/authenticate', userPwd)
     // return this.http.post('http://localhost:3020/api/authenticate', "{ \"email\": username, \"pwd\": password }" )
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
