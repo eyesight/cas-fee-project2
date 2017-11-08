@@ -142,6 +142,11 @@ function authenticate(email, password, callback){
   });
 }
 
+/*function getUserDetails(){
+
+  return db.query("select u.encrypted_password, u.email ,.... k.name, k.valid_fromfrom users u, klasse k  where where user.class_id = k.id and email=?",[email], function(err, newDoc) {
+//  doc[0].email,
+  }*/
 
 function  getUserByEmail(email,callback){
   console.log('db'+email);
