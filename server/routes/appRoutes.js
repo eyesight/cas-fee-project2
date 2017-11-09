@@ -4,7 +4,7 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
-const userController = require('../controllers/chatController');
+const chatController = require('../controllers/chatController');
 
 router.put("/api/user/update", userController.updateUser);
 router.get("/api/chat/getall", chatController.getMessages);

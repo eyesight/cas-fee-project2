@@ -78,9 +78,10 @@ function registerUser(email, passwort, req, updateUserFunc, callback)
 
 function  updateUser(email, userModel, callback){
 
-  var sf = "update users  set "+userModel.getClassMembers().join('=?, ')+"=? where email='" + email +"'";
+  var sf = userModel.mySqlGetUpdateStatement('users'," email='" + email +"'");
   // [user.getClassMembers()].
   // console.dir(user.getAttributeList());
+  console.log(sf);
   return db.query(sf,userModel.getAttributeList(), function(err, newDoc) {
 
     if (callback) {

@@ -27,14 +27,24 @@ class ModelBase {
 
   }
 
+  manageWCL(whereclause) {
+     return  whereclause || '1=1';
+  }
+
   mySqlGetInsertStatement(tablename){
     return "insert into "+tablename+" ("+this.getClassMembers().join(', ')+") values( " + this.getStringWithX('?').join(', ') +")";
   }
-   mySqlGetSelectStatement(tablename, whereclause){
-   // this.mySqlGetSelectStatement(tablename,whereclause);
-    var wcl =  whereclause || '1=1'
-    return "select "+this.getClassMembers().join(', ')+" from "+tablename+" where "+ whereclause;
+  mySqlGetSelectStatement(tablename, whereclause){
+    return "select "+this.getClassMembers().join(', ')+" from "+tablename+" where "+ this.manageWCL(whereclause);
       //where id=?";
+  }
+  mySqlGetUpdateStatement(tablename, whereclause){
+    return  "update "+tablename+"  set "+this.getClassMembers().join('=?, ')+"=? where "+ this.manageWCL(whereclause);
+  }
+
+  mysqlGetDeleteStatement(tablename, whereclause){
+    return  "delete "+tablename+" where "+ this.manageWCL(whereclause);
+
   }
 
 }

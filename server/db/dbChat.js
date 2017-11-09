@@ -78,28 +78,26 @@ function getAllMessages(username, callback){
 
 
   return dbUser.getUserIdByEmail(username, function(err, doc) {
-
     if (err) {
       callback(err, doc);
     }
     else {
       if (doc.length <= 0) {
         callback(err, doc);
-
       }
       else {
-        if (!doc[0].class_id){
+        if (doc[0].class_id){
+          console.log('answer4');
 
           const c = new ChatModel();
           const sf = c.mySqlGetSelectStatement('chat', 'class_id = ?');
           //console.log('getallMEssages:'+sf);
-          return db.query(sf, [!doc[0].class_id], function (err, newDoc) {
-            //console.dir(newDoc);
+          return db.query(sf, [doc[0].class_id], function (err, newDoc) {
+            console.dir(newDoc);
 
             if (callback) {
               if (newDoc.length <= 0) {
                 newDoc = null;
-
               }
               callback(err, newDoc);
             }
