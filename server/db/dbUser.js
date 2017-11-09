@@ -108,19 +108,6 @@ function register(req, callback){
     callback(err,doc);
   });
 
-
-/*
-*
-*   const um = UserFromJson(req);
- console.log('USErfrOMJson:' + um);
- this.updateUser(req.body.email, um, function(err,doc){
- callback(err, doc.affectedRows);
- });*/
- /* return db.query("Insert into users ( email, encrypted_password) values(?,?)",[user.email, user.encrypted_password], function(err, newDoc){
-    if(callback){
-      callback(err, newDoc);
-    }
-  }); */
 }
 
 function authenticate(email, password, callback){
