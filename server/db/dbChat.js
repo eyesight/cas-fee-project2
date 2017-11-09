@@ -74,21 +74,38 @@ function insertMessage(email, req, callback){
   });
 }
 
-function getAllMessages(userId, classId, callback){
+function getAllMessages(username, callback){
 
-  //console.log('getallMEssages:');
-  const c = new ChatModel();
-  const sf  = c.mySqlGetSelectStatement('chat', 'class_id = ?');
-  //console.log('getallMEssages:'+sf);
-  return db.query(sf,[classId], function(err, newDoc) {
-    //console.dir(newDoc);
 
-    if (callback) {
-      if (newDoc.length <= 0) {
-        newDoc = null;
+  return dbUser.getUserIdByEmail(username, function(err, doc) {
+
+    if (err) {
+      callback(err, doc);
+    }
+    else {
+      if (doc.length <= 0) {
+        callback(err, doc);
 
       }
-      callback(err, newDoc);
+      else {
+        if (!doc[0].class_id){
+
+          const c = new ChatModel();
+          const sf = c.mySqlGetSelectStatement('chat', 'class_id = ?');
+          //console.log('getallMEssages:'+sf);
+          return db.query(sf, [!doc[0].class_id], function (err, newDoc) {
+            //console.dir(newDoc);
+
+            if (callback) {
+              if (newDoc.length <= 0) {
+                newDoc = null;
+
+              }
+              callback(err, newDoc);
+            }
+          });
+        }
+      }
     }
   });
 }
@@ -97,13 +114,13 @@ function insertMessageDb(userId, classId, chatModel, callback )
 {
   var sf2 = "insert into chat ("+chatModel.getClassMembers().join(', ')+") values( " + chatModel.getStringWithX('?').join(', ') +")";
   var sf = chatModel.mySqlGetInsertStatement('chat');
-console.log('sf:'+ sf);
+  console.log('sf:'+ sf);
   return db.query(sf2,chatModel.getAttributeList(), function(err, newDoc){
 
     if(callback){
-        console.log('err:' + err);
-        callback(err, newDoc);
-      }
+      console.log('err:' + err);
+      callback(err, newDoc);
+    }
 
   });
 }

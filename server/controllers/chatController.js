@@ -2,7 +2,7 @@
  * Created by awedag on 06.11.17.
  */
 
-
+'use strict'
 //var http = require('http').Server(app);
 const socketioJwt = require('socketio-jwt');
 const cryptoUtil = require('../util/cryptoUtil');
@@ -52,3 +52,10 @@ module.exports.chat = function(io)
   });
 
 }
+
+module.exports.getMessages = function(req, res){
+  console.log('req.user.name :' + req.user.name);
+  dbChat.getAllMessages(req.body.name, function(err, messages) {
+    res.json(messages);
+  });
+};

@@ -21,7 +21,7 @@ var db=require('./db/dbconnection'); //reference of dbconnection.js
 const store = require("./db/dbuser");
 store.doQuery();
 const dbchat = require('./db/dbChat');
-dbchat.getAllMessages(2,1,null);
+dbchat.getAllMessages('hansli@example.com',null);
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
