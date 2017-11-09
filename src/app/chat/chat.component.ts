@@ -82,14 +82,16 @@ export class ChatComponent implements OnInit {
     else {
       this.message = [newText];
     }
-    this.messageItem = this.reduceToGroup(this.messageItem, newText);
-
+    //this.messageItem = this.reduceToGroup(this.messageItem, newText);
+    this.messageItem = this.message.sort(this.sortFunc)
+      .reduce( this.reduceToGroup,  [new MessageItem(new Date)] )  // pass in a new MessageItem with a new date -> today
+      .sort(this.sortFuncMi);
   }
 
-  public onSend(newText: MessageJson) {
+  public onSend(newMessage: MessageJson) {
 
-    this.addMessage(newText);
-    this.messageItemService.sendMessage(newText.message);
+    this.addMessage(newMessage);
+    this.messageItemService.sendMessage(newMessage.message);
 
   }
   private reduceToGroup(mia, x): MessageItem[] {
