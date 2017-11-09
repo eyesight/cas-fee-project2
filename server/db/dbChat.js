@@ -72,8 +72,25 @@ function insertMessage(email, req, callback){
       }
     });
   });
+}
 
+function getAllMessages(userId, classId, callback){
 
+  //console.log('getallMEssages:');
+  const c = new ChatModel();
+  const sf  = c.mySqlGetSelectStatement('chat', 'class_id = ?');
+  //console.log('getallMEssages:'+sf);
+  return db.query(sf,[classId], function(err, newDoc) {
+    //console.dir(newDoc);
+
+    if (callback) {
+      if (newDoc.length <= 0) {
+        newDoc = null;
+
+      }
+      callback(err, newDoc);
+    }
+  });
 }
 
 function insertMessageDb(userId, classId, chatModel, callback )
@@ -91,4 +108,4 @@ console.log('sf:'+ sf);
   });
 }
 
-module.exports = {insertMessage};
+module.exports = {insertMessage, getAllMessages};

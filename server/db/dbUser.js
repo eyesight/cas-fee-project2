@@ -190,6 +190,8 @@ function createSessionToken(name, secret, options, callback)
 //database testquery
 function doQuery() {
 
+
+
   var gg = new UserModel(1,'adf','adf','adf','adf');
   var ggg = Object.keys(gg);
   var z = 'z-String: '+ggg.join(' AW ');
