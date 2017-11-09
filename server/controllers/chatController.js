@@ -55,7 +55,7 @@ module.exports.chat = function(io)
 
 module.exports.getMessages = function(req, res){
   console.log('req.user.name :' + req.user.name);
-  dbChat.getAllMessages(req.body.name, function(err, messages) {
+  dbChat.getAllMessages(req.user.name, function(err, messages) {
     res.json(messages);
   });
 };

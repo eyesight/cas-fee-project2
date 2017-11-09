@@ -4,7 +4,7 @@
 
 
 import { Injectable, Inject } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import * as io from 'socket.io-client';
 import { MessageJson } from '../_models/message.model';
@@ -44,7 +44,7 @@ export class ChatService {
     console.log('load OBservable message');
     return  this.http
       //.get('/assets/mock/messageJson.json')
-      .get(appConfig.apiUrl + '/api/chat/getall')
+      .get(appConfig.apiUrl + '/api/chat/getall', this.jwt())
       .map((result ) => result.json());
 
     //this.socket.on('chatMessageFromSocketServer',)
@@ -55,12 +55,12 @@ export class ChatService {
       this.socket.on("error", function (error) {
         console.dir('error' + error);
 
-        if (error == 'Not authorized'){
+        if (error === 'Not authorized'){
           observer.next(error);
         //  this.router.navigate(['login']);
         }
         else if (error.data){
-          if (error.data.type == 'UnauthorizedError' || error.data.code == 'invalid_token') {
+          if (error.data.type === 'UnauthorizedError' || error.data.code === 'invalid_token') {
             // redirect user to login page perhaps?
             observer.next('User Token has expired');
           //  this.router.navigate(['login']);
@@ -99,6 +99,7 @@ export class ChatService {
 
   public sendMessage(msg: string){
 
+    console.log('msg:' + msg);
     const messageJson = new MessageJson();
     messageJson.message = msg;
     messageJson.sent_at = Date.now().toString();
@@ -111,6 +112,13 @@ export class ChatService {
     });
 
   }
+
+  // TODO: move this to some base class for all http-services
+  private jwt() {
+    // create authorization header with jwt token
+      const headers = new Headers({ 'authorization': 'Bearer ' + this.authService.getCurrentUserJwt() });
+      return new RequestOptions({ headers: headers });
+    }
 
 
 }

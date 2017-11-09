@@ -165,7 +165,7 @@ function  getUserIdByEmail(email,callback){
           err = 'SQL SEVERE ERROR: more than one entry for user.email:'+email;
         }
       }
-
+      console.dir(newDoc);
       callback(err, newDoc);
     }
   });
