@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { MessageItem, Message } from '../../_models/message.model';
+import { MessageItem, Message, MessageJson } from '../../_models/message.model';
 import { Klasse } from '../../_models/klasse.model';
 import { User } from '../../_models/user.model';
 
@@ -12,7 +12,7 @@ import { User } from '../../_models/user.model';
 export class ChatMessageComponent implements OnInit {
 
   @Input()
-  public message: Message;
+  public message: MessageJson;
 
   ngOnInit() {
   }

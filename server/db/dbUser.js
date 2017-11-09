@@ -51,7 +51,6 @@ function UserFromJson(req){
     r.zip,
     r.place
   );
-
 }
 
 function registerUser(email, passwort, req, updateUserFunc, callback)
@@ -136,7 +135,7 @@ function authenticate(email, password, callback){
   }*/
 
 function  getUserByEmail(email,callback){
-  console.log('db'+email);
+  console.log('db:'+email);
   return db.query("select encrypted_password, email from users where email=?",[email], function(err, newDoc) {
     if (callback) {
       if (newDoc.length <= 0 ) {
@@ -155,7 +154,7 @@ function  getUserByEmail(email,callback){
 
 
 function  getUserIdByEmail(email,callback){
-  console.log('db'+email);
+  console.log('getUserIdByEmail:'+email);
   return db.query("select id, class_id from users where email=?",[email], function(err, newDoc) {
     if (callback) {
       if (newDoc.length <= 0 ) {

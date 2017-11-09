@@ -6,8 +6,12 @@ const router = express.Router();
 const userController = require('../controllers/userController');
 const chatController = require('../controllers/chatController');
 
-router.put("/api/user/update", userController.updateUser);
-router.get("/api/chat/getall", chatController.getMessages);
+router.get('/something', function(req, res, next) {
+  console.log('Enter something.');
+});
+
+router.put("/user/update", userController.updateUser);
+router.get("/chat/getall", chatController.getMessages);
 
 /*
 router.post("/api", orders.createUser);

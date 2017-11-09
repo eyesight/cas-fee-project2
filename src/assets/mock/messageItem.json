@@ -1,18 +1,18 @@
 [
   {
-    "userName": "Ursli", "klasseName": "3Ab", "text": "Lorem", "createdAt": "2017-10-05T08:15:30-00:00"
+    "email": "Ursli", "klasseName": "3Ab", "message": "Lorem", "sent_at": "2017-10-05T08:15:30-00:00"
   },
   {
-    "userName": "Hansli", "klasseName": "3Ab", "text": "Psim", "createdAt": "2017-05-05T08:16:30-00:00"
+    "email": "Hansli", "klasseName": "3Ab", "message": "Psim", "sent_at": "2017-05-05T08:16:30-00:00"
   },
   {
-    "userName": "Seppli", "klasseName": "3Ab", "text": "Psasdfl kajhsdfkl ajshdfaim", "createdAt": "2017-10-05T08:16:30-00:00"
+    "email": "Seppli", "klasseName": "3Ab", "message": "Psasdfl kajhsdfkl ajshdfaim", "sent_at": "2017-10-05T08:16:30-00:00"
   },
   {
-    "userName": "Sandra", "klasseName": "3Ab", "text": "Psim", "createdAt": "2016-11-07T08:16:30-00:00"
+    "email": "Sandra", "klasseName": "3Ab", "message": "Psim", "sent_at": "2016-11-07T08:16:30-00:00"
   },
   {
-    "userName": "Steffi", "klasseName": "3Ab", "text": "Psim", "createdAt": "2016-11-07T08:16:30-00:00"
+    "email": "Steffi", "klasseName": "3Ab", "message": "Psim", "sent_at": "2016-11-07T08:16:30-00:00"
   }
 
 ]

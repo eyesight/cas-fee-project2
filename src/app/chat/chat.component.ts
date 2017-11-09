@@ -3,9 +3,8 @@
  */
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { Klasse } from '../_models/klasse.model';
 import { ChatService } from '../_services/chat.service';
-import { MessageItem, Message} from '../_models/message.model';
+import { MessageItem, MessageJson} from '../_models/message.model';
 import {formatMoment} from 'ngx-bootstrap/bs-moment/format';
 import { dateFormat } from 'dateformat';
 import {Observable} from 'rxjs/Observable';
@@ -20,7 +19,7 @@ import {AuthenticationService} from '../_services/authentication.service';
 export class ChatComponent implements OnInit {
 
   public messageItem: MessageItem[] = [new MessageItem(new Date)];
-  public message: Message[] ;
+  public message: MessageJson[] ;
   private chatStream: Observable<any>;
   private chatSub: Subscription;
   private chatAutho: Observable<any>;
@@ -52,10 +51,10 @@ export class ChatComponent implements OnInit {
 
   }
 
-  public sortFunc(a: Message, b: Message): number {
+  public sortFunc(a: MessageJson, b: MessageJson): number {
     // console.log('a:'+ a.createdAt + 'b:' + b.createdAt);
-    const aa = new Date(a.createdAt).valueOf();
-    const bb = new Date(b.createdAt).valueOf();
+    const aa = new Date(a.sent_at).valueOf();
+    const bb = new Date(b.sent_at).valueOf();
     return (aa - bb);
 
   }
@@ -68,15 +67,15 @@ export class ChatComponent implements OnInit {
   }
 
   public addMessageFakeUser(text: string){
-    const nm = new Message();
-    nm.userName = 'Heidi';
-    nm.text = text;
+    const nm = new MessageJson();
+    nm.email = 'Heidi';
+    nm.message = text;
     const d = Date();
-    nm.createdAt = d;
+    nm.sent_at = d;
     this.addMessage(nm);
   }
-  public addMessage(newText: Message){
-    console.log('addMessage: ' + newText.text);
+  public addMessage(newText: MessageJson){
+    console.log('addMessage: ' + newText.message);
     if (this.message) {
       this.message = [...this.message, newText];
     }
@@ -85,20 +84,19 @@ export class ChatComponent implements OnInit {
     }
     this.messageItem = this.reduceToGroup(this.messageItem, newText);
 
-
   }
 
-  public onSend(newText: Message) {
+  public onSend(newText: MessageJson) {
 
     this.addMessage(newText);
-    this.messageItemService.sendMessage(newText.text);
+    this.messageItemService.sendMessage(newText.message);
 
   }
   private reduceToGroup(mia, x): MessageItem[] {
 
-    const mi = mia.find(t => t.dateGroup.toDateString() === new Date(x.createdAt).toDateString());
+    const mi = mia.find(t => t.dateGroup.toDateString() === new Date(x.sent_at).toDateString());
     if (!mi) {
-      const miNew = new MessageItem(new Date(x.createdAt));
+      const miNew = new MessageItem(new Date(x.sent_at));
       miNew.messages =  [x];
       mia = [...mia, miNew];
     }else {

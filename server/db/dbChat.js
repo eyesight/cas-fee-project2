@@ -56,6 +56,7 @@ function insertMessage(email, req, callback){
     const userId = doc[0].id;
     const classId = doc[0].classId;
     chatModel.user_id = userId;
+    chatModel.email = email;
     chatModel.class_id = classId;
     if (!chatModel.sent_at){
       chatModel.sent_at = Date.now();
@@ -82,7 +83,7 @@ function getAllMessages(username, callback){
       callback(err, doc);
     }
     else {
-      if (doc.length <= 0) {
+      if (!doc) {
         callback(err, doc);
       }
       else {

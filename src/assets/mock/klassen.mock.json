@@ -1,14 +1,14 @@
 [
   {
-    "klassenName": "3Ab", "klassenID": "1", "klassenTxt": "Lorem", "createdAt": "2017-10-05T08:15:30-00:00"
+    "klassenName": "3Ab", "klassenID": "1", "klassenTxt": "Lorem", "sent_at": "2017-10-05T08:15:30-00:00"
   },
   {
-    "klassenName": "2017A", "klassenID": "2", "klassenTxt": "Lorem", "createdAt": "2017-10-05T08:15:30-00:00"
+    "klassenName": "2017A", "klassenID": "2", "klassenTxt": "Lorem", "sent_at": "2017-10-05T08:15:30-00:00"
   },
   {
-    "klassenName": "2015B", "klassenID": "3", "klassenTxt": "Lorem", "createdAt": "2015-10-05T08:15:30-00:00"
+    "klassenName": "2015B", "klassenID": "3", "klassenTxt": "Lorem", "sent_at": "2015-10-05T08:15:30-00:00"
   },
   {
-    "klassenName": "2015A", "klassenID": "4", "klassenTxt": "Lorem", "createdAt": "2015-10-05T08:15:30-00:00"
+    "klassenName": "2015A", "klassenID": "4", "klassenTxt": "Lorem", "sent_at": "2015-10-05T08:15:30-00:00"
   }
 ]
