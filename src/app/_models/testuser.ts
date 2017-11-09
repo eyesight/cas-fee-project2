@@ -5,8 +5,8 @@ export class Testuser extends User {
     super();
     this.parent_forename = 'test';
     this.parent_surname = 'test';
-    this.username = 'test';
-    this.password = 'test';
+    this.email = 'test';
+    this.pwd = 'test';
     this.id = 0;
   }
 }

@@ -78,12 +78,10 @@ function insertMessage(email, req, callback){
 
 function insertMessageDb(userId, classId, chatModel, callback )
 {
-  var sf = "insert into chat ("+chatModel.getClassMembers().join(', ')+") values( " + chatModel.getStringWithX('?').join(', ') +")";
+  var sf2 = "insert into chat ("+chatModel.getClassMembers().join(', ')+") values( " + chatModel.getStringWithX('?').join(', ') +")";
+  var sf = chatModel.mySqlGetInsertStatement('chat');
 console.log('sf:'+ sf);
- // var sf = "insert into chat ("+chatModel.getClassMembers().join('=?, ')+"=? where email='" + email +"'";
-
-//  return db.query("Insert into chat ( email, encrypted_password) values(?,?)",[user.email, user.encrypted_password], function(err, newDoc){
-    return db.query(sf,chatModel.getAttributeList(), function(err, newDoc){
+  return db.query(sf2,chatModel.getAttributeList(), function(err, newDoc){
 
     if(callback){
         console.log('err:' + err);
