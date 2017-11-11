@@ -31,6 +31,11 @@ export class RegistrationComponent implements OnInit {
     {content: 'fr', label: 'Französisch'},
     {content: 'en', label: 'Englisch'}];
 
+  public klasses: Array<{ id: number, name: string }> = [
+    {id: 1, name: 'XYZ'},
+    {id: 2, name: 'jkj'},
+    {id: 3, name: 'sdfsdf'}];
+
   constructor(private router: Router,
               private userService: UserService,
               private alertService: AlertService,
@@ -45,13 +50,14 @@ export class RegistrationComponent implements OnInit {
       formPlace: ['', [Validators.required, Validators.minLength(2)]],
       formZip: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4), CustomValidators.justNumbers]],
       formTelprivate: ['', [Validators.required, Validators.minLength(10), CustomValidators.telephoneNumber]],
-      formTeloffice: ['', [Validators.minLength(10), CustomValidators.telephoneNumber]],
+      formTeloffice: [''],
       formParentGender: ['', [Validators.required]],
       formLanguage: ['', [Validators.required]],
       formCFirstname: ['', [Validators.required, Validators.minLength(2)]],
       formCLastname: ['', [Validators.required, Validators.minLength(2)]],
       formChildGender: ['', [Validators.required]],
       formCBirthday: ['', [Validators.required, CustomValidators.dateFormat]],
+      formChildKlasse: ['', [Validators.required]],
       formEMailConfirm: this.fb.group({
         formEmail: ['', [Validators.required, Validators.email]],
         confirmEmail: ['', [Validators.required]]
@@ -113,6 +119,10 @@ export class RegistrationComponent implements OnInit {
 
   get formCBirthday() {
     return this.registrationForm.get('formCBirthday');
+  }
+
+  get formChildKlasse(){
+    return this.registrationForm.get('formChildKlasse');
   }
 
   get formEMailConfirm() {

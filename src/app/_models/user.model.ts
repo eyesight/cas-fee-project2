@@ -37,4 +37,6 @@ export class User {
   place: string;
   tel_private: number;
   tel_office: number;
+
+  class_id: number;
 }
