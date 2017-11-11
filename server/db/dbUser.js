@@ -51,7 +51,6 @@ function UserFromJson(req){
     r.zip,
     r.place
   );
-
 }
 
 function registerUser(email, passwort, req, updateUserFunc, callback)
@@ -78,9 +77,10 @@ function registerUser(email, passwort, req, updateUserFunc, callback)
 
 function  updateUser(email, userModel, callback){
 
-  var sf = "update users  set "+userModel.getClassMembers().join('=?, ')+"=? where email='" + email +"'";
+  var sf = userModel.mySqlGetUpdateStatement('users'," email='" + email +"'");
   // [user.getClassMembers()].
   // console.dir(user.getAttributeList());
+  console.log(sf);
   return db.query(sf,userModel.getAttributeList(), function(err, newDoc) {
 
     if (callback) {
@@ -108,19 +108,6 @@ function register(req, callback){
     callback(err,doc);
   });
 
-
-/*
-*
-*   const um = UserFromJson(req);
- console.log('USErfrOMJson:' + um);
- this.updateUser(req.body.email, um, function(err,doc){
- callback(err, doc.affectedRows);
- });*/
- /* return db.query("Insert into users ( email, encrypted_password) values(?,?)",[user.email, user.encrypted_password], function(err, newDoc){
-    if(callback){
-      callback(err, newDoc);
-    }
-  }); */
 }
 
 function authenticate(email, password, callback){
@@ -148,7 +135,7 @@ function authenticate(email, password, callback){
   }*/
 
 function  getUserByEmail(email,callback){
-  console.log('db'+email);
+  console.log('db:'+email);
   return db.query("select encrypted_password, email from users where email=?",[email], function(err, newDoc) {
     if (callback) {
       if (newDoc.length <= 0 ) {
@@ -167,7 +154,7 @@ function  getUserByEmail(email,callback){
 
 
 function  getUserIdByEmail(email,callback){
-  console.log('db'+email);
+  console.log('getUserIdByEmail:'+email);
   return db.query("select id, class_id from users where email=?",[email], function(err, newDoc) {
     if (callback) {
       if (newDoc.length <= 0 ) {
@@ -178,7 +165,7 @@ function  getUserIdByEmail(email,callback){
           err = 'SQL SEVERE ERROR: more than one entry for user.email:'+email;
         }
       }
-
+      console.dir(newDoc);
       callback(err, newDoc);
     }
   });
@@ -202,6 +189,8 @@ function createSessionToken(name, secret, options, callback)
 
 //database testquery
 function doQuery() {
+
+
 
   var gg = new UserModel(1,'adf','adf','adf','adf');
   var ggg = Object.keys(gg);

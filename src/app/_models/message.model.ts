@@ -13,8 +13,9 @@ export class Message {
 
 export class MessageJson {
   client_uuid: string;
+  email: string;
   message: string;
-  created_at: string;
+  sent_at: string;
 }
 
 export class MessageItem {

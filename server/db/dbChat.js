@@ -53,15 +53,17 @@ function insertMessage(email, req, callback){
       callback('401', 'unauthorized');
     }
 
+    console.dir(req);
     const userId = doc[0].id;
     const classId = doc[0].classId;
     chatModel.user_id = userId;
+    chatModel.email = email;
     chatModel.class_id = classId;
     if (!chatModel.sent_at){
       chatModel.sent_at = Date.now();
     }
 
-    console.log('insertMessagePrepare:' + userId + ' classid:' + classId + 'chatmodel.sent_at:' + chatModel.sent_at);
+    console.log('insertMessagePrepare:' + userId + ' message:' + chatModel.message + ':chatmodel.sent_at:' + chatModel.sent_at);
 
     insertMessageDb(userId, classId, chatModel, function (err, doc) {
       if( (doc === null ) && !err){
@@ -72,25 +74,55 @@ function insertMessage(email, req, callback){
       }
     });
   });
+}
 
+function getAllMessages(username, callback){
 
+  console.log('getallMessage:+'+username);
+  return dbUser.getUserIdByEmail(username, function(err, doc) {
+    if (err) {
+      callback(err, doc);
+    }
+    else {
+      if (!doc) {
+        callback(err, doc);
+      }
+      else {
+        if (doc[0].class_id){
+          console.log('answer4');
+
+          const c = new ChatModel();
+          const sf = c.mySqlGetSelectStatement('chat', 'class_id = ?');
+          //console.log('getallMEssages:'+sf);
+          return db.query(sf, [doc[0].class_id], function (err, newDoc) {
+            console.dir(newDoc);
+
+            if (callback) {
+              if (newDoc.length <= 0) {
+                newDoc = null;
+              }
+              callback(err, newDoc);
+            }
+          });
+        }
+      }
+    }
+  });
 }
 
 function insertMessageDb(userId, classId, chatModel, callback )
 {
-  var sf = "insert into chat ("+chatModel.getClassMembers().join(', ')+") values( " + chatModel.getStringWithX('?').join(', ') +")";
-console.log('sf:'+ sf);
- // var sf = "insert into chat ("+chatModel.getClassMembers().join('=?, ')+"=? where email='" + email +"'";
-
-//  return db.query("Insert into chat ( email, encrypted_password) values(?,?)",[user.email, user.encrypted_password], function(err, newDoc){
-    return db.query(sf,chatModel.getAttributeList(), function(err, newDoc){
+  var sf2 = "insert into chat ("+chatModel.getClassMembers().join(', ')+") values( " + chatModel.getStringWithX('?').join(', ') +")";
+  var sf = chatModel.mySqlGetInsertStatement('chat');
+  console.log('sf:'+ sf);
+  return db.query(sf2,chatModel.getAttributeList(), function(err, newDoc){
 
     if(callback){
-        console.log('err:' + err);
-        callback(err, newDoc);
-      }
+      console.log('err:' + err);
+      callback(err, newDoc);
+    }
 
   });
 }
 
-module.exports = {insertMessage};
+module.exports = {insertMessage, getAllMessages};

@@ -4,10 +4,12 @@
 
 
 import { Injectable, Inject } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import * as io from 'socket.io-client';
 import { MessageJson } from '../_models/message.model';
+import { appConfig } from '../_helpers/app.config';
+
 // need to import explicitly the map function of Rx!
 import 'rxjs/Rx';
 
@@ -29,23 +31,20 @@ export class ChatService {
 
   // see https://www.dev6.com/Angular2-WebSockets
   // TODO: handle dis/reconnect
-  // TODO: read initial complete messagethread
+  // TODO: read initial complete messagethread using api/chat/getall
 
   constructor(private http: Http, private authService: AuthenticationService) {
     this.userName = 'testuser';
-//    this.socket = io(this.url, { upgrade: true, query: 'token=' + this.testbearer});
     console.log('getCurentUserJwt :' + this.authService.getCurrentUserJwt());
     this.socket = io(this.url, { upgrade: true, query: 'token=' + this.authService.getCurrentUserJwt()});
 
-    // this.socket = io(this.url, { upgrade: true, query: 'userName=' + 'testuser'});
-    //'userName=' + 'testuser',
-
   }
 
-  public load(): Observable<Message[]> {
+  public load(): Observable<MessageJson[]> {
     console.log('load OBservable message');
     return  this.http
-      .get('/assets/mock/messageItem.json')
+      //.get('/assets/mock/messageJson.json')
+      .get(appConfig.apiUrl + '/api/chat/getall', this.jwt())
       .map((result ) => result.json());
 
     //this.socket.on('chatMessageFromSocketServer',)
@@ -56,15 +55,13 @@ export class ChatService {
       this.socket.on("error", function (error) {
         console.dir('error' + error);
 
-        if (error == "Not authorized"){
+        if (error === 'Not authorized'){
           observer.next(error);
         //  this.router.navigate(['login']);
-
         }
         else if (error.data){
-          if (error.data.type == "UnauthorizedError" || error.data.code == "invalid_token") {
+          if (error.data.type === 'UnauthorizedError' || error.data.code === 'invalid_token') {
             // redirect user to login page perhaps?
-            //console.log("User's token has expired");
             observer.next('User Token has expired');
           //  this.router.navigate(['login']);
 
@@ -102,9 +99,10 @@ export class ChatService {
 
   public sendMessage(msg: string){
 
+    console.log('msg:' + msg);
     const messageJson = new MessageJson();
     messageJson.message = msg;
-    messageJson.created_at = Date.now().toString();
+    messageJson.sent_at = Date.now().toString();
     const reference = this;
     console.log('send message :' + msg);
     this.socket.emit('chatMessageToSocketServer', messageJson, function(respMsg, username){
@@ -114,6 +112,13 @@ export class ChatService {
     });
 
   }
+
+  // TODO: move this to some base class for all http-services
+  private jwt() {
+    // create authorization header with jwt token
+      const headers = new Headers({ 'authorization': 'Bearer ' + this.authService.getCurrentUserJwt() });
+      return new RequestOptions({ headers: headers });
+    }
 
 
 }
