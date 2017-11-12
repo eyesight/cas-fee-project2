@@ -34,7 +34,11 @@ module.exports.chat = function(io)
     //     console.log('user disconnected');
     // });
 
+    socket.on('klasse', function(room) {
+      console.log('join klasse:' + room);
+      socket.join('mymyroom');
 
+    });
     socket.on('chatMessageToSocketServer', function (msg, callback) {
       console.log('message received:' + msg);
 
@@ -49,6 +53,8 @@ module.exports.chat = function(io)
       // io.emit('broadcastToAll_chatMessage', sockectObj);
       console.dir('chat message forwarding:',msg);
     //  io.emit('broadcastToAll_chatMessage', msg);
+     // const rooms = io.sockets.manager  roo[socket.id];
+      console.dir(socket);
       socket.broadcast.emit('broadcastToAll_chatMessage', msg);
     });
   });
