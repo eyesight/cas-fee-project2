@@ -14,7 +14,7 @@ import { appConfig } from '../_helpers/app.config';
 import 'rxjs/Rx';
 
 import { MessageItem, Message } from '../_models/message.model';
-import {AuthenticationService} from "./authentication.service";
+import {AuthenticationService} from './authentication.service';
 
 @Injectable()
 export class ChatService {

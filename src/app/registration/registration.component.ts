@@ -19,6 +19,7 @@ import {AlertService, UserService} from '../_services/index';
 })
 export class RegistrationComponent implements OnInit {
   model: any = {};
+  klassenModel: any = {};
   loading = false;
   registrationForm: FormGroup;
 
@@ -67,6 +68,8 @@ export class RegistrationComponent implements OnInit {
         confirmPassword: ['', [Validators.required]]
       }, {validator: Validators.compose([CustomValidators.matcher('formPassword', 'confirmPassword')])})
     });
+    let x = this.getklasse();
+    console.log(x);
   }
 
   get formPFirstname() {
@@ -144,18 +147,19 @@ export class RegistrationComponent implements OnInit {
 
   register() {
     this.loading = true;
-    console.log('registration-object: '+ this.model.email);
     this.userService.create(this.model)
       .subscribe(
         data => {
-          console.log('register success' + data);
           this.alertService.success('Registration successful', true);
           this.router.navigate(['/login']);
         },
         error => {
-          console.log('register error '+ error);
           this.alertService.error(error);
           this.loading = false;
         });
+  }
+
+  getklasse() {
+    return this.userService.showKlasses();
   }
 }

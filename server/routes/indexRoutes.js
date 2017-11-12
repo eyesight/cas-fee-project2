@@ -14,4 +14,9 @@ router.post("/api/authenticate", function(req, res){
     indexController.login(req,res);
 });
 
+router.get("/klasse", function(req, res){
+  console.log('dfddfdf'+req);
+  indexController.getKlasse(req,res);
+});
+
 module.exports = router;

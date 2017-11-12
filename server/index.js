@@ -19,8 +19,8 @@ const cryptoUtil = require('./util/cryptoUtil');
 var db=require('./db/dbconnection'); //reference of dbconnection.js
 
 // test query
-const store = require("./db/dbuser");
-store.doQuery();
+//const store = require("./db/dbklasse");
+//store.doQuery();
 //const dbchat = require('./db/dbChat');
 //dbchat.getAllMessages('hansli@example.com',null);
 

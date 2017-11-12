@@ -16,7 +16,6 @@ export class UserService {
   }
 
   create(user: User) {
-    console.log('user.service: ' + user);
     return this.http.post(appConfig.apiUrl + '/api/register', user, this.jwt()).map((response: Response) => response.json());
   }
 
@@ -26,6 +25,11 @@ export class UserService {
 
   delete(id: number) {
     return this.http.delete(appConfig.apiUrl + '/api/users/' + id, this.jwt()).map((response: Response) => response.json());
+  }
+
+  showKlasses() {
+    console.log('getClasses user.service' + appConfig.apiUrl + '/klasse');
+      return this.http.get(appConfig.apiUrl + '/klasse', this.jwt()).map((response: Response) => response.json());
   }
 
   // private helper methods
