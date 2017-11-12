@@ -23,6 +23,8 @@ const store = require("./db/dbuser");
 store.doQuery();
 //const dbchat = require('./db/dbChat');
 //dbchat.getAllMessages('hansli@example.com',null);
+const dbKlasse = require('./db/dbKlasse');
+dbKlasse.getAllKlasses(null);
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");

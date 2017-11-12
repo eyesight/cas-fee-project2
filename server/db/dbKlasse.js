@@ -11,39 +11,51 @@ const cryptoUtil = require('../util/cryptoUtil');
 
 class KlasseModel extends ModelBase{
 
-  constructor(name, description, fromdate, todate, teacherid, zip, place){
+  constructor(name, description, fromdate, todate, teacherId){
     super();
-    this.class_id = class_id;
-    this.user_name = userName;
-    this.parent_surname = parentSurname;
-    this.parent_forename = parentForename;
-    this.child_surname = childSurname;
-    this.child_forename = childForename;
-    this.child_gender = childGender;
-    this.child_date_of_birth = childBirthdate;
-    this.adress = adress;
-    this.zip = zip;
-    this.place = place;
+    this.id = null;
+    this.name = name;
+    this.description = description;
+    this.start_at = fromdate;
+    this.end_at = todate;
+    this.teacher_id = teacherId;
     this.is_active = 1;
   }
 }
 
 // create a user-object from a json-string
-function UserFromJson(req){
+function KlasseFromJson(req){
   "use strict";
   var r = req.body;
   return new UserModel(
-    r.class_id,
-    r.user_name,
-    r.parent_surname,
-    r.parent_forename,
-    r.child_surname,
-    r.child_forename,
-    r.child_gender,
-    r.child_date_of_birth,
-    r.adress,
-    r.zip,
-    r.place
+    r.name,
+    r.description,
+    r.fromdate,
+    r.todate,
+    r.teacherId
   );
 
 }
+
+function getAllKlasses(username, callback){
+
+  console.log('getallMessage:+'+username);
+
+  const c = new KlasseModel();
+  const sf = c.mySqlGetSelectStatement('klasses');
+  return db.query(sf,null, function (err, newDoc) {
+    console.dir(newDoc);
+
+    if (callback) {
+      if (newDoc.length <= 0) {
+        newDoc = null;
+      }
+      console.dir(newDoc);
+      callback(err, newDoc);
+    }
+  });
+
+}
+
+
+module.exports = {getAllKlasses};
