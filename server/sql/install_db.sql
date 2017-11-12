@@ -25,7 +25,7 @@ USE `school_test`;
 --
 
 CREATE TABLE `klasses` (
-  `id` varchar(50) NOT NULL,
+  `id` varchar(50) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `start_at` date NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE `klasses` (
   `teacher_user_id` varchar(50) DEFAULT NULL,
   `is_active` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=4;
 
 --
 -- Daten für Tabelle `klasses`

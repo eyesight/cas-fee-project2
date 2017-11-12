@@ -11,9 +11,8 @@ const cryptoUtil = require('../util/cryptoUtil');
 
 class KlasseModel extends ModelBase{
 
-  constructor(Id, klasseName, klasseDesc, fromdate, todate, teacherId, isActive){
+  constructor(klasseName, klasseDesc, fromdate, todate, teacherId, isActive){
     super();
-    this.id = Id;
     this.name = klasseName;
     this.description = klasseDesc;
     this.start_at = fromdate;
@@ -28,7 +27,6 @@ function klasseFromJson(req){
   "use strict";
   const r = req.body;
   return new KlasseModel(
-    r.id,
     r.name,
     r.description,
     r.start_at,
@@ -60,8 +58,6 @@ function getAllKlasseData(callback){
               callback(err, newDoc);
             }
           });
-
-
 
 }
 
