@@ -59,7 +59,7 @@ export class ChatService {
           if (error.data.type === 'UnauthorizedError' || error.data.code === 'invalid_token') {
             // redirect user to login page perhaps?
             observer.next('User Token has expired');
-          //  this.router.navigate(['login']);
+            //this.router.navigate(['login'], {queryParams: {returnUrl: state.url}});
 
           }
         }

@@ -7,6 +7,8 @@ const crypto = require('crypto');
 const cryptoUtil = require('../util/cryptoUtil');
 
 
+
+const emailRGX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 class User {
   constructor(email, password){
     this.email = email;
@@ -93,12 +95,20 @@ function updateUser(email, userModel, callback){
     }
   });
 }
-
+// callback(err, res)
+// to reject request res must be false!
 function register(req, callback){
   console.log('dbUSer.register');
   const email = req.body.email;
   const password = req.body.pwd;
-  if(!(email && password)) {  callback(false); }
+  console.log('regex email:result:' + emailRGX.test(email));
+  if(!(email && password)) {  callback(false, false); }
+  if (!emailRGX.test(email)) {
+    console.log('callback:regex email:result:' + emailRGX.test(email));
+
+    callback(400,false);
+    return;
+  }
 
   const user = new User(email, password);
 

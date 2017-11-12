@@ -35,6 +35,10 @@ export class ChatComponent implements OnInit {
     this.messageItemService.load()
       .subscribe((result) => {
         this.message = result;
+        // prevent any empty message to be worked on
+        if ( this.message === null || this.message.length === 0 ){
+          return;
+        }
         this.messageItem = this.message.sort(this.sortFunc)
           .reduce( this.reduceToGroup,  [new MessageItem(new Date)] )  // pass in a new MessageItem with a new date -> today
           .sort(this.sortFuncMi);
@@ -46,7 +50,7 @@ export class ChatComponent implements OnInit {
 
     this.chatAutho = this.messageItemService.authentication();
     this.chatAuthoSub = this.chatAutho.subscribe(res => {console.log('chat.component call authentication:'  + res);
-      this.router.navigate(['login']);
+      this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}});
     });
 
   }

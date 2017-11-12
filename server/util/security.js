@@ -50,7 +50,12 @@ function handleRegister(req,res){
         createSessionToken(req.body.email, req.app.get("jwt-secret"),req.app.get("jwt-sign"),  (token) => res.json(token));
       }
       else{
-        res.status("401").json(false);
+        if (err >= 0 || err != null){
+          res.status(err).json(false);
+        }
+        else {
+          res.status("401").json(false);
+        }
       }
     });
     }
