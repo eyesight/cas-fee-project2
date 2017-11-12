@@ -14,3 +14,7 @@ module.exports.login = function(req, res) {
   util.handleLogin(req, res);
 };
 
+module.exports.getKlasse = function(req, res) {
+  util.getKlasseData();
+};
+

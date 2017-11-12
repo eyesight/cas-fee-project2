@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const dbUser = require('../db/dbUser.js');
+const dbKlasse = require('../db/dbKlasse.js');
 
 function isLoggedIn(req)
 {
@@ -35,7 +36,6 @@ function handleRegister(req,res){
   }
   else {
     console.log('security is req.body:' + req.body.email);
-    //console.dir(req);
     if (!req.body.email || !req.body.pwd)
     {
       console.dir(req);
@@ -85,10 +85,18 @@ function handleLogin(req,res)
     } }
 }
 
+function getKlasseData(req, res)
+{
+  console.log('klassendaten aus security: ' + req);
+  return dbKlasse.doQuery();
+
+}
+
 module.exports = {
     isLoggedIn : isLoggedIn,
     currentUser : currentUser,
     createSessionToken : createSessionToken,
     handleRegister: handleRegister,
-    handleLogin : handleLogin
+    handleLogin : handleLogin,
+    getKlasseData : getKlasseData
 };

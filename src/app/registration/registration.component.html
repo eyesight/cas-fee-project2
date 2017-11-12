@@ -38,7 +38,7 @@ Vorbereitung -> Übertragen in gesamte Form
             <app-show-errors [control]="formAdress"></app-show-errors>
           </div>
           <div class="col-8 zz-form__group">
-            <label class="zz-form__label" for="place">Ort</label>
+            <label class="zz-form__label" for="place">Ort{{getklasse}}</label>
             <input id="place" class="zz-form__input" name="place" type="text" [(ngModel)]="model.place"
                    formControlName="formPlace"
                    [ngClass]="{ 'zz-form__input--error': formPlace.invalid && (formPlace.dirty || formPlace.touched)}">

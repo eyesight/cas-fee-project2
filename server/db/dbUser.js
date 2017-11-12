@@ -1,8 +1,8 @@
 /**
  * Created by awedag on 27.10.17.
  */
-var db=require('./dbconnection'); //reference of dbconnection.js
-var ModelBase = require('./dbModelBase');
+const db=require('./dbconnection'); //reference of dbconnection.js
+const ModelBase = require('./dbModelBase');
 const crypto = require('crypto');
 const cryptoUtil = require('../util/cryptoUtil');
 
@@ -61,8 +61,6 @@ function registerUser(email, passwort, req, updateUserFunc, callback)
 
 
   return db.query("Insert into users ( email, encrypted_password) values(?,?)",[user.email, user.encrypted_password], function(err, newDoc){
-
-
     if(callback){
       const um = UserFromJson(req);
       if(updateUserFunc !== null){
@@ -75,7 +73,7 @@ function registerUser(email, passwort, req, updateUserFunc, callback)
 }
 
 
-function  updateUser(email, userModel, callback){
+function updateUser(email, userModel, callback){
 
   var sf = userModel.mySqlGetUpdateStatement('users'," email='" + email +"'");
   // [user.getClassMembers()].
@@ -134,7 +132,7 @@ function authenticate(email, password, callback){
 //  doc[0].email,
   }*/
 
-function  getUserByEmail(email,callback){
+function getUserByEmail(email,callback){
   console.log('db:'+email);
   return db.query("select encrypted_password, email from users where email=?",[email], function(err, newDoc) {
     if (callback) {
@@ -153,7 +151,7 @@ function  getUserByEmail(email,callback){
 }
 
 
-function  getUserIdByEmail(email,callback){
+function getUserIdByEmail(email,callback){
   console.log('getUserIdByEmail:'+email);
   return db.query("select id, class_id from users where email=?",[email], function(err, newDoc) {
     if (callback) {

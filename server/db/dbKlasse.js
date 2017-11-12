@@ -2,8 +2,8 @@
  * Created by awedag on 01.11.17.
  */
 
-var db=require('./dbconnection'); //reference of dbconnection.js
-var ModelBase = require('./dbModelBase');
+const db=require('./dbconnection'); //reference of dbconnection.js
+const ModelBase = require('./dbModelBase');
 const crypto = require('crypto');
 const cryptoUtil = require('../util/cryptoUtil');
 
@@ -11,51 +11,82 @@ const cryptoUtil = require('../util/cryptoUtil');
 
 class KlasseModel extends ModelBase{
 
-  constructor(name, description, fromdate, todate, teacherId){
+  constructor(klasseId, klasseName, klasseDesc, fromdate, todate, teacherId, isActive){
     super();
-    this.id = null;
-    this.name = name;
-    this.description = description;
+    this.klasse_id = klasseId;
+    this.name = klasseName;
+    this.description = klasseDesc;
     this.start_at = fromdate;
     this.end_at = todate;
-    this.teacher_id = teacherId;
-    this.is_active = 1;
+    this.teacher_user_id = teacherId;
+    this.is_active = isActive;
   }
 }
 
 // create a user-object from a json-string
-function KlasseFromJson(req){
+function klasseFromJson(req){
   "use strict";
-  var r = req.body;
-  return new UserModel(
+  const r = req.body;
+  return new KlasseModel(
+    r.klasse_id,
     r.name,
     r.description,
-    r.fromdate,
-    r.todate,
-    r.teacherId
+    r.start_at,
+    r.end_at,
+    r.teacher_user_id,
+    r.is_active
   );
 
 }
 
-function getAllKlasses(username, callback){
-
-  console.log('getallMessage:+'+username);
-
-  const c = new KlasseModel();
-  const sf = c.mySqlGetSelectStatement('klasses');
-  return db.query(sf,null, function (err, newDoc) {
-    console.dir(newDoc);
-
-    if (callback) {
-      if (newDoc.length <= 0) {
-        newDoc = null;
-      }
-      console.dir(newDoc);
-      callback(err, newDoc);
-    }
-  });
-
+function klasseData(req)
+{
+  return req;
 }
 
+function getAllKlasseData(callback){
 
-module.exports = {getAllKlasses};
+    if (err) {
+      callback(err, doc);
+    }
+    else {
+      if (!doc) {
+        callback(err, doc);
+      }
+      else {
+        if (doc[0].class_id){
+          console.log('answer4');
+
+          const c = new KlasseModel();
+          const sf = c.mySqlGetSelectStatement('klasses', 'class_id = ?');
+          //console.log('getallMEssages:'+sf);
+          return db.query(sf, [doc[0].class_id], function (err, newDoc) {
+            console.dir(newDoc);
+
+            if (callback) {
+              if (newDoc.length <= 0) {
+                newDoc = null;
+              }
+              callback(err, newDoc);
+            }
+          });
+        }
+      }
+  }
+}
+
+//database testquery
+function doQuery() {
+  var gg = new KlasseModel(99,'a','a','a','a','a',1);
+  var ggg = Object.keys(gg);
+  let sql = "SELECT * FROM klasses";
+
+  console.log(sql);
+  return  db.query(sql, function (err, result, fields) {
+    if (err) throw err;
+    console.log(result);
+    });
+}
+module.exports = {
+  doQuery: doQuery
+};
