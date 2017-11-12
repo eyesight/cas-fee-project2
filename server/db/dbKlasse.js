@@ -11,9 +11,9 @@ const cryptoUtil = require('../util/cryptoUtil');
 
 class KlasseModel extends ModelBase{
 
-  constructor(klasseId, klasseName, klasseDesc, fromdate, todate, teacherId, isActive){
+  constructor(Id, klasseName, klasseDesc, fromdate, todate, teacherId, isActive){
     super();
-    this.klasse_id = klasseId;
+    this.id = Id;
     this.name = klasseName;
     this.description = klasseDesc;
     this.start_at = fromdate;
@@ -28,7 +28,7 @@ function klasseFromJson(req){
   "use strict";
   const r = req.body;
   return new KlasseModel(
-    r.klasse_id,
+    r.id,
     r.name,
     r.description,
     r.start_at,
@@ -46,21 +46,11 @@ function klasseData(req)
 
 function getAllKlasseData(callback){
 
-    if (err) {
-      callback(err, doc);
-    }
-    else {
-      if (!doc) {
-        callback(err, doc);
-      }
-      else {
-        if (doc[0].class_id){
-          console.log('answer4');
-
+  console.log('getklasse from db');
           const c = new KlasseModel();
-          const sf = c.mySqlGetSelectStatement('klasses', 'class_id = ?');
+          const sf = c.mySqlGetSelectStatement('klasses');
           //console.log('getallMEssages:'+sf);
-          return db.query(sf, [doc[0].class_id], function (err, newDoc) {
+          return db.query(sf, function (err, newDoc) {
             console.dir(newDoc);
 
             if (callback) {
@@ -70,9 +60,9 @@ function getAllKlasseData(callback){
               callback(err, newDoc);
             }
           });
-        }
-      }
-  }
+
+
+
 }
 
 //database testquery
@@ -88,5 +78,6 @@ function doQuery() {
     });
 }
 module.exports = {
-  doQuery: doQuery
+  doQuery: doQuery,
+  getAllKlasseData: getAllKlasseData
 };

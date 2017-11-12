@@ -160,6 +160,9 @@ export class RegistrationComponent implements OnInit {
   }
 
   getklasse() {
-    return this.userService.showKlasses();
+    return this.userService.showKlasses()
+      .subscribe((result) => {
+      console.log('result async');
+      });
   }
 }

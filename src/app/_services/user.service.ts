@@ -27,9 +27,12 @@ export class UserService {
     return this.http.delete(appConfig.apiUrl + '/api/users/' + id, this.jwt()).map((response: Response) => response.json());
   }
 
-  showKlasses() {
-    console.log('getClasses user.service' + appConfig.apiUrl + '/klasse');
-      return this.http.get(appConfig.apiUrl + '/klasse', this.jwt()).map((response: Response) => response.json());
+  public showKlasses() {
+    console.log('getClasses user.service:' + appConfig.apiUrl + '/klasse');
+      return this.http
+        //.get(appConfig.apiUrl + '/api/chat/getall')
+        .get(appConfig.apiUrl + '/klasse')
+        .map((response: Response) => {console.log('coming?'); response.json();});
   }
 
   // private helper methods
