@@ -43,9 +43,13 @@ module.exports.chat = function(io)
       //callback("Message recieved!", socket.decoded_token.name);
       //socket.handshake.query.userName);
       let name = socket.handshake.query.userName;
+      console.log('sioet:' + socket.handshake.query.userName);
       let sockectObj = {name, msg}
+      msg.email = socket.decoded_token.name;
       // io.emit('broadcastToAll_chatMessage', sockectObj);
-      io.emit('broadcastToAll_chatMessage', msg);
+      console.dir('chat message forwarding:',msg);
+    //  io.emit('broadcastToAll_chatMessage', msg);
+      socket.broadcast.emit('broadcastToAll_chatMessage', msg);
     });
   });
 }
