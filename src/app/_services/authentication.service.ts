@@ -72,8 +72,7 @@ export class AuthenticationService {
 
   logout() {
     // remove user from local storage to log user out
-    // TODO: Solve Bug https://github.com/angular/angular/issues/17572
-    this.isLoggedin = false;
+    setTimeout(() => this.isLoggedin = false, 50);
     localStorage.removeItem('currentUser');
   }
 
