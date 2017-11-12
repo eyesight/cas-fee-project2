@@ -87,7 +87,7 @@ CREATE TABLE `chat` (
   `class_id` varchar(255),
   `email` varchar(255),
   `message` text NOT NULL,
-  `sent_at` date NOT NULL,
+  `sent_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
 )  ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 

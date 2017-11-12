@@ -8,7 +8,26 @@ var ModelBase = require('./dbModelBase');
 var dbUser = require('./dbUser');
 const crypto = require('crypto');
 const cryptoUtil = require('../util/cryptoUtil');
+var moment = require('moment');
 
+const dateZero = new Date("0000-00-00");
+
+
+function twoDigits(d) {
+  if(0 <= d && d < 10) return "0" + d.toString();
+  if(-10 < d && d < 0) return "-0" + (-1*d).toString();
+  return d.toString();
+}
+
+/**
+ * …and then create the method to output the date string as desired.
+ * Some people hate using prototypes this way, but if you are going
+ * to apply this to more than one Date object, having it as a prototype
+ * makes sense.
+ **/
+Date.prototype.toMysqlFormat = function() {
+  return this.getUTCFullYear() + "-" + twoDigits(1 + this.getUTCMonth()) + "-" + twoDigits(this.getUTCDate()) + " " + twoDigits(this.getUTCHours()) + ":" + twoDigits(this.getUTCMinutes()) + ":" + twoDigits(this.getUTCSeconds());
+};
 
 class ChatModel extends ModelBase{
 
@@ -20,6 +39,10 @@ class ChatModel extends ModelBase{
     this.email = email;
     this.message = message;
     this.sent_at = sendAt;
+    //this.sent_at = new Date(sendAt).toISOString().slice(0, 19).replace('T', ' ');
+    //this.sent_at = require('moment')(sendAt).format('YYYY-MM-DD HH:mm:ss');
+    console.log('origindate:'+sendAt+'.date:' + moment(new Date(sendAt)).format('YYYY-MM-DD HH:mm:ss'));
+      //new Date(sendAt).toISOString().slice(0, 19).replace('T', ' '));
   }
 }
 
@@ -55,11 +78,15 @@ function insertMessage(email, req, callback){
 
     console.dir(req);
     const userId = doc[0].id;
-    const classId = doc[0].classId;
+    const classId = doc[0].class_id;
     chatModel.user_id = userId;
     chatModel.email = email;
     chatModel.class_id = classId;
+    console.log('sent_at:'+chatModel.sent_at);
     if (!chatModel.sent_at){
+      chatModel.sent_at = Date.now();
+    }
+    else if (chatModel.sent_at === dateZero){
       chatModel.sent_at = Date.now();
     }
 

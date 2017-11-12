@@ -24,10 +24,6 @@ export class ChatService {
   public userName: string;
   public mm: string;
   private url = 'localhost:3020';
-  private testbearer = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9' +
-    '.eyJuYW1lIjoiTmV1ZXJVU0VyVXNlcjEyMzg4MkFAZXhhbXBsLmNvbSIsImlhdCI6MTUwOTU2MDcxNywi' +
-    'ZXhwIjoxNTEwMTY1NTE3LCJhdWQiOiJzZWxmIiwiaXNzIjoic2Nob29sIn0' +
-    '.AY2BgNdczwQKzjsKAkO4oqWTdqLC_f6UKTVYYTXKM5Y';
 
   // see https://www.dev6.com/Angular2-WebSockets
   // TODO: handle dis/reconnect
@@ -102,7 +98,9 @@ export class ChatService {
     console.log('msg:' + msg);
     const messageJson = new MessageJson();
     messageJson.message = msg;
-    messageJson.sent_at = Date.now().toString();
+   // var d = Date.now();
+   // d.
+    messageJson.sent_at = (new Date()).toJSON();
     const reference = this;
     console.log('send message :' + msg);
     this.socket.emit('chatMessageToSocketServer', messageJson, function(respMsg, username){

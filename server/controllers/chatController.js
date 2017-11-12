@@ -20,7 +20,6 @@ module.exports.chat = function(io)
     handshake: true
   }));
 
-
   io.on('connection', function (socket) {
     console.log('a user connected');
     //console.log(socket.handshake.decoded_token.name, 'connected');
@@ -48,9 +47,7 @@ module.exports.chat = function(io)
       // io.emit('broadcastToAll_chatMessage', sockectObj);
       io.emit('broadcastToAll_chatMessage', msg);
     });
-
   });
-
 }
 
 module.exports.getMessages = function(req, res){

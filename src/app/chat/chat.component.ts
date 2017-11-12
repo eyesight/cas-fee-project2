@@ -40,9 +40,9 @@ export class ChatComponent implements OnInit {
           .sort(this.sortFuncMi);
       });
 
-
+    // read message from observable and subscribe to this chatstream to add them to the UI
     this.chatStream = this.messageItemService.readMessages();
-    this.chatSub = this.chatStream.subscribe(res => this.addMessageFakeUser(res));
+    this.chatSub = this.chatStream.subscribe(res => this.addMessage(res));
 
     this.chatAutho = this.messageItemService.authentication();
     this.chatAuthoSub = this.chatAutho.subscribe(res => {console.log('chat.component call authentication:'  + res);
@@ -74,13 +74,13 @@ export class ChatComponent implements OnInit {
     nm.sent_at = d;
     this.addMessage(nm);
   }
-  public addMessage(newText: MessageJson){
-    console.log('addMessage: ' + newText.message);
+  public addMessage(messageJson: MessageJson){
+    console.log('addMessage: ' + messageJson.message);
     if (this.message) {
-      this.message = [...this.message, newText];
+      this.message = [...this.message, messageJson];
     }
     else {
-      this.message = [newText];
+      this.message = [messageJson];
     }
     //this.messageItem = this.reduceToGroup(this.messageItem, newText);
     this.messageItem = this.message.sort(this.sortFunc)
@@ -89,7 +89,9 @@ export class ChatComponent implements OnInit {
   }
 
   public onSend(newMessage: MessageJson) {
-
+    console.log('onSend');
+    console.dir(newMessage);
+    newMessage.email =  this.authService.getCurrentUsername();
     this.addMessage(newMessage);
     this.messageItemService.sendMessage(newMessage.message);
 

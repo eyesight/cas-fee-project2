@@ -76,7 +76,7 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
   }
 
-  getCurrentUserJwt(): UserAuth {
+  getCurrentUserJwt(): string {
    // if (this.isLoggedin) {
       const userItem = localStorage.getItem('currentUser');
       console.dir(userItem);
@@ -91,5 +91,22 @@ export class AuthenticationService {
         // console.dir(userAuth);
         return userAuth.token;
       }
+  }
+
+  getCurrentUsername(): string {
+    // if (this.isLoggedin) {
+    const userItem = localStorage.getItem('currentUser');
+    console.dir(userItem);
+    if (userItem !== 'undefined') {
+      const userAuth = JSON.parse(userItem);
+      if (!userAuth) {
+        console.log('userAuth is null');
+        return null;
+      } else {
+        console.log('usermail:' + userAuth.email);
+      }
+      // console.dir(userAuth);
+      return userAuth.email;
+    }
   }
 }
