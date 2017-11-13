@@ -7,6 +7,7 @@
 const socketioJwt = require('socketio-jwt');
 const cryptoUtil = require('../util/cryptoUtil');
 const dbChat = require('../db/dbChat');
+const dbUser = require('../db/dbUser');
 
 module.exports.chat = function(io)
 {
@@ -29,33 +30,42 @@ module.exports.chat = function(io)
     console.log('hello! ', socket.decoded_token.name);
     const email = socket.decoded_token.name;
 
+    dbUser.getClassIdByEmail(email, function (err, classId) {
 
-    // socket.on('disconnect', function(){
-    //     console.log('user disconnected');
-    // });
+        if (err) {
+          console.log('thats not good: getClassIdByEmail Failed:' + err);
+        }
+        console.log('getClassIdByEmail:' + classId);
+        socket.join(classId);
+      // socket.on('disconnect', function(){
+      //     console.log('user disconnected');
+      // });
 
-    socket.on('klasse', function(room) {
-      console.log('join klasse:' + room);
-      socket.join('mymyroom');
+    //  socket.on('klasse', function (room) {
+    //    console.log('join klasse:' + room);
+    //    socket.join('mymyroom');
+//
+  //    });
+      socket.on('chatMessageToSocketServer', function (msg, callback) {
+        console.log('message received:' + msg +  ':classRoom:' + classId);
 
-    });
-    socket.on('chatMessageToSocketServer', function (msg, callback) {
-      console.log('message received:' + msg);
-
-      // this is the callback
-      dbChat.insertMessage(email, msg, () => {"Message recieved!", socket.decoded_token.name} );
-      //callback("Message recieved!", socket.decoded_token.name);
-      //socket.handshake.query.userName);
-      let name = socket.handshake.query.userName;
-      console.log('sioet:' + socket.handshake.query.userName);
-      let sockectObj = {name, msg}
-      msg.email = socket.decoded_token.name;
-      // io.emit('broadcastToAll_chatMessage', sockectObj);
-      console.dir('chat message forwarding:',msg);
-    //  io.emit('broadcastToAll_chatMessage', msg);
-     // const rooms = io.sockets.manager  roo[socket.id];
-      console.dir(socket);
-      socket.broadcast.emit('broadcastToAll_chatMessage', msg);
+        // this is the callback
+        dbChat.insertMessage(email, msg, () => {
+          "Message recieved!", socket.decoded_token.name
+        });
+        //callback("Message recieved!", socket.decoded_token.name);
+        //socket.handshake.query.userName);
+        let name = socket.handshake.query.userName;
+        console.log('sioet:' + socket.handshake.query.userName);
+        let sockectObj = {name, msg}
+        msg.email = socket.decoded_token.name;
+        // io.emit('broadcastToAll_chatMessage', sockectObj);
+        //console.dir('chat message forwarding:', msg);
+        //  io.emit('broadcastToAll_chatMessage', msg);
+        // const rooms = io.sockets.manager  roo[socket.id];
+        //console.dir(socket);
+        socket.broadcast.to(classId).emit('broadcastToAll_chatMessage', msg);
+      });
     });
   });
 }
