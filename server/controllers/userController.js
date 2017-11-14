@@ -1,15 +1,22 @@
 /**
  * Created by awedag on 27.10.17.
  */
-const store = require("../db/dbUser");
+const dbUser = require("../db/dbUser");
 const util = require("../util/security");
 
 
 module.exports.updateUser = function(req, res){
     console.log('req.user.name :' + req.user.name);
-    store.updateUser(req.user.name,  store.UserFromJson(req), function(err, user) {
+    dbUser.updateUser(req.user.name,  dbUser.UserFromJson(req), function(err, user) {
         res.json(user);
     });
+};
+
+module.exports.getAllUserDetails = function(req, res){
+  console.log('getAllUserDetails:req.user.name :' + req.user.name);
+  dbUser.getAllUserDetails(req.user.name,  function(err, user) {
+    res.json(user);
+  });
 };
 
 
@@ -30,14 +37,14 @@ module.exports.createUser = function(req, res)
 }; */
 
 module.exports.showUser = function(req, res){
-    store.getUserById(req.params.id, util.currentUser(req), function(err, order) {
+    dbUser.getUserById(req.params.id, util.currentUser(req), function(err, order) {
         res.json(order);
     });
 };
 
 module.exports.deleteUser =  function (req, res)
 {
-    store.deleteUser(  req.params.id, util.currentUser(req), function(err, order) {
+    dbUser.deleteUser(  req.params.id, util.currentUser(req), function(err, order) {
         res.json(order);
     });
 };
