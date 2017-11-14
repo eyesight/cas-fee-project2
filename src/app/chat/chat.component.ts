@@ -1,7 +1,7 @@
 /**
  * Created by awedag on 12.10.17.
  */
-import { Component, OnInit, ElementRef } from '@angular/core';
+import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { ChatService } from '../_services/chat.service';
 import { MessageItem, MessageJson} from '../_models/message.model';
@@ -24,6 +24,7 @@ export class ChatComponent implements OnInit {
   private chatSub: Subscription;
   private chatAutho: Observable<any>;
   private chatAuthoSub: Subscription;
+  @ViewChild('scrollBottom') private scrollBottom: ElementRef;
 
   constructor( private messageItemService: ChatService
     , private el: ElementRef
@@ -31,7 +32,7 @@ export class ChatComponent implements OnInit {
     , private authService: AuthenticationService) { }
 
   ngOnInit() {
-    console.log('ngOnInit in chatcOmponetn');
+
     this.messageItemService.load()
       .subscribe((result) => {
         this.message = result;
@@ -91,14 +92,19 @@ export class ChatComponent implements OnInit {
       .reduce( this.reduceToGroup,  [new MessageItem(new Date)] )  // pass in a new MessageItem with a new date -> today
       .sort(this.sortFuncMi);
   }
-
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
   public onSend(newMessage: MessageJson) {
-    console.log('onSend');
-    console.dir(newMessage);
     newMessage.email =  this.authService.getCurrentUsername();
     this.addMessage(newMessage);
     this.messageItemService.sendMessage(newMessage.message);
 
+  }
+  private scrollToBottom(): void {
+    try {
+      this.scrollBottom.nativeElement.scrollTop = this.scrollBottom.nativeElement.scrollHeight;
+    } catch(err) { }
   }
   private reduceToGroup(mia, x): MessageItem[] {
 
