@@ -37,9 +37,10 @@ module.exports.chat = function(io)
         }
         console.log('getClassIdByEmail:' + classId);
         socket.join(classId);
-      // socket.on('disconnect', function(){
-      //     console.log('user disconnected');
-      // });
+       socket.on('disconnect', function(){
+           console.log('user disconnected');
+           socket.leave(classId);
+       });
 
     //  socket.on('klasse', function (room) {
     //    console.log('join klasse:' + room);
