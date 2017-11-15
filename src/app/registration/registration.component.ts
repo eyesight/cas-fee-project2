@@ -8,8 +8,9 @@ import {
   Validators,
   AbstractControlDirective
 } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
 import {CustomValidators} from '../_validation/custom.validators';
-
+import { Klasse } from '../_models/klasse.model';
 
 import {AlertService, UserService} from '../_services/index';
 
@@ -19,23 +20,15 @@ import {AlertService, UserService} from '../_services/index';
 })
 export class RegistrationComponent implements OnInit {
   model: any = {};
-  klassenModel: any = {};
   loading = false;
   registrationForm: FormGroup;
-
-  public gender: Array<{ content: string, label: string, labelChild: string }> = [
-    {content: 'w', label: 'Frau', labelChild: 'Mädchen'},
-    {content: 'm', label: 'Herr', labelChild: 'Junge'}];
 
   public languages: Array<{ content: string, label: string }> = [
     {content: 'de', label: 'Deutsch'},
     {content: 'fr', label: 'Französisch'},
     {content: 'en', label: 'Englisch'}];
 
-  public klasses: Array<{ id: number, name: string }> = [
-    {id: 1, name: 'XYZ'},
-    {id: 2, name: 'jkj'},
-    {id: 3, name: 'sdfsdf'}];
+  public klasses: Array<{ id: number, description: string }>;
 
   constructor(private router: Router,
               private userService: UserService,
@@ -68,9 +61,8 @@ export class RegistrationComponent implements OnInit {
         confirmPassword: ['', [Validators.required]]
       }, {validator: Validators.compose([CustomValidators.matcher('formPassword', 'confirmPassword')])})
     });
-    let x = this.getklasse();
-    console.log(x);
-  }
+    this.getklasse();
+}
 
   get formPFirstname() {
     return this.registrationForm.get('formPFirstname');
@@ -162,7 +154,7 @@ export class RegistrationComponent implements OnInit {
   getklasse() {
     return this.userService.showKlasses()
       .subscribe((result) => {
-      console.log('result async');
+      this.klasses = result;
       });
   }
 }

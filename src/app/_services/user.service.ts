@@ -30,9 +30,8 @@ export class UserService {
   public showKlasses() {
     console.log('getClasses user.service:' + appConfig.apiUrl + '/klasse');
       return this.http
-        //.get(appConfig.apiUrl + '/api/chat/getall')
         .get(appConfig.apiUrl + '/klasse')
-        .map((response: Response) => {console.log('coming?'); response.json();});
+        .map((response: Response) => response.json());
   }
 
   // private helper methods

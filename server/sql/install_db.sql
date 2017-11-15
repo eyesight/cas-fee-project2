@@ -25,7 +25,7 @@ USE `school_test`;
 --
 
 CREATE TABLE `klasses` (
-  `id` varchar(50) NOT NULL AUTO_INCREMENT,
+  `id` int(50) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `start_at` date NOT NULL,
@@ -56,6 +56,7 @@ CREATE TABLE `users` (
   `user_name` varchar(255) DEFAULT NULL,
   `parent_surname` varchar(255) DEFAULT NULL,
   `parent_forename` varchar(255) DEFAULT NULL,
+  `parent_gender` varchar(1) DEFAULT 'm',
   `child_surname` varchar(255) DEFAULT NULL,
   `child_forename` varchar(255) DEFAULT NULL,
   `child_gender` varchar(1) DEFAULT 'm',
@@ -73,9 +74,9 @@ CREATE TABLE `users` (
 -- Daten für Tabelle `users`
 --
 
-INSERT INTO `users` VALUES(1, '1', 'hansli@example.com', '$2a$11$k8EkgulVtkQxuD8Jt.xyUeg1wNKivBHbluVyI98vnFpt9.SJsx1XK', 'Hansli', 'Schneider', 'Johann', 'Schneider', 'Hansli', 'm', '2010-10-09', 'Langstrasse 18', '8000', 'Zürich', 0, 1);
-INSERT INTO `users` VALUES(2, '1', 'heidi@example.com', '$2a$11$k8EkgulVtkQxuD8Jt.xyUeg1wNKivBHbluVyI98vnFpt9.SJsx1XK', 'Heidi', 'Mueller', 'Johann', 'Schneider', 'Heidi', 'm', '2017-09-10', 'Langstrasse 18', '8000', 'Zürich', 0, 1);
-INSERT INTO `users` VALUES(3, '12', 'NewTestUser123882A@exampl.com', '1ef9b6940d94bd487559e7ca4efd9e1a8b27ac9f920b67e3838f99b23e742ad7', 'nice USEreNAme', 'Blass', 'bl', 'adlöfjk', 'adsf', 'm', '1999-10-10', 'HAldenstrasse', '8000', 'Zürich', 0, 1);
+INSERT INTO `users` VALUES(1, '1', 'hansli@example.com', '$2a$11$k8EkgulVtkQxuD8Jt.xyUeg1wNKivBHbluVyI98vnFpt9.SJsx1XK', 'Hansli', 'Schneider', 'Johann', 'm', 'Schneider', 'Hansli', 'm', '2010-10-09', 'Langstrasse 18', '8000', 'Zürich', 0, 1);
+INSERT INTO `users` VALUES(2, '1', 'heidi@example.com', '$2a$11$k8EkgulVtkQxuD8Jt.xyUeg1wNKivBHbluVyI98vnFpt9.SJsx1XK', 'Heidi', 'Mueller', 'Johann', 'w', 'Schneider', 'Heidi', 'm', '2017-09-10', 'Langstrasse 18', '8000', 'Zürich', 0, 1);
+INSERT INTO `users` VALUES(3, '12', 'NewTestUser123882A@exampl.com', '1ef9b6940d94bd487559e7ca4efd9e1a8b27ac9f920b67e3838f99b23e742ad7', 'nice USEreNAme', 'Blass', 'bl', 'm', 'adlöfjk', 'adsf', 'm', '1999-10-10', 'HAldenstrasse', '8000', 'Zürich', 0, 1);
 
 -- DATEN für CHAT
 

@@ -93,7 +93,7 @@ function handleLogin(req,res)
 function getKlasseData(req, res)
 {
   console.log('klassendaten aus security: ' + req);
-  return dbKlasse.doQuery();
+  return dbKlasse.getAllKlasseData();
 
 }
 
