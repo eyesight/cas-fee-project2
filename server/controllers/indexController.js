@@ -11,6 +11,7 @@ module.exports.register = function(req, res) {
 
 
 module.exports.login = function(req, res) {
+  console.log('login');
   util.handleLogin(req, res);
 };
 

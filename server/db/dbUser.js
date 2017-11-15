@@ -124,7 +124,7 @@ function authenticate(email, password, callback){
 
   this.getUserByEmail( email , function (err, doc) {
     if( (doc === null ) && !err){
-      callback('401', 'unauthorized');
+      callback('401', false);
     }
     else {
       var pwd = cryptoUtil.hashPwd(password);

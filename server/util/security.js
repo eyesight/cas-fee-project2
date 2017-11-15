@@ -79,7 +79,8 @@ function handleLogin(req,res)
       }
       else  {
         dbUser.authenticate(req.body.email, req.body.pwd, function (err, valid) {
-            if (valid) {
+          console.log('is valid:' + valid)
+;            if (valid) {
                 createSessionToken(req.body.email, req.app.get("jwt-secret"),req.app.get("jwt-sign"),  (token) => res.json(token));
             }
             else{

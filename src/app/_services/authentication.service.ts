@@ -62,7 +62,7 @@ export class AuthenticationService {
           localStorage.setItem('currentUser', JSON.stringify(userAuth));
          // const userItem = localStorage.getItem('currentUser');
          // const userAuth2 = JSON.parse(userItem);
-         // console.log('userAuthemail:' + userAuth2.token);
+          console.log('userAuthemail:');
           this.isLoggedin = true;
         }
 
