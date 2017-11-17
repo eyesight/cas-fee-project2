@@ -77,5 +77,8 @@
   &__message-label{
     float: left;
   }
+  &__message-text {
+    word-break: break-all;
+  }
 
 }

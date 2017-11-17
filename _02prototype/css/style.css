@@ -5916,6 +5916,9 @@ html {
 .zz-chat__message-label {
   float: left; }
 
+.zz-chat__message-text {
+  word-break: break-all; }
+
 .zz-logo {
   height: 100px; }
   .zz-logo__img {

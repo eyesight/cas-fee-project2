@@ -1,10 +1,9 @@
 #Backend
 
 **Andy:**:
-- ...
-- ...
+- change to ./server 
+- follow those readme instructions 
 
-..........
 
 
 
