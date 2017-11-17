@@ -79,8 +79,9 @@
   }
 
   &__message-text {
-    word-break: break-all;
-    white-space: normal;
+    white-space:pre-wrap;
+    word-wrap:break-word;
+
   }
 
 }
