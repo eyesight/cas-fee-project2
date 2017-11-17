@@ -1,18 +1,15 @@
 <div class="zz-chat__window">
 
   <div class="zz-chat__sender">
-    <p class="zz-chat__sender-text"><span class="zz-chat__txt-item ">Ich</span><span
+    <p appTextareaAutosize class="zz-chat__sender-text"><span class="zz-chat__txt-item ">Ich</span><span
       class="zz-chat--line-right"></span><span
       class="zz-chat__txt-item">Klasse XYZ</span></p>
 
   </div>
-  <form>
-    <label class="zz_chat__message-label" for="fname">Message</label>
-    <input class="zz-chat__message-input" type="text" id="fname" name="fname"
-           placeholder=".... " autofocus #messageText>
-
-
-
+  <form (keydown)="keyDownFunction($event)" >
+    <label class="zz_chat__message-label" >Message</label>
+    <textarea class="zz-chat__message-input" type="text" appTextareaAutosize
+           placeholder="..." autofocus #messageText></textarea>
   </form>
   <div class="clearfix">
     <button class="float-right zz-btn-small zz-btn--primary" (click)="onSend(messageText.value)">

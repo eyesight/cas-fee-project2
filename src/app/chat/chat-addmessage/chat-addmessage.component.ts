@@ -1,4 +1,5 @@
-import {Component, EventEmitter, OnInit, Output, ViewChild, ElementRef } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild, ElementRef } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Message, MessageJson } from '../../_models/message.model';
 
 
@@ -24,4 +25,16 @@ export class ChatAddmessageComponent implements OnInit {
     this.messageText.nativeElement.value = '';
   }
 
+  public  onSubmit( event: Event) {
+    event.preventDefault();
+  }
+  keyDownFunction(event) {
+    if(event.keyCode === 13) {
+      // AngularBug: prevent to reload the page on Enter
+
+
+      // rest of your code
+      // this.messageText.nativeElement.value = this.messageText.nativeElement.value + 13;
+    }
+  }
 }

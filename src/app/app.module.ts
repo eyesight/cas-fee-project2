@@ -22,6 +22,7 @@ import { AuthGuard } from './_guards/auth.guards';
 import { AlertService, AuthenticationService, UserService } from './_services/index';
 import { AlertComponent } from './_directives/alert/alert.component';
 import { ShowErrorsComponent } from './_directives/show-errors/show-errors.component';
+import { DirectivesModule } from './_directives/directives.module';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { ShowErrorsComponent } from './_directives/show-errors/show-errors.compo
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    DirectivesModule,
     // injecst Http to any service
     HttpModule
   ],

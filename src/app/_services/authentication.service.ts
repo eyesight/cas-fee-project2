@@ -54,7 +54,7 @@ export class AuthenticationService {
         // response.json();
 
         console.log('userAuth ist :' + userAuth.email);
-        console.dir(userAuth);
+       // console.dir(userAuth);
 
         if (user && user.token) {
           // console.log(user.token);
@@ -79,14 +79,14 @@ export class AuthenticationService {
   getCurrentUserJwt(): string {
    // if (this.isLoggedin) {
       const userItem = localStorage.getItem('currentUser');
-      console.dir(userItem);
+      //console.dir(userItem);
       if (userItem !== 'undefined') {
         const userAuth = JSON.parse(userItem);
         if (!userAuth) {
-          console.log('userAuth is null');
+          console.log('userAuth is null -> return null');
           return null;
         } else {
-          console.log('userAuthemail:' + userAuth.token);
+       //   console.log('userAuthemail:' + userAuth.token);
         }
         // console.dir(userAuth);
         return userAuth.token;
@@ -96,14 +96,14 @@ export class AuthenticationService {
   getCurrentUsername(): string {
     // if (this.isLoggedin) {
     const userItem = localStorage.getItem('currentUser');
-    console.dir(userItem);
+   // console.dir(userItem);
     if (userItem !== 'undefined') {
       const userAuth = JSON.parse(userItem);
       if (!userAuth) {
         console.log('userAuth is null');
         return null;
       } else {
-        console.log('usermail:' + userAuth.email);
+     //   console.log('usermail:' + userAuth.email);
       }
       // console.dir(userAuth);
       return userAuth.email;
