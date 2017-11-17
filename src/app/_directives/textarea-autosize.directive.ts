@@ -9,8 +9,8 @@ import { Directive, HostListener, Renderer, ElementRef } from '@angular/core';
 })
 export class AppTextareaAutosizeDirective {
   private static textAreaName = 'TEXTAREA';
-
-
+  private static keyEnter = 13;
+  private static keyBackspace = 8;
 
   constructor(
     private renderer: Renderer,
@@ -32,30 +32,25 @@ export class AppTextareaAutosizeDirective {
      }
    // does only really makes sense then we have CRLF or Backspace
     // certainly this cannot prevent pasting from clipboard
-    if (event.keyCode === 13 || event.keyCode === 8 ) {
+    if (event.keyCode === AppTextareaAutosizeDirective.keyEnter || event.keyCode === AppTextareaAutosizeDirective.keyBackspace ) {
       // preventDefault is necessary in case you type Enter in a input field -> it causes to reload the page
       // - ugly - can also happen
       // textare doesnt have the problem
-      //event.preventDefault();
+      // event.preventDefault();
 
+      // find CRLF and count then to calc amount of rows in textarea
     const str: string =  this.el.nativeElement.value + '.';
      let crlfCount: number =  str.split('')
-        .filter(x => x.codePointAt(0) === 10 )
+        .filter(x => x.codePointAt(0) === AppTextareaAutosizeDirective.keyEnter )
         .length;
 
-     if (event.keyCode === 13) {
+     if (event.keyCode === AppTextareaAutosizeDirective.keyEnter) {
        crlfCount = crlfCount + 1;
      }
      // adjust number of rows of textarea
       this.el.nativeElement.rows = crlfCount + 2;
-
-
     }
-    // console.dir(event);
-    console.log('keyEnter:' + event.charCode + 'keyCode:' + event.keyCode);
-
   }
-  // private onTypingHandler(event: KeyboardEvent){
 
 
 }
