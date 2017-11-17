@@ -29,6 +29,12 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
 - TODO: localStorage operationen in separates file: storage.service.ts
 -> AW:
 
+- TODO:  Chat
+    Styling and Menubar
+    implement userDetails und Klassenamen  etc. im Heade
+    Auto Scroll und scrollin innerhalb chat fesnter 
+ -> AW:  
+
 #TO CHECK
 - TOCHECK: Prototype fertigstellen übernehmen ins NG (Module Nav, - ohne links soweit, Footer...)
 -> CF: 12.10

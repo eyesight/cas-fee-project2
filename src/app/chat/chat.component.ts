@@ -106,6 +106,11 @@ export class ChatComponent implements OnInit {
       this.scrollBottom.nativeElement.scrollTop = this.scrollBottom.nativeElement.scrollHeight;
     } catch(err) { }
   }
+
+  private textAreaAdjust(){
+    this.textArea.style.height = 'auto';
+    this.textArea.style.height = this.textArea.scrollHeight + 'px';
+  }
   private reduceToGroup(mia, x): MessageItem[] {
 
     const mi = mia.find(t => t.dateGroup.toDateString() === new Date(x.sent_at).toDateString());
