@@ -9,7 +9,7 @@
   <form (keydown)="keyDownFunction($event)" >
     <label class="zz_chat__message-label" >Message</label>
     <textarea class="zz-chat__message-input" type="text" appTextareaAutosize
-           placeholder="..." autofocus #messageText></textarea>
+           placeholder="..." autofocus #messageText  ></textarea>
   </form>
   <div class="clearfix">
     <button class="float-right zz-btn-small zz-btn--primary" (click)="onSend(messageText.value)">

@@ -1,56 +1,54 @@
 /**
  * Created by awedag on 17.11.17.
  */
-import { Directive, HostListener, Renderer, ElementRef } from '@angular/core';
+import { ElementRef, HostListener, Directive} from '@angular/core';
 
-
+const MAX_LOOKUP_RETRIES = 5;
+const TEXTAREA_NAME = 'TEXTAREA';
 @Directive({
   selector: '[appTextareaAutosize]'
 })
+
 export class AppTextareaAutosizeDirective {
-  private static textAreaName = 'TEXTAREA';
-  private static keyEnter = 13;
-  private static keyBackspace = 8;
 
-  constructor(
-    private renderer: Renderer,
-    private el: ElementRef
-  ) {
-    console.log('AppTextareaAutosizeDirective:constructor called');
+  private retries: number = 0;
+  private textAreaEl: any;
+  constructor(public element: ElementRef) {
+    if (this.element.nativeElement.tagName !== TEXTAREA_NAME) {
+      this._findNestedTextArea();
+
+    } else {
+      this.textAreaEl = this.element.nativeElement;
+    }
   }
+  // try to find textarea at the beginning
+  // restriction: there can only be 1 textare in the used element
+  _findNestedTextArea() {
+    this.textAreaEl = this.element.nativeElement.getElementsByTagName(TEXTAREA_NAME)[0];
+    if (!this.textAreaEl) {
+      if (this.retries >= MAX_LOOKUP_RETRIES) {
+        console.warn('autosize: textarea not found');
 
-  @HostListener('document:keypress', ['$event']) onKeyEnter(event: KeyboardEvent) {
-
-    this.textAreaKeyHandler(event);
-   }
-
-   private textAreaKeyHandler(event) {
-
-     // this directive only works on textarea - so make sure we got one
-     if ( (event.target.nodeName || '') !== AppTextareaAutosizeDirective.textAreaName ) {
-       return;
-     }
-   // does only really makes sense then we have CRLF or Backspace
-    // certainly this cannot prevent pasting from clipboard
-    if (event.keyCode === AppTextareaAutosizeDirective.keyEnter || event.keyCode === AppTextareaAutosizeDirective.keyBackspace ) {
-      // preventDefault is necessary in case you type Enter in a input field -> it causes to reload the page
-      // - ugly - can also happen
-      // textare doesnt have the problem
-      // event.preventDefault();
-
-      // find CRLF and count then to calc amount of rows in textarea
-    const str: string =  this.el.nativeElement.value + '.';
-     let crlfCount: number =  str.split('')
-        .filter(x => x.codePointAt(0) === AppTextareaAutosizeDirective.keyEnter )
-        .length;
-
-     if (event.keyCode === AppTextareaAutosizeDirective.keyEnter) {
-       crlfCount = crlfCount + 1;
-     }
-     // adjust number of rows of textarea
-      this.el.nativeElement.rows = crlfCount + 2;
+      } else {
+        this.retries++;
+        setTimeout(() => {
+          this._findNestedTextArea();
+        }, 100);
+      }
     }
   }
 
+  @HostListener('input', ['$event.target'])
+  onInput(textArea: HTMLTextAreaElement): void {
+    this.resize();
+  }
+
+  private resize(): void {
+    if (this.textAreaEl) {
+      this.textAreaEl.style.overflow = 'hidden';
+      this.textAreaEl.style.height = 'auto';
+      this.textAreaEl.style.height = this.textAreaEl.scrollHeight + 'px';
+    }
+  }
 
 }

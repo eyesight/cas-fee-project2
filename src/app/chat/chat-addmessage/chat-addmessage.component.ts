@@ -37,4 +37,10 @@ export class ChatAddmessageComponent implements OnInit {
       // this.messageText.nativeElement.value = this.messageText.nativeElement.value + 13;
     }
   }
+  autogrow(){
+    let  textArea = document.getElementById("textarea")
+    textArea.style.overflow = 'hidden';
+    textArea.style.height = '0px';
+    textArea.style.height = textArea.scrollHeight + 'px';
+  }
 }
