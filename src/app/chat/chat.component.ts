@@ -108,8 +108,8 @@ export class ChatComponent implements OnInit {
   }
 
   private textAreaAdjust(){
-    this.textArea.style.height = 'auto';
-    this.textArea.style.height = this.textArea.scrollHeight + 'px';
+  //  this.textArea.style.height = 'auto';
+  //  this.textArea.style.height = this.textArea.scrollHeight + 'px';
   }
   private reduceToGroup(mia, x): MessageItem[] {
 
