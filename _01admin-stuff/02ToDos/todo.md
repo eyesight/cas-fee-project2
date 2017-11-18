@@ -59,14 +59,14 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
  
  #in Progress AW
  - TODO: Chat thematisieren, Umsetzen (inkl. sass)
- -> AW: 31.10.  
+ -> AW: 31.10.
  
  - TODO:  Chat
-     Textarea autosizing
+     DONE: Textarea autosizing
      Styling and Menubar
      implement userDetails und Klassenamen  etc. im Heade
      Auto Scroll und scrollin innerhalb chat fesnter 
-  -> AW:
+  -> AW:  
  
  
 #in Progress CF
