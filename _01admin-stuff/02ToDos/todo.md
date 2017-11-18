@@ -12,7 +12,7 @@
 -> AW(+CF)
 
 - TODO: Styleguide erstellen aus Prototype (niedrige Prio)
--> CF (+AW)
+-> CF (+AW) 
 
 - TODO: UI für Chat prüfen/korrigieren
 -> CF
@@ -36,7 +36,7 @@
 -> AW (+CF)
 
 - TODO: Klassenliste aus Sicht von Lehrer: einauen von Bestätiung, dass User in Klassenliste gehört
--> AW (+CF)
+-> AW (+CF) - Prio 1
 
 - TODO: Abstände korrigieren, Feinheiten ausarbeiten in Sass/CSS
 -> CF: Dezember
@@ -58,12 +58,13 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
  ->AW+CF
  
  #in Progress AW
- - TODO: Chat thematisieren, Umsetzen (inkl. sass)
- -> AW: 31.10.
+ - TODO: DONE: Chat thematisieren, Umsetzen (inkl. sass)
+ -> AW: 31.10. DONE
  
  - TODO:  Chat
      DONE: Textarea autosizing
      Styling and Menubar
+     Timestamp der Message anstatt Klasse
      implement userDetails und Klassenamen  etc. im Heade
      Auto Scroll und scrollin innerhalb chat fesnter 
   -> AW:  
