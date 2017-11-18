@@ -12,16 +12,7 @@
 -> AW(+CF)
 
 - TODO: Styleguide erstellen aus Prototype (niedrige Prio)
--> CF
-
-- TODO: Error-Message-Handler erstellen, resp. korrigieren (besteht ja schon z.T.)
--> CF(+AW)
-
-- TODO: Pop-up erstellen für Klassenliste und für Text-Seiten auf Registrierung
--> CF
-
-- TODO: UI für Klassenliste und für Profil-Seite fertigstellen/durchdenken
--> CF
+-> CF (+AW)
 
 - TODO: UI für Chat prüfen/korrigieren
 -> CF
@@ -63,18 +54,31 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
 - TODO: Kalender umsetzen (niedrige Prio)
 -> 
 
-- TODO: Chat thematisieren, Umsetzen (inkl. sass)
--> AW: 31.10.
-
-- TODO:  Chat
-    Textarea autosizing
-    Styling and Menubar
-    implement userDetails und Klassenamen  etc. im Heade
-    Auto Scroll und scrollin innerhalb chat fesnter 
- -> AW:  
- 
  - TODO: Prüfen in allen Browsern/Export Projekt als Bundle
  ->AW+CF
+ 
+ #in Progress AW
+ - TODO: Chat thematisieren, Umsetzen (inkl. sass)
+ -> AW: 31.10.  
+ 
+ - TODO:  Chat
+     Textarea autosizing
+     Styling and Menubar
+     implement userDetails und Klassenamen  etc. im Heade
+     Auto Scroll und scrollin innerhalb chat fesnter 
+  -> AW:
+ 
+ 
+#in Progress CF
+ - TODO: UI für Klassenliste und für Profil-Seite fertigstellen/durchdenken
+ -> CF
+ 
+ - TODO: Error-Message-Handler erstellen, resp. korrigieren (besteht ja schon z.T.)
+ -> CF(+AW)
+ 
+ - TODO: Pop-up erstellen für Klassenliste und für Text-Seiten auf Registrierung
+ -> CF
+ 
 
 #TO CHECK
 - TODO: Login, Registrierung
