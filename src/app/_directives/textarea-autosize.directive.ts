@@ -3,7 +3,6 @@
  */
 import { ElementRef, HostListener, Directive} from '@angular/core';
 
-const MAX_LOOKUP_RETRIES = 5;
 const TEXTAREA_NAME = 'TEXTAREA';
 @Directive({
   selector: '[appTextareaAutosize]'
