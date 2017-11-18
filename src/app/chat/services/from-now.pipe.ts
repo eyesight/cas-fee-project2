@@ -2,7 +2,7 @@
  * Created by awedag on 19.10.17.
  */
 
-import { Pipe, PipeTransform} from "@angular/core";
+import { Pipe, PipeTransform} from '@angular/core';
 import * as moment from 'moment';
 
 @Pipe({
@@ -18,7 +18,7 @@ export class FromNowPipe implements PipeTransform {
         lastDay : '[Gestern]',
         sameDay : '[Heute]',
         nextDay : '[morgen]',
-        lastWeek : '[letzte] dddd',
+        lastWeek : '[letzten] dddd',
         nextWeek : 'dddd',
         sameElse : 'L'
       }

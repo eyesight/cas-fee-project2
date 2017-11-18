@@ -62,12 +62,12 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
  -> AW: 31.10. DONE
  
  - TODO:  Chat
-     DONE: Textarea autosizing
+     AW: DONE: Textarea autosizing
      Styling and Menubar
-     Timestamp der Message anstatt Klasse
-     implement userDetails und Klassenamen  etc. im Heade
-     Auto Scroll und scrollin innerhalb chat fesnter 
-  -> AW:  
+     AW: DONE: Timestamp der Message anstatt Klasse
+     AW: implement userDetails und Klassenamen  etc. im Heade
+     CF: Auto Scroll und scrollin innerhalb chat fesnter 
+   
  
  
 #in Progress CF

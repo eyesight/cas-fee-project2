@@ -58,7 +58,8 @@
   }
 
   &__txt-item{
-      padding-right: rem-calc(30px);
+    color: $color-gray-dark;
+    padding-right: rem-calc(30px);
   }
 
   &--line-right{
