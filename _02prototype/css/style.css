@@ -6088,7 +6088,8 @@ html {
     padding-top: 0.3125rem;
     color: #666; }
   .zz-infotext button {
-    border: none; }
+    border: none;
+    background-color: #fff; }
     .zz-infotext button:hover {
       color: #000;
       cursor: pointer; }
