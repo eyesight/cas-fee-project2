@@ -47,17 +47,12 @@ export class ChatComponent implements OnInit {
       });
 
     // read message from observable and subscribe to this chatstream to add them to the UI
-    //this.chatStream = this.messageItemService.readMessages();
-    //this.chatSub = this.chatStream.subscribe(res => this.addMessage(res));
-    this.chatSub = this.messageItemService.readMessages().subscribe(res => {console.dir(res);});
+    this.chatSub = this.messageItemService.readMessages()
+      .subscribe(res => {console.dir(res);});
 
- /*   this.chatAutho = this.messageItemService.authentication();
-    this.chatAuthoSub = this.chatAutho.subscribe(res => {console.log('chat.component call authentication:'  + res);
-      this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}});
-    });
-*/
-
-    this.chatAuthoSub = this.messageItemService.authentication().subscribe(res => {console.log('chat.component call authentication:'  + res);
+    // authentication returns only if there is a problem to solve
+    this.chatAuthoSub = this.messageItemService.authentication()
+      .subscribe(res => {console.log('chat.component call authentication:'  + res);
       this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}});
     });
   }
@@ -75,15 +70,6 @@ export class ChatComponent implements OnInit {
     const bb = new Date(b.dateGroup).valueOf();
     return (aa - bb);
 
-  }
-
-  public addMessageFakeUser(text: string){
-    const nm = new MessageJson();
-    nm.email = 'Heidi';
-    nm.message = text;
-    const d = Date();
-    nm.sent_at = d;
-    this.addMessage(nm);
   }
   public addMessage(messageJson: MessageJson){
     console.log('addMessage: ' + messageJson.message);

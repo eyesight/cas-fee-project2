@@ -42,7 +42,7 @@ app.use(bodyParser.json());
 
 
 app.set("jwt-secret", cryptoUtil.jwtSecret); //secret should be in a config file - or better be a private key!
-app.set("jwt-sign", {expiresIn: "7d", audience :"self", issuer : "school"});
+app.set("jwt-sign", {expiresIn: "2d", audience :"self", issuer : "school"});
 app.set("jwt-validate", {secret: cryptoUtil.jwtSecret, audience :"self", issuer : "school"});
 
 app.get('/', function(req, res){
