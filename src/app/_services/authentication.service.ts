@@ -9,7 +9,13 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthenticationService {
   isLoggedin: boolean = false;
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+
+    // if there is a user with a JWT, we claim we are logged in - otherwise user needs to login again using his password
+    if (this.getCurrentUserJwt() !== null){
+      this.isLoggedin = true;
+    }
+  }
 
   login(username: string, password: string) {
     console.log('username:' + username);
