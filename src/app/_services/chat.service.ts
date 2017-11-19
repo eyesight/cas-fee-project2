@@ -97,10 +97,6 @@ export class ChatService {
 
   public sendMessage(msg: MessageJson) {
 
-    console.log('msg:' + msg);
-    // const messageJson = new MessageJson();
-    // msg.message = msg;
-   // messageJson.sent_at = (new Date()).toJSON();
     const reference = this;
     console.log('send message :' + msg);
     this.socket.emit('chatMessageToSocketServer', msg, function(respMsg, username){

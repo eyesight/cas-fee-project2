@@ -39,4 +39,9 @@ export class User {
   tel_office: number;
 
   class_id: number;
+
+  klasse_name: string;
+  klasse_description: string;
+  klasse_start_at: string;
+  klasse_end_at: string;
 }

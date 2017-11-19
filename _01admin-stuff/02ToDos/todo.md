@@ -66,9 +66,10 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
      AW: DONE: Header shows now, Styling and Menubar
      AW: DONE: Timestamp der Message anstatt Klasse
      AW: implement userDetails und Klassenamen  etc. im Heade
-     CF: Auto Scroll und scrollin innerhalb chat fesnter 
+     CF: Auto Scroll und scrollin innerhalb chat fenster 
    
- 
+- Auth: check out - may be better solution:
+    AW: https://github.com/auth0/angular2-jwt 
  
 #in Progress CF
  - TODO: UI für Klassenliste und für Profil-Seite fertigstellen/durchdenken

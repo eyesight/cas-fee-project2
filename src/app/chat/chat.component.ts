@@ -92,7 +92,7 @@ export class ChatComponent implements OnInit {
       .reduce( this.reduceToGroup,  [new MessageItem(new Date)] )  // pass in a new MessageItem with a new date -> today
       .sort(this.sortFuncMi);
   }
-  ngAfterViewChecked() {
+  public ngAfterViewChecked() {
     this.scrollToBottom();
   }
   public onSend(newMessage: MessageJson) {
