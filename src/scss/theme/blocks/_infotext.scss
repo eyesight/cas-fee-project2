@@ -9,6 +9,8 @@
 
   &__link{
     color: $color-primary;
+    margin-left:auto;
+    margin-right:auto;
 
     &--large{
       font-size: $font-s-copytext;
@@ -20,4 +22,15 @@
     padding-top: rem-calc(5px);
     color: $color-gray-middle;
   }
+
+  button{
+    border:none;
+
+    &:hover{
+      color: $color-black;
+      cursor: pointer;
+    }
+  }
+
 }
+

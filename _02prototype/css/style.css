@@ -5900,6 +5900,7 @@ html {
   margin-right: 10px; }
 
 .zz-chat__txt-item {
+  color: #444;
   padding-right: 1.875rem; }
 
 .zz-chat--line-right {
@@ -5980,16 +5981,17 @@ html {
     height: 5px;
     background-color: #0d7e7f;
     position: absolute;
-    left: 17px;
     top: -10px;
     border-radius: 20px 20px 20px 20px; }
   .zz-title--h2 {
     font-size: 1.6875rem; }
   .zz-title--insideBox:before {
-    left: 57px;
     top: 40px; }
-  .zz-title--h3 {
-    font-size: 1rem; }
+
+.zz-title--h3 {
+  font-weight: 600;
+  font-size: 1rem;
+  padding-top: 1rem; }
 
 .zz-btn {
   background-color: #0d7e7f;
@@ -6076,10 +6078,79 @@ html {
     margin-top: 2rem;
     display: block; }
   .zz-infotext__link {
-    color: #0d7e7f; }
+    color: #0d7e7f;
+    margin-left: auto;
+    margin-right: auto; }
     .zz-infotext__link--large {
       font-size: 1rem; }
   .zz-infotext--form {
     text-align: left;
     padding-top: 0.3125rem;
     color: #666; }
+  .zz-infotext button {
+    border: none; }
+    .zz-infotext button:hover {
+      color: #000;
+      cursor: pointer; }
+
+.zz-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+  overflow: auto;
+  overflow-y: scroll; }
+  .zz-overlay__content {
+    z-index: 1000;
+    right: 0;
+    left: 0;
+    top: 3rem;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 3rem;
+    padding: 3.125rem 2.5rem 2.5rem 2.5rem;
+    min-height: 90%;
+    background-color: #fff; }
+  .zz-overlay__text-wrapper {
+    margin-top: 4.6875rem; }
+  .zz-overlay__close-btn {
+    display: block;
+    position: fixed;
+    right: 1rem;
+    top: 1rem;
+    width: 3.125rem;
+    height: 3.125rem;
+    border: none;
+    border-radius: 50%;
+    padding: 2rem; }
+    .zz-overlay__close-btn:before {
+      content: "";
+      position: absolute;
+      display: block;
+      margin: auto;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 3.125rem;
+      height: 0;
+      border-top: 2px solid #666;
+      transform: rotate(45deg);
+      transform-origin: center; }
+    .zz-overlay__close-btn:after {
+      content: "";
+      position: absolute;
+      display: block;
+      margin: auto;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 3.125rem;
+      height: 0;
+      border-top: 2px solid #666;
+      transform: rotate(-45deg);
+      transform-origin: center; }

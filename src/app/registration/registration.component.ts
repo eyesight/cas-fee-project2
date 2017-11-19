@@ -30,6 +30,8 @@ export class RegistrationComponent implements OnInit {
 
   public klasses: Array<{ id: number, description: string }>;
 
+  showDialog = false;
+
   constructor(private router: Router,
               private userService: UserService,
               private alertService: AlertService,

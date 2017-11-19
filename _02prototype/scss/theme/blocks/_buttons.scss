@@ -1,8 +1,5 @@
-
-
-
 .zz-btn{
-  @include mx-button-default(1rem)
+  @include mx-button-default(1rem);
   &:after{
   @extend .helper-underline-anim;
   }
@@ -29,7 +26,7 @@
 
 
 .zz-btn-small{
-  @include mx-button-default(.5rem)
+  @include mx-button-default(.5rem);
   &:after{
     @extend .helper-underline-anim;
   }

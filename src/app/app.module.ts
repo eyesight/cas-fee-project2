@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// used to create fake backend
-import { fakeBackendProvider } from './_helpers/fake-backend';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 
 import { AppComponent } from './app.component';
@@ -23,6 +22,7 @@ import { AlertService, AuthenticationService, UserService } from './_services/in
 import { AlertComponent } from './_directives/alert/alert.component';
 import { ShowErrorsComponent } from './_directives/show-errors/show-errors.component';
 import { DirectivesModule } from './_directives/directives.module';
+import { TermsOfUseComponent } from './registration/terms-of-use/terms-of-use.component';
 
 
 @NgModule({
@@ -35,7 +35,8 @@ import { DirectivesModule } from './_directives/directives.module';
     LoginComponent,
     AlertComponent,
     RegistrationComponent,
-    ShowErrorsComponent
+    ShowErrorsComponent,
+    TermsOfUseComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +45,8 @@ import { DirectivesModule } from './_directives/directives.module';
     AppRoutingModule,
     DirectivesModule,
     // injecst Http to any service
-    HttpModule
+    HttpModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AuthGuard,

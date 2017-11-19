@@ -201,10 +201,11 @@ Vorbereitung -> Übertragen in gesamte Form
         </div>
       </form>
       <div class="zz-infotext">
-        <a href="#" class="zz-infotext__link">
+        <button (click)="showDialog = !showDialog" class="zz-infotext__link">
           * Nutzungsbedingungen lesen
-        </a>
+        </button>
       </div>
+      <app-terms-of-use [(visible)]="showDialog"></app-terms-of-use>
     </div>
     <div class="zz-infotext">
       <p class="zz-infotext__txt">

@@ -58,12 +58,12 @@
   }
 
   &__txt-item{
-    color: $color-primary-90;
+    color: $color-gray-dark;
     padding-right: rem-calc(30px);
   }
 
   &--line-right{
-    border-right: 1px solid $color-primary-90;
+    border-right: 1px solid $color-black;
     margin: 0 15px 0 -15px;
   }
 
@@ -78,11 +78,8 @@
   &__message-label{
     float: left;
   }
-
   &__message-text {
-    white-space:pre-wrap;
-    word-wrap:break-word;
-
+    word-break: break-all;
   }
 
 }
