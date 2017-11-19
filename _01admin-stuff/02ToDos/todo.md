@@ -32,6 +32,9 @@
 - TODO: Refactoring
 -> AW/CF
 
+- TODO: Registierung
+    CF (+AW) use Promise oder Subscribe
+
 - TODO: Registrierung mit Admin (Lehrer) berechtigung/Registrierung ist erst abgeschlossen, wenn von Admin geprüft
 -> AW (+CF)
 
