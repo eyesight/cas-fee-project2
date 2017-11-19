@@ -33,6 +33,7 @@ export class ChatComponent implements OnInit {
 
   ngOnInit() {
 
+    // subscribe to receive the message
     this.messageItemService.load()
       .subscribe((result) => {
         this.message = result;
@@ -46,14 +47,19 @@ export class ChatComponent implements OnInit {
       });
 
     // read message from observable and subscribe to this chatstream to add them to the UI
-    this.chatStream = this.messageItemService.readMessages();
-    this.chatSub = this.chatStream.subscribe(res => this.addMessage(res));
+    //this.chatStream = this.messageItemService.readMessages();
+    //this.chatSub = this.chatStream.subscribe(res => this.addMessage(res));
+    this.chatSub = this.messageItemService.readMessages().subscribe(res => {console.dir(res);});
 
-    this.chatAutho = this.messageItemService.authentication();
+ /*   this.chatAutho = this.messageItemService.authentication();
     this.chatAuthoSub = this.chatAutho.subscribe(res => {console.log('chat.component call authentication:'  + res);
       this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}});
     });
+*/
 
+    this.chatAuthoSub = this.messageItemService.authentication().subscribe(res => {console.log('chat.component call authentication:'  + res);
+      this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}});
+    });
   }
 
   public sortFunc(a: MessageJson, b: MessageJson): number {

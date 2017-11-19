@@ -17,6 +17,9 @@ import 'rxjs/Rx';
 import { MessageItem, Message } from '../_models/message.model';
 import {AuthenticationService} from './authentication.service';
 
+const channelReceiveMessage = 'broadcastToAll_chatMessage';
+const channelSendMessage = 'chatMessageToSocketServer';
+
 @Injectable()
 export class ChatService {
 
@@ -38,14 +41,14 @@ export class ChatService {
 
   }
 
+  // load all message using rest instead of sockets
+  //
   public load(): Observable<MessageJson[]> {
     console.log('load OBservable message');
     return  this.http
       //.get('/assets/mock/messageJson.json')
       .get(appConfig.apiUrl + '/api/chat/getall', this.jwt())
       .map((result ) => result.json());
-
-    //this.socket.on('chatMessageFromSocketServer',)
 
   }
   public authentication(): Observable<any> {
@@ -55,17 +58,17 @@ export class ChatService {
 
         if (error === 'Not authorized'){
           observer.next(error);
-        //  this.router.navigate(['login']);
+
         }
         else if (error.data){
           if (error.data.type === 'UnauthorizedError' || error.data.code === 'invalid_token') {
             // redirect user to login page perhaps?
             observer.next('User Token has expired');
-            //this.router.navigate(['login'], {queryParams: {returnUrl: state.url}});
 
           }
         }
-        console.log("authetication: " + error);
+        console.log("authetication any error: " + error);
+        // TODO: decide what error this can be and if we need to throw it against the user
       });
       // observable is disposed
       return () => {
@@ -75,18 +78,16 @@ export class ChatService {
     return observable;
   }
 
-
-  // TODO: generics to type MessageItem
-  public readMessages(): Observable<any> {
+  public readMessages(): Observable<MessageItem> {
 
     const observable = new Observable(observer => {
-      this.socket.on('broadcastToAll_chatMessage', (data) => {
+      this.socket.on(channelReceiveMessage, (data) => {
 
         //console.log('broadcastToAll_chatMessage: msg received' + data.text);
         //console.dir('show all data:' + data);
         observer.next(data);
       });
-      // observable is disposed
+      // remove observable
       return () => {
         this.socket.disconnect();
       };
@@ -99,7 +100,7 @@ export class ChatService {
 
     const reference = this;
     console.log('send message :' + msg);
-    this.socket.emit('chatMessageToSocketServer', msg, function(respMsg, username){
+    this.socket.emit(channelSendMessage, msg, function(respMsg, username){
       reference.mm = respMsg;
       reference.userName = username;
       console.log('sendmessage callback called:' + respMsg , username);
