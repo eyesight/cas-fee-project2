@@ -31,7 +31,7 @@ export class ChatService {
 
   constructor(private http: Http, private authService: AuthenticationService) {
     this.userName = 'testuser';
-    console.log('getCurentUserJwt :' + this.authService.getCurrentUserJwt());
+   // console.log('getCurentUserJwt :' + this.authService.getCurrentUserJwt());
     this.socket = io(this.url, { upgrade: true, query: 'token=' + this.authService.getCurrentUserJwt()});
     this.socket.emit('klasse',1);
 

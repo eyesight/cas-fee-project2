@@ -43,7 +43,7 @@ export class AuthenticationService {
     console.log('JSON: ' + json.email + 'body:' + body);
     // return this.http.post('http://localhost:3020/api/authenticate', json )
 
-// instaed of json use JSON.strinfiy
+// instead of json use JSON.strinfiy
     return this.http.post(appConfig.apiUrl + '/api/authenticate', userPwd)
     // return this.http.post('http://localhost:3020/api/authenticate', "{ \"email\": username, \"pwd\": password }" )
       .map((response: Response) => {
@@ -79,7 +79,7 @@ export class AuthenticationService {
   getCurrentUserJwt(): string {
    // if (this.isLoggedin) {
       const userItem = localStorage.getItem('currentUser');
-      //console.dir(userItem);
+
       if (userItem !== 'undefined') {
         const userAuth = JSON.parse(userItem);
         if (!userAuth) {
