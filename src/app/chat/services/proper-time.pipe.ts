@@ -12,9 +12,10 @@ export class ProperTimePipe implements PipeTransform {
 
   constructor(){}
 
-  transform( date: Date): string {
+  transform( date: string): string {
     // return time as 14:53
    // return moment((new Date(date.toDateString()))).calendar();
+    // console.log('date:'+date);
     return moment(date).format('LTS');
   }
 

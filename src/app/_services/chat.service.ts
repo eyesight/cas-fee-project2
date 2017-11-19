@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/Observable';
 import * as io from 'socket.io-client';
 import { MessageJson } from '../_models/message.model';
 import { appConfig } from '../_helpers/app.config';
+import { Moment } from 'moment';
 
 // need to import explicitly the map function of Rx!
 import 'rxjs/Rx';
@@ -33,7 +34,7 @@ export class ChatService {
     this.userName = 'testuser';
    // console.log('getCurentUserJwt :' + this.authService.getCurrentUserJwt());
     this.socket = io(this.url, { upgrade: true, query: 'token=' + this.authService.getCurrentUserJwt()});
-    this.socket.emit('klasse',1);
+    this.socket.emit('klasse', 1);
 
   }
 
@@ -94,17 +95,15 @@ export class ChatService {
   }
 
 
-  public sendMessage(msg: string){
+  public sendMessage(msg: MessageJson) {
 
     console.log('msg:' + msg);
-    const messageJson = new MessageJson();
-    messageJson.message = msg;
-   // var d = Date.now();
-   // d.
-    messageJson.sent_at = (new Date()).toJSON();
+    // const messageJson = new MessageJson();
+    // msg.message = msg;
+   // messageJson.sent_at = (new Date()).toJSON();
     const reference = this;
     console.log('send message :' + msg);
-    this.socket.emit('chatMessageToSocketServer', messageJson, function(respMsg, username){
+    this.socket.emit('chatMessageToSocketServer', msg, function(respMsg, username){
       reference.mm = respMsg;
       reference.userName = username;
       console.log('sendmessage callback called:' + respMsg , username);

@@ -97,8 +97,10 @@ export class ChatComponent implements OnInit {
   }
   public onSend(newMessage: MessageJson) {
     newMessage.email =  this.authService.getCurrentUsername();
+    newMessage.sent_at = (new Date()).toJSON();
+
     this.addMessage(newMessage);
-    this.messageItemService.sendMessage(newMessage.message);
+    this.messageItemService.sendMessage(newMessage);
 
   }
   private scrollToBottom(): void {

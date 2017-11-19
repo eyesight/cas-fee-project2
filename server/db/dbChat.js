@@ -76,7 +76,7 @@ function insertMessage(email, req, callback){
       callback('401', 'unauthorized');
     }
 
-    console.dir(req);
+    //console.dir(req);
     const userId = doc[0].id;
     const classId = doc[0].class_id;
     chatModel.user_id = userId;
@@ -122,7 +122,7 @@ function getAllMessages(username, callback){
           const sf = c.mySqlGetSelectStatement('chat', 'class_id = ?');
           //console.log('getallMEssages:'+sf);
           return db.query(sf, [doc[0].class_id], function (err, newDoc) {
-            console.dir(newDoc);
+            //console.dir(newDoc);
 
             if (callback) {
               if (newDoc.length <= 0) {
