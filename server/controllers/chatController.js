@@ -51,9 +51,13 @@ module.exports.chat = function(io)
         console.log('message received from (could be faked):' + msg.email + 'email from token:' + socket.decoded_token.name + ':classRoom:' + classId);
 
         // this is the callback
-        dbChat.insertMessage(email, msg, () => {
+        dbChat.insertMessage(email, msg, (err,doc) => {
           "Message recieved!", socket.decoded_token.name
-          callback(200,'Server acknowledge');
+          if (err) {
+            callback(500,err);
+          }else {
+            callback(200, 'Server acknowledge:timestamp:' + doc.saved_at);
+          }
         });
         //callback("Message recieved!", socket.decoded_token.name);
         //socket.handshake.query.userName);

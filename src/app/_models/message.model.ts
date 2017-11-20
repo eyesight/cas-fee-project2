@@ -16,6 +16,7 @@ export class MessageJson {
   email: string;
   message: string;
   sent_at: string;
+  saved_at: string;
 }
 
 export class MessageDateBlock {

@@ -31,14 +31,15 @@ Date.prototype.toMysqlFormat = function() {
 
 class ChatModel extends ModelBase{
 
-  constructor( clientUuid, userId, classId, email, message, sendAt){
+  constructor( clientUuid, userId, classId, email, message, sentAt, savedAt){
     super();
     this.client_uuid = clientUuid;
     this.user_id = userId;
     this.class_id = classId;
     this.email = email;
     this.message = message;
-    this.sent_at = sendAt;
+    this.sent_at = sentAt;
+    this.saved_at = savedAt;
     //this.sent_at = new Date(sendAt).toISOString().slice(0, 19).replace('T', ' ');
     //this.sent_at = require('moment')(sendAt).format('YYYY-MM-DD HH:mm:ss');
       //new Date(sendAt).toISOString().slice(0, 19).replace('T', ' '));
@@ -55,8 +56,8 @@ function chatFromJson(req){
     r.class_id,
     r.email,
     r.message,
-    r.sent_at
-
+    r.sent_at,
+    r.saved_at
   );
 
 }
@@ -88,15 +89,22 @@ function insertMessage(email, req, callback){
     else if (chatModel.sent_at === dateZero){
       chatModel.sent_at = Date.now();
     }
+    if (!chatModel.saved_at){
+      chatModel.saved_at = (new Date()).toJSON();
+    } else if (chatModel.saved_at === dateZero){
+      chatModel.saved_at = (new Date()).toJSON();
+    }
 
-    console.log('insertMessagePrepare:' + userId + ' message:' + chatModel.message + ':chatmodel.sent_at:' + chatModel.sent_at);
+
+    console.log('insertMessagePrepare:' + userId + ' message:' + chatModel.message + ':chatmodel.saved_at:' + chatModel.saved_at +':'+chatModel.sent_at);
 
     insertMessageDb(userId, classId, chatModel, function (err, doc) {
       if( (doc === null ) && !err){
         callback('500', 'cant insert message to database');
       }
       else {
-        callback(err, doc);
+      //  console.dir(doc);
+        callback(err, chatModel);
       }
     });
   });

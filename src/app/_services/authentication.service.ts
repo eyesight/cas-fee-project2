@@ -33,77 +33,17 @@ export class AuthenticationService {
         if (user && user.token) {
           // console.log(user.token);
           this.userAuthSrv.saveCurrentUser(user);
-          // this.httpWrp.saveJWT(user);
           this.isLoggedin = true;
         }
-
         return user;
       });
-/*
-    return this.http.post(appConfig.apiUrl + '/api/authenticate', userPwd)
-    // return this.http.post('http://localhost:3020/api/authenticate', "{ \"email\": username, \"pwd\": password }" )
-      .map((response: Response) => {
-        // login successful if there's a jwt token in the response
-        const user = response.json();
 
-        const userAuth = new UserAuth(user.email, user.token);
-        // response.json();
-
-        console.log('userAuth ist :' + userAuth.email);
-       // console.dir(userAuth);
-
-        if (user && user.token) {
-          // console.log(user.token);
-          // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify(userAuth));
-         // const userItem = localStorage.getItem('currentUser');
-         // const userAuth2 = JSON.parse(userItem);
-          console.log('userAuthemail:');
-          this.isLoggedin = true;
-        }
-
-        return user;
-      });*/
   }
 
   logout() {
     // remove user from local storage to log user out
     setTimeout(() => this.isLoggedin = false, 50);
     this.userAuthSrv.removeCurrentUser();
-    // localStorage.removeItem('currentUser');
-  }
-/*
-  getCurrentUserJwt(): string {
-   // if (this.isLoggedin) {
-      const userItem = localStorage.getItem('currentUser');
-
-      if (userItem !== 'undefined') {
-        const userAuth = JSON.parse(userItem);
-        if (!userAuth) {
-          console.log('userAuth is null -> return null');
-          return null;
-        } else {
-       //   console.log('userAuthemail:' + userAuth.token);
-        }
-        // console.dir(userAuth);
-        return userAuth.token;
-      }
   }
 
-  getCurrentUsername(): string {
-    // if (this.isLoggedin) {
-    const userItem = localStorage.getItem('currentUser');
-   // console.dir(userItem);
-    if (userItem !== 'undefined') {
-      const userAuth = JSON.parse(userItem);
-      if (!userAuth) {
-        console.log('userAuth is null');
-        return null;
-      } else {
-     //   console.log('usermail:' + userAuth.email);
-      }
-      // console.dir(userAuth);
-      return userAuth.email;
-    }
-  }*/
 }

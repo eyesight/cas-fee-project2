@@ -13,7 +13,7 @@ export const ROUTES: Routes = [
   { path: 'login', component: LoginComponent, data: { title: 'Login' }},
   { path: 'registration', component: RegistrationComponent, data: { title: 'Registration' }},
   { path: 'classlist', loadChildren: './classlist/classlist.module#ClasslistModule', data: {title: 'Klassenliste'} },
-  { path: 'chat',      loadChildren: './chat/chat.module#ChatModule', data: {title: 'Chat'} },
+  { path: 'chat',      loadChildren: './chat/chat.module#ChatModule', data: {title: 'Chat'}, canActivate: [AuthGuard] },
 
   // otherwise redirect to home
   { path: '**', redirectTo: 'home' }
