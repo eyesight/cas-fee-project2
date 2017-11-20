@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MessageItem } from '../../_models/message.model';
+import { MessageDateBlock } from '../../_models/message.model';
 import { FromNowPipe } from '../services/from-now.pipe';
 
 @Component({
@@ -10,7 +10,7 @@ import { FromNowPipe } from '../services/from-now.pipe';
 export class ChatDateComponent implements OnInit {
 
   @Input()
-  public messageItem: MessageItem;
+  public messageItem: MessageDateBlock;
 
   constructor() {
   // this.messageItem.createdAt = new Date('12:00').toDateString();

@@ -10,13 +10,19 @@ import * as moment from 'moment';
 })
 export class ProperTimePipe implements PipeTransform {
 
-  constructor(){}
+  constructor() {}
 
   transform( date: string): string {
     // return time as 14:53
    // return moment((new Date(date.toDateString()))).calendar();
     // console.log('date:'+date);
-    return moment(date).format('LTS');
+//    const locale = prefs.preferences.get('locale');
+
+    const ts = moment.utc(date);
+    return ts.local().format('LTS');
+   // return moment(date).locale().format('LTS');
+
+
   }
 
 }

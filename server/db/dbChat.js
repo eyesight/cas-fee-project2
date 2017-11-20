@@ -119,7 +119,7 @@ function getAllMessages(username, callback){
           console.log('answer4');
 
           const c = new ChatModel();
-          const sf = c.mySqlGetSelectStatement('chat', 'class_id = ?');
+          const sf = c.mySqlGetSelectStatement('chat', 'class_id = ?', {'sent_at': 'DATE_FORMAT(sent_at, "%Y-%m-%dT%TZ") AS sent_at'});
           //console.log('getallMEssages:'+sf);
           return db.query(sf, [doc[0].class_id], function (err, newDoc) {
             //console.dir(newDoc);

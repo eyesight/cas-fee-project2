@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { MessageItem, Message, MessageJson } from '../../_models/message.model';
+import { MessageDateBlock, Message, MessageJson } from '../../_models/message.model';
 import { Klasse } from '../../_models/klasse.model';
 import { User } from '../../_models/user.model';
 

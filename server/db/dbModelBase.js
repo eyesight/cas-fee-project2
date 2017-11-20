@@ -34,8 +34,8 @@ class ModelBase {
   mySqlGetInsertStatement(tablename){
     return "insert into "+tablename+" ("+this.getClassMembers().join(', ')+") values( " + this.getStringWithX('?').join(', ') +")";
   }
-  mySqlGetSelectStatement(tablename, whereclause){
-    return "select "+this.getClassMembers().join(', ')+" from "+tablename+" where "+ this.manageWCL(whereclause);
+  mySqlGetSelectStatement(tablename, whereclause, repl = {}){
+    return "select "+this.getClassMembers().map(x => repl[x] ? repl[x] : x ).join(', ')+" from "+tablename+" where "+ this.manageWCL(whereclause);
       //where id=?";
   }
   mySqlGetUpdateStatement(tablename, whereclause){

@@ -14,7 +14,7 @@ import { Moment } from 'moment';
 // need to import explicitly the map function of Rx!
 import 'rxjs/Rx';
 
-import { MessageItem, Message } from '../_models/message.model';
+import { MessageDateBlock, Message } from '../_models/message.model';
 import {AuthenticationService} from './authentication.service';
 
 const channelReceiveMessage = 'broadcastToAll_chatMessage';
@@ -78,7 +78,7 @@ export class ChatService {
     return observable;
   }
 
-  public readMessages(): Observable<MessageItem> {
+  public readMessages(): Observable<MessageJson> {
 
     const observable = new Observable(observer => {
       this.socket.on(channelReceiveMessage, (data) => {

@@ -4,8 +4,7 @@
 import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { ChatService } from '../_services/chat.service';
-import { MessageItem, MessageJson} from '../_models/message.model';
-import { dateFormat } from 'dateformat';
+import { MessageDateBlock, MessageJson} from '../_models/message.model';
 import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
 import {AuthenticationService} from '../_services/authentication.service';
@@ -17,15 +16,12 @@ import {AuthenticationService} from '../_services/authentication.service';
 })
 export class ChatComponent implements OnInit {
 
-  public messageItem: MessageItem[] = [new MessageItem(new Date)];
+  public messageItem: MessageDateBlock[] = [new MessageDateBlock(new Date)];
   public message: MessageJson[] ;
-  private chatStream: Observable<any>;
   private chatSub: Subscription;
-  private chatAutho: Observable<any>;
   private chatAuthoSub: Subscription;
 
   constructor( private messageItemService: ChatService
-    , private el: ElementRef
     , private router: Router
     , private authService: AuthenticationService) { }
 
@@ -40,13 +36,13 @@ export class ChatComponent implements OnInit {
           return;
         }
         this.messageItem = this.message.sort(this.sortFunc)
-          .reduce( this.reduceToGroup,  [new MessageItem(new Date)] )  // pass in a new MessageItem with a new date -> today
+          .reduce( this.reduceToGroup,  [new MessageDateBlock(new Date)] )  // pass in a new MessageDateBlock with a new date -> today
           .sort(this.sortFuncMi);
       });
 
     // read message from observable and subscribe to this chatstream to add them to the UI
     this.chatSub = this.messageItemService.readMessages()
-      .subscribe(res => {console.dir(res);});
+      .subscribe(res => this.addMessage(res));
 
     // authentication returns only if there is a problem to solve
     this.chatAuthoSub = this.messageItemService.authentication()
@@ -62,7 +58,7 @@ export class ChatComponent implements OnInit {
     return (aa - bb);
 
   }
-  public sortFuncMi(a: MessageItem, b: MessageItem): number {
+  public sortFuncMi(a: MessageDateBlock, b: MessageDateBlock): number {
     // console.log('a:'+ a.createdAt + 'b:' + b.createdAt);
     const aa = new Date(a.dateGroup).valueOf();
     const bb = new Date(b.dateGroup).valueOf();
@@ -70,7 +66,7 @@ export class ChatComponent implements OnInit {
 
   }
   public addMessage(messageJson: MessageJson){
-    console.log('addMessage: ' + messageJson.message);
+    console.log('addMessage: ' + messageJson.sent_at);
     if (this.message) {
       this.message = [...this.message, messageJson];
     }
@@ -79,7 +75,7 @@ export class ChatComponent implements OnInit {
     }
     //this.messageItem = this.reduceToGroup(this.messageItem, newText);
     this.messageItem = this.message.sort(this.sortFunc)
-      .reduce( this.reduceToGroup,  [new MessageItem(new Date)] )  // pass in a new MessageItem with a new date -> today
+      .reduce( this.reduceToGroup,  [new MessageDateBlock(new Date)] )  // pass in a new MessageDateBlock with a new date -> today
       .sort(this.sortFuncMi);
   }
 
@@ -92,11 +88,11 @@ export class ChatComponent implements OnInit {
 
   }
 
-  private reduceToGroup(mia, x): MessageItem[] {
+  private reduceToGroup(mia, x): MessageDateBlock[] {
 
     const mi = mia.find(t => t.dateGroup.toDateString() === new Date(x.sent_at).toDateString());
     if (!mi) {
-      const miNew = new MessageItem(new Date(x.sent_at));
+      const miNew = new MessageDateBlock(new Date(x.sent_at));
       miNew.messages =  [x];
       mia = [...mia, miNew];
     }else {

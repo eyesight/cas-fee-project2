@@ -18,7 +18,7 @@ export class MessageJson {
   sent_at: string;
 }
 
-export class MessageItem {
+export class MessageDateBlock {
 
   date: Date;
   dateGroup: Date;
@@ -30,6 +30,6 @@ export class MessageItem {
     this.dateGroup = new Date(date.toDateString());
   }
 
-  messages: Message[];
+  messages: MessageJson[];
 }
 
