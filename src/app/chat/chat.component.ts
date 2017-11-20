@@ -8,6 +8,7 @@ import { MessageDateBlock, MessageJson} from '../_models/message.model';
 import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
 import {AuthenticationService} from '../_services/authentication.service';
+import {UserAuthService} from "../_services/user-auth.service";
 
 
 @Component({
@@ -23,7 +24,7 @@ export class ChatComponent implements OnInit {
 
   constructor( private messageItemService: ChatService
     , private router: Router
-    , private authService: AuthenticationService) { }
+    , private userAuthService: UserAuthService) { }
 
   ngOnInit() {
 
@@ -80,7 +81,7 @@ export class ChatComponent implements OnInit {
   }
 
   public onSend(newMessage: MessageJson) {
-    newMessage.email =  this.authService.getCurrentUsername();
+    newMessage.email =  this.userAuthService.getCurrentUsername();
     newMessage.sent_at = (new Date()).toJSON();
 
     this.addMessage(newMessage);

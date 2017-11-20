@@ -33,7 +33,7 @@ export class AuthenticationService {
         if (user && user.token) {
           // console.log(user.token);
           this.userAuthSrv.saveCurrentUser(user);
-          //this.httpWrp.saveJWT(user);
+          // this.httpWrp.saveJWT(user);
           this.isLoggedin = true;
         }
 
@@ -70,9 +70,9 @@ export class AuthenticationService {
     // remove user from local storage to log user out
     setTimeout(() => this.isLoggedin = false, 50);
     this.userAuthSrv.removeCurrentUser();
-    //localStorage.removeItem('currentUser');
+    // localStorage.removeItem('currentUser');
   }
-
+/*
   getCurrentUserJwt(): string {
    // if (this.isLoggedin) {
       const userItem = localStorage.getItem('currentUser');
@@ -105,5 +105,5 @@ export class AuthenticationService {
       // console.dir(userAuth);
       return userAuth.email;
     }
-  }
+  }*/
 }

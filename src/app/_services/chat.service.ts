@@ -16,6 +16,8 @@ import 'rxjs/Rx';
 
 import { MessageDateBlock, Message } from '../_models/message.model';
 import {AuthenticationService} from './authentication.service';
+import {UserAuthService} from "./user-auth.service";
+import {HttpWrapper} from "./http-wrapper";
 
 const channelReceiveMessage = 'broadcastToAll_chatMessage';
 const channelSendMessage = 'chatMessageToSocketServer';
@@ -33,10 +35,8 @@ export class ChatService {
   // TODO: handle dis/reconnect
   // TODO: read initial complete messagethread using api/chat/getall
 
-  constructor(private http: Http, private authService: AuthenticationService) {
-    this.userName = 'testuser';
-   // console.log('getCurentUserJwt :' + this.authService.getCurrentUserJwt());
-    this.socket = io(this.url, { upgrade: true, query: 'token=' + this.authService.getCurrentUserJwt()});
+  constructor(private http: Http, private userAuthService: UserAuthService, private httpWrp: HttpWrapper) {
+    this.socket = io(this.url, { upgrade: true, query: 'token=' + this.userAuthService.getCurrentUserJwt()});
    // this.socket.emit('klasse', 1);
 
   }
@@ -44,11 +44,8 @@ export class ChatService {
   // load all message using rest instead of sockets
   //
   public load(): Observable<MessageJson[]> {
-    console.log('load OBservable message');
-    return  this.http
-      //.get('/assets/mock/messageJson.json')
-      .get(appConfig.apiUrl + '/api/chat/getall', this.jwt())
-      .map((result ) => result.json());
+    console.log('load Observable message');
+    return this.httpWrp.get('/api/chat/getall');
 
   }
   public authentication(): Observable<any> {
@@ -82,9 +79,6 @@ export class ChatService {
 
     const observable = new Observable(observer => {
       this.socket.on(channelReceiveMessage, (data) => {
-
-        //console.log('broadcastToAll_chatMessage: msg received' + data.text);
-        //console.dir('show all data:' + data);
         observer.next(data);
       });
       // remove observable
@@ -105,16 +99,7 @@ export class ChatService {
       reference.userName = username;
       console.log('sendmessage callback called:' + respMsg , username);
     });
-
   }
-
-  // TODO: move this to some base class for all http-services
-  private jwt() {
-    // create authorization header with jwt token
-      const headers = new Headers({ 'authorization': 'Bearer ' + this.authService.getCurrentUserJwt() });
-      return new RequestOptions({ headers: headers });
-    }
-
 
 }
 

@@ -41,7 +41,6 @@ class ChatModel extends ModelBase{
     this.sent_at = sendAt;
     //this.sent_at = new Date(sendAt).toISOString().slice(0, 19).replace('T', ' ');
     //this.sent_at = require('moment')(sendAt).format('YYYY-MM-DD HH:mm:ss');
-    console.log('origindate:'+sendAt+'.date:' + moment(new Date(sendAt)).format('YYYY-MM-DD HH:mm:ss'));
       //new Date(sendAt).toISOString().slice(0, 19).replace('T', ' '));
   }
 }
