@@ -5,7 +5,6 @@ import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { ChatService } from '../_services/chat.service';
 import { MessageItem, MessageJson} from '../_models/message.model';
-import {formatMoment} from 'ngx-bootstrap/bs-moment/format';
 import { dateFormat } from 'dateformat';
 import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
@@ -24,7 +23,6 @@ export class ChatComponent implements OnInit {
   private chatSub: Subscription;
   private chatAutho: Observable<any>;
   private chatAuthoSub: Subscription;
-  @ViewChild('scrollBottom') private scrollBottom: ElementRef;
 
   constructor( private messageItemService: ChatService
     , private el: ElementRef
@@ -84,9 +82,7 @@ export class ChatComponent implements OnInit {
       .reduce( this.reduceToGroup,  [new MessageItem(new Date)] )  // pass in a new MessageItem with a new date -> today
       .sort(this.sortFuncMi);
   }
-  public ngAfterViewChecked() {
-    this.scrollToBottom();
-  }
+
   public onSend(newMessage: MessageJson) {
     newMessage.email =  this.authService.getCurrentUsername();
     newMessage.sent_at = (new Date()).toJSON();
@@ -94,12 +90,6 @@ export class ChatComponent implements OnInit {
     this.addMessage(newMessage);
     this.messageItemService.sendMessage(newMessage);
 
-  }
-  private scrollToBottom(): void {
-    try {
-      this.scrollBottom.nativeElement.scrollTop = this.scrollBottom.nativeElement.scrollHeight;
-     // console.dir(this.scrollBottom);
-    } catch(err) { }
   }
 
   private reduceToGroup(mia, x): MessageItem[] {
