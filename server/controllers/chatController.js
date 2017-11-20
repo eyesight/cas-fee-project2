@@ -48,17 +48,19 @@ module.exports.chat = function(io)
 //
   //    });
       socket.on('chatMessageToSocketServer', function (msg, callback) {
-        console.log('message received:' + msg +  ':classRoom:' + classId);
+        console.log('message received from (could be faked):' + msg.email + 'email from token:' + socket.decoded_token.name + ':classRoom:' + classId);
 
         // this is the callback
         dbChat.insertMessage(email, msg, () => {
           "Message recieved!", socket.decoded_token.name
+          callback(200,'Server acknowledge');
         });
         //callback("Message recieved!", socket.decoded_token.name);
         //socket.handshake.query.userName);
-        let name = socket.handshake.query.userName;
-        console.log('sioet:' + socket.handshake.query.userName);
-        let sockectObj = {name, msg}
+       // let name = socket.handshake.query.userName;
+       // console.log('sioet:' + socket.handshake.query.userName);
+        //let sockectObj = {name, msg}
+        console.log('socket.decode_token:'+socket.decoded_token.name);
         msg.email = socket.decoded_token.name;
         // io.emit('broadcastToAll_chatMessage', sockectObj);
         //console.dir('chat message forwarding:', msg);
