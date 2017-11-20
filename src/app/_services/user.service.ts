@@ -2,41 +2,41 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { appConfig } from '../_helpers/app.config';
 import { User } from '../_models/user.model';
+import {HttpWrapper} from './http-wrapper';
 
 @Injectable()
 export class UserService {
-  constructor(private http: Http) { }
+  constructor(private httpWrp: HttpWrapper) { }
 
   getAll() {
-    return this.http.get(appConfig.apiUrl + '/api/users', this.jwt()).map((response: Response) => response.json());
+    return this.httpWrp.get('/api/users');
   }
 
   getById(id: number) {
-    return this.http.get(appConfig.apiUrl + '/api/users/' + id, this.jwt()).map((response: Response) => response.json());
+    return this.httpWrp.get('/api/users/' + id);
   }
 
   create(user: User) {
-    return this.http.post(appConfig.apiUrl + '/api/register', user, this.jwt()).map((response: Response) => response.json());
+    console.log('create user');
+    return this.httpWrp.postNoJWT('/api/register', user);
   }
 
   update(user: User) {
-    return this.http.put(appConfig.apiUrl + '/api/users/' + user.id, user, this.jwt()).map((response: Response) => response.json());
+    return this.httpWrp.put('/api/users/' + user.id, user);
   }
 
-  delete(id: number) {
+  /*delete(id: number) {
     return this.http.delete(appConfig.apiUrl + '/api/users/' + id, this.jwt()).map((response: Response) => response.json());
-  }
+  }*/
 
   public showKlasses() {
     console.log('getClasses user.service:' + appConfig.apiUrl + '/klasse');
-      return this.http
-        .get(appConfig.apiUrl + '/klasse')
-        .map((response: Response) => response.json());
+    return this.httpWrp.get('/klasse');
   }
 
   // private helper methods
 
-  private jwt() {
+ /* private jwt() {
     // create authorization header with jwt token
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser && currentUser.token) {
@@ -44,5 +44,5 @@ export class UserService {
       console.log('jwt: '+ headers);
       return new RequestOptions({ headers: headers });
     }
-  }
+  }*/
 }
