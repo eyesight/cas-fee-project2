@@ -35,6 +35,7 @@ class ModelBase {
     return "insert into "+tablename+" ("+this.getClassMembers().join(', ')+") values( " + this.getStringWithX('?').join(', ') +")";
   }
 
+  // replace is dictionary using a key and a replacement
   mySqlGetSelectStatement(tablename, whereclause, repl = {}){
     return "select "+this.getClassMembers().map(x => repl[x] ? repl[x] : x ).join(', ')+" from "+tablename+" where "+ this.manageWCL(whereclause);
   }
