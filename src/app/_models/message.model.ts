@@ -31,6 +31,7 @@ export class MessageDateBlock {
 
   date: Date;
   dateGroup: Date;
+  messages: MessageJson[];
 
   constructor(date: Date) {
     console.log('constructor of mi');
@@ -39,7 +40,6 @@ export class MessageDateBlock {
     this.dateGroup = new Date(date.toDateString());
   }
 
-  messages: MessageJson[];
 
 }
 

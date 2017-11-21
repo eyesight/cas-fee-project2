@@ -58,8 +58,7 @@ export class ChatComponent implements OnInit {
     console.log('addMessage: ' + messageJson.sent_at);
     if (this.message) {
       this.message = [...this.message, messageJson];
-    }
-    else {
+    } else {
       this.message = [messageJson];
     }
     this.messageItem = this.createMessageDateBlock();
