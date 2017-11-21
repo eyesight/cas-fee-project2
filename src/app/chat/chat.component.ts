@@ -38,9 +38,6 @@ export class ChatComponent implements OnInit {
           return;
         }
         this.messageItem = this.createMessageDateBlock();
-        /*  this.message.sort(this.sortFunc)
-          .reduce( this.reduceToGroup,  [new MessageDateBlock(new Date)] )  // pass in a new MessageDateBlock with a new date -> today
-          .sort(this.sortFuncMi);*/
       });
 
     // read message from observable and subscribe to this chatstream to add them to the UI
@@ -77,8 +74,8 @@ export class ChatComponent implements OnInit {
       .then((msg: MessageCallback) => {
           newMessage.saved_at = msg.server_saved_at;
           this.updateMessage(newMessage, newMessage.client_uuid);
-      });
-      //.catch((err) => {console.log('Promise reject on chatServie.sendMessage'); } );
+      })
+      .catch((err) => {console.log('Promise reject on chatServie.sendMessage'); } );
 
   }
   private createMessageDateBlock(): MessageDateBlock[] {
@@ -98,7 +95,6 @@ export class ChatComponent implements OnInit {
     }
   }
   private reduceToGroup(mia, x): MessageDateBlock[] {
-
     const mi = mia.find(t => t.dateGroup.toDateString() === new Date(x.sent_at).toDateString());
     if (!mi) {
       const miNew = new MessageDateBlock(new Date(x.sent_at));
