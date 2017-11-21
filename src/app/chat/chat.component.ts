@@ -62,7 +62,6 @@ export class ChatComponent implements OnInit {
     else {
       this.message = [messageJson];
     }
-    //this.messageItem = this.reduceToGroup(this.messageItem, newText);
     this.messageItem = this.createMessageDateBlock();
 
   }
@@ -74,20 +73,19 @@ export class ChatComponent implements OnInit {
     newMessage.client_uuid = this.getuuid();
 
     this.addMessage(newMessage);
-   // console.log('add message  on sendmesage: uuid:' + newMessage.client_uuid);
 
     this.chatService.sendMessage(newMessage)
       .then((msg: MessageCallback) => {
-     // console.log('promise on sendmesage:' + msg.server_saved_at);
           newMessage.saved_at = msg.server_saved_at;
           this.updateMessage(newMessage, newMessage.client_uuid);
       });
+      //.catch((err) => {console.log('Promise reject on chatServie.sendMessage'); } );
 
   }
   private createMessageDateBlock(): MessageDateBlock[] {
    return this.message.sort((a, b) => new Date(a.sent_at).valueOf() - new Date(b.sent_at).valueOf())
       .reduce( this.reduceToGroup,  [new MessageDateBlock(new Date)] )  // pass in a new MessageDateBlock with a new date -> today
-      .sort(( a, b ) => a.dateGroupAsSerial() - b.dateGroupAsSerial());
+      .sort(( a, b ) => new Date(a.dateGroup).valueOf() - new Date(b.dateGroup).valueOf());
   }
 
   private updateMessage(msg: MessageJson, clientId){

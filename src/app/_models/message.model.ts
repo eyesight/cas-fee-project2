@@ -41,8 +41,5 @@ export class MessageDateBlock {
 
   messages: MessageJson[];
 
-  public dateGroupAsSerial() {
-    return new Date(this.dateGroup).valueOf();
-  }
 }
 
