@@ -124,7 +124,9 @@ function getAllMessages(username, callback){
           console.log('answer4');
 
           const c = new ChatModel();
-          const sf = c.mySqlGetSelectStatement('chat', 'class_id = ?', {'sent_at': 'DATE_FORMAT(sent_at, "%Y-%m-%dT%TZ") AS sent_at'});
+          let df = 'DATE_FORMAT(sent_at, "%Y-%m-%dT%TZ") AS ${}';
+
+          const sf = c.mySqlGetSelectStatement('chat', 'class_id = ?', {'sent_at': dateHelper('sent_at'),'saved_at': dateHelper('saved_at')});
           //console.log('getallMEssages:'+sf);
           return db.query(sf, [doc[0].class_id], function (err, newDoc) {
             //console.dir(newDoc);
@@ -141,7 +143,9 @@ function getAllMessages(username, callback){
     }
   });
 }
-
+function dateHelper (dbitem) {
+  return `DATE_FORMAT(${dbitem}, "%Y-%m-%dT%TZ") AS ${dbitem}`;
+}
 function insertMessageDb(userId, classId, chatModel, callback )
 {
   var sf2 = "insert into chat ("+chatModel.getClassMembers().join(', ')+") values( " + chatModel.getStringWithX('?').join(', ') +")";
