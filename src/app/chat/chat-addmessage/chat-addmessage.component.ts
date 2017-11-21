@@ -22,7 +22,7 @@ export class ChatAddmessageComponent implements OnInit {
 
   public onSend(newItemText) {
    // const conformText = newItemText.replace(/(?:\r\n|\r|\n)/g, '<br>');
-    this.send.emit({message: newItemText, sent_at: Date(), email: 'Seepli', client_uuid: null});
+    this.send.emit({message: newItemText, sent_at: Date(), email: 'Seepli', client_uuid: null, saved_at: null});
     this.messageText.nativeElement.value = '';
   }
 

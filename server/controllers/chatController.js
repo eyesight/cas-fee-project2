@@ -56,7 +56,7 @@ module.exports.chat = function(io)
           if (err) {
             callback(500,err);
           }else {
-            callback(200, 'Server acknowledge:timestamp:' + doc.saved_at);
+            callback(200, {'server_saved_at': doc.saved_at});
           }
         });
         //callback("Message recieved!", socket.decoded_token.name);

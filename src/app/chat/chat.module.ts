@@ -11,6 +11,7 @@ import { FromNowPipe } from './services/from-now.pipe';
 import { ProperTimePipe } from './services/proper-time.pipe';
 
 import { DirectivesModule } from '../_directives/directives.module';
+import {SocketWrapper} from '../_services/socket-wrapper.service';
 
 @NgModule({
   imports: [
@@ -18,7 +19,7 @@ import { DirectivesModule } from '../_directives/directives.module';
   ],
   declarations: [ChatComponent, ChatAddmessageComponent, ChatMessageComponent,
     ChatThreadComponent, ChatDateComponent, FromNowPipe, ProperTimePipe],
-  providers: [ChatService]
+  providers: [ChatService, SocketWrapper]
 })
 export class ChatModule { }
 

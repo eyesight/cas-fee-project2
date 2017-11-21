@@ -31,9 +31,8 @@ Date.prototype.toMysqlFormat = function() {
 
 class ChatModel extends ModelBase{
 
-  constructor( clientUuid, userId, classId, email, message, sentAt, savedAt){
+  constructor( userId, classId, email, message, sentAt, savedAt){
     super();
-    this.client_uuid = clientUuid;
     this.user_id = userId;
     this.class_id = classId;
     this.email = email;
@@ -51,7 +50,6 @@ function chatFromJson(req){
   "use strict";
   var r = req;
   return new ChatModel(
-    r.client_uuid,
     r.user_id,
     r.class_id,
     r.email,

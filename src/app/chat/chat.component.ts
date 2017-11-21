@@ -4,7 +4,7 @@
 import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { ChatService } from '../_services/chat.service';
-import { MessageDateBlock, MessageJson} from '../_models/message.model';
+import {MessageCallback, MessageDateBlock, MessageJson} from '../_models/message.model';
 import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
 import {AuthenticationService} from '../_services/authentication.service';
@@ -21,6 +21,7 @@ export class ChatComponent implements OnInit {
   public message: MessageJson[] ;
   private chatSub: Subscription;
   private chatAuthoSub: Subscription;
+  private client_uuid:number = 0;
 
   constructor( private chatService: ChatService
     , private router: Router
@@ -83,15 +84,35 @@ export class ChatComponent implements OnInit {
   public onSend(newMessage: MessageJson) {
     newMessage.email =  this.userAuthService.getCurrentUsername();
     newMessage.sent_at = (new Date()).toJSON();
+    newMessage.saved_at = null;
+    newMessage.client_uuid = this.getuuid();
 
     this.addMessage(newMessage);
-    this.chatService.sendMessage(newMessage);
+   // console.log('add message  on sendmesage: uuid:' + newMessage.client_uuid);
+
+    this.chatService.sendMessage(newMessage)
+      .then((msg: MessageCallback) => {
+     // console.log('promise on sendmesage:' + msg.server_saved_at);
+          newMessage.saved_at = msg.server_saved_at;
+          this.updateMessage(newMessage, newMessage.client_uuid);
+      });
 
   }
   private createMessageDateBlock(): MessageDateBlock[] {
    return this.message.sort(this.sortFunc)
       .reduce( this.reduceToGroup,  [new MessageDateBlock(new Date)] )  // pass in a new MessageDateBlock with a new date -> today
       .sort(this.sortFuncMi);
+  }
+
+  private updateMessage(msg: MessageJson, clientId){
+    //console.log('updatemessage' + this.message.length);
+    if (this.message) {
+      const ix = this.message.findIndex( (x) => x.client_uuid === clientId);
+      if (ix) {
+        this.message[ix] = msg;
+       // console.log('message updated to :'+clientId);
+      }
+    }
   }
   private reduceToGroup(mia, x): MessageDateBlock[] {
 
@@ -104,5 +125,9 @@ export class ChatComponent implements OnInit {
       mi.messages = [...mi.messages || [], x];
     }
     return mia;
+  }
+  private getuuid(){
+    this.client_uuid = this.client_uuid + 1;
+    return this.client_uuid;
   }
 }

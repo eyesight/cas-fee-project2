@@ -12,13 +12,17 @@ export class Message {
 }
 
 export class MessageJson {
-  client_uuid: string;
+  client_uuid: number;
   email: string;
   message: string;
   sent_at: string;
   saved_at: string;
 }
 
+export class MessageCallback{
+  server_saved_at: string;
+
+}
 export class MessageDateBlock {
 
   date: Date;

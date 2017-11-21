@@ -3,11 +3,11 @@
  */
 
 
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import * as io from 'socket.io-client';
-import { MessageJson } from '../_models/message.model';
+import {MessageCallback, MessageJson} from '../_models/message.model';
 import { appConfig } from '../_helpers/app.config';
 import { Moment } from 'moment';
 
@@ -18,6 +18,7 @@ import { MessageDateBlock, Message } from '../_models/message.model';
 import {AuthenticationService} from './authentication.service';
 import {UserAuthService} from "./user-auth.service";
 import {HttpWrapper} from "./http-wrapper";
+import {SocketWrapper} from "./socket-wrapper.service";
 
 const channelReceiveMessage = 'broadcastToAll_chatMessage';
 const channelSendMessage = 'chatMessageToSocketServer';
@@ -34,10 +35,10 @@ export class ChatService {
   // see https://www.dev6.com/Angular2-WebSockets
   // TODO: handle dis/reconnect
 
-  constructor(private http: Http, private userAuthService: UserAuthService, private httpWrp: HttpWrapper) {
-    this.socket = io(this.url, { upgrade: true, query: 'token=' + this.userAuthService.getCurrentUserJwt()});
-   // this.socket.emit('klasse', 1);
-
+  constructor(private userAuthService: UserAuthService, private httpWrp: HttpWrapper, private scktWrp: SocketWrapper ) {
+    //this.socket = io(this.url, { upgrade: true, query: 'token=' + this.userAuthService.getCurrentUserJwt()});
+    // this.socket.emit('klasse', 1);
+    this.scktWrp.setup();
   }
 
   // load all message using rest instead of sockets
@@ -49,7 +50,8 @@ export class ChatService {
   }
   public authentication(): Observable<any> {
     const observable = new Observable(observer => {
-      this.socket.on("error", function (error) {
+      // this.socket.on("error", function (error) {
+      this.scktWrp.onError( function (error) {
         console.dir('error' + error);
 
         if (error === 'Not authorized'){
@@ -68,7 +70,8 @@ export class ChatService {
       });
       // observable is disposed
       return () => {
-        this.socket.disconnect();
+        this.scktWrp.close();
+        //this.socket.disconnect();
       };
     })
     return observable;
@@ -77,12 +80,14 @@ export class ChatService {
   public readMessages(): Observable<MessageJson> {
 
     const observable = new Observable(observer => {
-      this.socket.on(channelReceiveMessage, (data) => {
+      //this.socket.on(channelReceiveMessage, (data) => {
+      this.scktWrp.listen( (data) => {
         observer.next(data);
       });
       // remove observable
       return () => {
-        this.socket.disconnect();
+        this.scktWrp.close();
+        //  this.socket.disconnect();
       };
     });
     return observable;
@@ -93,13 +98,35 @@ export class ChatService {
 
     const reference = this;
     console.log('send message :' + msg);
-    this.socket.emit(channelSendMessage, msg, function(respMsg, username){
-      reference.mm = respMsg;
-      reference.userName = username;
-      console.log('sendmessage callback called:' + respMsg , username);
-    });
-  }
+    // this.socket.emit(channelSendMessage, msg, function(respMsg, username){
+    /* this.scktWrp.send(msg, function(respMsg, username){
+     reference.mm = respMsg;
+     reference.userName = username;
+     console.log('sendmessage callback called:' + respMsg , username);
+     }); */
 
+    /*return new Promise((reject, resolve) => {
+      this.scktWrp.sendPro(msg)
+        .then((data: MessageCallback) => {
+          try {
+            console.log('promise.then:data:' + data.server_saved_at);
+            msg.saved_at = data.server_saved_at;
+            resolve(msg);
+          } catch (e) {
+            reject(e);
+          }
+        });*/
+    return this.scktWrp.sendPro(msg);
+    }
+    // );
+  //}
+
+/*
+* .reject(e){
+ console.log('error on promise:' + e);
+ reject(e);
+ });
+* */
 }
 
 

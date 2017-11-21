@@ -26,6 +26,7 @@ import { TermsOfUseComponent } from './registration/terms-of-use/terms-of-use.co
 import {HttpWrapper} from "./_services/http-wrapper";
 import {UserAuthService} from "./_services/user-auth.service";
 import {StorageService} from "./_services/storage.service";
+import {AppConfigClass} from "./_helpers/app.config";
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import {StorageService} from "./_services/storage.service";
   ],
   providers: [
     AuthGuard,
+    AppConfigClass,
     UserAuthService,
     StorageService,
     HttpWrapper,
