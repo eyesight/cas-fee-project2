@@ -33,7 +33,6 @@ export class ChatService {
 
   // see https://www.dev6.com/Angular2-WebSockets
   // TODO: handle dis/reconnect
-  // TODO: read initial complete messagethread using api/chat/getall
 
   constructor(private http: Http, private userAuthService: UserAuthService, private httpWrp: HttpWrapper) {
     this.socket = io(this.url, { upgrade: true, query: 'token=' + this.userAuthService.getCurrentUserJwt()});
