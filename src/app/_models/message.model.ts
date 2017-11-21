@@ -17,9 +17,13 @@ export class MessageJson {
   message: string;
   sent_at: string;
   saved_at: string;
+
+  constructor() {}
+
+ // json cant have an methods!
 }
 
-export class MessageCallback{
+export class MessageCallback {
   server_saved_at: string;
 
 }
@@ -36,5 +40,9 @@ export class MessageDateBlock {
   }
 
   messages: MessageJson[];
+
+  public dateGroupAsSerial() {
+    return new Date(this.dateGroup).valueOf();
+  }
 }
 

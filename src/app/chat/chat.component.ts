@@ -54,20 +54,6 @@ export class ChatComponent implements OnInit {
     });
   }
 
-  public sortFunc(a: MessageJson, b: MessageJson): number {
-    // console.log('a:'+ a.createdAt + 'b:' + b.createdAt);
-    const aa = new Date(a.sent_at).valueOf();
-    const bb = new Date(b.sent_at).valueOf();
-    return (aa - bb);
-
-  }
-  public sortFuncMi(a: MessageDateBlock, b: MessageDateBlock): number {
-    // console.log('a:'+ a.createdAt + 'b:' + b.createdAt);
-    const aa = new Date(a.dateGroup).valueOf();
-    const bb = new Date(b.dateGroup).valueOf();
-    return (aa - bb);
-
-  }
   public addMessage(messageJson: MessageJson){
     console.log('addMessage: ' + messageJson.sent_at);
     if (this.message) {
@@ -99,9 +85,9 @@ export class ChatComponent implements OnInit {
 
   }
   private createMessageDateBlock(): MessageDateBlock[] {
-   return this.message.sort(this.sortFunc)
+   return this.message.sort((a, b) => new Date(a.sent_at).valueOf() - new Date(b.sent_at).valueOf())
       .reduce( this.reduceToGroup,  [new MessageDateBlock(new Date)] )  // pass in a new MessageDateBlock with a new date -> today
-      .sort(this.sortFuncMi);
+      .sort(( a, b ) => a.dateGroupAsSerial() - b.dateGroupAsSerial());
   }
 
   private updateMessage(msg: MessageJson, clientId){
@@ -126,7 +112,7 @@ export class ChatComponent implements OnInit {
     }
     return mia;
   }
-  private getuuid(){
+  private getuuid() {
     this.client_uuid = this.client_uuid + 1;
     return this.client_uuid;
   }
