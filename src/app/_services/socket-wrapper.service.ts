@@ -46,7 +46,7 @@ export class SocketWrapper {
 
   }
 
-  public sendPro(msg): Promise<any> {
+  public sendPro<T>(msg): Promise<T> {
 
     console.log('sendPro');
     return new Promise((resolve, reject) => {
@@ -66,15 +66,7 @@ export class SocketWrapper {
       }
     });
   }
-  /*public sendP(msg): Promise<any> {
-   if (!this.channelSend) {
-   return null;
-   }
-   return new Promise((resolve, reject ) => {
-   this.socket.emit(this.channelSend, msg);
-   });
 
-   }*/
   public close() {
     this.socket.disconnet();
   }

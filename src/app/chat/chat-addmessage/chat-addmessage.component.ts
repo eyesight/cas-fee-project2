@@ -22,6 +22,9 @@ export class ChatAddmessageComponent implements OnInit {
 
   public onSend(newItemText) {
    // const conformText = newItemText.replace(/(?:\r\n|\r|\n)/g, '<br>');
+    if (!newItemText) {
+      return;
+    }
     const msg = new MessageJson();
     msg.message = newItemText;
     msg.sent_at = Date();

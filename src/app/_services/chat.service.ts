@@ -89,7 +89,7 @@ export class ChatService {
     const reference = this;
     console.log('send message :' + msg);
 
-    return this.scktWrp.sendPro(msg);
+    return this.scktWrp.sendPro<MessageCallback>(msg);
     }
 
 }
