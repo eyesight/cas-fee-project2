@@ -64,6 +64,7 @@ export class RegistrationComponent implements OnInit {
       }, {validator: Validators.compose([CustomValidators.matcher('formPassword', 'confirmPassword')])})
     });
     this.getklasse();
+    console.log(this.registrationForm.valid);
 }
 
   get formPFirstname() {

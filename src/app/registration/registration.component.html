@@ -78,7 +78,6 @@ Vorbereitung -> Übertragen in gesamte Form
               <option value="">Bitte wählen</option>
               <option value="w">Frau</option>
               <option value="m">Mann</option>
-              <option *ngFor="let gen of gender" [value]="gen.content">{{gen.label}}</option>
             </select>
             <app-show-errors [control]="formParentGender"></app-show-errors>
           </div>
@@ -123,7 +122,6 @@ Vorbereitung -> Übertragen in gesamte Form
               <option value="">Bitte wählen</option>
               <option value="w">Mädchen</option>
               <option value="m">Junge</option>
-              <option *ngFor="let gen of gender" [value]="gen.content">{{gen.labelChild}}</option>
             </select>
             <app-show-errors [control]="formChildGender"></app-show-errors>
           </div>

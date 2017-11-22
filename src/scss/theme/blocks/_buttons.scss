@@ -22,6 +22,12 @@
       @extend .helper-underline-none;
     }
   }
+  &:disabled{
+    background-color: $color-primary-70;
+    &:hover{
+      cursor:not-allowed;
+    }
+  }
 }
 
 
