@@ -124,7 +124,6 @@ function getAllMessages(username, callback){
           console.log('answer4');
 
           const c = new ChatModel();
-          let df = 'DATE_FORMAT(sent_at, "%Y-%m-%dT%TZ") AS ${}';
 
           const sf = c.mySqlGetSelectStatement('chat', 'class_id = ?', {'sent_at': dateHelper('sent_at'),'saved_at': dateHelper('saved_at')});
           //console.log('getallMEssages:'+sf);

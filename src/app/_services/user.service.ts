@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { appConfig } from '../_helpers/app.config';
 import { User } from '../_models/user.model';
-import {HttpWrapper} from './http-wrapper';
+import {HttpWrapper} from './http-wrapper.service';
 
 @Injectable()
 export class UserService {
