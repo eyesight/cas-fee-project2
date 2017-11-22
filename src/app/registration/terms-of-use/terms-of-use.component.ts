@@ -6,12 +6,31 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   templateUrl: './terms-of-use.component.html',
   animations: [
     trigger('overlay', [
-      transition('void => *', [
-        style({ transform: 'scale3d(.3, .3, .3)' }),
-        animate(100)
+
+      state('*', style({
+        position: 'absolute'
+      })),
+
+      // route 'enter' transition
+      transition(':enter', [
+
+        // styles at start of transition
+        style({
+          top: '-400%',
+        }),
+
+        // animation and styles at end of transition
+        animate('.5s ease-in-out', style({
+          top: 0,
+        }))
       ]),
-      transition('* => void', [
-        animate(100, style({ transform: 'scale3d(.0, .0, .0)' }))
+
+      // route 'leave' transition
+      transition(':leave', [
+        // animation and styles at end of transition
+        animate('.5s ease-in-out', style({
+          top: '-400%',
+        }))
       ])
     ])
   ]
