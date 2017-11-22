@@ -1,40 +1,12 @@
 import { Component, OnInit, Input, Output, OnChanges, EventEmitter } from '@angular/core';
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { overlayAnimation } from '../../_animation/overlay.animation';
 
 @Component({
   selector: 'app-terms-of-use',
   templateUrl: './terms-of-use.component.html',
-  animations: [
-    trigger('overlay', [
-
-      state('*', style({
-        position: 'absolute'
-      })),
-
-      // route 'enter' transition
-      transition(':enter', [
-
-        // styles at start of transition
-        style({
-          top: '-400%',
-        }),
-
-        // animation and styles at end of transition
-        animate('.5s ease-in-out', style({
-          top: 0,
-        }))
-      ]),
-
-      // route 'leave' transition
-      transition(':leave', [
-        // animation and styles at end of transition
-        animate('.5s ease-in-out', style({
-          top: '-400%',
-        }))
-      ])
-    ])
-  ]
-})
+  animations: [overlayAnimation],
+  host: { '[@overlayAnimation]': ''}
+  })
 export class TermsOfUseComponent implements OnInit {
   @Input() closable = true;
   @Input() visible: boolean;
