@@ -29,8 +29,8 @@ fdescribe('AuthenticationService', () => {
   it('should be authenticated (with TestBed.get)', () => {
     const authService = TestBed.get(AuthenticationService);
     let response = null;
-      authService.login('adf', 'adsf').map((user: UserAuth) => { console.log('response:'+user.email); response = user; } );
-    console.log('responses:'+response.email);
+      authService.login('adf', 'adsf').map((user: UserAuth) => { console.log('response:' + user.email); response = user; } );
+    console.log('responses:' + response.email);
     expect(response.email).toBe('testemail@com.ex');
   });
 });

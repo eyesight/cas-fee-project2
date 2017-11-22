@@ -16,9 +16,6 @@ import {UserAuthService} from "./user-auth.service";
 import {HttpWrapper} from "./http-wrapper.service";
 import {SocketWrapper} from "./socket-wrapper.service";
 
-const channelReceiveMessage = 'broadcastToAll_chatMessage';
-const channelSendMessage = 'chatMessageToSocketServer';
-
 @Injectable()
 export class ChatService {
 
