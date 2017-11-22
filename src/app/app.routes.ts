@@ -12,7 +12,7 @@ export const ROUTES: Routes = [
   { path: 'home', component: HomeComponent, data: { title: 'Home' }, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent, data: { title: 'Login' }},
   { path: 'registration', component: RegistrationComponent, data: { title: 'Registration' }},
-  { path: 'classlist', loadChildren: './classlist/classlist.module#ClasslistModule', data: {title: 'Klassenliste'} },
+  { path: 'classlist', loadChildren: './classlist/classlist.module#ClasslistModule', data: {title: 'Klassenliste'}, canActivate: [AuthGuard]  },
   { path: 'chat',      loadChildren: './chat/chat.module#ChatModule', data: {title: 'Chat'}, canActivate: [AuthGuard] },
 
   // otherwise redirect to home
