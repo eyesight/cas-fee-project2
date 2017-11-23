@@ -20,6 +20,35 @@ module.exports.getAllUserDetails = function(req, res){
 };
 
 
+module.exports.getUserKlasseList = function(req, res){
+  console.log('KlassenListe');
+  dbUser.getUserKlasseList(req.user.name, function(err, order) {
+    res.json(order);
+  });
+};
+
+module.exports.approveUser = function(req, res){
+  console.log('Approve User');
+  dbUser.approveUser(req.user.name, req, function(err, order) {
+    console.log('err:'+ err);
+    if (err){
+      res.status(err).json(false);
+
+    } else {
+      res.json(true);
+
+    }
+    /*if (err) {
+      res.status(err);
+    }
+    else {
+      res.json(order);
+    }*/
+
+  });
+};
+
+
 /*
 module.exports.getUsers = function(req, res)
 {

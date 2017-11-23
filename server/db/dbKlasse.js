@@ -53,8 +53,9 @@ function getAllKlasseData(callback) {
       callback(err, newDoc);
     }
   });
-
 }
+
+
 module.exports = {
   getAllKlasseData: getAllKlasseData
 };

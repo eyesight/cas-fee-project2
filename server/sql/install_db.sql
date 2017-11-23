@@ -66,6 +66,7 @@ CREATE TABLE `users` (
   `place` varchar(255) DEFAULT NULL,
   `is_teacher` tinyint(1) DEFAULT '0',
   `is_active` tinyint(1) DEFAULT '1',
+  `is_approved` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;

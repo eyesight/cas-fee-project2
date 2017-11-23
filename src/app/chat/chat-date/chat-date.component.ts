@@ -4,8 +4,7 @@ import { FromNowPipe } from '../services/from-now.pipe';
 
 @Component({
   selector: 'app-chat-date',
-  templateUrl: './chat-date.component.html',
-  styleUrls: ['./chat-date.component.scss']
+  templateUrl: './chat-date.component.html'
 })
 export class ChatDateComponent implements OnInit {
 

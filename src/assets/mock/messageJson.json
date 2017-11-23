@@ -1,18 +1,18 @@
 [
   {
-    "email": "Ursli", "message": "Lorem", "sent_at": "2017-10-05T08:15:30-00:00"
+    "email": "Ursli", "message": "Lorem", "sent_at": "2017-10-05T08:15:30-00:00", "saved_at": "2017-10-05T08:15:30-00:00"
   },
   {
-    "email": "Hansli",  "message": "Psim", "sent_at": "2017-05-05T08:16:30-00:00"
+    "email": "Hansli",  "message": "Psim", "sent_at": "2017-05-05T08:16:30-00:00", "saved_at": "2017-10-05T08:15:30-00:00"
   },
   {
-    "email": "Seppli",  "message": "Psasdfl kajhsdfkl ajshdfaim", "sent_at": "2017-10-05T08:16:30-00:00"
+    "email": "Seppli",  "message": "Psasdfl kajhsdfkl ajshdfaim", "sent_at": "2017-10-05T08:16:30-00:00", "saved_at": "2017-10-05T08:15:30-00:00"
   },
   {
-    "email": "Sandra",  "message": "Psim", "sent_at": "2016-11-07T08:16:30-00:00"
+    "email": "Sandra",  "message": "Psim", "sent_at": "2016-11-07T08:16:30-00:00", "saved_at": "2017-10-05T08:15:30-00:00"
   },
   {
-    "email": "Steffi",  "message": "Psim", "sent_at": "2016-11-07T08:16:30-00:00"
+    "email": "Steffi",  "message": "Psim", "sent_at": "2016-11-07T08:16:30-00:00", "saved_at": "2017-10-05T08:15:30-00:00"
   }
 
 ]
