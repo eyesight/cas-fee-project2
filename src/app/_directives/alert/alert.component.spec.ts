@@ -1,14 +1,18 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AlertComponent } from './alert.component';
+import {AlertService} from "../../_services/alert.service";
+import {RouterTestingModule} from "@angular/router/testing";
 
-describe('AlertComponent', () => {
+fdescribe('AlertComponent', () => {
   let component: AlertComponent;
   let fixture: ComponentFixture<AlertComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AlertComponent ]
+      declarations: [ AlertComponent ],
+      providers: [AlertService],
+      imports: [RouterTestingModule.withRoutes([])]
     })
     .compileComponents();
   }));

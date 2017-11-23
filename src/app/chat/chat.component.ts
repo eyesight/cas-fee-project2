@@ -50,18 +50,6 @@ export class ChatComponent implements OnInit {
       this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}});
     });
   }
-
-  public addMessage(messageJson: MessageJson){
-    console.log('addMessage: ' + messageJson.sent_at);
-    if (this.message) {
-      this.message = [...this.message, messageJson];
-    } else {
-      this.message = [messageJson];
-    }
-    this.messageItem = this.createMessageDateBlock();
-
-  }
-
   public onSend(newMessage: MessageJson) {
     newMessage.email =  this.userAuthService.getCurrentUsername();
     newMessage.sent_at = (new Date()).toJSON();
@@ -78,12 +66,16 @@ export class ChatComponent implements OnInit {
       .catch((err) => {console.log('Promise reject on chatServie.sendMessage'); } );
 
   }
-  private createMessageDateBlock(): MessageDateBlock[] {
-   return this.message.sort((a, b) => new Date(a.sent_at).valueOf() - new Date(b.sent_at).valueOf())
-      .reduce( this.reduceToGroup,  [new MessageDateBlock(new Date)] )  // pass in a new MessageDateBlock with a new date -> today
-      .sort(( a, b ) => new Date(a.dateGroup).valueOf() - new Date(b.dateGroup).valueOf());
-  }
+  private addMessage(messageJson: MessageJson){
+    console.log('addMessage: ' + messageJson.sent_at);
+    if (this.message) {
+      this.message = [...this.message, messageJson];
+    } else {
+      this.message = [messageJson];
+    }
+    this.messageItem = this.createMessageDateBlock();
 
+  }
   private updateMessage(msg: MessageJson, clientId){
     //console.log('updatemessage' + this.message.length);
     if (this.message) {
@@ -93,6 +85,11 @@ export class ChatComponent implements OnInit {
        // console.log('message updated to :'+clientId);
       }
     }
+  }
+  private createMessageDateBlock(): MessageDateBlock[] {
+    return this.message.sort((a, b) => new Date(a.sent_at).valueOf() - new Date(b.sent_at).valueOf())
+      .reduce( this.reduceToGroup,  [new MessageDateBlock(new Date)] )  // pass in a new MessageDateBlock with a new date -> today
+      .sort(( a, b ) => new Date(a.dateGroup).valueOf() - new Date(b.dateGroup).valueOf());
   }
   private reduceToGroup(mia, x): MessageDateBlock[] {
     const mi = mia.find(t => t.dateGroup.toDateString() === new Date(x.sent_at).toDateString());

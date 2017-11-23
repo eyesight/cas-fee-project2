@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProfileAvatarComponent } from './profile-avatar.component';
 
-describe('ProfileAvatarComponent', () => {
+fdescribe('ProfileAvatarComponent', () => {
   let component: ProfileAvatarComponent;
   let fixture: ComponentFixture<ProfileAvatarComponent>;
 
