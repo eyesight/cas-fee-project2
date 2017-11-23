@@ -33,11 +33,26 @@ export class ChatService {
   }
 
   // load all message using rest instead of sockets
-  //
-  public load(): Observable<MessageJson[]> {
+  // return a promise that also spec is working properly
+  public load(): Observable<any> {
     console.log('load Observable message');
-    return this.httpWrp.get('/api/chat/getall');
 
+         return   this.httpWrp.get('/api/chat/getall');
+
+    /*
+      return new Promise((resolve, reject) => {
+      try {
+      this.httpWrp.get('/api/chat/getall').subscribe((result) => {
+        console.log('subscribe of gtall:' + result);
+        console.dir(result);
+        resolve(result);
+      });
+      } catch (e) {
+        console.log('error:' + e );
+        reject(e);
+      }
+    });
+*/
   }
   public authentication(): Observable<any> {
     const observable = new Observable(observer => {
@@ -62,7 +77,7 @@ export class ChatService {
       return () => {
         this.scktWrp.close();
       };
-    })
+    });
     return observable;
   }
 
@@ -81,7 +96,7 @@ export class ChatService {
   }
 
 
-  public sendMessage(msg: MessageJson) {
+  public sendMessage(msg: MessageJson): Promise<MessageCallback> {
 
     const reference = this;
     console.log('send message :' + msg);

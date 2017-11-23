@@ -21,17 +21,22 @@ export class ChatComponent implements OnInit {
   public message: MessageJson[] ;
   private chatSub: Subscription;
   private chatAuthoSub: Subscription;
-  private client_uuid:number = 0;
+  private client_uuid = 0;
 
   constructor( private chatService: ChatService
     , private router: Router
     , private userAuthService: UserAuthService) { }
 
   ngOnInit() {
-
-    // subscribe to receive the message
+    // subscribe to receive the message using normale JSON adapter
     this.chatService.load()
       .subscribe((result) => {
+      console.log('result?');
+        if (!result) {
+          return;
+        }
+        console.log('result is not null:' + result );
+        console.dir(result);
         this.message = result;
         // prevent any empty message to be worked on
         if ( this.message === null || this.message.length === 0 ){
@@ -47,7 +52,7 @@ export class ChatComponent implements OnInit {
     // authentication returns only if there is a problem to solve
     this.chatAuthoSub = this.chatService.authentication()
       .subscribe(res => {console.log('chat.component call authentication:'  + res);
-      this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}});
+    //  this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}});
     });
   }
   public onSend(newMessage: MessageJson) {
