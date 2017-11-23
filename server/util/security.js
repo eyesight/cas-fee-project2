@@ -38,7 +38,7 @@ function handleRegister(req,res){
     console.log('security is req.body:' + req.body.email);
     if (!req.body.email || !req.body.pwd)
     {
-      console.dir(req);
+      //console.dir(req);
       console.log('security register-no-email-nopaassword');
       res.status("401").json(false);
 

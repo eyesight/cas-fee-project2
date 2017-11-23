@@ -54,7 +54,6 @@ export class ChatService {
   public authentication(): Observable<any> {
     const observable = new Observable(observer => {
       this.scktWrp.onError( function (error) {
-        console.dir('error' + error);
 
         if (error === 'Not authorized'){
           observer.next(error);

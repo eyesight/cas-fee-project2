@@ -16,6 +16,8 @@ router.get("/user/show", userController.getAllUserDetails);
 router.get("/chat/getall", chatController.getMessages);
 
 router.get("/user/klasselist", userController.getUserKlasseList);
+router.put("/user/approve", userController.approveUser);
+
 /*
 router.post("/api", orders.createUser);
 router.get("/:id/", orders.showOrder);
