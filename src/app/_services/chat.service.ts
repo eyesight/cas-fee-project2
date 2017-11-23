@@ -10,11 +10,8 @@ import {MessageCallback, MessageJson} from '../_models/message.model';
 // need to import explicitly the map function of Rx!
 import 'rxjs/Rx';
 
-import { MessageDateBlock, Message } from '../_models/message.model';
-import {AuthenticationService} from './authentication.service';
-import {UserAuthService} from "./user-auth.service";
-import {HttpWrapper} from "./http-wrapper.service";
-import {SocketWrapper} from "./socket-wrapper.service";
+import {HttpWrapper} from './http-wrapper.service';
+import {SocketWrapper} from './socket-wrapper.service';
 
 @Injectable()
 export class ChatService {

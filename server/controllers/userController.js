@@ -20,6 +20,13 @@ module.exports.getAllUserDetails = function(req, res){
 };
 
 
+module.exports.getUserKlasseList = function(req, res){
+  console.log('KlassenListe');
+  dbUser.getUserKlasseList(req.user.name, function(err, order) {
+    res.json(order);
+  });
+};
+
 /*
 module.exports.getUsers = function(req, res)
 {
