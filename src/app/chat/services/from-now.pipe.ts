@@ -27,7 +27,6 @@ export class FromNowPipe implements PipeTransform {
 
   transform( date: Date): string {
     // toDateString sets time to 00:00:00
-    console.log('date in fromNowPipe: ' + date);
-       return moment((new Date(date.toDateString()))).calendar();
+   return moment((new Date(date.toDateString()))).calendar();
   }
 }

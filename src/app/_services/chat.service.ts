@@ -19,7 +19,7 @@ import {SocketWrapper} from "./socket-wrapper.service";
 @Injectable()
 export class ChatService {
 
-  public message: Message[];
+  // public message: Message[];
   public socket: any;
   public userName: string;
   public mm: string;
