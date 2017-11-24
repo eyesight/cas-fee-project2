@@ -11,8 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   })
 export class TermsOfUseComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute,
-              private router: Router) { }
+  constructor() { }
 
   ngOnInit() {
   }
