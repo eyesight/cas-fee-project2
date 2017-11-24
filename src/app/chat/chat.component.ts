@@ -9,6 +9,9 @@ import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
 import {AuthenticationService} from '../_services/authentication.service';
 import {UserAuthService} from "../_services/user-auth.service";
+import {AlertService} from "../_services/alert.service";
+// import { MdSnackBar } from '@angular/material';
+//import {MatSnackBarModule} from '@angular/material/snack-bar'
 
 
 @Component({
@@ -25,19 +28,21 @@ export class ChatComponent implements OnInit {
 
   constructor( private chatService: ChatService
     , private router: Router
-    , private userAuthService: UserAuthService) { }
+    , private userAuthService: UserAuthService
+    , private alertService: AlertService
+  //  , private snackBar: MdSnackBar
+   // , private matSnackBar: MatSnackBarModule
+  ) { }
 
   ngOnInit() {
     // subscribe to receive the message using normale JSON adapter
     this.chatService.load()
       .subscribe((result) => {
-      console.log('result?');
         if (!result) {
           return;
         }
-        console.log('result is not null:' + result );
-        console.dir(result);
         this.message = result;
+
         // prevent any empty message to be worked on
         if ( this.message === null || this.message.length === 0 ){
           return;
@@ -51,8 +56,14 @@ export class ChatComponent implements OnInit {
 
     // authentication returns only if there is a problem to solve
     this.chatAuthoSub = this.chatService.authentication()
-      .subscribe(res => {console.log('chat.component call authentication:'  + res);
-    //  this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}});
+      .subscribe(res => {
+      console.log('chat.component call authentication:'  + res);
+      this.alertService.error('Sie müssen sich neu anmelden .. Sie werden weitergeleitet');
+      //  this.snackBar.open('Sie müssen sich neu anmelden .. Sie werden weitergeleitet', null, { duration: 1500 });
+      //  this.matSnackBar.open('Meldung abgespei');
+
+        setTimeout(() =>
+      this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 1000);
     });
   }
   public onSend(newMessage: MessageJson) {
@@ -66,12 +77,18 @@ export class ChatComponent implements OnInit {
     this.chatService.sendMessage(newMessage)
       .then((msg: MessageCallback) => {
           newMessage.saved_at = msg.server_saved_at;
-          this.updateMessage(newMessage, newMessage.client_uuid);
+      //  this.snackBar.open('Meldung abgespeichert', null, { duration: 500 });
+        this.alertService.success('Chat abgespeichert um:' + msg.server_saved_at, false, 2000);
+
+        this.updateMessage(newMessage, newMessage.client_uuid);
       })
-      .catch((err) => {console.log('Promise reject on chatServie.sendMessage'); } );
+      .catch((err) => {
+       this.alertService.error('Fehler beim Abschicken');
+      console.log('Promise reject on chatServie.sendMessage'); } );
 
   }
   private addMessage(messageJson: MessageJson){
+
     console.log('addMessage: ' + messageJson.sent_at);
     if (this.message) {
       this.message = [...this.message, messageJson];
@@ -82,12 +99,10 @@ export class ChatComponent implements OnInit {
 
   }
   private updateMessage(msg: MessageJson, clientId){
-    //console.log('updatemessage' + this.message.length);
     if (this.message) {
       const ix = this.message.findIndex( (x) => x.client_uuid === clientId);
       if (ix) {
         this.message[ix] = msg;
-       // console.log('message updated to :'+clientId);
       }
     }
   }

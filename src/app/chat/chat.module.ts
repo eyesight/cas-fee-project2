@@ -12,6 +12,7 @@ import { ProperTimePipe } from './services/proper-time.pipe';
 
 import { DirectivesModule } from '../_directives/directives.module';
 import {SocketWrapper} from '../_services/socket-wrapper.service';
+import {AlertService} from "../_services/alert.service";
 
 @NgModule({
   imports: [
