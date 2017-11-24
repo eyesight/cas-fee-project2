@@ -4,7 +4,6 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './_guards/auth.guards';
 import { RegistrationComponent } from './registration/registration.component';
 import { TermsOfUseComponent } from './registration/terms-of-use/terms-of-use.component';
-import { TestComponent } from './test/test.component';
 import { AppComponent } from './app.component';
 
 

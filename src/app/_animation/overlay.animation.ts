@@ -4,7 +4,15 @@ export const overlayAnimation =
   trigger('overlayAnimation', [
 
     state('*', style({
-      position: 'absolute'
+      position: 'fixed',
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      backgroundColor: 'rgba(0, 0, 0, 0.8)',
+      'z-index': 999,
+      overflow: 'auto',
+      'overflow-y':'scroll'
     })),
 
     // route 'enter' transition

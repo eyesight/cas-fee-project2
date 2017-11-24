@@ -27,7 +27,6 @@ import {HttpWrapper} from "./_services/http-wrapper.service";
 import {UserAuthService} from "./_services/user-auth.service";
 import {StorageService} from "./_services/storage.service";
 import {AppConfigClass} from "./_helpers/app.config";
-import { TestComponent } from './test/test.component';
 
 
 @NgModule({
@@ -41,8 +40,7 @@ import { TestComponent } from './test/test.component';
     AlertComponent,
     RegistrationComponent,
     ShowErrorsComponent,
-    TermsOfUseComponent,
-    TestComponent
+    TermsOfUseComponent
   ],
   imports: [
     BrowserModule,
