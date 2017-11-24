@@ -199,11 +199,17 @@ Vorbereitung -> Übertragen in gesamte Form
         </div>
       </form>
       <div class="zz-infotext">
-        <button (click)="showDialog = !showDialog" class="zz-infotext__link">
+        <button [routerLink]="['terms-of-use']" class="zz-infotext__link">
           * Nutzungsbedingungen lesen
         </button>
+        <!--<button (click)="showDialog = !showDialog" class="zz-infotext__link">
+          * Nutzungsbedingungen lesen
+        </button>-->
       </div>
+      <router-outlet></router-outlet>
+<!--
       <app-terms-of-use [(visible)]="showDialog"></app-terms-of-use>
+-->
     </div>
     <div class="zz-infotext">
       <p class="zz-infotext__txt">

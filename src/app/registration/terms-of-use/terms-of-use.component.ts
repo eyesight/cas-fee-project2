@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, OnChanges, EventEmitter } from '@angular/core';
 import { overlayAnimation } from '../../_animation/overlay.animation';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-terms-of-use',
@@ -8,11 +10,12 @@ import { overlayAnimation } from '../../_animation/overlay.animation';
   host: { '[@overlayAnimation]': ''}
   })
 export class TermsOfUseComponent implements OnInit {
-  @Input() closable = true;
+ @Input() closable = true;
   @Input() visible: boolean;
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor(private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
   }
@@ -20,5 +23,4 @@ export class TermsOfUseComponent implements OnInit {
     this.visible = false;
     this.visibleChange.emit(this.visible);
   }
-
 }
