@@ -21,11 +21,15 @@ export const overlayAnimation =
       // styles at start of transition
       style({
         top: '-400%',
+        opacity: '0'
       }),
 
       // animation and styles at end of transition
-      animate('.2s ease-in-out', style({
-        top: '0',
+      animate('.2s ease-in', style({
+        opacity: '1'
+      })),
+      animate('.2s ease-in', style({
+        top: '0'
       }))
     ]),
 
@@ -33,7 +37,10 @@ export const overlayAnimation =
     transition(':leave', [
       // animation and styles at end of transition
       animate('.2s ease-in-out', style({
-        top: '-400%',
+        top: '-400%'
+      })),
+      animate('.2s ease-in-out', style({
+        opacity: '0'
       }))
     ])
   ]);
