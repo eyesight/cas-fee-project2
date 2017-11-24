@@ -9,7 +9,7 @@ export const overlayAnimation =
       bottom: 0,
       left: 0,
       right: 0,
-      backgroundColor: 'rgba(0, 0, 0, 0.8)',
+      backgroundColor: 'rgba(0, 0, 0, 0.7)',
       'z-index': 999,
       overflow: 'auto',
       'overflow-y':'scroll'
@@ -24,15 +24,15 @@ export const overlayAnimation =
       }),
 
       // animation and styles at end of transition
-      animate('.5s ease-in-out', style({
-        top: 0,
+      animate('.2s ease-in-out', style({
+        top: '0',
       }))
     ]),
 
     // route 'leave' transition
     transition(':leave', [
       // animation and styles at end of transition
-      animate('.5s ease-in-out', style({
+      animate('.2s ease-in-out', style({
         top: '-400%',
       }))
     ])
