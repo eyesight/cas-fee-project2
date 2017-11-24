@@ -63,7 +63,7 @@ export class ChatComponent implements OnInit {
       //  this.matSnackBar.open('Meldung abgespei');
 
         setTimeout(() =>
-      this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 1000);
+         this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 1000);
     });
   }
   public onSend(newMessage: MessageJson) {
