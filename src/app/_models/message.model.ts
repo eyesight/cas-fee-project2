@@ -16,6 +16,7 @@ export class MessageJson {
   email: string;
   message: string;
   sent_at: string;
+  success: boolean;
   saved_at: string;
 
   constructor() {}

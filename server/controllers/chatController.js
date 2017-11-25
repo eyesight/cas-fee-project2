@@ -48,7 +48,7 @@ module.exports.chat = function(io)
 //
   //    });
       socket.on('chatMessageToSocketServer', function (msg, callback) {
-        console.log('message received from (could be faked):' + msg.email + 'email from token:' + socket.decoded_token.name + ':classRoom:' + classId);
+        console.log('message received from (could be faked):' + msg.email + 'email from token (couldnt be faked):' + socket.decoded_token.name + ':classRoom:' + classId);
 
         // this is the callback
         dbChat.insertMessage(email, msg, (err,doc) => {

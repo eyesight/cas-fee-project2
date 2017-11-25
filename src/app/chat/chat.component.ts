@@ -27,8 +27,8 @@ import {AlertService} from "../_services/alert.service"; import { MatSnackBar } 
 export class ChatComponent implements OnInit {
 
   public messageItem: MessageDateBlock[] = [new MessageDateBlock(new Date)];
-  public message: MessageJson[] ;
-  private connectionState: boolean = true;
+  public message: MessageJson[] = null;
+  public connectionState = true;
   private chatSub: Subscription;
   private chatAuthSub: Subscription;
   private chatErrorSub: Subscription;
@@ -51,6 +51,7 @@ export class ChatComponent implements OnInit {
           return;
         }
         this.message = result;
+        this.message.map(x => x.success = true);
 
         // prevent any empty message to be worked on
         if ( this.message === null || this.message.length === 0 ){
@@ -89,26 +90,48 @@ export class ChatComponent implements OnInit {
         this.alertService.success('Connection ' + state, false, 1000);
       });
 
+    this.onResend();
 
+  }
+  private onResend() {
+    /*console.log('resending.... ');
+
+    if (this.message) {
+      const msgResend: MessageJson[] = this.message.filter(x => !x.success);
+      if (msgResend.length && this.connectionState) {
+        console.log('resending amount of:' + msgResend.length );
+        msgResend.forEach(x => this.sendMessageOverSocket(x));
+      }
+    }
+
+      setTimeout(() => this.onResend(), 5000);
+      */
   }
   public onSend(newMessage: MessageJson) {
     newMessage.email =  this.userAuthService.getCurrentUsername();
     newMessage.sent_at = (new Date()).toJSON();
     newMessage.saved_at = null;
+    newMessage.success = false;
     newMessage.client_uuid = this.getuuid();
 
     this.addMessage(newMessage);
 
+    this.sendMessageOverSocket(newMessage);
+
+  }
+
+  private sendMessageOverSocket(newMessage){
     this.chatService.sendMessage(newMessage)
       .then((msg: MessageCallback) => {
-          newMessage.saved_at = msg.server_saved_at;
+        newMessage.saved_at = msg.server_saved_at;
+        newMessage.success = true;
         console.log('then');
-    //    this.snackBar.open('Chat abgespeichert um:' + msg.server_saved_at, null, { duration: 500 });
+        //    this.snackBar.open('Chat abgespeichert um:' + msg.server_saved_at, null, { duration: 500 });
 
         this.updateMessage(newMessage, newMessage.client_uuid);
       })
       .catch((err) => {
-     //   this.alertService.error('Fehler beim Senden',false, 1000);
+        //   this.alertService.error('Fehler beim Senden',false, 1000);
 
         console.log('Promise reject on chatServie.sendMessage'); } );
 
