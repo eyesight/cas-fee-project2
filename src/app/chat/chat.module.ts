@@ -12,7 +12,12 @@ import { ProperTimePipe } from './services/proper-time.pipe';
 
 import { DirectivesModule } from '../_directives/directives.module';
 import {SocketWrapper} from '../_services/socket-wrapper.service';
+import {UserAuthService} from "../_services/user-auth.service";
 import {AlertService} from "../_services/alert.service";
+//import { MatSnackBarModule} from "@angular/material";
+//import {MatSnackBarModule} from "@angular/material";
+//import { MdSnackBarModule} from "@angular/material";
+
 
 @NgModule({
   imports: [
@@ -20,7 +25,7 @@ import {AlertService} from "../_services/alert.service";
   ],
   declarations: [ChatComponent, ChatAddmessageComponent, ChatMessageComponent,
     ChatThreadComponent, ChatDateComponent, FromNowPipe, ProperTimePipe],
-  providers: [ChatService, SocketWrapper]
+  providers: [ChatService, UserAuthService, SocketWrapper, AlertService]
 })
 export class ChatModule { }
 

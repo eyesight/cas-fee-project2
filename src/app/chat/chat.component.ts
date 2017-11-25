@@ -1,6 +1,7 @@
 /**
  * Created by awedag on 12.10.17.
  */
+
 import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { ChatService } from '../_services/chat.service';
@@ -9,8 +10,13 @@ import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
 import {AuthenticationService} from '../_services/authentication.service';
 import {UserAuthService} from "../_services/user-auth.service";
-import {AlertService} from "../_services/alert.service";
-// import { MdSnackBar } from '@angular/material';
+import {AlertService} from "../_services/alert.service"; import { MatSnackBar } from "@angular/material";
+
+//import { MdSnackBar } from '@angular/material';
+
+// MAtSnackBar isnt working properly - unstyled duplicate element
+// import { MatSnackBar } from '@angular/material';
+
 //import {MatSnackBarModule} from '@angular/material/snack-bar'
 
 
@@ -23,14 +29,16 @@ export class ChatComponent implements OnInit {
   public messageItem: MessageDateBlock[] = [new MessageDateBlock(new Date)];
   public message: MessageJson[] ;
   private chatSub: Subscription;
-  private chatAuthoSub: Subscription;
+  private chatAuthSub: Subscription;
+  private chatErrorSub: Subscription;
+  private chatConnectionStateSub: Subscription;
   private client_uuid = 0;
 
   constructor( private chatService: ChatService
     , private router: Router
     , private userAuthService: UserAuthService
     , private alertService: AlertService
-  //  , private snackBar: MdSnackBar
+   // , private snackBar: MatSnackBar
    // , private matSnackBar: MatSnackBarModule
   ) { }
 
@@ -47,6 +55,7 @@ export class ChatComponent implements OnInit {
         if ( this.message === null || this.message.length === 0 ){
           return;
         }
+
         this.messageItem = this.createMessageDateBlock();
       });
 
@@ -55,16 +64,30 @@ export class ChatComponent implements OnInit {
       .subscribe(res => this.addMessage(res));
 
     // authentication returns only if there is a problem to solve
-    this.chatAuthoSub = this.chatService.authentication()
+    this.chatAuthSub = this.chatService.authentication()
       .subscribe(res => {
       console.log('chat.component call authentication:'  + res);
-      this.alertService.error('Sie müssen sich neu anmelden .. Sie werden weitergeleitet');
-      //  this.snackBar.open('Sie müssen sich neu anmelden .. Sie werden weitergeleitet', null, { duration: 1500 });
+     // this.alertService.error('Sie müssen sich periodisch neu anmelden',false, 1000);
+     //this.snackBar.open('Sie müssNNNNen sich neu anmelden .. Sie werden weitergeleitet', null, { duration: 1500 });
       //  this.matSnackBar.open('Meldung abgespei');
 
         setTimeout(() =>
          this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 1000);
     });
+
+    this.chatErrorSub = this.chatService.readErrors()
+      .subscribe(error => {
+        console.log('chat.component call authentication:'  + error);
+        this.alertService.error('Fehler ' + error, false, 1000);
+      });
+
+    this.chatConnectionStateSub = this.chatService.connectionState()
+    .subscribe(state => {
+        console.log('connection:'  + state);
+        this.alertService.success('Connection ' + state, false, 1000);
+      });
+
+
   }
   public onSend(newMessage: MessageJson) {
     newMessage.email =  this.userAuthService.getCurrentUsername();
@@ -77,19 +100,20 @@ export class ChatComponent implements OnInit {
     this.chatService.sendMessage(newMessage)
       .then((msg: MessageCallback) => {
           newMessage.saved_at = msg.server_saved_at;
-      //  this.snackBar.open('Meldung abgespeichert', null, { duration: 500 });
-        this.alertService.success('Chat abgespeichert um:' + msg.server_saved_at, false, 2000);
+        console.log('then');
+    //    this.snackBar.open('Chat abgespeichert um:' + msg.server_saved_at, null, { duration: 500 });
 
         this.updateMessage(newMessage, newMessage.client_uuid);
       })
       .catch((err) => {
-       this.alertService.error('Fehler beim Abschicken');
-      console.log('Promise reject on chatServie.sendMessage'); } );
+     //   this.alertService.error('Fehler beim Senden',false, 1000);
+
+        console.log('Promise reject on chatServie.sendMessage'); } );
 
   }
   private addMessage(messageJson: MessageJson){
 
-    console.log('addMessage: ' + messageJson.sent_at);
+   // console.log('addMessage: ' + messageJson.sent_at);
     if (this.message) {
       this.message = [...this.message, messageJson];
     } else {

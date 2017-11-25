@@ -6,8 +6,12 @@ import { AppConfigClass } from '../_helpers/app.config';
 import {UserAuthService} from './user-auth.service';
 
 import * as io from 'socket.io-client';
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {Observable} from "rxjs/Observable";
 
 const socketError = 'error';
+const socketConnect = 'connect';
+const socketDisconnect = 'disconnect';
 const channelReceiveMessage = 'broadcastToAll_chatMessage';
 const channelSendMessage = 'chatMessageToSocketServer';
 
@@ -17,6 +21,8 @@ export class SocketWrapper {
   private socket: io;
   private channelReceive = null;
   private channelSend = null;
+  private socketConnectionState = new BehaviorSubject<boolean>(false);
+
   constructor( private appConf: AppConfigClass, private userAuthService: UserAuthService) {
   }
 
@@ -24,6 +30,19 @@ export class SocketWrapper {
     this.channelReceive = chnReceive;
     this.channelSend = chnSend;
     this.socket = io(this.appConf.getConfig().apiUrl, { upgrade: true, query: 'token=' + this.userAuthService.getCurrentUserJwt()});
+
+  }
+
+  public onConnection(): Observable<boolean> {
+    if (this.socket) {
+      this.socket.on(socketConnect, () => this.socketConnectionState.next(true));
+      this.socket.on(socketDisconnect, () => this.socketConnectionState.next(false));
+      return this.socketConnectionState.asObservable();
+
+    } else {
+      return null;
+    }
+
   }
   public onError(callback) {
     if (this.socket) {

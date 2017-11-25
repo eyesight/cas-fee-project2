@@ -51,6 +51,10 @@ export class ChatService {
     });
 */
   }
+
+  public connectionState(): Observable<boolean> {
+    return this.scktWrp.onConnection();
+  }
   public authentication(): Observable<any> {
     const observable = new Observable(observer => {
       this.scktWrp.onError( function (error) {
@@ -67,9 +71,24 @@ export class ChatService {
           }
         }
         console.log("authetication any error: " + error);
+        //observer.next('Authentication ');
         // TODO: decide what error this can be and if we need to throw it against the user
       });
       // observable is disposed
+      return () => {
+        this.scktWrp.close();
+      };
+    });
+    return observable;
+  }
+
+  public readErrors(): Observable<any> {
+
+    const observable = new Observable(observer => {
+      this.scktWrp.onError( (error) => {
+        observer.next(error);
+      });
+      // remove observable
       return () => {
         this.scktWrp.close();
       };

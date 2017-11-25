@@ -23,6 +23,7 @@ import { AlertComponent } from './_directives/alert/alert.component';
 import { ShowErrorsComponent } from './_directives/show-errors/show-errors.component';
 import { DirectivesModule } from './_directives/directives.module';
 import { TermsOfUseComponent } from './registration/terms-of-use/terms-of-use.component';
+
 import {HttpWrapper} from "./_services/http-wrapper.service";
 import {UserAuthService} from "./_services/user-auth.service";
 import {StorageService} from "./_services/storage.service";
@@ -50,7 +51,8 @@ import {AppConfigClass} from "./_helpers/app.config";
     DirectivesModule,
     // injecst Http to any service
     HttpModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+
   ],
   providers: [
     AuthGuard,
