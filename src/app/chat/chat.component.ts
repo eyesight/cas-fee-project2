@@ -94,7 +94,7 @@ export class ChatComponent implements OnInit {
 
   }
   private onResend() {
-    /*console.log('resending.... ');
+    console.log('resending.... ');
 
     if (this.message) {
       const msgResend: MessageJson[] = this.message.filter(x => !x.success);
@@ -105,7 +105,7 @@ export class ChatComponent implements OnInit {
     }
 
       setTimeout(() => this.onResend(), 5000);
-      */
+
   }
   public onSend(newMessage: MessageJson) {
     newMessage.email =  this.userAuthService.getCurrentUsername();

@@ -8,6 +8,7 @@ import {UserAuthService} from './user-auth.service';
 import * as io from 'socket.io-client';
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {Observable} from "rxjs/Observable";
+import {Subscription} from "rxjs/Subscription";
 
 const socketError = 'error';
 const socketConnect = 'connect';
@@ -19,9 +20,11 @@ const channelSendMessage = 'chatMessageToSocketServer';
 export class SocketWrapper {
 
   private socket: io;
+  private connectionState = true;
   private channelReceive = null;
   private channelSend = null;
   private socketConnectionState = new BehaviorSubject<boolean>(false);
+  private socketConnListener: Subscription;
 
   constructor( private appConf: AppConfigClass, private userAuthService: UserAuthService) {
   }
@@ -30,7 +33,17 @@ export class SocketWrapper {
     this.channelReceive = chnReceive;
     this.channelSend = chnSend;
     this.socket = io(this.appConf.getConfig().apiUrl, { upgrade: true, query: 'token=' + this.userAuthService.getCurrentUserJwt()});
-
+   this.socketConnListener = this.onConnection()
+     .subscribe(state => {
+     //  console.log('connection:'  + state);
+      if (this.connectionState !== state && state) {
+        // reset buffer on getting connection
+       // console.dir(this.socket);
+        // this helps obviously that on emit the call always returns, after connection gets established again
+        this.socket.sendBuffer = [];
+      }
+      this.connectionState = state;
+     });
   }
 
   public onConnection(): Observable<boolean> {
@@ -42,6 +55,11 @@ export class SocketWrapper {
     } else {
       return null;
     }
+
+  }
+
+  private clear(){
+
 
   }
   public onError(callback) {
