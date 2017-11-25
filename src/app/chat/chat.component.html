@@ -24,7 +24,7 @@
 
         </div>
 
-        <app-chat-addmessage (send)="onSend($event)"></app-chat-addmessage>
+        <app-chat-addmessage [cState]="connectionState" (send)="onSend($event)"></app-chat-addmessage>
 
       </div>
 

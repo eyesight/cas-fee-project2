@@ -1,6 +1,5 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild, ElementRef } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Message, MessageJson } from '../../_models/message.model';
+import {Component, EventEmitter, OnInit, Output, ViewChild, ElementRef, Input} from '@angular/core';
+import { MessageJson } from '../../_models/message.model';
 
 
 @Component({
@@ -10,7 +9,8 @@ import { Message, MessageJson } from '../../_models/message.model';
 export class ChatAddmessageComponent implements OnInit {
   @Output()
   public send: EventEmitter<MessageJson> = new EventEmitter<MessageJson>();
-  message: MessageJson = null
+  @Input() cState: boolean = true;
+  message: MessageJson = null;
 
   // create a reference to messageText inside the template
   @ViewChild('messageText') private messageText: ElementRef;

@@ -28,6 +28,7 @@ export class ChatComponent implements OnInit {
 
   public messageItem: MessageDateBlock[] = [new MessageDateBlock(new Date)];
   public message: MessageJson[] ;
+  private connectionState: boolean = true;
   private chatSub: Subscription;
   private chatAuthSub: Subscription;
   private chatErrorSub: Subscription;
@@ -84,6 +85,7 @@ export class ChatComponent implements OnInit {
     this.chatConnectionStateSub = this.chatService.connectionState()
     .subscribe(state => {
         console.log('connection:'  + state);
+        this.connectionState = state;
         this.alertService.success('Connection ' + state, false, 1000);
       });
 

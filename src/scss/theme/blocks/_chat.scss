@@ -82,4 +82,8 @@
     word-break: break-all;
   }
 
+  &__connection-state {
+    background-color: $color-gray-light;
+  }
+
 }
