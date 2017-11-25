@@ -36,7 +36,7 @@
     - CF (+AW) use Promise oder Subscribe
 
 - TODO: Login
-    - CF: Wenn Eingelogd, darf User nicht mehr auf Seite "Registrierung oder Login" kommen -> Meldung "du bist schon eingeloggt" einbauen
+    - CF: Wenn Eingelogged, darf User nicht mehr auf Seite "Registrierung oder Login" kommen -> Meldung "du bist schon eingeloggt" einbauen
 
 - TODO: Registrierung mit Admin (Lehrer) berechtigung/Registrierung ist erst abgeschlossen, wenn von Admin geprüft
 -> AW (+CF)
@@ -85,6 +85,7 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
  -> CF(+AW)
  
  - TODO: Pop-up erstellen für Klassenliste und für Text-Seiten auf Registrierung
+  - Polyfill for i.e. und safari
  -> CF
  
 
