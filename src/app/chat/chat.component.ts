@@ -29,6 +29,7 @@ export class ChatComponent implements OnInit {
   public messageItem: MessageDateBlock[] = [new MessageDateBlock(new Date)];
   public message: MessageJson[] = null;
   public connectionState = true;
+  private socketSub: Subscription;
   private chatSub: Subscription;
   private chatAuthSub: Subscription;
   private chatErrorSub: Subscription;
@@ -45,21 +46,7 @@ export class ChatComponent implements OnInit {
 
   ngOnInit() {
     // subscribe to receive the message using normale JSON adapter
-    this.chatService.load()
-      .subscribe((result) => {
-        if (!result) {
-          return;
-        }
-        this.message = result;
-        this.message.map(x => x.success = true);
-
-        // prevent any empty message to be worked on
-        if ( this.message === null || this.message.length === 0 ){
-          return;
-        }
-
-        this.messageItem = this.createMessageDateBlock();
-      });
+   this.onLoad();
 
     // read message from observable and subscribe to this chatstream to add them to the UI
     this.chatSub = this.chatService.readMessages()
@@ -88,10 +75,34 @@ export class ChatComponent implements OnInit {
         console.log('connection:'  + state);
         this.connectionState = state;
         this.alertService.success('Connection ' + state, false, 1000);
+        if (!this.message) {
+          this.onLoad();
+        }
       });
 
     this.onResend();
 
+  }
+  private onLoad() {
+    if (this.socketSub) {
+      this.socketSub.unsubscribe();
+    }
+   this.socketSub = this.chatService.load()
+      .subscribe((result) => {
+        if (!result) {
+          return;
+        }
+        this.message = result;
+        this.message.map(x => x.success = true);
+
+        // prevent any empty message to be worked on
+        if ( this.message === null || this.message.length === 0 ){
+          return;
+        }
+
+        this.messageItem = this.createMessageDateBlock();
+      });
+     // .unsubscribe();
   }
   private onResend() {
     console.log('resending.... ');

@@ -37,7 +37,7 @@ export class SocketWrapper {
      .subscribe(state => {
      //  console.log('connection:'  + state);
       if (this.connectionState !== state && state) {
-        // reset buffer on getting connection
+        // reset buffer on once we connection back
        // console.dir(this.socket);
         // this helps obviously that on emit the call always returns, after connection gets established again
         this.socket.sendBuffer = [];
@@ -79,7 +79,15 @@ export class SocketWrapper {
     if (!this.channelSend) {
       return;
     }
-    return this.socket.emit(this.channelSend, msg, callback);
+
+    if (this.connectionState) {
+      return this.socket.emit(this.channelSend, msg, callback);
+    }
+    else {
+      throw new Error('no connection : message isnt send - socket.io has a problem that is sometimes ' +
+        ' looses messages once getting online again -> so thats why we dont even try to send');
+    }
+
 
   }
 
