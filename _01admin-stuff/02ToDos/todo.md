@@ -33,7 +33,10 @@
 -> AW/CF
 
 - TODO: Registierung
-    CF (+AW) use Promise oder Subscribe
+    - CF (+AW) use Promise oder Subscribe
+
+- TODO: Login
+    - CF: Wenn Eingelogd, darf User nicht mehr auf Seite "Registrierung oder Login" kommen -> Meldung "du bist schon eingeloggt" einbauen
 
 - TODO: Registrierung mit Admin (Lehrer) berechtigung/Registrierung ist erst abgeschlossen, wenn von Admin geprüft
 -> AW (+CF)

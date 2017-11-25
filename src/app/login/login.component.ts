@@ -24,8 +24,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-       formUsername: ['', [Validators.required, Validators.minLength(3)]],
-       formPassword: ['', [Validators.required, Validators.minLength(3)]]
+       formUsername: ['', [Validators.required, Validators.minLength(2)]],
+       formPassword: ['', [Validators.required, Validators.minLength(2)]]
       });
     // reset login status
     this.authenticationService.logout();
