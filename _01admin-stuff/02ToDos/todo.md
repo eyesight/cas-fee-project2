@@ -34,9 +34,11 @@
 
 - TODO: Registierung
     - CF (+AW) use Promise oder Subscribe
+    - CF Registrierungs-Datum einbauen (registriert at 00.00.0000)
 
 - TODO: Login
     - CF: Wenn Eingelogged, darf User nicht mehr auf Seite "Registrierung oder Login" kommen -> Meldung "du bist schon eingeloggt" einbauen
+    - CF: Login-Datum einbauen (last login = 00.00.0000)
 
 - TODO: Registrierung mit Admin (Lehrer) berechtigung/Registrierung ist erst abgeschlossen, wenn von Admin geprüft
 -> AW (+CF)
@@ -83,21 +85,20 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
  
  - TODO: Error-Message-Handler erstellen, resp. korrigieren (besteht ja schon z.T.)
  -> CF(+AW)
- 
- - TODO: Pop-up erstellen für Klassenliste und für Text-Seiten auf Registrierung
-  - Polyfill for i.e. und safari
- -> CF
- 
 
 #TO CHECK
 - TODO: Login, Registrierung
 -> CF: 31.10
-  - TODO: Formular für Registrierung
+  - DONE: Formular für Registrierung
   -> CF: 25.10
-  - TODO: Mock-Data für Klassenliste (und Registrierung und Profil)
+  
+  - DONE: Mock-Data für Klassenliste (und Registrierung und Profil)
   (cas-fee-project2 -> src -> assets -> mock)
     -> CF: 25.10
-
+ 
+ - DONE: Pop-up erstellen für Klassenliste und für Text-Seiten auf Registrierung
+  - Polyfill for i.e. und safari
+ -> CF
 
 #DONE
 - DONE: NG-File-Struktur (module,Componente) anlegen
