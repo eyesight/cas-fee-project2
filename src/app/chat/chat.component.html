@@ -15,7 +15,7 @@
   <div class="row justify-content-end zz-layout__row ">
     <div class="col-12 col-lg-12 col-xl-10 zz-mod-container">
 
-      <div class="zz-chat__box" appScrollBottom style="overflow: scroll; height: 450px;" >
+      <div class="zz-chat__box" appScrollBottom #ScrollBuuut="scrollBottom" style="overflow: scroll; height: 450px;" >
 
         <div class=""  *ngFor="let item of messageItem">
 
@@ -24,7 +24,7 @@
 
         </div>
 
-        <app-chat-addmessage [cState]="connectionState" (send)="onSend($event)"></app-chat-addmessage>
+        <app-chat-addmessage [cState]="connectionState" (send)="onSend($event); ScrollBuuut.scrollNow();"></app-chat-addmessage>
 
       </div>
 
