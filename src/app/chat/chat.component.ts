@@ -2,7 +2,7 @@
  * Created by awedag on 12.10.17.
  */
 
-import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
+import {Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { ChatService } from '../_services/chat.service';
 import {MessageCallback, MessageDateBlock, MessageJson} from '../_models/message.model';
@@ -24,7 +24,7 @@ import {AlertService} from "../_services/alert.service"; import { MatSnackBar } 
   selector: 'app-chat',
   templateUrl: './chat.component.html'
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, OnDestroy {
 
   public messageItem: MessageDateBlock[] = [new MessageDateBlock(new Date)];
   public message: MessageJson[] = null;
@@ -34,14 +34,13 @@ export class ChatComponent implements OnInit {
   private chatAuthSub: Subscription;
   private chatErrorSub: Subscription;
   private chatConnectionStateSub: Subscription;
+  private resendSub: Subscription;
   private client_uuid = 0;
 
   constructor( private chatService: ChatService
     , private router: Router
     , private userAuthService: UserAuthService
     , private alertService: AlertService
-   // , private snackBar: MatSnackBar
-   // , private matSnackBar: MatSnackBarModule
   ) { }
 
   ngOnInit() {
@@ -56,10 +55,7 @@ export class ChatComponent implements OnInit {
     this.chatAuthSub = this.chatService.authentication()
       .subscribe(res => {
       console.log('chat.component call authentication:'  + res);
-     // this.alertService.error('Sie müssen sich periodisch neu anmelden',false, 1000);
-     //this.snackBar.open('Sie müssNNNNen sich neu anmelden .. Sie werden weitergeleitet', null, { duration: 1500 });
-      //  this.matSnackBar.open('Meldung abgespei');
-
+      this.alertService.error('Sie müssen sich periodisch neu anmelden',false, 1000);
         setTimeout(() =>
          this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 1000);
     });
@@ -80,7 +76,16 @@ export class ChatComponent implements OnInit {
         }
       });
 
-    this.onResend();
+    this.resendSub = this.onResend();
+
+  }
+
+  ngOnDestroy() {
+   this.chatAuthSub.unsubscribe();
+   this.chatErrorSub.unsubscribe();
+   this.chatConnectionStateSub.unsubscribe();
+   this.chatSub.unsubscribe();
+   this.resendSub.unsubscribe();
 
   }
   private onLoad() {
@@ -104,18 +109,22 @@ export class ChatComponent implements OnInit {
       });
      // .unsubscribe();
   }
-  private onResend() {
-    console.log('resending.... ');
+  private onResend(): Subscription  {
 
-    if (this.message) {
-      const msgResend: MessageJson[] = this.message.filter(x => !x.success);
+    return  Observable.interval(5000)
+      .subscribe(() => {
+      if (this.message) {
+        console.log('resending.... ');
+
+        const msgResend: MessageJson[] = this.message.filter(x => !x.success);
       if (msgResend.length && this.connectionState) {
         console.log('resending amount of:' + msgResend.length );
         msgResend.forEach(x => this.sendMessageOverSocket(x));
       }
     }
+    });
 
-      setTimeout(() => this.onResend(), 5000);
+    //  setTimeout(() => this.onResend(), 5000);
 
   }
   public onSend(newMessage: MessageJson) {

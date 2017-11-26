@@ -113,7 +113,7 @@ export class SocketWrapper {
   }
 
   public close() {
-    this.socket.disconnet();
+    this.socket.disconnect();
   }
 }
 

@@ -17,7 +17,7 @@
 
       <div class="zz-chat__box" appScrollBottom style="overflow: scroll; height: 450px;" >
 
-        <div class="" *ngFor="let item of messageItem">
+        <div class=""  *ngFor="let item of messageItem">
 
           <app-chat-date [messageItem]="item"></app-chat-date>
           <app-chat-message [message]="msg" *ngFor="let msg of item.messages"></app-chat-message>

@@ -23,7 +23,6 @@ export class ChatService {
   private url = 'localhost:3020';
 
   // see https://www.dev6.com/Angular2-WebSockets
-  // TODO: handle dis/reconnect
 
   constructor(private httpWrp: HttpWrapper, private scktWrp: SocketWrapper ) {
     this.scktWrp.setup();
