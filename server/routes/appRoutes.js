@@ -5,6 +5,7 @@ const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
 const chatController = require('../controllers/chatController');
+const avatarController = require('../controllers/avatarController');
 const klasseController = require('../controllers/KlasseController');
 
 router.get('/something', function(req, res, next) {
@@ -13,6 +14,8 @@ router.get('/something', function(req, res, next) {
 
 router.put("/user/update", userController.updateUser);
 router.get("/user/show", userController.getAllUserDetails);
+router.put("/user/avatar", avatarController.avatarUpload);
+
 router.get("/chat/getall", chatController.getMessages);
 
 router.get("/user/klasselist", userController.getUserKlasseList);

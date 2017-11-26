@@ -14,6 +14,9 @@ const bodyParser = require('body-parser');
 const jwt = require('express-jwt');
 const cryptoUtil = require('./util/cryptoUtil');
 
+//const multer = require('multer');
+//var upload = multer({ storage: multer.memoryStorage({}) })
+//const upload = multer({ dest: 'uploads/' }).single
 
 
 var db=require('./db/dbconnection'); //reference of dbconnection.js
@@ -57,6 +60,7 @@ app.use("/", require('./routes/indexRoutes.js'));
 // after this jwt-middleware a token is required!
 app.use(jwt( app.get("jwt-validate")));
 app.use("/api", require('./routes/appRoutes.js'));
+
 
 
 chat.chat(io);
