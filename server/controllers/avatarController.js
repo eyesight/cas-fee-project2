@@ -5,12 +5,12 @@ const fs = require('fs');
 
 
 module.exports.avatarUpload = function (req, res) {
-  var raw = new Buffer(req.body.avatar.value.toString(), 'base64')
-
+  let raw = new Buffer(req.body.avatar.value.toString(), 'base64')
+  let filename = req.user.name.replace(/@/i,'.');
   console.log('uploadAvatar: ');
-  console.log('req.user.name :' + req.user.name);
+  console.log('req.user.name :' + filename);
 
-  fs.writeFile('/tmp/' + req.user.name + '.png', raw, function (err) {
+  fs.writeFile('/tmp/' + filename + '.png', raw, function (err) {
     if (err) {
       res.end('error:' + err);
       return;
@@ -19,6 +19,23 @@ module.exports.avatarUpload = function (req, res) {
     res.end('Success!')
   });
 };
+
+module.exports.avatarGet = function(req,  callback) {
+  let filename = req.user.name.replace(/@/i,'.');
+
+  fs.readFile('/tmp/' + filename + '.png', function( err, data) {
+
+    if (data) {
+      callback(err, new Buffer(data).toString('base64'));
+    }else {
+      callback('error no data',null);
+
+    }
+  }
+
+  );
+
+}
 /*
 module.exports.avatarSendBar = function(req.res) {
 

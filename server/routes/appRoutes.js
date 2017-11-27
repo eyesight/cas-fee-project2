@@ -15,6 +15,7 @@ router.get('/something', function(req, res, next) {
 router.put("/user/update", userController.updateUser);
 router.get("/user/show", userController.getAllUserDetails);
 router.put("/user/avatar", avatarController.avatarUpload);
+router.get("/user/contents", userController.getAllUserContents);
 
 router.get("/chat/getall", chatController.getMessages);
 

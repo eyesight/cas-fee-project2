@@ -3,7 +3,8 @@
  */
 const dbUser = require("../db/dbUser");
 const util = require("../util/security");
-
+const avatarController = require("./avatarController");
+"use strict";
 
 module.exports.updateUser = function(req, res){
     console.log('req.user.name :' + req.user.name);
@@ -15,7 +16,35 @@ module.exports.updateUser = function(req, res){
 module.exports.getAllUserDetails = function(req, res){
   console.log('getAllUserDetails:req.user.name :' + req.user.name);
   dbUser.getAllUserDetails(req.user.name,  function(err, user) {
-    res.json(user);
+    if (err){
+      res.status(400).json(false);
+
+    } else {
+      res.json(user);
+    }
+
+  });
+};
+
+
+module.exports.getAllUserContents = function(req, res){
+  console.log('getAllUserDetails:req.user.name :' + req.user.name);
+  dbUser.getAllUserDetails(req.user.name,  function(err, user) {
+
+    avatarController.avatarGet(req ,(err, avatar) => {
+
+      if (err ){
+        console.log('getAllUSERcontentsn avatarGet err:' + err);
+        res.status(400).json(false);
+      return ;
+      }
+      res.json({"user_attributes": user,  "user_can": ['chat','classlist','profile'], "user_avatar": avatar });
+     // res.json(user);
+
+    })
+
+
+
   });
 };
 
