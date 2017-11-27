@@ -154,7 +154,7 @@ function getAllUserDetails(email, callback){
         }
       }
 
-      callback(err, newDoc);
+      callback(err, newDoc[0]);
     }
   });
 }

@@ -35,10 +35,15 @@ module.exports.getAllUserContents = function(req, res){
 
       if (err ){
         console.log('getAllUSERcontentsn avatarGet err:' + err);
-        res.status(400).json(false);
-      return ;
+        res.json({"user_attributes": user,  "user_can": ['chat','classlist','profile'], "user_avatar": null });
+        return ;
       }
-      res.json({"user_attributes": user,  "user_can": ['chat','classlist','profile'], "user_avatar": avatar });
+      //let userf = JSON(user);
+      //let canf = JSON(  "user_can", ['chat','classlist','profile']);
+
+      user.user_can = ['chat','classlist','profile'];
+      user.user_avatar = avatar;
+      res.json(user);
      // res.json(user);
 
     })

@@ -28,6 +28,8 @@ import {HttpWrapper} from "./_services/http-wrapper.service";
 import {UserAuthService} from "./_services/user-auth.service";
 import {StorageService} from "./_services/storage.service";
 import {AppConfigClass} from "./_helpers/app.config";
+import {UserContentService} from "./_services/user-content.service";
+import {UserContentDbService} from "./_services/user-content-db.service";
 
 
 @NgModule({
@@ -58,9 +60,11 @@ import {AppConfigClass} from "./_helpers/app.config";
     AuthGuard,
     AppConfigClass,
     UserAuthService,
+    AuthenticationService,
+    UserContentService,
+    UserContentDbService,
     StorageService,
     HttpWrapper,
-    AuthenticationService,
     AlertService,
     UserService,
 

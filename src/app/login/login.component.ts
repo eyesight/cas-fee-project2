@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { AlertService, AuthenticationService } from '../_services/index';
+import {User} from "../_models/user.model";
+import {UserContentService} from "../_services/user-content.service";
 
 
 @Component({
@@ -19,6 +21,7 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
+    private userContentService: UserContentService,
     private alertService: AlertService,
     private fb: FormBuilder) { }
 
@@ -29,6 +32,7 @@ export class LoginComponent implements OnInit {
       });
     // reset login status
     this.authenticationService.logout();
+    this.userContentService.clear();
 
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -45,9 +49,17 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     console.log('login: username:' + this.model.username);
     this.authenticationService.login(this.model.username, this.model.password)
-      .subscribe(
-        data => {
-          this.router.navigate([this.returnUrl]);
+      .subscribe( data => {
+
+          this.userContentService.getUserContent()
+            .subscribe( content => {
+
+              this.router.navigate([this.returnUrl]);
+            },
+            error => {
+              this.alertService.error(error);
+              this.loading = false;
+            });
         },
         error => {
           this.alertService.error(error);

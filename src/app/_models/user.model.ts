@@ -17,6 +17,10 @@ export class UserAuth {
   }
 }
 
+export class Can {
+  features: string[];
+}
+
 export class User {
   id: number;
   email: string;
@@ -40,8 +44,18 @@ export class User {
 
   class_id: number;
 
+  is_teacher: number;
+  is_admin: number;
+
   klasse_name: string;
   klasse_description: string;
   klasse_start_at: string;
   klasse_end_at: string;
+  user_can: Can;
+  user_avatar: string;
+
+  getAvatar() {
+      return 'data:image/jpeg;base64,' + this.user_avatar;
+  }
+
 }

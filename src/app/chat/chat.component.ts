@@ -11,6 +11,8 @@ import {Subscription} from 'rxjs/Subscription';
 import {AuthenticationService} from '../_services/authentication.service';
 import {UserAuthService} from "../_services/user-auth.service";
 import {AlertService} from "../_services/alert.service"; import { MatSnackBar } from "@angular/material";
+import {UserContentDbService} from "../_services/user-content-db.service";
+import {User} from "../_models/user.model";
 
 //import { MdSnackBar } from '@angular/material';
 
@@ -28,6 +30,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   public messageItem: MessageDateBlock[] = [new MessageDateBlock(new Date)];
   public message: MessageJson[] = null;
+  public userContent: User = null;
   public connectionState = true;
   private socketSub: Subscription;
   private chatSub: Subscription;
@@ -40,10 +43,13 @@ export class ChatComponent implements OnInit, OnDestroy {
   constructor( private chatService: ChatService
     , private router: Router
     , private userAuthService: UserAuthService
+    , private userContentDbService: UserContentDbService
     , private alertService: AlertService
   ) { }
 
   ngOnInit() {
+    this.userContent = this.userContentDbService.getCurrentUser();
+    console.log('ngOnInit: userContent.email:' + this.userContent.email);
     // subscribe to receive the message using normale JSON adapter
    this.onLoad();
 
