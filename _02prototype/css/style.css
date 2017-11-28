@@ -5780,7 +5780,8 @@ html {
       html .zz-page .zz-layout.zz-layout--centered {
         padding-left: 0;
         padding-right: 0;
-        padding-top: 3.125rem; }
+        padding-top: 3.125rem;
+        overflow: hidden; }
 
 .zz-navbar {
   background-color: #fff; }
@@ -6007,6 +6008,10 @@ html {
     padding-top: 0.75rem; }
     .zz-btn--primary:hover {
       background-color: #55a4a4; }
+  .zz-btn:disabled {
+    background-color: #55a4a4; }
+    .zz-btn:disabled:hover {
+      cursor: not-allowed; }
 
 .zz-btn-small {
   background-color: #0d7e7f;
@@ -6067,7 +6072,7 @@ html {
     background-color: #fff;
     background-image: none;
     background-clip: padding-box;
-    border-color: #cdcdcd; }
+    border: 1px solid #cdcdcd; }
     .zz-form__select:focus {
       border-color: #0d7e7f; }
 
@@ -6155,3 +6160,53 @@ html {
       border-top: 2px solid #666;
       transform: rotate(-45deg);
       transform-origin: center; }
+
+.zz-table tbody tr:hover {
+  background-color: #cfe5e5; }
+
+.zz-table tbody tr:first-child {
+  border-top: 3px solid #cdcdcd; }
+
+.zz-table tbody tr:last-child {
+  border-bottom: 3px solid #cdcdcd; }
+
+.zz-table thead th {
+  padding: 0.75rem; }
+
+.zz-table thead tr:first-child {
+  border-top: 3px solid #cdcdcd; }
+
+.zz-table tr {
+  border-top: 1px solid #cdcdcd;
+  border-bottom: 1px solid #cdcdcd; }
+
+.zz-table th {
+  padding: 0.3rem; }
+
+.zz-table td {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem; }
+
+.zz-table__anchor {
+  font-family: 600;
+  color: #000;
+  cursor: pointer; }
+  .zz-table__anchor:hover, .zz-table__anchor:active, .zz-table__anchor.active {
+    color: #0d7e7f; }
+
+.zz-table__img {
+  width: 45px; }
+  .zz-table__img:hover {
+    position: absolute;
+    width: 80px;
+    left: 0px; }
+
+.zz-table__icon {
+  width: 45px;
+  margin-left: 15%; }
+
+.zz-table--me {
+  background-color: #e6f2f2; }
+
+.zz-table caption {
+  display: none; }

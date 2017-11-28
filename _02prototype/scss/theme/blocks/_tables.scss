@@ -1,0 +1,66 @@
+.zz-table {
+  tbody {
+    tr:hover{
+      background-color: $color-primary-20;
+    }
+    tr:first-child{
+      border-top: 3px solid $color-gray-light;
+    }
+    tr:last-child{
+      border-bottom: 3px solid $color-gray-light;
+    }
+  }
+  thead{
+    th{
+      padding:0.75rem;
+    }
+    tr:first-child{
+      border-top: 3px solid $color-gray-light;
+    }
+  }
+  tr{
+    border-top: 1px solid $color-gray-light;
+    border-bottom: 1px solid $color-gray-light;
+  }
+  th{
+    padding: 0.3rem;
+  }
+  td{
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  &__anchor{
+    font-family: $font-semi-bold;
+    color: $color-black;
+    cursor:pointer;
+
+    &:hover,
+    &:active,
+    &.active{
+      color: $color-primary;
+    }
+  }
+
+  &__img{
+    width:45px;
+    &:hover{
+      position:absolute;
+      width:80px;
+      left: 0px;
+    }
+  }
+
+  &__icon{
+    width: 45px;
+    margin-left: 15%;
+  }
+
+  &--me{
+    background-color: $color-primary-10;
+  }
+
+  caption{
+    display:none;
+  }
+}

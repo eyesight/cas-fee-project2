@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Prototype - Template</title>
+
+  <!-- allStyles -->
+  <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">-->
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
+  <![endif]-->
+</head>
+<body>
+<div class="zz-page">
+  <!--start navigation-->
+  <nav class="navbar fixed-top navbar-expand-md navbar-light zz-navbar">
+    <a class="navbar-brand zz-logo" href="#">
+      <img src="assets/img/logo.png" alt="" class="zz-logo__img">
+    </a>
+    <button class="navbar-toggler zz-navbar__button" type="button" data-toggle="collapse"
+            data-target="#navbarNavDropdown" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="zz-navbar__button__txt">menu</span>
+      <span class="navbar-toggler-icon zz-navbar__button__icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end zz-nav" id="navbarNavDropdown">
+      <ul class="navbar-nav zz-nav__list-group">
+        <li class="zz-nav__list-group__item">
+          <a class="zz-nav__list-group__item__link active" href="#">Dashboard</a>
+        </li>
+        <li class="zz-nav__list-group__item">
+          <a class="zz-nav__list-group__item__link" href="#">Klassenliste</a>
+        </li>
+        <li class="zz-nav__list-group__item">
+          <a class="zz-nav__list-group__item__link" href="#">Chat</a>
+        </li>
+        <li class="dropdown zz-nav__list-group__item">
+          <button class="zz-nav__button" data-toggle="dropdown">
+            <img src="assets/img/dummy-portrait.png" height="70px" alt="" class="zz-nav__button__image">
+          </button>
+          <div class="dropdown-menu dropdown-menu-righ zz-nav__button__menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item zz-nav__button__menu__item" href="#">Profil</a>
+            <a class="dropdown-item zz-nav__button__menu__item" href="#">?????</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item zz-nav__button__menu__item" href="#">Abmelden</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>  <!--End navigation-->
+  <!--start content-->
+  <div class="container-fluid zz-layout">
+    <div class="row justify-content-end zz-layout__row">
+      <div class="col-12 col-lg-12 col-xl-10 zz-mod-container">
+        <h1 class="zz-title">Klassenliste von Klasse XYZ</h1>
+        <div class="zz-mod-box zz-mod-box--first">
+          <div class="zz-mod-box__img-wrapper">
+            <img src="assets/img/dummy-portrait.png" alt="" class="zz-mod-box__img">
+          </div>
+          <p class="zz-mod-box__txt"><span class="zz-mod-box__txt-item zz-mod-box--bold">Fritzli</span><span
+            class="zz-mod-box--line-right"></span><span
+            class="zz-mod-box__txt-item">Klasse XYZ</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-end zz-layout__row">
+      <div class="col-12 col-lg-12 col-xl-10 zz-mod-container">
+      <table class="table table-responsive table-hover zz-table">
+        <caption>Liste der Teilnehmer</caption>
+        <thead>
+        <tr>
+          <th scope="col">Kind</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col">Eltern</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+        <tr>
+          <th scope="col">Foto</th>
+          <th scope="col"><a class="zz-table__anchor" href="#">Vorname</a></th>
+          <th scope="col"><a class="zz-table__anchor active" href="#">Nachname</a></th>
+          <th scope="col"><a class="zz-table__anchor" href="#">Vorname</a></th>
+          <th scope="col"><a class="zz-table__anchor" href="#">Nachname</a></th>
+          <th scope="col"><a class="zz-table__anchor" href="#">Wohnort</a></th>
+          <th scope="col">E-Mail schreiben</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row"><img class="zz-table__img" src="assets/img/portrait.svg"></th>
+          <td><span class="zz-table__anchor">Kindname</span></td>
+          <td>Kindnachname</td>
+          <td>Elternvorname</td>
+          <td>Name</td>
+          <td>Herzogenbuchsee</td>
+          <td><a href="#"><img class="zz-table__icon" src="assets/img/email.svg"></a></td>
+        </tr>
+        <tr class="zz-table--me">
+          <th scope="row"><img class="zz-table__img" src="assets/img/portrait.svg"></th>
+          <td><span class="zz-table__anchor">Fritzli</span></td>
+          <td>Kindnachname</td>
+          <td>Elternvorname</td>
+          <td>Name</td>
+          <td>Herzogenbuchsee</td>
+          <td><a href="#"><img class="zz-table__icon" src="assets/img/email.svg"></a></td>
+        </tr>
+        <tr>
+          <th scope="row"><img class="zz-table__img" src="assets/img/portrait.svg"></th>
+          <td><span class="zz-table__anchor" href="#">Kindname</span></td>
+          <td>Kindnachname</td>
+          <td>Elternvorname</td>
+          <td>Name</td>
+          <td>Herzogenbuchsee</td>
+          <td><a href="#"><img class="zz-table__icon" src="assets/img/email.svg"></a></td>
+        </tr>
+        <tr>
+          <th scope="row"><img class="zz-table__img" src="assets/img/portrait.svg"></th>
+          <td><span class="zz-table__anchor" href="#">Kindname</span></td>
+          <td>Kindnachname</td>
+          <td>Elternvorname</td>
+          <td>Name</td>
+          <td>Herzogenbuchsee</td>
+          <td><a href="#"><img class="zz-table__icon" src="assets/img/email.svg"></a></td>
+        </tr>
+        <tr>
+          <th scope="row"><img class="zz-table__img" src="assets/img/portrait.svg"></th>
+          <td><span class="zz-table__anchor" href="#">Kindname</span></td>
+          <td>Kindnachname</td>
+          <td>Elternvorname</td>
+          <td>Name</td>
+          <td>Herzogenbuchsee</td>
+          <td><a href="#"><img class="zz-table__icon" src="assets/img/email.svg"></a></td>
+        </tr>
+        <tr>
+          <th scope="row"><img class="zz-table__img" src="assets/img/portrait.svg"></th>
+          <td><span class="zz-table__anchor" href="#">Kindname</span></td>
+          <td>Kindnachname</td>
+          <td>Elternvorname</td>
+          <td>Name</td>
+          <td>Herzogenbuchsee</td>
+          <td><a href="#"><img class="zz-table__icon" src="assets/img/email.svg"></a></td>
+        </tr>
+        <tr>
+          <th scope="row"><img class="zz-table__img" src="assets/img/portrait.svg"></th>
+          <td><span class="zz-table__anchor" href="#">Kindname</span></td>
+          <td>Kindnachname</td>
+          <td>Elternvorname</td>
+          <td>Name</td>
+          <td>Herzogenbuchsee</td>
+          <td><a href="#"><img class="zz-table__icon" src="assets/img/email.svg"></a></td>
+        </tr>
+        <tr>
+          <th scope="row"><img class="zz-table__img" src="assets/img/portrait.svg"></th>
+          <td><span class="zz-table__anchor" href="#">Kindname</span></td>
+          <td>Kindnachname</td>
+          <td>Elternvorname</td>
+          <td>Name</td>
+          <td>Herzogenbuchsee</td>
+          <td><a href="#"><img class="zz-table__icon" src="assets/img/email.svg"></a></td>
+        </tr>
+        <tr>
+          <th scope="row"><img class="zz-table__img" src="assets/img/portrait.svg"></th>
+          <td><span class="zz-table__anchor" href="#">Kindname</span></td>
+          <td>Kindnachname</td>
+          <td>Elternvorname</td>
+          <td>Name</td>
+          <td>Herzogenbuchsee</td>
+          <td><a href="#"><img class="zz-table__icon" src="assets/img/email.svg"></a></td>
+        </tr>
+        <tr>
+          <th scope="row"><img class="zz-table__img" src="assets/img/portrait.svg"></th>
+          <td><span class="zz-table__anchor" href="#">Kindname</span></td>
+          <td>Kindnachname</td>
+          <td>Elternvorname</td>
+          <td>Name</td>
+          <td>Herzogenbuchsee</td>
+          <td><a href="#"><img class="zz-table__icon" src="assets/img/email.svg"></a></td>
+        </tr>
+        <tr>
+          <th scope="row"><img class="zz-table__img" src="assets/img/portrait.svg"></th>
+          <td><span class="zz-table__anchor" href="#">Kindname</span></td>
+          <td>Kindnachname</td>
+          <td>Elternvorname</td>
+          <td>Name</td>
+          <td>Herzogenbuchsee</td>
+          <td><a href="#"><img class="zz-table__icon" src="assets/img/email.svg"></a></td>
+        </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div><!--End content-->
+  <footer class="zz-footer container-fluid"><!--start footer-->
+    <ul class="zz-footer__list-group ">
+      <li class="zz-footer__list-group__item"><a class="zz-footer__list-group__item__link" href="#">Copyrigh</a></li>
+      <li class="zz-footer__list-group__item"><a class="zz-footer__list-group__item__link" href="#">Impressum</a></li>
+      <li class="zz-footer__list-group__item"><a class="zz-footer__list-group__item__link" href="#">AGB</a></li>
+    </ul>
+  </footer><!--End footer-->
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.min.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
