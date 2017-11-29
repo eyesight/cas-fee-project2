@@ -5745,6 +5745,12 @@ a.text-dark:focus, a.text-dark:hover {
   padding: 0;
   margin: 0; }
 
+.helper-arrow, .zz-table--arrow-up, .zz-table--arrow-down {
+  border: solid #000;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px; }
+
 html,
 body {
   height: 100%;
@@ -6161,8 +6167,10 @@ html {
       transform: rotate(-45deg);
       transform-origin: center; }
 
-.zz-table tbody tr:hover {
-  background-color: #cfe5e5; }
+.zz-table tbody tr {
+  transition: all 0.5s ease; }
+  .zz-table tbody tr:hover {
+    background-color: #cfe5e5; }
 
 .zz-table tbody tr:first-child {
   border-top: 3px solid #cdcdcd; }
@@ -6185,28 +6193,45 @@ html {
 
 .zz-table td {
   padding-left: 0.75rem;
-  padding-right: 0.75rem; }
+  padding-right: 0.75rem;
+  vertical-align: middle; }
 
 .zz-table__anchor {
-  font-family: 600;
+  font-weight: 600;
   color: #000;
-  cursor: pointer; }
+  cursor: pointer;
+  white-space: nowrap; }
   .zz-table__anchor:hover, .zz-table__anchor:active, .zz-table__anchor.active {
     color: #0d7e7f; }
 
 .zz-table__img {
   width: 45px; }
-  .zz-table__img:hover {
-    position: absolute;
-    width: 80px;
-    left: 0px; }
 
 .zz-table__icon {
-  width: 45px;
-  margin-left: 15%; }
+  width: 45px; }
+  .zz-table__icon:hover {
+    fill: #0d7e7f; }
 
 .zz-table--me {
   background-color: #e6f2f2; }
 
+.zz-table--arrow-up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg); }
+
+.zz-table--arrow-down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  margin-bottom: 1px; }
+
+.zz-table .active .zz-table--arrow-up,
+.zz-table .active .zz-table--arrow-down,
+.zz-table .zz-table__anchor:hover .zz-table--arrow-up,
+.zz-table .zz-table__anchor:hover .zz-table--arrow-down {
+  border-color: #0d7e7f; }
+
 .zz-table caption {
   display: none; }
+
+.st0 {
+  stroke: #FFFFFF; }

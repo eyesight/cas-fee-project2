@@ -1,7 +1,11 @@
 .zz-table {
   tbody {
-    tr:hover{
+    tr {
+      transition: all 0.5s ease;
+
+    &:hover{
       background-color: $color-primary-20;
+    }
     }
     tr:first-child{
       border-top: 3px solid $color-gray-light;
@@ -28,12 +32,14 @@
   td{
     padding-left: 0.75rem;
     padding-right: 0.75rem;
+    vertical-align: middle;
   }
 
   &__anchor{
-    font-family: $font-semi-bold;
+    font-weight: $font-semi-bold;
     color: $color-black;
     cursor:pointer;
+    white-space:nowrap;
 
     &:hover,
     &:active,
@@ -44,23 +50,46 @@
 
   &__img{
     width:45px;
-    &:hover{
-      position:absolute;
-      width:80px;
-      left: 0px;
-    }
   }
 
   &__icon{
     width: 45px;
-    margin-left: 15%;
+
+    &:hover{
+      fill: $color-primary;
+    }
   }
 
   &--me{
     background-color: $color-primary-10;
   }
 
+  &--arrow-up{
+    @extend .helper-arrow;
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
+
+  &--arrow-down{
+    @extend .helper-arrow;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    margin-bottom: 1px;
+  }
+
+  .active .zz-table--arrow-up,
+  .active .zz-table--arrow-down,
+  .zz-table__anchor:hover .zz-table--arrow-up,
+  .zz-table__anchor:hover .zz-table--arrow-down{
+    border-color: $color-primary;
+  }
+
   caption{
     display:none;
   }
+}
+
+//SVG-Style
+.st0 {
+  stroke: #FFFFFF;
 }

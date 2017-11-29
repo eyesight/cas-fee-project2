@@ -29,3 +29,10 @@
   padding:0;
   margin:0;
 }
+
+.helper-arrow{
+  border: solid $color-black;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+}
