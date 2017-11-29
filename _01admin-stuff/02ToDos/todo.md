@@ -49,6 +49,9 @@
 - TODO: Abstände korrigieren, Feinheiten ausarbeiten in Sass/CSS
 -> CF: Dezember
 
+- TODO: Bootstrap - nur relevante Imports importieren
+-> CF: 
+
 - TODO: Kontrolle Benennung Klassen und HTML-Struktur
 -> AW+CF: Anfang November
 https://www.w3schools.com/html/html5_semantic_elements.asp
@@ -73,7 +76,7 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
      AW: DONE: Textarea autosizing
      AW: DONE: Header shows now, Styling and Menubar
      AW: DONE: Timestamp der Message anstatt Klasse
-     AW: implement userDetails und Klassenamen  etc. im Heade
+     AW: DONE: implement userDetails und Klassenamen  etc. im Heade
      CF: Auto Scroll und scrollin innerhalb chat fenster 
    
 - Auth: check out - may be better solution:
