@@ -80,11 +80,11 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
     AW: https://github.com/auth0/angular2-jwt 
  
 #in Progress CF
- - TODO: UI für Klassenliste und für Profil-Seite fertigstellen/durchdenken
- -> CF
- 
  - TODO: Error-Message-Handler erstellen, resp. korrigieren (besteht ja schon z.T.)
  -> CF(+AW)
+ 
+ - TODO: UI für Profil-Seite fertigstellen/durchdenken
+  -> CF
 
 #TO CHECK
 - TODO: Login, Registrierung
@@ -99,6 +99,9 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
  - DONE: Pop-up erstellen für Klassenliste und für Text-Seiten auf Registrierung
   - Polyfill for i.e. und safari
  -> CF
+ 
+ - DONE: UI für Klassenliste fertigstellen/durchdenken
+  -> CF
 
 #DONE
 - DONE: NG-File-Struktur (module,Componente) anlegen
