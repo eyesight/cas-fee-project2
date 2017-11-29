@@ -52,6 +52,9 @@
 - TODO: Bootstrap - nur relevante Imports importieren
 -> CF: 
 
+- TODO: Accessability / ARIA / SEO
+-> CF/AW:
+
 - TODO: Kontrolle Benennung Klassen und HTML-Struktur
 -> AW+CF: Anfang November
 https://www.w3schools.com/html/html5_semantic_elements.asp
