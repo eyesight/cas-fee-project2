@@ -5789,6 +5789,16 @@ html {
         padding-top: 3.125rem;
         overflow: hidden; }
 
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px; }
+
 .zz-navbar {
   background-color: #fff; }
   .zz-navbar__button {
@@ -6242,8 +6252,6 @@ html {
   .zz-table .zz-table__anchor:hover .zz-table--arrow-up,
   .zz-table .zz-table__anchor:hover .zz-table--arrow-down {
     border-color: #0d7e7f; }
-  .zz-table caption {
-    display: none; }
 
 .st0 {
   stroke: #FFFFFF; }
