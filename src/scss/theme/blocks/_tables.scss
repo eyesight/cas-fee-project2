@@ -1,0 +1,136 @@
+.zz-table {
+  margin-bottom: 3rem;
+
+  tbody {
+    tr {
+      transition: all 0.5s ease;
+      color: $color-gray-middle;
+
+      .zz-table__anchor {
+        color: $color-gray-middle;
+
+        &:hover,
+        &:active,
+        &.active {
+          color: $color-primary;
+        }
+      }
+
+      &:hover {
+        background-color: $color-primary-20;
+      }
+
+    }
+    tr:first-child {
+      border-top: 3px solid $color-gray-light;
+    }
+    tr:last-child {
+      border-bottom: 3px solid $color-gray-light;
+    }
+
+    .table--confirmed {
+      color: $color-black;
+
+      .zz-table__anchor {
+        color: $color-black;
+      }
+
+      .zz-table__icon {
+        fill: $color-black;
+
+        &:hover {
+          fill: $color-primary;
+        }
+      }
+    }
+  }
+  thead {
+    th {
+      padding: 0.75rem;
+    }
+    tr {
+      color: $color-black;
+    }
+    tr:first-child {
+      border-top: 3px solid $color-gray-light;
+    }
+  }
+  tr {
+    border-top: 1px solid $color-gray-light;
+    border-bottom: 1px solid $color-gray-light;
+    color: $color-gray-middle;
+  }
+  th {
+    padding: 0.3rem;
+    vertical-align: middle;
+  }
+  td {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    vertical-align: middle;
+  }
+
+  &__anchor {
+    font-weight: $font-semi-bold;
+    color: $color-black;
+    cursor: pointer;
+    white-space: nowrap;
+
+    &:hover,
+    &:active,
+    &.active {
+      color: $color-primary;
+    }
+  }
+
+  &__img {
+    width: 45px;
+  }
+
+  &__icon {
+    width: 45px;
+    fill: $color-gray-middle;
+
+    &:hover {
+      fill: $color-primary;
+    }
+  }
+
+  .table__checkbox {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  &--me {
+    background-color: $color-primary-10;
+  }
+
+  &--arrow-up {
+    @extend .helper-arrow;
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
+
+  &--arrow-down {
+    @extend .helper-arrow;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    margin-bottom: 1px;
+  }
+
+  .active .zz-table--arrow-up,
+  .active .zz-table--arrow-down,
+  .zz-table__anchor:hover .zz-table--arrow-up,
+  .zz-table__anchor:hover .zz-table--arrow-down {
+    border-color: $color-primary;
+  }
+
+  caption {
+    display: none;
+  }
+}
+
+//SVG-Style
+.st0 {
+  stroke: #FFFFFF;
+}

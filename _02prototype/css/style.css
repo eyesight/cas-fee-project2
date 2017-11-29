@@ -6001,17 +6001,16 @@ html {
   padding-top: 1rem; }
 
 .zz-btn {
-  background-color: #0d7e7f;
-  padding: 1rem;
-  border-radius: 1px;
+  background-color: #fff;
+  padding: 1rem 0rem;
+  border-radius: 5px;
   border: none;
   cursor: pointer; }
   .zz-btn--primary {
     background-color: #0d7e7f;
     color: white;
     min-width: 12.5rem;
-    padding-bottom: 0.75rem;
-    padding-top: 0.75rem; }
+    padding: 0.75rem 1rem; }
     .zz-btn--primary:hover {
       background-color: #55a4a4; }
   .zz-btn:disabled {
@@ -6020,9 +6019,8 @@ html {
       cursor: not-allowed; }
 
 .zz-btn-small {
-  background-color: #0d7e7f;
-  padding: 0.5rem;
-  border-radius: 1px;
+  padding: 0.5rem 0.5rem;
+  border-radius: 5px;
   border: none;
   cursor: pointer; }
   .zz-btn-small--primary {
@@ -6112,7 +6110,7 @@ html {
   left: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.7);
-  z-index: 999;
+  z-index: 1050;
   overflow: auto;
   overflow-y: scroll; }
   .zz-overlay__content {
@@ -6166,6 +6164,12 @@ html {
       border-top: 2px solid #666;
       transform: rotate(-45deg);
       transform-origin: center; }
+  .zz-overlay__image {
+    width: 200px; }
+  .zz-overlay__image-wrapper {
+    flex: 1 100%; }
+  .zz-overlay .zz-btn {
+    margin-top: 1rem; }
 
 .zz-table {
   margin-bottom: 3rem; }

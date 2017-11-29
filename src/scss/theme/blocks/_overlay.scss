@@ -5,7 +5,7 @@
   left: 0;
   right: 0;
   background-color: $color-black-70;
-  z-index: 999;
+  z-index: 1050;
   overflow: auto;
   overflow-y:scroll;
 
@@ -24,6 +24,9 @@
 
   &__text-wrapper{
     margin-top: rem-calc(75px);
+  }
+
+  &__2-column{
   }
 
   &__close-btn {
@@ -50,9 +53,7 @@
       height: 0;
       border-top: 2px solid $color-gray-middle;
       transform: rotate(45deg);
-      /*
       transform-origin: center;
-      */
     }
     &:after {
       content: "";
@@ -67,9 +68,18 @@
       height: 0;
       border-top: 2px solid $color-gray-middle;
       transform: rotate(-45deg);
-      /*
       transform-origin: center;
-      */
     }
+  }
+
+  &__image{
+    width: 200px;
+  }
+  &__image-wrapper{
+    flex: 1 100%;
+  }
+
+  .zz-btn{
+    margin-top: 1rem;
   }
 }
