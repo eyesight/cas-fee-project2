@@ -6242,6 +6242,8 @@ html {
     fill: #666; }
     .zz-table__icon:hover {
       fill: #0d7e7f; }
+  .zz-table__email {
+    height: 29px; }
   .zz-table .table__checkbox {
     width: 1.5rem;
     height: 1.5rem; }

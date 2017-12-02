@@ -2,10 +2,19 @@
  @extend .helper-boxshadow;
   margin-bottom: 4rem;
   margin-top: 1rem;
+  padding:1rem;
 
   &__img-wrapper{
     height: 50px;
-    margin: 1rem;
+    margin-right: 1rem;
+
+    + .zz-btn{
+      margin-top: 1rem;
+    }
+  }
+
+  &--img-large{
+    height: 100px;
   }
 
   &__img{
@@ -59,6 +68,8 @@
 
   &--first{
     display:flex;
+    min-height: rem-calc(50px);
+    padding: rem;
   }
 }
 
