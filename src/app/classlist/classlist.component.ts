@@ -15,7 +15,6 @@ export class ClasslistComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

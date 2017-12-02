@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Prototype - Template</title>
+
+  <!-- allStyles -->
+  <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">-->
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
+  <![endif]-->
+</head>
+<body>
+<div class="zz-page">
+  <!--start navigation-->
+  <nav class="navbar fixed-top navbar-expand-md navbar-light zz-navbar">
+    <a class="navbar-brand zz-logo" href="#">
+      <img src="assets/img/logo.png" alt="" class="zz-logo__img">
+    </a>
+    <button class="navbar-toggler zz-navbar__button" type="button" data-toggle="collapse"
+            data-target="#navbarNavDropdown" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="zz-navbar__button__txt">menu</span>
+      <span class="navbar-toggler-icon zz-navbar__button__icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end zz-nav" id="navbarNavDropdown">
+      <ul class="navbar-nav zz-nav__list-group">
+        <li class="zz-nav__list-group__item">
+          <a class="zz-nav__list-group__item__link active" href="#">Profildetails</a>
+        </li>
+        <li class="zz-nav__list-group__item">
+          <a class="zz-nav__list-group__item__link" href="#">Klassenliste</a>
+        </li>
+        <li class="zz-nav__list-group__item">
+          <a class="zz-nav__list-group__item__link" href="#">Chat</a>
+        </li>
+        <li class="dropdown zz-nav__list-group__item">
+          <button class="zz-nav__button" data-toggle="dropdown">
+            <img src="assets/img/dummy-portrait.png" height="70px" alt="" class="zz-nav__button__image">
+          </button>
+          <div class="dropdown-menu dropdown-menu-righ zz-nav__button__menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item zz-nav__button__menu__item" href="#">Profil</a>
+            <a class="dropdown-item zz-nav__button__menu__item" href="#">?????</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item zz-nav__button__menu__item" href="#">Abmelden</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>  <!--End navigation-->
+  <!--start content-->
+  <div class="container-fluid zz-layout">
+    <div class="row justify-content-end zz-layout__row">
+      <div class="col-12 col-lg-12 col-xl-10 zz-mod-container">
+        <h1 class="zz-title">Dashboard</h1>
+        <div class="zz-mod-box zz-mod-box--first">
+          <div class="zz-mod-box__img-wrapper">
+            <img src="assets/img/dummy-portrait.png" alt="" class="zz-mod-box__img">
+          </div>
+          <p class="zz-mod-box__txt"><span class="zz-mod-box__txt-item zz-mod-box--bold">Vorname</span><span
+            class="zz-mod-box--line-right"></span><span
+            class="zz-mod-box__txt-item">Klasse XYZ</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-end zz-layout__row">
+      <div class="col-12 col-xl-5 col-lg-6 zz-mod-container">
+        <h1 class="zz-title zz-title--h2">Angaben Kind</h1>
+        <div class="zz-mod-box">
+          <div class="zz-mod-box__img-wrapper zz-mod-box--img-large">
+            <img src="assets/img/dummy-portrait.png" alt="" class="zz-mod-box__img">
+          </div>
+          <button class="zz-btn zz-btn--primary">
+            Profilbild ersetzen
+          </button>
+          <h3 class="zz-title--h3">Vorname Name</h3>
+          <p>Hans Hugentobler</p>
+          <h3 class="zz-title--h3">Geburtsdatum</h3>
+          <p>04.08.1984</p>
+          <h3 class="zz-title--h3">Klasse</h3>
+          <p>XYZ</p>
+          <h3 class="zz-title--h3">Klassenlehrer</h3>
+          <p>Peter Müller</p>
+          <button class="zz-btn zz-btn--primary">
+            Daten bearbeiten
+          </button>
+        </div>
+      </div>
+      <div class="col-12 col-xl-5 col-lg-6 zz-mod-container">
+        <h1 class="zz-title zz-title--h2">Angaben Eltern</h1>
+        <div class="zz-mod-box">
+          <h3 class="zz-title--h3">Vorname Name</h3>
+          <p>Hans Hugentobler</p>
+          <h3 class="zz-title--h3">Adresse</h3>
+          <p>Strasse</p>
+          <p>ZIP Wohnort</p>
+          <h3 class="zz-title--h3">Telefonnummer</h3>
+          <p>079 654 33 33</p>
+          <h3 class="zz-title--h3">Telefon Geschäft</h3>
+          <p>n.a.</p>
+          <h3 class="zz-title--h3">E-Mail/Username</h3>
+          <p>Hans.Hugentobler(at)xyz.com</p>
+          <button class="zz-btn zz-btn--primary">
+            Daten bearbeiten
+          </button>
+        </div>
+        <button class="zz-btn zz-btn--primary">
+          Passwort wechseln
+        </button>
+      </div>
+    </div>
+    <div class="row justify-content-end zz-layout__row">
+      <div class="col-12 col-lg-12 col-xl-10 zz-mod-container">
+
+      </div>
+    </div>
+  </div>
+  <div class="zz-overlay">
+    <div class="col-11 col-lg-11 col-xl-7 zz-overlay__content">
+      <div class="zz-overlay__content-inner">
+        <h1 class="zz-title zz-title--insideBox">Daten bearbeiten</h1>
+        <div class="row zz-overlay__text-wrapper form-row">
+              <div class="col-12 zz-form__group">
+                <label class="zz-form__label" for="adress">Adresse</label>
+                <input id="adress" class="zz-form__input" name="adress" type="text">
+              </div>
+              <div class="col-8 zz-form__group">
+                <label class="zz-form__label" for="place">Ort</label>
+                <input id="place" class="zz-form__input" name="place" type="text">
+              </div>
+              <div class="col-4 zz-form__group">
+                <label class="zz-form__label" for="zip">PLZ</label>
+                <input id="zip" class="zz-form__input" name="zip" type="text">
+              </div>
+              <div class="col-12 zz-form__group">
+                <label class="zz-form__label" for="adress">Adresse</label>
+                <input id="adress" class="zz-form__input" name="adress" type="text">
+              </div>
+              <div class="col-8 zz-form__group">
+                <label class="zz-form__label" for="place">Ort</label>
+                <input id="place" class="zz-form__input" name="place" type="text">
+              </div>
+              <div class="col-4 zz-form__group">
+                <label class="zz-form__label" for="zip">PLZ</label>
+                <input id="zip" class="zz-form__input" name="zip" type="text">
+              </div>
+              <button class="zz-btn zz-btn--primary">
+                speichern
+              </button>
+            </div>
+          <button aria-label="Close" class="zz-overlay__close-btn"></button>
+        </div>
+      </div>
+    </div>
+  </div><!--End content-->
+  <footer class="zz-footer container-fluid"><!--start footer-->
+    <ul class="zz-footer__list-group ">
+      <li class="zz-footer__list-group__item"><a class="zz-footer__list-group__item__link" href="#">Copyrigh</a></li>
+      <li class="zz-footer__list-group__item"><a class="zz-footer__list-group__item__link" href="#">Impressum</a></li>
+      <li class="zz-footer__list-group__item"><a class="zz-footer__list-group__item__link" href="#">AGB</a></li>
+    </ul>
+  </footer><!--End footer-->
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.min.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
