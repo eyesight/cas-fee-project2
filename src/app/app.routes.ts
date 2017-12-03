@@ -17,8 +17,6 @@ export const ROUTES: Routes = [
   { path: 'login', component: LoginComponent, data: { title: 'Login' }},
   { path: 'registration', component: RegistrationComponent, data: { title: 'Registration' },
     children: [{ path: 'terms-of-use', component: TermsOfUseComponent }]},
-  { path: 'classlist', loadChildren: './classlist/classlist.module#ClasslistModule', data: {title: 'Klassenliste'}, canActivate: [AuthGuard] },
-  { path: 'chat', loadChildren: './chat/chat.module#ChatModule', data: {title: 'Chat'}, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, data: { title: 'Profil' },
     children: [{ path: 'profile-overlay', component: ProfileOverlayComponent }], canActivate: [AuthGuard]},
   { path: 'classlist', loadChildren: './classlist/classlist.module#ClasslistModule', data: {title: 'Klassenliste'}, canActivate: [AuthGuard]},
