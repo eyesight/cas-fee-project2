@@ -46,6 +46,7 @@ export class User {
 
   is_teacher: number;
   is_admin: number;
+  is_approved: boolean;
 
   klasse_name: string;
   klasse_description: string;

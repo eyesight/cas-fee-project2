@@ -18,7 +18,7 @@ import {UserAuthService} from "../_services/user-auth.service";
 export class ClasslistComponent implements OnInit {
 
   public classlist: User[] = null;
-  public userContent: User = null;
+  public userCurrent: User = null;
 
 
   constructor( private classlistService: ClasslistService
@@ -28,13 +28,25 @@ export class ClasslistComponent implements OnInit {
     , private alertService: AlertService
   ) { }
   ngOnInit() {
-    this.userContent = this.userContentDbService.getCurrentUser();
+    this.userCurrent = this.userContentDbService.getCurrentUser();
 
     this.classlistService.getClasslist()
       .subscribe((result) => {
         this.classlist = result;
 
       });
+
+    /*this.userContentService.getUserContent()
+      .subscribe(result => this.userCurrent = result);
+*/
+  }
+
+  public onChecked(checked: boolean, item: User) {
+    console.log('onChecked in classlist');
+    item.is_approved = checked;
+
+  //  item.lastModified = new Date();
+  //  this.snackBar.open('checked / unchecked item', null, { duration: 1500 });
   }
 
 }
