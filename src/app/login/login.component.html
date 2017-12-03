@@ -9,14 +9,14 @@
           <div class="form-row">
             <div class="col-12 zz-form__group">
               <label class="zz-form__label" for="email">Benutzername</label>
-              <input id="email" class="zz-form__input" name="eMail" type="text" [(ngModel)]="model.username" formControlName="formUsername" #username [ngClass]="{ 'zz-form__input--error': formUsername.errors && !username.valid && (formUsername.dirty || formUsername.touched || formDir.submitted)}" placeholder="test (zum Testen)">
+              <input id="email" class="zz-form__input" name="eMail" type="text" [(ngModel)]="model.username" formControlName="formUsername" #username [ngClass]="{ 'zz-form__input--error': formUsername.errors && !username.valid && (formUsername.dirty || formUsername.touched || formDir.submitted)}" placeholder="test@test.com (zum Testen)">
               <div *ngIf="formUsername.errors && !username.valid && (formUsername.dirty || formUsername.touched || formDir.submitted)" class="zz-form__error">Benutzername fehlt oder ist ungültig.</div>
             </div>
           </div>
           <div class="form-row">
             <div class="col-12 zz-form__group">
               <label class="zz-form__label" for="password">Password</label>
-              <input id="password" class="zz-form__input" name="password" type="password" [(ngModel)]="model.password" #password formControlName="formPassword" [ngClass]="{ 'zz-form__input--error': formPassword.errors && !username.valid && (formPassword.dirty || formPassword.touched || formDir.submitted) }" placeholder="test (zum Testen)">
+              <input id="password" class="zz-form__input" name="password" type="password" [(ngModel)]="model.password" #password formControlName="formPassword" [ngClass]="{ 'zz-form__input--error': formPassword.errors && !username.valid && (formPassword.dirty || formPassword.touched || formDir.submitted) }" placeholder="test99! (zum Testen)">
               <div *ngIf="formPassword.errors && !password.valid && (formPassword.dirty || formPassword.touched || formDir.submitted)" class="zz-form__error">Passwort fehlt oder ist ungültig</div>
             </div>
           </div>

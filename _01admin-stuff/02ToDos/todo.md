@@ -88,9 +88,6 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
 #in Progress CF
  - TODO: Error-Message-Handler erstellen, resp. korrigieren (besteht ja schon z.T.)
  -> CF(+AW)
- 
- - TODO: UI für Profil-Seite fertigstellen/durchdenken
-  -> CF
 
 #TO CHECK
 - TODO: Login, Registrierung
@@ -107,6 +104,9 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
  -> CF
  
  - DONE: UI für Klassenliste fertigstellen/durchdenken
+  -> CF
+  
+ - TODO: UI für Profil-Seite fertigstellen/durchdenken
   -> CF
 
 #DONE

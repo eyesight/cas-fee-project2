@@ -5,7 +5,9 @@ import { AuthGuard } from './_guards/auth.guards';
 import { RegistrationComponent } from './registration/registration.component';
 import { TermsOfUseComponent } from './registration/terms-of-use/terms-of-use.component';
 import { AppComponent } from './app.component';
-import {UserDetailComponent} from "./classlist/user-detail/user-detail.component";
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileOverlayComponent } from './profile/profile-overlay/profile-overlay.component';
+import { UserDetailComponent } from "./classlist/user-detail/user-detail.component";
 
 
 export const ROUTES: Routes = [
@@ -15,6 +17,8 @@ export const ROUTES: Routes = [
   { path: 'login', component: LoginComponent, data: { title: 'Login' }},
   { path: 'registration', component: RegistrationComponent, data: { title: 'Registration' },
     children: [{ path: 'terms-of-use', component: TermsOfUseComponent }]},
+  { path: 'profile', component: ProfileComponent, data: { title: 'Profil' },
+    children: [{ path: 'profile-overlay', component: ProfileOverlayComponent }], canActivate: [AuthGuard]},
   { path: 'classlist', loadChildren: './classlist/classlist.module#ClasslistModule', data: {title: 'Klassenliste'}, canActivate: [AuthGuard]},
   { path: 'chat', loadChildren: './chat/chat.module#ChatModule', data: {title: 'Chat'}, canActivate: [AuthGuard] },
 
