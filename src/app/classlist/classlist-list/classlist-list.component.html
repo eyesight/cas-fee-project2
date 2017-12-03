@@ -26,7 +26,7 @@
 
 <tr class="table--confirmed" *ngFor="let item of classlistList">
   <th scope="row"><img class="zz-table__img" src="../../../assets/img/portrait.svg"></th>
-  <td><span class="zz-table__anchor">{{item.child_forename}}</span></td>
+  <td><span class="zz-table__anchor"  [routerLink]="['detail', item.id]">{{item.child_forename}}</span></td>
   <td>{{item.child_surname}}</td>
   <td>{{item.parent_forename}}</td>
   <td>{{item.parent_surname}}</td>
@@ -43,3 +43,4 @@
 
   </tbody>
 </table>
+<router-outlet></router-outlet>

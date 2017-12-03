@@ -33,6 +33,7 @@ export class ClasslistComponent implements OnInit {
     this.classlistService.getClasslist()
       .subscribe((result) => {
         this.classlist = result;
+
       });
   }
 

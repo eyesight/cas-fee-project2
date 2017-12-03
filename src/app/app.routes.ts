@@ -7,6 +7,7 @@ import { TermsOfUseComponent } from './registration/terms-of-use/terms-of-use.co
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileOverlayComponent } from './profile/profile-overlay/profile-overlay.component';
+import { UserDetailComponent } from "./classlist/user-detail/user-detail.component";
 
 
 export const ROUTES: Routes = [
@@ -20,6 +21,8 @@ export const ROUTES: Routes = [
   { path: 'chat', loadChildren: './chat/chat.module#ChatModule', data: {title: 'Chat'}, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, data: { title: 'Profil' },
     children: [{ path: 'profile-overlay', component: ProfileOverlayComponent }], canActivate: [AuthGuard]},
+  { path: 'classlist', loadChildren: './classlist/classlist.module#ClasslistModule', data: {title: 'Klassenliste'}, canActivate: [AuthGuard]},
+  { path: 'chat', loadChildren: './chat/chat.module#ChatModule', data: {title: 'Chat'}, canActivate: [AuthGuard] },
 
   // otherwise redirect to home
   { path: '**', redirectTo: 'home' }
