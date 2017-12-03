@@ -41,7 +41,7 @@
     </a>
   </td>
   <td *ngIf="userCurrent.is_teacher">
-    <input class="table__checkbox" type="checkbox" aria-label="bestaetigung"  [checked]="item.is_approved" (ngModelChange)="onChecked($event)">
+    <input class="table__checkbox" type="checkbox" aria-label="bestaetigung"  [checked]="item.is_approved" (change)="onChecked(item, $event)">
 
  </td>
 

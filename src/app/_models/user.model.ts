@@ -17,6 +17,11 @@ export class UserAuth {
   }
 }
 
+export class UserApprove {
+  email: string;
+  approve: number;
+}
+
 export class Can {
   features: string[];
 }

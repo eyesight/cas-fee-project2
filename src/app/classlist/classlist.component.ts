@@ -45,6 +45,8 @@ export class ClasslistComponent implements OnInit {
     console.log('onChecked in classlist');
     item.is_approved = checked;
 
+   // this.classlistService.approveUser(checked)
+   //   .subscribe((x) => {console.log('approved')} );
   //  item.lastModified = new Date();
   //  this.snackBar.open('checked / unchecked item', null, { duration: 1500 });
   }
