@@ -6,7 +6,7 @@
  */
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
-import {User, UserAuth, UserPwd} from '../../_models/user.model';
+import {User, UserApprove, UserAuth, UserPwd} from '../../_models/user.model';
 // import { appConfig } from '../_helpers/app.config';
 
 import { Observable } from 'rxjs/Observable';
@@ -43,4 +43,15 @@ export class ClasslistService {
     console.log('user:' + user.id);
     return user;
   }
+
+  public approveUser( user: User, approve: number): Observable<any>  {
+
+    const userApprove: UserApprove = new UserApprove;
+    userApprove.email = user.email;
+    userApprove.approve = approve;
+// instead of json use JSON.strinfiy
+    return this.httpWrp.put('/api/user/approve', userApprove)
+      .map((x) => x);
+  }
+
 }

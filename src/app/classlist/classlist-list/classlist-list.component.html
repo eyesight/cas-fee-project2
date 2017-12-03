@@ -18,6 +18,7 @@
     <th scope="col"><a class="zz-table__anchor" href="#">Wohnort <span class="zz-table--arrow-down"></span></a>
     </th>
     <th scope="col">E-Mail</th>
+    <th *ngIf="userCurrent.is_teacher" scope="col">Bestätigt</th>
   </tr>
   </thead>
   <tbody>
@@ -39,8 +40,12 @@
       </svg>
     </a>
   </td>
+  <td *ngIf="userCurrent.is_teacher">
+    <input class="table__checkbox" type="checkbox" aria-label="bestaetigung"  [checked]="item.is_approved" (change)="onChecked(item, $event)">
+
+ </td>
+
 </tr>
 
   </tbody>
 </table>
-<router-outlet></router-outlet>

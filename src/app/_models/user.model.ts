@@ -17,6 +17,11 @@ export class UserAuth {
   }
 }
 
+export class UserApprove {
+  email: string;
+  approve: number;
+}
+
 export class Can {
   features: string[];
 }
@@ -46,6 +51,7 @@ export class User {
 
   is_teacher: number;
   is_admin: number;
+  is_approved: boolean;
 
   klasse_name: string;
   klasse_description: string;

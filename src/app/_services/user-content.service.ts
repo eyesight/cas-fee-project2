@@ -26,7 +26,7 @@ export class UserContentService {
   //  }
   }
 
-  getUserContent() {
+  getUserContent(): Observable<User> {
 
 // instead of json use JSON.strinfiy
     return this.httpWrp.get('/api/user/contents')
