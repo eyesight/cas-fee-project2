@@ -45,7 +45,7 @@ export class CustomValidators {
   }
 
   static passwordCheck(c: FormControl): ValidationErrors {
-    const isValid = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&_\-])[A-Za-z\d$@$!%*#?&_\-]{8,}$/.test(c.value);
+    const isValid = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&_\-])[A-Za-z\d$@$!%*#?&_\-]{7,}$/.test(c.value);
     const message = {
       'passwordCheck': {
         'message': ''

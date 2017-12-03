@@ -39,7 +39,7 @@ module.exports.getAllUserContents = function(req, res){
         return ;
       }
       //let userf = JSON(user);
-      //let canf = JSON(  "user_can", ['chat','classlist','profile']);
+      //let canf = JSON(  "user_can", ['chat','classlist','profiles']);
 
       user.user_can = ['chat','classlist','profile'];
       user.user_avatar = avatar;

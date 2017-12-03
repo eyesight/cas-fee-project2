@@ -59,7 +59,7 @@ export class RegistrationComponent implements OnInit {
         confirmEmail: ['', [Validators.required]]
       }, {validator: CustomValidators.matcher('formEmail', 'confirmEmail')}),
       formPasswordConfirm: this.fb.group({
-        formPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15), CustomValidators.passwordCheck]],
+        formPassword: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(15), CustomValidators.passwordCheck]],
         confirmPassword: ['', [Validators.required]]
       }, {validator: Validators.compose([CustomValidators.matcher('formPassword', 'confirmPassword')])})
     });

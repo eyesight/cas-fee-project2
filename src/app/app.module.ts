@@ -31,6 +31,11 @@ import {AppConfigClass} from "./_helpers/app.config";
 import {UserContentService} from "./_services/user-content.service";
 import {UserContentDbService} from "./_services/user-content-db.service";
 
+//TODO: check registration of all Children of Profile
+import { ProfileDetailsComponent } from './profile/profile-details/profile-details.component';
+import { ProfileOverlayComponent } from './profile/profile-overlay/profile-overlay.component';
+import { ProfileComponent } from './profile/profile.component';
+
 
 @NgModule({
   declarations: [
@@ -43,7 +48,10 @@ import {UserContentDbService} from "./_services/user-content-db.service";
     AlertComponent,
     RegistrationComponent,
     ShowErrorsComponent,
-    TermsOfUseComponent
+    TermsOfUseComponent,
+    ProfileDetailsComponent,
+    ProfileOverlayComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
