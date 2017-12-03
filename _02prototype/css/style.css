@@ -5949,10 +5949,15 @@ html {
 
 .zz-mod-box {
   margin-bottom: 4rem;
-  margin-top: 1rem; }
+  margin-top: 1rem;
+  padding: 1rem; }
   .zz-mod-box__img-wrapper {
     height: 50px;
-    margin: 1rem; }
+    margin-right: 1rem; }
+    .zz-mod-box__img-wrapper + .zz-btn {
+      margin-top: 1rem; }
+  .zz-mod-box--img-large {
+    height: 100px; }
   .zz-mod-box__img {
     height: 100%; }
   .zz-mod-box__txt {
@@ -5983,7 +5988,9 @@ html {
   .zz-mod-box--bold {
     font-weight: bold; }
   .zz-mod-box--first {
-    display: flex; }
+    display: flex;
+    min-height: 3.125rem;
+    padding: rem; }
 
 .zz-layout--centered .zz-mod-box {
   padding: 3.125rem 2.5rem 2.5rem 2.5rem;
@@ -6235,6 +6242,8 @@ html {
     fill: #666; }
     .zz-table__icon:hover {
       fill: #0d7e7f; }
+  .zz-table__email {
+    height: 29px; }
   .zz-table .table__checkbox {
     width: 1.5rem;
     height: 1.5rem; }
