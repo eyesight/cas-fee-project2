@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { appConfig } from '../_helpers/app.config';
 import { User } from '../_models/user.model';
-import {HttpWrapper} from './http-wrapper.service';
+import { HttpWrapper } from './http-wrapper.service';
 
 @Injectable()
 export class UserService {
@@ -17,7 +17,6 @@ export class UserService {
   }
 
   create(user: User) {
-    console.log('create user');
     return this.httpWrp.postNoJWT('/api/register', user);
   }
 
@@ -30,7 +29,6 @@ export class UserService {
   }*/
 
   public showKlasses() {
-    console.log('getClasses user.service:' + appConfig.apiUrl + '/klasse');
     return this.httpWrp.get('/klasse');
   }
 

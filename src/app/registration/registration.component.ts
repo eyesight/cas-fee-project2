@@ -142,7 +142,6 @@ export class RegistrationComponent implements OnInit {
 
   register() {
     this.loading = true;
-    console.log('reigster user');
     this.userService.create(this.model)
       .subscribe(
         data => {

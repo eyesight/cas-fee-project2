@@ -5,9 +5,9 @@
       <div class="zz-mod-box__img-wrapper">
         <img src="assets/img/dummy-portrait.png" alt="" class="zz-mod-box__img">
       </div>
-      <p class="zz-mod-box__txt"><span class="zz-mod-box__txt-item zz-mod-box--bold">Vorname</span><span
+      <p class="zz-mod-box__txt"><span class="zz-mod-box__txt-item zz-mod-box--bold">{{currentUser.child_forename}}</span><span
         class="zz-mod-box--line-right"></span><span
-        class="zz-mod-box__txt-item">Klasse XYZ</span></p>
+        class="zz-mod-box__txt-item">{{currentUser.klasse_description}}</span></p>
     </div>
   </div>
 </div>
@@ -22,13 +22,13 @@
         Profilbild ersetzen
       </button>
       <h3 class="zz-title--h3">Vorname Name</h3>
-      <p>Hans Hugentobler</p>
+      <p>{{currentUser.child_forename}} {{currentUser.child_surname}}</p>
       <h3 class="zz-title--h3">Geburtsdatum</h3>
-      <p>04.08.1984</p>
+      <p>{{currentUser.child_date_of_birth}}</p>
       <h3 class="zz-title--h3">Klasse</h3>
-      <p>XYZ</p>
+      <p>{{currentUser.klasse_description}}</p>
       <h3 class="zz-title--h3">Klassenlehrer</h3>
-      <p>Peter Müller</p>
+      <p>{{currentUser.is_teacher}}</p>
       <button class="zz-btn zz-btn--primary">
         Daten bearbeiten
       </button>
@@ -38,16 +38,16 @@
     <h1 class="zz-title zz-title--h2">Angaben Eltern</h1>
     <div class="zz-mod-box">
       <h3 class="zz-title--h3">Vorname Name</h3>
-      <p>Hans Hugentobler</p>
+      <p>{{currentUser.parent_forename}} {{currentUser.parent_surname}}</p>
       <h3 class="zz-title--h3">Adresse</h3>
-      <p>Strasse</p>
-      <p>ZIP Wohnort</p>
+      <p>{{currentUser.adress}}</p>
+      <p>{{currentUser.zip}} {{currentUser.place}}</p>
       <h3 class="zz-title--h3">Telefonnummer</h3>
-      <p>079 654 33 33</p>
+      <p>{{currentUser.tel_private}}</p>
       <h3 class="zz-title--h3">Telefon Geschäft</h3>
-      <p>n.a.</p>
+      <p>{{currentUser.tel_office}}</p>
       <h3 class="zz-title--h3">E-Mail/Username</h3>
-      <p>Hans.Hugentobler(at)xyz.com</p>
+      <p>{{currentUser.email}}</p>
       <button class="zz-btn zz-btn--primary">
         Daten bearbeiten
       </button>

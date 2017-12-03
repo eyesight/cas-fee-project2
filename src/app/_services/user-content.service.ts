@@ -39,7 +39,6 @@ export class UserContentService {
         }
         return userContent;
       });
-
   }
 
   clear() {

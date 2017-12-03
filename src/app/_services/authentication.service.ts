@@ -5,8 +5,8 @@ import { appConfig } from '../_helpers/app.config';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import {HttpWrapper} from './http-wrapper.service';
-import {UserAuthService} from './user-auth.service';
+import { HttpWrapper } from './http-wrapper.service';
+import { UserAuthService } from './user-auth.service';
 
 @Injectable()
 export class AuthenticationService {
