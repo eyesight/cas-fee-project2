@@ -24,113 +24,19 @@
 
 
 
-<tr class="table--confirmed">
+<tr class="table--confirmed" *ngFor="let item of classlistList">
   <th scope="row"><img class="zz-table__img" src="../../../assets/img/portrait.svg"></th>
-  <td><span class="zz-table__anchor">Kindname</span></td>
-  <td>Kindnachname</td>
-  <td>Elternvorname</td>
-  <td>Name</td>
-  <td>Herzogenbuchsee</td>
+  <td><span class="zz-table__anchor">{{item.child_forename}}</span></td>
+  <td>{{item.child_surname}}</td>
+  <td>{{item.parent_forename}}</td>
+  <td>{{item.parent_surname}}</td>
+  <td>{{item.place}}</td>
   <td>
     <a href="#">
       <svg class="zz-table__icon" viewBox="0 0 20 11.8">
         <rect width="20" height="11.8"/>
         <polyline class="st0" points="0,0 10.3,8.3 20,0 "/>
       </svg>
-    </a>
-  </td>
-</tr>
-<tr class="zz-table--me table--confirmed">
-  <th scope="row"><img class="zz-table__img" src="../../../assets/img/portrait.svg"></th>
-  <td><span class="zz-table__anchor">Fritzli</span></td>
-  <td>Kindnachname</td>
-  <td>Elternvorname</td>
-  <td>Name</td>
-  <td>Herzogenbuchsee</td>
-  <td>
-    <a href="#">
-      <svg class="zz-table__icon" viewBox="0 0 20 11.8">
-        <rect width="20" height="11.8"/>
-        <polyline class="st0" points="0,0 10.3,8.3 20,0 "/>
-      </svg>
-    </a>
-  </td>
-</tr>
-<tr class="table--confirmed">
-  <th scope="row"><img class="zz-table__img" src="assets/img/portrait.svg"></th>
-  <td><span class="zz-table__anchor" href="#">Kindname</span></td>
-  <td>Kindnachname</td>
-  <td>Elternvorname</td>
-  <td>Name</td>
-  <td>Herzogenbuchsee</td>
-  <td>
-    <a href="#">
-      <img class="zz-table__img" src="../../../assets/img/email.svg">
-    </a>
-  </td>
-</tr>
-<tr class="table--confirmed">
-  <th scope="row"><img class="zz-table__img" src="assets/img/portrait.svg"></th>
-  <td><span class="zz-table__anchor" href="#">Kindname</span></td>
-  <td>Kindnachname</td>
-  <td>Elternvorname</td>
-  <td>Name</td>
-  <td>Herzogenbuchsee</td>
-  <td>
-    <a href="#">
-      <img class="zz-table__img" src="../../../assets/img/email.svg">
-    </a>
-  </td>
-</tr>
-<tr class="table--confirmed">
-  <th scope="row"><img class="zz-table__img" src="assets/img/portrait.svg"></th>
-  <td><span class="zz-table__anchor" href="#">Kindname</span></td>
-  <td>Kindnachname</td>
-  <td>Elternvorname</td>
-  <td>Name</td>
-  <td>Herzogenbuchsee</td>
-  <td>
-    <a href="#">
-      <img class="zz-table__img" src="../../../assets/img/email.svg">
-    </a>
-  </td>
-</tr>
-<tr class="table--confirmed">
-  <th scope="row"><img class="zz-table__img" src="assets/img/portrait.svg"></th>
-  <td><span class="zz-table__anchor" href="#">Kindname</span></td>
-  <td>Kindnachname</td>
-  <td>Elternvorname</td>
-  <td>Name</td>
-  <td>Herzogenbuchsee</td>
-  <td>
-    <a href="#">
-      <img class="zz-table__img" src="../../../assets/img/email.svg">
-    </a>
-  </td>
-</tr>
-<tr class="table--confirmed">
-  <th scope="row"><img class="zz-table__img" src="assets/img/portrait.svg"></th>
-  <td><span class="zz-table__anchor" href="#">Kindname</span></td>
-  <td>Kindnachname</td>
-  <td>Elternvorname</td>
-  <td>Name</td>
-  <td>Herzogenbuchsee</td>
-  <td>
-    <a href="#">
-      <img class="zz-table__img" src="../../../assets/img/email.svg">
-    </a>
-  </td>
-</tr>
-<tr class="table--confirmed">
-  <th scope="row"><img class="zz-table__img" src="assets/img/portrait.svg"></th>
-  <td><span class="zz-table__anchor" href="#">Kindname</span></td>
-  <td>Kindnachname</td>
-  <td>Elternvorname</td>
-  <td>Name</td>
-  <td>Herzogenbuchsee</td>
-  <td>
-    <a href="#">
-      <img class="zz-table__img" src="../../../assets/img/email.svg">
     </a>
   </td>
 </tr>

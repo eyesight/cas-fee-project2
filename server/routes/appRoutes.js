@@ -19,7 +19,7 @@ router.get("/user/contents", userController.getAllUserContents);
 
 router.get("/chat/getall", chatController.getMessages);
 
-router.get("/user/klasselist", userController.getUserKlasseList);
+router.get("/user/classlist", userController.getUserKlasseList);
 router.put("/user/approve", userController.approveUser);
 
 /*
