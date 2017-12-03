@@ -5,12 +5,14 @@ import { ClasslistListComponent } from './classlist-list/classlist-list.componen
 import { ClasslistComponent } from './classlist.component';
 import { ClasslistRoutesModule } from './classlist.routes';
 import {ClasslistService} from "./service/classlist.service";
+import {UserDetailComponent} from "./user-detail/user-detail.component";
+import {UserResolverService} from "./service/user-resolver.service";
 
 @NgModule({
   imports: [
     CommonModule, ClasslistRoutesModule
   ],
-  declarations: [ClasslistListComponent, ClasslistComponent],
-  providers: [ClasslistService]
+  declarations: [ClasslistListComponent, ClasslistComponent, UserDetailComponent],
+  providers: [ClasslistService, UserResolverService]
 })
 export class ClasslistModule { }

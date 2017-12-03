@@ -5,6 +5,7 @@ import { AuthGuard } from './_guards/auth.guards';
 import { RegistrationComponent } from './registration/registration.component';
 import { TermsOfUseComponent } from './registration/terms-of-use/terms-of-use.component';
 import { AppComponent } from './app.component';
+import {UserDetailComponent} from "./classlist/user-detail/user-detail.component";
 
 
 export const ROUTES: Routes = [
@@ -14,8 +15,8 @@ export const ROUTES: Routes = [
   { path: 'login', component: LoginComponent, data: { title: 'Login' }},
   { path: 'registration', component: RegistrationComponent, data: { title: 'Registration' },
     children: [{ path: 'terms-of-use', component: TermsOfUseComponent }]},
-  { path: 'classlist', loadChildren: './classlist/classlist.module#ClasslistModule', data: {title: 'Klassenliste'}, canActivate: [AuthGuard] },
-  { path: 'chat',      loadChildren: './chat/chat.module#ChatModule', data: {title: 'Chat'}, canActivate: [AuthGuard] },
+  { path: 'classlist', loadChildren: './classlist/classlist.module#ClasslistModule', data: {title: 'Klassenliste'}, canActivate: [AuthGuard]},
+  { path: 'chat', loadChildren: './chat/chat.module#ChatModule', data: {title: 'Chat'}, canActivate: [AuthGuard] },
 
   // otherwise redirect to home
   { path: '**', redirectTo: 'home' }

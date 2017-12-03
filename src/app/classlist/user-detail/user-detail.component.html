@@ -1,0 +1,47 @@
+<div class="zz-overlay">
+
+  <div class="col-11 col-lg-11 col-xl-7 zz-overlay__content">
+    <div class="zz-overlay__content-inner">
+      <h1 class="zz-title zz-title--insideBox">Vorname Name</h1>
+      <div class="row zz-overlay__text-wrapper">
+        <div class="zz-overlay__image-wrapper">
+          <img src="assets/img/dummy-portrait.png" alt="" class="zz-overlay__image">
+        </div>
+        <div class="col-12 col-lg-6 zz-overlay__2-column">
+          <h3 class="zz-title--h3">Vorname Name (Kind)</h3>
+          <p>{{user.child_forename}} {{user.child_surname}}</p>
+          <h3 class="zz-title--h3">Geburtsdatum</h3>
+          <p>{{user.child_date_of_birth}}</p>
+          <h3 class="zz-title--h3">Adresse</h3>
+          <p>{{user.adress}}</p>
+          <p>ZIP Wohnort</p>
+          <h3 class="zz-title--h3">Telefonnummer</h3>
+          <p>{{user.tel_private}}</p>
+          <h3 class="zz-title--h3">Klasse</h3>
+          <p>{{user.klasse_name}}</p>
+          <h3 class="zz-title--h3">Klassenlehrer</h3>
+          <p>{{user.is_teacher}}</p>
+        </div>
+        <div class="col-12 col-lg-6 zz-overlay__2-column">
+          <h3 class="zz-title--h3">Vorname Name (Eltern):</h3>
+          <p>{{user.parent_forename}} {{user.parent_surname}}</p>
+          <h3 class="zz-title--h3">Korrespondenz-Sprache</h3>
+          <p>{{user.parent_language}}</p>
+          <h3 class="zz-title--h3">Registriert seit</h3>
+          <p>10.12.20012</p>
+          <p>
+            <button class="zz-btn zz-btn--primary">
+              zu den Kontakten hinhzufügen
+            </button>
+          </p>
+          <p>
+            <button class="zz-btn zz-btn--primary">
+              E-Mail schreiben
+            </button>
+          </p>
+        </div>
+        <button aria-label="Close" class="zz-overlay__close-btn"></button>
+      </div>
+    </div>
+  </div>
+</div><!--End content-->

@@ -19,6 +19,7 @@ import {HttpWrapper} from '../../_services/http-wrapper.service';
 @Injectable()
 export class ClasslistService {
 
+  private classlistCache: User[] = null;
   constructor(
     private httpWrp: HttpWrapper) {
   }
@@ -27,6 +28,19 @@ export class ClasslistService {
 
 // instead of json use JSON.strinfiy
     return this.httpWrp.get('/api/user/classlist')
-      .map((result) => result);
+      .map((result) => {this.classlistCache = result; return result; });
+  }
+
+  public getUserDetail(id): User {
+    console.log('getUserDetail:' + id);
+
+    if (!this.classlistCache) {
+      return null;
+    }
+
+    const user  = this.classlistCache
+      .filter(x =>  x.id === Number.parseInt(id))[0];
+    console.log('user:' + user.id);
+    return user;
   }
 }
