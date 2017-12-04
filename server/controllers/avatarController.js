@@ -1,11 +1,11 @@
 const multer = require('multer');
 //var upload = multer({ storage: multer.memoryStorage({}) })
-const upload = multer({ dest: 'uploads/' });
+const upload = multer({ dest: 'uploads/' })
 const fs = require('fs');
 
 
 module.exports.avatarUpload = function (req, res) {
-  let raw = new Buffer(req.body.avatar.value.toString(), 'base64');
+  let raw = new Buffer(req.body.avatar.value.toString(), 'base64')
   let filename = req.user.name.replace(/@/i,'.');
   console.log('uploadAvatar: ');
   console.log('req.user.name :' + filename);

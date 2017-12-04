@@ -39,8 +39,8 @@ CREATE TABLE `klasses` (
 -- Daten für Tabelle `klasses`
 --
 
-INSERT INTO `klasses` VALUES('1', '6b', 'Primarschulklasse 6b', '2016-10-09', '2017-10-09', NULL, 1);
-INSERT INTO `klasses` VALUES('2', '4a', 'Primarschulklasse 4a', '2016-10-21', '2017-10-21', NULL, 1);
+INSERT INTO `klasses` VALUES('1', '6b', 'Primarschulklasse 6b', '2016-10-09', '2017-10-09', 5, 1);
+INSERT INTO `klasses` VALUES('2', '4a', 'Primarschulklasse 4a', '2016-10-21', '2017-10-21', 5, 1);
 
 -- --------------------------------------------------------
 
@@ -64,6 +64,8 @@ CREATE TABLE `users` (
   `adress` varchar(255) DEFAULT NULL,
   `zip` varchar(255) DEFAULT NULL,
   `place` varchar(255) DEFAULT NULL,
+  `tel_private` varchar(255) DEFAULT NULL,
+  `tel_office` varchar(255) DEFAULT NULL,
   `is_teacher` tinyint(1) DEFAULT '0',
   `is_active` tinyint(1) DEFAULT '1',
   `is_approved` tinyint(1) DEFAULT '0',
@@ -75,9 +77,11 @@ CREATE TABLE `users` (
 -- Daten für Tabelle `users`
 --
 
-INSERT INTO `users` VALUES(1, '1', 'hansli@example.com', '$2a$11$k8EkgulVtkQxuD8Jt.xyUeg1wNKivBHbluVyI98vnFpt9.SJsx1XK', 'hansli@example.com', 'Schneider', 'Johann', 'm', 'Schneider', 'Hansli', 'm', '2010-10-09', 'Langstrasse 18', '8000', 'Zürich', 0, 0, 1);
-INSERT INTO `users` VALUES(2, '1', 'heidi@example.com', '$2a$11$k8EkgulVtkQxuD8Jt.xyUeg1wNKivBHbluVyI98vnFpt9.SJsx1XK', 'heidi@example.com', 'Mueller', 'Johann', 'w', 'Schneider', 'Heidi', 'm', '2017-09-10', 'Langstrasse 18', '8000', 'Zürich', 0, 0, 1);
-INSERT INTO `users` VALUES(4, '2', 'test@test.com', '77dfa1f5f622ac038847a57a432cc20db0d2180bdbb189a18dd5cbb941ac5732', 'test@test.com', 'test', 'test', 'w', 'test', 'test', 'm', '1999-10-10', 'Strasse', '8000', 'Zürich', 0, 0, 1);
+INSERT INTO `users` VALUES(1, '1', 'hansli@example.com', '$2a$11$k8EkgulVtkQxuD8Jt.xyUeg1wNKivBHbluVyI98vnFpt9.SJsx1XK', 'hansli@example.com', 'Schneider', 'Johann', 'm', 'Schneider', 'Hansli', 'm', '2010-10-09', 'Langstrasse 18', '8000', 'Zürich', '40 000 000 00 00', '40 000 000 00 00', 0, 0, 1);
+INSERT INTO `users` VALUES(2, '1', 'heidi@example.com', '$2a$11$k8EkgulVtkQxuD8Jt.xyUeg1wNKivBHbluVyI98vnFpt9.SJsx1XK', 'heidi@example.com', 'Mueller', 'Johann', 'w', 'Schneider', 'Heidi', 'm', '2017-09-10', 'Langstrasse 18', '8000', 'Zürich', '30 000 000 00 00', '30 000 000 00 00', 0, 0, 1);
+INSERT INTO `users` VALUES(4, '2', 'test@test.com', '77dfa1f5f622ac038847a57a432cc20db0d2180bdbb189a18dd5cbb941ac5732', 'test@test.com', 'test', 'test', 'w', 'test', 'test', 'm', '1999-10-10', 'Strasse', '8000', 'Zürich', '20 000 000 00 00', '20 000 000 00 00', 0, 0, 1);
+INSERT INTO `users` VALUES(5, '2', 'lehrer@test.com', '77dfa1f5f622ac038847a57a432cc20db0d2180bdbb189a18dd5cbb941ac5732', 'lehrer@test.com', 'Mueller', 'Johann', 'w', '', '', '', '', 'Langstrasse 18', '8000', 'Zürich', '10 000 000 00 00', '10 000 000 00 00', 1, 0, 1);
+
 
 -- DATEN für CHAT
 

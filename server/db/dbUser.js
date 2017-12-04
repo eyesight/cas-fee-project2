@@ -141,8 +141,8 @@ function authenticate(email, password, callback){
 function getAllUserDetails(email, callback){
 
   return db.query("select u.id,  u.email,u.class_id, u.parent_surname, u.parent_forename," +
-    "u.child_surname, u.child_forename,u.child_gender, u.child_date_of_birth,u.adress, u.zip, u.place, u.is_teacher, "+
-    "k.name klasse_name, k.description klasse_description, k.start_at klasse_start_at, k.end_at klasse_end_at from users u, klasses k "+
+    "u.child_surname, u.child_forename,u.child_gender, u.child_date_of_birth, u.adress, u.zip, u.place, u.tel_private, u.tel_office, u.is_teacher, "+
+    "k.name klasse_name, k.description klasse_description, k.start_at klasse_start_at, k.end_at klasse_end_at, k.teacher_user_id teacher_user_id from users u, klasses k "+
     "where u.class_id = k.id and email=?",[email], function(err, newDoc) {
     if (callback) {
       if (newDoc.length <= 0) {

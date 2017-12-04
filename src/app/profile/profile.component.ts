@@ -6,6 +6,7 @@ import { UserContentDbService } from '../_services/user-content-db.service';
 import { UserAuthService } from '../_services/user-auth.service';
 
 
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html'
@@ -13,6 +14,8 @@ import { UserAuthService } from '../_services/user-auth.service';
 export class ProfileComponent implements OnInit {
   public userContent: User = null;
   public currentUser: User = null;
+
+
 
   constructor(
     private router: Router,
@@ -24,7 +27,10 @@ export class ProfileComponent implements OnInit {
     this.userContent = this.UserContentDbService.getCurrentUser();
     this.currentUser = this.userContent['user_attributes'];
 
-    console.log(this.currentUser);
+    /*this.userContent = this.UserContentService.getUserContent().subscribe((result) => {
+      this.data.push(result);
+    });
+    console.dir(this.data);*/
   }
 
 }

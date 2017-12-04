@@ -6,6 +6,7 @@ import { ProfileOverlayComponent } from './profile-overlay/profile-overlay.compo
 import { ProfileDetailsComponent } from './profile-details/profile-details.component';
 
 
+
 @NgModule({
   imports: [
     CommonModule

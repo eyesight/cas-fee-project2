@@ -31,7 +31,7 @@ export class UserContentService {
 // instead of json use JSON.strinfiy
     return this.httpWrp.get('/api/user/contents')
       .map((userContent: User) => {
-        console.log('userAuth ist :' + userContent.email);
+        console.log('userAuth ist :' + userContent['user_attributes'].email);
         if (userContent) {
           console.dir(userContent);
           // console.log(user.token);

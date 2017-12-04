@@ -14,7 +14,7 @@ export const ROUTES: Routes = [
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, data: { title: 'Home' }, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginComponent, data: { title: 'Login' }},
+  { path: 'login', component: LoginComponent, data: { title: 'Logout' }},
   { path: 'registration', component: RegistrationComponent, data: { title: 'Registration' },
     children: [{ path: 'terms-of-use', component: TermsOfUseComponent }]},
   { path: 'profile', component: ProfileComponent, data: { title: 'Profil' },
