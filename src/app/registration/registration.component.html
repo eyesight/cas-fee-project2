@@ -192,7 +192,7 @@ Vorbereitung -> Übertragen in gesamte Form
         </div>
         <div class="form-row">
           <div class="col-12 zz-form__group zz-form__group--last">
-            <button class="zz-btn zz-btn--primary" [disabled]="!registrationForm.valid">Registrieren und
+            <button type="submit" class="zz-btn zz-btn--primary" [disabled]="!registrationForm.valid">Registrieren und
               Nutzungsbestimmungen zustimmen*
             </button>
           </div>
@@ -202,14 +202,8 @@ Vorbereitung -> Übertragen in gesamte Form
         <button [routerLink]="['terms-of-use']" class="zz-infotext__link">
           * Nutzungsbedingungen lesen
         </button>
-        <!--<button (click)="showDialog = !showDialog" class="zz-infotext__link">
-          * Nutzungsbedingungen lesen
-        </button>-->
       </div>
       <router-outlet></router-outlet>
-<!--
-      <app-terms-of-use [(visible)]="showDialog"></app-terms-of-use>
--->
     </div>
     <div class="zz-infotext">
       <p class="zz-infotext__txt">

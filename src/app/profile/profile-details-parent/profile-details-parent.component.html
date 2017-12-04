@@ -1,0 +1,82 @@
+<div class="col-11 col-lg-11 col-xl-7 zz-overlay__content">
+  <div class="zz-overlay__content-inner">
+    <h1 class="zz-title zz-title--insideBox">Daten bearbeiten</h1>
+    <div class="zz-overlay__text-wrapper">
+      <div class="form-row">
+        <div class="col-md-6 col-sm-12 zz-form__group">
+          <label class="zz-form__label" for="p-gender">
+            Anrede
+          </label>
+          <select class="zz-form__select" id="p-gender">
+            <option value="">Bitte wählen</option>
+            <option value="w">Frau</option>
+            <option value="m">Mann</option>
+          </select>
+        </div>
+        <div class="col-md-6 col-sm-12 zz-form__group">
+          <label class="zz-form__label" for="language">
+            Sprache
+          </label>
+          <select class="zz-form__select" id="language">
+            <option value="">Bitte wählen</option>
+            <option></option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-6 col-sm-12 zz-form__group">
+          <label class="zz-form__label" for="p-firstname">Vorname</label>
+          <input id="p-firstname" class="zz-form__input" >
+        </div>
+        <div class="col-md-6 col-sm-12 zz-form__group">
+          <label class="zz-form__label" for="p-lastName">Nachname</label>
+          <input id="p-lastName" class="zz-form__input" name="lastName" type="text">
+        </div>
+      </div>
+      <div class="form-row">
+      <div class="col-12 zz-form__group">
+        <label class="zz-form__label" for="adress">Adresse</label>
+        <input id="adress" class="zz-form__input" name="adress" type="text" >
+      </div>
+      <div class="col-8 zz-form__group">
+        <label class="zz-form__label" for="place">Ort</label>
+        <input id="place" class="zz-form__input" name="place" type="text">
+      </div>
+      <div class="col-4 zz-form__group">
+        <label class="zz-form__label" for="zip">PLZ</label>
+        <input id="zip" class="zz-form__input" name="zip" type="text">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-12 zz-form__group">
+        <label class="zz-form__label" for="tel-privat">Telefon privat</label>
+        <input id="tel-privat" class="zz-form__input" name="tel-privat" type="text">
+      </div>
+      <div class="col-12 zz-form__group">
+        <label class="zz-form__label" for="tel-office">Telefon geschäft <span class="zz-infotext">(optional)</span></label>
+        <input id="tel-office" class="zz-form__input" name="tel-office" type="text">
+      </div>
+    </div>
+      <div class="form-row">
+        <div class="col-12"><h3 class="zz-form__title">E-Mail/Username</h3></div>
+      </div>
+      <div class="form-row">
+        <div class="col-12 zz-form__group">
+          <label class="zz-form__label" for="email">E-Mail (gilt als username)</label>
+          <input id="email" class="zz-form__input" name="email" type="text">
+        </div>
+        <div class="col-12 zz-form__group">
+          <label class="zz-form__label" for="email-check">E-Mail wiederholen</label>
+          <input id="email-check" class="zz-form__input" name="emailcheck" type="text">
+        </div>
+      </div>
+      <div class="form-row">
+        <button class="zz-btn zz-btn--primary">
+          speichern
+        </button>
+      </div>
+    </div>
+    <button [routerLink]="['/profile']" aria-label="Close" class="zz-overlay__close-btn"></button>
+  </div>
+</div>
+

@@ -1,16 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-  AbstractControlDirective
-} from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
-import {CustomValidators} from '../_validation/custom.validators';
-import { Klasse } from '../_models/klasse.model';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CustomValidators } from '../_validation/custom.validators';
 
 import {AlertService, UserService} from '../_services/index';
 
@@ -29,8 +20,6 @@ export class RegistrationComponent implements OnInit {
     {content: 'en', label: 'Englisch'}];
 
   public klasses: Array<{ id: number, description: string }>;
-
-  showDialog = false;
 
   constructor(private router: Router,
               private userService: UserService,
@@ -64,7 +53,6 @@ export class RegistrationComponent implements OnInit {
       }, {validator: Validators.compose([CustomValidators.matcher('formPassword', 'confirmPassword')])})
     });
     this.getklasse();
-    console.log(this.registrationForm.valid);
 }
 
   get formPFirstname() {

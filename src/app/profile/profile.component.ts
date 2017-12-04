@@ -26,11 +26,5 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.userContent = this.UserContentDbService.getCurrentUser();
     this.currentUser = this.userContent['user_attributes'];
-
-    /*this.userContent = this.UserContentService.getUserContent().subscribe((result) => {
-      this.data.push(result);
-    });
-    console.dir(this.data);*/
   }
-
 }

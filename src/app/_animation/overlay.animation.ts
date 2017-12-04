@@ -9,8 +9,8 @@ export const overlayAnimation =
       bottom: 0,
       left: 0,
       right: 0,
-      backgroundColor: 'rgba(0, 0, 0, 0.7)',
-      'z-index': 999,
+      backgroundColor: 'rgba(0, 0, 0, 0.8)',
+      'z-index': 1050,
       overflow: 'auto',
       'overflow-y':'scroll'
     })),

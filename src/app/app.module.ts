@@ -32,9 +32,9 @@ import {UserContentService} from "./_services/user-content.service";
 import {UserContentDbService} from "./_services/user-content-db.service";
 
 //TODO: check registration of all Children of Profile
-import { ProfileDetailsComponent } from './profile/profile-details/profile-details.component';
-import { ProfileOverlayComponent } from './profile/profile-overlay/profile-overlay.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ProfileDetailsChildComponent } from './profile/profile-details-child/profile-details-child.component';
+import { ProfileDetailsParentComponent } from './profile/profile-details-parent/profile-details-parent.component';
 
 import { FromNowPipe } from './_pipes/from-now.pipe';
 import { ProperTimePipe } from './_pipes/proper-time.pipe';
@@ -56,13 +56,14 @@ import { genderPipe } from './_pipes/gender.pipe';
     RegistrationComponent,
     ShowErrorsComponent,
     TermsOfUseComponent,
-    ProfileDetailsComponent,
-    ProfileOverlayComponent,
+    ProfileDetailsChildComponent,
     ProfileComponent,
     FromNowPipe,
     ProperTimePipe,
     ProperDatePipe,
-    genderPipe
+    genderPipe,
+    ProfileDetailsChildComponent,
+    ProfileDetailsParentComponent
   ],
   imports: [
     BrowserModule,

@@ -31,7 +31,7 @@
       <p>{{currentUser.klasse_description}}</p>
       <h3 class="zz-title--h3">Klassenlehrer</h3>
       <p>{{currentUser.teacher_gender | gender:'de'}} {{currentUser.teacher_forename}} {{currentUser.teacher_surname}}</p>
-      <button class="zz-btn zz-btn--primary">
+      <button [routerLink]="['profile-details-child']" class="zz-btn zz-btn--primary">
         Daten bearbeiten
       </button>
     </div>
@@ -50,9 +50,11 @@
       <p>{{currentUser.tel_private}}</p>
       <h3 class="zz-title--h3">Telefon Geschäft</h3>
       <p>{{currentUser.tel_office}}</p>
+      <h3 class="zz-title--h3">Sprache</h3>
+      <p>{{currentUser.parent_language}}</p>
       <h3 class="zz-title--h3">E-Mail/Username</h3>
       <p>{{currentUser.email}}</p>
-      <button class="zz-btn zz-btn--primary">
+      <button [routerLink]="['profile-details-parent']" class="zz-btn zz-btn--primary">
         Daten bearbeiten
       </button>
     </div>
@@ -60,4 +62,5 @@
       Passwort wechseln
     </button>
   </div>
+  <router-outlet></router-outlet>
 </div>
