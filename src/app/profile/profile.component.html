@@ -28,7 +28,7 @@
       <h3 class="zz-title--h3">Klasse</h3>
       <p>{{currentUser.klasse_description}}</p>
       <h3 class="zz-title--h3">Klassenlehrer</h3>
-      <p>{{currentUser.teacher_user_id}}</p>
+      <p><span *ngIf="currentUser.teacher_gender == 'w'">Frau </span><span *ngIf="currentUser.teacher_gender == 'm'">Herr </span>{{currentUser.teacher_forename}} {{currentUser.teacher_surname}}</p>
       <button class="zz-btn zz-btn--primary">
         Daten bearbeiten
       </button>
@@ -37,6 +37,9 @@
   <div class="col-12 col-xl-5 col-lg-6 zz-mod-container">
     <h1 class="zz-title zz-title--h2">Angaben Eltern</h1>
     <div class="zz-mod-box">
+      <h3 class="zz-title--h3">Anrede</h3>
+      <p *ngIf="currentUser.parent_gender == 'w'">Frau</p>
+      <p *ngIf="currentUser.parent_gender == 'm'">Herr</p>
       <h3 class="zz-title--h3">Vorname Name</h3>
       <p>{{currentUser.parent_forename}} {{currentUser.parent_surname}}</p>
       <h3 class="zz-title--h3">Adresse</h3>
