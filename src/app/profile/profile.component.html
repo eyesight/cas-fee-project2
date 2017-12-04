@@ -21,14 +21,16 @@
       <button class="zz-btn zz-btn--primary">
         Profilbild ersetzen
       </button>
+      <h3 class="zz-title--h3">Geschlecht</h3>
+      <p>{{currentUser.child_gender | gender:'de': true}}</p>
       <h3 class="zz-title--h3">Vorname Name</h3>
       <p>{{currentUser.child_forename}} {{currentUser.child_surname}}</p>
       <h3 class="zz-title--h3">Geburtsdatum</h3>
-      <p>{{currentUser.child_date_of_birth}}</p>
+      <p>{{currentUser.child_date_of_birth | properDate}} </p>
       <h3 class="zz-title--h3">Klasse</h3>
       <p>{{currentUser.klasse_description}}</p>
       <h3 class="zz-title--h3">Klassenlehrer</h3>
-      <p><span *ngIf="currentUser.teacher_gender == 'w'">Frau </span><span *ngIf="currentUser.teacher_gender == 'm'">Herr </span>{{currentUser.teacher_forename}} {{currentUser.teacher_surname}}</p>
+      <p>{{currentUser.teacher_gender | gender:'de'}} {{currentUser.teacher_forename}} {{currentUser.teacher_surname}}</p>
       <button class="zz-btn zz-btn--primary">
         Daten bearbeiten
       </button>
@@ -38,8 +40,7 @@
     <h1 class="zz-title zz-title--h2">Angaben Eltern</h1>
     <div class="zz-mod-box">
       <h3 class="zz-title--h3">Anrede</h3>
-      <p *ngIf="currentUser.parent_gender == 'w'">Frau</p>
-      <p *ngIf="currentUser.parent_gender == 'm'">Herr</p>
+      <p>{{currentUser.parent_gender | gender:'de'}}</p>
       <h3 class="zz-title--h3">Vorname Name</h3>
       <p>{{currentUser.parent_forename}} {{currentUser.parent_surname}}</p>
       <h3 class="zz-title--h3">Adresse</h3>

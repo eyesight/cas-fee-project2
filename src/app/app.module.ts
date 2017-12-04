@@ -36,6 +36,13 @@ import { ProfileDetailsComponent } from './profile/profile-details/profile-detai
 import { ProfileOverlayComponent } from './profile/profile-overlay/profile-overlay.component';
 import { ProfileComponent } from './profile/profile.component';
 
+import { FromNowPipe } from './_pipes/from-now.pipe';
+import { ProperTimePipe } from './_pipes/proper-time.pipe';
+import { ProperDatePipe } from './_pipes/proper-date.pipe';
+import { genderPipe } from './_pipes/gender.pipe';
+
+
+
 
 @NgModule({
   declarations: [
@@ -51,7 +58,11 @@ import { ProfileComponent } from './profile/profile.component';
     TermsOfUseComponent,
     ProfileDetailsComponent,
     ProfileOverlayComponent,
-    ProfileComponent
+    ProfileComponent,
+    FromNowPipe,
+    ProperTimePipe,
+    ProperDatePipe,
+    genderPipe
   ],
   imports: [
     BrowserModule,
