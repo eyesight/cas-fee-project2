@@ -145,18 +145,28 @@ function getAllUserDetails(email, callback){
     "k.name klasse_name, k.description klasse_description, k.start_at klasse_start_at, k.end_at klasse_end_at, k.teacher_user_id teacher_user_id, "+
     "t.parent_surname teacher_surname, t.parent_forename teacher_forename, t.email teacher_email, t.zip teacher_zip, t.place teacher_place, t.tel_private teacher_tel_private, t.tel_office teacher_tel_office, t.parent_gender teacher_gender "+
     "from users u, klasses k, (select users.parent_surname, users.parent_forename, users.email, users.zip, users.place, users.tel_private, users.tel_office, users.parent_gender, users.id, users.is_teacher, " +
-    "klasses.teacher_user_id from users, klasses where klasses.teacher_user_id = users.id and users.is_teacher = 1) t " +
-    "where u.class_id = k.id and u.email=?",[email], function(err, newDoc) {
+    "klasses.teacher_user_id, klasses.id class_id from users, klasses where klasses.teacher_user_id = users.id and users.is_teacher = 1) t " +
+    "where u.class_id = k.id and t.class_id = u.class_id  and u.email=?",[email], function(err, newDoc) {
     if (callback) {
-      if (newDoc.length <= 0) {
-        newDoc = null;
-      }
-      else {
-        if (newDoc.length > 1) {
-          err = 'SQL SEVERE ERROR: more than one entry for user.email:' + email;
+      console.log('adsf');
+      if (newDoc) {
+        if (newDoc.length <= 0) {
+          newDoc = null;
         }
+        else {
+          if (newDoc.length > 1) {
+            err = 'SQL SEVERE ERROR: more than one entry for user.email:' + email;
+          }
+        }
+        callback(err, newDoc[0]);
+        return;
+      } else
+      {
+       // err = 'SQL SEVERE ERROR: no resultset:' + email;
+
       }
-      callback(err, newDoc[0]);
+      callback(err, false);
+
     }
   });
 }
