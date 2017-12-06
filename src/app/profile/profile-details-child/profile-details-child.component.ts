@@ -4,7 +4,7 @@ import { overlayAnimation } from '../../_animation/overlay.animation';
 import { UserContentDbService } from '../../_services/user-content-db.service';
 import { Router } from '@angular/router';
 import { UserAuthService } from '../../_services/user-auth.service';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from '../../_validation/custom.validators';
 import { AlertService, UserService } from '../../_services/index';
 
@@ -27,24 +27,26 @@ export class ProfileDetailsChildComponent implements OnInit {
     this.formModel = this.childDetailsForm.value;
     this.currentUser.child_forename = this.formModel.child_forename;
     this.currentUser.child_surname = this.formModel.child_surname;
-    console.log(this.currentUser);
+    console.log(this.formModel);
 
-    this.userService.update(this.currentUser)
+    /*this.userService.update(this.currentUser)
      .subscribe(
      data => {
-       console.log('update Child success')
+       console.log('update Child success');
      this.router.navigate(['/profile']);
      },
      error => {
-       console.log('update Child error');
+       console.log  ('update Child error');
      this.alertService.error(error);
-     });
+     });*/
   }
 
   buildForm() {
     this.childDetailsForm = this.fb.group({
+      child_gender: [this.currentUser.child_gender, [Validators.required]],
       child_forename: [this.currentUser.child_forename, [Validators.required, Validators.minLength(2)]],
-      child_surname: [this.currentUser.child_surname, [Validators.required, Validators.minLength(2)]]
+      child_surname: [this.currentUser.child_surname, [Validators.required, Validators.minLength(2)]],
+      child_date_of_birth: [this.currentUser.child_date_of_birth, [Validators.required, CustomValidators.dateFormat]]
     });
   }
 
@@ -65,11 +67,19 @@ export class ProfileDetailsChildComponent implements OnInit {
     this.buildForm();
   }
 
+  get formChildGender() {
+    return this.childDetailsForm.get('child_gender');
+  }
+
   get formCFirstname() {
     return this.childDetailsForm.get('child_forename');
   }
 
   get formCLastname() {
     return this.childDetailsForm.get('child_surname');
+  }
+
+  get formCBirthday() {
+    return this.childDetailsForm.get('child_date_of_birth');
   }
 }

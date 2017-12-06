@@ -75,7 +75,7 @@ Vorbereitung -> Übertragen in gesamte Form
             </label>
             <select class="zz-form__select" id="p-gender" [(ngModel)]="model.parent_gender"
                     formControlName="formParentGender">
-              <option value="">Bitte wählen</option>
+              <option [selected]="formParentGender.value == null" value="">Bitte wählen</option>
               <option value="w">Frau</option>
               <option value="m">Mann</option>
             </select>
@@ -87,7 +87,7 @@ Vorbereitung -> Übertragen in gesamte Form
             </label>
             <select class="zz-form__select" id="language" [(ngModel)]="model.parent_language"
                     formControlName="formLanguage">
-              <option value="">Bitte wählen</option>
+              <option [selected]="formLanguage.value == null" value="">Bitte wählen</option>
               <option *ngFor="let lang of languages" [value]="lang.content">{{lang.label}}</option>
             </select>
             <app-show-errors [control]="formLanguage"></app-show-errors>
@@ -119,7 +119,7 @@ Vorbereitung -> Übertragen in gesamte Form
             </label>
             <select class="zz-form__select" id="c-gender" [(ngModel)]="model.child_gender"
                     formControlName="formChildGender">
-              <option value="">Bitte wählen</option>
+              <option [selected]="formChildGender.value == null" value="">Bitte wählen</option>
               <option value="w">Mädchen</option>
               <option value="m">Junge</option>
             </select>
@@ -129,7 +129,7 @@ Vorbereitung -> Übertragen in gesamte Form
         <div class="form-row">
           <div class="col-12 zz-form__group">
             <label class="zz-form__label">Geburtstag</label>
-            <input type="text" id="c-Birthday-Day" class="zz-form__input" [(ngModel)]="model.child_date_of_birth"
+            <input type="text" id="c-Birthday-Day" class="zz-form__input" placeholder="dd-mm-yyyy" [(ngModel)]="model.child_date_of_birth"
                    name="birthday" formControlName="formCBirthday"
                    [ngClass]="{ 'zz-form__input--error': formCBirthday.invalid && (formCBirthday.dirty || formCBirthday.touched)}">
             <app-show-errors [control]="formCBirthday"></app-show-errors>
@@ -141,7 +141,7 @@ Vorbereitung -> Übertragen in gesamte Form
               Bitte Klasse auswählen (steht im E-Mail)
             </label>
             <select class="zz-form__select" id="c-class" [(ngModel)]="model.class_id" formControlName="formChildKlasse">
-              <option value="">Bitte wählen</option>
+              <option [selected]="formChildKlasse.value == null" value="">Bitte wählen</option>
               <option *ngFor="let klass of klasses" [value]="klass.id">{{klass.description}}</option>
             </select>
             <app-show-errors [control]="formChildKlasse"></app-show-errors>

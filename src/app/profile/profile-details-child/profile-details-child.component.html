@@ -8,10 +8,11 @@
             <label class="zz-form__label" for="c-gender">
               Geschlecht
             </label>
-            <select class="zz-form__select" id="c-gender" >
+            <select class="zz-form__select" id="c-gender" formControlName="child_gender">
               <option value="w">Mädchen</option>
               <option value="m">Junge</option>
             </select>
+            <app-show-errors [control]="formChildGender"></app-show-errors>
           </div>
         </div>
         <div class="form-row">
@@ -29,7 +30,8 @@
         <div class="form-row">
           <div class="col-12 zz-form__group">
             <label class="zz-form__label">Geburtstag</label>
-            <input type="text" id="c-Birthday-Day" class="zz-form__input">
+            <input type="text" id="c-Birthday-Day" class="zz-form__input" formControlName="child_date_of_birth" [ngClass]="{ 'zz-form__input--error': formCBirthday.invalid && (formCBirthday.dirty || formCBirthday.touched)}">
+            <app-show-errors [control]="formCBirthday"></app-show-errors>
           </div>
         </div>
         <div class="form-row">

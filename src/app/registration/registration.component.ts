@@ -2,14 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from '../_validation/custom.validators';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 import {AlertService, UserService} from '../_services/index';
 
 @Component({
   selector: 'app-registration',
-  templateUrl: './registration.component.html'
+  templateUrl: './registration.component.html',
 })
 export class RegistrationComponent implements OnInit {
+  modelDate;
   model: any = {};
   loading = false;
   registrationForm: FormGroup;

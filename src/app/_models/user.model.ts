@@ -63,7 +63,6 @@ export class User {
   getAvatar() {
       return 'data:image/jpeg;base64,' + this.user_avatar;
   }
-
 }
 
 
