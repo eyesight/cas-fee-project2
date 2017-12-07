@@ -44,7 +44,7 @@
 -> AW (+CF)
 
 - TODO: Klassenliste aus Sicht von Lehrer: einauen von Bestätiung, dass User in Klassenliste gehört
--> AW (+CF) - Prio 1
+-> AW (+CF) - Prio 1 - DONE
 
 - TODO: Abstände korrigieren, Feinheiten ausarbeiten in Sass/CSS
 -> CF: Dezember
@@ -60,7 +60,7 @@
 https://www.w3schools.com/html/html5_semantic_elements.asp
 
 - TODO: localStorage operationen in separates file: storage.service.ts
--> AW:
+-> DONE AW:
 
 - TODO: Background-Style-Changer in Profil einbauen (niedrige Prio)
 -> 

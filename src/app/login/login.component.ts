@@ -53,10 +53,11 @@ export class LoginComponent implements OnInit {
 
           this.userContentService.getUserContent()
             .subscribe( content => {
-
+              console.log('content:' + content);
               this.router.navigate([this.returnUrl]);
             },
             error => {
+              console.dir(error);
               this.alertService.error(error);
               this.loading = false;
             });

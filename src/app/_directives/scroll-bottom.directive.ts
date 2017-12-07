@@ -59,10 +59,7 @@ export class AppScrollBottomDirective implements AfterContentInit, OnChanges {
 
           if (   this.element.nativeElement.scrollTop !== this.element.nativeElement.scrollHeight) {
             const diff = (  this.element.nativeElement.scrollHeight - this.element.nativeElement.scrollTop);
-         //   console.log('diff:' +  (  this.element.nativeElement.scrollHeight - this.element.nativeElement.scrollTop) + ':(diff / 100):'+(diff / 100));
-         //   console.log('scrollTOp:' + this.element.nativeElement.scrollTop + ' scrollHeight:' + this.element.nativeElement.scrollHeight);
-
-            if (diff <= 10 ){
+            if (diff <= 10 ) {
               // finally
               this.element.nativeElement.scrollTop =  this.element.nativeElement.scrollHeight;
             }else {

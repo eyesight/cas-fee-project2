@@ -166,27 +166,36 @@ function getAllUserDetails(email, callback){
     "t.parent_surname teacher_surname, t.parent_forename teacher_forename, t.email teacher_email, t.zip teacher_zip, t.place teacher_place, t.tel_private teacher_tel_private, t.tel_office teacher_tel_office, t.parent_gender teacher_gender "+
     "from users u, klasses k, (select users.parent_surname, users.parent_forename, users.email, users.zip, users.place, users.tel_private, users.tel_office, users.parent_gender, users.id, users.is_teacher, " +
     "klasses.teacher_user_id, klasses.id class_id from users, klasses where klasses.teacher_user_id = users.id and users.is_teacher = 1) t " +
-    "where u.class_id = k.id and t.class_id = u.class_id  and u.email=?",[email], function(err, newDoc) {
+    "where ((u.class_id = k.id and t.class_id = u.class_id and COALESCE(NULL,u.is_teacher,0) = 0) " +
+      "OR ( t.teacher_user_id = u.id AND u.is_teacher = 1 AND k.id = t.class_id)) and u.email=?",[email], function(err, newDoc) {
     if (callback) {
       console.log('adsf');
       if (newDoc) {
         if (newDoc.length <= 0) {
           newDoc = null;
+          err = 'SQL no Result';
         }
         else {
           if (newDoc.length > 1) {
             err = 'SQL SEVERE ERROR: more than one entry for user.email:' + email;
           }
         }
-        callback(err, newDoc[0]);
-        return;
+       // callback(err, newDoc[0]);
+      //  return;
       } else
       {
-       // err = 'SQL SEVERE ERROR: no resultset:' + email;
+        err = 'SQL SEVERE ERROR: no resultset:' + email;
+        newDoc = null;
 
       }
-      callback(err, false);
+      if (newDoc) {
+        callback(err, newDoc[0]);
+      }
+      else {
+        console.log('getAllUserDetails:erro:'+err || -1);
+        callback(err, false);
 
+      }
     }
   });
 }
