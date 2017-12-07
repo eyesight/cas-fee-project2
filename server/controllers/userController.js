@@ -31,23 +31,29 @@ module.exports.getAllUserContents = function(req, res){
   console.log('getAllUserDetails:req.user.name :' + req.user.name);
   dbUser.getAllUserDetails(req.user.name,  function(err, user) {
 
+    console.log('getAllUserContents:'+user.email);
+    if (err){
+      res.status(400).json(false);
+      return;
+    }
     avatarController.avatarGet(req ,(err, avatar) => {
 
-      if (err ){
+      /*if (err ){
         console.log('getAllUSERcontentsn avatarGet err:' + err);
         res.json({"user_attributes": user,  "user_can": ['chat','classlist','profile'], "user_avatar": null });
         return ;
-      }
+      }*/
       //let userf = JSON(user);
       //let canf = JSON(  "user_can", ['chat','classlist','profiles']);
+      console.log('getAllUserContents:after avatarget:'+user.email);
 
       user.user_can = ['chat','classlist','profile'];
-      user.user_avatar = avatar;
+      user.user_avatar = avatar || null;
       res.json(user);
      // res.json(user);
 
     })
-
+    return;
 
 
   });

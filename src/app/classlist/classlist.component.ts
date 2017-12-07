@@ -9,6 +9,7 @@ import {Router} from "@angular/router";
 import {AlertService} from "../_services/alert.service";
 import {UserContentDbService} from "../_services/user-content-db.service";
 import {UserAuthService} from "../_services/user-auth.service";
+import {UserContentService} from "../_services/user-content.service";
 
 
 @Component({
@@ -26,15 +27,31 @@ export class ClasslistComponent implements OnInit {
     , private userAuthService: UserAuthService
     , private userContentDbService: UserContentDbService
     , private alertService: AlertService
-  ) { }
+  ,private userContentService: UserContentService,
+
+) { }
   ngOnInit() {
     this.userCurrent = this.userContentDbService.getCurrentUser();
+
+    console.log('this.userCurrent und jetzt:' + this.userCurrent.user_avatar);
+
+    if (!this.userCurrent){
+      this.alertService.error('Sie müssen sich neu anmelden',false, 1000);
+      setTimeout(() =>
+        this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 1000);
+      return;
+    }
 
     this.classlistService.getClasslist()
       .subscribe((result) => {
         this.classlist = result;
-
-      });
+      },
+        (error) => {
+          console.log('chat.component call authentication:' + error);
+          this.alertService.error('Sie müssen sich periodisch neu anmelden', false, 1000);
+          setTimeout(() =>
+            this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 1000);
+        });
 
     /*this.userContentService.getUserContent()
       .subscribe(result => this.userCurrent = result);

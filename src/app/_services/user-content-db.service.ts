@@ -29,8 +29,11 @@ export class UserContentDbService {
   }
 
   public getCurrentUser(): User {
+    console.log('userContentGetCurrentUser:'+this.userContentCache);
     if (!this.userContentCache) {
       this.userContentCache = this.storage.read(StorageKeys.keyCurrentUserContent);
+      console.log('userContentGetCurrentUserund jetzt:'+this.userContentCache);
+
       return this.userContentCache;
     } else {
       return this.userContentCache;

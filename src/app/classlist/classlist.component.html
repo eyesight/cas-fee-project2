@@ -3,11 +3,13 @@
     <h1 class="zz-title">Klassenliste von Klasse XYZ</h1>
     <div class="zz-mod-box zz-mod-box--first">
       <div class="zz-mod-box__img-wrapper">
-        <img src="assets/img/dummy-portrait.png" alt="" class="zz-mod-box__img">
+        <img *ngIf="!userCurrent.user_avatar" src="assets/img/dummy-portrait.png" alt="" class="zz-mod-box__img">
+        <img *ngIf="userCurrent.user_avatar" src="data:image/png;base64,{{userCurrent.user_avatar}}" class="zz-mod-box__img">
+
       </div>
-      <p class="zz-mod-box__txt"><span class="zz-mod-box__txt-item zz-mod-box--bold">Fritzli</span><span
+      <p class="zz-mod-box__txt"><span class="zz-mod-box__txt-item zz-mod-box--bold">{{userCurrent.email}}</span><span
         class="zz-mod-box--line-right"></span><span
-        class="zz-mod-box__txt-item">Klasse XYZ</span></p>
+        class="zz-mod-box__txt-item">{{userCurrent.klasse_name}}</span></p>
     </div>
   </div>
 </div>
