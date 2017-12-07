@@ -41,7 +41,8 @@ class ModelBase {
   }
 
   mySqlGetUpdateStatement(tablename, whereclause){
-    return  "update "+tablename+"  set "+this.getClassMembers().join('=?, ')+"=? where "+ this.manageWCL(whereclause);
+    console.log("whereclause" + whereclause);
+    return  "update "+tablename+" set "+this.getClassMembers().join('=?, ')+"=? where "+ this.manageWCL(whereclause);
   }
 
   mysqlGetDeleteStatement(tablename, whereclause){

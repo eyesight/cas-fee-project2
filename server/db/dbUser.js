@@ -20,7 +20,7 @@ class UserRegister {
 
 class UserModel extends ModelBase{
 
-  constructor(id, email, class_id, parent_surname, parent_forename, parent_gender, parent_language, child_surname, child_forename, child_gender, child_birthdate, adress, zip, place, tel_private, tel_office, is_teacher, is_admin, is_approved, user_avatar, user_can){
+  constructor(id, email, class_id, parent_surname, parent_forename, parent_gender, parent_language, child_surname, child_forename, child_gender, child_birthdate, adress, zip, place, tel_private, tel_office, is_teacher, is_approved, user_avatar, user_can, user_name){
     super();
     this.id = id;
     this.email = email;
@@ -40,10 +40,10 @@ class UserModel extends ModelBase{
     this.tel_office = tel_office;
     this.is_active = 1;
     this.is_teacher = is_teacher;
-    this.is_admin = is_admin;
     this.is_approved = is_approved;
     this.user_avatar = user_avatar;
     this.user_can = user_can;
+    this.user_name = user_name;
   }
 }
 
@@ -70,10 +70,10 @@ function UserFromJson(req){
     r.tel_office,
     r.is_active,
     r.is_teacher,
-    r.is_admin,
     r.is_approved,
     r.user_avatar,
-    r.user_can
+    r.user_can,
+    r.user_name
   );
 }
 
@@ -99,10 +99,10 @@ function registerUser(email, passwort, isTeacher, req, updateUserFunc, callback)
 
 function updateUser(email, userModel, callback){
 
-  var sf = userModel.mySqlGetUpdateStatement('users'," email='" + email +"'");
+  var sf = userModel.mySqlGetUpdateStatement('users',"email='" + email +"'");
   // [user.getClassMembers()].
   // console.dir(user.getAttributeList());
-  console.log(sf);
+  console.log("updaaaate"+sf);
   return db.query(sf,userModel.getAttributeList(), function(err, newDoc) {
 
     if (callback) {
