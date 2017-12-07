@@ -20,21 +20,30 @@ class UserRegister {
 
 class UserModel extends ModelBase{
 
-  constructor(class_id, userName, parentSurname, parentForename, childSurname, childForename, childGender, childBirthdate, adress, zip, place){
+  constructor(id, email, class_id, parent_surname, parent_forename, parent_gender, parent_language, child_surname, child_forename, child_gender, child_birthdate, adress, zip, place, tel_private, tel_office, is_teacher, is_admin, is_approved, user_avatar, user_can){
     super();
+    this.id = id;
+    this.email = email;
     this.class_id = class_id;
-    this.user_name = userName;
-    this.parent_surname = parentSurname;
-    this.parent_forename = parentForename;
-    this.child_surname = childSurname;
-    this.child_forename = childForename;
-    this.child_gender = childGender;
-    this.child_date_of_birth = childBirthdate;
+    this.parent_surname = parent_surname;
+    this.parent_forename = parent_forename;
+    this.parent_gender = parent_gender;
+    this.parent_language = parent_language;
+    this.child_surname = child_surname;
+    this.child_forename = child_forename;
+    this.child_gender = child_gender;
+    this.child_date_of_birth = child_birthdate;
     this.adress = adress;
     this.zip = zip;
     this.place = place;
+    this.tel_private = tel_private;
+    this.tel_office = tel_office;
     this.is_active = 1;
-
+    this.is_teacher = is_teacher;
+    this.is_admin = is_admin;
+    this.is_approved = is_approved;
+    this.user_avatar = user_avatar;
+    this.user_can = user_can;
   }
 }
 
@@ -43,17 +52,28 @@ function UserFromJson(req){
   "use strict";
   var r = req.body;
   return new UserModel(
+    r.id,
+    r.email,
     r.class_id,
-    r.user_name,
     r.parent_surname,
     r.parent_forename,
+    r.parent_gender,
+    r.parent_language,
     r.child_surname,
     r.child_forename,
     r.child_gender,
     r.child_date_of_birth,
     r.adress,
     r.zip,
-    r.place
+    r.place,
+    r.tel_private,
+    r.tel_office,
+    r.is_active,
+    r.is_teacher,
+    r.is_admin,
+    r.is_approved,
+    r.user_avatar,
+    r.user_can
   );
 }
 
@@ -141,7 +161,7 @@ function authenticate(email, password, callback){
 function getAllUserDetails(email, callback){
 
   return db.query("select u.id,  u.email,u.class_id, u.parent_surname, u.parent_forename, u.parent_gender, u.parent_language, " +
-    "u.child_surname, u.child_forename,u.child_gender, u.child_date_of_birth, u.adress, u.zip, u.place, u.tel_private, u.tel_office, u.is_teacher, " +
+    "u.child_surname, u.child_forename,u.child_gender, u.child_date_of_birth, u.adress, u.zip, u.place, u.tel_private, u.tel_office, u.is_teacher, u.user_avatar, user_can, " +
     "k.name klasse_name, k.description klasse_description, k.start_at klasse_start_at, k.end_at klasse_end_at, k.teacher_user_id teacher_user_id, "+
     "t.parent_surname teacher_surname, t.parent_forename teacher_forename, t.email teacher_email, t.zip teacher_zip, t.place teacher_place, t.tel_private teacher_tel_private, t.tel_office teacher_tel_office, t.parent_gender teacher_gender "+
     "from users u, klasses k, (select users.parent_surname, users.parent_forename, users.email, users.zip, users.place, users.tel_private, users.tel_office, users.parent_gender, users.id, users.is_teacher, " +

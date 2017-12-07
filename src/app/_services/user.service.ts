@@ -21,7 +21,7 @@ export class UserService {
   }
 
   update(user: User) {
-    return this.httpWrp.put('/user/update/' + user.id, user);
+    return this.httpWrp.put('api/user/update', user);
   }
 
   /*delete(id: number) {
