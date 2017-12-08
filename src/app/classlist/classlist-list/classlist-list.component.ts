@@ -1,8 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {User, UserAuth} from '../../_models/user.model';
-import {ActivatedRoute} from "@angular/router";
-import {UserAuthService} from "../../_services/user-auth.service";
-import {UserContentService} from "../../_services/user-content.service";
 import {ClasslistService} from "../service/classlist.service";
 
 
@@ -40,12 +37,6 @@ export class ClasslistListComponent implements OnInit {
   @Input()
   userCurrent: User = null;
 
-//  public sort: SORT[] = [0, 0, 0, 0, 0, 0];
-  private sor = this.sfPF;
-
-  public SortFields = FIELDS;
-
-
   public sortGoals: SortClass[] = [
     {up: false, down: false, sortFn: this.sfCF},
     {up: false, down: false, sortFn: this.sfCS},
@@ -53,6 +44,8 @@ export class ClasslistListComponent implements OnInit {
     {up: false, down: false, sortFn: this.sfPS},
     {up: false, down: false, sortFn: this.sfPL}
   ];
+  private sorFn = this.sfPF;
+  public SortFields = FIELDS;
 
 
   constructor(private classlistService: ClasslistService) {
@@ -78,15 +71,15 @@ export class ClasslistListComponent implements OnInit {
 
 
   public onSortGoal(id: number) {
-    this.sor = this.sortGoals[id].sortFn;
+    this.sorFn = this.sortGoals[id].sortFn;
     if (this.sortGoals[id].up) {
       this.sortGoals[id].up = false;
       this.sortGoals[id].down = true;
-      this.classlistList = this.classlistList.sort((a, b) => this.sor(b, a));
+      this.classlistList = this.classlistList.sort((a, b) => this.sorFn(b, a));
     } else {
       this.sortGoals[id].up = true;
       this.sortGoals[id].down = false;
-      this.classlistList = this.classlistList.sort((a, b) => this.sor(a, b));
+      this.classlistList = this.classlistList.sort((a, b) => this.sorFn(a, b));
     }
     // reset other class.zz_..
     this.sortGoals = this.sortGoals.map((x, ix) => {
@@ -96,12 +89,9 @@ export class ClasslistListComponent implements OnInit {
       }
       return x;
     });
-
-
   }
 
-
-  public sfPF(a: User, b: User) {
+  private sfPF(a: User, b: User) {
     return this.sortFunc(a.parent_forename, b.parent_forename);
   }
 
