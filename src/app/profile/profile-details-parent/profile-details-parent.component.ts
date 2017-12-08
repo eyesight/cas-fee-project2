@@ -17,7 +17,7 @@ import { AlertService, UserService } from '../../_services/index';
 export class ProfileDetailsParentComponent implements OnInit {
   public user: User;
   public userContent: User = null;
-  public currentUser: User = null;
+  // public currentUser: User = null;
   public parentDetailsForm: FormGroup;
   public formModel: User;
 
@@ -28,8 +28,8 @@ export class ProfileDetailsParentComponent implements OnInit {
 
   update() {
     this.formModel = this.parentDetailsForm.value;
-    this.currentUser.child_forename = this.formModel.child_forename;
-    this.currentUser.child_surname = this.formModel.child_surname;
+    this.userContent.child_forename = this.formModel.child_forename;
+    this.userContent.child_surname = this.formModel.child_surname;
     console.log(this.formModel);
 
     /*this.userService.update(this.currentUser)
@@ -46,15 +46,15 @@ export class ProfileDetailsParentComponent implements OnInit {
 
   buildForm() {
     this.parentDetailsForm = this.fb.group({
-      parent_gender: [this.currentUser.parent_gender, [Validators.required]],
-      parent_forename: [this.currentUser.parent_forename, [Validators.required, Validators.minLength(2)]],
-      parent_surname: [this.currentUser.parent_surname, [Validators.required, Validators.minLength(2)]],
-      parent_language: [this.currentUser.parent_language, [Validators.required]],
-      adress: [this.currentUser.adress, [Validators.required, Validators.minLength(4)]],
-      place: [this.currentUser.place, [Validators.required, Validators.minLength(2)]],
-      zip: [this.currentUser.zip, [Validators.required, Validators.minLength(4), Validators.maxLength(4), CustomValidators.justNumbers]],
-      tel_private: [this.currentUser.tel_private, [Validators.required, Validators.minLength(10), CustomValidators.telephoneNumber]],
-      tel_office: [this.currentUser.tel_office],
+      parent_gender: [this.userContent.parent_gender, [Validators.required]],
+      parent_forename: [this.userContent.parent_forename, [Validators.required, Validators.minLength(2)]],
+      parent_surname: [this.userContent.parent_surname, [Validators.required, Validators.minLength(2)]],
+      parent_language: [this.userContent.parent_language, [Validators.required]],
+      adress: [this.userContent.adress, [Validators.required, Validators.minLength(4)]],
+      place: [this.userContent.place, [Validators.required, Validators.minLength(2)]],
+      zip: [this.userContent.zip, [Validators.required, Validators.minLength(4), Validators.maxLength(4), CustomValidators.justNumbers]],
+      tel_private: [this.userContent.tel_private, [Validators.required, Validators.minLength(10), CustomValidators.telephoneNumber]],
+      tel_office: [this.userContent.tel_office],
     });
   }
 
@@ -69,8 +69,8 @@ export class ProfileDetailsParentComponent implements OnInit {
 
   ngOnInit():void {
     this.userContent = this.UserContentDbService.getCurrentUser();
-    this.currentUser = this.userContent['user_attributes'];
-    console.log(this.currentUser);
+    this.userContent = this.userContent['user_attributes'];
+    console.log(this.userContent.email);
 
     this.buildForm();
   }

@@ -9,6 +9,9 @@ export class genderPipe implements PipeTransform {
   constructor() {}
 
   transform( value: string, language: string, child: boolean): string {
+    if (!value) {
+      return;
+    }
     value = value.toLowerCase();
     if ( value === 'w' || value === 'f' || value === 'frau' || value === 'woman'){
       if ( language === 'de' ) {

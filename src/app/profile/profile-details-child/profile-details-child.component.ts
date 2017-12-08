@@ -17,6 +17,8 @@ import { AlertService, UserService } from '../../_services/index';
   host: { '[@overlayAnimation]': ''}
 })
 
+
+// TODO: use input directives and get usercontent passed over from profile.component (or use a resolver to pass it)
 export class ProfileDetailsChildComponent implements OnInit {
   public user: User;
   public userContent: User = null;
@@ -65,24 +67,24 @@ export class ProfileDetailsChildComponent implements OnInit {
     this.currentUser.child_surname = this.formModel.child_surname;
     console.log(this.userObject);
 
-    this.userObject.adress = this.currentUser.adress;
-    this.userObject.child_date_of_birth = this.currentUser.child_date_of_birth;
-    this.userObject.child_forename = this.currentUser.child_forename;
-    this.userObject.child_gender = this.currentUser.child_gender;
-    this.userObject.child_surname = this.currentUser.child_surname;
-    this.userObject.class_id = this.currentUser.class_id;
-    this.userObject.email = this.currentUser.email;
-    this.userObject.id = this.currentUser.id;
-    this.userObject.is_teacher = this.currentUser.is_teacher;
-    this.userObject.parent_forename = this.currentUser.parent_forename;
-    this.userObject.parent_gender = this.currentUser.parent_gender;
-    this.userObject.parent_language = this.currentUser.parent_language;
-    this.userObject.place = this.currentUser.place;
-    this.userObject.tel_office = this.currentUser.tel_office;
-    this.userObject.tel_private = this.currentUser.tel_private;
-    this.userObject.zip = this.currentUser.zip;
-    this.userObject.user_avatar = this.currentUser.user_avatar;
-    this.userObject.user_can = this.currentUser.user_can;
+    this.userObject.adress = this.userContent.adress;
+    this.userObject.child_date_of_birth = this.userContent.child_date_of_birth;
+    this.userObject.child_forename = this.userContent.child_forename;
+    this.userObject.child_gender = this.userContent.child_gender;
+    this.userObject.child_surname = this.userContent.child_surname;
+    this.userObject.class_id = this.userContent.class_id;
+    this.userObject.email = this.userContent.email;
+    this.userObject.id = this.userContent.id;
+    this.userObject.is_teacher = this.userContent.is_teacher;
+    this.userObject.parent_forename = this.userContent.parent_forename;
+    this.userObject.parent_gender = this.userContent.parent_gender;
+    this.userObject.parent_language = this.userContent.parent_language;
+    this.userObject.place = this.userContent.place;
+    this.userObject.tel_office = this.userContent.tel_office;
+    this.userObject.tel_private = this.userContent.tel_private;
+    this.userObject.zip = this.userContent.zip;
+    this.userObject.user_avatar = this.userContent.user_avatar;
+    this.userObject.user_can = this.userContent.user_can;
     /*
         this.userObject = this.UserContentService.generateUpdatedUser(this.currentUser);
     */
@@ -102,10 +104,10 @@ export class ProfileDetailsChildComponent implements OnInit {
 
   buildForm() {
     this.childDetailsForm = this.fb.group({
-      child_gender: [this.currentUser.child_gender, [Validators.required]],
-      child_forename: [this.currentUser.child_forename, [Validators.required, Validators.minLength(2)]],
-      child_surname: [this.currentUser.child_surname, [Validators.required, Validators.minLength(2)]],
-      child_date_of_birth: [this.currentUser.child_date_of_birth, [Validators.required, CustomValidators.dateFormat]]
+      child_gender: [this.userContent.child_gender, [Validators.required]],
+      child_forename: [this.userContent.child_forename, [Validators.required, Validators.minLength(2)]],
+      child_surname: [this.userContent.child_surname, [Validators.required, Validators.minLength(2)]],
+      child_date_of_birth: [this.userContent.child_date_of_birth, [Validators.required, CustomValidators.dateFormat]]
     });
   }
 }

@@ -5,9 +5,9 @@
       <div class="zz-mod-box__img-wrapper">
         <img src="assets/img/dummy-portrait.png" alt="" class="zz-mod-box__img">
       </div>
-      <p class="zz-mod-box__txt"><span class="zz-mod-box__txt-item zz-mod-box--bold">{{currentUser.child_forename}}</span><span
+      <p class="zz-mod-box__txt"><span class="zz-mod-box__txt-item zz-mod-box--bold">{{userContent.child_forename}}</span><span
         class="zz-mod-box--line-right"></span><span
-        class="zz-mod-box__txt-item">{{currentUser.klasse_description}}</span></p>
+        class="zz-mod-box__txt-item">{{userContent.klasse_description}}</span></p>
     </div>
   </div>
 </div>
@@ -22,15 +22,15 @@
         Profilbild ersetzen
       </button>
       <h3 class="zz-title--h3">Geschlecht</h3>
-      <p>{{currentUser.child_gender | gender:'de': true}}</p>
+      <p>{{userContent.child_gender | gender:'de': true}}</p>
       <h3 class="zz-title--h3">Vorname Name</h3>
-      <p>{{currentUser.child_forename}} {{currentUser.child_surname}}</p>
+      <p>{{userContent.child_forename}} {{userContent.child_surname}}</p>
       <h3 class="zz-title--h3">Geburtsdatum</h3>
-      <p>{{currentUser.child_date_of_birth | properDate}} </p>
+      <p>{{userContent.child_date_of_birth | properDate}} </p>
       <h3 class="zz-title--h3">Klasse</h3>
-      <p>{{currentUser.klasse_description}}</p>
+      <p>{{userContent.klasse_description}}</p>
       <h3 class="zz-title--h3">Klassenlehrer</h3>
-      <p>{{currentUser.teacher_gender | gender:'de'}} {{currentUser.teacher_forename}} {{currentUser.teacher_surname}}</p>
+      <p>{{userContent.teacher_gender | gender:'de'}} {{userContent.teacher_forename}} {{userContent.teacher_surname}}</p>
       <button [routerLink]="['profile-details-child']" class="zz-btn zz-btn--primary">
         Daten bearbeiten
       </button>
@@ -40,20 +40,20 @@
     <h1 class="zz-title zz-title--h2">Angaben Eltern</h1>
     <div class="zz-mod-box">
       <h3 class="zz-title--h3">Anrede</h3>
-      <p>{{currentUser.parent_gender | gender:'de'}}</p>
+      <p>{{userContent.parent_gender | gender:'de'}}</p>
       <h3 class="zz-title--h3">Vorname Name</h3>
-      <p>{{currentUser.parent_forename}} {{currentUser.parent_surname}}</p>
+      <p>{{userContent.parent_forename}} {{userContent.parent_surname}}</p>
       <h3 class="zz-title--h3">Adresse</h3>
-      <p>{{currentUser.adress}}</p>
-      <p>{{currentUser.zip}} {{currentUser.place}}</p>
+      <p>{{userContent.adress}}</p>
+      <p>{{userContent.zip}} {{currentUser.place}}</p>
       <h3 class="zz-title--h3">Telefonnummer</h3>
-      <p>{{currentUser.tel_private}}</p>
+      <p>{{userContent.tel_private}}</p>
       <h3 class="zz-title--h3">Telefon Geschäft</h3>
-      <p>{{currentUser.tel_office}}</p>
+      <p>{{userContent.tel_office}}</p>
       <h3 class="zz-title--h3">Sprache</h3>
-      <p>{{currentUser.parent_language}}</p>
+      <p>{{userContent.parent_language}}</p>
       <h3 class="zz-title--h3">E-Mail/Username</h3>
-      <p>{{currentUser.email}}</p>
+      <p>{{userContent.email}}</p>
       <button [routerLink]="['profile-details-parent']" class="zz-btn zz-btn--primary">
         Daten bearbeiten
       </button>
