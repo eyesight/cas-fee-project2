@@ -7,7 +7,7 @@ import { ClasslistRoutesModule } from './classlist.routes';
 import {ClasslistService} from "./service/classlist.service";
 import {UserDetailComponent} from "./user-detail/user-detail.component";
 import {UserResolverService} from "./service/user-resolver.service";
-import {AlertComponent} from "./alert.component";
+import {AlertComponent} from "./dialog/alert.component";
 
 @NgModule({
   imports: [

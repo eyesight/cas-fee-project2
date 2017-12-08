@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild} from '@angular/core';
 import {User, UserApproveAnswer, UserAuth} from '../../_models/user.model';
 import {ClasslistService} from "../service/classlist.service";
-import {AlertComponent} from "../alert.component";
+import {AlertComponent} from "../dialog/alert.component";
 
 
 enum FIELDS {
