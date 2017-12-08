@@ -1,6 +1,7 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild} from '@angular/core';
 import {User, UserAuth} from '../../_models/user.model';
 import {ClasslistService} from "../service/classlist.service";
+import {AlertComponent} from "../alert.component";
 
 
 enum FIELDS {
@@ -37,6 +38,8 @@ export class ClasslistListComponent implements OnInit {
   @Input()
   userCurrent: User = null;
 
+  @ViewChild(AlertComponent) alert: AlertComponent;
+
   public sortGoals: SortClass[] = [
     {up: false, down: false, sortFn: this.sfCF},
     {up: false, down: false, sortFn: this.sfCS},
@@ -54,7 +57,10 @@ export class ClasslistListComponent implements OnInit {
   ngOnInit() {
   }
 
-
+  showAlert(item: User, checked: any) {
+    this.alert.show();
+    this.onChecked(item, checked);
+  }
   public onChecked(item: User, checked: any) {
     console.log('classlist-list onchecked:' + checked.target.checked);
     console.dir(checked);

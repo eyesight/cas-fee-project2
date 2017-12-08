@@ -41,7 +41,9 @@
     </a>
   </td>
   <td *ngIf="userCurrent.is_teacher">
-    <input class="table__checkbox" type="checkbox" aria-label="bestaetigung"  [checked]="item.is_approved" (change)="onChecked(item, $event)">
+    <app-alert></app-alert>
+    <input class="table__checkbox" type="checkbox" aria-label="bestaetigung"  [checked]="item.is_approved" (change)="showAlert(item, $event)">
+    <!-- onChecked(item, $event) -->
 
  </td>
 

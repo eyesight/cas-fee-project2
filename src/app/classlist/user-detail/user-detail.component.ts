@@ -13,6 +13,7 @@ import {ActivatedRoute} from "@angular/router";
   host: { '[@overlayAnimation]': ''}
 })
 export class UserDetailComponent implements OnInit {
+  hidden = true;
 
   //@Input()
   private user: User = null;
