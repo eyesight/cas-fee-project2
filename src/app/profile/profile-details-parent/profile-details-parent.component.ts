@@ -69,7 +69,7 @@ export class ProfileDetailsParentComponent implements OnInit {
 
   ngOnInit():void {
     this.userContent = this.UserContentDbService.getCurrentUser();
-    this.userContent = this.userContent['user_attributes'];
+   // this.userContent = this.userContent['user_attributes'];
     console.log(this.userContent.email);
 
     this.buildForm();

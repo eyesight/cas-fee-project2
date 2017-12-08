@@ -7,8 +7,8 @@ const avatarController = require("./avatarController");
 "use strict";
 
 module.exports.updateUser = function(req, res){
-    console.log('req.user.name :' + req.user.email);
-    dbUser.updateUser(req.user.email,  dbUser.UserFromJson(req), function(err, user) {
+    console.log('req.user.name :' + req.user.name);
+    dbUser.updateUser(req.user.name,  dbUser.UserFromJson(req), function(err, user) {
         res.json(user);
     });
 };

@@ -20,10 +20,8 @@ class UserRegister {
 
 class UserModel extends ModelBase{
 
-  constructor(id, email, class_id, parent_surname, parent_forename, parent_gender, parent_language, child_surname, child_forename, child_gender, child_birthdate, adress, zip, place, tel_private, tel_office, is_teacher, is_approved, user_avatar, user_can, user_name){
+  constructor(class_id, parent_surname, parent_forename, parent_gender, parent_language, child_surname, child_forename, child_gender, child_birthdate, adress, zip, place, tel_private, tel_office, is_teacher, is_approved, user_avatar, user_can, user_name){
     super();
-    this.id = id;
-    this.email = email;
     this.class_id = class_id;
     this.parent_surname = parent_surname;
     this.parent_forename = parent_forename;
@@ -52,8 +50,6 @@ function UserFromJson(req){
   "use strict";
   var r = req.body;
   return new UserModel(
-    r.id,
-    r.email,
     r.class_id,
     r.parent_surname,
     r.parent_forename,

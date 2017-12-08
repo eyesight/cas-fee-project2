@@ -22,7 +22,7 @@ import { AlertService, UserService } from '../../_services/index';
 export class ProfileDetailsChildComponent implements OnInit {
   public user: User;
   public userContent: User = null;
-  public currentUser: User = null;
+//  public currentUser: User = null;
   public childDetailsForm: FormGroup;
   public formModel: User;
   public userObject = new User;
@@ -39,7 +39,7 @@ export class ProfileDetailsChildComponent implements OnInit {
 
   ngOnInit(): void {
     this.userContent = this.UserContentDbService.getCurrentUser();
-    this.currentUser = this.userContent['user_attributes'];
+    //this.currentUser = this.userContent['user_attributes'];
     console.log(this.userContent);
 
     this.buildForm();
@@ -63,8 +63,8 @@ export class ProfileDetailsChildComponent implements OnInit {
 
   update() {
     this.formModel = this.childDetailsForm.value;
-    this.currentUser.child_forename = this.formModel.child_forename;
-    this.currentUser.child_surname = this.formModel.child_surname;
+    this.userContent.child_forename = this.formModel.child_forename;
+    this.userContent.child_surname = this.formModel.child_surname;
     console.log(this.userObject);
 
     this.userObject.adress = this.userContent.adress;
@@ -83,8 +83,8 @@ export class ProfileDetailsChildComponent implements OnInit {
     this.userObject.tel_office = this.userContent.tel_office;
     this.userObject.tel_private = this.userContent.tel_private;
     this.userObject.zip = this.userContent.zip;
-    this.userObject.user_avatar = this.userContent.user_avatar;
-    this.userObject.user_can = this.userContent.user_can;
+  //  this.userObject.user_avatar = this.userContent.user_avatar;
+  //  this.userObject.user_can = this.userContent.user_can;
     /*
         this.userObject = this.UserContentService.generateUpdatedUser(this.currentUser);
     */
