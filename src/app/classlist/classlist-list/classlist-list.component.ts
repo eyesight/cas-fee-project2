@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild} from '@angular/core';
-import {User, UserAuth} from '../../_models/user.model';
+import {User, UserApproveAnswer, UserAuth} from '../../_models/user.model';
 import {ClasslistService} from "../service/classlist.service";
 import {AlertComponent} from "../alert.component";
 
@@ -58,15 +58,30 @@ export class ClasslistListComponent implements OnInit {
   }
 
   showAlert(item: User, checked: any) {
-    this.alert.show();
-    this.onChecked(item, checked);
+    console.log('checked?' + checked.target.checked);
+    if (checked.target.checked ) {
+      this.alert.show('Möchten Sie die Person wirklich bestätigen?', true);
+    } else {
+      this.alert.show('Möchten Sie die Person wirklich ablehnen? Person kann danach das System nicht mehr benutzen', false);
+    }
+  //  this.onChecked(item, checked);
   }
-  public onChecked(item: User, checked: any) {
-    console.log('classlist-list onchecked:' + checked.target.checked);
+
+  public sendAnswer(val: UserApproveAnswer){
+    console.log('ok?:' + val.approve + '::' + val.changed);
+    if(val.changed) {
+      this.onChecked(val.userItem, val.approve);
+    }
+
+  }
+
+
+  public onChecked(item: User, checked: boolean) {
+  //  console.log('classlist-list onchecked:' + checked.target.checked);
     console.dir(checked);
     // this.approved.emit(checked.target.checked);
 
-    this.classlistService.approveUser(item, (checked.target.checked === true ? 1 : 0))
+    this.classlistService.approveUser(item, (checked === true ? 1 : 0))
       .subscribe((x) => {
         console.log('approved');
       });

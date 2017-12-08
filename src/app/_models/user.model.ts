@@ -22,6 +22,12 @@ export class UserApprove {
   approve: number;
 }
 
+export class UserApproveAnswer {
+  approve: boolean;
+  changed: boolean;
+  userItem: User;
+}
+
 export class Can {
   features: string[];
 }
