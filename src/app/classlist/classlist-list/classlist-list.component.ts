@@ -4,14 +4,8 @@ import {ActivatedRoute} from "@angular/router";
 import {UserAuthService} from "../../_services/user-auth.service";
 import {UserContentService} from "../../_services/user-content.service";
 import {ClasslistService} from "../service/classlist.service";
-//import {Sort} from "../classlist.const";
 
 
-enum SORT {
-  UP = 1,
-  DOWN = 2,
-  NEUTRAL = 0
-}
 enum FIELDS {
   C_FORENAME = 0,
   C_SURNAME,
@@ -21,12 +15,23 @@ enum FIELDS {
   PLACE
 }
 
+
+class SortClass {
+  constructor() {
+  }
+
+  public up = false;
+  public down = false;
+  public sortFn: (a: User, b: User) => number;
+}
+
 declare function sfn(a: User, b: User): number;
 
 @Component({
   selector: 'app-classlist-list',
   templateUrl: './classlist-list.component.html'
 })
+
 export class ClasslistListComponent implements OnInit {
 
   @Input()
@@ -35,8 +40,19 @@ export class ClasslistListComponent implements OnInit {
   @Input()
   userCurrent: User = null;
 
-  public sort: SORT[] = [0, 0, 0, 0, 0, 0];
-  private  sor = this.sfPF;
+//  public sort: SORT[] = [0, 0, 0, 0, 0, 0];
+  private sor = this.sfPF;
+
+  public SortFields = FIELDS;
+
+
+  public sortGoals: SortClass[] = [
+    {up: false, down: false, sortFn: this.sfCF},
+    {up: false, down: false, sortFn: this.sfCS},
+    {up: false, down: false, sortFn: this.sfPF},
+    {up: false, down: false, sortFn: this.sfPS},
+    {up: false, down: false, sortFn: this.sfPL}
+  ];
 
 
   constructor(private classlistService: ClasslistService) {
@@ -44,6 +60,7 @@ export class ClasslistListComponent implements OnInit {
 
   ngOnInit() {
   }
+
 
   public onChecked(item: User, checked: any) {
     console.log('classlist-list onchecked:' + checked.target.checked);
@@ -59,66 +76,58 @@ export class ClasslistListComponent implements OnInit {
 
   }
 
-  public onSort(id: number) {
 
-    if (this.sort[id]) {
-      if (this.sort[id] === SORT.UP) {
-        this.sort[id] = SORT.DOWN;
-      } else {
-        this.sort[id] = SORT.UP;
-      }
+  public onSortGoal(id: number) {
+    this.sor = this.sortGoals[id].sortFn;
+    if (this.sortGoals[id].up) {
+      this.sortGoals[id].up = false;
+      this.sortGoals[id].down = true;
+      this.classlistList = this.classlistList.sort((a, b) => this.sor(b, a));
     } else {
-      this.sort[id] = SORT.UP;
+      this.sortGoals[id].up = true;
+      this.sortGoals[id].down = false;
+      this.classlistList = this.classlistList.sort((a, b) => this.sor(a, b));
     }
-    console.log('id of sort:'+ id);
-      switch (id) {
-        case FIELDS.P_FORENAME:
-          this.sor = this.sfPF;
-          break;
-        case FIELDS.P_SURNAME:
-          this.sor = this.sfPS;
-          break;
-        case FIELDS.C_FORENAME:
-          this.sor = this.sfCF;
-          break;
-        case FIELDS.C_SURNAME:
-          this.sor = this.sfCS;
-          break;
-        case FIELDS.PLACE:
-          this.sor = this.sfPL;
-          break;
-        default:
-   //  this.sortList(sor);
-     break;
+    // reset other class.zz_..
+    this.sortGoals = this.sortGoals.map((x, ix) => {
+      if (id !== ix) {
+        x.up = false;
+        x.down = false;
+      }
+      return x;
+    });
 
-     }
-    console.log('id of sort:'+ id + ' sorter:'+ this.sor);
-
-    if (this.sort[id] === SORT.UP) {
-       this.classlistList = this.classlistList.sort((a, b) => this.sor(a, b));
-     } else if
-      (this.sort[id] === SORT.DOWN) {
-       this.classlistList = this.classlistList.sort((a, b) => this.sor(b, a));
-     }
 
   }
 
-  private sfPF(a: User, b: User){
+
+  public sfPF(a: User, b: User) {
     return this.sortFunc(a.parent_forename, b.parent_forename);
   }
-  private sfPS(a: User, b: User){
+
+  private sfPS(a: User, b: User) {
     return this.sortFunc(a.parent_surname, b.parent_surname);
   }
-  private sfCF(a: User, b: User){
+
+  private sfCF(a: User, b: User) {
     return this.sortFunc(a.child_forename, b.child_forename);
   }
-  private sfCS(a: User, b: User){
+
+  private sfCS(a: User, b: User) {
     return this.sortFunc(a.child_surname, b.child_surname);
   }
-  private sfPL(a: User, b: User){
+
+  private sfPL(a: User, b: User) {
     return this.sortFunc(a.place, b.place);
   }
-  private sortFunc(a: string, b: string) {
+
+  public sortFunc(a: string, b: string): number {
+    if (!a) {
+      return 1;
+    }
+    if (!b) {
+      return -1;
+    }
     if (a.toUpperCase() < b.toUpperCase()) {
       return -1;
     }

@@ -8,14 +8,14 @@
   </tr>
   <tr>
     <th scope="col">Foto</th>
-    <th scope="col"><a class="zz-table__anchor"    (click)="onSort(0)">Vorname <span  [class.zz-table--arrow-up]="sort[0] === 2" [class.zz-table--arrow-down]="sort[0] === 1"></span></a>
+    <th scope="col"><a class="zz-table__anchor"   (click)="onSortGoal(SortFields.C_FORENAME)">Vorname <span  [class.zz-table--arrow-up]="sortGoals[SortFields.C_FORENAME].up" [class.zz-table--arrow-down]="sortGoals[SortFields.C_FORENAME].down"></span></a>
     </th>
-    <th scope="col"><a class="zz-table__anchor active" (click)="onSort(1)">Nachname <span [class.zz-table--arrow-up]="sort[1] === 2" [class.zz-table--arrow-down]="sort[1] === 1"></span></a></th>
-    <th scope="col"><a class="zz-table__anchor"  (click)="onSort(2)">Vorname <span [class.zz-table--arrow-up]="sort[2] === 2" [class.zz-table--arrow-down]="sort[2] === 1"></span></a>
+    <th scope="col"><a class="zz-table__anchor active" (click)="onSortGoal(SortFields.C_SURNAME)">Nachname <span [class.zz-table--arrow-up]="sortGoals[SortFields.C_SURNAME].up" [class.zz-table--arrow-down]="sortGoals[SortFields.C_SURNAME].down"></span></a></th>
+    <th scope="col"><a class="zz-table__anchor"  (click)="onSortGoal(SortFields.P_FORENAME)">Vorname <span [class.zz-table--arrow-up]="sortGoals[SortFields.P_FORENAME].up" [class.zz-table--arrow-down]="sortGoals[SortFields.P_FORENAME].down"></span></a>
     </th>
-    <th scope="col"><a class="zz-table__anchor"  (click)="onSort(3)">Nachname <span [class.zz-table--arrow-up]="sort[3] === 2" [class.zz-table--arrow-down]="sort[3] === 1"></span></a>
+    <th scope="col"><a class="zz-table__anchor"  (click)="onSortGoal(SortFields.P_SURNAME)">Nachname <span [class.zz-table--arrow-up]="sortGoals[SortFields.P_SURNAME].up" [class.zz-table--arrow-down]="sortGoals[SortFields.P_SURNAME].down"></span></a>
     </th>
-    <th scope="col"><a class="zz-table__anchor"  (click)="onSort(4)">Wohnort <span [class.zz-table--arrow-up]="sort[4] === 2" [class.zz-table--arrow-down]="sort[4] === 1"></span></a>
+    <th scope="col"><a class="zz-table__anchor"  (click)="onSortGoal(SortFields.PLACE)">Wohnort <span [class.zz-table--arrow-up]="sortGoals[SortFields.PLACE].up" [class.zz-table--arrow-down]="sortGoals[SortFields.PLACE].down"></span></a>
     </th>
     <th scope="col">E-Mail</th>
     <th *ngIf="userCurrent.is_teacher" scope="col">Bestätigt</th>
