@@ -1,21 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, Output, Input } from '@angular/core';
 import { User } from '../_models/user.model';
 import { Router } from '@angular/router';
 import { AlertService } from '../_services/alert.service';
 import { UserContentDbService } from '../_services/user-content-db.service';
 import { UserAuthService } from '../_services/user-auth.service';
-
+import { ProfileDetailsChildComponent } from './profile-details-child/profile-details-child.component';
 
 
 @Component({
   selector: 'app-profile',
-  templateUrl: './profile.component.html'
+  templateUrl: './profile.component.html',
 })
-export class ProfileComponent implements OnInit {
-  public userContent: User = null;
-  public currentUser: User = null;
-
-
+export class ProfileComponent implements OnInit, OnChanges {
+  userContent: User;
 
   constructor(
     private router: Router,
@@ -25,6 +22,8 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.userContent = this.UserContentDbService.getCurrentUser();
-   // this.currentUser = this.userContent['user_attributes'];
+  }
+
+  ngOnChanges() {
   }
 }
