@@ -1,0 +1,39 @@
+<div class="zz-messagebox zz-messagebox__pointerless" *ngIf="!hidden" >
+  <div class="zz-messagebox__backdrop" (click)="hide()"></div>
+  <div class="zz-messagebox__modal" style="pointer-events:auto;">
+    <ng-content></ng-content>
+      <p >{{messageText}} </p>
+        <div >
+          <button class="zz-btn-small--primary"(click)="ok()">OK</button>
+        </div>
+        <div >
+          <button  (click)="nok()">Abbrechen</button>
+        </div>
+
+  </div>
+</div>
+`
+
+<!--
+<div class="zz-form__label" *ngIf="!hidden">
+  <div class="mmbackdrop" (click)="hide()"></div>
+  <div class="mmmodal">
+    <ng-content></ng-content>
+    <div class="col-12 ">
+      <p class="zz-form__label">{{messageText}} </p>
+      <div clasS="row">
+        <div class="col-4">
+          <button class="zz-btn zz-btn--primary" (click)="ok()">OK</button>
+        </div>
+        <div class="col-2">
+        </div>
+        <div class="col-4">
+          <button class="zz-btn zz-btn--primary" (click)="nok()">Abbrechen</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`
+
+-->
