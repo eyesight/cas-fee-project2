@@ -22,6 +22,9 @@ router.get("/chat/getall", chatController.getMessages);
 router.get("/user/classlist", userController.getUserKlasseList);
 router.put("/user/approve", userController.approveUser);
 
+/* router.put("/user/changePassword"), userController.changePassword); */
+
+
 /*
 router.post("/api", orders.createUser);
 router.get("/:id/", orders.showOrder);
