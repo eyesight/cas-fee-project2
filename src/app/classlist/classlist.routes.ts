@@ -10,7 +10,6 @@ const ClasslistRoutes = [
   {
     path: '', component: ClasslistComponent,
     children: [
-    { path: '', component: ClasslistComponent },
     { path: 'detail/:id', component: UserDetailComponent,
       resolve: { user: UserResolverService }}
   ]
