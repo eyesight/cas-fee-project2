@@ -1,0 +1,34 @@
+<div class="col-11 col-lg-11 col-xl-7 zz-overlay__content">
+  <div class="zz-overlay__content-inner">
+    <h1 class="zz-title zz-title--insideBox">Neue E-Mailadresse beantragen</h1>
+    <div>
+      <form [formGroup]="emailForm" (ngSubmit)="emailForm.valid" novalidate class="zz-overlay__text-wrapper">
+        <div class="form-row">
+          <div class="col-12 zz-form__group">
+            <label class="zz-form__label" for="email">Neue E-Mail-Adresse</label>
+            <input id="email" class="zz-form__input" name="email" type="text" formControlName="newEmail"
+                   [ngClass]="{ 'zz-form__input--error': (emailForm.invalid || newEmail.invalid) && (newEmail.dirty || newEmail.touched)}">
+            <app-show-errors [control]="newEmail"></app-show-errors>
+          </div>
+          <div class="col-12 zz-form__group">
+            <label class="zz-form__label" for="email">Grund für die Änderunge</label>
+            <textarea id="reason" class="zz-form__input" name="reason" type="text" formControlName="reason"
+                      [ngClass]="{ 'zz-form__input--error': (emailForm.invalid || reason.invalid) && (reason.dirty || reason.touched)}"></textarea>
+            <app-show-errors [control]="reason"></app-show-errors>
+          </div>
+        </div>
+        <div class="form-row">
+          <button class="zz-btn zz-btn--primary" [disabled]="!emailForm.valid">
+            <a href="mailto:adminemail@test.com?subject=Beantragen neue E-Mailadresse&body=neue E-Mail: {{newEmail.value}}, Begründung:{{reason.value}}">neue E-Mail beantragen</a>
+          </button>
+        </div>
+        <div class="zz-infotext zz-infotext--form">
+          <p>Hinweis: Es wird eine E-Mail in ihrem installierten E-Mailprogramm geöffnet und fügt den von Ihnen angegebenen Text ein. Falls etwas nicht klappen sollte, können Sie sich gerne direkt an den Administrator wenden:</p>
+          <p>E-Mail: emailadresse<br>Telefonnummer: telefonnummer</p>
+        </div>
+      </form>
+    </div>
+    <button [routerLink]="['/profile']" aria-label="Close" class="zz-overlay__close-btn"></button>
+  </div>
+</div>
+

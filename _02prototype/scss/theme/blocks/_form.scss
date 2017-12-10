@@ -38,8 +38,8 @@
     width: 100%;
 
     &--error{
-        border-color: $color-red;
-        box-shadow: 0px 0px 5px $color-red;
+      border-color: $color-red;
+      box-shadow: 0px 0px 5px $color-red;
     }
   }
 
@@ -69,6 +69,10 @@
     &:focus{
       border-color: $color-primary;
     }
+  }
+
+  &--margin-top{
+    padding-top: rem-calc(40px);
   }
 }
 

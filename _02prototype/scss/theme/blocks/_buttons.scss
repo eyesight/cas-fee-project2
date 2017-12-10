@@ -2,14 +2,18 @@
   background-color: $color-white;
   @include mx-button-default(1rem, 0rem);
   &:after{
-  @extend .helper-underline-anim;
+    @extend .helper-underline-anim;
   }
 
   &:hover:after{
-  @extend .helper-underline-anim-hover;
+    @extend .helper-underline-anim-hover;
   }
 
   &--primary{
+    a,
+    a:hover{
+      color:white;
+    }
     background-color: $color-primary;
     color:white;
     min-width:rem-calc(200px);
@@ -27,6 +31,9 @@
     &:hover{
       cursor:not-allowed;
     }
+  }
+  + .zz-btn{
+    margin-top: rem-calc(20px);
   }
 }
 
@@ -56,6 +63,6 @@
 
 //TODO: ausarbeiten der Abstände
 .zz-mod-box + .zz-btn{
-    margin-top: rem-calc(-25px);
+  margin-top: rem-calc(-25px);
 }
 

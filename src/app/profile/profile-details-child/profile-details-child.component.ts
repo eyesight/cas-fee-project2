@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../../_models/user.model';
 import { overlayAnimation } from '../../_animation/overlay.animation';
 import { UserContentService } from '../../_services/user-content.service';
 import { UserContentDbService } from '../../_services/user-content-db.service';
-import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from '../../_validation/custom.validators';
 import { AlertService, UserService } from '../../_services/index';
@@ -34,9 +34,7 @@ export class ProfileDetailsChildComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.userContent);
     this.userContent = this.UserContentDbService.getCurrentUser();
-    console.log(this.userContent);
 
     this.buildForm();
   }

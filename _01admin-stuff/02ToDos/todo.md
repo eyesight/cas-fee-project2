@@ -5,8 +5,12 @@
 - TODO: Autoprefixer für Angular?
 -> CF: 
 
-- TODO: Profile erstellen (inkl. Avatar)
--> CF(+AW)
+- TODO: Send-Email einfügen: http://tphangout.com/angular-2-sending-mails-from-your-app/ + https://www.emailjs.com/(niedrige Prio)
+  - Registrierung
+  - Profile (antrag Username ändern)
+  - Classlist - Mail an Lehrer
+  
+  -> CF+AW
 
 - TODO: Styleguide erstellen aus Prototype (niedrige Prio)
 -> CF (+AW) 
@@ -22,9 +26,6 @@
 
 - TODO: Unit tests
 -> AW(+CF)
-
-- TODO: Backend für Profile und Klassenliste
--> AW
 
 - TODO: Refactoring
 -> AW/CF
@@ -53,16 +54,12 @@
 -> CF/AW:
 
 - TODO: Kontrolle Benennung Klassen und HTML-Struktur
--> AW+CF: Anfang November
+-> AW+CF:
 https://www.w3schools.com/html/html5_semantic_elements.asp
-
-- TODO: localStorage operationen in separates file: storage.service.ts
--> DONE AW:
 
 - TODO: Background-Style-Changer in Profil einbauen (niedrige Prio)
 -> 
 
-- TODO: 
 - TODO: Kalender umsetzen (niedrige Prio)
 -> 
 
@@ -89,6 +86,9 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
     AW: https://github.com/auth0/angular2-jwt 
  
 #in Progress CF
+  - TODO: Profile erstellen (inkl. Avatar)
+  -> CF(+AW)
+
  - TODO: Error-Message-Handler erstellen, resp. korrigieren (besteht ja schon z.T.)
  -> CF(+AW)
 
@@ -121,3 +121,9 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
 
 - DONE: Mockup-Data (Json)
 -> AW: 15.10
+
+- DONE: localStorage operationen in separates file: storage.service.ts
+-> DONE AW:
+
+- DONE: Backend für Profile und Klassenliste
+-> AW
