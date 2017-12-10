@@ -95,6 +95,21 @@ function registerUser(email, passwort, isTeacher, req, updateUserFunc, callback)
 }
 
 
+function updatePassword(email, newPasswort, callback)
+{
+  if(!(email && newPasswort)) {  callback("no user", null); return; }
+
+  const user = new UserRegister(email, newPasswort);
+
+  return db.query("update users set  encrypted_password = ? where email = ?",[ user.encrypted_password, user.email], function(err, newDoc){
+    if(callback){
+
+        callback(err, newDoc);
+
+    }
+  });
+}
+
 function updateUser(email, userModel, callback){
   console.log(userModel.is_teacher);
   var sf = userModel.mySqlGetUpdateStatement('users',"email='" + email +"'");
@@ -139,7 +154,7 @@ function register(req, callback){
 
 function authenticate(email, password, callback){
   console.log('user.authenticate:' + email);
-  if(!(email && password)) {  callback(false); }
+  if(!(email && password)) {  callback(false);return; }
 
   this.getUserByEmail( email , function (err, doc) {
     if( (doc === null ) && !err){
@@ -147,7 +162,7 @@ function authenticate(email, password, callback){
     }
     else {
       var pwd = cryptoUtil.hashPwd(password);
-      console.log('passwor: ' + doc[0].encrypted_password + ' paswword: ' + cryptoUtil.hashPwd(password));
+   //   console.log('passwor: ' + doc[0].encrypted_password + ' password: ' + cryptoUtil.hashPwd(password));
       callback(err, doc && doc[0].encrypted_password === cryptoUtil.hashPwd(password));
       //  callback(err, doc && true);
     }
@@ -366,6 +381,7 @@ module.exports = {
   currentUser: currentUser,
   register : register,
   registerUser : registerUser,
+  updatePassword : updatePassword,
   updateUser : updateUser,
   UserFromJson: UserFromJson,
   getUserByEmail : getUserByEmail,
