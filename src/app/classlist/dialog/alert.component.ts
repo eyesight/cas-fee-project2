@@ -6,21 +6,7 @@ import {User, UserApproveAnswer} from "../../_models/user.model";
 
 @Component({
   selector: 'app-alert',
-  template: `
-    <div *ngIf="!hidden">
-      <div class="mmbackdrop" (click)="hide()"></div>
-      <div class="mmmodal">
-        <ng-content></ng-content>
-        <div>
-          <p>{{messageText}} </p>
-          <button (click)="ok()">OK</button>
-        </div>
-        <div>
-          <button (click)="nok()">Abbrechen</button>
-        </div>
-      </div>
-    </div>
-  `,
+  templateUrl: './alert.component.html',
   styles: [`
     .mmmodal {
       position: fixed;
@@ -34,11 +20,13 @@ import {User, UserApproveAnswer} from "../../_models/user.model";
 
     .mmbackdrop {
       position: absolute;
-      background: rgba(0, 0, 0, 0.1);
+     // background: rgba(0, 0, 0, 0.1);
       top: 0;
       bottom: 0;
       right: 0;
       left: 0;
+      background: black;
+      opacity: 0.2;
     }
   `]
 })
