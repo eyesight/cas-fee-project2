@@ -1,4 +1,4 @@
-import { Directive, Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from '../../_models/user.model';
 import { overlayAnimation } from '../../_animation/overlay.animation';
 import { UserContentService } from '../../_services/user-content.service';
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from '../../_validation/custom.validators';
 import { AlertService, UserService } from '../../_services/index';
-import { ProfileComponent } from '../profile.component';
+import { ProfileService } from '../service/profile.service';
 
 
 @Component({
@@ -17,8 +17,6 @@ import { ProfileComponent } from '../profile.component';
   host: { '[@overlayAnimation]': ''}
 })
 
-
-// TODO: use input directives and get usercontent passed over from profile.component (or use a resolver to pass it)
 export class ProfileDetailsChildComponent implements OnInit {
     public userContent: User;
     public childDetailsForm: FormGroup;
@@ -31,7 +29,8 @@ export class ProfileDetailsChildComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private alertService: AlertService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private profileService: ProfileService
   ) { }
 
   ngOnInit(): void {
@@ -77,7 +76,7 @@ export class ProfileDetailsChildComponent implements OnInit {
     this.userObject.tel_private = this.userContent.tel_private;
     this.userObject.zip = this.userContent.zip;
 
-    // update child - add message if succeeded or failed and go back to the main-profile-site
+    // update child - add message if succeeded or failed and go back to the profile-site
     this.userService.update(this.userObject)
       .subscribe(
         data => {
@@ -85,7 +84,8 @@ export class ProfileDetailsChildComponent implements OnInit {
           // update the content in user-store
           this.userContentService.getUserContent()
             .subscribe( content => {
-                this.UserContentDbService.getCurrentUser();
+                // update data in parent-commponent (profile.component) via service
+                this.profileService.updateData(content);
                 this.router.navigate(['/profile']);
               },
               error => {
