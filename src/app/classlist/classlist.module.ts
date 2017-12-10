@@ -8,12 +8,13 @@ import {ClasslistService} from "./service/classlist.service";
 import {UserDetailComponent} from "./user-detail/user-detail.component";
 import {UserResolverService} from "./service/user-resolver.service";
 import {AlertComponent} from "./dialog/alert.component";
+import {CanDeactivateClasslistService} from "./service/can-deactivate-classlist.service";
 
 @NgModule({
   imports: [
     CommonModule, ClasslistRoutesModule
   ],
   declarations: [ClasslistListComponent, ClasslistComponent, UserDetailComponent, AlertComponent],
-  providers: [ClasslistService, UserResolverService]
+  providers: [ClasslistService, UserResolverService, CanDeactivateClasslistService]
 })
 export class ClasslistModule { }

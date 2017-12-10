@@ -33,6 +33,8 @@ declare function sfn(a: User, b: User): number;
 
 export class ClasslistListComponent implements OnInit {
 
+  public canDeactivate = true;
+
   @Input()
   classlistList: User[] = null;
 
@@ -57,8 +59,7 @@ export class ClasslistListComponent implements OnInit {
 
 
   constructor(private classlistService: ClasslistService,
-              private alertService: AlertService,
-  ) {
+              private alertService: AlertService) {
   }
 
   ngOnInit() {
@@ -66,45 +67,48 @@ export class ClasslistListComponent implements OnInit {
 
   showAlert(item: User, checked: any) {
     console.log('checked?' + checked.target.checked);
-    if (checked.target.checked ) {
+    this.canDeactivate = false;
+    if (checked.target.checked) {
       this.alert.show('Möchten Sie die Person wirklich bestätigen?', true);
     } else {
       this.alert.show('Möchten Sie die Person wirklich ablehnen? Person kann danach das System nicht mehr benutzen', false);
     }
-  //  this.onChecked(item, checked);
+    //  this.onChecked(item, checked);
   }
 
   public sendAnswer(val: UserApproveAnswer) {
     console.log('ok?:' + val.approve + '::' + val.changed);
-    if(val.changed) {
+    this.canDeactivate = true;
+    if (val.changed) {
       this.onChecked(val.userItem, val.approve);
     } else {
-         this.classlistList[this.classlistList.findIndex((x) => x === val.userItem)].is_approved = !val.approve;
-         this.classlistList = [...this.classlistList];
+      this.classlistList[this.classlistList.findIndex((x) => x === val.userItem)].is_approved = !val.approve;
+      this.classlistList = [...this.classlistList];
       this.resetCheckBox(val.approve);
     }
 
   }
 
-  public resetCheckBox(val: boolean){
-  this.approveAnswer.emit(!val);
+  public resetCheckBox(val: boolean) {
+    this.approveAnswer.emit(!val);
 
-}
+  }
 
   public onChecked(item: User, checked: boolean) {
     this.classlistService.approveUser(item, (checked === true ? 1 : 0))
       .subscribe((x) => {
-        console.log('approved');
-      },
-        (error) =>  {  this.alertService.error(error);
-    });
+          console.log('approved');
+        },
+        (error) => {
+          this.alertService.error(error);
+        });
     //  item.lastModified = new Date();
     //  this.snackBar.open('checked / unchecked item', null, { duration: 1500 });
 
   }
 
   public onSortGoal(id: number) {
-    if (this.sortGoals.length <= id ) {
+    if (this.sortGoals.length <= id) {
       // prevent crash
       return;
     }

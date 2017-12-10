@@ -21,6 +21,8 @@ export class ClasslistComponent implements OnInit {
   public classlist: User[] = null;
   public userCurrent: User = null;
 
+  public canDeactivate = true;
+
 
   constructor( private classlistService: ClasslistService
     , private router: Router
