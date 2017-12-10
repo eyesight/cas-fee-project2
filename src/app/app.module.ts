@@ -42,6 +42,8 @@ import { FromNowPipe } from './_pipes/from-now.pipe';
 import { ProperTimePipe } from './_pipes/proper-time.pipe';
 import { ProperDatePipe } from './_pipes/proper-date.pipe';
 import { genderPipe } from './_pipes/gender.pipe';
+import { ProfilePasswordChangeComponent } from './profile/profile-password-change/profile-password-change.component';
+import { ProfileEmailChangeComponent } from './profile/profile-email-change/profile-email-change.component';
 
 
 
@@ -65,7 +67,9 @@ import { genderPipe } from './_pipes/gender.pipe';
     ProperDatePipe,
     genderPipe,
     ProfileDetailsChildComponent,
-    ProfileDetailsParentComponent
+    ProfileDetailsParentComponent,
+    ProfilePasswordChangeComponent,
+    ProfileEmailChangeComponent
   ],
   imports: [
     BrowserModule,

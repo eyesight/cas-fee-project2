@@ -13,10 +13,11 @@ export class AuthenticationService {
   isLoggedin: boolean = false;
   constructor(
     //p rivate http: Http
-    private httpWrp: HttpWrapper, private userAuthSrv: UserAuthService) {
+    private httpWrp: HttpWrapper,
+    private userAuthSrv: UserAuthService) {
 
     // if there is a user with a JWT, we claim we are logged in - otherwise user needs to login again using his password
-    if (this.userAuthSrv.getCurrentUserJwt() !== null){
+    if (this.userAuthSrv.getCurrentUserJwt() !== null) {
       this.isLoggedin = true;
     }
   }

@@ -56,9 +56,22 @@
         Daten bearbeiten
       </button>
     </div>
-    <button class="zz-btn zz-btn--primary" >
-      Passwort wechseln
-    </button>
   </div>
-  <router-outlet (onChange)="sharedVar = $event.value"></router-outlet>
+  <div class="col-12 col-xl-5 col-lg-6 zz-mod-container">
+    <h1 class="zz-title zz-title--h2">E-Mail/Username und Passwort</h1>
+    <div class="zz-mod-box">
+      <h3 class="zz-title--h3">E-Mail/Username*</h3>
+      <p>{{userContent.email}}</p>
+      <p>* Bitte beachten Sie, dass wenn Sie die E-Mail adresse ändern möchten, die neuen Daten durch den Support geprüft und manuell freigeschaltet werden müssen. Dies kann einige Tage in anspruch nehmen.</p>
+      <button class="zz-btn zz-btn--primary" [routerLink]="['profile-email']">
+        neue E-Mail beantragen
+      </button>
+      <button [routerLink]="['profile-pwd']" class="zz-btn zz-btn--primary" >
+        Passwort wechseln
+      </button>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
 </div>
+
+

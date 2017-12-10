@@ -10,6 +10,10 @@
   }
 
   &--primary{
+    a,
+    a:hover{
+      color:white;
+    }
     background-color: $color-primary;
     color:white;
     min-width:rem-calc(200px);
@@ -27,6 +31,9 @@
     &:hover{
       cursor:not-allowed;
     }
+  }
+  + .zz-btn{
+    margin-top: rem-calc(20px);
   }
 }
 
