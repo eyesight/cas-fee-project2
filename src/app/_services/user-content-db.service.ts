@@ -20,6 +20,8 @@ export class UserContentDbService {
 
   public saveCurrentUser(data: User){
     this.userContentCache = data;
+    console.log('storage');
+    console.log(this.userContentCache);
     this.storage.write(StorageKeys.keyCurrentUserContent, data);
 
   }

@@ -58,9 +58,9 @@
         Daten bearbeiten
       </button>
     </div>
-    <button class="zz-btn zz-btn--primary">
+    <button class="zz-btn zz-btn--primary" >
       Passwort wechseln
     </button>
   </div>
-  <router-outlet></router-outlet>
+  <router-outlet (onChange)="sharedVar = $event.value"></router-outlet>
 </div>

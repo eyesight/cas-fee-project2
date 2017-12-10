@@ -35,6 +35,8 @@ import {UserContentDbService} from "./_services/user-content-db.service";
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileDetailsChildComponent } from './profile/profile-details-child/profile-details-child.component';
 import { ProfileDetailsParentComponent } from './profile/profile-details-parent/profile-details-parent.component';
+import { ProfileService } from './profile/service/profile.service';
+
 
 import { FromNowPipe } from './_pipes/from-now.pipe';
 import { ProperTimePipe } from './_pipes/proper-time.pipe';
@@ -87,9 +89,7 @@ import { genderPipe } from './_pipes/gender.pipe';
     HttpWrapper,
     AlertService,
     UserService,
-
-    // providers used to create fake backend
-    //fakeBackendProvider,
+    ProfileService,
     MockBackend,
     BaseRequestOptions
   ],
