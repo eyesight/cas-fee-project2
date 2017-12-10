@@ -53,12 +53,10 @@ export class ClasslistComponent implements OnInit {
             this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 1000);
         });
 
-    /*this.userContentService.getUserContent()
-      .subscribe(result => this.userCurrent = result);
-*/
+
   }
 
-  public onChecked(checked: boolean, item: User) {
+   public onChecked(checked: boolean, item: User) {
     console.log('onChecked in classlist');
     item.is_approved = checked;
 

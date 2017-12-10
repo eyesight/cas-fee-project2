@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild} fr
 import {User, UserApproveAnswer, UserAuth} from '../../_models/user.model';
 import {ClasslistService} from "../service/classlist.service";
 import {AlertComponent} from "../dialog/alert.component";
+import {AlertService} from "../../_services/alert.service";
 
 
 enum FIELDS {
@@ -38,6 +39,10 @@ export class ClasslistListComponent implements OnInit {
   @Input()
   userCurrent: User = null;
 
+  @Output()
+  public approveAnswer: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+
   @ViewChild(AlertComponent) alert: AlertComponent;
 
   public sortGoals: SortClass[] = [
@@ -51,7 +56,9 @@ export class ClasslistListComponent implements OnInit {
   public SortFields = FIELDS;
 
 
-  constructor(private classlistService: ClasslistService) {
+  constructor(private classlistService: ClasslistService,
+              private alertService: AlertService,
+  ) {
   }
 
   ngOnInit() {
@@ -67,31 +74,40 @@ export class ClasslistListComponent implements OnInit {
   //  this.onChecked(item, checked);
   }
 
-  public sendAnswer(val: UserApproveAnswer){
+  public sendAnswer(val: UserApproveAnswer) {
     console.log('ok?:' + val.approve + '::' + val.changed);
     if(val.changed) {
       this.onChecked(val.userItem, val.approve);
+    } else {
+         this.classlistList[this.classlistList.findIndex((x) => x === val.userItem)].is_approved = !val.approve;
+         this.classlistList = [...this.classlistList];
+      this.resetCheckBox(val.approve);
     }
 
   }
 
+  public resetCheckBox(val: boolean){
+  this.approveAnswer.emit(!val);
+
+}
 
   public onChecked(item: User, checked: boolean) {
-  //  console.log('classlist-list onchecked:' + checked.target.checked);
-    console.dir(checked);
-    // this.approved.emit(checked.target.checked);
-
     this.classlistService.approveUser(item, (checked === true ? 1 : 0))
       .subscribe((x) => {
         console.log('approved');
-      });
+      },
+        (error) =>  {  this.alertService.error(error);
+    });
     //  item.lastModified = new Date();
     //  this.snackBar.open('checked / unchecked item', null, { duration: 1500 });
 
   }
 
-
   public onSortGoal(id: number) {
+    if (this.sortGoals.length <= id ) {
+      // prevent crash
+      return;
+    }
     this.sorFn = this.sortGoals[id].sortFn;
     if (this.sortGoals[id].up) {
       this.sortGoals[id].up = false;
@@ -104,6 +120,7 @@ export class ClasslistListComponent implements OnInit {
     }
     // reset other class.zz_..
     this.sortGoals = this.sortGoals.map((x, ix) => {
+      // only reset all others control
       if (id !== ix) {
         x.up = false;
         x.down = false;

@@ -8,9 +8,6 @@
 - TODO: Profile erstellen (inkl. Avatar)
 -> CF(+AW)
 
-- TODO: Klassenliste erstellen
--> AW(+CF)
-
 - TODO: Styleguide erstellen aus Prototype (niedrige Prio)
 -> CF (+AW) 
 
@@ -65,6 +62,7 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
 - TODO: Background-Style-Changer in Profil einbauen (niedrige Prio)
 -> 
 
+- TODO: 
 - TODO: Kalender umsetzen (niedrige Prio)
 -> 
 
@@ -82,6 +80,11 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
      AW: DONE: implement userDetails und Klassenamen  etc. im Heade
      CF: Auto Scroll und scrollin innerhalb chat fenster 
    
+  
+- TODO: Klassenliste erstellen
+-> AW(+CF) - almost done
+  Probleme mit Routing (Detail öffnen)
+
 - Auth: check out - may be better solution:
     AW: https://github.com/auth0/angular2-jwt 
  
