@@ -57,6 +57,7 @@ export class AppScrollBottomDirective implements AfterContentInit, OnChanges {
 
     if (doSmooth){
 
+      // haven't found a way not to use nativeElement
           if (   this.element.nativeElement.scrollTop !== this.element.nativeElement.scrollHeight) {
             const diff = (  this.element.nativeElement.scrollHeight - this.element.nativeElement.scrollTop);
             if (diff <= 10 ) {
@@ -73,6 +74,9 @@ export class AppScrollBottomDirective implements AfterContentInit, OnChanges {
               }
             }
           }
-      }
+      } else {
+      this.element.nativeElement.scrollTop =  this.element.nativeElement.scrollHeight;
+
+    }
   }
 }

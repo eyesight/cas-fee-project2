@@ -1,4 +1,3 @@
-
 <table class="table table-responsive table-hover zz-table">
   <caption class="visuallyhidden">Liste der Teilnehmer</caption>
   <thead>
@@ -8,14 +7,24 @@
   </tr>
   <tr>
     <th scope="col">Foto</th>
-    <th scope="col"><a class="zz-table__anchor"   (click)="onSortGoal(SortFields.C_FORENAME)">Vorname <span  [class.zz-table--arrow-up]="sortGoals[SortFields.C_FORENAME].up" [class.zz-table--arrow-down]="sortGoals[SortFields.C_FORENAME].down"></span></a>
+    <th scope="col"><a class="zz-table__anchor" (click)="onSortGoal(SortFields.C_FORENAME)">Vorname <span
+      [class.zz-table--arrow-up]="sortGoals[SortFields.C_FORENAME].up"
+      [class.zz-table--arrow-down]="sortGoals[SortFields.C_FORENAME].down"></span></a>
     </th>
-    <th scope="col"><a class="zz-table__anchor active" (click)="onSortGoal(SortFields.C_SURNAME)">Nachname <span [class.zz-table--arrow-up]="sortGoals[SortFields.C_SURNAME].up" [class.zz-table--arrow-down]="sortGoals[SortFields.C_SURNAME].down"></span></a></th>
-    <th scope="col"><a class="zz-table__anchor"  (click)="onSortGoal(SortFields.P_FORENAME)">Vorname <span [class.zz-table--arrow-up]="sortGoals[SortFields.P_FORENAME].up" [class.zz-table--arrow-down]="sortGoals[SortFields.P_FORENAME].down"></span></a>
+    <th scope="col"><a class="zz-table__anchor active" (click)="onSortGoal(SortFields.C_SURNAME)">Nachname <span
+      [class.zz-table--arrow-up]="sortGoals[SortFields.C_SURNAME].up"
+      [class.zz-table--arrow-down]="sortGoals[SortFields.C_SURNAME].down"></span></a></th>
+    <th scope="col"><a class="zz-table__anchor" (click)="onSortGoal(SortFields.P_FORENAME)">Vorname <span
+      [class.zz-table--arrow-up]="sortGoals[SortFields.P_FORENAME].up"
+      [class.zz-table--arrow-down]="sortGoals[SortFields.P_FORENAME].down"></span></a>
     </th>
-    <th scope="col"><a class="zz-table__anchor"  (click)="onSortGoal(SortFields.P_SURNAME)">Nachname <span [class.zz-table--arrow-up]="sortGoals[SortFields.P_SURNAME].up" [class.zz-table--arrow-down]="sortGoals[SortFields.P_SURNAME].down"></span></a>
+    <th scope="col"><a class="zz-table__anchor" (click)="onSortGoal(SortFields.P_SURNAME)">Nachname <span
+      [class.zz-table--arrow-up]="sortGoals[SortFields.P_SURNAME].up"
+      [class.zz-table--arrow-down]="sortGoals[SortFields.P_SURNAME].down"></span></a>
     </th>
-    <th scope="col"><a class="zz-table__anchor"  (click)="onSortGoal(SortFields.PLACE)">Wohnort <span [class.zz-table--arrow-up]="sortGoals[SortFields.PLACE].up" [class.zz-table--arrow-down]="sortGoals[SortFields.PLACE].down"></span></a>
+    <th scope="col"><a class="zz-table__anchor" (click)="onSortGoal(SortFields.PLACE)">Wohnort <span
+      [class.zz-table--arrow-up]="sortGoals[SortFields.PLACE].up"
+      [class.zz-table--arrow-down]="sortGoals[SortFields.PLACE].down"></span></a>
     </th>
     <th scope="col">E-Mail</th>
     <th *ngIf="userCurrent.is_teacher" scope="col">Bestätigt</th>
@@ -24,30 +33,33 @@
   <tbody>
 
 
+  <tr class="table--confirmed" *ngFor="let item of classlistList">
+    <th scope="row"><img class="zz-table__img" src="../../../assets/img/portrait.svg"></th>
+    <td><span class="zz-table__anchor" [routerLink]="['detail', item.id]">{{item.child_forename}}</span></td>
 
-<tr class="table--confirmed" *ngFor="let item of classlistList">
-  <th scope="row"><img class="zz-table__img" src="../../../assets/img/portrait.svg"></th>
-  <td><span class="zz-table__anchor"  [routerLink]="['detail', item.id]">{{item.child_forename}}</span></td>
-  <td>{{item.child_surname}}</td>
-  <td>{{item.parent_forename}}</td>
-  <td>{{item.parent_surname}}</td>
-  <td>{{item.place}}</td>
-  <td>
-    <a href="mailto:{{item.email}}">
-      <svg class="zz-table__icon" viewBox="0 0 20 11.8">
-        <rect width="20" height="11.8"/>
-        <polyline class="st0" points="0,0 10.3,8.3 20,0 "/>
-      </svg>
-    </a>
-  </td>
-  <td *ngIf="userCurrent.is_teacher">
-    <app-alert [userItem]="item" (answer)="sendAnswer($event)"> </app-alert>
-    <input class="table__checkbox" type="checkbox" aria-label="bestaetigung"  [checked]="item.is_approved" (change)="showAlert(item, $event)">
-    <!-- onChecked(item, $event) -->
+    <!-- <td> <app-user-detail [userItem]="item"> </app-user-detail>
+      <span class="zz-table__anchor"  [routerLink]="['detail', item.id]">{{item.child_forename}}</span></td> -->
 
- </td>
-
-</tr>
+    <td>{{item.child_surname}}</td>
+    <td>{{item.parent_forename}}</td>
+    <td>{{item.parent_surname}}</td>
+    <td>{{item.place}}</td>
+    <td>
+      <a href="mailto:{{item.email}}">
+        <svg class="zz-table__icon" viewBox="0 0 20 11.8">
+          <rect width="20" height="11.8"/>
+          <polyline class="st0" points="0,0 10.3,8.3 20,0 "/>
+        </svg>
+      </a>
+    </td>
+    <td *ngIf="userCurrent.is_teacher">
+      <app-alert [userItem]="item" (answer)="sendAnswer($event)"></app-alert>
+      <input class="table__checkbox" type="checkbox" aria-label="bestaetigung" [checked]="item.is_approved"
+             (change)="showAlert(item, $event)">
+      <!-- onChecked(item, $event) -->
+    </td>
+  </tr>
 
   </tbody>
 </table>
+

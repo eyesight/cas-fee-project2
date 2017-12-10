@@ -16,7 +16,7 @@ export class UserDetailComponent implements OnInit {
   hidden = true;
 
   //@Input()
-  private user: User = null;
+  public user: User = null;
 
   constructor(private activatedRoute: ActivatedRoute) {
      this.user = activatedRoute.snapshot.data.user;
