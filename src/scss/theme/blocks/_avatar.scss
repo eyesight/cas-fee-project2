@@ -1,0 +1,40 @@
+.zz-avatar{
+  display:flex;
+
+  label{
+    margin:0;
+    margin-right: rem-calc(10px);
+  }
+
+  &__file-upload {
+    border: 1px solid $color-gray-light;
+    display: inline-block;
+    padding: 1rem;
+    min-width: 12.5rem;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5px;
+    margin-right: rem-calc(10px);
+    margin-top: 10%;
+    min-height: 55%;
+  }
+
+  &__wrapper{
+    display:flex;
+    align-items: center;
+    flex: 5;
+  }
+
+  .zz-btn{
+    min-height: 55%;
+  }
+
+  .zz-mod-box__img-wrapper{
+    flex:1;
+  }
+}
+input[type="file"] {
+  display: none;
+}
+
+

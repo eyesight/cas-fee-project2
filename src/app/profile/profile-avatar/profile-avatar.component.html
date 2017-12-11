@@ -1,3 +1,13 @@
-n<p>
-  profile-avatar works!
-</p>
+<div class="zz-mod-box__img-wrapper zz-mod-box--img-large">
+  <img src="assets/img/dummy-portrait.png" alt="" class="zz-mod-box__img">
+  <img src="{{fileUrl}}" alt="" class="zz-mod-box__img">
+</div>
+<form class="zz-avatar__wrapper" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label class="zz-avatar__file-upload">
+      <i class="zz-avatar__icon-upload"></i> neues Profilbild auswählen
+    <input class="zz-avatar__input" type="file" id="avatar" (change)="onFileChange($event)" ><i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i>
+    </label>
+    <button type="submit" class="zz-btn zz-btn--primary" [hidden]="form.invalid" [disabled]="loading">
+       submit
+    </button>
+</form>

@@ -36,6 +36,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProfileDetailsChildComponent } from './profile/profile-details-child/profile-details-child.component';
 import { ProfileDetailsParentComponent } from './profile/profile-details-parent/profile-details-parent.component';
 import { ProfileService } from './profile/service/profile.service';
+import { ProfileAvatarComponent } from './profile/profile-avatar/profile-avatar.component';
 
 import { FromNowPipe } from './_pipes/from-now.pipe';
 import { ProperTimePipe } from './_pipes/proper-time.pipe';
@@ -67,7 +68,8 @@ import { NgDatepickerModule } from 'ng2-datepicker';
     ProfileDetailsChildComponent,
     ProfileDetailsParentComponent,
     ProfilePasswordChangeComponent,
-    ProfileEmailChangeComponent
+    ProfileEmailChangeComponent,
+    ProfileAvatarComponent
   ],
   imports: [
     BrowserModule,

@@ -15,12 +15,7 @@
   <div class="col-12 col-xl-5 col-lg-6 zz-mod-container">
     <h1 class="zz-title zz-title--h2">Angaben Kind</h1>
     <div class="zz-mod-box">
-      <div class="zz-mod-box__img-wrapper zz-mod-box--img-large">
-        <img src="assets/img/dummy-portrait.png" alt="" class="zz-mod-box__img">
-      </div>
-      <button class="zz-btn zz-btn--primary">
-        Profilbild ersetzen
-      </button>
+      <app-profile-avatar class="zz-avatar"></app-profile-avatar>
       <h3 class="zz-title--h3">Geschlecht</h3>
       <p>{{userContent.child_gender | gender:'de': true}}</p>
       <h3 class="zz-title--h3">Vorname Name</h3>
