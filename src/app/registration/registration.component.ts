@@ -19,6 +19,7 @@ export class RegistrationComponent implements OnInit {
   public formModel: User;
   public data: any;
   public date: Date;
+  public today: string;
 
   options: DatepickerOptions = {
     minYear: 1980,
@@ -41,6 +42,7 @@ export class RegistrationComponent implements OnInit {
               private alertService: AlertService,
               private fb: FormBuilder) {
     this.date = new Date();
+    this.today = moment(new Date).format('YYYY-MM-DD, h:mm:ss a');
   }
 
   ngOnInit(): void {
@@ -71,7 +73,10 @@ export class RegistrationComponent implements OnInit {
     this.userObject.zip = this.formModel.zip;
     this.userObject.email = this.formEmail.value;
     this.userObject.pwd = this.formPassword.value;
+    this.userObject.register_date = this.today;
+
     this.loading = true;
+
     console.log(this.userObject);
     this.userService.create(this.userObject)
       .subscribe(

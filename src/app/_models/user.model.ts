@@ -65,6 +65,7 @@ export class User {
   klasse_end_at: string;
   user_can: Can;
   user_avatar: string;
+  register_date: string;
 
   getAvatar() {
       return 'data:image/jpeg;base64,' + this.user_avatar;
