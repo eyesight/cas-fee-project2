@@ -7,6 +7,7 @@ const userController = require('../controllers/userController');
 const chatController = require('../controllers/chatController');
 const avatarController = require('../controllers/avatarController');
 const klasseController = require('../controllers/KlasseController');
+const security = require('../util/security');
 
 router.get('/something', function(req, res, next) {
   console.log('Enter something.');
@@ -21,6 +22,9 @@ router.get("/chat/getall", chatController.getMessages);
 
 router.get("/user/classlist", userController.getUserKlasseList);
 router.put("/user/approve", userController.approveUser);
+
+router.put("/user/passwordchange", security.handlePasswordChange);
+
 
 /*
 router.post("/api", orders.createUser);

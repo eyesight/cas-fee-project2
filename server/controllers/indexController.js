@@ -1,22 +1,22 @@
 /**
  * Created by awedag on 27.10.17.
  */
-const util = require('../util/security');
+const security = require('../util/security');
 const dbKlasse = require('../db/dbKlasse');
 
 module.exports.register = function(req, res) {
   console.log('indexController register' + req + res);
-    util.handleRegister(req, res);
+    security.handleRegister(req, res);
 };
 
 
 module.exports.login = function(req, res) {
   console.log('login');
-  util.handleLogin(req, res);
+  security.handleLogin(req, res);
 };
 
 module.exports.getKlasse = function(req, res) {
-  util.getKlasseData();
+  security.getKlasseData();
 };
 
 module.exports.getKlasse = function(req, res){

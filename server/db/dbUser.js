@@ -20,7 +20,7 @@ class UserRegister {
 
 class UserModel extends ModelBase{
 
-  constructor(class_id, parent_surname, parent_forename, parent_gender, parent_language, child_surname, child_forename, child_gender, child_birthdate, adress, zip, place, tel_private, tel_office, is_approved){
+  constructor(class_id, parent_surname, parent_forename, parent_gender, parent_language, child_surname, child_forename, child_gender, child_birthdate, adress, zip, place, tel_private, tel_office, is_approved, user_avatar){
     super();
     this.class_id = class_id;
     this.parent_surname = parent_surname;
@@ -41,8 +41,8 @@ class UserModel extends ModelBase{
     this.is_teacher = is_teacher;
 */
     this.is_approved = is_approved;
-    /*this.user_avatar = user_avatar;
-    this.user_can = user_can;
+    this.user_avatar = user_avatar;
+  /*  this.user_can = user_can;
     this.user_name = user_name;*/
   }
 }
@@ -68,9 +68,9 @@ function UserFromJson(req){
     r.tel_office,
     r.is_active,
     /*r.is_teacher,*/
-    r.is_approved
-    /*r.user_avatar,
-    r.user_can,
+    r.is_approved,
+    r.user_avatar
+    /*r.user_can,
     r.user_name*/
   );
 }
@@ -94,6 +94,21 @@ function registerUser(email, passwort, isTeacher, req, updateUserFunc, callback)
   });
 }
 
+
+function updatePassword(email, newPasswort, callback)
+{
+  if(!(email && newPasswort)) {  callback("no user", null); return; }
+
+  const user = new UserRegister(email, newPasswort);
+
+  return db.query("update users set  encrypted_password = ? where email = ?",[ user.encrypted_password, user.email], function(err, newDoc){
+    if(callback){
+
+        callback(err, newDoc);
+
+    }
+  });
+}
 
 function updateUser(email, userModel, callback){
   console.log(userModel.is_teacher);
@@ -139,7 +154,7 @@ function register(req, callback){
 
 function authenticate(email, password, callback){
   console.log('user.authenticate:' + email);
-  if(!(email && password)) {  callback(false); }
+  if(!(email && password)) {  callback(false);return; }
 
   this.getUserByEmail( email , function (err, doc) {
     if( (doc === null ) && !err){
@@ -147,7 +162,7 @@ function authenticate(email, password, callback){
     }
     else {
       var pwd = cryptoUtil.hashPwd(password);
-      console.log('passwor: ' + doc[0].encrypted_password + ' paswword: ' + cryptoUtil.hashPwd(password));
+   //   console.log('passwor: ' + doc[0].encrypted_password + ' password: ' + cryptoUtil.hashPwd(password));
       callback(err, doc && doc[0].encrypted_password === cryptoUtil.hashPwd(password));
       //  callback(err, doc && true);
     }
@@ -366,6 +381,7 @@ module.exports = {
   currentUser: currentUser,
   register : register,
   registerUser : registerUser,
+  updatePassword : updatePassword,
   updateUser : updateUser,
   UserFromJson: UserFromJson,
   getUserByEmail : getUserByEmail,
