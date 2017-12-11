@@ -10,7 +10,7 @@ export class ProperDatePipe implements PipeTransform {
 
   transform( date: string): string {
     // return time as 14:53
-    const ts = moment.utc(date);
+    const ts = moment(date);
     if (date) {
       return ts.locale('de-ch').format('LL');
     } else {

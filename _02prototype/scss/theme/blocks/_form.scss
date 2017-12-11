@@ -71,6 +71,10 @@
     }
   }
 
+  &__date-wrapper{
+    display:flex;
+  }
+
   &--margin-top{
     padding-top: rem-calc(40px);
   }

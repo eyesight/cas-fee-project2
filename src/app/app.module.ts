@@ -37,15 +37,13 @@ import { ProfileDetailsChildComponent } from './profile/profile-details-child/pr
 import { ProfileDetailsParentComponent } from './profile/profile-details-parent/profile-details-parent.component';
 import { ProfileService } from './profile/service/profile.service';
 
-
 import { FromNowPipe } from './_pipes/from-now.pipe';
 import { ProperTimePipe } from './_pipes/proper-time.pipe';
 import { ProperDatePipe } from './_pipes/proper-date.pipe';
 import { genderPipe } from './_pipes/gender.pipe';
 import { ProfilePasswordChangeComponent } from './profile/profile-password-change/profile-password-change.component';
 import { ProfileEmailChangeComponent } from './profile/profile-email-change/profile-email-change.component';
-
-
+import { NgDatepickerModule } from 'ng2-datepicker';
 
 
 @NgModule({
@@ -80,7 +78,7 @@ import { ProfileEmailChangeComponent } from './profile/profile-email-change/prof
     // injecst Http to any service
     HttpModule,
     BrowserAnimationsModule,
-
+    NgDatepickerModule
   ],
   providers: [
     AuthGuard,

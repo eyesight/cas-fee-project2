@@ -41,6 +41,21 @@
         border-color: $color-red;
         box-shadow: 0px 0px 5px $color-red;
     }
+
+    //dateppicker from npm-modules
+    .ngx-datepicker-container[_ngcontent-c1] .ngx-datepicker-input[_ngcontent-c1],
+    .ngx-datepicker-container[_ngcontent-c0] .ngx-datepicker-input[_ngcontent-c0]{
+      width: 100%;
+      height: 100%;
+      padding: 1rem;
+      border:none;
+      font-family: $font-family-primary;
+      font-size: $font-s-copytext;
+    }
+
+    .ngx-datepicker-container[_ngcontent-c0] .ngx-datepicker-calendar-container[_ngcontent-c0]{
+      z-index: 100;
+    }
   }
 
   &__error{
@@ -71,8 +86,16 @@
     }
   }
 
+  &__date-wrapper{
+    display:flex;
+  }
+
   &--margin-top{
     padding-top: rem-calc(40px);
   }
+}
+
+ng-datepicker.zz-form__input{
+  padding:0;
 }
 

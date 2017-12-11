@@ -2,7 +2,7 @@
   <div class="zz-overlay__content-inner">
     <h1 class="zz-title zz-title--insideBox">Daten bearbeiten</h1>
     <div >
-      <form [formGroup]="childDetailsForm" (ngSubmit)="childDetailsForm.valid && update()" novalidate class="zz-overlay__text-wrapper">
+      <form [formGroup]="childDetailsForm" (ngSubmit)="childDetailsForm.valid && update() && updateData(true)" novalidate class="zz-overlay__text-wrapper">
         <div class="form-row">
           <div class="col-md-6 col-sm-12 zz-form__group">
             <label class="zz-form__label" for="c-gender">
@@ -30,12 +30,12 @@
         <div class="form-row">
           <div class="col-12 zz-form__group">
             <label class="zz-form__label">Geburtstag</label>
-            <input type="text" id="c-Birthday-Day" class="zz-form__input" formControlName="child_date_of_birth" [ngClass]="{ 'zz-form__input--error': formCBirthday.invalid && (formCBirthday.dirty || formCBirthday.touched)}">
+            <ng-datepicker class="zz-form__input" formControlName="child_date_of_birth" [options]="options"></ng-datepicker>
             <app-show-errors [control]="formCBirthday"></app-show-errors>
           </div>
         </div>
         <div class="form-row">
-          <button type="submit" class="zz-btn zz-btn--primary" [disabled]="!childDetailsForm.valid">
+          <button type="submit" class="zz-btn zz-btn--primary">
             speichern
           </button>
         </div>

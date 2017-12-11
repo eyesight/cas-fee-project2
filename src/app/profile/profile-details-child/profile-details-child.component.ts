@@ -5,10 +5,11 @@ import { overlayAnimation } from '../../_animation/overlay.animation';
 import { UserContentService } from '../../_services/user-content.service';
 import { UserContentDbService } from '../../_services/user-content-db.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CustomValidators } from '../../_validation/custom.validators';
 import { AlertService, UserService } from '../../_services/index';
 import { ProfileService } from '../service/profile.service';
-
+import { DatepickerOptions } from 'ng2-datepicker';
+import * as deLocale from 'date-fns/locale/de';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-profile-details-child',
@@ -22,6 +23,16 @@ export class ProfileDetailsChildComponent implements OnInit {
     public childDetailsForm: FormGroup;
     public formModel: User;
     public userObject = new User;
+    public data: any;
+
+    options: DatepickerOptions = {
+      minYear: 1980,
+      maxYear: 2020,
+      displayFormat: 'D[.] MMMM YYYY',
+      barTitleFormat: 'MMMM YYYY',
+      firstCalendarDay: 1, // 0 - Sunday, 1 - Monday
+      locale: deLocale
+    };
 
   constructor(
     private UserContentDbService: UserContentDbService,
@@ -31,7 +42,7 @@ export class ProfileDetailsChildComponent implements OnInit {
     private alertService: AlertService,
     private fb: FormBuilder,
     private profileService: ProfileService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.userContent = this.UserContentDbService.getCurrentUser();
@@ -59,8 +70,11 @@ export class ProfileDetailsChildComponent implements OnInit {
     // add Value of Form into formModel to pass it to new userObject
     this.formModel = this.childDetailsForm.value;
 
+    // format the date with moment
+    this.data = moment(this.formModel.child_date_of_birth).locale('de-ch').format("YYYY-MM-DD");
+
     this.userObject.adress = this.userContent.adress;
-    this.userObject.child_date_of_birth = this.formModel.child_date_of_birth;
+    this.userObject.child_date_of_birth = this.data;
     this.userObject.child_forename = this.formModel.child_forename;
     this.userObject.child_gender = this.formModel.child_gender;
     this.userObject.child_surname = this.formModel.child_surname;
@@ -73,7 +87,6 @@ export class ProfileDetailsChildComponent implements OnInit {
     this.userObject.tel_office = this.userContent.tel_office;
     this.userObject.tel_private = this.userContent.tel_private;
     this.userObject.zip = this.userContent.zip;
-
     // update child - add message if succeeded or failed and go back to the profile-site
     this.userService.update(this.userObject)
       .subscribe(
@@ -100,7 +113,7 @@ export class ProfileDetailsChildComponent implements OnInit {
       child_gender: [this.userContent.child_gender, [Validators.required]],
       child_forename: [this.userContent.child_forename, [Validators.required, Validators.minLength(2)]],
       child_surname: [this.userContent.child_surname, [Validators.required, Validators.minLength(2)]],
-      child_date_of_birth: [this.userContent.child_date_of_birth, [Validators.required, CustomValidators.dateFormat]]
+      child_date_of_birth: [this.userContent.child_date_of_birth, [Validators.required]],
     });
   }
 }
