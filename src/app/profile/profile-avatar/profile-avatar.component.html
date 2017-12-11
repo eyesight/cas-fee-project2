@@ -1,6 +1,6 @@
 <div class="zz-mod-box__img-wrapper zz-mod-box--img-large">
-  <img src="assets/img/dummy-portrait.png" alt="" class="zz-mod-box__img">
-  <img src="{{fileUrl}}" alt="" class="zz-mod-box__img">
+  <img *ngIf="!provFile" src="assets/img/dummy-portrait.png" alt="" class="zz-mod-box__img">
+  <img *ngIf="provFile" [src]="url" alt="" class="zz-mod-box__img">
 </div>
 <form class="zz-avatar__wrapper" [formGroup]="form" (ngSubmit)="onSubmit()">
     <label class="zz-avatar__file-upload">

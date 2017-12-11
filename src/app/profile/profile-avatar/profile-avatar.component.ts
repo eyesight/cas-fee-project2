@@ -10,6 +10,8 @@ export class ProfileAvatarComponent {
   form: FormGroup;
   loading: boolean = false;
   fileUrl: string;
+  url: string;
+  provFile : boolean = false;
 
   @ViewChild('fileInput') fileInput: ElementRef;
 
@@ -23,11 +25,12 @@ export class ProfileAvatarComponent {
     });
   }
 
-  onFileChange(event) {
+/*  onFileChange(event) {
     let reader = new FileReader();
-    if(event.target.files && event.target.files.length > 0) {
+    if (event.target.files && event.target.files.length > 0) {
       let file = event.target.files[0];
       reader.readAsDataURL(file);
+      console.log(file);
       reader.onload = () => {
         this.form.get('avatar').setValue({
           filetype: file.type,
@@ -35,7 +38,7 @@ export class ProfileAvatarComponent {
         });
       };
     }
-  }
+  }*/
 
   onSubmit() {
     const formModel = this.form.value;
@@ -45,8 +48,7 @@ export class ProfileAvatarComponent {
       this.loading = false;
     }, 1000);
     console.log(formModel.filetype);
-    this.fileUrl = 'data:'+formModel.avatar.filetype+';base64, ' + formModel.avatar.value;
-    console.log(this.fileUrl);
+    this.fileUrl = 'data:' + formModel.avatar.filetype + ';base64, ' + formModel.avatar.value;
   }
 
   clearFile() {
@@ -54,4 +56,15 @@ export class ProfileAvatarComponent {
     this.fileInput.nativeElement.value = '';
   }
 
+  onFileChange(event) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = (event: any) => {
+        this.url = event.target.result;
+        this.provFile = true;
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
 }
