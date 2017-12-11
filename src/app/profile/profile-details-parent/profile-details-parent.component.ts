@@ -110,7 +110,8 @@ export class ProfileDetailsParentComponent implements OnInit {
                 this.router.navigate(['/profile']);
               },
               error => {
-                this.alertService.error(error);
+                this.alertService.error('Ein Problem ist aufgetreten, bitte versuchen Sie es nochmals', true);
+                this.router.navigate(['/profile']);
               });
         },
         error => {

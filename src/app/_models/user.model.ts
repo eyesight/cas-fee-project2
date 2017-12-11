@@ -7,6 +7,12 @@ export class UserPwd {
     this.pwd = pwd;
   }
 }
+
+export class UserPwdChange {
+  new_pwd: string;
+  pwd: string;
+}
+
 export class UserAuth {
   email: string;
   token: string;

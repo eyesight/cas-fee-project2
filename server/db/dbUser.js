@@ -80,7 +80,7 @@ function registerUser(email, passwort, isTeacher, req, updateUserFunc, callback)
   if(!(email && passwort)) {  callback("no user", null); }
 
   const user = new UserRegister(email, passwort, isTeacher);
-
+  console.log('dbUser=registerUser');
 
   return db.query("Insert into users ( email, encrypted_password, is_teacher) values(?,?,?)",[user.email, user.encrypted_password, user.is_teacher], function(err, newDoc){
     if(callback){
@@ -97,6 +97,7 @@ function registerUser(email, passwort, isTeacher, req, updateUserFunc, callback)
 
 function updatePassword(email, newPasswort, callback)
 {
+  console.log(email, newPasswort);
   if(!(email && newPasswort)) {  callback("no user", null); return; }
 
   const user = new UserRegister(email, newPasswort);

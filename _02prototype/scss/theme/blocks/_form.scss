@@ -41,6 +41,21 @@
       border-color: $color-red;
       box-shadow: 0px 0px 5px $color-red;
     }
+
+    //dateppicker from npm-modules
+    .ngx-datepicker-container[_ngcontent-c1] .ngx-datepicker-input[_ngcontent-c1],
+    .ngx-datepicker-container[_ngcontent-c0] .ngx-datepicker-input[_ngcontent-c0]{
+      width: 100%;
+      height: 100%;
+      padding: 1rem;
+      border:none;
+      font-family: $font-family-primary;
+      font-size: $font-s-copytext;
+    }
+
+    .ngx-datepicker-container[_ngcontent-c0] .ngx-datepicker-calendar-container[_ngcontent-c0]{
+      z-index: 100;
+    }
   }
 
   &__error{
@@ -79,4 +94,21 @@
     padding-top: rem-calc(40px);
   }
 }
+
+ng-datepicker.zz-form__input{
+  padding:0;
+
+  .ngx-datepicker-container[_ngcontent-c0]  .ngx-datepicker-calendar-container[_ngcontent-c0] .main-calendar-container[_ngcontent-c0] .main-calendar-days[_ngcontent-c0] .day-unit.is-selected[_ngcontent-c0],
+  .ngx-datepicker-container[_ngcontent-c0]  .ngx-datepicker-calendar-container[_ngcontent-c0] .main-calendar-container[_ngcontent-c0] .main-calendar-days[_ngcontent-c0] .year-unit.is-selected[_ngcontent-c0],
+  .ngx-datepicker-container[_ngcontent-c0]  .ngx-datepicker-calendar-container[_ngcontent-c0] .main-calendar-container[_ngcontent-c0] .main-calendar-years[_ngcontent-c0] .day-unit.is-selected[_ngcontent-c0],
+  .ngx-datepicker-container[_ngcontent-c0]  .ngx-datepicker-calendar-container[_ngcontent-c0] .main-calendar-container[_ngcontent-c0] .main-calendar-years[_ngcontent-c0] .year-unit.is-selected[_ngcontent-c0],
+
+  .ngx-datepicker-container[_ngcontent-c1]  .ngx-datepicker-calendar-container[_ngcontent-c1] .main-calendar-container[_ngcontent-c1] .main-calendar-days[_ngcontent-c1] .day-unit.is-selected[_ngcontent-c1],
+  .ngx-datepicker-container[_ngcontent-c1]  .ngx-datepicker-calendar-container[_ngcontent-c1] .main-calendar-container[_ngcontent-c1] .main-calendar-days[_ngcontent-c1] .year-unit.is-selected[_ngcontent-c1],
+  .ngx-datepicker-container[_ngcontent-c1]  .ngx-datepicker-calendar-container[_ngcontent-c1] .main-calendar-container[_ngcontent-c1] .main-calendar-years[_ngcontent-c1] .day-unit.is-selected[_ngcontent-c1],
+  .ngx-datepicker-container[_ngcontent-c1]  .ngx-datepicker-calendar-container[_ngcontent-c1] .main-calendar-container[_ngcontent-c1] .main-calendar-years[_ngcontent-c1] .year-unit.is-selected[_ngcontent-c1]{
+    background-color: $color-primary;
+  }
+}
+
 

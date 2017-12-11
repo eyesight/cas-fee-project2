@@ -54,34 +54,20 @@ export class RegistrationComponent implements OnInit {
     // add Value of Form into formModel to pass it to new userObject
     this.formModel = this.registrationForm.value;
 
-    // format the date with moment
+    // format the date of the child_date_of_birth with moment
     this.data = moment(this.formModel.child_date_of_birth).locale('de-ch').format("YYYY-MM-DD");
 
-    this.userObject.adress = this.formModel.adress;
-    this.userObject.child_date_of_birth = this.data;
-    this.userObject.child_forename = this.formModel.child_forename;
-    this.userObject.child_gender = this.formModel.child_gender;
-    this.userObject.child_surname = this.formModel.child_surname;
-    this.userObject.class_id = this.formModel.class_id;
-    this.userObject.parent_forename = this.formModel.parent_forename;
-    this.userObject.parent_surname = this.formModel.parent_surname;
-    this.userObject.parent_gender = this.formModel.parent_gender;
-    this.userObject.parent_language = this.formModel.parent_language;
-    this.userObject.place = this.formModel.place;
-    this.userObject.tel_office = this.formModel.tel_office;
-    this.userObject.tel_private = this.formModel.tel_private;
-    this.userObject.zip = this.formModel.zip;
-    this.userObject.email = this.formEmail.value;
-    this.userObject.pwd = this.formPassword.value;
-    this.userObject.register_date = this.today;
+    this.formModel.child_date_of_birth = this.data;
+    this.formModel.email = this.formEmail.value;
+    this.formModel.pwd = this.formPassword.value;
+    this.formModel.register_date = this.today;
 
     this.loading = true;
 
-    console.log(this.userObject);
-    this.userService.create(this.userObject)
+    this.userService.create(this.formModel)
       .subscribe(
         data => {
-          this.alertService.success('Registration successful', true);
+          this.alertService.success('Registrierung war erfolgreich', true);
           this.router.navigate(['/login']);
         },
         error => {

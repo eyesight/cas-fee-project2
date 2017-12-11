@@ -43,7 +43,6 @@ export class UserAuthService {
       console.log('userAuth is null -> return null');
       return null;
     }
-    // console.dir(userAuth);
     return userAuth.token;
   }
 
@@ -54,7 +53,6 @@ export class UserAuthService {
       console.log('userAuth is null');
       return null;
     }
-    // console.dir(userAuth);
     return userAuth.email;
   }
 

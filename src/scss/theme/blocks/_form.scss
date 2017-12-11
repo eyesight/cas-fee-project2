@@ -95,7 +95,23 @@
   }
 }
 
+
+
+// Datepicker - need to be overwritten
 ng-datepicker.zz-form__input{
   padding:0;
+
+  .ngx-datepicker-container[_ngcontent-c0]  .ngx-datepicker-calendar-container[_ngcontent-c0] .main-calendar-container[_ngcontent-c0] .main-calendar-days[_ngcontent-c0] .day-unit.is-selected[_ngcontent-c0],
+  .ngx-datepicker-container[_ngcontent-c0]  .ngx-datepicker-calendar-container[_ngcontent-c0] .main-calendar-container[_ngcontent-c0] .main-calendar-days[_ngcontent-c0] .year-unit.is-selected[_ngcontent-c0],
+  .ngx-datepicker-container[_ngcontent-c0]  .ngx-datepicker-calendar-container[_ngcontent-c0] .main-calendar-container[_ngcontent-c0] .main-calendar-years[_ngcontent-c0] .day-unit.is-selected[_ngcontent-c0],
+  .ngx-datepicker-container[_ngcontent-c0]  .ngx-datepicker-calendar-container[_ngcontent-c0] .main-calendar-container[_ngcontent-c0] .main-calendar-years[_ngcontent-c0] .year-unit.is-selected[_ngcontent-c0],
+
+  .ngx-datepicker-container[_ngcontent-c1]  .ngx-datepicker-calendar-container[_ngcontent-c1] .main-calendar-container[_ngcontent-c1] .main-calendar-days[_ngcontent-c1] .day-unit.is-selected[_ngcontent-c1],
+  .ngx-datepicker-container[_ngcontent-c1]  .ngx-datepicker-calendar-container[_ngcontent-c1] .main-calendar-container[_ngcontent-c1] .main-calendar-days[_ngcontent-c1] .year-unit.is-selected[_ngcontent-c1],
+  .ngx-datepicker-container[_ngcontent-c1]  .ngx-datepicker-calendar-container[_ngcontent-c1] .main-calendar-container[_ngcontent-c1] .main-calendar-years[_ngcontent-c1] .day-unit.is-selected[_ngcontent-c1],
+  .ngx-datepicker-container[_ngcontent-c1]  .ngx-datepicker-calendar-container[_ngcontent-c1] .main-calendar-container[_ngcontent-c1] .main-calendar-years[_ngcontent-c1] .year-unit.is-selected[_ngcontent-c1]{
+    background-color: $color-primary;
+  }
 }
+
 

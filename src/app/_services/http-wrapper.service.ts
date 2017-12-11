@@ -44,6 +44,8 @@ export class HttpWrapper {
     if (userJwt) {
       const headers = new Headers({ 'Authorization': 'Bearer ' + userJwt });
       console.log('jwt: '+ headers);
+      console.dir(headers);
+
       return new RequestOptions({ headers: headers });
     }
   }

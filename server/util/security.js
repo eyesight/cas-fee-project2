@@ -89,7 +89,7 @@ function handleLogin(req, res) {
 
 function handlePasswordChange(req, res) {
   "use strict";
-
+  console.log('passwordchanger on server');
   if (req.body.pwd !== req.body.new_pwd) {
     dbUser.authenticate(req.user.name, req.body.pwd, function (err, valid) {
       console.log('is a valid:' + valid);
