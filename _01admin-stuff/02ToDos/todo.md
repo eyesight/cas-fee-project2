@@ -1,9 +1,6 @@
 #TODO
 - TODO: FOUT einbinden für das Laden eines Webfonts (=auf Folien unterricht), https://css-tricks.com/fout-foit-foft/
--> AW+CF
-
-- TODO: Autoprefixer für Angular?
--> CF: 
+-> AW+CF 
 
 - TODO: Send-Email einfügen: http://tphangout.com/angular-2-sending-mails-from-your-app/ + https://www.emailjs.com/(niedrige Prio)
   - Registrierung
@@ -57,9 +54,6 @@
 -> AW+CF:
 https://www.w3schools.com/html/html5_semantic_elements.asp
 
-- TODO: Background-Style-Changer in Profil einbauen (niedrige Prio)
--> 
-
 - TODO: Kalender umsetzen (niedrige Prio)
 -> 
 
@@ -111,6 +105,10 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
   
  - TODO: UI für Profil-Seite fertigstellen/durchdenken
   -> CF
+  
+- TODO: Autoprefixer für Angular?
+  Angular uses Autoprefixes: https://github.com/angular/angular-cli/wiki/stories-autoprefixer
+-> CF:
 
 #DONE
 - DONE: NG-File-Struktur (module,Componente) anlegen
