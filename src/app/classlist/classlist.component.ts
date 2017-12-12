@@ -57,6 +57,11 @@ export class ClasslistComponent implements OnInit {
 
 
   }
+
+  public approveAnswer(val: boolean){
+    console.log('approveAnswer in maincomponent:' + val);
+    this.canDeactivate = val;
+  }
 /*
    public onChecked(checked: boolean, item: User) {
     console.log('onChecked in classlist');
