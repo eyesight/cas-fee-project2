@@ -10,6 +10,7 @@ import {UserResolverService} from "./service/user-resolver.service";
 import {AlertComponent} from "./dialog/alert.component";
 import {CanDeactivateClasslistService} from "./service/can-deactivate-classlist.service";
 
+
 @NgModule({
   imports: [
     CommonModule, ClasslistRoutesModule

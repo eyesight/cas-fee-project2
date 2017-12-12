@@ -310,7 +310,7 @@ function approveUser(username, req, callback){
         console.log('4:'+ userEmail);
         console.log('5:'+ approve);
 
-        if (doc[0].is_teacher && doc[0].class_id && userEmail && approve
+        if (doc[0].is_teacher && doc[0].class_id && userEmail
           && doc[0].is_teacher === 1
           && (approve === 1 ||approve === 0)){
           console.log('teacher :'+username+ ' approves user:' + userEmail + ' to : '+ approve);
