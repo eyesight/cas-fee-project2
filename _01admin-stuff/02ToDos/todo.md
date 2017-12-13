@@ -66,7 +66,11 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
   -> AW/CF: Bild richtig in Server einbauen und auslesen
   -> CF: Styling/UI responsive machen 
   
--TODO: Loading-Spinner einbauen
+-TODO: Loading-Spinner einbauen; animieren
+
+-TODO: Komponente erstellen für "Passwort vergessen -> meldung an Admin"
+
+-TODO: Komponente für Personal-Detail-Box
  
  #in Progress AW
  - TODO: DONE: Chat thematisieren, Umsetzen (inkl. sass)
@@ -78,7 +82,6 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
      AW: DONE: Timestamp der Message anstatt Klasse
      AW: DONE: implement userDetails und Klassenamen  etc. im Heade
      CF: Auto Scroll und scrollin innerhalb chat fenster 
-   
   
 - TODO: Klassenliste erstellen
 -> AW(+CF) - almost done
