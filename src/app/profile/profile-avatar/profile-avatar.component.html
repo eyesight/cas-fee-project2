@@ -1,13 +1,13 @@
-<div class="zz-mod-box__img-wrapper zz-mod-box--img-large">
-  <img *ngIf="!provFile" src="assets/img/dummy-portrait.png" alt="" class="zz-mod-box__img">
-  <img *ngIf="provFile" [src]="url" alt="" class="zz-mod-box__img">
+<div class="zz-avatar__img-wrapper zz-avatar--img-large">
+  <img *ngIf="!provFile" src="assets/img/dummy-portrait.png" alt="" class="zz-avatar__img">
+  <img *ngIf="provFile" [src]="previewUrl" alt="" class="zz-avatar__img">
 </div>
 <form class="zz-avatar__wrapper" [formGroup]="form" (ngSubmit)="onSubmit()">
     <label class="zz-avatar__file-upload">
       <i class="zz-avatar__icon-upload"></i> neues Profilbild auswählen
-    <input class="zz-avatar__input" type="file" id="avatar" (change)="onFileChange($event)" ><i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i>
+    <input class="zz-avatar__input" type="file" (change)="onFileChange($event)" #fileInput><i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i>
     </label>
-    <button type="submit" class="zz-btn zz-btn--primary" [hidden]="form.invalid" [disabled]="loading">
-       submit
+    <button type="submit" class="zz-btn zz-btn--primary" [hidden]="!provFile" [disabled]="loading">
+       Bild speichern
     </button>
 </form>

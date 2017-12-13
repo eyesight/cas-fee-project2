@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { User } from '../../_models/user.model';
+import {AlertService, UserService} from '../../_services/index';
+import { User, UserAvatar } from '../../_models/user.model';
 
 @Component({
   selector: 'app-profile-avatar',
@@ -9,46 +10,37 @@ import { User } from '../../_models/user.model';
 export class ProfileAvatarComponent {
   form: FormGroup;
   loading: boolean = false;
-  fileUrl: string;
-  url: string;
-  provFile : boolean = false;
+  size: number;
+  previewUrl: string;
+  avatarUrl: string;
+  provFile: boolean = false;
+  avatarObject = new UserAvatar;
 
   @ViewChild('fileInput') fileInput: ElementRef;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              private userService: UserService) {
     this.createForm();
   }
 
   createForm() {
     this.form = this.fb.group({
-      avatar: [null, [Validators.required]]
+      avatar: null
     });
   }
 
-/*  onFileChange(event) {
-    let reader = new FileReader();
-    if (event.target.files && event.target.files.length > 0) {
-      let file = event.target.files[0];
-      reader.readAsDataURL(file);
-      console.log(file);
-      reader.onload = () => {
-        this.form.get('avatar').setValue({
-          filetype: file.type,
-          value: reader.result.split(',')[1]
-        });
-      };
-    }
-  }*/
+  get avatar() {
+    return this.form.get('avatar');
+  }
 
   onSubmit() {
-    const formModel = this.form.value;
+    this.avatarObject.avatar = this.avatarUrl;
+    console.log(this.avatarUrl);
+    this.userService.updateAvatar(this.avatarObject);
     this.loading = true;
     setTimeout(() => {
-      console.log(formModel);
       this.loading = false;
     }, 1000);
-    console.log(formModel.filetype);
-    this.fileUrl = 'data:' + formModel.avatar.filetype + ';base64, ' + formModel.avatar.value;
   }
 
   clearFile() {
@@ -58,13 +50,27 @@ export class ProfileAvatarComponent {
 
   onFileChange(event) {
     if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
+      let reader = new FileReader();
+      let files = event.target.files[0];
 
       reader.onload = (event: any) => {
-        this.url = event.target.result;
+        this.previewUrl = event.target.result;
         this.provFile = true;
+        this.avatarUrl = this.previewUrl.split(',')[1];
       };
-      reader.readAsDataURL(event.target.files[0]);
+      if(files){
+        reader.readAsDataURL(files);
+        this.avatar.setValue({
+          filename: files.name,
+          filetype: files.type,
+          value: reader.result.split(',')[1]
+        });
+        console.log(this.avatar.value);
+      }
     }
   }
 }
+
+
+
+

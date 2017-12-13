@@ -13,6 +13,10 @@ export class UserPwdChange {
   pwd: string;
 }
 
+export class UserAvatar {
+  avatar: string;
+}
+
 export class UserAuth {
   email: string;
   token: string;

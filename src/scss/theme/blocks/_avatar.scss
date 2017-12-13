@@ -29,12 +29,36 @@
     min-height: 55%;
   }
 
-  .zz-mod-box__img-wrapper{
+  &__img-wrapper{
     flex:1;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    margin-right: 1rem;
+    border-radius: 50%;
+
+    + .zz-btn{
+      margin-top: 1rem;
+    }
+  }
+
+  &__img{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    width: auto;
+    transform: translate(-50%,-50%);
+  }
+
+  &--img-large{
+    height: 100px;
   }
 }
 input[type="file"] {
   display: none;
 }
+
 
 
