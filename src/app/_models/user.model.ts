@@ -14,7 +14,8 @@ export class UserPwdChange {
 }
 
 export class UserAvatar {
-  avatar: string;
+  name: string;
+  avatar: object;
 }
 
 export class UserAuth {

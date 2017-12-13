@@ -15,6 +15,7 @@ export class ProfileAvatarComponent {
   avatarUrl: string;
   provFile: boolean = false;
   avatarObject = new UserAvatar;
+  filename: string;
 
   @ViewChild('fileInput') fileInput: ElementRef;
 
@@ -34,8 +35,8 @@ export class ProfileAvatarComponent {
   }
 
   onSubmit() {
-    this.avatarObject.avatar = this.avatarUrl;
-    console.log(this.avatarUrl);
+/*    this.avatarObject.avatar = this.previewUrl;
+    console.log(this.previewUrl);*/
     this.userService.updateAvatar(this.avatarObject);
     this.loading = true;
     setTimeout(() => {
