@@ -22,7 +22,7 @@
 -> CF+AW
 
 - TODO: Unit tests
--> AW(+CF)
+-> AW/CF
 
 - TODO: Refactoring
 -> AW/CF
@@ -30,9 +30,11 @@
 - TODO: Registierung
     - CF (+AW) use Promise oder Subscribe
     - CF Registrierungs-Datum einbauen (registriert at 00.00.0000)
+    - CF: Wenn Eingelogged, darf User nicht mehr auf Seite "Registrierung oder Login" kommen -> Meldung "du bist schon eingeloggt" einbauen
+    - CF: Registrierungs-Button nicht auf disabled setzen -> bei klick auf Button, werden alle nicht angezeigten felder angezeigt
+    - CF: alle obligatorischen felder entsprechend markieren
 
 - TODO: Login
-    - CF: Wenn Eingelogged, darf User nicht mehr auf Seite "Registrierung oder Login" kommen -> Meldung "du bist schon eingeloggt" einbauen
     - CF: Login-Datum einbauen (last login = 00.00.0000)
 
 - TODO: Registrierung mit Admin (Lehrer) berechtigung/Registrierung ist erst abgeschlossen, wenn von Admin geprüft
@@ -59,6 +61,12 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
 
  - TODO: Prüfen in allen Browsern/Export Projekt als Bundle
  ->AW+CF
+ 
+ -TODO: Upload Profilbild
+  -> AW/CF: Bild richtig in Server einbauen und auslesen
+  -> CF: Styling/UI responsive machen 
+  
+-TODO: Loading-Spinner einbauen
  
  #in Progress AW
  - TODO: DONE: Chat thematisieren, Umsetzen (inkl. sass)
