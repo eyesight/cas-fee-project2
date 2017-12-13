@@ -36,7 +36,7 @@ export class ProfileAvatarComponent {
     return this.form.get('avatar');
   }
 
-<<<<<<< HEAD
+
     onSubmit() {
     //this.avatarObject.avatar = this.avatarUrl;
     console.log(this.avatarUrl);
@@ -44,13 +44,7 @@ export class ProfileAvatarComponent {
       this.userService.updateAvatar(this.nomalAvatar).subscribe( (x) => {console.log('ok' + x); } );
 
       this.loading = true;
-=======
-  onSubmit() {
-/*    this.avatarObject.avatar = this.previewUrl;
-    console.log(this.previewUrl);*/
-    this.userService.updateAvatar(this.avatarObject);
-    this.loading = true;
->>>>>>> 349f0f843a9c23f99d3dc40951fc7ac89ad82069
+
     setTimeout(() => {
       this.loading = false;
     }, 1000);

@@ -19,14 +19,11 @@ export class Avatar {
   value: string;
 }
 export class UserAvatar {
-<<<<<<< HEAD
+
   //avatar: string;
   name: string;
   avatar: Avatar;
-=======
-  name: string;
-  avatar: object;
->>>>>>> 349f0f843a9c23f99d3dc40951fc7ac89ad82069
+
 }
 
 
