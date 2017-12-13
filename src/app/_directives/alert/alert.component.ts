@@ -15,7 +15,6 @@ export class AlertComponent implements OnInit, AfterViewChecked {
   ngOnInit() {
     this.alertService.getMessage().subscribe(message => { this.message = message; });
 
-
   }
 
   ngAfterViewChecked() {

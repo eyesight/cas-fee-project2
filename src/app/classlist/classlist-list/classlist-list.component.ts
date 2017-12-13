@@ -67,7 +67,10 @@ export class ClasslistListComponent implements OnInit {
 
   showAlert(item: User, checked: any) {
     console.log('checked?' + checked.target.checked);
+    this.classlistList[this.classlistList.findIndex((x) => x === item)].is_approved = checked.target.checked;
+
     this.canDeactivate = false;
+    this.canDeactivateSend(this.canDeactivate);
     if (checked.target.checked) {
       this.alert.show('Möchten Sie die Person wirklich bestätigen?', true);
     } else {
@@ -77,20 +80,25 @@ export class ClasslistListComponent implements OnInit {
   }
 
   public sendAnswer(val: UserApproveAnswer) {
-    console.log('ok?:' + val.approve + '::' + val.changed);
+    console.log('SendAnswer - ok?:' + val.approve + '::' + val.changed + '::' + val.userItem.email);
     this.canDeactivate = true;
+    this.canDeactivateSend(this.canDeactivate);
+
     if (val.changed) {
       this.onChecked(val.userItem, val.approve);
     } else {
+      // this.classlistList[this.classlistList.findIndex((x) => x === val.userItem)].is_approved = 1;
+
+      console.log('ix of :' + this.classlistList.findIndex((x) => x === val.userItem) + ' now it is: ' + this.classlistList[this.classlistList.findIndex((x) => x === val.userItem)].is_approved + ' make it back to:' + !val.approve);
       this.classlistList[this.classlistList.findIndex((x) => x === val.userItem)].is_approved = !val.approve;
       this.classlistList = [...this.classlistList];
-      this.resetCheckBox(val.approve);
+     // this.resetCheckBox(val.approve);
     }
 
   }
 
-  public resetCheckBox(val: boolean) {
-    this.approveAnswer.emit(!val);
+  public canDeactivateSend(val: boolean) {
+    this.approveAnswer.emit(val);
 
   }
 
@@ -100,7 +108,7 @@ export class ClasslistListComponent implements OnInit {
           console.log('approved');
         },
         (error) => {
-          this.alertService.error(error);
+          this.alertService.error(error, false, 2000);
         });
     //  item.lastModified = new Date();
     //  this.snackBar.open('checked / unchecked item', null, { duration: 1500 });

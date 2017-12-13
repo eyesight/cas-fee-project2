@@ -6,29 +6,7 @@ import {User, UserApproveAnswer} from "../../_models/user.model";
 
 @Component({
   selector: 'app-alert',
-  templateUrl: './alert.component.html',
-  styles: [`
-    .mmmodal {
-      position: fixed;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      background-color: white;
-      border: 1px solid #ddd;
-      padding: 1rem;
-    }
-
-    .mmbackdrop {
-      position: absolute;
-     // background: rgba(0, 0, 0, 0.1);
-      top: 0;
-      bottom: 0;
-      right: 0;
-      left: 0;
-      background: black;
-      opacity: 0.2;
-    }
-  `]
+  templateUrl: './alert.component.html'
 })
 export class AlertComponent {
   hidden = true;
