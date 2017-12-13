@@ -13,9 +13,18 @@ export class UserPwdChange {
   pwd: string;
 }
 
-export class UserAvatar {
-  avatar: string;
+export class Avatar {
+  filename: string;
+  filetype: string;
+  value: string;
 }
+export class UserAvatar {
+  //avatar: string;
+  name: string;
+  avatar: Avatar;
+}
+
+
 
 export class UserAuth {
   email: string;

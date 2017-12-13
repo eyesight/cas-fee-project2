@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { appConfig } from '../_helpers/app.config';
-import { User, UserPwdChange, UserAvatar } from '../_models/user.model';
+import {User, UserPwdChange, UserAvatar, Avatar} from '../_models/user.model';
 import { HttpWrapper } from './http-wrapper.service';
 
 @Injectable()
@@ -29,7 +29,7 @@ export class UserService {
   }
 
   updateAvatar(userAvatar: UserAvatar) {
-    return this.httpWrp.put('/api/user/avatar', UserAvatar);
+    return this.httpWrp.put('/api/user/avatar', userAvatar);
   }
 
   /*delete(id: number) {
