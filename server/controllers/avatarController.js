@@ -1,3 +1,5 @@
+"use strict"
+
 const multer = require('multer');
 //var upload = multer({ storage: multer.memoryStorage({}) })
 const upload = multer({ dest: 'uploads/' });
@@ -10,6 +12,7 @@ module.exports.avatarUpload = function (req, res) {
   console.log('uploadAvatar: filetype is:' + req.body.avatar.filename);
 
   let filename = req.user.name.replace(/@/i,'.');
+  // get last item, ie: jpg
   let filetype = [...req.body.avatar.filename.split('.')].pop();
   let fullname =  filename + '.' + filetype;
   console.log('uploadAvatar: filetype is:' + [...req.body.avatar.filename.split('.')].pop() );
@@ -40,7 +43,6 @@ module.exports.avatarGet = function(req,  callback) {
   console.log('read avatarks');
 
   dbUser.getAvatarFilenameByEmail(req.user.name, function( err, data) {
-    "use strict";
 
     if (err){
       res.status(400).json(false);

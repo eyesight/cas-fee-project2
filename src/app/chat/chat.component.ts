@@ -61,9 +61,9 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.chatAuthSub = this.chatService.authentication()
       .subscribe(res => {
       console.log('chat.component call authentication:'  + res);
-      this.alertService.error('Sie müssen sich periodisch neu anmelden',false, 1000);
+      this.alertService.error('Bitte melden Sie sich neu an',false, 1500);
         setTimeout(() =>
-         this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 1000);
+         this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 1500);
     });
 
     this.chatErrorSub = this.chatService.readErrors()
@@ -76,7 +76,12 @@ export class ChatComponent implements OnInit, OnDestroy {
     .subscribe(state => {
         console.log('connection:'  + state);
         this.connectionState = state;
-        this.alertService.success('Connection ' + state, false, 1000);
+        if (state) {
+          this.alertService.success('Verbindung wieder hergestellt', false, 1500);
+        } else {
+          this.alertService.success('Verbindung unterbrochen', false, 1500);
+        }
+
         if (!this.message) {
           this.onLoad();
         }
