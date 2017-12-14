@@ -1,6 +1,9 @@
 /**
  * Created by awedag on 27.10.17.
  */
+
+// TODO: use strict everywhere in fileheader
+
 const db=require('./dbconnection'); //reference of dbconnection.js
 const ModelBase = require('./dbModelBase');
 const crypto = require('crypto');
@@ -106,6 +109,18 @@ function updatePassword(email, newPasswort, callback)
     if(callback){
 
         callback(err, newDoc);
+
+    }
+  });
+}
+
+function updateAvatarFilename(email, filename, callback){
+  "use strict";
+
+  return db.query("update users set  avatar_filename = ? where email = ?",[ filename, email], function(err, newDoc){
+    if(callback){
+
+      callback(err, newDoc);
 
     }
   });
@@ -291,6 +306,25 @@ function getClassIdByEmail(email,callback){
 }
 
 
+function getAvatarFilenameByEmail(email,callback){
+  console.log('getUserIdByEmail:'+email);
+  return db.query("select avatar_filename from users where email=?",[email], function(err, newDoc) {
+    if (callback) {
+      if (newDoc.length <= 0 ) {
+        newDoc = null;
+      }
+      else {
+        if (newDoc.length > 1){
+          err = 'SQL SEVERE ERROR: more than one entry for user.email:'+email;
+        }
+      }
+      //console.dir(newDoc);
+      callback(err, newDoc[0].avatar_filename);
+    }
+  });
+}
+
+
 function approveUser(username, req, callback){
 
   console.log('approveUser - teacher:+'+username);
@@ -384,10 +418,12 @@ module.exports = {
   registerUser : registerUser,
   updatePassword : updatePassword,
   updateUser : updateUser,
+  updateAvatarFilename : updateAvatarFilename,
   UserFromJson: UserFromJson,
   getUserByEmail : getUserByEmail,
   getUserIdByEmail : getUserIdByEmail,
   getClassIdByEmail: getClassIdByEmail,
+  getAvatarFilenameByEmail : getAvatarFilenameByEmail,
   getAllUserDetails: getAllUserDetails,
   getUserKlasseList: getUserKlasseList,
   approveUser: approveUser,

@@ -72,6 +72,7 @@ CREATE TABLE `users` (
   `user_avatar` varchar(255) DEFAULT NULL,
   `user_can` varchar(255) DEFAULT NULL,
   `register_date` date DEFAULT NULL,
+  `avatar_filename` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
