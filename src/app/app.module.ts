@@ -23,6 +23,7 @@ import { AlertComponent } from './_directives/alert/alert.component';
 import { ShowErrorsComponent } from './_directives/show-errors/show-errors.component';
 import { DirectivesModule } from './_directives/directives.module';
 import { TermsOfUseComponent } from './registration/terms-of-use/terms-of-use.component';
+import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
 
 import {HttpWrapper} from "./_services/http-wrapper.service";
 import {UserAuthService} from "./_services/user-auth.service";
@@ -75,7 +76,8 @@ import { NgDatepickerModule } from 'ng2-datepicker';
     ProfileDetailsParentComponent,
     ProfilePasswordChangeComponent,
     ProfileEmailChangeComponent,
-    ProfileAvatarComponent
+    ProfileAvatarComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

@@ -27,10 +27,11 @@
           </div>
         </form>
         <div class="zz-infotext">
-          <a href="#" class="zz-infotext__link">
+          <button [routerLink]="['forgot-password']" class="zz-infotext__link">
             Passwort vergessen?
-          </a>
+          </button>
         </div>
+        <router-outlet></router-outlet>
       </div>
       <div class="zz-infotext">
         <p class="zz-infotext__txt">
