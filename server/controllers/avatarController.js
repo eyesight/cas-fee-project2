@@ -12,7 +12,9 @@ module.exports.avatarUpload = function (req, res) {
 
   fs.writeFile('./avatars/' + filename + '.png', raw, function (err) {
     if (err) {
-      res.status(err).json(false);
+      console.log(err);
+
+      res.status(420).json(false);
 
     }
     else {
