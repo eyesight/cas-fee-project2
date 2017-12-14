@@ -11,7 +11,6 @@ import { ProfilePasswordChangeComponent } from './profile/profile-password-chang
 import { ProfileEmailChangeComponent } from './profile/profile-email-change/profile-email-change.component';
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
 
-
 export const ROUTES: Routes = [
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },

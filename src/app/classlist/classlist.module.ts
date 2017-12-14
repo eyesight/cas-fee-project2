@@ -9,11 +9,15 @@ import {UserDetailComponent} from "./user-detail/user-detail.component";
 import {UserResolverService} from "./service/user-resolver.service";
 import {AlertComponent} from "./dialog/alert.component";
 import {CanDeactivateClasslistService} from "./service/can-deactivate-classlist.service";
+import { PersonalDetailsContainerModule } from '../personal-details-container/personal-details-container.module';
+
+
+
 
 
 @NgModule({
   imports: [
-    CommonModule, ClasslistRoutesModule
+    CommonModule, ClasslistRoutesModule, PersonalDetailsContainerModule
   ],
   declarations: [ClasslistListComponent, ClasslistComponent, UserDetailComponent, AlertComponent],
   providers: [ClasslistService, UserResolverService, CanDeactivateClasslistService]
