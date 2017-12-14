@@ -31,6 +31,12 @@ import {AppConfigClass} from "./_helpers/app.config";
 import {UserContentService} from "./_services/user-content.service";
 import {UserContentDbService} from "./_services/user-content-db.service";
 
+// TODO: move that to profile.module
+import { ImageCompressService,ResizeOptions,ImageUtilityService } from 'ng2-image-compress';
+// import { Ng2ImgMaxModule } from 'ng2-img-max';
+//import { Ng2ImgToolsModule } from 'ng2-img-tools'; // <-- import the module
+
+
 //TODO: check registration of all Children of Profile
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileDetailsChildComponent } from './profile/profile-details-child/profile-details-child.component';
@@ -80,6 +86,8 @@ import { NgDatepickerModule } from 'ng2-datepicker';
     // injecst Http to any service
     HttpModule,
     BrowserAnimationsModule,
+  //  Ng2ImgToolsModule,
+  //  Ng2ImgMaxModule,
     NgDatepickerModule
   ],
   providers: [
@@ -95,7 +103,9 @@ import { NgDatepickerModule } from 'ng2-datepicker';
     UserService,
     ProfileService,
     MockBackend,
-    BaseRequestOptions
+    BaseRequestOptions,
+    ImageCompressService,
+    ResizeOptions
   ],
   bootstrap: [AppComponent]
 })

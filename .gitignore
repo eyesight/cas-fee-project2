@@ -45,3 +45,6 @@ Thumbs.db
 
 #prototype/admin-files
 _02prototype/css/style.css
+
+#Filestorage for avatars
+server/avatars/*.*

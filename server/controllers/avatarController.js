@@ -10,19 +10,21 @@ module.exports.avatarUpload = function (req, res) {
   console.log('uploadAvatar: ');
   console.log('req.user.name :' + filename);
 
-  fs.writeFile('/tmp/' + filename + '.png', raw, function (err) {
+  fs.writeFile('./avatars/' + filename + '.png', raw, function (err) {
     if (err) {
-      res.end('error:' + err);
-      return;
+      res.status(err).json(false);
+
     }
-    res.end('Success!')
+    else {
+      res.json(true);
+    }
   });
 };
 
 module.exports.avatarGet = function(req,  callback) {
   let filename = req.user.name.replace(/@/i,'.');
 
-  fs.readFile('/tmp/' + filename + '.png', function( err, data) {
+  fs.readFile('./avatars/' + filename + '.png', function( err, data) {
 
     if (data) {
       callback(err, new Buffer(data).toString('base64'));
