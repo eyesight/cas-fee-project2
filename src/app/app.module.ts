@@ -37,6 +37,7 @@ import {UserContentService} from "./_services/user-content.service";
 import {UserContentDbService} from "./_services/user-content-db.service";
 
 import { NgDatepickerModule } from 'ng2-datepicker';
+import {ImageCompressService} from "ng2-image-compress";
 
 
 
@@ -76,15 +77,10 @@ import { NgDatepickerModule } from 'ng2-datepicker';
     AlertService,
     UserService,
     MockBackend,
-<<<<<<< HEAD
     BaseRequestOptions,
     ImageCompressService,
-    ResizeOptions,
     CanActivateChat,
     CanActivateClassList
-=======
-    BaseRequestOptions
->>>>>>> 8ffd26a9df6649d7365fe0494e815e75275a852c
   ],
 
   bootstrap: [AppComponent]

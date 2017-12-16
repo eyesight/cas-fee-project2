@@ -20,16 +20,16 @@ export const ROUTES: Routes = [
     children: [{ path: 'forgot-password', component: ForgotPasswordComponent }]},
   { path: 'registration', component: RegistrationComponent, data: { title: 'Registration' },
     children: [{ path: 'terms-of-use', component: TermsOfUseComponent }]},
-<<<<<<< HEAD
+/*
   { path: 'profile', component: ProfileComponent, data: { title: 'Profil' },
     children: [{ path: 'profile-details-child', component: ProfileDetailsChildComponent }, { path: 'profile-details-parent', component: ProfileDetailsParentComponent }, { path: 'profile-pwd', component: ProfilePasswordChangeComponent }, { path: 'profile-email', component: ProfileEmailChangeComponent }], canActivate: [AuthGuard]},
   { path: 'classlist', loadChildren: './classlist/classlist.module#ClasslistModule', data: {title: 'Klassenliste'}, canActivate: [AuthGuard, CanActivateClassList]},
   { path: 'chat', loadChildren: './chat/chat.module#ChatModule', data: {title: 'Chat'}, canActivate: [AuthGuard, CanActivateChat] },
-=======
+  */
   { path: 'profile', loadChildren: './profile/profile.module#ProfileModule', data: {title: 'Profil'}, canActivate: [AuthGuard]},
-  { path: 'classlist', loadChildren: './classlist/classlist.module#ClasslistModule', data: {title: 'Klassenliste'}, canActivate: [AuthGuard]},
-  { path: 'chat', loadChildren: './chat/chat.module#ChatModule', data: {title: 'Chat'}, canActivate: [AuthGuard] },
->>>>>>> 8ffd26a9df6649d7365fe0494e815e75275a852c
+  { path: 'classlist', loadChildren: './classlist/classlist.module#ClasslistModule', data: {title: 'Klassenliste'}, canActivate: [AuthGuard, CanActivateClassList]},
+  { path: 'chat', loadChildren: './chat/chat.module#ChatModule', data: {title: 'Chat'}, canActivate: [AuthGuard, CanActivateChat] },
+
 
   // otherwise redirect to home
   { path: '**', redirectTo: 'home' }
