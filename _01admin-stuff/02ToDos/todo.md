@@ -2,16 +2,6 @@
 - TODO: FOUT einbinden für das Laden eines Webfonts (=auf Folien unterricht), https://css-tricks.com/fout-foit-foft/
 -> AW+CF 
 
-- TODO: Send-Email einfügen: http://tphangout.com/angular-2-sending-mails-from-your-app/ + https://www.emailjs.com/(niedrige Prio)
-  - Registrierung
-  - Profile (antrag Username ändern)
-  - Classlist - Mail an Lehrer
-  
-  -> CF+AW
-
-- TODO: Styleguide erstellen aus Prototype (niedrige Prio)
--> CF (+AW) 
-
 - TODO: UI für Chat prüfen/korrigieren
 -> CF
 
@@ -53,9 +43,6 @@
 -> AW+CF:
 https://www.w3schools.com/html/html5_semantic_elements.asp
 
-- TODO: Kalender umsetzen (niedrige Prio)
--> 
-
  - TODO: Prüfen in allen Browsern/Export Projekt als Bundle
  ->AW+CF
  
@@ -64,6 +51,19 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
   -> CF: Styling/UI responsive machen 
   
 -TODO: Loading-Spinner einbauen; animieren
+
+- TODO: Send-Email einfügen: http://tphangout.com/angular-2-sending-mails-from-your-app/ + https://www.emailjs.com/(niedrige Prio)
+  - Registrierung
+  - Profile (antrag Username ändern)
+  - Classlist - Mail an Lehrer
+  
+  -> CF+AW
+  
+- TODO: Styleguide erstellen aus Prototype (niedrige Prio)
+-> CF (+AW) 
+
+- TODO: Kalender umsetzen (niedrige Prio)
+-> 
  
  #in Progress AW
  - TODO: DONE: Chat thematisieren, Umsetzen (inkl. sass)

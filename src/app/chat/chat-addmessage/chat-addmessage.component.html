@@ -1,19 +1,19 @@
-<div [class.zz-chat__connection-state]="!cState" class="zz-chat__window">
+<div [class.zz-chat__connection-state]="!cState" class="zz-chat__window zz-chat__online">
 
   <div class="zz-chat__sender">
-    <p appTextareaAutosize class="zz-chat__sender-text"><span class="zz-chat__txt-item ">Ich</span></p>
+    <p appTextareaAutosize class="zz-chat__sender-text"></p>
 
   </div>
   <form  >
-    <label class="zz_chat__message-label" >Message</label>
+    <label class="zz_chat__message-label" ></label>
     <textarea class="zz-chat__message-input" type="text" appTextareaAutosize
-           placeholder="..." autofocus #messageText  ></textarea>
+           placeholder="Nachricht von mir" autofocus #messageText  ></textarea>
   </form>
   <div class="clearfix">
-    <button class="float-right zz-btn-small zz-btn--primary" (click)="onSend(messageText.value)">
+    <button class="float-right zz-btn-small zz-btn--primary" type=submit (click)="onSend(messageText.value)">
       Senden
     </button>
   </div>
-  <div *ngIf="!cState">keine verbindung</div>
+  <div *ngIf="!cState">keine Verbindung</div>
 
 </div>

@@ -4,7 +4,8 @@
   &__box {
     padding-left:30px;
     padding-top:4px;
-    padding-bottom:4px;
+    padding-bottom:rem-calc(75px);
+    margin-bottom: rem-calc(140px);
     @extend .helper-boxshadow;
   }
 
@@ -19,10 +20,8 @@
     border-radius:50%;
     margin-left:rem-calc(-8px);
     margin-top: rem-calc(15px);
-
-
-
   }
+
   &__timeline {
     border-left: 1px dotted $color-primary-60;
     height:100%;
@@ -54,7 +53,7 @@
     @extend .helper-boxshadow-light;
     background: $color-gray-very-light;
     padding: 2px 5px;
-    margin-right:10px;
+    margin-right: 25px;
   }
 
   &__txt-item{
@@ -71,8 +70,11 @@
     resize: both;
     display:inline-block;
     border: solid 1px $color-primary-20;
+    padding: 10px;
     min-height: 50px;
+    max-height: 100px;
     width: 100%;
+    border-radius: 5px;
   }
 
   &__message-label{
@@ -82,8 +84,24 @@
     word-break: break-all;
   }
 
+  &__online{
+    position: absolute;
+    margin: 0 15px;
+    padding: 0 30px 20px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $color-primary-20;
+  }
+
   &__connection-state {
     background-color: $color-gray-light;
   }
 
+  &__box{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    //height: rem-calc(450px);
+    height: 40vh;
+  }
 }
