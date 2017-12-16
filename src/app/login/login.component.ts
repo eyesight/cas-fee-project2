@@ -53,7 +53,13 @@ export class LoginComponent implements OnInit {
           this.userContentService.getUserContent()
             .subscribe( content => {
               console.log('content:' + content);
-              this.router.navigate([this.returnUrl]);
+
+              // found an angular error: if meanwhile the permission is changed to not allowed for the returnUrl the site doesnt move to home
+              if (data.user_can.length > 0) {
+                this.router.navigate([this.returnUrl]);
+              }else {
+                this.router.navigate(['/home']);
+              }
             },
             error => {
               console.log('login error: ' + error);

@@ -22,7 +22,7 @@ export class AuthenticationService {
     }
   }
 
-  login(username: string, password: string) {
+  login(username: string, password: string): Observable<UserAuth> {
     console.log('username:' + username);
 
     const userPwd = new UserPwd(username, password);
