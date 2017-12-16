@@ -11,7 +11,7 @@ export class NavComponent implements OnInit {
 
   constructor() {
     this.navItems = ROUTES.filter((route) => route.data);
-    console.log('constructor nav.component:' + this.navItems);
+    console.dir(this.navItems);
   }
   ngOnInit() {
   }

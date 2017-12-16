@@ -18,9 +18,6 @@
 - TODO: Dashboard überarbeiten UI, Idee + Umsetzung
 -> CF+AW
 
-- TODO: Navigation bereinigen
--> CF+AW
-
 - TODO: Unit tests
 -> AW/CF
 
@@ -67,10 +64,6 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
   -> CF: Styling/UI responsive machen 
   
 -TODO: Loading-Spinner einbauen; animieren
-
--TODO: Komponente erstellen für "Passwort vergessen -> meldung an Admin"
-
--TODO: Komponente für Personal-Detail-Box
  
  #in Progress AW
  - TODO: DONE: Chat thematisieren, Umsetzen (inkl. sass)
@@ -136,3 +129,10 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
 
 - DONE: Backend für Profile und Klassenliste
 -> AW
+
+- DONE: Navigation bereinigen
+-> CF+AW
+
+-DONE: Komponente erstellen für "Passwort vergessen -> meldung an Admin"
+
+-DONE: Komponente für Personal-Detail-Box

@@ -77,8 +77,10 @@
       &__item{
         padding: 1rem 1.5rem;
         &:hover,
-        &:active{
-          background-color:$color-primary-40;
+        &:active,
+        &.active{
+          background-color:$color-primary-50;
+          color: $color-black;
         }
       }
     }
