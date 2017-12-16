@@ -267,6 +267,26 @@ function getUserByEmail(email,callback){
   });
 }
 
+function getUserAuthorizationInfos(email,callback){
+  console.log('db:'+email);
+  return db.query("select is_teacher, email, is_approved, is_active from users where email=?",[email], function(err, newDoc) {
+    if (callback) {
+      if (newDoc.length <= 0 ) {
+        newDoc = null;
+        err = 'SQL no Result';
+      }
+      else {
+        if (newDoc.length > 1){
+          err = 'SQL SEVERE ERROR: more than one entry for user.email:'+email;
+        }
+      }
+
+      console.log('getUserAuthorizationInfosBGSH  erro?:' + err + ' or success:' + newDoc[0].is_approved);
+      callback(err, newDoc[0]);
+    }
+  });
+}
+
 
 function getUserIdByEmail(email,callback){
   console.log('getUserIdByEmail:'+email);
@@ -421,6 +441,7 @@ module.exports = {
   updateAvatarFilename : updateAvatarFilename,
   UserFromJson: UserFromJson,
   getUserByEmail : getUserByEmail,
+  getUserAuthorizationInfos : getUserAuthorizationInfos,
   getUserIdByEmail : getUserIdByEmail,
   getClassIdByEmail: getClassIdByEmail,
   getAvatarFilenameByEmail : getAvatarFilenameByEmail,

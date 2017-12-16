@@ -8,9 +8,12 @@ const socketioJwt = require('socketio-jwt');
 const cryptoUtil = require('../util/cryptoUtil');
 const dbChat = require('../db/dbChat');
 const dbUser = require('../db/dbUser');
+const util = require("../util/security");
 
 module.exports.chat = function(io)
 {
+
+
 
   io.set('authorization', socketioJwt.authorize({
     secret: cryptoUtil.jwtSecret,
@@ -79,7 +82,19 @@ module.exports.chat = function(io)
 
 module.exports.getMessages = function(req, res){
   console.log('req.user.name :' + req.user.name);
-  dbChat.getAllMessages(req.user.name, function(err, messages) {
-    res.json(messages);
-  });
+
+  util.authorizesBackend(req.user.name, util.authorRoles.CHAT,(authorization) =>  {
+
+    if (authorization) {
+      dbChat.getAllMessages(req.user.name, function(err, messages) {
+        res.json(messages);
+        return;
+      });
+    } else {
+      console.log('Chat: not authorized');
+      res.status(403).json(false);
+
+    }
+  })
+
 };
