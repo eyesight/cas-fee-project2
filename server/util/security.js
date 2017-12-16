@@ -83,7 +83,18 @@ function handleLogin(req, res) {
       dbUser.authenticate(req.body.email, req.body.pwd, function (err, valid) {
         console.log('is valid:' + valid);
         if (valid) {
-          createSessionToken(req.body.email, req.app.get("jwt-secret"), req.app.get("jwt-sign"), (token) => res.json(token));
+          createSessionToken(req.body.email, req.app.get("jwt-secret"), req.app.get("jwt-sign"), (authToken) => {
+
+            getUserRoles(req.body.email, (err, roles) => {
+              console.log('get user roles');
+              authToken.user_can = roles || [];
+              res.json(authToken);
+              return;
+              // res.json(user);
+            });
+            res.json(token);
+
+          });
         }
         else {
           console.log('security: 401');

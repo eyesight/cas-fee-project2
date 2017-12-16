@@ -18,6 +18,8 @@ import { AppRoutingModule} from './app-routing.module';
 import { HttpModule, BaseRequestOptions } from '@angular/http';
 
 import { AuthGuard } from './_guards/auth.guards';
+import {CanActivateClassList, CanActivateChat} from "./_services/can-activate-classlist.service";
+
 import { AlertService, AuthenticationService, UserService } from './_services/index';
 import { AlertComponent } from './_directives/alert/alert.component';
 import { ShowErrorsComponent } from './_directives/show-errors/show-errors.component';
@@ -109,7 +111,9 @@ import { PersonalDetailsContainerModule } from './personal-details-container/per
     MockBackend,
     BaseRequestOptions,
     ImageCompressService,
-    ResizeOptions
+    ResizeOptions,
+    CanActivateChat,
+    CanActivateClassList
   ],
 
   bootstrap: [AppComponent]

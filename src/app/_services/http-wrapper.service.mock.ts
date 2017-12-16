@@ -66,7 +66,7 @@ export class HttpWrapperServiceMock {
     const userJwt: string = this.userAuthSrv.getCurrentUserJwt();
     if (userJwt) {
       const headers = new Headers({ 'Authorization': 'Bearer ' + userJwt });
-      console.log('jwt: '+ headers);
+      //console.log('jwt: '+ headers);
       return new RequestOptions({ headers: headers });
     }
   }

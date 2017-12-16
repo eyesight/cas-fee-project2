@@ -12,9 +12,6 @@ import {CanDeactivateClasslistService} from "./service/can-deactivate-classlist.
 import { PersonalDetailsContainerModule } from '../personal-details-container/personal-details-container.module';
 
 
-
-
-
 @NgModule({
   imports: [
     CommonModule, ClasslistRoutesModule, PersonalDetailsContainerModule

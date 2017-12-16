@@ -69,7 +69,7 @@ export class ProfileAvatarComponent {
   onSubmit() {
     //this.avatarObject.avatar = this.avatarUrl;
     console.log('this.nomalAvatar.avatar');
-    console.dir(this.nomalAvatar);
+   // console.dir(this.nomalAvatar);
 //    this.userService.updateAvatar(this.avatarObject);
 
     this.userService.updateAvatar(this.nomalAvatar)

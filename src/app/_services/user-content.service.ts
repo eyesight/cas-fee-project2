@@ -26,7 +26,7 @@ export class UserContentService {
     return this.httpWrp.get('/api/user/contents')
       .map((userContent: User) => {
         if (userContent) {
-          console.dir(userContent);
+          // console.dir(userContent);
           this.userContentDbService.saveCurrentUser(userContent);
         }
         return userContent;

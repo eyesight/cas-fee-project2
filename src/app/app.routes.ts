@@ -10,6 +10,7 @@ import { ProfileDetailsParentComponent } from './profile/profile-details-parent/
 import { ProfilePasswordChangeComponent } from './profile/profile-password-change/profile-password-change.component';
 import { ProfileEmailChangeComponent } from './profile/profile-email-change/profile-email-change.component';
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
+import {CanActivateClassList, CanActivateChat} from "./_services/can-activate-classlist.service";
 
 export const ROUTES: Routes = [
 
@@ -21,8 +22,8 @@ export const ROUTES: Routes = [
     children: [{ path: 'terms-of-use', component: TermsOfUseComponent }]},
   { path: 'profile', component: ProfileComponent, data: { title: 'Profil' },
     children: [{ path: 'profile-details-child', component: ProfileDetailsChildComponent }, { path: 'profile-details-parent', component: ProfileDetailsParentComponent }, { path: 'profile-pwd', component: ProfilePasswordChangeComponent }, { path: 'profile-email', component: ProfileEmailChangeComponent }], canActivate: [AuthGuard]},
-  { path: 'classlist', loadChildren: './classlist/classlist.module#ClasslistModule', data: {title: 'Klassenliste'}, canActivate: [AuthGuard]},
-  { path: 'chat', loadChildren: './chat/chat.module#ChatModule', data: {title: 'Chat'}, canActivate: [AuthGuard] },
+  { path: 'classlist', loadChildren: './classlist/classlist.module#ClasslistModule', data: {title: 'Klassenliste'}, canActivate: [AuthGuard, CanActivateClassList]},
+  { path: 'chat', loadChildren: './chat/chat.module#ChatModule', data: {title: 'Chat'}, canActivate: [AuthGuard, CanActivateChat] },
 
   // otherwise redirect to home
   { path: '**', redirectTo: 'home' }
