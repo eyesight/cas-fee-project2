@@ -19,8 +19,7 @@ export const ROUTES: Routes = [
     children: [{ path: 'forgot-password', component: ForgotPasswordComponent }]},
   { path: 'registration', component: RegistrationComponent, data: { title: 'Registration' },
     children: [{ path: 'terms-of-use', component: TermsOfUseComponent }]},
-  { path: 'profile', component: ProfileComponent, data: { title: 'Profil' },
-    children: [{ path: 'profile-details-child', component: ProfileDetailsChildComponent }, { path: 'profile-details-parent', component: ProfileDetailsParentComponent }, { path: 'profile-pwd', component: ProfilePasswordChangeComponent }, { path: 'profile-email', component: ProfileEmailChangeComponent }], canActivate: [AuthGuard]},
+  { path: 'profile', loadChildren: './profile/profile.module#ProfileModule', data: {title: 'Profil'}, canActivate: [AuthGuard]},
   { path: 'classlist', loadChildren: './classlist/classlist.module#ClasslistModule', data: {title: 'Klassenliste'}, canActivate: [AuthGuard]},
   { path: 'chat', loadChildren: './chat/chat.module#ChatModule', data: {title: 'Chat'}, canActivate: [AuthGuard] },
 
