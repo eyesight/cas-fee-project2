@@ -52,7 +52,7 @@ import { genderPipe } from './_pipes/gender.pipe';
 import { ProfilePasswordChangeComponent } from './profile/profile-password-change/profile-password-change.component';
 import { ProfileEmailChangeComponent } from './profile/profile-email-change/profile-email-change.component';
 import { NgDatepickerModule } from 'ng2-datepicker';
-import { PersonalDetailsContainerComponent } from './personal-details-container/personal-details-container.component';
+import { PersonalDetailsContainerModule } from './personal-details-container/personal-details-container.module';
 
 
 @NgModule({
@@ -78,8 +78,7 @@ import { PersonalDetailsContainerComponent } from './personal-details-container/
     ProfilePasswordChangeComponent,
     ProfileEmailChangeComponent,
     ProfileAvatarComponent,
-    ForgotPasswordComponent,
-    PersonalDetailsContainerComponent
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -92,10 +91,8 @@ import { PersonalDetailsContainerComponent } from './personal-details-container/
     BrowserAnimationsModule,
   //  Ng2ImgToolsModule,
   //  Ng2ImgMaxModule,
-    NgDatepickerModule
-  ],
-  exports: [
-    PersonalDetailsContainerComponent
+    NgDatepickerModule,
+    PersonalDetailsContainerModule
   ],
   providers: [
     AuthGuard,

@@ -6,6 +6,7 @@ import { PersonalDetailsContainerComponent } from './personal-details-container.
   imports: [
     CommonModule
   ],
-  declarations: [PersonalDetailsContainerComponent]
+  declarations: [PersonalDetailsContainerComponent],
+  exports: [PersonalDetailsContainerComponent]
 })
 export class PersonalDetailsContainerModule { }

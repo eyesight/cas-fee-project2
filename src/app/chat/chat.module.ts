@@ -18,10 +18,13 @@ import {AlertService} from "../_services/alert.service";
 //import {MatSnackBarModule} from "@angular/material";
 //import { MdSnackBarModule} from "@angular/material";
 
+import { PersonalDetailsContainerModule } from '../personal-details-container/personal-details-container.module';
+
+
 
 @NgModule({
   imports: [
-    CommonModule, ChatRoutesModule, DirectivesModule
+    CommonModule, ChatRoutesModule, DirectivesModule, PersonalDetailsContainerModule
   ],
   declarations: [ChatComponent, ChatAddmessageComponent, ChatMessageComponent,
     ChatThreadComponent, ChatDateComponent, FromNowPipe, ProperTimePipe],
