@@ -45,7 +45,9 @@ export class ChatComponent implements OnInit, OnDestroy {
     , private userAuthService: UserAuthService
     , private userContentDbService: UserContentDbService
     , private alertService: AlertService
-  ) { }
+  ) {
+    console.log('chatComponent constructor');
+  }
 
   ngOnInit() {
     this.userContent = this.userContentDbService.getCurrentUser();

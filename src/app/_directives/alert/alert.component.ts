@@ -24,6 +24,5 @@ export class AlertComponent implements OnInit, AfterViewChecked {
       window.scrollTo(0, 0);
     }
   }
-
 }
 

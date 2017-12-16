@@ -6,17 +6,17 @@ const util = require("../util/security");
 const avatarController = require("./avatarController");
 "use strict";
 
-module.exports.updateUser = function(req, res){
-    console.log('req.user.name :' + req.user.name);
-    dbUser.updateUser(req.user.name,  dbUser.UserFromJson(req), function(err, user) {
-        res.json(user);
-    });
+module.exports.updateUser = function (req, res) {
+  console.log('req.user.name :' + req.user.name);
+  dbUser.updateUser(req.user.name, dbUser.UserFromJson(req), function (err, user) {
+    res.json(user);
+  });
 };
 
-module.exports.getAllUserDetails = function(req, res){
+module.exports.getAllUserDetails = function (req, res) {
   console.log('getAllUserDetails:req.user.name :' + req.user.name);
-  dbUser.getAllUserDetails(req.user.name,  function(err, user) {
-    if (err){
+  dbUser.getAllUserDetails(req.user.name, function (err, user) {
+    if (err) {
       res.status(400).json(false);
 
     } else {
@@ -27,31 +27,26 @@ module.exports.getAllUserDetails = function(req, res){
 };
 
 
-module.exports.getAllUserContents = function(req, res){
+module.exports.getAllUserContents = function (req, res) {
   console.log('getAllUserDetails:req.user.name :' + req.user.name);
-  dbUser.getAllUserDetails(req.user.name,  function(err, user) {
+  dbUser.getAllUserDetails(req.user.name, function (err, user) {
 
-    console.log('getAllUserContents:'+user.email);
-    if (err){
+    console.log('getAllUserContents:' + user.email);
+    if (err) {
       res.status(400).json(false);
       return;
     }
-    avatarController.avatarGet(req ,(err, avatar) => {
+    avatarController.avatarGet(req, (err, avatar) => {
 
-      /*if (err ){
-        console.log('getAllUSERcontentsn avatarGet err:' + err);
-        res.json({"user_attributes": user,  "user_can": ['chat','classlist','profile'], "user_avatar": null });
-        return ;
-      }*/
-      //let userf = JSON(user);
-      //let canf = JSON(  "user_can", ['chat','classlist','profiles']);
-      console.log('getAllUserContents:after avatarget:'+user.email);
-
-      user.user_can = ['chat','classlist','profile'];
+      console.log('getAllUserContents:after avatarget:' + user.email);
       user.user_avatar = avatar || null;
-      res.json(user);
-     // res.json(user);
 
+      util.getUserRoles(user.email, (err, roles) => {
+        console.log('get user roles');
+        user.user_can = roles || [];
+        res.json(user);
+        // res.json(user);
+      });
     })
     return;
 
@@ -60,18 +55,32 @@ module.exports.getAllUserContents = function(req, res){
 };
 
 
-module.exports.getUserKlasseList = function(req, res){
+module.exports.getUserKlasseList = function (req, res) {
   console.log('KlassenListe');
-  dbUser.getUserKlasseList(req.user.name, function(err, order) {
-    res.json(order);
-  });
+
+  util.authorizesBackend(req.user.name, util.authorRoles.CLASSLIST,(authorization) =>  {
+
+    if (authorization) {
+      dbUser.getUserKlasseList(req.user.name, function (err, order) {
+        res.json(order);
+        return;
+      });
+    } else {
+      console.log('not authroer');
+
+      res.status(403).json(false);
+
+    }
+  })
+
+
 };
 
-module.exports.approveUser = function(req, res){
+module.exports.approveUser = function (req, res) {
   console.log('Approve User');
-  dbUser.approveUser(req.user.name, req, function(err, order) {
-    console.log('err:'+ err);
-    if (err){
+  dbUser.approveUser(req.user.name, req, function (err, order) {
+    console.log('err:' + err);
+    if (err) {
       res.status(err).json(false);
 
     } else {
@@ -79,41 +88,40 @@ module.exports.approveUser = function(req, res){
 
     }
     /*if (err) {
-      res.status(err);
-    }
-    else {
-      res.json(order);
-    }*/
+     res.status(err);
+     }
+     else {
+     res.json(order);
+     }*/
 
   });
 };
 
 
 /*
-module.exports.getUsers = function(req, res)
-{
-    store.getAllUser(util.currentUser(req), function (err, orders) {
-        res.json(orders || {});
-    })
-}; */
+ module.exports.getUsers = function(req, res)
+ {
+ store.getAllUser(util.currentUser(req), function (err, orders) {
+ res.json(orders || {});
+ })
+ }; */
 
 /*
-module.exports.createUser = function(req, res)
-{
-    let order = store.addUser(req.body.name, util.currentUser(req), function(err, order) {
-        res.json(order);
-    });
-}; */
+ module.exports.createUser = function(req, res)
+ {
+ let order = store.addUser(req.body.name, util.currentUser(req), function(err, order) {
+ res.json(order);
+ });
+ }; */
 
-module.exports.showUser = function(req, res){
-    dbUser.getUserById(req.params.id, util.currentUser(req), function(err, order) {
-        res.json(order);
-    });
+module.exports.showUser = function (req, res) {
+  dbUser.getUserById(req.params.id, util.currentUser(req), function (err, order) {
+    res.json(order);
+  });
 };
 
-module.exports.deleteUser =  function (req, res)
-{
-    dbUser.deleteUser(  req.params.id, util.currentUser(req), function(err, order) {
-        res.json(order);
-    });
+module.exports.deleteUser = function (req, res) {
+  dbUser.deleteUser(req.params.id, util.currentUser(req), function (err, order) {
+    res.json(order);
+  });
 };

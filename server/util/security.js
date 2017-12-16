@@ -2,6 +2,13 @@ const jwt = require('jsonwebtoken');
 const dbUser = require('../db/dbUser.js');
 const dbKlasse = require('../db/dbKlasse.js');
 
+const authorRoles = {
+  CLASSLIST: 'classlist',
+  CHAT: 'chat'
+}
+const standardRoles = [authorRoles.CHAT, authorRoles.CLASSLIST];
+
+
 function isLoggedIn(req) {
   return req.user != null;
 }
@@ -76,7 +83,18 @@ function handleLogin(req, res) {
       dbUser.authenticate(req.body.email, req.body.pwd, function (err, valid) {
         console.log('is valid:' + valid);
         if (valid) {
-          createSessionToken(req.body.email, req.app.get("jwt-secret"), req.app.get("jwt-sign"), (token) => res.json(token));
+          createSessionToken(req.body.email, req.app.get("jwt-secret"), req.app.get("jwt-sign"), (authToken) => {
+
+            getUserRoles(req.body.email, (err, roles) => {
+              console.log('get user roles');
+              authToken.user_can = roles || [];
+              res.json(authToken);
+              return;
+              // res.json(user);
+            });
+            res.json(token);
+
+          });
         }
         else {
           console.log('security: 401');
@@ -120,6 +138,53 @@ function handlePasswordChange(req, res) {
 
 }
 
+function getUserRoles(email, callback) {
+
+
+  dbUser.getUserAuthorizationInfos(email, (err, authorInfos) => {
+
+    if (err) {
+      callback(err, []);
+      return;
+    } else {
+
+      if (authorInfos.is_approved && authorInfos.is_active) {
+
+        callback(false, standardRoles);
+        return;
+      }
+      callback('not authorized for main features', []);
+
+    }
+
+  });
+}
+function authorizeBackend(email, accessRight, callback) {
+
+  getUserRoles(email, (err, authorRoles) => {
+
+
+    if (err) {
+      callback(false);
+    }
+    else {
+
+      for (x in authorRoles) {
+        console.log(x);
+        console.dir(accessRight);
+
+        if (authorRoles[x] === accessRight) {
+          callback(true);
+          return;
+        }
+      }
+
+      callback(false);
+
+    }
+  });
+}
+
 function getKlasseData(req, res) {
   console.log('klassendaten aus security: ' + req);
   return dbKlasse.getAllKlasseData();
@@ -133,5 +198,9 @@ module.exports = {
   handleRegister: handleRegister,
   handleLogin: handleLogin,
   handlePasswordChange: handlePasswordChange,
+  getUserRoles: getUserRoles,
+  authorizesBackend: authorizeBackend,
+  authorRoles: authorRoles,
   getKlasseData: getKlasseData
-};
+}
+;

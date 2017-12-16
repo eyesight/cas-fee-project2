@@ -31,6 +31,7 @@ export class UserAvatar {
 export class UserAuth {
   email: string;
   token: string;
+  user_can: string[];
 
   constructor(email: string, token: string){
     this.email = email;

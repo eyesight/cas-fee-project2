@@ -56,6 +56,16 @@ export class UserAuthService {
     return userAuth.email;
   }
 
+  public getCurrentCan(): string[] {
+    const userAuth = this.getCurrentUser();
+
+    if (!userAuth) {
+      console.log('userAuth is null');
+      return null;
+    }
+    return userAuth.user_can;
+  }
+
   public saveUserAuth(ua: UserAuth) {
     this.saveCurrentUser(ua);
   }

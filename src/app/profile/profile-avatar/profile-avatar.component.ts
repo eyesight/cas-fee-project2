@@ -69,7 +69,7 @@ export class ProfileAvatarComponent {
   onSubmit() {
     //this.avatarObject.avatar = this.avatarUrl;
     console.log('this.nomalAvatar.avatar');
-    console.dir(this.nomalAvatar);
+   // console.dir(this.nomalAvatar);
 //    this.userService.updateAvatar(this.avatarObject);
 
     this.userService.updateAvatar(this.nomalAvatar)
@@ -119,13 +119,13 @@ export class ProfileAvatarComponent {
           console.log('final on comporessed.length:' + this.images[0].compressedImage.imageDataUrl.length);
 
           // if (this.images[0].compressedImage.imageDataUrl.length < this.avatarUrl.length) {
-          console.log('filename:' +  files.type);
-            this.av.value = this.images[0].compressedImage.imageDataUrl.split(',')[1];
+          console.log('filename:' + files.type);
+          this.av.value = this.images[0].compressedImage.imageDataUrl.split(',')[1];
           this.av.filename = files.name;
           this.av.filetype = files.type;
 
           this.nomalAvatar.avatar = this.av;
-            console.dir(this.av);
+          console.dir(this.av);
           // } else {
           //   this.av.value = this.avatarUrl;
           //   this.nomalAvatar.avatar = this.av;
@@ -135,18 +135,17 @@ export class ProfileAvatarComponent {
       });
 
 
-       reader.onload = (evt: any) => {
-       this.previewUrl = evt.target.result;
-       this.provFile = true;
-       this.avatarUrl = this.previewUrl.split(',')[1];
+      reader.onload = (evt: any) => {
+        this.previewUrl = evt.target.result;
+        this.provFile = true;
+        this.avatarUrl = this.previewUrl.split(',')[1];
 
-       console.log('in reader.onload 110:' + this.avatarUrl.length);
+        console.log('in reader.onload 110:' + this.avatarUrl.length);
 
 
-       console.log('in reader.onload 1');
-       // console.dir(this.avatarUrl);
-       };
-
+        console.log('in reader.onload 1');
+        // console.dir(this.avatarUrl);
+      };
 
 
     }

@@ -17,6 +17,8 @@ import { AppRoutingModule} from './app-routing.module';
 import { HttpModule, BaseRequestOptions } from '@angular/http';
 
 import { AuthGuard } from './_guards/auth.guards';
+import { CanActivateClassList, CanActivateChat } from './_services/can-activate-classlist.service';
+
 import { AlertService, AuthenticationService, UserService } from './_services/index';
 import { DirectivesModule } from './_directives/directives.module';
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
@@ -34,6 +36,7 @@ import { UserContentService } from './_services/user-content.service';
 import { UserContentDbService } from './_services/user-content-db.service';
 
 import { NgDatepickerModule } from 'ng2-datepicker';
+import { ImageCompressService } from 'ng2-image-compress';
 
 
 
@@ -72,7 +75,10 @@ import { NgDatepickerModule } from 'ng2-datepicker';
     AlertService,
     UserService,
     MockBackend,
-    BaseRequestOptions
+    BaseRequestOptions,
+    ImageCompressService,
+    CanActivateChat,
+    CanActivateClassList
   ],
 
   bootstrap: [AppComponent]
