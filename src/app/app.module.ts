@@ -12,7 +12,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { RegistrationComponent } from './registration/registration.component';
 
 import { AppRoutingModule} from './app-routing.module';
 import { HttpModule, BaseRequestOptions } from '@angular/http';
@@ -20,19 +19,19 @@ import { HttpModule, BaseRequestOptions } from '@angular/http';
 import { AuthGuard } from './_guards/auth.guards';
 import { AlertService, AuthenticationService, UserService } from './_services/index';
 import { DirectivesModule } from './_directives/directives.module';
-import { TermsOfUseComponent } from './registration/terms-of-use/terms-of-use.component';
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
 
 import { PersonalDetailsContainerModule } from './personal-details-container/personal-details-container.module';
 
-import { ProfileModule } from './profile/profile.module'
+import { ProfileModule } from './profile/profile.module';
+import { RegistrationModule } from './registration/registration.module';
 
-import {HttpWrapper} from "./_services/http-wrapper.service";
-import {UserAuthService} from "./_services/user-auth.service";
-import {StorageService} from "./_services/storage.service";
-import {AppConfigClass} from "./_helpers/app.config";
-import {UserContentService} from "./_services/user-content.service";
-import {UserContentDbService} from "./_services/user-content-db.service";
+import { HttpWrapper } from './_services/http-wrapper.service';
+import { UserAuthService } from './_services/user-auth.service';
+import { StorageService } from './_services/storage.service';
+import { AppConfigClass } from './_helpers/app.config';
+import { UserContentService } from './_services/user-content.service';
+import { UserContentDbService } from './_services/user-content-db.service';
 
 import { NgDatepickerModule } from 'ng2-datepicker';
 
@@ -46,8 +45,6 @@ import { NgDatepickerModule } from 'ng2-datepicker';
     FooterComponent,
     HomeComponent,
     LoginComponent,
-    RegistrationComponent,
-    TermsOfUseComponent,
     ForgotPasswordComponent
   ],
   imports: [
@@ -60,7 +57,8 @@ import { NgDatepickerModule } from 'ng2-datepicker';
     BrowserAnimationsModule,
     NgDatepickerModule,
     PersonalDetailsContainerModule,
-    ProfileModule
+    ProfileModule,
+    RegistrationModule
   ],
   providers: [
     AuthGuard,

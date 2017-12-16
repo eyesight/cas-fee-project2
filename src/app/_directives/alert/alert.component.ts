@@ -1,4 +1,4 @@
-import {AfterViewChecked, AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AlertService } from '../../_services/index';
 
 @Component({
@@ -14,6 +14,7 @@ export class AlertComponent implements OnInit, AfterViewChecked {
 
   ngOnInit() {
     this.alertService.getMessage().subscribe(message => { this.message = message; });
+    console.log('got it');
 
   }
 

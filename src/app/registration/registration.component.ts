@@ -6,7 +6,7 @@ import { DatepickerOptions } from 'ng2-datepicker';
 import { User } from '../_models/user.model';
 import * as deLocale from 'date-fns/locale/de';
 import * as moment from 'moment';
-import {AlertService, UserService} from '../_services/index';
+import { AlertService, UserService } from '../_services/index';
 
 @Component({
   selector: 'app-registration',
