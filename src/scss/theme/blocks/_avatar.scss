@@ -1,9 +1,13 @@
 .zz-avatar{
   display:flex;
+  flex-wrap: wrap;
 
   label{
-    margin:0;
+    margin-left:0;
     margin-right: rem-calc(10px);
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-bottom: 0;
   }
 
   &__file-upload {
@@ -21,17 +25,22 @@
 
   &__wrapper{
     display:flex;
+    flex-wrap: wrap;
     align-items: center;
     flex: 5;
   }
 
   .zz-btn{
     min-height: 55%;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 
   &__img-wrapper{
     flex:1;
     position: relative;
+    min-width: 100px;
+    max-width: 100px;
     width: 100px;
     height: 100px;
     overflow: hidden;

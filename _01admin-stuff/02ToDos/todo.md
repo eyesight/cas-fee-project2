@@ -12,12 +12,6 @@ CF
  - TODO: Error-Message-Handler erstellen, resp. korrigieren (besteht ja schon z.T.)
  -> Errors in Console auslesen/Überschreiben
  -> CF(+AW)
-
--TODO: Alert (Error-Message) korrigieren, UI ändern
-  -> Anzeige soll überall ausgegeben werden
-  -> Style soll unserem CI/CD entsprechen
-  -> evt. animieren (niedrige Prio)
-  CF
   
 -TODO: Profilbild in Navigation aus DB lesen
   -> mit CSS/Sass korrigieren (rund machen)
@@ -158,3 +152,9 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
 
 -DONE: Personal-Detail-Box soll in Profil upgedatet werden, wenn Vorname angepasst wird
 CF
+
+-DONE: Alert (Error-Message) korrigieren, UI ändern
+  -> Anzeige soll überall ausgegeben werden
+  -> Style soll unserem CI/CD entsprechen
+  -> evt. animieren (niedrige Prio)
+  CF

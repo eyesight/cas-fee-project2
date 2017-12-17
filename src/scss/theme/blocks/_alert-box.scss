@@ -7,7 +7,7 @@
   border-radius: 5px;
   color: $color-black;
   z-index: 1000;
-  text-algin: center;
+  text-align: center;
 
   &--hidden{
     bottom: -500px;
@@ -17,6 +17,7 @@
   &--success{
     background-color: $color-green-20;
     border: 1px solid $color-green;
+    color: $color-green;
   }
 
   &--danger{

@@ -71,7 +71,9 @@ export class RegistrationComponent implements OnInit {
         .subscribe(
           data => {
             this.alertService.success('Registrierung war erfolgreich', true, 500);
-            this.router.navigate(['/login']);
+            setTimeout(() => {
+              this.router.navigate(['/login']);
+            }, 1000);
           },
           error => {
             this.alertService.error(error, true, 500);
