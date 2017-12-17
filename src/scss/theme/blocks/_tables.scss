@@ -83,8 +83,12 @@
     }
   }
 
+  &__img-wrapper{
+    @include mx-round-img-wrapper(45px, 45px);
+  }
+
   &__img {
-    width: 45px;
+    @include mx-round-img('width');
   }
 
   &__icon {

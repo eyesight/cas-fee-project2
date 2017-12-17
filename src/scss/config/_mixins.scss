@@ -4,3 +4,28 @@
   border:none;
   cursor:pointer;
 }
+
+@mixin mx-round-img-wrapper($width, $height) {
+  position: relative;
+  min-width: $width;
+  max-width: $width;
+  width: $width;
+  height: $height;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+@mixin mx-round-img($heightwidth) {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  @if $heightwidth == 'height'{
+    height: auto;
+    width: 100%;
+  }
+  @else if $heightwidth == 'width'{
+    height: 100%;
+    width: auto;
+  }
+}

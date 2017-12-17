@@ -58,10 +58,16 @@
   .zz-nav__button{
     border:none;
     background-color:inherit;
+    @include mx-round-img-wrapper(90px, 90px);
+
+    &__image{
+      @include mx-round-img('width');
+    }
 
     @include media-breakpoint-down(sm) {
       padding-top:0.5rem;
       float:left;
+      margin:20px;
     }
 
     &__menu{

@@ -3,9 +3,6 @@
 (Prio2)
 AW+CF
 
--TODO: User-Details Profilbild mit CSS rund machen
-CF
-
 -TODO: erstellen "default Profilbild", wenn User noch kein Avatar hat
 CF
 
@@ -14,7 +11,7 @@ CF
  -> CF(+AW)
   
 -TODO: Profilbild in Navigation aus DB lesen
-  -> mit CSS/Sass korrigieren (rund machen)
+  Done mit CSS/Sass korrigieren (rund machen)
 
 - TODO: Profile fertigstellen (inkl. Avatar)
   ->: Upload Profilbild
@@ -158,3 +155,6 @@ CF
   -> Style soll unserem CI/CD entsprechen
   -> evt. animieren (niedrige Prio)
   CF
+
+-TODO: User-Details Profilbild mit CSS rund machen
+CF

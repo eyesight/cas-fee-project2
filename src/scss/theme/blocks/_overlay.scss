@@ -73,10 +73,11 @@
   }
 
   &__image{
-    width: 200px;
+    @include mx-round-img('width');
   }
   &__image-wrapper{
     flex: 1 100%;
+    @include mx-round-img-wrapper(200px, 200px);
   }
 
   .zz-btn{
