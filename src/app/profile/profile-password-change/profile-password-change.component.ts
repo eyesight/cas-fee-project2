@@ -53,7 +53,7 @@ export class ProfilePasswordChangeComponent implements OnInit {
           this.router.navigate(['/profile']);
         },
         error => {
-          this.alertService.error('Das alte Passwort stimmt leider nicht');
+          this.alertService.error('Das alte Passwort stimmt leider nicht oder das neue Passwort entspricht nicht den Richtlinien');
         });
   }
 

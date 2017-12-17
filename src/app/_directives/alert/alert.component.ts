@@ -6,6 +6,7 @@ import { AlertService } from '../../_services/index';
   templateUrl: './alert.component.html'
 })
 export class AlertComponent implements OnInit, AfterViewChecked {
+  hidden: boolean = true;
   message: any;
 
   constructor(private alertService: AlertService) { }
@@ -13,10 +14,15 @@ export class AlertComponent implements OnInit, AfterViewChecked {
 
 
   ngOnInit() {
-    console.log('sdfsdfsfsdfds');
     this.alertService.getMessage().subscribe(message => {
       this.message = message;
-      console.dir(this.message);
+      this.hidden = false;
+      setTimeout(() => {
+        this.hidden = true;
+      }, 7000);
+      setTimeout(() => {
+        this.message = '';
+      }, 8000);
     });
   }
 

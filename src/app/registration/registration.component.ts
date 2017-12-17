@@ -70,11 +70,11 @@ export class RegistrationComponent implements OnInit {
       this.userService.create(this.formModel)
         .subscribe(
           data => {
-            this.alertService.success('Registrierung war erfolgreich');
+            this.alertService.success('Registrierung war erfolgreich', true, 500);
             this.router.navigate(['/login']);
           },
           error => {
-            this.alertService.error(error);
+            this.alertService.error(error, true, 500);
             this.loading = false;
           });
     }

@@ -91,7 +91,7 @@ export class ProfileDetailsChildComponent implements OnInit {
     this.userService.update(this.userObject)
       .subscribe(
         data => {
-          this.alertService.success('Daten wurden erfolgreich geändert', true);
+          this.alertService.success('Daten wurden erfolgreich geändert', false, 500);
           // update the content in user-store
           this.userContentService.getUserContent()
             .subscribe( content => {
@@ -100,7 +100,7 @@ export class ProfileDetailsChildComponent implements OnInit {
                 this.router.navigate(['/profile']);
               },
               error => {
-                this.alertService.error('Ein Problem ist aufgetreten, bitte versuchen Sie es nochmals', true);
+                this.alertService.error('Ein Problem ist aufgetreten, bitte versuchen Sie es nochmals', false, 500);
                 this.router.navigate(['/profile']);
               });
         },

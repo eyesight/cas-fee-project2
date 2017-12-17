@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppTextareaAutosizeDirective } from './textarea-autosize.directive';
 import { AppScrollBottomDirective } from './scroll-bottom.directive';
 import { AlertComponent } from './alert/alert.component';
-import { ShowErrorsComponent } from './show-errors/show-errors.component';
+import { FormErrorMessagesComponent } from './form-error-messages/form-error-messages.component';
 
 import { AlertService, AuthenticationService, UserService } from '../_services/index';
 
@@ -21,13 +21,13 @@ import { AlertService, AuthenticationService, UserService } from '../_services/i
     AppTextareaAutosizeDirective,
     AppScrollBottomDirective,
     AlertComponent,
-    ShowErrorsComponent
+    FormErrorMessagesComponent
   ],
   exports: [
     AppTextareaAutosizeDirective,
     AppScrollBottomDirective,
     AlertComponent,
-    ShowErrorsComponent
+    FormErrorMessagesComponent
   ],
   providers: [
     AlertService,

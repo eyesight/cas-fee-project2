@@ -2,10 +2,10 @@ import { Component, Input } from '@angular/core';
 import { AbstractControlDirective, AbstractControl, FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-show-errors',
-  templateUrl: './show-errors.component.html'
+  selector: 'app-form-error-messages',
+  templateUrl: './form-error-messages.component.html'
 })
-export class ShowErrorsComponent {
+export class FormErrorMessagesComponent {
 
   private static readonly errorMessages = {
     'required': () => 'Dieses Feld darf nicht leer gelassen werden',
@@ -35,7 +35,7 @@ export class ShowErrorsComponent {
   }
 
   private getMessage(type: string, params: any) {
-    return ShowErrorsComponent.errorMessages[type](params);
+    return FormErrorMessagesComponent.errorMessages[type](params);
   }
 
 }

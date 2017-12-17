@@ -2,7 +2,7 @@
   @extend .helper-boxshadow;
 
 
-  &__pointerless {
+  &--pointerless {
     pointer-events:none;
   }
 
@@ -23,7 +23,7 @@
     bottom: 0;
     right: 0;
     left: 0;
-    background: black;
+    background: $color-black;
     opacity: 0.2;
   }
 

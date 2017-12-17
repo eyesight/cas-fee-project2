@@ -8,13 +8,13 @@
             <label class="zz-form__label" for="email">Neue E-Mail-Adresse</label>
             <input id="email" class="zz-form__input" name="email" type="text" formControlName="newEmail"
                    [ngClass]="{ 'zz-form__input--error': (emailForm.invalid || newEmail.invalid) && (newEmail.dirty || newEmail.touched)}">
-            <app-show-errors [control]="newEmail"></app-show-errors>
+            <app-form-error-messages [control]="newEmail"></app-form-error-messages>
           </div>
           <div class="col-12 zz-form__group">
             <label class="zz-form__label" for="email">Grund für die Änderunge</label>
             <textarea id="reason" class="zz-form__input" name="reason" type="text" formControlName="reason"
                       [ngClass]="{ 'zz-form__input--error': (emailForm.invalid || reason.invalid) && (reason.dirty || reason.touched)}"></textarea>
-            <app-show-errors [control]="reason"></app-show-errors>
+            <app-form-error-messages [control]="reason"></app-form-error-messages>
           </div>
         </div>
         <div class="form-row">

@@ -12,26 +12,26 @@
               <option value="w">Mädchen</option>
               <option value="m">Junge</option>
             </select>
-            <app-show-errors [control]="formChildGender"></app-show-errors>
+            <app-form-error-messages [control]="formChildGender"></app-form-error-messages>
           </div>
         </div>
         <div class="form-row">
           <div class="col-md-6 col-sm-12 zz-form__group">
             <label class="zz-form__label" for="c-firstname">Vorname</label>
             <input id="c-firstname" class="zz-form__input" type="text" formControlName="child_forename" [ngClass]="{ 'zz-form__input--error': formCFirstname.invalid && (formCFirstname.dirty || formCFirstname.touched)}">
-            <app-show-errors [control]="formCFirstname"></app-show-errors>
+            <app-form-error-messages [control]="formCFirstname"></app-form-error-messages>
           </div>
           <div class="col-md-6 col-sm-12 zz-form__group">
             <label class="zz-form__label" for="c-lastName">Nachname</label>
             <input id="c-lastName" class="zz-form__input" type="text" formControlName="child_surname" [ngClass]="{ 'zz-form__input--error': formCLastname.invalid && (formCLastname.dirty || formCLastname.touched)}">
-            <app-show-errors [control]="formCLastname"></app-show-errors>
+            <app-form-error-messages [control]="formCLastname"></app-form-error-messages>
           </div>
         </div>
         <div class="form-row">
           <div class="col-12 zz-form__group">
             <label class="zz-form__label">Geburtstag</label>
             <ng-datepicker class="zz-form__input" formControlName="child_date_of_birth" [options]="options"></ng-datepicker>
-            <app-show-errors [control]="formCBirthday"></app-show-errors>
+            <app-form-error-messages [control]="formCBirthday"></app-form-error-messages>
           </div>
         </div>
         <div class="form-row">
