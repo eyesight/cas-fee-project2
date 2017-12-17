@@ -1,4 +1,26 @@
 #TODO
+ - TODO: Error-Message-Handler erstellen, resp. korrigieren (besteht ja schon z.T.)
+ -> Errors in Console auslesen/Überschreiben
+ -> CF(+AW)
+
+-TODO: Alert (Error-Message) korrigieren, UI ändern
+  -> Anzeige soll überall ausgegeben werden
+  -> Style soll unserem CI/CD entsprechen
+  -> evt. animieren (niedrige Prio)
+  CF
+  
+-TODO: Personal-Detail-Box soll in Profil upgedatet werden, wenn Vorname angepasst wird
+CF
+  
+-TODO: Profilbild in Navigation aus DB lesen
+  -> mit CSS/Sass korrigieren (rund machen)
+
+- TODO: Profile fertigstellen (inkl. Avatar)
+  ->: Upload Profilbild
+    -> AW/CF: Bild richtig in Server einbauen und auslesen
+    -> CF: Styling/UI responsive machen 
+    -> CF+AW
+
 - TODO: FOUT einbinden für das Laden eines Webfonts (=auf Folien unterricht), https://css-tricks.com/fout-foit-foft/
 -> AW+CF 
 
@@ -11,21 +33,8 @@
 - TODO: Refactoring
 -> AW/CF
 
-- TODO: Registierung
-    - CF (+AW) use Promise oder Subscribe
-    DONE CF: Registrierungs-Datum einbauen (registriert at 00.00.0000)
-    DONE CF: Wenn Eingelogged, darf User nicht mehr auf Seite "Registrierung oder Login" kommen -> Meldung "du bist schon eingeloggt" einbauen
-    DONE CF: Registrierungs-Button nicht auf disabled setzen -> bei klick auf Button, werden alle nicht angezeigten felder angezeigt
-    DONE DO: alle obligatorischen felder entsprechend markieren
-
 - TODO: Login
     - CF: Login-Datum einbauen (last login = 00.00.0000)
-
-- TODO: Registrierung mit Admin (Lehrer) berechtigung/Registrierung ist erst abgeschlossen, wenn von Admin geprüft
--> AW (+CF)
-
-- TODO: Klassenliste aus Sicht von Lehrer: einauen von Bestätiung, dass User in Klassenliste gehört
--> AW (+CF) - Prio 1 - DONE
 
 - TODO: Abstände korrigieren, Feinheiten ausarbeiten in Sass/CSS
 -> CF: Dezember
@@ -42,18 +51,14 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
 
  - TODO: Prüfen in allen Browsern/Export Projekt als Bundle
  ->AW+CF
- 
- -TODO: Upload Profilbild
-  -> AW/CF: Bild richtig in Server einbauen und auslesen
-  -> CF: Styling/UI responsive machen 
   
--TODO: Loading-Spinner einbauen; animieren
+-TODO: Loading-Spinner einbauen; animieren (Prio2)
 
-- TODO: Send-Email einfügen: http://tphangout.com/angular-2-sending-mails-from-your-app/ + https://www.emailjs.com/(niedrige Prio)
+- TODO: Send-Email einfügen: http://tphangout.com/angular-2-sending-mails-from-your-app/ + https://www.emailjs.com/
+(niedrige Prio)
   - Registrierung
   - Profile (antrag Username ändern)
   - Classlist - Mail an Lehrer
-  
   -> CF+AW
   
 - TODO: Styleguide erstellen aus Prototype (niedrige Prio)
@@ -63,29 +68,8 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
 -> 
  
  #in Progress AW
- - TODO: DONE: Chat thematisieren, Umsetzen (inkl. sass)
- -> AW: 31.10. DONE
- 
- - TODO:  Chat
-     AW: DONE: Textarea autosizing
-     AW: DONE: Header shows now, Styling and Menubar
-     AW: DONE: Timestamp der Message anstatt Klasse
-     AW: DONE: implement userDetails und Klassenamen  etc. im Heade
-     CF: Auto Scroll und scrollin innerhalb chat fenster 
-  
-- TODO: Klassenliste erstellen
--> AW(+CF) - almost done
-  Probleme mit Routing (Detail öffnen)
-
 - Auth: check out - may be better solution:
     AW: https://github.com/auth0/angular2-jwt 
- 
-#in Progress CF
-  - TODO: Profile erstellen (inkl. Avatar)
-  -> CF(+AW)
-
- - TODO: Error-Message-Handler erstellen, resp. korrigieren (besteht ja schon z.T.)
- -> CF(+AW)
 
 #TO CHECK
 - TODO: Login, Registrierung
@@ -134,6 +118,33 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
 
 -DONE: Komponente für Personal-Detail-Box
 
-
 - DONE: UI für Chat prüfen/korrigieren
 -> CF
+
+- DONE: Registierung
+    DONE CF (+AW) use Promise oder Subscribe
+    DONE CF: Registrierungs-Datum einbauen (registriert at 00.00.0000)
+    DONE CF: Wenn Eingelogged, darf User nicht mehr auf Seite "Registrierung oder Login" kommen -> Meldung "du bist schon eingeloggt" einbauen
+    DONE CF: Registrierungs-Button nicht auf disabled setzen -> bei klick auf Button, werden alle nicht angezeigten felder angezeigt
+    DONE DO: alle obligatorischen felder entsprechend markieren
+
+- DONE: Registrierung mit Admin (Lehrer) berechtigung/Registrierung ist erst abgeschlossen, wenn von Admin geprüft
+-> AW (+CF)
+
+
+- TODO: Klassenliste aus Sicht von Lehrer: einauen von Bestätiung, dass User in Klassenliste gehört
+-> AW (+CF) - Prio 1 - DONE
+
+ - TODO: DONE: Chat thematisieren, Umsetzen (inkl. sass)
+ -> AW: 31.10. DONE
+ 
+ - TODO:  Chat
+     AW: DONE: Textarea autosizing
+     AW: DONE: Header shows now, Styling and Menubar
+     AW: DONE: Timestamp der Message anstatt Klasse
+     AW: DONE: implement userDetails und Klassenamen  etc. im Heade
+     CF: Auto Scroll und scrollin innerhalb chat fenster 
+
+- TODO: Klassenliste erstellen
+-> AW(+CF) - almost done
+  Probleme mit Routing (Detail öffnen)

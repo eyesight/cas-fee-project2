@@ -131,7 +131,11 @@ function getAllMessages(username, callback){
             //console.dir(newDoc);
 
             if (callback) {
-              if (newDoc.length <= 0) {
+             if (!newDoc) {
+               callback(err, []);
+               return;
+             }
+              else if (newDoc.length <= 0) {
                 newDoc = null;
               }
               callback(err, newDoc);
