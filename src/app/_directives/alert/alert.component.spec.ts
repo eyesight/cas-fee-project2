@@ -4,7 +4,7 @@ import { AlertComponent } from './alert.component';
 import {AlertService} from "../../_services/alert.service";
 import {RouterTestingModule} from "@angular/router/testing";
 
-fdescribe('AlertComponent', () => {
+fdescribe('MessageBoxComponent', () => {
   let component: AlertComponent;
   let fixture: ComponentFixture<AlertComponent>;
 

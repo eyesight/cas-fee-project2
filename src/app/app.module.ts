@@ -18,7 +18,7 @@ import { HttpModule, BaseRequestOptions } from '@angular/http';
 
 import { AuthGuard } from './_guards/auth.guards';
 import { RegistrationAuthGuard } from './_guards/registrationAuth.guards';
-import { CanActivateClassList, CanActivateChat } from './_services/can-activate-classlist.service';
+import { CanActivateProtectedPagesGuard } from './_guards/can-activate-protected-pages.guard';
 
 import { AlertService, AuthenticationService, UserService } from './_services/index';
 import { DirectivesModule } from './_directives/directives.module';
@@ -79,8 +79,7 @@ import { ImageCompressService } from 'ng2-image-compress';
     MockBackend,
     BaseRequestOptions,
     ImageCompressService,
-    CanActivateChat,
-    CanActivateClassList
+    CanActivateProtectedPagesGuard
   ],
 
   bootstrap: [AppComponent]

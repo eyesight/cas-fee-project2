@@ -57,7 +57,7 @@
 
       <div *ngIf="userCurrent.email === item.email; else falsyTemplate"></div>
       <ng-template #falsyTemplate>
-      <app-alert [userItem]="item" (answer)="sendAnswer($event)"></app-alert>
+      <app-message-box [userItem]="item" (answer)="sendAnswer($event)"></app-message-box>
       <input class="table__checkbox" type="checkbox" aria-label="bestaetigung" [checked]="item.is_approved"
              (change)="showAlert(item, $event)">
       <!-- onChecked(item, $event) -->

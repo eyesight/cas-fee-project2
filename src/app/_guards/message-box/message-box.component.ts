@@ -5,10 +5,10 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {User, UserApproveAnswer} from "../../_models/user.model";
 
 @Component({
-  selector: 'app-alert',
-  templateUrl: './alert.component.html'
+  selector: 'app-message-box',
+  templateUrl: './message-box.component.html'
 })
-export class AlertComponent {
+export class MessageBoxComponent {
   hidden = true;
   private messageText: string = null;
   private approve: UserApproveAnswer = new UserApproveAnswer;
