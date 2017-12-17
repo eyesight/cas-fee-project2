@@ -42,8 +42,8 @@ class UserModel extends ModelBase{
     this.is_active = 1;
 /*
     this.is_teacher = is_teacher;
-*/
-    this.is_approved = is_approved;
+
+    this.is_approved = is_approved;*/
     this.user_avatar = user_avatar;
   /*  this.user_can = user_can;
     this.user_name = user_name;*/
@@ -70,8 +70,8 @@ function UserFromJson(req){
     r.tel_private,
     r.tel_office,
     r.is_active,
-    /*r.is_teacher,*/
-    r.is_approved,
+    /*r.is_teacher,
+    r.is_approved,*/
     r.user_avatar
     /*r.user_can,
     r.user_name*/

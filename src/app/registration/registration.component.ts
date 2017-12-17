@@ -64,7 +64,6 @@ export class RegistrationComponent implements OnInit {
       this.formModel.email = this.formEmail.value;
       this.formModel.pwd = this.formPassword.value;
       this.formModel.register_date = this.date;
-      console.log(this.formModel.register_date);
 
       this.loading = true;
 
