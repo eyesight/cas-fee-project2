@@ -53,7 +53,8 @@
       font-size: $font-s-copytext;
     }
 
-    .ngx-datepicker-container[_ngcontent-c0] .ngx-datepicker-calendar-container[_ngcontent-c0]{
+    .ngx-datepicker-container[_ngcontent-c0] .ngx-datepicker-calendar-container[_ngcontent-c0],
+    .ngx-datepicker-container[_ngcontent-c1] .ngx-datepicker-calendar-container[_ngcontent-c1]{
       z-index: 300;
     }
   }

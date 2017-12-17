@@ -23,7 +23,7 @@ export class AlertService {
     });
   }
 
-  success(message: string, keepAfterNavigationChange = false, timeout = 100) {
+  success(message: string, keepAfterNavigationChange = false, timeout = 0) {
     this.keepAfterNavigationChange = keepAfterNavigationChange;
     this.subject.next({ type: 'success', text: message });
     console.log('jjjjj');

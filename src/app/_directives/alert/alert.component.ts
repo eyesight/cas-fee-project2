@@ -6,7 +6,7 @@ import { AlertService } from '../../_services/index';
   templateUrl: './alert.component.html'
 })
 export class AlertComponent implements OnInit, AfterViewChecked {
-  message: Object = {};
+  message: any;
 
   constructor(private alertService: AlertService) { }
   @ViewChild('scrollTop') private el: ElementRef;
