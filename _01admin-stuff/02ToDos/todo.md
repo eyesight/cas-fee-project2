@@ -13,7 +13,7 @@
 
 - TODO: Registierung
     - CF (+AW) use Promise oder Subscribe
-    - CF Registrierungs-Datum einbauen (registriert at 00.00.0000)
+    DONE CF: Registrierungs-Datum einbauen (registriert at 00.00.0000)
     DONE CF: Wenn Eingelogged, darf User nicht mehr auf Seite "Registrierung oder Login" kommen -> Meldung "du bist schon eingeloggt" einbauen
     DONE CF: Registrierungs-Button nicht auf disabled setzen -> bei klick auf Button, werden alle nicht angezeigten felder angezeigt
     DONE DO: alle obligatorischen felder entsprechend markieren

@@ -42,7 +42,6 @@ export class RegistrationComponent implements OnInit {
               private alertService: AlertService,
               private fb: FormBuilder) {
     this.date = new Date();
-    this.today = moment(new Date).format('YYYY-MM-DD, h:mm:ss a');
   }
 
   ngOnInit(): void {
@@ -64,7 +63,7 @@ export class RegistrationComponent implements OnInit {
       this.formModel.child_date_of_birth = this.data;
       this.formModel.email = this.formEmail.value;
       this.formModel.pwd = this.formPassword.value;
-      this.formModel.register_date = this.today;
+      this.formModel.register_date = this.date;
       console.log(this.formModel.register_date);
 
       this.loading = true;

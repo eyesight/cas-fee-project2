@@ -17,7 +17,6 @@
                    formControlName="parent_forename"
                    [ngClass]="{ 'zz-form__input--error': formPFirstname.invalid && (formPFirstname.dirty || formPFirstname.touched || submitted)}">
             <app-show-errors [control]="formPFirstname"></app-show-errors>
-            {{submitted}}
           </div>
           <div class="col-md-6 col-sm-12 zz-form__group">
             <label class="zz-form__label" for="p-lastName">Nachname*</label>
