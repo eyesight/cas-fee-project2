@@ -1,4 +1,14 @@
 #TODO
+- TODO: CSV-Datei erstellen in Klassenliste -> User-Details
+(Prio2)
+AW+CF
+
+-TODO: User-Details Profilbild mit CSS rund machen
+CF
+
+-TODO: erstellen "default Profilbild", wenn User noch kein Avatar hat
+CF
+
  - TODO: Error-Message-Handler erstellen, resp. korrigieren (besteht ja schon z.T.)
  -> Errors in Console auslesen/Überschreiben
  -> CF(+AW)
