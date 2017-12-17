@@ -23,6 +23,9 @@ import { ProperTimePipe } from '../_pipes/proper-time.pipe';
 import { ProperDatePipe } from '../_pipes/proper-date.pipe';
 import { genderPipe } from '../_pipes/gender.pipe';
 
+import { AlertService } from '../_services/index';
+
+
 
 @NgModule({
   imports: [
@@ -49,7 +52,8 @@ import { genderPipe } from '../_pipes/gender.pipe';
   providers: [
     ProfileService,
     ImageCompressService,
-    ResizeOptions
+    ResizeOptions,
+    AlertService
   ],
 })
 export class ProfileModule { }

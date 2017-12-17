@@ -6,21 +6,22 @@ import { AlertService } from '../../_services/index';
   templateUrl: './alert.component.html'
 })
 export class AlertComponent implements OnInit, AfterViewChecked {
-  message: any;
+  message: Object = {};
 
   constructor(private alertService: AlertService) { }
   @ViewChild('scrollTop') private el: ElementRef;
 
 
   ngOnInit() {
-    this.alertService.getMessage().subscribe(message => { this.message = message; });
-    console.log('got it');
-
+    console.log('sdfsdfsfsdfds');
+    this.alertService.getMessage().subscribe(message => {
+      this.message = message;
+      console.dir(this.message);
+    });
   }
 
   ngAfterViewChecked() {
     if (this.el) {
-     // couldn't find another way then to user window.scrollTo;
       window.scrollTo(0, 0);
     }
   }

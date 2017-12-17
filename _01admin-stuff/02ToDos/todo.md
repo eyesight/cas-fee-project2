@@ -19,9 +19,6 @@ CF
   -> evt. animieren (niedrige Prio)
   CF
   
--TODO: Personal-Detail-Box soll in Profil upgedatet werden, wenn Vorname angepasst wird
-CF
-  
 -TODO: Profilbild in Navigation aus DB lesen
   -> mit CSS/Sass korrigieren (rund machen)
 
@@ -158,3 +155,6 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
 - TODO: Klassenliste erstellen
 -> AW(+CF) - almost done
   Probleme mit Routing (Detail öffnen)
+
+-DONE: Personal-Detail-Box soll in Profil upgedatet werden, wenn Vorname angepasst wird
+CF
