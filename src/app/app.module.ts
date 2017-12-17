@@ -17,6 +17,7 @@ import { AppRoutingModule} from './app-routing.module';
 import { HttpModule, BaseRequestOptions } from '@angular/http';
 
 import { AuthGuard } from './_guards/auth.guards';
+import { RegistrationAuthGuard } from './_guards/registrationAuth.guards';
 import { CanActivateClassList, CanActivateChat } from './_services/can-activate-classlist.service';
 
 import { AlertService, AuthenticationService, UserService } from './_services/index';
@@ -65,6 +66,7 @@ import { ImageCompressService } from 'ng2-image-compress';
   ],
   providers: [
     AuthGuard,
+    RegistrationAuthGuard,
     AppConfigClass,
     UserAuthService,
     AuthenticationService,

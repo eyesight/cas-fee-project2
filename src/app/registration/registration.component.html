@@ -5,56 +5,57 @@
   <div class="col-11 col-lg-11 col-xl-7 zz-mod-container">
     <div class="zz-mod-box">
       <h1 class="zz-title zz-title--insideBox">Registrieren</h1>
-      <form name="form" [formGroup]="registrationForm" (ngSubmit)="registrationForm.valid && register()" novalidate
+      <form name="form" [formGroup]="registrationForm" (ngSubmit)="register()" novalidate
             class="zz-form">
         <div class="form-row">
           <div class="col-12"><h3 class="zz-form__title">Angaben zu den Eltern</h3></div>
         </div>
         <div class="form-row">
           <div class="col-md-6 col-sm-12 zz-form__group">
-            <label class="zz-form__label" for="p-firstname">Vorname</label>
+            <label class="zz-form__label" for="p-firstname">Vorname*</label>
             <input id="p-firstname" class="zz-form__input" type="text"
                    formControlName="parent_forename"
-                   [ngClass]="{ 'zz-form__input--error': formPFirstname.invalid && (formPFirstname.dirty || formPFirstname.touched)}">
+                   [ngClass]="{ 'zz-form__input--error': formPFirstname.invalid && (formPFirstname.dirty || formPFirstname.touched || submitted)}">
             <app-show-errors [control]="formPFirstname"></app-show-errors>
+            {{submitted}}
           </div>
           <div class="col-md-6 col-sm-12 zz-form__group">
-            <label class="zz-form__label" for="p-lastName">Nachname</label>
+            <label class="zz-form__label" for="p-lastName">Nachname*</label>
             <input id="p-lastName" class="zz-form__input" name="lastName" type="text"
                    formControlName="parent_surname"
-                   [ngClass]="{ 'zz-form__input--error': formPLastname.invalid && (formPLastname.dirty || formPLastname.touched)}">
+                   [ngClass]="{ 'zz-form__input--error': formPLastname.invalid && (formPLastname.dirty || formPLastname.touched || submitted)}">
             <app-show-errors [control]="formPLastname"></app-show-errors>
           </div>
         </div>
         <div class="form-row">
           <div class="col-12 zz-form__group">
-            <label class="zz-form__label" for="adress">Adresse</label>
+            <label class="zz-form__label" for="adress">Adresse*</label>
             <input id="adress" class="zz-form__input" name="adress" type="text"
                    formControlName="adress"
-                   [ngClass]="{ 'zz-form__input--error': formAdress.invalid && (formAdress.dirty || formAdress.touched)}">
+                   [ngClass]="{ 'zz-form__input--error': formAdress.invalid && (formAdress.dirty || formAdress.touched || submitted)}">
             <app-show-errors [control]="formAdress"></app-show-errors>
           </div>
           <div class="col-8 zz-form__group">
-            <label class="zz-form__label" for="place">Ort</label>
+            <label class="zz-form__label" for="place">Ort*</label>
             <input id="place" class="zz-form__input" name="place" type="text"
                    formControlName="place"
-                   [ngClass]="{ 'zz-form__input--error': formPlace.invalid && (formPlace.dirty || formPlace.touched)}">
+                   [ngClass]="{ 'zz-form__input--error': formPlace.invalid && (formPlace.dirty || formPlace.touched || submitted)}">
             <app-show-errors [control]="formPlace"></app-show-errors>
           </div>
           <div class="col-4 zz-form__group">
-            <label class="zz-form__label" for="zip">PLZ</label>
+            <label class="zz-form__label" for="zip">PLZ*</label>
             <input id="zip" class="zz-form__input" name="zip" type="text"
                    formControlName="zip"
-                   [ngClass]="{ 'zz-form__input--error': formZip.invalid && (formZip.dirty || formZip.touched)}">
+                   [ngClass]="{ 'zz-form__input--error': formZip.invalid && (formZip.dirty || formZip.touched || submitted)}">
             <app-show-errors [control]="formZip"></app-show-errors>
           </div>
         </div>
         <div class="form-row">
           <div class="col-12 zz-form__group">
-            <label class="zz-form__label" for="tel-privat">Telefon privat</label>
+            <label class="zz-form__label" for="tel-privat">Telefon privat*</label>
             <input id="tel-privat" class="zz-form__input" name="tel-privat" type="text"
                    formControlName="tel_private"
-                   [ngClass]="{ 'zz-form__input--error': formTelprivate.invalid && (formTelprivate.dirty || formTelprivate.touched)}">
+                   [ngClass]="{ 'zz-form__input--error': formTelprivate.invalid && (formTelprivate.dirty || formTelprivate.touched || submitted)}">
             <app-show-errors [control]="formTelprivate"></app-show-errors>
           </div>
           <div class="col-12 zz-form__group">
@@ -71,8 +72,8 @@
               Anrede
             </label>
             <select class="zz-form__select" id="p-gender"
-                    formControlName="parent_gender">
-              <option [selected]="formParentGender.value == null" value="">Bitte wählen</option>
+                    formControlName="parent_gender" [ngClass]="{ 'zz-form__label--error': formParentGender.invalid && (formParentGender.dirty || formParentGender.touched || submitted)}">
+              <option [selected]="formParentGender.value == null" value="">Bitte wählen*</option>
               <option value="w">Frau</option>
               <option value="m">Mann</option>
             </select>
@@ -83,8 +84,8 @@
               Sprache
             </label>
             <select class="zz-form__select" id="language"
-                    formControlName="parent_language">
-              <option [selected]="formLanguage.value == null" value="">Bitte wählen</option>
+                    formControlName="parent_language" [ngClass]="{ 'zz-form__label--error': formLanguage.invalid && (formLanguage.dirty || formLanguage.touched || submitted)}">
+              <option [selected]="formLanguage.value == null" value="">Bitte wählen*</option>
               <option *ngFor="let lang of languages" [value]="lang.content">{{lang.label}}</option>
             </select>
             <app-show-errors [control]="formLanguage"></app-show-errors>
@@ -95,17 +96,17 @@
         </div>
         <div class="form-row">
           <div class="col-md-6 col-sm-12 zz-form__group">
-            <label class="zz-form__label" for="c-firstname">Vorname</label>
+            <label class="zz-form__label" for="c-firstname">Vorname*</label>
             <input id="c-firstname" class="zz-form__input" name="firstName" type="text"
                    formControlName="child_forename"
-                   [ngClass]="{ 'zz-form__input--error': formCFirstname.invalid && (formCFirstname.dirty || formCFirstname.touched)}">
+                   [ngClass]="{ 'zz-form__input--error': formCFirstname.invalid && (formCFirstname.dirty || formCFirstname.touched || submitted)}">
             <app-show-errors [control]="formCFirstname"></app-show-errors>
           </div>
           <div class="col-md-6 col-sm-12 zz-form__group">
-            <label class="zz-form__label" for="c-lastName">Nachname</label>
+            <label class="zz-form__label" for="c-lastName">Nachname*</label>
             <input id="c-lastName" class="zz-form__input" name="lastName" type="text"
                    formControlName="child_surname"
-                   [ngClass]="{ 'zz-form__input--error': formCLastname.invalid && (formCLastname.dirty || formCLastname.touched)}">
+                   [ngClass]="{ 'zz-form__input--error': formCLastname.invalid && (formCLastname.dirty || formCLastname.touched || submitted)}">
             <app-show-errors [control]="formCLastname"></app-show-errors>
           </div>
         </div>
@@ -115,8 +116,8 @@
               Geschlecht
             </label>
             <select class="zz-form__select" id="c-gender"
-                    formControlName="child_gender">
-              <option [selected]="formChildGender.value == null" value="">Bitte wählen</option>
+                    formControlName="child_gender" [ngClass]="{ 'zz-form__label--error': formChildGender.invalid && (formChildGender.dirty || formChildGender.touched || submitted)}">
+              <option [selected]="formChildGender.value == null" value="">Bitte wählen*</option>
               <option value="w">Mädchen</option>
               <option value="m">Junge</option>
             </select>
@@ -125,18 +126,18 @@
         </div>
         <div class="form-row">
           <div class="col-12 zz-form__group">
-            <label class="zz-form__label">Geburtstag</label>
-            <ng-datepicker class="zz-form__input" formControlName="child_date_of_birth" [options]="options"></ng-datepicker>
+            <label class="zz-form__label">Geburtstag*</label>
+            <ng-datepicker class="zz-form__input" formControlName="child_date_of_birth" [options]="options" [ngClass]="{ 'zz-form__label--error': formCBirthday.invalid && (formCBirthday.dirty || formCBirthday.touched || submitted)}"></ng-datepicker>
             <app-show-errors [control]="formCBirthday"></app-show-errors>
           </div>
         </div>
         <div class="form-row">
           <div class="col-md-6 col-sm-12 zz-form__group">
             <label class="zz-form__label" for="c-gender">
-              Bitte Klasse auswählen (steht im E-Mail)
+              Bitte Klasse auswählen (steht im E-Mail)*
             </label>
-            <select class="zz-form__select" id="c-class" formControlName="class_id">
-              <option [selected]="formChildKlasse.value == null" value="">Bitte wählen</option>
+            <select class="zz-form__select" id="c-class" formControlName="class_id" [ngClass]="{ 'zz-form__label--error': formChildKlasse.invalid && (formChildKlasse.dirty || formChildKlasse.touched || submitted)}">
+              <option [selected]="formChildKlasse.value == null" value="">Bitte wählen*</option>
               <option *ngFor="let klass of klasses" [value]="klass.id">{{klass.description}}</option>
             </select>
             <app-show-errors [control]="formChildKlasse"></app-show-errors>
@@ -144,19 +145,19 @@
         </div>
 
         <div class="form-row">
-          <div class="col-12"><h3 class="zz-form__title">E-Mail und Passwort</h3></div>
+          <div class="col-12"><h3 class="zz-form__title">E-Mail und Passwort*</h3></div>
         </div>
         <div class="form-row" formGroupName="formEMailConfirm">
           <div class="col-12 zz-form__group">
-            <label class="zz-form__label" for="email">E-Mail (gilt als username)</label>
+            <label class="zz-form__label" for="email">E-Mail (gilt als username)*</label>
             <input id="email" class="zz-form__input" name="email" type="text" formControlName="email"
-                   [ngClass]="{ 'zz-form__input--error': (formEMailConfirm.invalid || formEmail.invalid) && (formEmail.dirty || formEmail.touched)}">
+                   [ngClass]="{ 'zz-form__input--error': (formEMailConfirm.invalid || formEmail.invalid) && (formEmail.dirty || formEmail.touched || submitted)}">
             <app-show-errors [control]="formEmail"></app-show-errors>
           </div>
           <div class="col-12 zz-form__group">
-            <label class="zz-form__label" for="email-check">E-Mail wiederholen</label>
+            <label class="zz-form__label" for="email-check">E-Mail wiederholen*</label>
             <input id="email-check" class="zz-form__input" name="emailcheck" type="text" formControlName="confirmEmail"
-                   [ngClass]="{ 'zz-form__input--error': formEMailConfirm.invalid && (formEMailConfirm.dirty || formEMailConfirm.touched)}">
+                   [ngClass]="{ 'zz-form__input--error': formEMailConfirm.invalid && (formEMailConfirm.dirty || formEMailConfirm.touched || submitted)}">
             <div
               *ngIf="formEMailConfirm.invalid && formEMailConfirm.hasError('nomatch') && (formEMailConfirm.dirty || formEMailConfirm.touched)"
               class="zz-form__error">
@@ -166,16 +167,16 @@
         </div>
         <div class="form-row" formGroupName="formPasswordConfirm">
           <div class="col-12 zz-form__group">
-            <label class="zz-form__label" for="password">Passwort</label>
+            <label class="zz-form__label" for="password">Passwort*</label>
             <input id="password" class="zz-form__input" name="password" type="password" formControlName="pwd"
-                   [ngClass]="{ 'zz-form__input--error': (formPasswordConfirm.invalid || formPassword.invalid) && (formPassword.dirty || formPassword.touched)}">
+                   [ngClass]="{ 'zz-form__input--error': (formPasswordConfirm.invalid || formPassword.invalid) && (formPassword.dirty || formPassword.touched || submitted)}">
             <app-show-errors [control]="formPassword"></app-show-errors>
           </div>
           <div class="col-12 zz-form__group">
-            <label class="zz-form__label" for="passwordcheck">Passwort wiederholen</label>
+            <label class="zz-form__label" for="passwordcheck">Passwort wiederholen*</label>
             <input id="passwordcheck" class="zz-form__input" name="passwordcheck" type="password"
                    formControlName="confirmPassword"
-                   [ngClass]="{ 'zz-form__input--error': formPasswordConfirm.invalid && (formPasswordConfirm.dirty || formPasswordConfirm.touched)}">
+                   [ngClass]="{ 'zz-form__input--error': formPasswordConfirm.invalid && (formPasswordConfirm.dirty || formPasswordConfirm.touched || submitted)}">
             <div
               *ngIf="formPasswordConfirm.invalid && formPasswordConfirm.hasError('nomatch') && (formPasswordConfirm.dirty || formPasswordConfirm.touched)"
               class="zz-form__error">
@@ -183,17 +184,18 @@
             </div>
           </div>
         </div>
+        <p><span class="zz-infotext">Alle Felder mit * müssen ausgefüllt sein</span></p>
         <div class="form-row">
           <div class="col-12 zz-form__group zz-form__group--last">
-            <button type="submit" class="zz-btn zz-btn--primary" [disabled]="!registrationForm.valid">Registrieren und
-              Nutzungsbestimmungen zustimmen*
+            <button type="submit" class="zz-btn zz-btn--primary">Registrieren und
+              Nutzungsbestimmungen zustimmen**
             </button>
           </div>
         </div>
       </form>
       <div class="zz-infotext">
         <button [routerLink]="['terms-of-use']" class="zz-infotext__link">
-          * Nutzungsbedingungen lesen
+          ** Nutzungsbedingungen lesen
         </button>
       </div>
       <router-outlet></router-outlet>

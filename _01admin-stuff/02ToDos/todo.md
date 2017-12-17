@@ -2,9 +2,6 @@
 - TODO: FOUT einbinden für das Laden eines Webfonts (=auf Folien unterricht), https://css-tricks.com/fout-foit-foft/
 -> AW+CF 
 
-- TODO: UI für Chat prüfen/korrigieren
--> CF
-
 - TODO: Dashboard überarbeiten UI, Idee + Umsetzung
 -> CF+AW
 
@@ -17,9 +14,9 @@
 - TODO: Registierung
     - CF (+AW) use Promise oder Subscribe
     - CF Registrierungs-Datum einbauen (registriert at 00.00.0000)
-    - CF: Wenn Eingelogged, darf User nicht mehr auf Seite "Registrierung oder Login" kommen -> Meldung "du bist schon eingeloggt" einbauen
-    - CF: Registrierungs-Button nicht auf disabled setzen -> bei klick auf Button, werden alle nicht angezeigten felder angezeigt
-    - CF: alle obligatorischen felder entsprechend markieren
+    DONE CF: Wenn Eingelogged, darf User nicht mehr auf Seite "Registrierung oder Login" kommen -> Meldung "du bist schon eingeloggt" einbauen
+    DONE CF: Registrierungs-Button nicht auf disabled setzen -> bei klick auf Button, werden alle nicht angezeigten felder angezeigt
+    DONE DO: alle obligatorischen felder entsprechend markieren
 
 - TODO: Login
     - CF: Login-Datum einbauen (last login = 00.00.0000)
@@ -136,3 +133,7 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
 -DONE: Komponente erstellen für "Passwort vergessen -> meldung an Admin"
 
 -DONE: Komponente für Personal-Detail-Box
+
+
+- DONE: UI für Chat prüfen/korrigieren
+-> CF

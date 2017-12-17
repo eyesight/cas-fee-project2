@@ -14,12 +14,12 @@ import { AlertService, UserService } from '../_services/index';
 })
 export class RegistrationComponent implements OnInit {
   public loading = false;
-  public userObject = new User;
   public registrationForm: FormGroup;
   public formModel: User;
   public data: any;
   public date: Date;
   public today: string;
+  public submitted: boolean = false;
 
   options: DatepickerOptions = {
     minYear: 1980,
@@ -48,32 +48,38 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {
     this.buildForm();
     this.getklasse();
-}
+    this.submitted = false;
+  }
 
   register() {
-    // add Value of Form into formModel to pass it to new userObject
-    this.formModel = this.registrationForm.value;
+    this.submitted = true;
 
-    // format the date of the child_date_of_birth with moment
-    this.data = moment(this.formModel.child_date_of_birth).locale('de-ch').format("YYYY-MM-DD");
+    if (this.registrationForm.valid){
+      // add Value of Form into formModel to pass it to new userObject
+      this.formModel = this.registrationForm.value;
 
-    this.formModel.child_date_of_birth = this.data;
-    this.formModel.email = this.formEmail.value;
-    this.formModel.pwd = this.formPassword.value;
-    this.formModel.register_date = this.today;
+      // format the date of the child_date_of_birth with moment
+      this.data = moment(this.formModel.child_date_of_birth).locale('de-ch').format("YYYY-MM-DD");
 
-    this.loading = true;
+      this.formModel.child_date_of_birth = this.data;
+      this.formModel.email = this.formEmail.value;
+      this.formModel.pwd = this.formPassword.value;
+      this.formModel.register_date = this.today;
+      console.log(this.formModel.register_date);
 
-    this.userService.create(this.formModel)
-      .subscribe(
-        data => {
-          this.alertService.success('Registrierung war erfolgreich', true);
-          this.router.navigate(['/login']);
-        },
-        error => {
-          this.alertService.error(error);
-          this.loading = false;
-        });
+      this.loading = true;
+
+      this.userService.create(this.formModel)
+        .subscribe(
+          data => {
+            this.alertService.success('Registrierung war erfolgreich', true);
+            this.router.navigate(['/login']);
+          },
+          error => {
+            this.alertService.error(error);
+            this.loading = false;
+          });
+    }
   }
 
   getklasse() {

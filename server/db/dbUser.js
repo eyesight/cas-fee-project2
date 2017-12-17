@@ -130,6 +130,7 @@ function updateUser(email, userModel, callback){
   console.log(userModel.is_teacher);
   var sf = userModel.mySqlGetUpdateStatement('users',"email='" + email +"'");
   // [user.getClassMembers()].
+  console.dir(sf);
   console.dir(userModel.getAttributeList());
   return db.query(sf,userModel.getAttributeList(), function(err, newDoc) {
 

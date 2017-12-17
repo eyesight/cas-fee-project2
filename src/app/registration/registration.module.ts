@@ -12,7 +12,6 @@ import { NgDatepickerModule } from 'ng2-datepicker';
 import { AlertService } from '../_services/index';
 
 
-
 @NgModule({
   imports: [
     CommonModule,
