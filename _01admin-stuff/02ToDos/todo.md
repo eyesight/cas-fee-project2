@@ -6,9 +6,6 @@
 (Prio2)
 CF(+AW)
 
--TODO: erstellen "default Profilbild", wenn User noch kein Avatar hat
-CF
-
  - TODO: Error-Message-Handler erstellen, resp. korrigieren (besteht ja schon z.T.)
  -> Errors in Console auslesen/Überschreiben
  -> CF(+AW)
@@ -18,9 +15,9 @@ CF
 
 - TODO: Profile fertigstellen (inkl. Avatar)
   ->: Upload Profilbild
-    -> AW/CF: Bild-Upload validieren (size 100kb und format (png und jpg))
+    DONE: Bild-Upload validieren (size 100kb und format (png und jpg))
     -> AW/CF: Bild anzeigen in Frontend
-    -> CF: Styling/UI responsive machen 
+    DONE: Styling/UI responsive machen 
     -> CF+AW
 
 - TODO: FOUT einbinden für das Laden eines Webfonts (=auf Folien unterricht), https://css-tricks.com/fout-foit-foft/
@@ -170,3 +167,7 @@ CF
 
 - Auth: check out - may be better solution:
     AW: https://github.com/auth0/angular2-jwt 
+
+
+-TODO: erstellen "default Profilbild", wenn User noch kein Avatar hat
+CF
