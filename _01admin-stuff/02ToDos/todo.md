@@ -1,4 +1,7 @@
 #TODO
+- TODO: Error-messages als Service (Switch-liste), Mapping von Fehlern zu lesbarem text
+
+
 - TODO: CSV-Datei erstellen in Klassenliste -> User-Details
 (Prio2)
 CF(+AW)
