@@ -185,6 +185,7 @@
           </div>
         </div>
         <p><span class="zz-infotext">Alle Felder mit * müssen ausgefüllt sein</span></p>
+        <p *ngIf="registrationForm.invalid && submitted" class="zz-form__error"><span class="zz-infotext">Es sind nicht alle Felder ausgefüllt. Bitte füllen Sie die rot-markierten Felder aus.</span></p>
         <div class="form-row">
           <div class="col-12 zz-form__group zz-form__group--last">
             <button type="submit" class="zz-btn zz-btn--primary">Registrieren und

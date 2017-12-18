@@ -18,7 +18,6 @@ export class RegistrationComponent implements OnInit {
   public formModel: User;
   public data: any;
   public date: Date;
-  public today: string;
   public submitted: boolean = false;
 
   options: DatepickerOptions = {
