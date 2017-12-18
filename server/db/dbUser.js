@@ -89,7 +89,7 @@ function registerUser(email, passwort, isTeacher, req, updateUserFunc, callback)
     if(callback){
       if(err) {
          console.log('error on regiter?' + err);
-         calllback(err, false);
+         callback(err, false);
          return;
 
       }
