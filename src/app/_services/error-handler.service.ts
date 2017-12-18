@@ -5,17 +5,15 @@ import { ErrorLoggerService } from './error-logger.service';
 export class ErrorHandlerService extends ErrorHandler {
 
   constructor(private logger: ErrorLoggerService) {
-    super(true);
+    super(false);
   }
 
   public handleError(exception: any) {
-    console.log('dddd');
     if (exception.message && exception.message.length > 0) {
       this.logger.log(exception.message);
     } else {
-      this.logger.log('oops something went wrong!');
+      this.logger.log('Something went wrong. Please contact your helpdesk');
     }
-
     super.handleError(exception);
   }
 }

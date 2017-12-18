@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -81,7 +81,8 @@ import { ImageCompressService } from 'ng2-image-compress';
     ImageCompressService,
     CanActivateProtectedPagesGuard,
     ErrorHandlerService,
-    ErrorLoggerService
+    ErrorLoggerService,
+    { provide: ErrorHandler, useClass: ErrorHandlerService }
   ],
 
   bootstrap: [AppComponent]

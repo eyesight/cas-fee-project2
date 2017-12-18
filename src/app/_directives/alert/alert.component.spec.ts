@@ -3,8 +3,6 @@ import {async, fakeAsync, ComponentFixture, TestBed, tick} from '@angular/core/t
 import { AlertComponent } from './alert.component';
 import { AlertService } from '../../_services/alert.service';
 import { RouterTestingModule } from '@angular/router/testing';
-import {DebugElement} from "@angular/core";
-import {By} from "@angular/platform-browser";
 
 fdescribe('AlertComponent', () => {
   let component: AlertComponent;

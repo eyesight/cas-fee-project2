@@ -1,7 +1,7 @@
 #TODO
 - TODO: CSV-Datei erstellen in Klassenliste -> User-Details
 (Prio2)
-AW+CF
+CF(+AW)
 
 -TODO: erstellen "default Profilbild", wenn User noch kein Avatar hat
 CF
@@ -15,7 +15,8 @@ CF
 
 - TODO: Profile fertigstellen (inkl. Avatar)
   ->: Upload Profilbild
-    -> AW/CF: Bild richtig in Server einbauen und auslesen
+    -> AW/CF: Bild-Upload validieren (size 100kb und format (png und jpg))
+    -> AW/CF: Bild anzeigen in Frontend
     -> CF: Styling/UI responsive machen 
     -> CF+AW
 
@@ -31,8 +32,7 @@ CF
 - TODO: Refactoring
 -> AW/CF
 
-- TODO: Login
-    - CF: Login-Datum einbauen (last login = 00.00.0000)
+- TODO: GUI testen mit Puppetier
 
 - TODO: Abstände korrigieren, Feinheiten ausarbeiten in Sass/CSS
 -> CF: Dezember
@@ -40,7 +40,8 @@ CF
 - TODO: Bootstrap - nur relevante Imports importieren
 -> CF: 
 
-- TODO: Accessability / ARIA / SEO
+- TODO: Accessability / ARIA 
+(Prio2)
 -> CF/AW:
 
 - TODO: Kontrolle Benennung Klassen und HTML-Struktur
@@ -49,6 +50,12 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
 
  - TODO: Prüfen in allen Browsern/Export Projekt als Bundle
  ->AW+CF
+
+
+--------------------------------------------------------------------------------
+Prio 2
+-------------------------------------------------------------------------------
+
   
 -TODO: Loading-Spinner einbauen; animieren (Prio2)
 
@@ -58,19 +65,15 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
   - Profile (antrag Username ändern)
   - Classlist - Mail an Lehrer
   -> CF+AW
-  
-- TODO: Styleguide erstellen aus Prototype (niedrige Prio)
--> CF (+AW) 
 
 - TODO: Kalender umsetzen (niedrige Prio)
 -> 
  
- #in Progress AW
-- Auth: check out - may be better solution:
-    AW: https://github.com/auth0/angular2-jwt 
+--------------------------------------------------------------------------------
+DONE
+-------------------------------------------------------------------------------
 
-#TO CHECK
-- TODO: Login, Registrierung
+- Done: Login, Registrierung
 -> CF: 31.10
   - DONE: Formular für Registrierung
   -> CF: 25.10
@@ -89,11 +92,10 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
  - TODO: UI für Profil-Seite fertigstellen/durchdenken
   -> CF
   
-- TODO: Autoprefixer für Angular?
+- DONE: Autoprefixer für Angular?
   Angular uses Autoprefixes: https://github.com/angular/angular-cli/wiki/stories-autoprefixer
 -> CF:
 
-#DONE
 - DONE: NG-File-Struktur (module,Componente) anlegen
 -> AW: 6.10.
 
@@ -158,3 +160,10 @@ CF
 
 -TODO: User-Details Profilbild mit CSS rund machen
 CF
+
+- TODO: Login
+(prio2)
+    - CF: Login-Datum einbauen (last login = 00.00.0000)
+
+- Auth: check out - may be better solution:
+    AW: https://github.com/auth0/angular2-jwt 
