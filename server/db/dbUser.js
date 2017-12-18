@@ -91,6 +91,7 @@ function registerUser(email, passwort, isTeacher, req, updateUserFunc, callback)
       if(updateUserFunc !== null){
         updateUserFunc(email, um, callback);
       } else {
+        console.log('error on regiter?' + err);
         callback(err, newDoc);
       }
     }

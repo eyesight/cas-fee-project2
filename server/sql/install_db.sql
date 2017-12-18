@@ -51,7 +51,7 @@ INSERT INTO `klasses` VALUES('2', '4a', 'Primarschulklasse 4a', '2016-10-21', '2
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `class_id` varchar(50) NOT NULL,
-  `email` varchar(255) ,
+  `email` varchar(255) NOT NULL,
   `encrypted_password` varchar(255) NOT NULL,
   `parent_surname` varchar(255) DEFAULT NULL,
   `parent_forename` varchar(255) DEFAULT NULL,
