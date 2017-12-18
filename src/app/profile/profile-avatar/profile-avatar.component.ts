@@ -5,7 +5,7 @@ import {Avatar, User, UserAvatar} from '../../_models/user.model';
 //import {ImageCompressor, Options} from 'image-compressor';
 //import {ImageCompressor} from '/node_modules/image-compressor';
 //import {ImageCompressService} from "ng2-image-compress";
-import {ImageCompressService, ResizeOptions, ImageUtilityService, IImage, SourceImage} from  'ng2-image-compress';
+import {ImageCompressService, ResizeOptions, ImageUtilityService, IImage, SourceImage} from 'ng2-image-compress';
 import {Ng2ImgMaxService} from "ng2-img-max";
 import {Observable} from "rxjs/Observable";
 import {Subscription} from "rxjs/Subscription";
@@ -50,7 +50,8 @@ export class ProfileAvatarComponent {
               private imgCompressService: ImageCompressService,
               //   private ng2ImgMax: Ng2ImgMaxService,
               //    private ng2ImgToolsService: Ng2ImgToolsService,
-              private userService: UserService) {
+              private userService: UserService,
+              private alertService: AlertService) {
     this.createForm();
     // this.imcomOptions
   }
@@ -69,22 +70,24 @@ export class ProfileAvatarComponent {
   onSubmit() {
     //this.avatarObject.avatar = this.avatarUrl;
     console.log('this.nomalAvatar.avatar');
-   // console.dir(this.nomalAvatar);
+    // console.dir(this.nomalAvatar);
 //    this.userService.updateAvatar(this.avatarObject);
 
     this.userService.updateAvatar(this.nomalAvatar)
       .subscribe(
         data => {
           console.log('ok:' + data);
-
+          this.alertService.success('Das Bild wurde erfolgreich gespeichert', false, 500);
+          setTimeout(() => {
+            this.provFile = false;
+          }, 500);
         },
         error => {
           //  this.alertService.error(error);
           console.log('error:' + error);
+          this.alertService.error('Beim Laden des Bildes ist ein Fehler aufgetreten. Bitte versuchen Sie es nochmals', false, 500);
+          this.provFile = false;
         });
-
-
-    this.loading = true;
 
     setTimeout(() => {
       this.loading = false;
@@ -92,66 +95,66 @@ export class ProfileAvatarComponent {
   }
 
   clearFile() {
-    this.form.get('avatar').setValue(null);
-    this.fileInput.nativeElement.value = '';
+    this.provFile = false;
   }
 
   onFileChange(event) {
     if (event.target.files && event.target.files[0]) {
-      let reader = new FileReader();
-      let files = event.target.files[0];
-      let fileList = FileList;
+      const reader = new FileReader();
+      const files = event.target.files[0];
+      const fileList = FileList;
       reader.readAsDataURL(files);
 
-      console.log('fiels:' + event.target.files[0]);
+      console.log(event.target.files[0]);
 
-      // reset
-      this.images = [];
-      ImageCompressService.filesToCompressedImageSource(event.target.files).then(observableImages => {
-        observableImages.subscribe((image) => {
-          this.images.push(image);
-          console.log('compression on success');
-          //  console.dir(image.compressedImage.imageDataUrl);
-        }, (error) => {
-          console.log("Error while converting");
-        }, () => {
-          this.processedImage = this.images[0];
-          console.log('final on comporessed.length:' + this.images[0].compressedImage.imageDataUrl.length);
+      if (files.size > 1500000) {
+        this.alertService.error('Das Bild ist zu gross. Es darf nicht grösser als 1.5 MB sein.', false, 500);
+        this.provFile = false;
+      } else if (files.type !== ('image/jpeg') && files.type !== ('image/png')) {
+        this.alertService.error('Tut uns leid. Dieses Dateiformat wird zurzeit nicht unterstützt.', false, 500);
+        this.provFile = false;
+      } else {
+        // reset
+        this.images = [];
+        ImageCompressService.filesToCompressedImageSource(event.target.files).then(observableImages => {
+          observableImages.subscribe((image) => {
+            this.images.push(image);
+            console.log(this.images);
+            console.log('compression on success');
+            //  console.dir(image.compressedImage.imageDataUrl);
+          }, (error) => {
+            this.alertService.error('Beim Laden des Bildes ist ein Fehler aufgetreten. Bitte versuchen Sie es nochmals', false, 500);
+            console.log('Error while converting');
+          }, () => {
+            this.processedImage = this.images[0];
+            console.log('final on comporessed.length:' + this.images[0].compressedImage.imageDataUrl.length);
 
-          // if (this.images[0].compressedImage.imageDataUrl.length < this.avatarUrl.length) {
-          console.log('filename:' + files.type);
-          this.av.value = this.images[0].compressedImage.imageDataUrl.split(',')[1];
-          this.av.filename = files.name;
-          this.av.filetype = files.type;
+            // if (this.images[0].compressedImage.imageDataUrl.length < this.avatarUrl.length) {
+            console.log('filename:' + files.type);
+            this.av.value = this.images[0].compressedImage.imageDataUrl.split(',')[1];
+            this.av.filename = files.name;
+            this.av.filetype = files.type;
+            this.av.filesize = files.size;
 
-          this.nomalAvatar.avatar = this.av;
-          console.dir(this.av);
-          // } else {
-          //   this.av.value = this.avatarUrl;
-          //   this.nomalAvatar.avatar = this.av;
-          // }
-
+            this.nomalAvatar.avatar = this.av;
+            console.dir(this.av);
+          });
         });
-      });
+
+        reader.onload = (evt: any) => {
+          this.previewUrl = evt.target.result;
+          this.provFile = true;
+          this.avatarUrl = this.previewUrl.split(',')[1];
+
+          console.log('in reader.onload 110:' + this.avatarUrl.length);
 
 
-      reader.onload = (evt: any) => {
-        this.previewUrl = evt.target.result;
-        this.provFile = true;
-        this.avatarUrl = this.previewUrl.split(',')[1];
-
-        console.log('in reader.onload 110:' + this.avatarUrl.length);
-
-
-        console.log('in reader.onload 1');
-        // console.dir(this.avatarUrl);
-      };
-
-
+          console.log('in reader.onload 1');
+          // console.dir(this.avatarUrl);
+        };
+      }
     }
   }
-
-
 }
 
 

@@ -17,6 +17,7 @@ export class Avatar {
   filename: string;
   filetype: string;
   value: string;
+  filesize: number;
 }
 export class UserAvatar {
 
