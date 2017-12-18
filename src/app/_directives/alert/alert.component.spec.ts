@@ -1,10 +1,12 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, fakeAsync, ComponentFixture, TestBed, tick} from '@angular/core/testing';
 
 import { AlertComponent } from './alert.component';
-import {AlertService} from "../../_services/alert.service";
-import {RouterTestingModule} from "@angular/router/testing";
+import { AlertService } from '../../_services/alert.service';
+import { RouterTestingModule } from '@angular/router/testing';
+import {DebugElement} from "@angular/core";
+import {By} from "@angular/platform-browser";
 
-fdescribe('MessageBoxComponent', () => {
+fdescribe('AlertComponent', () => {
   let component: AlertComponent;
   let fixture: ComponentFixture<AlertComponent>;
 
@@ -16,6 +18,7 @@ fdescribe('MessageBoxComponent', () => {
     })
     .compileComponents();
   }));
+  // const alertservice = new AlertService;
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AlertComponent);
@@ -26,4 +29,14 @@ fdescribe('MessageBoxComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should return success-message', fakeAsync(() => {
+    const alertService: AlertService = fixture.debugElement.injector.get(AlertService);
+    alertService.success('got it');
+    tick(7500);
+    fixture.detectChanges();
+    const waiter = fixture.nativeElement.querySelector('.zz-alertbox--success').innerText;
+    tick(7500);
+    expect(waiter).toEqual('success got it');
+  }));
 });

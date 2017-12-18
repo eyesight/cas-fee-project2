@@ -4,7 +4,8 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 
 import { AlertService, AuthenticationService } from '../_services/index';
 import {User} from "../_models/user.model";
-import {UserContentService} from "../_services/user-content.service";
+import {UserContentService} from '../_services/user-content.service';
+import { ErrorHandlerService } from '../_services/index';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private userContentService: UserContentService,
     private alertService: AlertService,
+    private errorHandlerService: ErrorHandlerService,
     private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -60,7 +62,7 @@ export class LoginComponent implements OnInit {
               }
             },
             error => {
-              this.alertService.error(error, true, 500);
+              this.errorHandlerService.handleError(error);
               this.loading = false;
             });
         },

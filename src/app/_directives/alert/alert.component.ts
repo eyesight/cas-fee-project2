@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertService } from '../../_services/index';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'alert',
@@ -14,7 +15,6 @@ export class AlertComponent implements OnInit {
 
   ngOnInit() {
     this.alertService.getMessage().subscribe(message => {
-      console.log('ddd');
       this.message = message;
       this.hidden = false;
       setTimeout(() => {

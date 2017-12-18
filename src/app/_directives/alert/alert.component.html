@@ -1,4 +1,5 @@
 <div *ngIf="message" #scrollTop
      [ngClass]="{ 'zz-alertbox': message, 'zz-alertbox--success': message.type === 'success', 'zz-alertbox--danger': message.type === 'error', 'zz-alertbox--hidden': hidden === true }">
+  {{message.type}}
   {{message.text}}
 </div>

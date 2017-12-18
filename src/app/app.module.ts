@@ -20,7 +20,7 @@ import { AuthGuard } from './_guards/auth.guards';
 import { RegistrationAuthGuard } from './_guards/registrationAuth.guards';
 import { CanActivateProtectedPagesGuard } from './_guards/can-activate-protected-pages.guard';
 
-import { AlertService, AuthenticationService, UserService } from './_services/index';
+import { AlertService, AuthenticationService, UserService, ErrorHandlerService, ErrorLoggerService } from './_services/index';
 import { DirectivesModule } from './_directives/directives.module';
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
 
@@ -79,7 +79,9 @@ import { ImageCompressService } from 'ng2-image-compress';
     MockBackend,
     BaseRequestOptions,
     ImageCompressService,
-    CanActivateProtectedPagesGuard
+    CanActivateProtectedPagesGuard,
+    ErrorHandlerService,
+    ErrorLoggerService
   ],
 
   bootstrap: [AppComponent]
