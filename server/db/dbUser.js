@@ -243,8 +243,9 @@ function getUserKlasseList(email, callback){
 
   return db.query("select u.id, u.email,u.class_id, u.parent_surname, u.parent_forename," +
     "u.child_surname, u.child_forename,u.child_gender, u.child_date_of_birth,u.adress, u.zip, u.place, u.is_teacher, u.is_approved,  "+
-    "k.name klasse_name, k.description klasse_description, k.start_at klasse_start_at, k.end_at klasse_end_at from users u, klasses k "+
-    "where u.class_id = k.id and k.id = (select class_id from users where email=?)",[email], function(err, newDoc) {
+    "k.name klasse_name, k.description klasse_description, k.start_at klasse_start_at, k.end_at klasse_end_at from users u, klasses k,  "+
+      "(select class_id, is_teacher from users where email=?) pr1 " +
+    "where u.class_id = k.id  and k.id = pr1.class_id  and ( (  pr1.is_teacher = 1) OR (u.is_approved = 1 and pr1.is_teacher = 0))",[email], function(err, newDoc) {
     if (callback) {
       if (newDoc.length <= 0) {
         newDoc = null;
