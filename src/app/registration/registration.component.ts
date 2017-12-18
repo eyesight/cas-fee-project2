@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CustomValidators } from '../_validation/custom.validators';
-import { DatepickerOptions } from 'ng2-datepicker';
-import { User } from '../_models/user.model';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {CustomValidators} from '../_validation/custom.validators';
+import {DatepickerOptions} from 'ng2-datepicker';
+import {User} from '../_models/user.model';
 import * as deLocale from 'date-fns/locale/de';
 import * as moment from 'moment';
-import { AlertService, UserService } from '../_services/index';
+import {AlertService, UserService} from '../_services/index';
 
 @Component({
   selector: 'app-registration',
@@ -53,7 +53,7 @@ export class RegistrationComponent implements OnInit {
   register() {
     this.submitted = true;
 
-    if (this.registrationForm.valid){
+    if (this.registrationForm.valid) {
       // add Value of Form into formModel to pass it to new userObject
       this.formModel = this.registrationForm.value;
 
@@ -76,7 +76,12 @@ export class RegistrationComponent implements OnInit {
             }, 1000);
           },
           error => {
-            this.alertService.error(error, true, 500);
+            if (error.toString().match(/901/g)) {
+              this.alertService.error('Diese Email wurde bereits vergeben', true, 500);
+
+            } else {
+              this.alertService.error(error, true, 500);
+            }
             this.loading = false;
           });
     }
@@ -85,7 +90,7 @@ export class RegistrationComponent implements OnInit {
   getklasse() {
     return this.userService.showKlasses()
       .subscribe((result) => {
-       this.klasses = result;
+        this.klasses = result;
       });
   }
 
@@ -168,7 +173,7 @@ export class RegistrationComponent implements OnInit {
     return this.registrationForm.get('child_date_of_birth');
   }
 
-  get formChildKlasse(){
+  get formChildKlasse() {
     return this.registrationForm.get('class_id');
   }
 
