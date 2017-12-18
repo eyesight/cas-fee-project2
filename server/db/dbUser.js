@@ -87,8 +87,16 @@ function registerUser(email, passwort, isTeacher, req, updateUserFunc, callback)
 
   return db.query("Insert into users ( email, encrypted_password, is_teacher) values(?,?,?)",[user.email, user.encrypted_password, user.is_teacher], function(err, newDoc){
     if(callback){
+      if(err) {
+         console.log('error on regiter?' + err);
+         calllback(err, []);
+         return;
+
+      }
       const um = UserFromJson(req);
       if(updateUserFunc !== null){
+        console.log('error on regiter?' + err);
+
         updateUserFunc(email, um, callback);
       } else {
         console.log('error on regiter?' + err);
