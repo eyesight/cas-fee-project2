@@ -25,6 +25,7 @@ export class UserAuthService {
   }
 
   public removeCurrentUser(){
+    this.userAuthCache = null;
     this.storage.remove(StorageKeys.keyCurrentUser);
   }
 

@@ -91,7 +91,7 @@ export class User {
   register_date: Date;
 
   getAvatar() {
-      return 'data:image/jpeg;base64,' + this.user_avatar;
+      return 'data:image/png;base64,' + this.user_avatar;
   }
 }
 

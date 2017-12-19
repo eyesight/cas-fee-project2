@@ -1,27 +1,32 @@
-  <ul class="navbar-nav zz-nav__list-group">
+<ul class="navbar-nav zz-nav__list-group">
 
-      <li class="zz-nav__list-group__item" >
-        <a class="zz-nav__list-group__item__link" [routerLink]="['home']" routerLinkActive="active">Dashboard
-        </a>
-      </li>
-    <li class="zz-nav__list-group__item">
-      <a class="zz-nav__list-group__item__link" [routerLink]="['classlist']" routerLinkActive="active">Klassenliste
-      </a>
-    </li>
-    <li class="zz-nav__list-group__item">
-      <a class="zz-nav__list-group__item__link" [routerLink]="['chat']" routerLinkActive="active">Chat
-      </a>
-    </li>
+  <li class="zz-nav__list-group__item">
+    <a class="zz-nav__list-group__item__link" [routerLink]="['home']" routerLinkActive="active">Dashboard
+    </a>
+  </li>
+  <li class="zz-nav__list-group__item">
+    <a class="zz-nav__list-group__item__link" [routerLink]="['classlist']" routerLinkActive="active">Klassenliste
+    </a>
+  </li>
+  <li class="zz-nav__list-group__item">
+    <a class="zz-nav__list-group__item__link" [routerLink]="['chat']" routerLinkActive="active">Chat
+    </a>
+  </li>
 
 
-    <li class="dropdown zz-nav__list-group__item">
-      <button class="zz-nav__button" data-toggle="dropdown">
+  <li class="dropdown zz-nav__list-group__item">
+    <button class="zz-nav__button" data-toggle="dropdown">
+      <img [src]="userAvatar" height="70px" alt="" *ngIf="userContent?.user_avatar; else falsyTemplate"
+           class="zz-nav__button__image">
+      <ng-template #falsyTemplate>
         <img src="assets/img/dummyPortrait.png" height="70px" alt="" class="zz-nav__button__image">
-      </button>
-      <div class="dropdown-menu dropdown-menu-righ zz-nav__button__menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item zz-nav__button__menu__item" [routerLink]="['profile']" routerLinkActive="active">Profil</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item zz-nav__button__menu__item" [routerLink]="['login']">Abmelden</a>
-      </div>
-    </li>
-  </ul>
+      </ng-template>
+    </button>
+    <div class="dropdown-menu dropdown-menu-righ zz-nav__button__menu" aria-labelledby="navbarDropdownMenuLink">
+      <a class="dropdown-item zz-nav__button__menu__item" [routerLink]="['profile']"
+         routerLinkActive="active">Profil</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item zz-nav__button__menu__item" [routerLink]="['login']">Abmelden</a>
+    </div>
+  </li>
+</ul>
