@@ -40,31 +40,59 @@ export class UserContentDbService {
     this.storage.remove(StorageKeys.keyCurrentUserContent);
   }
 
-  public getCurrentUserObserver(): Promise<User> {
-    return new Promise((resolve, reject) => {
+  public getCurrentUserObserver(): Observable<User> {
+    return new Observable((observer) => {
       try {
         const userContent = this.getCurrentUser();
-        if ( userContent ) {
-          resolve(userContent);
+        if (userContent) {
+          observer.next(userContent);
 
         } else {
           this.subject.asObservable().subscribe((content) => {
-            console.log('getCurrentUserObserver.subscribe:length of av:' + content);
-              resolve(content);
-            },
+              console.log('getCurrentUserObserver.subscribe:length of av:' + content);
+              observer.next(content);
+            }
+            ,
             (error) => {
-              reject(error);
+              observer.error(error);
             });
         }
       } catch (e) {
-        reject(e);
+        observer.error(e);
       }
+      // remove observable
+      return () => {
+        // nothing to execute
+      };
     });
+
+
+    /*
+     return new Promise((resolve, reject) => {
+     try {
+     const userContent = this.getCurrentUser();
+     if ( userContent ) {
+     resolve(userContent);
+
+     } else {
+     this.subject.asObservable().subscribe((content) => {
+     console.log('getCurrentUserObserver.subscribe:length of av:' + content);
+     resolve(content);
+     },
+     (error) => {
+     reject(error);
+     });
+     }
+     } catch (e) {
+     reject(e);
+     }
+     });
+     * */
   }
 
 
   public getCurrentUser(): User {
-   // console.log('userContentGetCurrentUser:' + this.userContentCache);
+    // console.log('userContentGetCurrentUser:' + this.userContentCache);
     if (!this.userContentCache) {
       this.userContentCache = this.storage.read(StorageKeys.keyCurrentUserContent);
       console.log('userContentGetCurrentUserund jetzt:' + this.userContentCache);

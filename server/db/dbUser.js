@@ -82,7 +82,7 @@ function registerUser(email, passwort, isTeacher, req, updateUserFunc, callback)
 {
   if(!(email && passwort)) {  callback("no user", null); }
 
-  const user = new UserRegister(email, passwort, isTeacher);
+  const user = new UserRegister(email, passwort, !!isTeacher);
   console.log('dbUser=registerUser');
 
   return db.query("Insert into users ( email, encrypted_password, is_teacher) values(?,?,?)",[user.email, user.encrypted_password, user.is_teacher], function(err, newDoc){

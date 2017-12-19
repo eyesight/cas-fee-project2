@@ -20,14 +20,25 @@ export class NavComponent implements OnInit {
   ngOnInit() {
     console.log('nav.component ngOnInit');
     this.userContent = null;
-    this.userContentDbService.getCurrentUserObserver().then((userContent) => {
-      console.log('nav.component ngOnInit inside promise.then');
+    this.userContentDbService.getCurrentUserObserver().subscribe((userContent) => {
+      console.log('nav.component ngOnInit inside observer');
       this.userContent = userContent;
       this.userAvatar = 'data:image/png;base64,' + this.userContent.user_avatar;
 
-    })
-      .catch((err) => {
-        console.log('Promise reject on nav.component.getCurrentUserPromise:' + err );
-      });
+    }, (error) => {
+      console.log('observer error on nav.component.getCurrentUserObserver:' + error );
+    });
   }
 }
+
+
+/*
+*  this.userContentDbService.getCurrentUserObserver().then((userContent) => {
+ console.log('nav.component ngOnInit inside promise.then');
+ this.userContent = userContent;
+ this.userAvatar = 'data:image/png;base64,' + this.userContent.user_avatar;
+
+ })
+ .catch((err) => {
+ console.log('Promise reject on nav.component.getCurrentUserPromise:' + err );
+ });*/

@@ -25,24 +25,9 @@ export class ProfileAvatarComponent {
   provFile: boolean = false;
   nomalAvatar = new UserAvatar;
   av = new Avatar;
-  avatarObject = new UserAvatar;
-  filename: string;
   processedImage: any;
   images: Array<IImage> = [];
-  fileList: FileList;
-  bb: Promise<string>;
 
-
-  /* imcomOptions: compressorSettings = {
-   maxWidth: 100,
-   maxHeight: 100,
-   minWidth: 50,
-   minHeight: 50,
-   quality: 0.5,
-   convertSize: 5000000
-   };
-
-   imageCompression: ImageCompressor; */
 
   @ViewChild('fileInput') fileInput: ElementRef;
 

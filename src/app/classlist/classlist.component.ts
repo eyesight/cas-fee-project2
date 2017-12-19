@@ -35,7 +35,7 @@ export class ClasslistComponent implements OnInit {
   ngOnInit() {
     this.userCurrent = this.userContentDbService.getCurrentUser();
 
-    console.log('this.userCurrent und jetzt:' + this.userCurrent.user_avatar);
+   // console.log('this.userCurrent und jetzt:' + this.userCurrent.user_avatar);
 
     if (!this.userCurrent){
       this.alertService.error('Sie müssen sich neu anmelden',false, 1000);
