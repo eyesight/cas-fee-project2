@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ClasslistListComponent } from './classlist-list.component';
 
-fdescribe('ClasslistListComponent', () => {
+describe('ClasslistListComponent', () => {
   let component: ClasslistListComponent;
   let fixture: ComponentFixture<ClasslistListComponent>;
 

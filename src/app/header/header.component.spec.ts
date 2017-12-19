@@ -4,7 +4,7 @@ import { HeaderComponent } from './header.component';
 import {NavComponent} from "./nav/nav.component";
 import {RouterTestingModule} from "@angular/router/testing";
 
-fdescribe('HeaderComponent', () => {
+describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
 

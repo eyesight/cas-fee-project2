@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NavComponent } from './nav.component';
 import {RouterTestingModule} from "@angular/router/testing";
 
-fdescribe('NavComponent', () => {
+describe('NavComponent', () => {
   let component: NavComponent;
   let fixture: ComponentFixture<NavComponent>;
 

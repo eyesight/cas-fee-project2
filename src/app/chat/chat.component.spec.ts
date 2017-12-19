@@ -22,6 +22,13 @@ import {SocketWrapper} from "../_services/socket-wrapper.service";
 import {AppConfigClass} from "../_helpers/app.config";
 import {User} from "../_models/user.model";
 import {Mock} from "protractor/built/driverProviders";
+import {PersonalDetailsContainerComponent} from "../personal-details-container/personal-details-container.component";
+import {AppScrollBottomDirective} from "../_directives/scroll-bottom.directive";
+import {UserContentDbService} from "../_services/user-content-db.service";
+import {UserContentDbServiceMock} from "../_services/user-content-db.service.mock";
+import {StorageService} from "../_services/storage.service";
+import {AlertService} from "../_services/alert.service";
+import {ProfileService} from "../profile/service/profile.service";
 
 fdescribe('ChatComponent', () => {
   let component: ChatComponent;
@@ -29,10 +36,11 @@ fdescribe('ChatComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChatComponent, ProperTimePipe, FromNowPipe, ChatDateComponent, ChatMessageComponent, ChatAddmessageComponent ],
-      providers: [AuthenticationService, MockBackend, BaseRequestOptions, ChatService, SocketWrapper, AppConfigClass,
+      declarations: [ ChatComponent, ProperTimePipe, FromNowPipe, ChatDateComponent, ChatMessageComponent, ChatAddmessageComponent, PersonalDetailsContainerComponent, AppScrollBottomDirective ],
+      providers: [AuthenticationService, MockBackend, BaseRequestOptions, ChatService, SocketWrapper, AppConfigClass, StorageService, AlertService, ProfileService,
         {provide: HttpWrapper, useClass: HttpWrapperServiceMock},
         {provide: UserAuthService, useClass: UserAuthServiceMock},
+        {provide: UserContentDbService, useClass: UserContentDbServiceMock},
         {provide: ConnectionBackend, useClass: MockBackend},
         {provide: Http, useFactory: (mockBackend: ConnectionBackend, defaultOptions: BaseRequestOptions) => {
           return new Http(mockBackend, defaultOptions);
