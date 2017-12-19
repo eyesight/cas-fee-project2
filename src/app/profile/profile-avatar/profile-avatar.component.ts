@@ -2,13 +2,14 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AlertService, UserService} from '../../_services/index';
 import {Avatar, User, UserAvatar} from '../../_models/user.model';
-//import {ImageCompressor, Options} from 'image-compressor';
-//import {ImageCompressor} from '/node_modules/image-compressor';
-//import {ImageCompressService} from "ng2-image-compress";
+
 import {ImageCompressService, ResizeOptions, ImageUtilityService, IImage, SourceImage} from 'ng2-image-compress';
 import {Ng2ImgMaxService} from "ng2-img-max";
 import {Observable} from "rxjs/Observable";
 import {Subscription} from "rxjs/Subscription";
+import {UserContentDbService} from "../../_services/user-content-db.service";
+import {UserContentService} from "../../_services/user-content.service";
+import {ProfileService} from "../service/profile.service";
 //import {Ng2ImgToolsService} from "ng2-img-tools";
 
 
@@ -33,9 +34,9 @@ export class ProfileAvatarComponent {
 
   constructor(private fb: FormBuilder,
               private imgCompressService: ImageCompressService,
-              //   private ng2ImgMax: Ng2ImgMaxService,
-              //    private ng2ImgToolsService: Ng2ImgToolsService,
               private userService: UserService,
+              private profileService: ProfileService,
+              private userContentService: UserContentService,
               private alertService: AlertService) {
     this.createForm();
     // this.imcomOptions
@@ -61,11 +62,24 @@ export class ProfileAvatarComponent {
     this.userService.updateAvatar(this.nomalAvatar)
       .subscribe(
         data => {
+
+
           console.log('ok:' + data);
           this.alertService.success('Das Bild wurde erfolgreich gespeichert', false, 500);
-          setTimeout(() => {
-            this.provFile = false;
-          }, 500);
+          this.userContentService.getUserContent()
+            .subscribe(content => {
+                // update data in parent-commponent (profile.component) via service
+                this.profileService.updateData(content);
+              },
+              error => {
+                this.alertService.error('Ein Problem ist aufgetreten, bitte versuchen Sie es nochmals', true);
+              });
+
+          // setTimeout(() => {
+          //   this.provFile = false;
+          //
+          //
+          // }, 500);
         },
         error => {
           //  this.alertService.error(error);

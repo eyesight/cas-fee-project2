@@ -46,17 +46,15 @@ export class UserContentDbService {
         const userContent = this.getCurrentUser();
         if (userContent) {
           observer.next(userContent);
-
-        } else {
-          this.subject.asObservable().subscribe((content) => {
-              console.log('getCurrentUserObserver.subscribe:length of av:' + content);
-              observer.next(content);
-            }
-            ,
-            (error) => {
-              observer.error(error);
-            });
         }
+        this.subject.asObservable().subscribe((content) => {
+            console.log('getCurrentUserObserver.subscribe:length of av:' + content);
+            observer.next(content);
+          }
+          ,
+          (error) => {
+            observer.error(error);
+          });
       } catch (e) {
         observer.error(e);
       }
