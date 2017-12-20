@@ -7,7 +7,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from '../../_validation/custom.validators';
 import { AlertService, UserService } from '../../_services/index';
 import { UserContentService } from '../../_services/user-content.service';
-import { ProfileService } from '../service/profile.service';
 
 @Component({
   selector: 'app-profile-details-parent',
@@ -16,7 +15,7 @@ import { ProfileService } from '../service/profile.service';
   host: { '[@overlayAnimation]': ''}
 })
 export class ProfileDetailsParentComponent implements OnInit {
-  public user: User;
+  public user: User = null;
   public userContent: User = null;
   public parentDetailsForm: FormGroup;
   public formModel: User;
@@ -33,7 +32,6 @@ export class ProfileDetailsParentComponent implements OnInit {
     private alertService: AlertService,
     private userService: UserService,
     private userContentService: UserContentService,
-    private profileService: ProfileService,
     private fb: FormBuilder
   ) { }
 
@@ -106,7 +104,6 @@ export class ProfileDetailsParentComponent implements OnInit {
           this.userContentService.getUserContent()
             .subscribe( content => {
                 // update data in parent-commponent (profile.component) via service
-                this.profileService.updateData(content);
                 this.router.navigate(['/profile']);
               },
               error => {

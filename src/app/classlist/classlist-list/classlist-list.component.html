@@ -40,20 +40,16 @@
     <th scope="row">
       <div class="zz-table__img-wrapper"><img class="zz-table__img" src="../../../assets/img/dummyPortrait.png"></div></th>
     <td><span class="zz-table__anchor" [routerLink]="['detail', item.id]">{{item.child_forename}}</span></td>
-
-
     <td>{{item.child_surname}}</td>
     <td>{{item.parent_forename}}</td>
     <td>{{item.parent_surname}}</td>
     <td>{{item.place}}</td>
-    <td>
-      <a href="mailto:{{item.email}}">
-        <svg class="zz-table__icon" viewBox="0 0 20 11.8">
-          <rect width="20" height="11.8"/>
-          <polyline class="st0" points="0,0 10.3,8.3 20,0 "/>
-        </svg>
-      </a>
-    </td>
+    <td class="zz-table__anchor-mail"><a href="mailto:{{item.email}}">
+      <svg class="zz-table__icon" viewBox="0 0 20 11.8">
+        <rect width="20" height="11.8"/>
+        <polyline class="st0" points="0,0 10.3,8.3 20,0 "/>
+      </svg>
+      <span class="zz-table__e-mail-txt">{{item.email}}</span></a></td>
     <td *ngIf="userCurrent.is_teacher">
 
       <div *ngIf="userCurrent.email === item.email; else falsyTemplate"></div>

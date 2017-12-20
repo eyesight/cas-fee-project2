@@ -8,7 +8,6 @@ import { DirectivesModule } from '../_directives/directives.module';
 import { ProfileComponent } from './profile.component';
 import { ProfileDetailsChildComponent } from './profile-details-child/profile-details-child.component';
 import { ProfileDetailsParentComponent } from './profile-details-parent/profile-details-parent.component';
-import { ProfileService } from './service/profile.service';
 import { ProfileAvatarComponent } from './profile-avatar/profile-avatar.component';
 import { ProfilePasswordChangeComponent } from './profile-password-change/profile-password-change.component';
 import { ProfileEmailChangeComponent } from './profile-email-change/profile-email-change.component';
@@ -50,7 +49,6 @@ import { AlertService } from '../_services/index';
     genderPipe
   ],
   providers: [
-    ProfileService,
     ImageCompressService,
     ResizeOptions,
     AlertService
