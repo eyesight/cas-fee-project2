@@ -18,7 +18,6 @@ import {AlertService, UserService} from '../../_services/index';
 export class ProfilePasswordChangeComponent implements OnInit {
   public userContent: User;
   public pwdForm: FormGroup;
-  public formModel: User;
   public userObject = new UserPwdChange;
 
   constructor(private fb: FormBuilder,

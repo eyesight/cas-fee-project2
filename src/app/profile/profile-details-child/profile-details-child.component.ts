@@ -6,7 +6,6 @@ import { UserContentService } from '../../_services/user-content.service';
 import { UserContentDbService } from '../../_services/user-content-db.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService, UserService } from '../../_services/index';
-import { ProfileService } from '../service/profile.service';
 import { DatepickerOptions } from 'ng2-datepicker';
 import * as deLocale from 'date-fns/locale/de';
 import * as moment from 'moment';
@@ -40,8 +39,7 @@ export class ProfileDetailsChildComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private alertService: AlertService,
-    private fb: FormBuilder,
-    private profileService: ProfileService
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -87,6 +85,7 @@ export class ProfileDetailsChildComponent implements OnInit {
     this.userObject.tel_office = this.userContent.tel_office;
     this.userObject.tel_private = this.userContent.tel_private;
     this.userObject.zip = this.userContent.zip;
+
     // update child - add message if succeeded or failed and go back to the profile-site
     this.userService.update(this.userObject)
       .subscribe(
@@ -96,7 +95,6 @@ export class ProfileDetailsChildComponent implements OnInit {
           this.userContentService.getUserContent()
             .subscribe( content => {
                 // update data in parent-commponent (profile.component) via service
-                this.profileService.updateData(content);
                 this.router.navigate(['/profile']);
               },
               error => {
