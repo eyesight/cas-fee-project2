@@ -1,8 +1,8 @@
 /**
  * Created by awedag on 14.10.17.
  */
-import { Component, OnInit } from '@angular/core';
-import { Klasse } from '../_models/klasse.model';
+import {Component, OnInit} from '@angular/core';
+import {Klasse} from '../_models/klasse.model';
 import {User} from "../_models/user.model";
 import {ClasslistService} from "./service/classlist.service";
 import {Router} from "@angular/router";
@@ -24,21 +24,21 @@ export class ClasslistComponent implements OnInit {
   public canDeactivate = true;
 
 
-  constructor( private classlistService: ClasslistService
+  constructor(private classlistService: ClasslistService
     , private router: Router
     , private userAuthService: UserAuthService
     , private userContentDbService: UserContentDbService
     , private alertService: AlertService
-  ,private userContentService: UserContentService,
+    , private userContentService: UserContentService,) {
+  }
 
-) { }
   ngOnInit() {
     this.userCurrent = this.userContentDbService.getCurrentUser();
 
-   // console.log('this.userCurrent und jetzt:' + this.userCurrent.user_avatar);
+    // console.log('this.userCurrent und jetzt:' + this.userCurrent.user_avatar);
 
-    if (!this.userCurrent){
-      this.alertService.error('Sie müssen sich neu anmelden',false, 1000);
+    if (!this.userCurrent) {
+      this.alertService.error('Sie müssen sich neu anmelden', false, 1000);
       setTimeout(() =>
         this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 1000);
       return;
@@ -46,8 +46,8 @@ export class ClasslistComponent implements OnInit {
 
     this.classlistService.getClasslist()
       .subscribe((result) => {
-        this.classlist = result;
-      },
+          this.classlist = result;
+        },
         (error) => {
           console.log('chat.component call authentication:' + error);
           this.alertService.error('Sie müssen sich periodisch neu anmelden', false, 1000);
@@ -55,22 +55,35 @@ export class ClasslistComponent implements OnInit {
             this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 1000);
         });
 
+    setTimeout(() => {
+      console.log('read avatars ');
+      this.classlistService.getClasslistAvatars()
+        .subscribe((result) => {
+            this.classlist = result;
+          },
+          (error) => {
+            console.log('getClasslistAvatars: chat.component call authentication:' + error);
+            this.alertService.error('Die Profilbilder können nicht geladen werden', false, 1000);
+          });
+
+    }, 5000);
 
   }
 
-  public approveAnswer(val: boolean){
+  public approveAnswer(val: boolean) {
     console.log('approveAnswer in maincomponent:' + val);
     this.canDeactivate = val;
   }
-/*
+
+  /*
    public onChecked(checked: boolean, item: User) {
-    console.log('onChecked in classlist');
-    item.is_approved = checked;
-*/
-   // this.classlistService.approveUser(checked)
-   //   .subscribe((x) => {console.log('approved')} );
+   console.log('onChecked in classlist');
+   item.is_approved = checked;
+   */
+  // this.classlistService.approveUser(checked)
+  //   .subscribe((x) => {console.log('approved')} );
   //  item.lastModified = new Date();
   //  this.snackBar.open('checked / unchecked item', null, { duration: 1500 });
- // }
+  // }
 
 }

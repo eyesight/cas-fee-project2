@@ -31,6 +31,19 @@ export class ClasslistService {
       .map((result) => {this.classlistCache = result; return result; });
   }
 
+  public getClasslistAvatars(): Observable<User[]>  {
+
+// instead of json use JSON.strinfiy
+    return this.httpWrp.get('/api/user/classlistavatars')
+      .map((result) => {
+
+        if ( !result && result != null && result.email != null && result.avatar != null) {
+          const item = this.classlistCache.findIndex(el => el.email === result.email);
+          this.classlistCache[item].user_avatar = result.avatar;
+        }
+    });
+  }
+
   public getUserDetail(id): User {
     console.log('getUserDetail:' + id);
 

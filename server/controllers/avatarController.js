@@ -102,9 +102,10 @@ module.exports.avatarGetAllFromKlasse = function (req, res) {
               console.log('read avatars from klasse');
               //   console.dir(data.toString());
               let result = data.map((x) => ({
-                avatar: new Buffer(x.data).toString('base64'), email: x.email, filename: x.filename
+                email: x.email, filename: x.filename, avatar: new Buffer(x.data).toString('base64')
               }));
            //   console.dir(result);
+              console.log(result[0].filename);
            //   callback(err, new Buffer(data).toString('base64'));
               res.json(result);
 
