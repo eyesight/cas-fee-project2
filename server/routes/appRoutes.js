@@ -21,6 +21,7 @@ router.get("/user/contents", userController.getAllUserContents);
 router.get("/chat/getall", chatController.getMessages);
 
 router.get("/user/classlist", userController.getUserKlasseList);
+router.get("/user/classlistavatar", avatarController.avatarGetAllFromKlasse);
 router.put("/user/approve", userController.approveUser);
 
 router.put("/user/passwordchange", security.handlePasswordChange);

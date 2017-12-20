@@ -73,8 +73,27 @@ module.exports.getUserKlasseList = function (req, res) {
     }
   })
 
-
 };
+//
+// module.exports.getUserKlasseListAvatarsOnly = function (req, res) {
+//   console.log('KlassenListe');
+//
+//   util.authorizesBackend(req.user.name, util.authorRoles.CLASSLIST,(authorization) =>  {
+//
+//     if (authorization) {
+//       dbUser.getUserKlasseList(req.user.name, function (err, order) {
+//         res.json(order);
+//         return;
+//       });
+//     } else {
+//       console.log('not authroer');
+//
+//       res.status(403).json(false);
+//
+//     }
+//   })
+//
+// };
 
 module.exports.approveUser = function (req, res) {
   console.log('Approve User');

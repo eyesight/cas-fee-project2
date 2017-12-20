@@ -356,6 +356,26 @@ function getAvatarFilenameByEmail(email,callback){
 }
 
 
+function getAvatarFilenamesByEmail(email,callback){
+  console.log('getUserIdByEmail:'+email);
+    return db.query("select u.avatar_filename, u.email,u.class_id from users u, klasses k,  "+
+      "(select class_id, is_teacher from users where email=?) pr1 " +
+      "where u.class_id = k.id  and k.id = pr1.class_id  and ( (  pr1.is_teacher = 1) OR (u.is_approved = 1 and pr1.is_teacher = 0))",
+      [email], function(err, newDoc) {
+
+
+      if (callback) {
+      if (newDoc.length <= 0 ) {
+        newDoc = null;
+      }
+
+      //console.dir(newDoc);
+      callback(err, newDoc);
+    }
+  });
+}
+
+
 function approveUser(username, req, callback){
 
   console.log('approveUser - teacher:+'+username);
@@ -456,6 +476,7 @@ module.exports = {
   getUserIdByEmail : getUserIdByEmail,
   getClassIdByEmail: getClassIdByEmail,
   getAvatarFilenameByEmail : getAvatarFilenameByEmail,
+  getAvatarFilenamesByEmail : getAvatarFilenamesByEmail,
   getAllUserDetails: getAllUserDetails,
   getUserKlasseList: getUserKlasseList,
   approveUser: approveUser,
