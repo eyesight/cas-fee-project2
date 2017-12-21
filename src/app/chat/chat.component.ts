@@ -84,7 +84,6 @@ export class ChatComponent implements OnInit, OnDestroy {
       });
 
     this.resendSub = this.onResend();
-
   }
 
   ngOnDestroy() {
@@ -133,9 +132,6 @@ export class ChatComponent implements OnInit, OnDestroy {
           }
         }
       });
-
-    //  setTimeout(() => this.onResend(), 5000);
-
   }
 
   public onSend(newMessage: MessageJson) {
