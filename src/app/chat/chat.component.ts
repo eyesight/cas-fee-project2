@@ -57,7 +57,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
     // read message from observable and subscribe to this chatstream to add them to the UI
     this.chatSub = this.chatService.readMessages()
-      .subscribe(res => this.addMessage(res));
+      .subscribe(res => {res.success = true; this.addMessage(res)});
 
     // authentication returns only if there is a problem to solve
     this.chatAuthSub = this.chatService.authentication()
