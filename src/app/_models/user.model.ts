@@ -55,6 +55,13 @@ export class Can {
   features: string[];
 }
 
+export class UserClassListAvatars {
+  id: number;
+  email: string;
+  filename: string;
+  avatar: string;
+
+}
 export class User {
   id: number;
   email: string;

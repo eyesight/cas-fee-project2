@@ -6,7 +6,12 @@
       <div class="row zz-overlay__text-wrapper">
         <div class="col-12 zz-overlay__image-box">
           <div class="zz-overlay__image-wrapper">
-            <img src="assets/img/dummyPortrait.png" alt="" class="zz-overlay__image">
+
+              <img class="zz-table__img" [src]="user?.user_avatar" *ngIf="user?.user_avatar; else falsyTemplate">
+              <ng-template #falsyTemplate>
+                <img src="assets/img/dummyPortrait.png" alt="" class="zz-overlay__image">
+              </ng-template>
+
           </div>
         </div>
         <div class="col-12 col-lg-6 zz-overlay__2-column">

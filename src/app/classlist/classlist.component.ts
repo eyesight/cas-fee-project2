@@ -59,7 +59,18 @@ export class ClasslistComponent implements OnInit {
       console.log('read avatars ');
       this.classlistService.getClasslistAvatars()
         .subscribe((result) => {
-            this.classlist = result;
+            console.log('result:' + result.length);
+            result.filter((x) => x !== null)
+              .map((x) => {
+                console.log('classlistavatars in subscribe: ' + x.email);
+                console.log('content avatars: length:' + x.avatar.length)
+                if (x.email != null && x.avatar != null) {
+                  const item = this.classlist.findIndex(el => el.email === x.email);
+                  console.log('classlist: item:' + item + ':email:' + this.classlist[item].email);
+                  this.classlist[item].user_avatar = 'data:image/png;base64,' + x.avatar;
+                }
+              });
+
           },
           (error) => {
             console.log('getClasslistAvatars: chat.component call authentication:' + error);
