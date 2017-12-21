@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AlertService, AuthenticationService } from '../_services/index';
-import {User} from "../_models/user.model";
 import {UserContentService} from '../_services/user-content.service';
 import { ErrorHandlerService } from '../_services/index';
 

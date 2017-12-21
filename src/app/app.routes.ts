@@ -5,6 +5,7 @@ import {AuthGuard} from './_guards/auth.guards';
 import {RegistrationAuthGuard} from './_guards/registrationAuth.guards';
 import {ForgotPasswordComponent} from './login/forgot-password/forgot-password.component';
 import {CanActivateProtectedPagesGuard} from './_guards/can-activate-protected-pages.guard';
+import {The404Component} from './the404/the404.component';
 
 
 
@@ -43,7 +44,7 @@ export const ROUTES: Routes = [
 
 
   // otherwise redirect to home
-  {path: '**', redirectTo: 'home'}
+  {path: '**', component: The404Component}
 
 ];
 

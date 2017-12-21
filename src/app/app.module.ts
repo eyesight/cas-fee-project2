@@ -38,6 +38,7 @@ import { UserContentDbService } from './_services/user-content-db.service';
 
 import { NgDatepickerModule } from 'ng2-datepicker';
 import { ImageCompressService } from 'ng2-image-compress';
+import { The404Component } from './the404/the404.component';
 
 
 
@@ -49,7 +50,8 @@ import { ImageCompressService } from 'ng2-image-compress';
     FooterComponent,
     HomeComponent,
     LoginComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    The404Component
   ],
   imports: [
     BrowserModule,
