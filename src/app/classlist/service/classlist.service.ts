@@ -6,7 +6,7 @@
  */
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
-import {User, UserApprove, UserAuth, UserPwd} from '../../_models/user.model';
+import {User, UserApprove, UserAuth, UserClassListAvatars, UserPwd} from '../../_models/user.model';
 // import { appConfig } from '../_helpers/app.config';
 
 import { Observable } from 'rxjs/Observable';
@@ -29,6 +29,26 @@ export class ClasslistService {
 // instead of json use JSON.strinfiy
     return this.httpWrp.get('/api/user/classlist')
       .map((result) => {this.classlistCache = result; return result; });
+  }
+
+  public getClasslistAvatars(): Observable<UserClassListAvatars[]>  {
+
+// instead of json use JSON.strinfiy
+    return this.httpWrp.get('/api/user/classlistavatar');
+    //   .map((result) => {
+    //       console.log('result:' + result.length);
+    //       result.map((x) => {
+    //         console.log('classlistavatars in subscribe: ' + x.email);
+    //         console.log('content avatars: length:' + x.avatar.length)
+    //         if (  x.email != null && x.avatar != null) {
+    //           const item = this.classlistCache.findIndex(el => el.email === x.email);
+    //           console.log('classlist: item:' + item + ':email:' + this.classlistCache[item].email);
+    //           this.classlistCache[item].user_avatar = x.avatar;
+    //         }
+    //       });
+    //       return this.classlistCache;
+    //
+    // });
   }
 
   public getUserDetail(id): User {

@@ -72,7 +72,7 @@
     border: solid 1px $color-primary-20;
     padding: 10px;
     min-height: 50px;
-    max-height: 100px;
+    // max-height: 100px;
     width: 100%;
     border-radius: 5px;
   }
@@ -81,7 +81,11 @@
     float: left;
   }
   &__message-text {
-    word-break: break-all;
+    // word-break: break-all;
+    white-space:pre-wrap;
+    word-wrap:break-word;
+    overflow:hidden;
+    height: auto;
   }
 
   &__online{

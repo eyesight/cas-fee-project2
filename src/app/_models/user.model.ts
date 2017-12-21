@@ -55,6 +55,13 @@ export class Can {
   features: string[];
 }
 
+export class UserClassListAvatars {
+  id: number;
+  email: string;
+  filename: string;
+  avatar: string;
+
+}
 export class User {
   id: number;
   email: string;
@@ -90,7 +97,8 @@ export class User {
   user_avatar: string;
   register_date: Date;
 
-  getAvatar() {
+  get avatar() {
+    console.log('what is this?:' + this + 'and this.user_avatar.length?:' + this.user_avatar.length);
       return 'data:image/png;base64,' + this.user_avatar;
   }
 }

@@ -1,9 +1,11 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {AlertService, UserService, UserContentDbService} from '../../_services/index';
 import {Avatar, UserAvatar} from '../../_models/user.model';
 
 import {ImageCompressService, IImage} from 'ng2-image-compress';
+import {Router} from "@angular/router";
+import {UserContentService} from '../../_services/user-content.service';
 
 
 @Component({
@@ -11,23 +13,34 @@ import {ImageCompressService, IImage} from 'ng2-image-compress';
   templateUrl: './profile-avatar.component.html'
 })
 export class ProfileAvatarComponent {
-  form: FormGroup;
-  loading: boolean = false;
-  size: number;
-  previewUrl: string;
-  avatarUrl: string;
-  provFile: boolean = false;
-  nomalAvatar = new UserAvatar;
-  av = new Avatar;
-  processedImage: any;
-  images: Array<IImage> = [];
+  private _previewUrl: string;
+
+  @Input() set previewUrl(purl: string) {
+    this._previewUrl = purl;
+    console.log('this._reviewurl: ' + purl);
+  }
+
+  get previewUrl() {
+    return 'data:image/png;base64,' + this._previewUrl;
+  }
+
+  public form: FormGroup;
+  public loading: boolean = false;
+
+  public provFile = false;
+  public provFileHideSubmitButton = true;
+  private userAvatar = new UserAvatar;
+  private av = new Avatar;
+  private processedImage: any;
+  private images: Array<IImage> = [];
 
 
   @ViewChild('fileInput') fileInput: ElementRef;
 
   constructor(private fb: FormBuilder,
               private userService: UserService,
-              private userContentDbService: UserContentDbService,
+              private userContentService: UserContentService,
+              private router: Router,
               private alertService: AlertService) {
     this.createForm();
     // this.imcomOptions
@@ -39,23 +52,25 @@ export class ProfileAvatarComponent {
     });
   }
 
-  get avatar() {
-    return this.form.get('avatar');
-  }
+  // get avatar() {
+  //   return this.form.get('avatar');
+  // }
 
 
   onSubmit() {
     //this.avatarObject.avatar = this.avatarUrl;
-    console.log('this.nomalAvatar.avatar');
-    // console.dir(this.nomalAvatar);
+    console.log('this.userAvatar.avatar');
+    // console.dir(this.userAvatar);
 //    this.userService.updateAvatar(this.avatarObject);
 
-    this.userService.updateAvatar(this.nomalAvatar)
+    this.userService.updateAvatar(this.userAvatar)
       .subscribe(
         data => {
-          console.log('ok:' + data);
-          this.alertService.success('Das Bild wurde erfolgreich gespeichert', false, 500);
-          this.userContentDbService.getCurrentUserObserver()
+          this.provFileHideSubmitButton = true;
+
+          console.log('ok:' + data + ':provFileHideButton:' + this.provFileHideSubmitButton);
+          this.alertService.success('Das Bild wurde erfolgreich gespeichert');
+          this.userContentService.getUserContent()
             .subscribe(content => {
               },
               error => {
@@ -69,8 +84,18 @@ export class ProfileAvatarComponent {
           // }, 500);
         },
         error => {
-          this.alertService.error('Beim Laden des Bildes ist ein Fehler aufgetreten. Bitte versuchen Sie es nochmals', false, 500);
           this.provFile = false;
+
+          console.log('profilbild error:' + error);
+          if (error.match(/401/g)) {
+            this.alertService.error('Sie müssen sich neu anmelden', false, 1000);
+            setTimeout(() =>
+              this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 3500);
+          } else {
+            this.alertService.error('Beim Laden des Bildes ist ein Fehler aufgetreten. Bitte versuchen Sie es nochmals', false, 500);
+
+          }
+
         });
 
     setTimeout(() => {
@@ -87,17 +112,23 @@ export class ProfileAvatarComponent {
       const reader = new FileReader();
       const files = event.target.files[0];
       const fileList = FileList;
-      reader.readAsDataURL(files);
+      // reader.readAsDataURL(files);
 
       console.log(event.target.files[0]);
 
-      if (files.size > 1500000) {
-        this.alertService.error('Das Bild ist zu gross. Es darf nicht grösser als 1.5 MB sein.', false, 500);
+
+      if (files.size > 300000) {
+        this.alertService.error('Das Bild ist zu gross. Es darf nicht grösser als 300 KB sein.', false, 500);
         this.provFile = false;
+        this.provFileHideSubmitButton = true;
       } else if (files.type !== ('image/jpeg') && files.type !== ('image/png')) {
         this.alertService.error('Tut uns leid. Dieses Dateiformat wird zurzeit nicht unterstützt.', false, 500);
         this.provFile = false;
+        this.provFileHideSubmitButton = true;
+
       } else {
+        this.provFileHideSubmitButton = false;
+
         // reset
         this.images = [];
         ImageCompressService.filesToCompressedImageSource(event.target.files).then(observableImages => {
@@ -119,20 +150,24 @@ export class ProfileAvatarComponent {
             this.av.filename = files.name;
             this.av.filetype = files.type;
             this.av.filesize = files.size;
+            this.userAvatar.avatar = this.av;
 
-            this.nomalAvatar.avatar = this.av;
-            console.dir(this.av);
+            //  this.previewUrl = this.images[0].compressedImage.imageDataUrl;
+            this.provFile = true;
+            this.previewUrl = this.images[0].compressedImage.imageDataUrl.split(',')[1];
+
+            //     console.dir(this.av);
           });
         });
 
-        reader.onload = (evt: any) => {
-          this.previewUrl = evt.target.result;
-          this.provFile = true;
-          this.avatarUrl = this.previewUrl.split(',')[1];
-
-          console.log('in reader.onload 110:' + this.avatarUrl.length);
-          console.log('in reader.onload 1');
-        };
+        // reader.onload = (evt: any) => {
+        //   this.previewUrl = evt.target.result;
+        //   this.provFile = true;
+        //   this.avatarUrl = this.previewUrl.split(',')[1];
+        //
+        //   console.log('in reader.onload 110:' + this.avatarUrl.length);
+        //   console.log('in reader.onload 1');
+        // };
       }
     }
   }

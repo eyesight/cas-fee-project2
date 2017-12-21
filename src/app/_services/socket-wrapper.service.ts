@@ -1,8 +1,8 @@
 /**
  * Created by awedag on 21.11.17.
  */
-import { Injectable } from '@angular/core';
-import { AppConfigClass } from '../_helpers/app.config';
+import {Injectable} from '@angular/core';
+import {AppConfigClass} from '../_helpers/app.config';
 import {UserAuthService} from './user-auth.service';
 
 import * as io from 'socket.io-client';
@@ -26,24 +26,27 @@ export class SocketWrapper {
   private socketConnectionState = new BehaviorSubject<boolean>(false);
   private socketConnListener: Subscription;
 
-  constructor( private appConf: AppConfigClass, private userAuthService: UserAuthService) {
+  constructor(private appConf: AppConfigClass, private userAuthService: UserAuthService) {
   }
 
-  public setup(chnReceive: string = channelReceiveMessage, chnSend: string = channelSendMessage ) {
+  public setup(chnReceive: string = channelReceiveMessage, chnSend: string = channelSendMessage) {
     this.channelReceive = chnReceive;
     this.channelSend = chnSend;
-    this.socket = io(this.appConf.getConfig().apiUrl, { upgrade: true, query: 'token=' + this.userAuthService.getCurrentUserJwt()});
-   this.socketConnListener = this.onConnection()
-     .subscribe(state => {
-     //  console.log('connection:'  + state);
-      if (this.connectionState !== state && state) {
-        // reset buffer on once we connection back
-       // console.dir(this.socket);
-        // this helps obviously that on emit the call always returns, after connection gets established again
-        this.socket.sendBuffer = [];
-      }
-      this.connectionState = state;
-     });
+    this.socket = io(this.appConf.getConfig().apiUrl, {
+      upgrade: true,
+      query: 'token=' + this.userAuthService.getCurrentUserJwt()
+    });
+    this.socketConnListener = this.onConnection()
+      .subscribe(state => {
+        //  console.log('connection:'  + state);
+        if (this.connectionState !== state && state) {
+          // reset buffer on once we connection back
+          // console.dir(this.socket);
+          // this helps obviously that on emit the call always returns, after connection gets established again
+          this.socket.sendBuffer = [];
+        }
+        this.connectionState = state;
+      });
   }
 
   public onConnection(): Observable<boolean> {
@@ -58,10 +61,7 @@ export class SocketWrapper {
 
   }
 
-  private clear(){
 
-
-  }
   public onError(callback) {
     if (this.socket) {
       return this.socket.on(socketError, callback);
@@ -69,12 +69,14 @@ export class SocketWrapper {
       return null;
     }
   }
+
   public listen(callback) {
     if (!this.channelReceive) {
       return;
     }
     return this.socket.on(this.channelReceive, callback);
   }
+
   public send(msg, callback) {
     if (!this.channelSend) {
       return;
@@ -82,10 +84,9 @@ export class SocketWrapper {
 
     if (this.connectionState) {
       return this.socket.emit(this.channelSend, msg, callback);
-    }
-    else {
+    } else {
       throw new Error('no connection : message isnt send - socket.io has a problem that is sometimes ' +
-        ' looses messages once getting online again -> so thats why we dont even try to send');
+        ' looses messages once getting online again -> so thats why we dont even retry to send - cant take this responsibility');
     }
 
 
@@ -102,7 +103,7 @@ export class SocketWrapper {
           if (resp !== 200) {
             console.log('on socket.emit error:' + resp);
             reject('error');
-          }else {
+          } else {
             resolve(name);
           }
         });

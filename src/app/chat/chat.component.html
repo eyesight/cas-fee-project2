@@ -8,7 +8,7 @@
     <div class="col-12 col-lg-12 col-xl-10 zz-mod-container zz-chat">
       <div class="zz-chat__box" appScrollBottom #ScrollTo="scrollBottom">
 
-        <div class=""  *ngFor="let item of messageItem">
+        <div class="" style="margin-bottom:4em;"  *ngFor="let item of messageItem">
 
           <app-chat-date [messageItem]="item"></app-chat-date>
           <app-chat-message [message]="msg" *ngFor="let msg of item.messages"></app-chat-message>

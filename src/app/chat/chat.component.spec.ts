@@ -28,7 +28,7 @@ import {UserContentDbService} from "../_services/user-content-db.service";
 import {UserContentDbServiceMock} from "../_services/user-content-db.service.mock";
 import {StorageService} from "../_services/storage.service";
 import {AlertService} from "../_services/alert.service";
-import {ProfileService} from "../profile/service/profile.service";
+
 
 fdescribe('ChatComponent', () => {
   let component: ChatComponent;
@@ -36,16 +36,18 @@ fdescribe('ChatComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChatComponent, ProperTimePipe, FromNowPipe, ChatDateComponent, ChatMessageComponent, ChatAddmessageComponent, PersonalDetailsContainerComponent, AppScrollBottomDirective ],
-      providers: [AuthenticationService, MockBackend, BaseRequestOptions, ChatService, SocketWrapper, AppConfigClass, StorageService, AlertService, ProfileService,
+      declarations: [ChatComponent, ProperTimePipe, FromNowPipe, ChatDateComponent, ChatMessageComponent, ChatAddmessageComponent, PersonalDetailsContainerComponent, AppScrollBottomDirective],
+      providers: [AuthenticationService, MockBackend, BaseRequestOptions, ChatService, SocketWrapper, AppConfigClass, StorageService, AlertService,
         {provide: HttpWrapper, useClass: HttpWrapperServiceMock},
         {provide: UserAuthService, useClass: UserAuthServiceMock},
         {provide: UserContentDbService, useClass: UserContentDbServiceMock},
         {provide: ConnectionBackend, useClass: MockBackend},
-        {provide: Http, useFactory: (mockBackend: ConnectionBackend, defaultOptions: BaseRequestOptions) => {
+        {
+          provide: Http, useFactory: (mockBackend: ConnectionBackend, defaultOptions: BaseRequestOptions) => {
           return new Http(mockBackend, defaultOptions);
-        }, deps: [MockBackend, BaseRequestOptions]}
-        ],
+        }, deps: [MockBackend, BaseRequestOptions]
+        }
+      ],
       imports: [RouterTestingModule.withRoutes([])]
 
     })
@@ -56,13 +58,13 @@ fdescribe('ChatComponent', () => {
   let chatService = ChatService;
   let connectionBackend = MockBackend;
 //  let chatComponent  = ChatComponent;
-  beforeEach(inject([ MockBackend, ChatService, ConnectionBackend], (_MB, _CS, _CB) => {
-    mockBackend = _MB;
-    chatService = _CS;
-    connectionBackend = _CB;
-  //  chatComponent = _CC;
-   //   this.backend = this.injector.get(ConnectionBackend) as MockBackend;
-   //   connectionBackend = this.injector.get(ConnectionBackend) as MockBackend;
+  beforeEach(inject([MockBackend, ChatService, ConnectionBackend], (_MB, _CS, _CB) => {
+      mockBackend = _MB;
+      chatService = _CS;
+      connectionBackend = _CB;
+      //  chatComponent = _CC;
+      //   this.backend = this.injector.get(ConnectionBackend) as MockBackend;
+      //   connectionBackend = this.injector.get(ConnectionBackend) as MockBackend;
 
     })
   );
@@ -76,14 +78,14 @@ fdescribe('ChatComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should response ', (() => {
-    let msgs = [{email:'es@com.ex', message: 'bla', sent_at: '2017-10-05T08:15:30-00:00'}];
+    const msgs = [{email: 'es@com.ex', message: 'bla', sent_at: '2017-10-05T08:15:30-00:00'}];
 
 //    const backend = this.injector.get(ConnectionBackend) as MockBackend;
 
-   /* connectionBackend.connections.subscribe(connection => {
-    const response = new ResponseOptions({body: JSON.stringify(msgs)});
-    connection.mockRespond(new Response(response));
-    });*/
+    /* connectionBackend.connections.subscribe(connection => {
+     const response = new ResponseOptions({body: JSON.stringify(msgs)});
+     connection.mockRespond(new Response(response));
+     });*/
     fixture = TestBed.createComponent(ChatComponent);
     component = fixture.componentInstance;
 
