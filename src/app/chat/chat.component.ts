@@ -40,6 +40,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.chatService.setup();
     this.userContent = this.userContentDbService.getCurrentUser();
     console.log('ngOnInit: userContent.email:' + this.userContent.email);
     // subscribe to receive the message using normale JSON adapter
