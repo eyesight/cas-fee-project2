@@ -13,20 +13,26 @@ import {UserContentService} from '../../_services/user-content.service';
   templateUrl: './profile-avatar.component.html'
 })
 export class ProfileAvatarComponent {
-  form: FormGroup;
-  loading: boolean = false;
-  size: number;
+  private _previewUrl: string;
 
-  @Input()
-  previewUrl: string;
+  @Input() set previewUrl(purl: string) {
+    this._previewUrl = purl;
+    console.log('this._reviewurl: ' + purl);
+  }
 
-  avatarUrl: string;
-  provFile = false;
+  get previewUrl() {
+    return 'data:image/png;base64,' + this._previewUrl;
+  }
+
+  public form: FormGroup;
+  public loading: boolean = false;
+
+  public provFile = false;
   public provFileHideSubmitButton = true;
-  userAvatar = new UserAvatar;
-  av = new Avatar;
-  processedImage: any;
-  images: Array<IImage> = [];
+  private userAvatar = new UserAvatar;
+  private av = new Avatar;
+  private processedImage: any;
+  private images: Array<IImage> = [];
 
 
   @ViewChild('fileInput') fileInput: ElementRef;
@@ -144,13 +150,12 @@ export class ProfileAvatarComponent {
             this.av.filename = files.name;
             this.av.filetype = files.type;
             this.av.filesize = files.size;
-
-            this.previewUrl = this.images[0].compressedImage.imageDataUrl;
-            this.provFile = true;
-            this.avatarUrl = this.images[0].compressedImage.imageDataUrl.split(',')[1];
-
-
             this.userAvatar.avatar = this.av;
+
+            //  this.previewUrl = this.images[0].compressedImage.imageDataUrl;
+            this.provFile = true;
+            this.previewUrl = this.images[0].compressedImage.imageDataUrl.split(',')[1];
+
             //     console.dir(this.av);
           });
         });

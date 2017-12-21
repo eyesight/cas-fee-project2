@@ -97,7 +97,8 @@ export class User {
   user_avatar: string;
   register_date: Date;
 
-  get avatarP() {
+  get avatar() {
+    console.log('what is this?:' + this + 'and this.user_avatar.length?:' + this.user_avatar.length);
       return 'data:image/png;base64,' + this.user_avatar;
   }
 }
