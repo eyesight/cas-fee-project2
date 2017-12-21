@@ -38,24 +38,15 @@ export class AppScrollBottomDirective implements AfterContentInit, OnChanges {
   }
   private scrollToBottom(): void {
     // using setTimeout allows to wait long enough to adjust scrolling
+    // to allow async work
     setTimeout(() => {
-     /* try {
-        this.element.nativeElement.scrollTop = this.element.nativeElement.scrollHeight;
-      } catch (err) {
-        console.log('scrollToBottom Error:' + err);
-      } */
+
      this.smoothScrolling(true);
     }, 200);
   }
   private smoothScrolling(doSmooth: boolean): void {
 
-   /* try {
-      this.element.nativeElement.scrollTop = this.element.nativeElement.scrollHeight;
-    } catch (err) {
-      console.log('scrollToBottom Error:' + err);
-    }*/
-
-    if (doSmooth){
+    if (doSmooth) {
 
       // haven't found a way not to use nativeElement
           if (   this.element.nativeElement.scrollTop !== this.element.nativeElement.scrollHeight) {

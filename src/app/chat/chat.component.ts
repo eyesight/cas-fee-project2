@@ -110,14 +110,13 @@ export class ChatComponent implements OnInit, OnDestroy {
         this.message = result;
         this.message.map(x => x.success = true);
 
-        // prevent any empty message to be worked on
+        // prevent any empty message to be working on
         if (this.message === null || this.message.length === 0) {
           return;
         }
 
         this.messageItem = this.createMessageDateBlock();
       });
-    // .unsubscribe();
   }
 
   private onResend(): Subscription {
