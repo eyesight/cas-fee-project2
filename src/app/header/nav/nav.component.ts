@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Route, Router} from '@angular/router';
+import {Route} from '@angular/router';
 import {ROUTES} from '../../app.routes';
-import {UserContentDbService} from "../../_services/user-content-db.service";
-import {User} from "../../_models/user.model";
+import {UserContentDbService} from '../../_services/user-content-db.service';
+import {User} from '../../_models/user.model';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html'
@@ -14,7 +14,6 @@ export class NavComponent implements OnInit {
 
   constructor(private userContentDbService: UserContentDbService) {
     this.navItems = ROUTES.filter((route) => route.data);
-    // console.dir(this.navItems);
   }
 
   ngOnInit() {
@@ -30,15 +29,3 @@ export class NavComponent implements OnInit {
     });
   }
 }
-
-
-/*
-*  this.userContentDbService.getCurrentUserObserver().then((userContent) => {
- console.log('nav.component ngOnInit inside promise.then');
- this.userContent = userContent;
- this.userAvatar = 'data:image/png;base64,' + this.userContent.user_avatar;
-
- })
- .catch((err) => {
- console.log('Promise reject on nav.component.getCurrentUserPromise:' + err );
- });*/
