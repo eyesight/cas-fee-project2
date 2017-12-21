@@ -18,6 +18,11 @@ export class ProfileComponent implements OnInit {
     // get new data when child-components update data
     this.UserContentDbService.getCurrentUserObserver().subscribe((data) => {
       this.userContent = data;
+      console.log('usercontent.avatar:' + this.userContent.avatarP);
     });
+  }
+
+  public getAvatar(){
+    return  'data:image/png;base64,' + this.userContent.user_avatar;
   }
 }

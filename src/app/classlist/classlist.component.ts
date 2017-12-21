@@ -64,14 +64,14 @@ export class ClasslistComponent implements OnInit {
               },
               (error) => {
                 console.log('getClasslistAvatars: error:' + error);
-                this.alertService.error('Die Profilbilder können nicht geladen werden', false, 1000);
+                this.alertService.error('Die Profilbilder können nicht geladen werden');
               });
         },
         (error) => {
-          console.log('chat.component call authentication:' + error);
-          this.alertService.error('Sie müssen sich periodisch neu anmelden', false, 1000);
+          console.log('classlist.component call authentication:' + error);
+          this.alertService.error('Sie müssen sich neu anmelden');
           setTimeout(() =>
-            this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 1000);
+            this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 3500);
         });
   }
 
