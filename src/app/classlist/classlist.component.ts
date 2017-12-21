@@ -3,7 +3,7 @@
  */
 import {Component, OnInit} from '@angular/core';
 import {Klasse} from '../_models/klasse.model';
-import {User} from "../_models/user.model";
+import {User, UserClassListAvatars} from "../_models/user.model";
 import {ClasslistService} from "./service/classlist.service";
 import {Router} from "@angular/router";
 import {AlertService} from "../_services/alert.service";
@@ -47,6 +47,25 @@ export class ClasslistComponent implements OnInit {
     this.classlistService.getClasslist()
       .subscribe((result) => {
           this.classlist = result;
+
+          this.classlistService.getClasslistAvatars()
+            .subscribe((resultAvatars) => {
+                console.log('result:' + resultAvatars.length);
+                resultAvatars.filter((x ) => x !== null)
+                  .map((x) => {
+                    console.log('classlistavatars in subscribe: ' + x.email);
+                    console.log('content avatars: length:' + x.avatar.length)
+                    if (x.email != null && x.avatar != null) {
+                      const item = this.classlist.findIndex(el => el.email === x.email);
+                      console.log('classlist: item:' + item + ':email:' + this.classlist[item].email);
+                      this.classlist[item].user_avatar = 'data:image/png;base64,' + x.avatar;
+                    }
+                  });
+              },
+              (error) => {
+                console.log('getClasslistAvatars: error:' + error);
+                this.alertService.error('Die Profilbilder können nicht geladen werden', false, 1000);
+              });
         },
         (error) => {
           console.log('chat.component call authentication:' + error);
@@ -54,31 +73,6 @@ export class ClasslistComponent implements OnInit {
           setTimeout(() =>
             this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 1000);
         });
-
-    setTimeout(() => {
-      console.log('read avatars ');
-      this.classlistService.getClasslistAvatars()
-        .subscribe((result) => {
-            console.log('result:' + result.length);
-            result.filter((x) => x !== null)
-              .map((x) => {
-                console.log('classlistavatars in subscribe: ' + x.email);
-                console.log('content avatars: length:' + x.avatar.length)
-                if (x.email != null && x.avatar != null) {
-                  const item = this.classlist.findIndex(el => el.email === x.email);
-                  console.log('classlist: item:' + item + ':email:' + this.classlist[item].email);
-                  this.classlist[item].user_avatar = 'data:image/png;base64,' + x.avatar;
-                }
-              });
-
-          },
-          (error) => {
-            console.log('getClasslistAvatars: chat.component call authentication:' + error);
-            this.alertService.error('Die Profilbilder können nicht geladen werden', false, 1000);
-          });
-
-    }, 5000);
-
   }
 
   public approveAnswer(val: boolean) {
