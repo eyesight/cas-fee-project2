@@ -2,25 +2,16 @@
  * Created by awedag on 12.10.17.
  */
 
-import {Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
-import { Router } from '@angular/router';
-import { ChatService } from '../_services/chat.service';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Router} from '@angular/router';
+import {ChatService} from '../_services/chat.service';
 import {MessageCallback, MessageDateBlock, MessageJson} from '../_models/message.model';
 import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
-import {AuthenticationService} from '../_services/authentication.service';
-import {UserAuthService} from "../_services/user-auth.service";
-import {AlertService} from "../_services/alert.service"; import { MatSnackBar } from "@angular/material";
-import {UserContentDbService} from "../_services/user-content-db.service";
-import {User} from "../_models/user.model";
-
-//import { MdSnackBar } from '@angular/material';
-
-// MAtSnackBar isnt working properly - unstyled duplicate element
-// import { MatSnackBar } from '@angular/material';
-
-//import {MatSnackBarModule} from '@angular/material/snack-bar'
-
+import {UserAuthService} from '../_services/user-auth.service';
+import {AlertService} from '../_services/alert.service';
+import {UserContentDbService} from '../_services/user-content-db.service';
+import {User} from '../_models/user.model';
 
 @Component({
   selector: 'app-chat',
@@ -40,12 +31,11 @@ export class ChatComponent implements OnInit, OnDestroy {
   private resendSub: Subscription;
   private client_uuid = 0;
 
-  constructor( private chatService: ChatService
+  constructor(private chatService: ChatService
     , private router: Router
     , private userAuthService: UserAuthService
     , private userContentDbService: UserContentDbService
-    , private alertService: AlertService
-  ) {
+    , private alertService: AlertService) {
     console.log('chatComponent constructor');
   }
 
@@ -53,35 +43,38 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.userContent = this.userContentDbService.getCurrentUser();
     console.log('ngOnInit: userContent.email:' + this.userContent.email);
     // subscribe to receive the message using normale JSON adapter
-   this.onLoad();
+    this.onLoad();
 
     // read message from observable and subscribe to this chatstream to add them to the UI
     this.chatSub = this.chatService.readMessages()
-      .subscribe(res => {res.success = true; this.addMessage(res)});
+      .subscribe(res => {
+        res.success = true;
+        this.addMessage(res);
+      });
 
     // authentication returns only if there is a problem to solve
     this.chatAuthSub = this.chatService.authentication()
       .subscribe(res => {
-      console.log('chat.component call authentication:'  + res);
-      this.alertService.error('Bitte melden Sie sich neu an',false, 1500);
+        console.log('chat.component call authentication:' + res);
+        this.alertService.error('Bitte melden Sie sich neu an');
         setTimeout(() =>
-         this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 1500);
-    });
+          this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 3500);
+      });
 
     this.chatErrorSub = this.chatService.readErrors()
       .subscribe(error => {
-        console.log('chat.component call authentication:'  + error);
+        console.log('chat.component call authentication:' + error);
         this.alertService.error('Fehler ' + error, false, 1000);
       });
 
     this.chatConnectionStateSub = this.chatService.connectionState()
-    .subscribe(state => {
-        console.log('connection:'  + state);
+      .subscribe(state => {
+        console.log('connection:' + state);
         this.connectionState = state;
         if (state) {
-          this.alertService.success('Verbindung wieder hergestellt', false, 1500);
+          this.alertService.success('Verbindung wieder hergestellt');
         } else {
-          this.alertService.success('Verbindung unterbrochen', false, 1500);
+          this.alertService.success('Verbindung unterbrochen');
         }
 
         if (!this.message) {
@@ -94,18 +87,21 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-   this.chatAuthSub.unsubscribe();
-   this.chatErrorSub.unsubscribe();
-   this.chatConnectionStateSub.unsubscribe();
-   this.chatSub.unsubscribe();
-   this.resendSub.unsubscribe();
+    console.log('Chat: ng destroy');
+    this.socketSub.unsubscribe();
+    this.chatAuthSub.unsubscribe();
+    this.chatErrorSub.unsubscribe();
+    this.chatConnectionStateSub.unsubscribe();
+    this.chatSub.unsubscribe();
+    this.resendSub.unsubscribe();
 
   }
+
   private onLoad() {
     if (this.socketSub) {
       this.socketSub.unsubscribe();
     }
-   this.socketSub = this.chatService.load()
+    this.socketSub = this.chatService.load()
       .subscribe((result) => {
         if (!result) {
           return;
@@ -114,34 +110,36 @@ export class ChatComponent implements OnInit, OnDestroy {
         this.message.map(x => x.success = true);
 
         // prevent any empty message to be worked on
-        if ( this.message === null || this.message.length === 0 ){
+        if (this.message === null || this.message.length === 0) {
           return;
         }
 
         this.messageItem = this.createMessageDateBlock();
       });
-     // .unsubscribe();
+    // .unsubscribe();
   }
-  private onResend(): Subscription  {
 
-    return  Observable.interval(5000)
+  private onResend(): Subscription {
+
+    return Observable.interval(5000)
       .subscribe(() => {
-      if (this.message) {
-        console.log('resending.... ');
+        if (this.message) {
+          console.log('resending.... ');
 
-        const msgResend: MessageJson[] = this.message.filter(x => !x.success);
-      if (msgResend.length && this.connectionState) {
-        console.log('resending amount of:' + msgResend.length );
-        msgResend.forEach(x => this.sendMessageOverSocket(x));
-      }
-    }
-    });
+          const msgResend: MessageJson[] = this.message.filter(x => !x.success);
+          if (msgResend.length && this.connectionState) {
+            console.log('resending amount of:' + msgResend.length);
+            msgResend.forEach(x => this.sendMessageOverSocket(x));
+          }
+        }
+      });
 
     //  setTimeout(() => this.onResend(), 5000);
 
   }
+
   public onSend(newMessage: MessageJson) {
-    newMessage.email =  this.userAuthService.getCurrentUsername();
+    newMessage.email = this.userAuthService.getCurrentUsername();
     newMessage.sent_at = (new Date()).toJSON();
     newMessage.saved_at = null;
     newMessage.success = false;
@@ -153,7 +151,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   }
 
-  private sendMessageOverSocket(newMessage){
+  private sendMessageOverSocket(newMessage) {
     this.chatService.sendMessage(newMessage)
       .then((msg: MessageCallback) => {
         newMessage.saved_at = msg.server_saved_at;
@@ -166,12 +164,14 @@ export class ChatComponent implements OnInit, OnDestroy {
       .catch((err) => {
         //   this.alertService.error('Fehler beim Senden',false, 1000);
 
-        console.log('Promise reject on chatServie.sendMessage'); } );
+        console.log('Promise reject on chatServie.sendMessage');
+      });
 
   }
-  private addMessage(messageJson: MessageJson){
 
-   // console.log('addMessage: ' + messageJson.sent_at);
+  private addMessage(messageJson: MessageJson) {
+
+    // console.log('addMessage: ' + messageJson.sent_at);
     if (this.message) {
       this.message = [...this.message, messageJson];
     } else {
@@ -180,30 +180,34 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.messageItem = this.createMessageDateBlock();
 
   }
-  private updateMessage(msg: MessageJson, clientId){
+
+  private updateMessage(msg: MessageJson, clientId) {
     if (this.message) {
-      const ix = this.message.findIndex( (x) => x.client_uuid === clientId);
+      const ix = this.message.findIndex((x) => x.client_uuid === clientId);
       if (ix) {
         this.message[ix] = msg;
       }
     }
   }
+
   private createMessageDateBlock(): MessageDateBlock[] {
     return this.message.sort((a, b) => new Date(a.sent_at).valueOf() - new Date(b.sent_at).valueOf())
-      .reduce( this.reduceToGroup,  [new MessageDateBlock(new Date)] )  // pass in a new MessageDateBlock with a new date -> today
-      .sort(( a, b ) => new Date(a.dateGroup).valueOf() - new Date(b.dateGroup).valueOf());
+      .reduce(this.reduceToGroup, [new MessageDateBlock(new Date)])  // pass in a new MessageDateBlock with a new date -> today
+      .sort((a, b) => new Date(a.dateGroup).valueOf() - new Date(b.dateGroup).valueOf());
   }
+
   private reduceToGroup(mia, x): MessageDateBlock[] {
     const mi = mia.find(t => t.dateGroup.toDateString() === new Date(x.sent_at).toDateString());
     if (!mi) {
       const miNew = new MessageDateBlock(new Date(x.sent_at));
-      miNew.messages =  [x];
+      miNew.messages = [x];
       mia = [...mia, miNew];
-    }else {
+    } else {
       mi.messages = [...mi.messages || [], x];
     }
     return mia;
   }
+
   private getuuid() {
     this.client_uuid = this.client_uuid + 1;
     return this.client_uuid;
