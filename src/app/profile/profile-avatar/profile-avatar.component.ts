@@ -18,7 +18,7 @@ export class ProfileAvatarComponent {
   avatarUrl: string;
   provFile: boolean = false;
   public provFileHideSubmitButton = true;
-  nomalAvatar = new UserAvatar;
+  userAvatar = new UserAvatar;
   av = new Avatar;
   processedImage: any;
   images: Array<IImage> = [];
@@ -47,11 +47,11 @@ export class ProfileAvatarComponent {
 
   onSubmit() {
     //this.avatarObject.avatar = this.avatarUrl;
-    console.log('this.nomalAvatar.avatar');
-    // console.dir(this.nomalAvatar);
+    console.log('this.userAvatar.avatar');
+    // console.dir(this.userAvatar);
 //    this.userService.updateAvatar(this.avatarObject);
 
-    this.userService.updateAvatar(this.nomalAvatar)
+    this.userService.updateAvatar(this.userAvatar)
       .subscribe(
         data => {
           this.provFileHideSubmitButton = true;
@@ -129,7 +129,7 @@ export class ProfileAvatarComponent {
             this.av.filetype = files.type;
             this.av.filesize = files.size;
 
-            this.nomalAvatar.avatar = this.av;
+            this.userAvatar.avatar = this.av;
             console.dir(this.av);
           });
         });
