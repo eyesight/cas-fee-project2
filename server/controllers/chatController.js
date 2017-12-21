@@ -35,10 +35,7 @@ module.exports.chat = function (io) {
 
       if (authorization) {
 
-
-    dbUser.getClassIdByEmail(email, function (err, classId) {
-
-
+        dbUser.getClassIdByEmail(email, function (err, classId) {
 
           if (err) {
             console.log('thats not good: getClassIdByEmail Failed:' + err);
@@ -58,9 +55,7 @@ module.exports.chat = function (io) {
           socket.on('chatMessageToSocketServer', function (msg, callback) {
             console.log('message received from (could be faked):' + msg.email + 'email from token (couldnt be faked):' + socket.decoded_token.name + ':classRoom:' + classId);
 
-            if (!msg.saved_at){
-              msg.saved_at = (new Date()).toJSON();
-            } else if (chatModel.saved_at === dateZero){
+            if (!msg.saved_at) {
               msg.saved_at = (new Date()).toJSON();
             }
             // this is the callback
@@ -72,34 +67,23 @@ module.exports.chat = function (io) {
                 callback(200, {'server_saved_at': doc.saved_at});
               }
             });
-            //callback("Message recieved!", socket.decoded_token.name);
-            //socket.handshake.query.userName);
-            // let name = socket.handshake.query.userName;
-            // console.log('sioet:' + socket.handshake.query.userName);
-            //let sockectObj = {name, msg}
+
             console.log('socket.decode_token:' + socket.decoded_token.name);
             msg.email = socket.decoded_token.name;
-            // io.emit('broadcastToAll_chatMessage', sockectObj);
-            //console.dir('chat message forwarding:', msg);
-            //  io.emit('broadcastToAll_chatMessage', msg);
-            // const rooms = io.sockets.manager  roo[socket.id];
-            //console.dir(socket);
             socket.broadcast.to(classId).emit('broadcastToAll_chatMessage', msg);
           });
 
 
-      // END dbUser.getClassIdByEmail
-    });
+          // END dbUser.getClassIdByEmail
+        });
 
       } else {
         console.log('Chat: not authorized');
         socket.disconnect(
 
-
         );
       }
     });
-
   });
 }
 
@@ -119,5 +103,4 @@ module.exports.getMessages = function (req, res) {
 
     }
   })
-
 };
