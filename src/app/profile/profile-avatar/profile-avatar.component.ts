@@ -17,6 +17,7 @@ export class ProfileAvatarComponent {
   previewUrl: string;
   avatarUrl: string;
   provFile: boolean = false;
+  public provFileHideSubmitButton = true;
   nomalAvatar = new UserAvatar;
   av = new Avatar;
   processedImage: any;
@@ -53,7 +54,9 @@ export class ProfileAvatarComponent {
     this.userService.updateAvatar(this.nomalAvatar)
       .subscribe(
         data => {
-          console.log('ok:' + data);
+          this.provFileHideSubmitButton = true;
+
+          console.log('ok:' + data + ':provFileHideButton:' + this.provFileHideSubmitButton);
           this.alertService.success('Das Bild wurde erfolgreich gespeichert', false, 500);
           this.userContentDbService.getCurrentUserObserver()
             .subscribe(content => {
@@ -91,13 +94,19 @@ export class ProfileAvatarComponent {
 
       console.log(event.target.files[0]);
 
-      if (files.size > 1500000) {
-        this.alertService.error('Das Bild ist zu gross. Es darf nicht grösser als 1.5 MB sein.', false, 500);
+
+      if (files.size > 150000) {
+        this.alertService.error('Das Bild ist zu gross. Es darf nicht grösser als 150 KB sein.', false, 500);
         this.provFile = false;
+        this.provFileHideSubmitButton = true;
       } else if (files.type !== ('image/jpeg') && files.type !== ('image/png')) {
         this.alertService.error('Tut uns leid. Dieses Dateiformat wird zurzeit nicht unterstützt.', false, 500);
         this.provFile = false;
+        this.provFileHideSubmitButton = true;
+
       } else {
+        this.provFileHideSubmitButton = false;
+
         // reset
         this.images = [];
         ImageCompressService.filesToCompressedImageSource(event.target.files).then(observableImages => {
