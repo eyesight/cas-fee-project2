@@ -35,6 +35,7 @@ export class AppTextareaAutosizeDirective implements AfterViewChecked {
 
   private resize(): void {
     if (this.textAreaEl) {
+      // TODO: try to find a better solution in setting a style-property
       this.textAreaEl.style.height = this.textAreaEl.scrollHeight + 'px';
     }
   }
