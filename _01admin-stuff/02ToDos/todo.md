@@ -1,4 +1,7 @@
 #TODO
+- TODO: REST-API -> Arrays sollten einen Namen haben.
+Regel REST-Slides
+
 - TODO: Error-messages als Service (Switch-liste), Mapping von Fehlern zu lesbarem text
 
 
@@ -26,8 +29,7 @@ CF(+AW)
 - TODO: Dashboard überarbeiten UI, Idee + Umsetzung
 -> CF+AW
 
-- TODO: Unit tests
--> AW/CF
+
 
 - TODO: Refactoring
 -> AW/CF
@@ -72,6 +74,9 @@ Prio 2
 --------------------------------------------------------------------------------
 DONE
 -------------------------------------------------------------------------------
+
+- DONE: Unit tests
+-> AW/CF
 
 - Done: Login, Registrierung
 -> CF: 31.10
