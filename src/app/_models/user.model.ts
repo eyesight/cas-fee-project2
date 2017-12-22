@@ -51,10 +51,6 @@ export class UserApproveAnswer {
   userItem: User;
 }
 
-export class Can {
-  features: string[];
-}
-
 export class UserClassListAvatars {
   id: number;
   email: string;
@@ -93,7 +89,6 @@ export class User {
   klasse_description: string;
   klasse_start_at: string;
   klasse_end_at: string;
-  user_can: Can;
   user_avatar: string;
   register_date: Date;
 

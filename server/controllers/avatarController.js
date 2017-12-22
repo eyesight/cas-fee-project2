@@ -44,25 +44,25 @@ module.exports.avatarGet = function (req, callback) {
 
   console.log('read avatarks');
 
-  dbUser.getAvatarFilenameByEmail(req.user.name, function (err, data) {
+  dbUser.getAvatarFilenameByEmail(req.user.name, function (err, filename) {
 
     if (err) {
       callback('error no data', null);
       return;
     }
-    console.log('filename avatar:' + data);
+    console.log('filename avatar:' + filename);
 
     //let fullname = data;
 
-    fs.readFile('./avatars/' + data, function (err, data) {
+    fs.readFile('./avatars/' + filename, function (err, data) {
 
 
         if (data) {
           console.log('read avatars');
           //   console.dir(data.toString());
-          callback(err, new Buffer(data).toString('base64'));
+          callback(err, new Buffer(data).toString('base64'), filename);
         } else {
-          callback('error no data', null);
+          callback('error no data', null, null);
         }
       }
     );

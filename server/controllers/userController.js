@@ -36,20 +36,17 @@ module.exports.getAllUserContents = function (req, res) {
       res.status(400).json(false);
       return;
     }
-    avatarController.avatarGet(req, (err, avatar) => {
+    avatarController.avatarGet(req, (err, avatar, avatarfilename) => {
 
       console.log('getAllUserContents:after avatarget:' + user.email);
+      // regex: $ matches end of string, i = ignore case
+      user.avatar_filetype = avatarfilename.match(/[0-9a-z]+$/i)[0];
       user.user_avatar = avatar || null;
 
-      util.getUserRoles(user.email, (err, roles) => {
-        console.log('get user roles');
-        user.user_can = roles || [];
-        res.json(user);
-        // res.json(user);
-      });
+      res.json(user);
+
     })
     return;
-
 
   });
 };
