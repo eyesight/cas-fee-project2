@@ -109,12 +109,14 @@ export class ProfileAvatarComponent {
 
   onFileChange(event) {
     if (event.target.files && event.target.files[0]) {
-      const reader = new FileReader();
+   //   const reader = new FileReader();
       const files = event.target.files[0];
-      const fileList = FileList;
+   //   const fileList = FileList;
       // reader.readAsDataURL(files);
 
       console.log(event.target.files[0]);
+
+      this.userAvatar
 
 
       if (files.size > 300000) {

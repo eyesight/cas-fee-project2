@@ -2,7 +2,7 @@ export class UserPwd {
   email: string;
   pwd: string;
 
-  constructor(email: string, pwd: string){
+  constructor(email: string, pwd: string) {
     this.email = email;
     this.pwd = pwd;
   }
@@ -28,13 +28,12 @@ export class UserAvatar {
 }
 
 
-
 export class UserAuth {
   email: string;
   token: string;
   user_can: string[];
 
-  constructor(email: string, token: string){
+  constructor(email: string, token: string) {
     this.email = email;
     this.token = token;
   }
@@ -59,6 +58,7 @@ export class UserClassListAvatars {
 
 }
 export class User {
+
   id: number;
   email: string;
   pwd: string;
@@ -94,7 +94,7 @@ export class User {
 
   get avatar() {
     console.log('what is this?:' + this + 'and this.user_avatar.length?:' + this.user_avatar.length);
-      return 'data:image/png;base64,' + this.user_avatar;
+    return 'data:image/png;base64,' + this.user_avatar;
   }
 }
 

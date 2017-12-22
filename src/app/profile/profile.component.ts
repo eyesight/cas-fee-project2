@@ -17,6 +17,6 @@ export class ProfileComponent implements OnInit {
     // get new data when child-components update data
     this.UserContentDbService.getCurrentUserObserver().subscribe((data) => {
       this.userContent = data;
-    });
+     });
   }
 }
