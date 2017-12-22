@@ -1,7 +1,9 @@
 /**
  * Created by awedag on 17.11.17.
  */
-import {ElementRef, HostListener, Directive, AfterContentChecked, AfterViewChecked} from '@angular/core';
+import {
+  ElementRef, HostListener, Directive, AfterViewChecked
+} from '@angular/core';
 
 const TEXTAREA_NAME = 'TEXTAREA';
 @Directive({
@@ -11,6 +13,7 @@ const TEXTAREA_NAME = 'TEXTAREA';
 export class AppTextareaAutosizeDirective implements AfterViewChecked {
 
   private original: number = 0;
+  private minHeight: number = 0;
   private textAreaEl: any;
 
   constructor(public element: ElementRef) {
@@ -25,7 +28,7 @@ export class AppTextareaAutosizeDirective implements AfterViewChecked {
       if (this.textAreaEl.value.length === 0) {
         this.textAreaEl.style.height = this.original;
       }
-     }
+    }
   }
 
   @HostListener('input', ['$event.target'])
@@ -36,7 +39,15 @@ export class AppTextareaAutosizeDirective implements AfterViewChecked {
   private resize(): void {
     if (this.textAreaEl) {
       // TODO: try to find a better solution in setting a style-property
-      this.textAreaEl.style.height = this.textAreaEl.scrollHeight + 'px';
+      const newHeight = this.textAreaEl.scrollHeight;
+
+      if (this.minHeight === 0) {
+        this.minHeight = newHeight;
+      }
+      if (newHeight > this.minHeight) {
+        this.textAreaEl.style.height = newHeight + 'px';
+
+      }
     }
   }
 
