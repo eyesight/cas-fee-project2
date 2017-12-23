@@ -16,6 +16,7 @@ export class UserAuthService {
   private userAuthCache: UserAuth = null;
   constructor(private storage: StorageService) {
     console.log('User-AuthService constructed');
+    this.userAuthCache = null;
   }
 
   public saveCurrentUser(data: UserAuth){

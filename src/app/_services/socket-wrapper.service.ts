@@ -32,6 +32,7 @@ export class SocketWrapper {
   public setup(chnReceive: string = channelReceiveMessage, chnSend: string = channelSendMessage) {
     this.channelReceive = chnReceive;
     this.channelSend = chnSend;
+    console.log('socket token:' + this.userAuthService.getCurrentUserJwt());
     this.socket = io(this.appConf.getConfig().apiUrl, {
       upgrade: true,
       query: 'token=' + this.userAuthService.getCurrentUserJwt()

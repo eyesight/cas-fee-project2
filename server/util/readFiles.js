@@ -28,7 +28,7 @@ function readManyFiles (path, files, emails, callback) {
      //   result[k].filename = file
       }
       // invoke callback if all read
-      !l && callback (errors.length? errors : undef, result);
+      !l && callback (errors.length? errors : 0, result);
     });
 
   });
