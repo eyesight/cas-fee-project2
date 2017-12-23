@@ -35,6 +35,6 @@ fdescribe('AlertComponent', () => {
     fixture.detectChanges();
     const waiter = fixture.nativeElement.querySelector('.zz-alertbox--success').innerText;
     tick(7500);
-    expect(waiter).toEqual('success got it');
+    expect(waiter).toEqual('got it');
   }));
 });
