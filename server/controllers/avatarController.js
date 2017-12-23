@@ -105,7 +105,6 @@ module.exports.avatarGetAllFromKlasse = function (req, res) {
                 email: x.email, filename: x.filename, avatar: new Buffer(x.data).toString('base64')
               }));
            //   console.dir(result);
-              console.log(result[0].filename);
            //   callback(err, new Buffer(data).toString('base64'));
               res.json(result);
 

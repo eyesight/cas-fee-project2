@@ -7,18 +7,21 @@
 <div class="row justify-content-end zz-layout__row">
   <div *ngIf="!isActivated" class="col-12 col-xl-10 col-lg-12 zz-mod-container">
     <div class="zz-mod-box">
-      <p class="zz-mod-box__txt-item zz-mod-box--bold">Sie sind noch nicht freigeschaltet.</p>
+      <p class="zz-mod-box__txt-item zz-mod-box--warning">Sie sind noch nicht freigeschaltet.</p>
       <p class="zz-mod-box__txt-item">Aus Sicherheitsgründen muss der Administrator erst bestätigen, dass Sie zu der
         Klasse gehören. Dies kann einige Tage in anspruch nehmen. Solange können Sie nur beschränkt auf Inhalte
         zugreifen.</p>
+      <p class="zz-mod-box__txt-item">Sie können jederzeit ihre eigenen Angaben korrigieren/verändern: <a class="zz-infotext__link" [routerLink]="['/profile']">zum Profil</a></p>
       <p class="zz-mod-box__txt-item">Falls Sie Hilfe benötigen oder Fragen haben, können Sie sich gerne an den Administrator wenden:</p>
-      <address>E-Mail: <a href="mailto:administrator@admin.com">administrator@admin.com</a><br>Tel: +41 012 345 678</address>
+      <address>E-Mail: <a class="zz-anchor" href="mailto:administrator@admin.com">administrator@admin.com</a><br>Tel: +41 012 345 678</address>
     </div>
   </div>
   <div *ngIf="isActivated" class="col-12 col-xl-10 col-lg-12 zz-mod-container">
-    <h2 class="zz-title zz-title--h2">Hallo XYZ</h2>
+    <h2 class="zz-title zz-title--h2">Was möchten Sie tun?</h2>
     <div class="zz-mod-box">
-      <p class="zz-mod-box__txt-item">Was möchten Sie tun?</p>
+      <p class="zz-mod-box__txt-item">Infos der Mitschüler holen: <a class="zz-anchor" [routerLink]="['/classlist']">zur Klassenliste</a></p>
+      <p class="zz-mod-box__txt-item">Nachricht an die ganze Klasse senden: <a class="zz-anchor" [routerLink]="['/chat']">zum Chat</a></p>
+      <p class="zz-mod-box__txt-item">Eigene Angaben korrigieren/verändern: <a class="zz-anchor" [routerLink]="['/profile']">zum Profil</a></p>
     </div>
   </div>
 </div>

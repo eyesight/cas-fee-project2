@@ -54,6 +54,12 @@
     min-height: rem-calc(50px);
     padding: rem;
   }
+
+  &--warning{
+    color: $color-red;
+    font-size:$font-s-copytext-large;
+    font-weight: $font-weight-bold;
+  }
 }
 
 .zz-layout--centered{

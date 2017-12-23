@@ -15,7 +15,6 @@ router.post("/api/authenticate", function(req, res){
 });
 
 router.get("/klasse", function(req, res){
-  console.log('dfddfdf'+req);
   indexController.getKlasse(req,res);
 });
 

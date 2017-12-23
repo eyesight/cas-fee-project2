@@ -40,7 +40,12 @@ module.exports.getAllUserContents = function (req, res) {
 
       console.log('getAllUserContents:after avatarget:' + user.email);
       // regex: $ matches end of string, i = ignore case
+    if(avatarfilename){
       user.avatar_filetype = avatarfilename.match(/[0-9a-z]+$/i)[0];
+    }else{
+      user.avatar_filetype = null;
+    }
+
       user.user_avatar = avatar || null;
 
       res.json(user);
