@@ -4,7 +4,6 @@ Regel REST-Slides
 
 - TODO: Error-messages als Service (Switch-liste), Mapping von Fehlern zu lesbarem text
 
-
 - TODO: CSV-Datei erstellen in Klassenliste -> User-Details
 (Prio2)
 CF(+AW)
@@ -25,11 +24,6 @@ CF(+AW)
 
 - TODO: FOUT einbinden für das Laden eines Webfonts (=auf Folien unterricht), https://css-tricks.com/fout-foit-foft/
 -> AW+CF 
-
-- TODO: Dashboard überarbeiten UI, Idee + Umsetzung
--> CF+AW
-
-
 
 - TODO: Refactoring
 -> AW/CF
@@ -176,3 +170,6 @@ CF
 
 -TODO: erstellen "default Profilbild", wenn User noch kein Avatar hat
 CF
+
+- TODO: Dashboard überarbeiten UI, Idee + Umsetzung
+-> CF+AW
