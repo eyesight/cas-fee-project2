@@ -1,5 +1,6 @@
 <app-header *ngIf="authService.isLoggedin"></app-header>
 <div class="container-fluid zz-layout" [class.zz-layout--centered]="!authService.isLoggedin" >
   <router-outlet></router-outlet>
+  <alert></alert>
 </div>
 <app-footer></app-footer>

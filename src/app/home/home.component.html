@@ -1,92 +1,24 @@
-
-<!--
-zum Testen: bitte löschen, wenn fertig erstellt
--->
-<!--start content-->
-  <div class="row justify-content-end zz-layout__row">
-    <div class="col-12 col-lg-12 col-xl-10 zz-mod-container">
-      <h1 class="zz-title">Dashboard</h1>
-      <app-personal-details-container></app-personal-details-container>
+<div class="row justify-content-end zz-layout__row">
+  <div class="col-12 col-lg-12 col-xl-10 zz-mod-container">
+    <h1 class="zz-title">Dashboard</h1>
+    <app-personal-details-container></app-personal-details-container>
+  </div>
+</div>
+<div class="row justify-content-end zz-layout__row">
+  <div *ngIf="!isActivated" class="col-12 col-xl-10 col-lg-12 zz-mod-container">
+    <div class="zz-mod-box">
+      <p class="zz-mod-box__txt-item zz-mod-box--bold">Sie sind noch nicht freigeschaltet.</p>
+      <p class="zz-mod-box__txt-item">Aus Sicherheitsgründen muss der Administrator erst bestätigen, dass Sie zu der
+        Klasse gehören. Dies kann einige Tage in anspruch nehmen. Solange können Sie nur beschränkt auf Inhalte
+        zugreifen.</p>
+      <p class="zz-mod-box__txt-item">Falls Sie Hilfe benötigen oder Fragen haben, können Sie sich gerne an den Administrator wenden:</p>
+      <address>E-Mail: <a href="mailto:administrator@admin.com">administrator@admin.com</a><br>Tel: +41 012 345 678</address>
     </div>
   </div>
-  <div class="row justify-content-end zz-layout__row">
-    <div class="col-12 col-xl-5 col-lg-6 zz-mod-container">
-      <h1 class="zz-title zz-title--h2">Klassenliste</h1>
-      <div class="zz-mod-box">
-        <ul class="zz-mod-box__list-group">
-          <li class="zz-mod-box__list-item">Heidi</li>
-          <li class="zz-mod-box__list-item">dfjsdkfjsdf</li>
-          <li class="zz-mod-box__list-item">Max</li>
-          <li class="zz-mod-box__list-item">NachnameEltern</li>
-          <li class="zz-mod-box__list-item zz-mod-box--list-item-small">icon</li>
-        </ul>
-        <ul class="zz-mod-box__list-group">
-          <li class="zz-mod-box__list-item">Susi</li>
-          <li class="zz-mod-box__list-item">Hugentobler</li>
-          <li class="zz-mod-box__list-item">Hermann</li>
-          <li class="zz-mod-box__list-item">Hugentobler</li>
-          <li class="zz-mod-box__list-item zz-mod-box--list-item-small">icon</li>
-        </ul>
-        <ul class="zz-mod-box__list-group">
-          <li class="zz-mod-box__list-item">Vorname</li>
-          <li class="zz-mod-box__list-item">Nachname</li>
-          <li class="zz-mod-box__list-item">Vorname</li>
-          <li class="zz-mod-box__list-item">Nachname</li>
-          <li class="zz-mod-box__list-item zz-mod-box--list-item-small">icon</li>
-        </ul>
-        <ul class="zz-mod-box__list-group">
-          <li class="zz-mod-box__list-item">Vorname</li>
-          <li class="zz-mod-box__list-item">Nachname</li>
-          <li class="zz-mod-box__list-item">Vorname</li>
-          <li class="zz-mod-box__list-item">Nachname</li>
-          <li class="zz-mod-box__list-item zz-mod-box--list-item-small">icon</li>
-        </ul>
-        <ul class="zz-mod-box__list-group">
-          <li class="zz-mod-box__list-item">Vorname</li>
-          <li class="zz-mod-box__list-item">Nachname</li>
-          <li class="zz-mod-box__list-item">Vorname</li>
-          <li class="zz-mod-box__list-item">Nachname</li>
-          <li class="zz-mod-box__list-item zz-mod-box--list-item-small">icon</li>
-        </ul>
-        <ul class="zz-mod-box__list-group">
-          <li class="zz-mod-box__list-item">Vorname</li>
-          <li class="zz-mod-box__list-item">Nachname</li>
-          <li class="zz-mod-box__list-item">Vorname</li>
-          <li class="zz-mod-box__list-item">Nachname</li>
-          <li class="zz-mod-box__list-item zz-mod-box--list-item-small">icon</li>
-        </ul>
-        <ul class="zz-mod-box__list-group">
-          <li class="zz-mod-box__list-item">Vorname</li>
-          <li class="zz-mod-box__list-item">Nachname</li>
-          <li class="zz-mod-box__list-item">Vorname</li>
-          <li class="zz-mod-box__list-item">Nachname</li>
-          <li class="zz-mod-box__list-item zz-mod-box--list-item-small">icon</li>
-        </ul>
-      </div>
-      <button class="zz-btn zz-btn--primary">
-        Nachricht an den Lehrer
-      </button>
-    </div>
-    <div class="col-12 col-xl-5 col-lg-6 zz-mod-container">
-      <h1 class="zz-title zz-title--h2">Nächste Termine</h1>
-      <div class="zz-mod-box">
-        <ul class="zz-mod-box__list-group">
-          <li class="zz-mod-box__list-item">Datum</li>
-          <li class="zz-mod-box__list-item zz-mod-box--list-item-large">Terim-Beschreibung</li>
-        </ul>
-        <ul class="zz-mod-box__list-group">
-          <li class="zz-mod-box__list-item">Datum</li>
-          <li class="zz-mod-box__list-item zz-mod-box--list-item-large">Terim-Beschreibung</li>
-        </ul>
-        <ul class="zz-mod-box__list-group">
-          <li class="zz-mod-box__list-item">Datum</li>
-          <li class="zz-mod-box__list-item zz-mod-box--list-item-large">Terim-Beschreibung</li>
-        </ul>
-      </div>
+  <div *ngIf="isActivated" class="col-12 col-xl-10 col-lg-12 zz-mod-container">
+    <h2 class="zz-title zz-title--h2">Hallo XYZ</h2>
+    <div class="zz-mod-box">
+      <p class="zz-mod-box__txt-item">Was möchten Sie tun?</p>
     </div>
   </div>
-  <div class="row justify-content-end zz-layout__row">
-    <div class="col-12 col-lg-12 col-xl-10 zz-mod-container">
-
-    </div>
-  </div>
+</div>
