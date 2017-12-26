@@ -29,9 +29,6 @@ CF(+AW)
 - TODO: Abstände korrigieren, Feinheiten ausarbeiten in Sass/CSS
 -> CF: Dezember
 
-- TODO: Bootstrap - nur relevante Imports importieren
--> CF: 
-
 - TODO: Accessability / ARIA 
 (Prio2)
 -> CF/AW:
@@ -42,6 +39,8 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
 
  - TODO: Prüfen in allen Browsern/Export Projekt als Bundle
  ->AW+CF
+
+- TODO: Mobile-Navigation sollte per klick geschlossen werden (prio2)
 
 
 --------------------------------------------------------------------------------
@@ -181,3 +180,6 @@ CF
     -> CF+AW
     
 - TODO: GUI testen mit Puppetier
+
+- TODO: Bootstrap - nur relevante Imports importieren
+-> CF: 

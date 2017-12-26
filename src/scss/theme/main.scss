@@ -1,7 +1,7 @@
-@import 'layout/content';
-@import 'layout/navbar';
-@import 'layout/navigation';
-@import 'layout/footer';
+@import 'layout-parts/content';
+@import 'layout-parts/navbar';
+@import 'layout-parts/navigation';
+@import 'layout-parts/footer';
 
 @import 'blocks/chat';
 @import 'blocks/logo';

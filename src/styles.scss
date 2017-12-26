@@ -1,5 +1,14 @@
 //bootstrap
-@import '../node_modules/bootstrap/scss/bootstrap.scss';
+@import '../node_modules/bootstrap/scss/bootstrap-reboot.scss';
+@import '../node_modules/bootstrap/scss/print.scss';
+@import '../node_modules/bootstrap/scss/grid.scss';
+@import '../node_modules/bootstrap/scss/tables.scss';
+@import '../node_modules/bootstrap/scss/forms.scss';
+@import '../node_modules/bootstrap/scss/navbar.scss';
+@import '../node_modules/bootstrap/scss/transitions.scss';
+@import '../node_modules/bootstrap/scss/dropdown.scss';
+@import '../node_modules/bootstrap/scss/utilities.scss';
+
 
 //Config: Variables, fonts, own definition to use in project
 @import 'scss/config/main';
