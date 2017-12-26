@@ -1,4 +1,11 @@
 #TODO
+- TODO: Datum überall prüfen und richtig darstellen
+
+- TODO: bei Klassenliste, Detail von Person fehlen noch einzelne Felder -> Ergänzen
+
+- TODO: Wenn eingeloggt als Lehrer, wird im personal-details-container der Name nicht ausgegeben, da Name von Kind eingetragen (Lehrer hat kein Kind)
+  -> Lösen via Schlaufe oder nicht Vorname von Kind eintragen
+
 - TODO: REST-API -> Arrays sollten einen Namen haben.
 Regel REST-Slides
 
@@ -12,15 +19,6 @@ CF(+AW)
  -> Errors in Console auslesen/Überschreiben
  -> CF(+AW)
   
--TODO: Profilbild in Navigation aus DB lesen
-  Done mit CSS/Sass korrigieren (rund machen)
-
-- TODO: Profile fertigstellen (inkl. Avatar)
-  ->: Upload Profilbild
-    DONE: Bild-Upload validieren (size 100kb und format (png und jpg))
-    -> AW/CF: Bild anzeigen in Frontend
-    DONE: Styling/UI responsive machen 
-    -> CF+AW
 
 - TODO: FOUT einbinden für das Laden eines Webfonts (=auf Folien unterricht), https://css-tricks.com/fout-foit-foft/
 -> AW+CF 
@@ -173,3 +171,13 @@ CF
 
 - TODO: Dashboard überarbeiten UI, Idee + Umsetzung
 -> CF+AW
+
+-TODO: Profilbild in Navigation aus DB lesen
+  Done mit CSS/Sass korrigieren (rund machen)
+
+- TODO: Profile fertigstellen (inkl. Avatar)
+  ->: Upload Profilbild
+    DONE: Bild-Upload validieren (size 100kb und format (png und jpg))
+    -> AW/CF: Bild anzeigen in Frontend
+    DONE: Styling/UI responsive machen 
+    -> CF+AW
