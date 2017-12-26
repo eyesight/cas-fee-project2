@@ -26,8 +26,6 @@ CF(+AW)
 - TODO: Refactoring
 -> AW/CF
 
-- TODO: GUI testen mit Puppetier
-
 - TODO: Abstände korrigieren, Feinheiten ausarbeiten in Sass/CSS
 -> CF: Dezember
 
@@ -181,3 +179,5 @@ CF
     -> AW/CF: Bild anzeigen in Frontend
     DONE: Styling/UI responsive machen 
     -> CF+AW
+    
+- TODO: GUI testen mit Puppetier
