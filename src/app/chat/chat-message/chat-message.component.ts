@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { MessageDateBlock, Message, MessageJson } from '../../_models/message.model';
 import { Klasse } from '../../_models/klasse.model';
-import { User } from '../../_models/user.model';
+import { UserClassListAvatars} from '../../_models/user.model';
 
 
 @Component({
@@ -13,6 +13,9 @@ export class ChatMessageComponent implements OnInit {
 
   @Input()
   public message: MessageJson;
+
+  @Input()
+  public avatar: UserClassListAvatars;
 
   ngOnInit() {
   }
