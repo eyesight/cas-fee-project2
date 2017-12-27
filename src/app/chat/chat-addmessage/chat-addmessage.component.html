@@ -1,4 +1,4 @@
-<div [class.zz-chat__connection-state]="!cState" class="zz-chat__window zz-chat__online">
+<div [class.zz-chat__connection-state]="!cState" class="zz-chat__window zz-chat--online">
 
   <div class="zz-chat__sender">
     <p appTextareaAutosize class="zz-chat__sender-text"></p>
@@ -10,7 +10,7 @@
            placeholder="Danke für die Chatmeldung" autofocus #messageText  ></textarea>
   </form>
   <div class="clearfix">
-    <button class="float-right zz-btn-small zz-btn--primary" type=submit (click)="onSend(messageText.value)">
+    <button class="float-right zz-btn zz-btn--primary" type=submit (click)="onSend(messageText.value)">
       Senden
     </button>
   </div>

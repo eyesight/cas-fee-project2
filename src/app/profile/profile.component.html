@@ -6,10 +6,10 @@
   </div>
 </div>
 <div class="row justify-content-end zz-layout__row">
-  <div class="col-12 col-xl-5 col-lg-6 zz-mod-container">
+  <section *ngIf="!isTeacher" class="col-12 col-xl-5 col-lg-6 zz-mod-container">
     <h2 class="zz-title zz-title--h2">Angaben Kind</h2>
     <div class="zz-mod-box">
-      <app-profile-avatar class="zz-avatar" [previewUrl]="userContent.user_avatar" ></app-profile-avatar>
+      <app-profile-avatar *ngIf="!isTeacher" class="zz-avatar" [previewUrl]="userContent.user_avatar" ></app-profile-avatar>
       <h3 class="zz-title--h3">Geschlecht</h3>
       <p>{{userContent.child_gender | gender:'de': true}}</p>
       <h3 class="zz-title--h3">Vorname Name</h3>
@@ -24,10 +24,12 @@
         Daten bearbeiten
       </button>
     </div>
-  </div>
-  <div class="col-12 col-xl-5 col-lg-6 zz-mod-container">
-    <h2 class="zz-title zz-title--h2">Angaben Eltern</h2>
+  </section>
+  <section class="col-12 col-xl-5 col-lg-6 zz-mod-container">
+    <h2 *ngIf="!isTeacher" class="zz-title zz-title--h2">Angaben Eltern</h2>
+    <h2 *ngIf="isTeacher" class="zz-title zz-title--h2">Eigene Angaben</h2>
     <div class="zz-mod-box">
+      <app-profile-avatar *ngIf="isTeacher" class="zz-avatar" [previewUrl]="userContent.user_avatar" ></app-profile-avatar>
       <h3 class="zz-title--h3">Anrede</h3>
       <p>{{userContent.parent_gender | gender:'de'}}</p>
       <h3 class="zz-title--h3">Vorname Name</h3>
@@ -45,8 +47,8 @@
         Daten bearbeiten
       </button>
     </div>
-  </div>
-  <div class="col-12 col-xl-5 col-lg-6 zz-mod-container">
+  </section>
+  <section class="col-12 col-xl-5 col-lg-6 zz-mod-container">
     <h2 class="zz-title zz-title--h2">E-Mail/Username und Passwort</h2>
     <div class="zz-mod-box">
       <h3 class="zz-title--h3">E-Mail/Username*</h3>
@@ -59,7 +61,7 @@
         Passwort wechseln
       </button>
     </div>
-  </div>
+  </section>
   <router-outlet></router-outlet>
 </div>
 

@@ -1,6 +1,5 @@
 .zz-chat{
 
-
   &__box {
     padding-left:30px;
     padding-top:4px;
@@ -88,7 +87,7 @@
     height: auto;
   }
 
-  &__online{
+  &--online{
     position: absolute;
     margin: 0 15px;
     padding: 0 30px 20px;

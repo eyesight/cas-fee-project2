@@ -1,32 +1,30 @@
 <ul class="navbar-nav zz-nav__list-group">
 
-  <li class="zz-nav__list-group__item">
-    <a class="zz-nav__list-group__item__link" [routerLink]="['home']" routerLinkActive="active">Dashboard
+  <li class="zz-nav__list-group-item">
+    <a class="zz-nav__link" [routerLink]="['home']" routerLinkActive="active">Dashboard
     </a>
   </li>
-  <li class="zz-nav__list-group__item">
-    <a class="zz-nav__list-group__item__link" [routerLink]="['classlist']" routerLinkActive="active">Klassenliste
+  <li class="zz-nav__list-group-item">
+    <a class="zz-nav__link" [routerLink]="['classlist']" routerLinkActive="active">Klassenliste
     </a>
   </li>
-  <li class="zz-nav__list-group__item">
-    <a class="zz-nav__list-group__item__link" [routerLink]="['chat']" routerLinkActive="active">Chat
+  <li class="zz-nav__list-group-item">
+    <a class="zz-nav__link" [routerLink]="['chat']" routerLinkActive="active">Chat
     </a>
   </li>
-
-
-  <li class="dropdown zz-nav__list-group__item">
+  <li class="dropdown zz-nav__list-group-item">
     <button class="zz-nav__button" data-toggle="dropdown">
       <img [src]="userAvatar" height="70px" alt="" *ngIf="userContent?.user_avatar; else falsyTemplate"
-           class="zz-nav__button__image">
+           class="zz-nav__image">
       <ng-template #falsyTemplate>
-        <img src="assets/img/dummyPortrait.png" height="70px" alt="" class="zz-nav__button__image">
+        <img src="assets/img/dummyPortrait.png" height="70px" alt="" class="zz-nav__image">
       </ng-template>
     </button>
-    <div class="dropdown-menu dropdown-menu-righ zz-nav__button__menu" aria-labelledby="navbarDropdownMenuLink">
-      <a class="dropdown-item zz-nav__button__menu__item" [routerLink]="['profile']"
+    <div class="dropdown-menu dropdown-menu-righ zz-nav__dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+      <a class="dropdown-item zz-nav__dropdown-menu-item" [routerLink]="['profile']"
          routerLinkActive="active">Profil</a>
       <div class="dropdown-divider"></div>
-      <a class="dropdown-item zz-nav__button__menu__item" [routerLink]="['login']">Abmelden</a>
+      <a class="dropdown-item zz-nav__dropdown-menu-item" [routerLink]="['login']">Abmelden</a>
     </div>
   </li>
 </ul>
