@@ -27,7 +27,7 @@ export class ClasslistAvatarService {
 
   }
 
-
+// TODO: make sure that observable gets removed
   public getClasslistAvatars(): Observable<UserClassListAvatars[]> {
 
     const clAvatar = this.dbUserClAvatar.getCurrentData();
