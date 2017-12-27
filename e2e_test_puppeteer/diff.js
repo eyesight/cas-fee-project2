@@ -11,7 +11,7 @@ const diffLogin = new PixelDiff({
     imageOutputPath: 'diff_logindesktop.png'
 });
 const diffDashboard = new PixelDiff({
-    imageAPath: 'school_dashboarddesktop.png',
+    imageAPath: 'school_dashboarddesktop_reference.png',
     imageBPath: 'school_dashboarddesktop_reference.png',
 
     thresholdType: PixelDiff.THRESHOLD_PERCENT,
