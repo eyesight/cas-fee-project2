@@ -12,6 +12,7 @@ import {UserAuthService} from '../_services/user-auth.service';
 import {AlertService} from '../_services/alert.service';
 import {UserContentDbService} from '../_services/user-content-db.service';
 import {User} from '../_models/user.model';
+import {UserContentService} from "../_services/user-content.service";
 
 @Component({
   selector: 'app-chat',
@@ -34,14 +35,15 @@ export class ChatComponent implements OnInit, OnDestroy {
   constructor(private chatService: ChatService
     , private router: Router
     , private userAuthService: UserAuthService
-    , private userContentDbService: UserContentDbService
+    , private userContentService: UserContentService
     , private alertService: AlertService) {
     console.log('chatComponent constructor');
   }
 
   ngOnInit() {
     this.chatService.setup();
-    this.userContent = this.userContentDbService.getCurrentUser();
+    this.userContentService.getCurrentUserObserver()
+      .subscribe((uc) => this.userContent = uc);
     console.log('ngOnInit: userContent.email:' + this.userContent.email);
     // subscribe to receive the message using normale JSON adapter
     this.onLoad();

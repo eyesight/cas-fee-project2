@@ -7,7 +7,7 @@ import {StorageService, StorageKeys} from './storage.service';
 
 import {Http, Headers, RequestOptions, Response} from '@angular/http';
 import {appConfig} from '../_helpers/app.config';
-import {User} from '../_models/user.model';
+import {User, UserAuth} from '../_models/user.model';
 import {Subscription} from "rxjs/Subscription";
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
@@ -17,19 +17,18 @@ import {Subject} from "rxjs/Subject";
 export class DbService<T> {
 
 
-  private storageObserver: Subscription;
   private subject = new Subject<T>();
 
   private contentCache: T = null;
 
-  constructor(private storage: StorageService, private storageKey: string) {
+  constructor(private storage: StorageService, public storageKey: string) {
     console.log('DbService constructed for key: ' + this.storageKey);
   }
 
   public saveCurrentData(data: T) {
     this.contentCache = data;
-    console.log('storage');
-    console.log(this.contentCache);
+    console.log('storage for key:' + this.storageKey);
+   // console.log(this.contentCache);
     this.storage.write(this.storageKey, data);
     this.subject.next(data);
 
@@ -81,3 +80,4 @@ export class DbService<T> {
 
 
 }
+

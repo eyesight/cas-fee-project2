@@ -34,7 +34,6 @@ export class ProfileDetailsChildComponent implements OnInit {
     };
 
   constructor(
-    private UserContentDbService: UserContentDbService,
     private userContentService: UserContentService,
     private router: Router,
     private userService: UserService,
@@ -43,7 +42,7 @@ export class ProfileDetailsChildComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userContent = this.UserContentDbService.getCurrentUser();
+    this.userContent = this.userContentService.getCurrentUser();
 
     this.buildForm();
   }
@@ -69,7 +68,7 @@ export class ProfileDetailsChildComponent implements OnInit {
     this.formModel = this.childDetailsForm.value;
 
     // format the date with moment
-    this.data = moment(this.formModel.child_date_of_birth).locale('de-ch').format("YYYY-MM-DD");
+    this.data = moment(this.formModel.child_date_of_birth).locale('de-ch').format('YYYY-MM-DD');
 
     this.userObject.adress = this.userContent.adress;
     this.userObject.child_date_of_birth = this.data;

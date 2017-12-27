@@ -17,7 +17,7 @@ export class ProfileAvatarComponent {
 
   @Input() set previewUrl(purl: string) {
     this._previewUrl = purl;
-    console.log('this._reviewurl: ' + purl);
+  //  console.log('this._reviewurl: ' + purl);
   }
 
   get previewUrl() {

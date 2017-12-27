@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../_models/user.model';
-import {UserContentDbService} from '../_services/user-content-db.service';
+import {UserContentService} from "../_services/user-content.service";
 
 
 @Component({
@@ -10,12 +10,12 @@ import {UserContentDbService} from '../_services/user-content-db.service';
 export class ProfileComponent implements OnInit {
   userContent: User;
 
-  constructor(private UserContentDbService: UserContentDbService) {
+  constructor(private UserContentService: UserContentService) {
   }
 
   ngOnInit() {
     // get new data when child-components update data
-    this.UserContentDbService.getCurrentUserObserver().subscribe((data) => {
+    this.UserContentService.getCurrentUserObserver().subscribe((data) => {
       this.userContent = data;
      });
   }

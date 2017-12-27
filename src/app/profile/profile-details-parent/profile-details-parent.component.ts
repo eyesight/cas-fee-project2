@@ -27,7 +27,7 @@ export class ProfileDetailsParentComponent implements OnInit {
     {content: 'en', label: 'Englisch'}];
 
   constructor(
-    private UserContentDbService: UserContentDbService,
+    private UserContentService: UserContentService,
     private router: Router,
     private alertService: AlertService,
     private userService: UserService,
@@ -36,7 +36,7 @@ export class ProfileDetailsParentComponent implements OnInit {
   ) { }
 
   ngOnInit():void {
-    this.userContent = this.UserContentDbService.getCurrentUser();
+    this.userContent = this.UserContentService.getCurrentUser();
     this.buildForm();
   }
 

@@ -21,14 +21,14 @@ export class ProfilePasswordChangeComponent implements OnInit {
   public userObject = new UserPwdChange;
 
   constructor(private fb: FormBuilder,
-              private UserContentDbService: UserContentDbService,
+              private UserContentService: UserContentService,
               private userService: UserService,
               private router: Router,
               private alertService: AlertService) {
   }
 
   ngOnInit() {
-    this.userContent = this.UserContentDbService.getCurrentUser();
+    this.userContent = this.UserContentService.getCurrentUser();
     this.buildForm();
   }
 

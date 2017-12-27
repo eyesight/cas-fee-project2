@@ -37,7 +37,7 @@ export class UserContentDbService {
     this.storage.remove(StorageKeys.keyCurrentUserContent);
   }
 
-  public getCurrentUserObserver(): Observable<User> {
+  public getCurrentUserObserverKK(): Observable<User> {
     return new Observable((observer) => {
       try {
         const userContent = this.getCurrentUser();
