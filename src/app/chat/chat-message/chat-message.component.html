@@ -1,5 +1,15 @@
 <div class="zz-chat__window">
   <div class="zz-chat__sender">
+
+
+    <div class="zz-table__img-wrapper">
+
+      <img class="zz-table__img" [src]="'data:image/png;base64,' + avatar?.avatar" *ngIf="avatar?.avatar; else falsyTemplate">
+      <ng-template #falsyTemplate>
+        <img class="zz-table__img" src="../../../assets/img/dummyPortrait.png">
+      </ng-template>
+    </div>
+
     <p class="zz-chat__sender-text"><span class="zz-chat__txt-item ">{{message.email}}</span><span
       class="zz-chat--line-right"></span><span
       class="zz-chat__txt-item">{{message.sent_at | properTime }} .... {{message.saved_at | properTime }}</span></p>
