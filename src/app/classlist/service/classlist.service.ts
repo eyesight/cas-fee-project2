@@ -31,7 +31,7 @@ export class ClasslistService {
       .map((result) => {this.classlistCache = result; return result; });
   }
 
-  public getClasslistAvatars(): Observable<UserClassListAvatars[]>  {
+  /*public getClasslistAvatars(): Observable<UserClassListAvatars[]>  {
 
 // instead of json use JSON.strinfiy
     return this.httpWrp.get('/api/user/classlistavatar');
@@ -49,7 +49,7 @@ export class ClasslistService {
     //       return this.classlistCache;
     //
     // });
-  }
+  }*/
 
   public getUserDetail(id): User {
     console.log('getUserDetail:' + id);

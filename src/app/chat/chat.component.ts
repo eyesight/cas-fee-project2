@@ -10,8 +10,9 @@ import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
 import {UserAuthService} from '../_services/user-auth.service';
 import {AlertService} from '../_services/alert.service';
-import {User} from '../_models/user.model';
+import {User, UserClassListAvatars} from '../_models/user.model';
 import {UserContentService} from '../_services/user-content.service';
+import {ClasslistAvatarService} from "../_services/user-classlist-avatars.service";
 
 @Component({
   selector: 'app-chat',
@@ -23,6 +24,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   public message: MessageJson[] = null;
   public userContent: User = null;
   public connectionState = true;
+  public classlistAvatar: UserClassListAvatars[] = null;
   private socketSub: Subscription;
   private chatSub: Subscription;
   private chatAuthSub: Subscription;
@@ -35,6 +37,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     , private router: Router
     , private userAuthService: UserAuthService
     , private userContentService: UserContentService
+    , private classlistAvatarService: ClasslistAvatarService
     , private alertService: AlertService) {
     console.log('chatComponent constructor');
   }
@@ -85,6 +88,15 @@ export class ChatComponent implements OnInit, OnDestroy {
       });
 
     this.resendSub = this.onResend();
+
+    this.classlistAvatarService.getClasslistAvatars()
+      .subscribe((resultAvatars) => {
+         this.classlistAvatar = resultAvatars;
+        },
+        (error) => {
+          console.log('getClasslistAvatars: error:' + error);
+          this.alertService.error('Die Profilbilder können nicht geladen werden');
+        });
   }
 
   ngOnDestroy() {

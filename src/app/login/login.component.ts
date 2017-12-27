@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService, AuthenticationService } from '../_services/index';
 import {UserContentService} from '../_services/user-content.service';
 import { ErrorHandlerService } from '../_services/index';
+import {ClasslistAvatarService} from "../_services/user-classlist-avatars.service";
 
 
 @Component({
@@ -24,6 +25,7 @@ export class LoginComponent implements OnInit {
     private userContentService: UserContentService,
     private alertService: AlertService,
     private errorHandlerService: ErrorHandlerService,
+    private classlistAvatarService: ClasslistAvatarService,
     private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -34,6 +36,7 @@ export class LoginComponent implements OnInit {
     // reset login status
     this.authenticationService.logout();
     this.userContentService.clear();
+    this.classlistAvatarService.clear();
 
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -53,7 +56,8 @@ export class LoginComponent implements OnInit {
 
           this.userContentService.getUserContent()
             .subscribe( content => {
-              // found an angular error: if meanwhile the permission is changed to not allowed for the returnUrl the site doesnt move to home
+              // found an angular error: if meanwhile the permission is changed to not allowed for the returnUrl
+                // the site doesnt move to home
               if (data.user_can.length > 0) {
                 this.router.navigate([this.returnUrl]);
               }else {

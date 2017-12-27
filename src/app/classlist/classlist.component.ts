@@ -8,6 +8,7 @@ import {Router} from "@angular/router";
 import {AlertService} from "../_services/alert.service";
 import {UserAuthService} from "../_services/user-auth.service";
 import {UserContentService} from "../_services/user-content.service";
+import {ClasslistAvatarService} from "../_services/user-classlist-avatars.service";
 
 
 @Component({
@@ -26,7 +27,8 @@ export class ClasslistComponent implements OnInit {
     , private router: Router
     , private userAuthService: UserAuthService
     , private alertService: AlertService
-    , private userContentService: UserContentService) {
+    , private userContentService: UserContentService
+  , private classlistAvatarService: ClasslistAvatarService) {
   }
 
   ngOnInit() {
@@ -47,7 +49,7 @@ export class ClasslistComponent implements OnInit {
       .subscribe((result) => {
           this.classlist = result;
 
-          this.classlistService.getClasslistAvatars()
+          this.classlistAvatarService.getClasslistAvatars()
             .subscribe((resultAvatars) => {
                 console.log('result:' + resultAvatars.length);
                 resultAvatars.filter((x ) => x !== null)

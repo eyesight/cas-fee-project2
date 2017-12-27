@@ -24,6 +24,7 @@ export class StorageService {
 export const StorageKeys = {
 
   keyCurrentUser : 'currentUser',
-  keyCurrentUserContent : 'currentUserContent'
+  keyCurrentUserContent : 'currentUserContent',
+  keyCurrentUserClasslistAvatars : 'currentUserClasslistAvatars'
 
 };

@@ -41,6 +41,7 @@ import {
 import { NgDatepickerModule } from 'ng2-datepicker';
 import { ImageCompressService } from 'ng2-image-compress';
 import { The404Component } from './the404/the404.component';
+import { ClasslistAvatarService, DbServiceClasslistAvatar } from "./_services/user-classlist-avatars.service";
 
 
 
@@ -77,6 +78,8 @@ import { The404Component } from './the404/the404.component';
     AuthenticationService,
     DbServiceUserContent,
     UserContentService,
+    DbServiceClasslistAvatar,
+    ClasslistAvatarService,
     StorageService,
     HttpWrapper,
     AlertService,
