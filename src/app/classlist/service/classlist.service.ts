@@ -28,7 +28,7 @@ export class ClasslistService {
 
 // instead of json use JSON.strinfiy
     return this.httpWrp.get('/api/user/classlist')
-      .map((result) => {this.classlistCache = result; return result; });
+      .map((result) => {this.classlistCache = result; console.log(result); return result; });
   }
 
   /*public getClasslistAvatars(): Observable<UserClassListAvatars[]>  {

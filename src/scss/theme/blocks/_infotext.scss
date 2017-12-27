@@ -23,6 +23,11 @@
     color: $color-gray-middle;
   }
 
+  .zz-infotext--inline{
+    margin-top: 0;
+    display:inline;
+  }
+
   button{
     border:none;
     background-color: $color-white;

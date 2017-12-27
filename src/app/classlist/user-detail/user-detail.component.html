@@ -19,25 +19,23 @@
           <h3 class="zz-title--h3">Vorname Name</h3>
           <p>{{user.child_forename}} {{user.child_surname}}</p>
           <h3 class="zz-title--h3">Geburtsdatum</h3>
-          <p>{{user.child_date_of_birth}}</p>
+          <p>{{user.child_date_of_birth | properDate}}</p>
           <h3 class="zz-title--h3">Klasse</h3>
           <p>{{user.klasse_name}}</p>
-          <h3 class="zz-title--h3">Klassenlehrer</h3>
-          <p>{{user.is_teacher}}</p>
         </div>
         <div class="col-12 col-lg-6 zz-overlay__2-column">
           <h2 class="zz-title zz-title--h2">Informationen Eltern</h2>
           <h3 class="zz-title--h3">Vorname Name</h3>
           <p>{{user.parent_forename}} {{user.parent_surname}}</p>
           <h3 class="zz-title--h3">Adresse</h3>
-          <p>{{user.adress}}</p>
-          <p>ZIP Wohnort</p>
+          <p>{{user.adress}}<br>
+            {{user.zip}} {{user.place}}</p>
           <h3 class="zz-title--h3">Telefonnummer</h3>
           <p>{{user.tel_private}}</p>
           <h3 class="zz-title--h3">Korrespondenz-Sprache</h3>
           <p>{{user.parent_language}}</p>
           <h3 class="zz-title--h3">Registriert seit</h3>
-          <p>10.12.20012</p>
+          <p>{{user.register_date | properDate}}</p>
           <p>
             <button class="zz-btn zz-btn--primary">
               zu den Kontakten hinhzufügen

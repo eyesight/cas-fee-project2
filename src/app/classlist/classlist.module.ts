@@ -10,6 +10,8 @@ import { UserResolverService } from './service/user-resolver.service';
 import { MessageBoxComponent } from '../_guards/message-box/message-box.component';
 import { CanDeactivateClasslistService } from './service/can-deactivate-classlist.service';
 import { PersonalDetailsContainerModule } from '../personal-details-container/personal-details-container.module';
+import { PipesModule } from '../_pipes/pipes.module';
+
 
 
 
@@ -17,7 +19,8 @@ import { PersonalDetailsContainerModule } from '../personal-details-container/pe
   imports: [
     CommonModule,
     ClasslistRoutesModule,
-    PersonalDetailsContainerModule
+    PersonalDetailsContainerModule,
+    PipesModule
   ],
   declarations: [
     ClasslistListComponent,
