@@ -1,6 +1,3 @@
-/**
- * Created by awedag on 20.11.17.
- */
 
 import {Injectable} from '@angular/core';
 import {StorageService, StorageKeys} from './storage.service';
@@ -63,29 +60,6 @@ export class UserContentDbService {
         // nothing to execute
       };
     });
-
-
-    /*
-     return new Promise((resolve, reject) => {
-     try {
-     const userContent = this.getCurrentUser();
-     if ( userContent ) {
-     resolve(userContent);
-
-     } else {
-     this.subject.asObservable().subscribe((content) => {
-     console.log('getCurrentUserObserver.subscribe:length of av:' + content);
-     resolve(content);
-     },
-     (error) => {
-     reject(error);
-     });
-     }
-     } catch (e) {
-     reject(e);
-     }
-     });
-     * */
   }
 
 
