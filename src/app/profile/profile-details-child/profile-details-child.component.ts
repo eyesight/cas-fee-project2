@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { User } from '../../_models/user.model';
 import { overlayAnimation } from '../../_animation/overlay.animation';
 import { UserContentService } from '../../_services/user-content.service';
-import { UserContentDbService } from '../../_services/user-content-db.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService, UserService } from '../../_services/index';
 import { DatepickerOptions } from 'ng2-datepicker';

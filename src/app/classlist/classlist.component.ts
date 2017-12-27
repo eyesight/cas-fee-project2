@@ -2,12 +2,10 @@
  * Created by awedag on 14.10.17.
  */
 import {Component, OnInit} from '@angular/core';
-import {Klasse} from '../_models/klasse.model';
 import {User, UserClassListAvatars} from "../_models/user.model";
 import {ClasslistService} from "./service/classlist.service";
 import {Router} from "@angular/router";
 import {AlertService} from "../_services/alert.service";
-import {UserContentDbService} from "../_services/user-content-db.service";
 import {UserAuthService} from "../_services/user-auth.service";
 import {UserContentService} from "../_services/user-content.service";
 

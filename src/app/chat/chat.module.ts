@@ -11,7 +11,6 @@ import { ProperTimePipe } from './services/proper-time.pipe';
 
 import { DirectivesModule } from '../_directives/directives.module';
 import { SocketWrapper } from '../_services/socket-wrapper.service';
-//import { UserAuthService } from '../_services/user-auth.service';
 import { AlertService } from '../_services/alert.service';
 
 import { PersonalDetailsContainerModule } from '../personal-details-container/personal-details-container.module';
@@ -35,7 +34,6 @@ import { PersonalDetailsContainerModule } from '../personal-details-container/pe
   ],
   providers: [
     ChatService,
-  //  UserAuthService,
     SocketWrapper,
     AlertService
   ]

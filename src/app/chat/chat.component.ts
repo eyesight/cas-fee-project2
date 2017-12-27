@@ -10,9 +10,8 @@ import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
 import {UserAuthService} from '../_services/user-auth.service';
 import {AlertService} from '../_services/alert.service';
-import {UserContentDbService} from '../_services/user-content-db.service';
 import {User} from '../_models/user.model';
-import {UserContentService} from "../_services/user-content.service";
+import {UserContentService} from '../_services/user-content.service';
 
 @Component({
   selector: 'app-chat',

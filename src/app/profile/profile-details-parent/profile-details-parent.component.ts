@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../../_models/user.model';
 import { overlayAnimation } from '../../_animation/overlay.animation';
-import { UserContentDbService } from '../../_services/user-content-db.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from '../../_validation/custom.validators';

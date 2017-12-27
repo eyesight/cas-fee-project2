@@ -3,7 +3,6 @@ import {overlayAnimation} from '../../_animation/overlay.animation';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {User, UserPwdChange} from '../../_models/user.model';
 import {UserContentService} from '../../_services/user-content.service';
-import {UserContentDbService} from '../../_services/user-content-db.service';
 import {CustomValidators} from '../../_validation/custom.validators';
 import {Router} from '@angular/router';
 import {AlertService, UserService} from '../../_services/index';

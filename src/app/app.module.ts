@@ -37,7 +37,6 @@ import {
   DbServiceUserContent,
   UserContentService
 } from './_services/user-content.service';
-import { UserContentDbService } from './_services/user-content-db.service';
 
 import { NgDatepickerModule } from 'ng2-datepicker';
 import { ImageCompressService } from 'ng2-image-compress';
