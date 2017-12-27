@@ -5810,13 +5810,13 @@ html {
   .zz-nav__list-group:first-child {
     margin-top: 0.5rem; } }
 
-.zz-nav__list-group__item {
+.zz-nav__list-group-item {
   margin: auto;
   margin-right: 3.125rem;
   padding-top: 0;
   padding-bottom: 0; }
   @media (max-width: 767px) {
-    .zz-nav__list-group__item {
+    .zz-nav__list-group-item {
       margin-right: 0;
       margin-left: 0;
       padding-top: 1rem;
