@@ -24,7 +24,6 @@ export class ChatComponent implements OnInit, OnDestroy {
   public message: MessageJson[] = null;
   public userContent: User = null;
   public connectionState = true;
-  public classlistAvatar: UserClassListAvatars[] = null;
   private socketSub: Subscription;
   private chatSub: Subscription;
   private chatAuthSub: Subscription;
@@ -37,7 +36,6 @@ export class ChatComponent implements OnInit, OnDestroy {
     , private router: Router
     , private userAuthService: UserAuthService
     , private userContentService: UserContentService
-    , private classlistAvatarService: ClasslistAvatarService
     , private alertService: AlertService) {
     console.log('chatComponent constructor');
   }
@@ -89,14 +87,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
     this.resendSub = this.onResend();
 
-    this.classlistAvatarService.getClasslistAvatars()
-      .subscribe((resultAvatars) => {
-         this.classlistAvatar = resultAvatars;
-        },
-        (error) => {
-          console.log('getClasslistAvatars: error:' + error);
-          this.alertService.error('Die Profilbilder können nicht geladen werden');
-        });
+
   }
 
   ngOnDestroy() {
@@ -221,4 +212,5 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.client_uuid = this.client_uuid + 1;
     return this.client_uuid;
   }
+
 }
