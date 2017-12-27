@@ -5,6 +5,7 @@ import { FromNowPipe } from './from-now.pipe';
 import { ProperTimePipe } from './proper-time.pipe';
 import { ProperDatePipe } from './proper-date.pipe';
 import { genderPipe } from './gender.pipe';
+import { genderLanguage } from './language.pipe';
 
 
 
@@ -16,13 +17,15 @@ import { genderPipe } from './gender.pipe';
     FromNowPipe,
     ProperTimePipe,
     ProperDatePipe,
-    genderPipe
+    genderPipe,
+    genderLanguage
   ],
   exports: [
     FromNowPipe,
     ProperTimePipe,
     ProperDatePipe,
-    genderPipe
+    genderPipe,
+    genderLanguage
   ],
   providers: [
   ]

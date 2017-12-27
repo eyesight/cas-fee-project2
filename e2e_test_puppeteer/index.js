@@ -37,11 +37,11 @@ const puppeteer = require('puppeteer');
     });
     await page.waitFor(2000);
     if(x.name === 'desktop'){
-      await page.click('.zz-nav__button__image');
-      await page.click('.zz-nav__button__menu__item:first-child');
+      await page.click('.zz-nav__image');
+      await page.click('.zz-nav__dropdown-menu-item:first-child');
     } else{
       await page.click('.zz-navbar__button');
-      await page.click('.zz-nav__button__menu__item:nth-of-type(1)');
+      await page.click('.zz-nav__dropdown-menu-item:nth-of-type(1)');
     }
 
     await page.waitFor(2000);
@@ -51,37 +51,3 @@ const puppeteer = require('puppeteer');
     await browser.close();
 }
 })();
-
-
-
-
-/*
-* await page.setViewport({
- width: x.width,
- height: x.height
- });
- await page.goto('http://localhost:4200');
- await page.waitFor(2000);
-
- await page.screenshot({
- path: 'school_login'+x.name+'.png'
- });
-
- await page.waitFor(2000);
- await page.type('#email','test@test.com');
- await page.type('#password','test99!');
-
- await page.click('.zz-btn.zz-btn--primary');
-
- await page.waitFor(2000);
-
- await page.screenshot({
- path: 'school_dashboard'+x.name+'.png'
- });
- await page.waitFor(2000);
- await page.click('.zz-nav__button__image');
- await page.click('.zz-nav__button__menu__item:first-child');
- await page.waitFor(2000);
- await page.screenshot({
- path: 'school_profile'+x.name+'.png'
- });*/

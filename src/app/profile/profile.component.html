@@ -42,7 +42,7 @@
       <h3 class="zz-title--h3">Telefon Geschäft</h3>
       <p>{{userContent.tel_office}}</p>
       <h3 class="zz-title--h3">Sprache</h3>
-      <p>{{userContent.parent_language}}</p>
+      <p>{{userContent.parent_language | language}}</p>
       <button [routerLink]="['profile-details-parent']" class="zz-btn zz-btn--primary">
         Daten bearbeiten
       </button>

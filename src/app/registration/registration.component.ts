@@ -22,7 +22,7 @@ export class RegistrationComponent implements OnInit {
 
   options: DatepickerOptions = {
     minYear: 1980,
-    maxYear: 2020,
+    maxYear: 2012,
     displayFormat: 'D[.] MMMM YYYY',
     barTitleFormat: 'MMMM YYYY',
     firstCalendarDay: 1, // 0 - Sunday, 1 - Monday
@@ -40,7 +40,7 @@ export class RegistrationComponent implements OnInit {
               private userService: UserService,
               private alertService: AlertService,
               private fb: FormBuilder) {
-    this.date = new Date();
+    this.date = new Date(2012, 0, 1);
   }
 
   ngOnInit(): void {
