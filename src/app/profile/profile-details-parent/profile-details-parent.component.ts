@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../../_models/user.model';
 import { overlayAnimation } from '../../_animation/overlay.animation';
-import { UserContentDbService } from '../../_services/user-content-db.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from '../../_validation/custom.validators';
@@ -27,7 +26,7 @@ export class ProfileDetailsParentComponent implements OnInit {
     {content: 'en', label: 'Englisch'}];
 
   constructor(
-    private UserContentDbService: UserContentDbService,
+    private UserContentService: UserContentService,
     private router: Router,
     private alertService: AlertService,
     private userService: UserService,
@@ -36,7 +35,7 @@ export class ProfileDetailsParentComponent implements OnInit {
   ) { }
 
   ngOnInit():void {
-    this.userContent = this.UserContentDbService.getCurrentUser();
+    this.userContent = this.UserContentService.getCurrentUser();
     this.buildForm();
   }
 

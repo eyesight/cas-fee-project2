@@ -30,15 +30,18 @@ import { ProfileModule } from './profile/profile.module';
 import { RegistrationModule } from './registration/registration.module';
 
 import { HttpWrapper } from './_services/http-wrapper.service';
-import { UserAuthService } from './_services/user-auth.service';
+import {UserAuthService, DbServiceUserAuth} from './_services/user-auth.service';
 import { StorageService } from './_services/storage.service';
 import { AppConfigClass } from './_helpers/app.config';
-import { UserContentService } from './_services/user-content.service';
-import { UserContentDbService } from './_services/user-content-db.service';
+import {
+  DbServiceUserContent,
+  UserContentService
+} from './_services/user-content.service';
 
 import { NgDatepickerModule } from 'ng2-datepicker';
 import { ImageCompressService } from 'ng2-image-compress';
 import { The404Component } from './the404/the404.component';
+import { ClasslistAvatarService, DbServiceClasslistAvatar } from "./_services/user-classlist-avatars.service";
 
 
 
@@ -70,10 +73,13 @@ import { The404Component } from './the404/the404.component';
     AuthGuard,
     RegistrationAuthGuard,
     AppConfigClass,
+    DbServiceUserAuth,
     UserAuthService,
     AuthenticationService,
+    DbServiceUserContent,
     UserContentService,
-    UserContentDbService,
+    DbServiceClasslistAvatar,
+    ClasslistAvatarService,
     StorageService,
     HttpWrapper,
     AlertService,

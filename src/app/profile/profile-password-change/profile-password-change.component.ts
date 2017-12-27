@@ -3,7 +3,6 @@ import {overlayAnimation} from '../../_animation/overlay.animation';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {User, UserPwdChange} from '../../_models/user.model';
 import {UserContentService} from '../../_services/user-content.service';
-import {UserContentDbService} from '../../_services/user-content-db.service';
 import {CustomValidators} from '../../_validation/custom.validators';
 import {Router} from '@angular/router';
 import {AlertService, UserService} from '../../_services/index';
@@ -21,14 +20,14 @@ export class ProfilePasswordChangeComponent implements OnInit {
   public userObject = new UserPwdChange;
 
   constructor(private fb: FormBuilder,
-              private UserContentDbService: UserContentDbService,
+              private UserContentService: UserContentService,
               private userService: UserService,
               private router: Router,
               private alertService: AlertService) {
   }
 
   ngOnInit() {
-    this.userContent = this.UserContentDbService.getCurrentUser();
+    this.userContent = this.UserContentService.getCurrentUser();
     this.buildForm();
   }
 

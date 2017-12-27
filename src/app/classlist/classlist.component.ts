@@ -2,14 +2,13 @@
  * Created by awedag on 14.10.17.
  */
 import {Component, OnInit} from '@angular/core';
-import {Klasse} from '../_models/klasse.model';
 import {User, UserClassListAvatars} from "../_models/user.model";
 import {ClasslistService} from "./service/classlist.service";
 import {Router} from "@angular/router";
 import {AlertService} from "../_services/alert.service";
-import {UserContentDbService} from "../_services/user-content-db.service";
 import {UserAuthService} from "../_services/user-auth.service";
 import {UserContentService} from "../_services/user-content.service";
+import {ClasslistAvatarService} from "../_services/user-classlist-avatars.service";
 
 
 @Component({
@@ -24,32 +23,33 @@ export class ClasslistComponent implements OnInit {
   public canDeactivate = true;
 
 
-  constructor(
-    private classlistService: ClasslistService,
-    private router: Router,
-    private userAuthService: UserAuthService,
-    private userContentDbService: UserContentDbService,
-    private alertService: AlertService,
-    private userContentService: UserContentService) {
+  constructor(private classlistService: ClasslistService
+    , private router: Router
+    , private userAuthService: UserAuthService
+    , private alertService: AlertService
+    , private userContentService: UserContentService
+  , private classlistAvatarService: ClasslistAvatarService) {
   }
 
   ngOnInit() {
-    this.userCurrent = this.userContentDbService.getCurrentUser();
+     this.userContentService.getCurrentUserObserver()
+      .subscribe((uc) => {
+        this.userCurrent = uc;
+        if (!this.userCurrent) {
+          this.alertService.error('Sie müssen sich neu anmelden');
+          setTimeout(() =>
+            this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 3500);
+          return;
+        }
+      });
 
     // console.log('this.userCurrent und jetzt:' + this.userCurrent.user_avatar);
-
-    if (!this.userCurrent) {
-      this.alertService.error('Sie müssen sich neu anmelden', false, 1000);
-      setTimeout(() =>
-        this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 1000);
-      return;
-    }
 
     this.classlistService.getClasslist()
       .subscribe((result) => {
           this.classlist = result;
 
-          this.classlistService.getClasslistAvatars()
+          this.classlistAvatarService.getClasslistAvatars()
             .subscribe((resultAvatars) => {
                 console.log('result:' + resultAvatars.length);
                 resultAvatars.filter((x ) => x !== null)

@@ -1,6 +1,6 @@
 import {Component, ElementRef, Input, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {AlertService, UserService, UserContentDbService} from '../../_services/index';
+import {AlertService, UserService} from '../../_services/index';
 import {Avatar, UserAvatar} from '../../_models/user.model';
 
 import {ImageCompressService, IImage} from 'ng2-image-compress';
@@ -17,7 +17,7 @@ export class ProfileAvatarComponent {
 
   @Input() set previewUrl(purl: string) {
     this._previewUrl = purl;
-    // console.log('this._reviewurl: ' + purl);
+
   }
 
   get previewUrl() {

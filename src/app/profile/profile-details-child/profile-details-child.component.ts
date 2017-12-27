@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { User } from '../../_models/user.model';
 import { overlayAnimation } from '../../_animation/overlay.animation';
 import { UserContentService } from '../../_services/user-content.service';
-import { UserContentDbService } from '../../_services/user-content-db.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService, UserService } from '../../_services/index';
 import { DatepickerOptions } from 'ng2-datepicker';
@@ -34,7 +33,6 @@ export class ProfileDetailsChildComponent implements OnInit {
     };
 
   constructor(
-    private UserContentDbService: UserContentDbService,
     private userContentService: UserContentService,
     private router: Router,
     private userService: UserService,
@@ -43,7 +41,7 @@ export class ProfileDetailsChildComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userContent = this.UserContentDbService.getCurrentUser();
+    this.userContent = this.userContentService.getCurrentUser();
 
     this.buildForm();
   }
@@ -69,7 +67,7 @@ export class ProfileDetailsChildComponent implements OnInit {
     this.formModel = this.childDetailsForm.value;
 
     // format the date with moment
-    this.data = moment(this.formModel.child_date_of_birth).locale('de-ch').format("YYYY-MM-DD");
+    this.data = moment(this.formModel.child_date_of_birth).locale('de-ch').format('YYYY-MM-DD');
 
     this.userObject.adress = this.userContent.adress;
     this.userObject.child_date_of_birth = this.data;
