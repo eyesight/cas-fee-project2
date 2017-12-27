@@ -7,7 +7,8 @@
 <div class="row justify-content-end zz-layout__row">
   <section class="col-12 col-lg-12 col-xl-10 zz-mod-container">
     <app-classlist-list [classlistList]="classlist" [userCurrent]="userCurrent" (approveAnswer)="approveAnswer($event)"></app-classlist-list>
-
+    <p class="zz-infotext zz-infotext--form">Klassenlehrer ist: {{userCurrent.teacher_forename}} {{userCurrent.teacher_surname}}, Tel: {{userCurrent.teacher_tel_office}},
+      <a class="zz-infotext__link zz-infotext--inline" href="mailto:{{userCurrent.teacher_email}}">E-Mail: {{userCurrent.teacher_email}}</a></p>
   </section>
 </div>
 <router-outlet></router-outlet>

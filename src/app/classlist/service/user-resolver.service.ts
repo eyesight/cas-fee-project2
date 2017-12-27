@@ -1,7 +1,7 @@
-import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from "@angular/router";
-import {Injectable} from "@angular/core";
-import {ClasslistService} from "./classlist.service";
-import {User} from "../../_models/user.model";
+import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
+import {Injectable} from '@angular/core';
+import {ClasslistService} from './classlist.service';
+import {User} from '../../_models/user.model';
 
 
 @Injectable()

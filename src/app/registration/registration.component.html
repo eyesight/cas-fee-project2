@@ -75,7 +75,7 @@
                     formControlName="parent_gender" [ngClass]="{ 'zz-form__label--error': formParentGender.invalid && (formParentGender.dirty || formParentGender.touched || submitted)}">
               <option [selected]="formParentGender.value == null" value="">Bitte wählen*</option>
               <option value="w">Frau</option>
-              <option value="m">Mann</option>
+              <option value="m">Herr</option>
             </select>
             <app-form-error-messages [control]="formParentGender"></app-form-error-messages>
           </div>

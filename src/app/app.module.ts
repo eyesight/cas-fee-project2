@@ -30,7 +30,7 @@ import { ProfileModule } from './profile/profile.module';
 import { RegistrationModule } from './registration/registration.module';
 
 import { HttpWrapper } from './_services/http-wrapper.service';
-import {UserAuthService, DbServiceUserAuth} from './_services/user-auth.service';
+import { UserAuthService, DbServiceUserAuth } from './_services/user-auth.service';
 import { StorageService } from './_services/storage.service';
 import { AppConfigClass } from './_helpers/app.config';
 import {
@@ -41,7 +41,7 @@ import {
 import { NgDatepickerModule } from 'ng2-datepicker';
 import { ImageCompressService } from 'ng2-image-compress';
 import { The404Component } from './the404/the404.component';
-import { ClasslistAvatarService, DbServiceClasslistAvatar } from "./_services/user-classlist-avatars.service";
+import { ClasslistAvatarService, DbServiceClasslistAvatar } from './_services/user-classlist-avatars.service';
 
 
 

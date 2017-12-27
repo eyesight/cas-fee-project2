@@ -11,6 +11,9 @@ import { NgDatepickerModule } from 'ng2-datepicker';
 
 import { AlertService } from '../_services/index';
 
+import { PipesModule } from '../_pipes/pipes.module';
+
+
 
 @NgModule({
   imports: [
@@ -19,7 +22,8 @@ import { AlertService } from '../_services/index';
     ReactiveFormsModule,
     RegistrationRoutesModule,
     DirectivesModule,
-    NgDatepickerModule
+    NgDatepickerModule,
+    PipesModule
   ],
   declarations: [
     RegistrationComponent,

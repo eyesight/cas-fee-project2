@@ -41,6 +41,8 @@ export class ClasslistComponent implements OnInit {
             this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 3500);
           return;
         }
+
+        console.log(this.userCurrent);
       });
 
     // console.log('this.userCurrent und jetzt:' + this.userCurrent.user_avatar);

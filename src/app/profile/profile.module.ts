@@ -17,10 +17,7 @@ import { ProfileRoutesModule } from './profile.routes';
 
 import { ImageCompressService, ResizeOptions } from 'ng2-image-compress';
 
-import { FromNowPipe } from '../_pipes/from-now.pipe';
-import { ProperTimePipe } from '../_pipes/proper-time.pipe';
-import { ProperDatePipe } from '../_pipes/proper-date.pipe';
-import { genderPipe } from '../_pipes/gender.pipe';
+import { PipesModule } from '../_pipes/pipes.module';
 
 import { AlertService } from '../_services/index';
 
@@ -34,7 +31,8 @@ import { AlertService } from '../_services/index';
     ProfileRoutesModule,
     FormsModule,
     ReactiveFormsModule,
-    DirectivesModule
+    DirectivesModule,
+    PipesModule
   ],
   declarations: [
     ProfileComponent,
@@ -42,11 +40,7 @@ import { AlertService } from '../_services/index';
     ProfileDetailsParentComponent,
     ProfilePasswordChangeComponent,
     ProfileEmailChangeComponent,
-    ProfileAvatarComponent,
-    FromNowPipe,
-    ProperTimePipe,
-    ProperDatePipe,
-    genderPipe
+    ProfileAvatarComponent
   ],
   providers: [
     ImageCompressService,
