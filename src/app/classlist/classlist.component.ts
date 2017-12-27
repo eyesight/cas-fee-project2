@@ -1,7 +1,7 @@
 /**
  * Created by awedag on 14.10.17.
  */
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {User, UserClassListAvatars} from "../_models/user.model";
 import {ClasslistService} from "./service/classlist.service";
 import {Router} from "@angular/router";
@@ -9,18 +9,20 @@ import {AlertService} from "../_services/alert.service";
 import {UserAuthService} from "../_services/user-auth.service";
 import {UserContentService} from "../_services/user-content.service";
 import {ClasslistAvatarService} from "../_services/user-classlist-avatars.service";
+import {Subscription} from "rxjs/Subscription";
 
 
 @Component({
   selector: 'app-classlist',
   templateUrl: './classlist.component.html'
 })
-export class ClasslistComponent implements OnInit {
+export class ClasslistComponent implements OnInit, OnDestroy {
 
   public classlist: User[] = null;
   public userCurrent: User = null;
 
   public canDeactivate = true;
+  public avatarSub: Subscription;
 
 
   constructor(private classlistService: ClasslistService
@@ -51,7 +53,7 @@ export class ClasslistComponent implements OnInit {
       .subscribe((result) => {
           this.classlist = result;
 
-          this.classlistAvatarService.getClasslistAvatars()
+          this.avatarSub = this.classlistAvatarService.getClasslistAvatars()
             .subscribe((resultAvatars) => {
                 console.log('result:' + resultAvatars.length);
                 resultAvatars.filter((x ) => x !== null)
@@ -76,6 +78,10 @@ export class ClasslistComponent implements OnInit {
           setTimeout(() =>
             this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 3500);
         });
+  }
+
+  ngOnDestroy(){
+    this.avatarSub.unsubscribe();
   }
 
   public approveAnswer(val: boolean) {
