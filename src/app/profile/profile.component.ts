@@ -8,7 +8,8 @@ import {UserContentDbService} from '../_services/user-content-db.service';
   templateUrl: './profile.component.html',
 })
 export class ProfileComponent implements OnInit {
-  userContent: User;
+  public userContent: User;
+  public isTeacher: boolean = false;
 
   constructor(private UserContentDbService: UserContentDbService) {
   }
@@ -18,5 +19,7 @@ export class ProfileComponent implements OnInit {
     this.UserContentDbService.getCurrentUserObserver().subscribe((data) => {
       this.userContent = data;
      });
+    // check if User is teacher or not
+    this.isTeacher = (this.userContent.is_teacher === 1);
   }
 }

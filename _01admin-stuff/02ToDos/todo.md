@@ -3,9 +3,6 @@
 
 - TODO: bei Klassenliste, Detail von Person fehlen noch einzelne Felder -> Ergänzen
 
-- TODO: Wenn eingeloggt als Lehrer, wird im personal-details-container der Name nicht ausgegeben, da Name von Kind eingetragen (Lehrer hat kein Kind)
-  -> Lösen via Schlaufe oder nicht Vorname von Kind eintragen
-
 - TODO: REST-API -> Arrays sollten einen Namen haben.
 Regel REST-Slides
 
@@ -183,3 +180,6 @@ CF
 
 - TODO: Bootstrap - nur relevante Imports importieren
 -> CF: 
+
+- TODO: Wenn eingeloggt als Lehrer, wird im personal-details-container der Name nicht ausgegeben, da Name von Kind eingetragen (Lehrer hat kein Kind)
+  -> Lösen via Schlaufe oder nicht Vorname von Kind eintragen

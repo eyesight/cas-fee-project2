@@ -1,5 +1,8 @@
 <div class="zz-mod-box zz-mod-box--first">
-  <p class="zz-mod-box__txt"><span class="zz-mod-box__txt-item zz-mod-box--bold">{{userContent.child_forename}}</span><span
-    class="zz-mod-box--line-right"></span><span
-    class="zz-mod-box__txt-item">{{userContent.klasse_description}}</span></p>
+  <p class="zz-mod-box__txt">
+    <span *ngIf="!isTeacher" class="zz-mod-box__txt-item zz-mod-box--bold">{{userContent.child_forename}}</span>
+    <span *ngIf="isTeacher" class="zz-mod-box__txt-item zz-mod-box--bold">{{userContent.parent_forename}}</span>
+    <span class="zz-mod-box--line-right"></span>
+    <span class="zz-mod-box__txt-item">{{userContent.klasse_description}}</span>
+  </p>
 </div>
