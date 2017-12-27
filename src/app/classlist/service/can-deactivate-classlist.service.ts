@@ -7,7 +7,7 @@ import {ClasslistComponent} from "../classlist.component";
 
 @Injectable()
 export class CanDeactivateClasslistService implements CanDeactivate<ClasslistComponent> {
-  public canDeactivate(component: ClasslistComponent): Observable<boolean> | boolean{
+  public canDeactivate(component: ClasslistComponent): Observable<boolean> | boolean {
     let resultObserver: Observer<boolean>;
     const resultObs = new Observable<boolean>((observer) => {
       resultObserver = observer;

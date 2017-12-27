@@ -1,10 +1,8 @@
 <div [class.zz-chat__connection-state]="!cState" class="zz-chat__window zz-chat--online">
-
   <div class="zz-chat__sender">
     <p appTextareaAutosize class="zz-chat__sender-text"></p>
-
   </div>
-  <form  >
+  <form>
     <label class="zz_chat__message-label" ></label>
     <textarea class="zz-chat__message-input" type="text" appTextareaAutosize
            placeholder="Danke für die Chatmeldung" autofocus #messageText  ></textarea>
@@ -15,5 +13,4 @@
     </button>
   </div>
   <div *ngIf="!cState">keine Verbindung</div>
-
 </div>
