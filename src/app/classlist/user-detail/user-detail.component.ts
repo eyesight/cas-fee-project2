@@ -1,10 +1,7 @@
-/**
- * Created by awedag on 03.12.17.
- */
 import {Component, Input, OnInit} from '@angular/core';
 import { User } from '../../_models/user.model';
 import {overlayAnimation} from '../../_animation/overlay.animation';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-user-detail',
@@ -24,6 +21,7 @@ export class UserDetailComponent implements OnInit {
   ngOnInit() {
 
     console.log('UserDetailComponent:' + this.user.id);
+    console.log(this.user);
   }
 
 }

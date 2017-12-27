@@ -2,7 +2,7 @@
 
   <div class="col-11 col-lg-11 col-xl-7 zz-overlay__content">
     <div class="zz-overlay__content-inner">
-      <h1 class="zz-title zz-title--insideBox">Vorname Name</h1>
+      <h1 class="zz-title zz-title--insideBox">Alle Informationen von {{user.child_forename}} {{user.child_surname}}</h1>
       <div class="row zz-overlay__text-wrapper">
         <div class="col-12 zz-overlay__image-box">
           <div class="zz-overlay__image-wrapper">
@@ -15,23 +15,25 @@
           </div>
         </div>
         <div class="col-12 col-lg-6 zz-overlay__2-column">
-          <h3 class="zz-title--h3">Vorname Name (Kind)</h3>
+          <h2 class="zz-title zz-title--h2">Informationen Kind</h2>
+          <h3 class="zz-title--h3">Vorname Name</h3>
           <p>{{user.child_forename}} {{user.child_surname}}</p>
           <h3 class="zz-title--h3">Geburtsdatum</h3>
           <p>{{user.child_date_of_birth}}</p>
-          <h3 class="zz-title--h3">Adresse</h3>
-          <p>{{user.adress}}</p>
-          <p>ZIP Wohnort</p>
-          <h3 class="zz-title--h3">Telefonnummer</h3>
-          <p>{{user.tel_private}}</p>
           <h3 class="zz-title--h3">Klasse</h3>
           <p>{{user.klasse_name}}</p>
           <h3 class="zz-title--h3">Klassenlehrer</h3>
           <p>{{user.is_teacher}}</p>
         </div>
         <div class="col-12 col-lg-6 zz-overlay__2-column">
-          <h3 class="zz-title--h3">Vorname Name (Eltern):</h3>
+          <h2 class="zz-title zz-title--h2">Informationen Eltern</h2>
+          <h3 class="zz-title--h3">Vorname Name</h3>
           <p>{{user.parent_forename}} {{user.parent_surname}}</p>
+          <h3 class="zz-title--h3">Adresse</h3>
+          <p>{{user.adress}}</p>
+          <p>ZIP Wohnort</p>
+          <h3 class="zz-title--h3">Telefonnummer</h3>
+          <p>{{user.tel_private}}</p>
           <h3 class="zz-title--h3">Korrespondenz-Sprache</h3>
           <p>{{user.parent_language}}</p>
           <h3 class="zz-title--h3">Registriert seit</h3>

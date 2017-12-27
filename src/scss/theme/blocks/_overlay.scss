@@ -23,10 +23,15 @@
   }
 
   &__text-wrapper{
-    margin-top: rem-calc(75px);
+    margin-top: rem-calc(50px);
   }
 
   &__2-column{
+    &:nth-of-type(2){
+      @include media-breakpoint-down(md){
+        margin-bottom: rem-calc(50px);
+      }
+    }
   }
 
   &__close-btn {
@@ -78,7 +83,8 @@
   &__image-wrapper{
     flex: 1 100%;
     z-index:100;
-    @include mx-round-img-wrapper(200px, 200px);
+    margin-bottom: 30px;
+    @include mx-round-img-wrapper(150px, 150px);
   }
 
   .zz-btn{
