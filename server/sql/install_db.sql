@@ -81,12 +81,12 @@ CREATE TABLE `users` (
 -- Daten für Tabelle `users`
 --
 
-INSERT INTO `users` VALUES(1, '1', 'hansli@example.com', '$2a$11$k8EkgulVtkQxuD8Jt.xyUeg1wNKivBHbluVyI98vnFpt9.SJsx1XK', 'Schneider', 'Johann', 'm', 'de', 'Schneider', 'Hansli', 'm', '2010-10-09', 'Langstrasse 18', '8000', 'Zürich', '40 000 000 00 00', '40 000 000 00 00', 0, 1, 1, NULL, NULL, '2017-12-17 02:24:45', NULL);
-INSERT INTO `users` VALUES(2, '1', 'heidi@example.com', '$2a$11$k8EkgulVtkQxuD8Jt.xyUeg1wNKivBHbluVyI98vnFpt9.SJsx1XK', 'Mueller', 'Johann', 'w', 'de', 'Schneider', 'Heidi', 'm', '2017-09-10', 'Langstrasse 18', '8000', 'Zürich', '30 000 000 00 00', '30 000 000 00 00', 0, 1, 1, NULL, NULL, '2017-12-17 02:24:45', NULL);
-INSERT INTO `users` VALUES(3, '2', 'vroni@example.com', '$2a$11$k8EkgulVtkQxuD8Jt.xyUeg1wNKivBHbluVyI98vnFpt9.SJsx1XK', 'Hugentobler', 'Susanne', 'w', 'de', 'Hugentoble', 'Trudi', 'w', '2017-11-10', 'Langstrasse 18', '8000', 'Zürich', '30 000 000 00 00', '30 000 000 00 00', 0, 1, 0, NULL, NULL, '2017-12-17 02:24:45', NULL);
+INSERT INTO `users` VALUES(1, '1', 'Schneider@example.com', '$2a$11$k8EkgulVtkQxuD8Jt.xyUeg1wNKivBHbluVyI98vnFpt9.SJsx1XK', 'Schneider', 'Johann', 'm', 'de', 'Schneider', 'Hansli', 'm', '2010-10-09', 'Langstrasse 18', '8000', 'Zürich', '40 000 000 00 00', '40 000 000 00 00', 0, 1, 1, NULL, NULL, '2017-12-17 02:24:45', NULL);
+INSERT INTO `users` VALUES(2, '1', 'Mueller@example.com', '$2a$11$k8EkgulVtkQxuD8Jt.xyUeg1wNKivBHbluVyI98vnFpt9.SJsx1XK', 'Mueller', 'Johann', 'w', 'de', 'Schneider', 'Heidi', 'm', '2017-09-10', 'Langstrasse 18', '8000', 'Zürich', '30 000 000 00 00', '30 000 000 00 00', 0, 1, 1, NULL, NULL, '2017-12-17 02:24:45', NULL);
+INSERT INTO `users` VALUES(3, '2', 'Hugentobler@example.com', '$2a$11$k8EkgulVtkQxuD8Jt.xyUeg1wNKivBHbluVyI98vnFpt9.SJsx1XK', 'Hugentobler', 'Susanne', 'w', 'de', 'Hugentoble', 'Trudi', 'w', '2017-11-10', 'Langstrasse 18', '8000', 'Zürich', '30 000 000 00 00', '30 000 000 00 00', 0, 1, 0, NULL, NULL, '2017-12-17 02:24:45', NULL);
 INSERT INTO `users` VALUES(4, '2', 'test@test.com', '77dfa1f5f622ac038847a57a432cc20db0d2180bdbb189a18dd5cbb941ac5732', 'test', 'test', 'w', 'de', 'test', 'test', 'm', '1999-10-10', 'Strasse', '8000', 'Zürich', '20 000 000 00 00', '20 000 000 00 00', 0, 1, 1, NULL, NULL, '2017-12-17 02:24:45', NULL);
-INSERT INTO `users` VALUES(5, '2', 'lehrer@test.com', '77dfa1f5f622ac038847a57a432cc20db0d2180bdbb189a18dd5cbb941ac5732', 'Mueller', 'Johann', 'm', 'de', '', '', '', '', 'Langstrasse 18', '8000', 'Zürich', '10 000 000 00 00', '10 000 000 00 00', 1, 1, 1, NULL, NULL, '2017-12-17 02:24:45', NULL);
-INSERT INTO `users` VALUES(6, '1', 'lehrer2@test.com', '77dfa1f5f622ac038847a57a432cc20db0d2180bdbb189a18dd5cbb941ac5732', 'Meier', 'Fränzi', 'w', 'de', '', '', '', '', 'Langstrasse 18', '8000', 'Zürich', '10 000 000 00 00', '10 000 000 00 00', 1, 1, 1, NULL, NULL, '2017-12-17 02:24:45', NULL);
+INSERT INTO `users` VALUES(5, '1', 'lehrer@test.com', '77dfa1f5f622ac038847a57a432cc20db0d2180bdbb189a18dd5cbb941ac5732', 'Mueller', 'Johann', 'm', 'de', '', '', '', '', 'Langstrasse 18', '8000', 'Zürich', '10 000 000 00 00', '10 000 000 00 00', 1, 1, 1, NULL, NULL, '2017-12-17 02:24:45', NULL);
+INSERT INTO `users` VALUES(6, '2', 'lehrer2@test.com', '77dfa1f5f622ac038847a57a432cc20db0d2180bdbb189a18dd5cbb941ac5732', 'Meier', 'Fränzi', 'w', 'de', '', '', '', '', 'Langstrasse 18', '8000', 'Zürich', '10 000 000 00 00', '10 000 000 00 00', 1, 1, 1, NULL, NULL, '2017-12-17 02:24:45', NULL);
 
 
 -- DATEN für CHAT

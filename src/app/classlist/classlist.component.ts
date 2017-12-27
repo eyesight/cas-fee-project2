@@ -24,12 +24,13 @@ export class ClasslistComponent implements OnInit {
   public canDeactivate = true;
 
 
-  constructor(private classlistService: ClasslistService
-    , private router: Router
-    , private userAuthService: UserAuthService
-    , private userContentDbService: UserContentDbService
-    , private alertService: AlertService
-    , private userContentService: UserContentService,) {
+  constructor(
+    private classlistService: ClasslistService,
+    private router: Router,
+    private userAuthService: UserAuthService,
+    private userContentDbService: UserContentDbService,
+    private alertService: AlertService,
+    private userContentService: UserContentService) {
   }
 
   ngOnInit() {
@@ -54,7 +55,7 @@ export class ClasslistComponent implements OnInit {
                 resultAvatars.filter((x ) => x !== null)
                   .map((x) => {
                     console.log('classlistavatars in subscribe: ' + x.email);
-                    console.log('content avatars: length:' + x.avatar.length)
+                    console.log('content avatars: length:' + x.avatar.length);
                     if (x.email != null && x.avatar != null) {
                       const item = this.classlist.findIndex(el => el.email === x.email);
                       console.log('classlist: item:' + item + ':email:' + this.classlist[item].email);
