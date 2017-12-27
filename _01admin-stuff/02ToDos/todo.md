@@ -1,8 +1,4 @@
 #TODO
-- TODO: Datum überall prüfen und richtig darstellen
-
-- TODO: bei Klassenliste, Detail von Person fehlen noch einzelne Felder -> Ergänzen
-
 - TODO: REST-API -> Arrays sollten einen Namen haben.
 Regel REST-Slides
 
@@ -183,3 +179,7 @@ CF
 
 - TODO: Wenn eingeloggt als Lehrer, wird im personal-details-container der Name nicht ausgegeben, da Name von Kind eingetragen (Lehrer hat kein Kind)
   -> Lösen via Schlaufe oder nicht Vorname von Kind eintragen
+
+- TODO: Datum überall prüfen und richtig darstellen
+
+- TODO: bei Klassenliste, Detail von Person fehlen noch einzelne Felder -> Ergänzen
