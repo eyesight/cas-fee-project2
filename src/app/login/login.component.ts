@@ -5,7 +5,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService, AuthenticationService } from '../_services/index';
 import {UserContentService} from '../_services/user-content.service';
 import { ErrorHandlerService } from '../_services/index';
-import {ClasslistAvatarService} from "../_services/user-classlist-avatars.service";
+import {ClasslistAvatarService} from '../_services/user-classlist-avatars.service';
+import {User} from '../_models/user.model';
+
 
 
 @Component({
@@ -13,10 +15,12 @@ import {ClasslistAvatarService} from "../_services/user-classlist-avatars.servic
   templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
-  model: any = {};
-  loading = false;
-  returnUrl: string;
-  loginForm: FormGroup;
+  public model: any = {};
+  public loading = false;
+  public returnUrl: string;
+  public loginForm: FormGroup;
+  public formModel: User;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -29,10 +33,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.loginForm = this.fb.group({
-       formUsername: ['', [Validators.required, Validators.minLength(2)]],
-       formPassword: ['', [Validators.required, Validators.minLength(2)]]
-      });
+    this.buildForm();
     // reset login status
     this.authenticationService.logout();
     this.userContentService.clear();
@@ -42,16 +43,11 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  get formUsername() {
-    return this.loginForm.get('formUsername');
-  }
-  get formPassword() {
-    return this.loginForm.get('formPassword');
-  }
-
   login() {
     this.loading = true;
-    this.authenticationService.login(this.model.username, this.model.password)
+    this.formModel = this.loginForm.value;
+
+    this.authenticationService.login(this.formModel.email, this.formModel.pwd)
       .subscribe( data => {
 
           this.userContentService.getUserContent()
@@ -73,5 +69,20 @@ export class LoginComponent implements OnInit {
           this.alertService.error(error, true, 500);
           this.loading = false;
         });
+  }
+
+  buildForm() {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.minLength(2)]],
+      pwd: ['', [Validators.required, Validators.minLength(2)]]
+    });
+    console.log(this.loginForm.invalid);
+  }
+
+  get formUsername() {
+    return this.loginForm.get('email');
+  }
+  get formPassword() {
+    return this.loginForm.get('pwd');
   }
 }

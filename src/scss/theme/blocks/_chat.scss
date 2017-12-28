@@ -1,11 +1,11 @@
 .zz-chat{
 
   &__box {
+    @extend .helper-boxshadow;
     padding-left:30px;
     padding-top:4px;
     padding-bottom:rem-calc(75px);
-    margin-bottom: rem-calc(140px);
-    @extend .helper-boxshadow;
+    margin-bottom: rem-calc(180px);
   }
 
 

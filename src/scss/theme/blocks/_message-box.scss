@@ -1,30 +1,43 @@
 .zz-messagebox{
   @extend .helper-boxshadow;
-
+  z-index: 1100;
 
   &--pointerless {
     pointer-events:none;
   }
 
   &__modal {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    position: absolute;
+    top:0;
+    left: calc(50% - 275px);
     background-color: $color-white;
     border: 1px solid $color-gray-light;
     padding: 1rem;
+    pointer-events:auto;
+    z-index: 1200;
+    max-width: 450px;
+    @include media-breakpoint-down(lg){
+      left: calc(50% - 200px);
+    }
+    @include media-breakpoint-down(md){
+      left: calc(50% - 200px);
+    }
+    @include media-breakpoint-down(xs){
+      left: 20%;
+      top:-100px;
+      width: 240px;
+    }
   }
 
   &__backdrop {
-    position: absolute;
-    // background: rgba(0, 0, 0, 0.1);
+    position: fixed;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
     background: $color-black;
-    opacity: 0.2;
+    opacity: 0.8;
+    z-index: 1100;
   }
 
 }

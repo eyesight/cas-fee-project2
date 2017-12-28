@@ -19,9 +19,6 @@ export class UserDetailComponent implements OnInit {
      this.user = activatedRoute.snapshot.data.user;
   }
   ngOnInit() {
-
-    console.log('UserDetailComponent:' + this.user.id);
-    console.log(this.user);
   }
 
 }

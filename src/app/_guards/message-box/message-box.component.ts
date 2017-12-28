@@ -2,7 +2,7 @@
  * Created by awedag on 08.12.17.
  */
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {User, UserApproveAnswer} from "../../_models/user.model";
+import {User, UserApproveAnswer} from '../../_models/user.model';
 
 @Component({
   selector: 'app-message-box',
