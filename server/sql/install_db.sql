@@ -106,5 +106,5 @@ CREATE TABLE `chat` (
 
 
 
-INSERT INTO `chat` VALUES('1', 'X1', '1', '1', '', 'Lorem ipsum', '2016-10-09  16:14:07');
-INSERT INTO `chat` VALUES('2', 'X2', '2', '1', '', 'sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,', '2016-10-22  16:12:07');
+INSERT INTO `chat` VALUES('1', 'X1', '1', '1', 'Schneider@example.com', 'Lorem ipsum', '2016-10-09  16:14:07', '2016-10-09  16:14:07');
+INSERT INTO `chat` VALUES('2', 'X2', '2', '1', 'Mueller@example.com', 'sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,', '2016-10-22  16:12:07', '2016-10-09  16:14:07');
