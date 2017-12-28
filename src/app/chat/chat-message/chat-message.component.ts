@@ -28,7 +28,8 @@ export class ChatMessageComponent implements OnInit {
   ngOnInit() {
   //  console.log('asd:' + this.avatar.email);
 
-    // allow other tasks to finish first
+    // allow other tasks to finish first, not to cause an warn message -> [Violation] 'load' handler took 239ms
+    // SetTimeout causes that the task is executed after all others
     setTimeout(() =>
     this.classlistAvatarService.getAvatarFromEmail(this.message.email)
       .then((resultAvatar) => {
@@ -40,7 +41,7 @@ export class ChatMessageComponent implements OnInit {
           console.log('getClasslistAvatars: error:' );
           this.alertService.error('Die Profilbilder können nicht geladen werden');
         })
-  , 500);
+  , 0);
 
   }
 }
