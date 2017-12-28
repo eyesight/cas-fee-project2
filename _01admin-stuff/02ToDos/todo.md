@@ -4,19 +4,15 @@ Regel REST-Slides (Prio 1.5)
 
 - TODO: Error-messages als Service (Switch-liste), 
 Mapping von Fehlern zu lesbarem text. Switch über Fehler und Defaults
+CF
 
 - TODO: LEhrer im ClaslsistdetailsKind ausblenben
-(+AW)
+AW
 
 - TODO: CSV-Datei erstellen in Klassenliste -> User-Details
 (Prio2)
 CF(+AW)
-
- - TODO: Error-Message-Handler erstellen, resp. korrigieren (besteht ja schon z.T.)
- -> Errors in Console auslesen/Überschreiben
- -> CF(+AW)
   
-
 - TODO: FOUT einbinden für das Laden eines Webfonts (=auf Folien unterricht), https://css-tricks.com/fout-foit-foft/
 -> AW+CF 
 
@@ -189,3 +185,8 @@ CF
 
 - TODO: Prüfen in allen Browsern/Export Projekt als Bundle
  ->AW+CF
+
+
+ - TODO: Error-Message-Handler erstellen, resp. korrigieren (besteht ja schon z.T.)
+ -> Errors in Console auslesen/Überschreiben
+ -> CF(+AW)
