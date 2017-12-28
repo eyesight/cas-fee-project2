@@ -30,7 +30,8 @@ CF(+AW)
 -> AW+CF:
 https://www.w3schools.com/html/html5_semantic_elements.asp
 
-
+- TODO: (auch wegen IE)  avatars png/jpg Thematik
+-> AW
 
 --------------------------------------------------------------------------------
 Prio 2
