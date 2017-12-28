@@ -11,6 +11,7 @@ import 'rxjs/add/operator/map';
 import {HttpWrapper} from './http-wrapper.service';
 import {DbService} from "./db.service";
 import {StorageKeys, StorageService} from "./storage.service";
+import {UserContentService} from "./user-content.service";
 
 @Injectable()
 export class DbServiceClasslistAvatar extends DbService<UserClassListAvatars[]> {
@@ -22,9 +23,19 @@ export class DbServiceClasslistAvatar extends DbService<UserClassListAvatars[]> 
 @Injectable()
 export class ClasslistAvatarService {
 
-  constructor(private httpWrp: HttpWrapper, private dbUserClAvatar: DbServiceClasslistAvatar) {
+  constructor(private httpWrp: HttpWrapper
+    , private dbUserClAvatar: DbServiceClasslistAvatar
+    , private userContentService: UserContentService) {
     console.log('UserContentService constructed');
 
+      this.userContentService.getCurrentUserObserver().subscribe((userContent) => {
+        console.log('nav.component ngOnInit inside observer');
+
+        this.clear();
+
+      }, (error) => {
+        console.log('observer error on nav.component.getCurrentUserObserver:' + error );
+      });
   }
 
 // TODO: make sure that observable gets removed

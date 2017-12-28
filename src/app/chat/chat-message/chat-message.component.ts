@@ -5,6 +5,7 @@ import { Klasse } from '../../_models/klasse.model';
 import { UserClassListAvatars} from '../../_models/user.model';
 import {ClasslistAvatarService} from "../../_services/user-classlist-avatars.service";
 import {AlertService} from "../../_services/alert.service";
+import {UserContentService} from "../../_services/user-content.service";
 
 
 @Component({
@@ -21,7 +22,7 @@ export class ChatMessageComponent implements OnInit {
   public avatar: UserClassListAvatars = null;
 
    constructor( private classlistAvatarService: ClasslistAvatarService
-  , private alertService: AlertService )
+               , private alertService: AlertService )
    { }
 
   ngOnInit() {
@@ -40,6 +41,6 @@ export class ChatMessageComponent implements OnInit {
           this.alertService.error('Die Profilbilder können nicht geladen werden');
         })
   , 500);
-  }
 
+  }
 }
