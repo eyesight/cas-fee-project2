@@ -1,8 +1,12 @@
 #TODO
 - TODO: REST-API -> Arrays sollten einen Namen haben.
-Regel REST-Slides
+Regel REST-Slides (Prio 1.5)
 
-- TODO: Error-messages als Service (Switch-liste), Mapping von Fehlern zu lesbarem text
+- TODO: Error-messages als Service (Switch-liste), 
+Mapping von Fehlern zu lesbarem text. Switch über Fehler und Defaults
+
+- TODO: LEhrer im ClaslsistdetailsKind ausblenben
+(+AW)
 
 - TODO: CSV-Datei erstellen in Klassenliste -> User-Details
 (Prio2)
