@@ -30,10 +30,6 @@ CF(+AW)
 -> AW+CF:
 https://www.w3schools.com/html/html5_semantic_elements.asp
 
- - TODO: Prüfen in allen Browsern/Export Projekt als Bundle
- ->AW+CF
-
-- TODO: Mobile-Navigation sollte per klick geschlossen werden (prio2)
 
 
 --------------------------------------------------------------------------------
@@ -52,6 +48,9 @@ Prio 2
 
 - TODO: Kalender umsetzen (niedrige Prio)
 -> 
+ 
+- TODO: Mobile-Navigation sollte per klick geschlossen werden (prio2)
+
  
 --------------------------------------------------------------------------------
 DONE
@@ -183,3 +182,6 @@ CF
 - TODO: Datum überall prüfen und richtig darstellen
 
 - TODO: bei Klassenliste, Detail von Person fehlen noch einzelne Felder -> Ergänzen
+
+- TODO: Prüfen in allen Browsern/Export Projekt als Bundle
+ ->AW+CF
