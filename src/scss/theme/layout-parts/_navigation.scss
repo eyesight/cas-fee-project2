@@ -1,6 +1,13 @@
 .zz-nav{
   &__list-group{
 
+    display: flex;
+    align-items: center;
+
+    @include media-breakpoint-down(md) {
+      display: block;
+    }
+
     &:first-child{
       @include media-breakpoint-down(sm) {
         margin-top:0.5rem;

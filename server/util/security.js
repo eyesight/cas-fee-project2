@@ -27,8 +27,6 @@ function createSessionToken(name, secret, options, callback) {
     console.log('name is empty - cant create token');
     return "";
   }
-  //console.log('create token using: ');
-  //console.dir(options);
   jwt.sign({name}, secret, options, (err, token) => {
     console.log('token: ' + token);
     callback({email: name, token: token})
@@ -69,14 +67,12 @@ function handleRegister(req, res) {
 }
 
 function handleLogin(req, res) {
-  //console.log('handleLogin:' + req.body.email);
   if (isLoggedIn(req)) {
     console.log('security user is logged in');
     res.send(true);
   }
   else {
     console.log('security is req.body:' + !req.body);
-    //console.dir(req);
     if (!req.body.email || !req.body.pwd) {
       res.status("401").json(false);
     }
@@ -91,7 +87,6 @@ function handleLogin(req, res) {
               authToken.user_can = roles || [];
               res.json(authToken);
               return;
-              // res.json(user);
             });
             res.json(token);
 
@@ -123,8 +118,6 @@ function handlePasswordChange(req, res) {
           res.json(true);
 
         });
-
-        //createSessionToken(req.body.email, req.app.get("jwt-secret"), req.app.get("jwt-sign"), (token) => res.json(token));
       }
       else {
         console.log('security: 401');

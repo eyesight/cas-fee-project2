@@ -1,6 +1,6 @@
 'use strict'
 
-const db=require('./dbconnection'); //reference of dbconnection.js
+const db=require('./dbconnection');
 const ModelBase = require('./dbModelBase');
 const crypto = require('crypto');
 const cryptoUtil = require('../util/cryptoUtil');
@@ -36,13 +36,9 @@ class UserModel extends ModelBase{
     this.tel_private = tel_private;
     this.tel_office = tel_office;
     this.is_active = 1;
-/*
-    this.is_teacher = is_teacher;
 
-    this.is_approved = is_approved;*/
     this.user_avatar = user_avatar;
-  /*  this.user_can = user_can;
-    this.user_name = user_name;*/
+
   }
 }
 
@@ -66,11 +62,8 @@ function UserFromJson(req){
     r.tel_private,
     r.tel_office,
     r.is_active,
-    /*r.is_teacher,
-    r.is_approved,*/
     r.user_avatar
-    /*r.user_can,
-    r.user_name*/
+
   );
 }
 
@@ -307,7 +300,6 @@ function getUserIdByEmail(email,callback){
           err = 'SQL SEVERE ERROR: more than one entry for user.email:'+email;
         }
       }
-      //console.dir(newDoc);
       callback(err, newDoc);
     }
   });
