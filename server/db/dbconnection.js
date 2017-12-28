@@ -1,6 +1,4 @@
-/**
- * Created by awedag on 27.10.17.
- */
+"use strict";
 
 var mysql=require('mysql');
 

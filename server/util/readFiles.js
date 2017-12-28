@@ -1,3 +1,4 @@
+"use strict";
 const fs = require('fs');
 
 /**
@@ -21,7 +22,7 @@ function readManyFiles (path, files, emails, callback) {
       // just skip non-npm packages and decrease valid files count
       err && (errors[k] = err);
       if( !err ) {
-        fileinfo = {data: data, email: emails[k], filename : file};
+        let fileinfo = {data: data, email: emails[k], filename : file};
         console.log('data:' + data.length);
         result[k] = fileinfo;
      //   result[k].email = emails[k];

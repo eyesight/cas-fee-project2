@@ -1,8 +1,4 @@
-/**
- * Created by awedag on 27.10.17.
- */
-
-// TODO: use strict everywhere in fileheader
+'use strict'
 
 const db=require('./dbconnection'); //reference of dbconnection.js
 const ModelBase = require('./dbModelBase');

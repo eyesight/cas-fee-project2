@@ -1,6 +1,4 @@
-/**
- * Created by awedag on 01.11.17.
- */
+"use strict";
 
 const db = require('./dbconnection'); //reference of dbconnection.js
 const ModelBase = require('./dbModelBase');
@@ -20,22 +18,6 @@ class KlasseModel extends ModelBase {
     this.teacher_user_id = teacherId;
     this.is_active = isActive;
   }
-}
-
-// create a user-object from a json-string
-function klasseFromJson(req) {
-  "use strict";
-  const r = req.body;
-  return new KlasseModel(
-    r.id,
-    r.name,
-    r.description,
-    r.start_at,
-    r.end_at,
-    r.teacher_user_id,
-    r.is_active
-  );
-
 }
 
 function getAllKlasseData(callback) {

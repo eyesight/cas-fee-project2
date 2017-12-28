@@ -1,6 +1,4 @@
-/**
- * Created by awedag on 27.10.17.
- */
+"use strict";
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
@@ -26,10 +24,4 @@ router.put("/user/approve", userController.approveUser);
 
 router.put("/user/passwordchange", security.handlePasswordChange);
 
-
-/*
-router.post("/api", orders.createUser);
-router.get("/:id/", orders.showOrder);
-router.delete("/:id/", orders.deleteOrder);
-*/
 module.exports = router;

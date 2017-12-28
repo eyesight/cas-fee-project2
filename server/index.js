@@ -1,8 +1,4 @@
-/**
- * Created by awedag on 26.10.17.
- */
-
-
+"use strict";
 
 var app = require('express')();
 var http = require('http').Server(app);

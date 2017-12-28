@@ -1,3 +1,4 @@
+"use strict";
 const store = require("../db/dbKlasse");
 const util = require("../util/security");
 

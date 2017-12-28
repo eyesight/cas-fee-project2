@@ -1,10 +1,7 @@
-/**
- * Created by awedag on 27.10.17.
- */
+"use strict";
 const dbUser = require("../db/dbUser");
 const util = require("../util/security");
 const avatarController = require("./avatarController");
-"use strict";
 
 module.exports.updateUser = function (req, res) {
   console.log('req.user.name :' + req.user.name);

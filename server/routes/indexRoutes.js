@@ -1,6 +1,4 @@
-/**
- * Created by awedag on 27.10.17.
- */
+"use strict";
 const express = require('express');
 const indexController = require('../controllers/indexController');
 

@@ -1,6 +1,4 @@
-/**
- * Created by awedag on 30.10.17.
- */
+"use strict";
 
 // ModelBase is mainly for easier database handling as the class must only contain fields from database
 // to keep it working properly dont add any static functions to it as this will be
@@ -23,7 +21,6 @@ class ModelBase {
       result.push(s);
     }
     return result;
-    //eturn Object.values(this).reduce((result,x) => [...result, s] );
 
   }
 

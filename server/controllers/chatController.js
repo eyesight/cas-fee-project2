@@ -1,9 +1,5 @@
-/**
- * Created by awedag on 06.11.17.
- */
 
-'use strict'
-//var http = require('http').Server(app);
+"use strict";
 const socketioJwt = require('socketio-jwt');
 const cryptoUtil = require('../util/cryptoUtil');
 const dbChat = require('../db/dbChat');
@@ -24,8 +20,6 @@ module.exports.chat = function (io) {
 
   io.on('connection', function (socket) {
     console.log('a user connected');
-    //console.log(socket.handshake.decoded_token.name, 'connected');
-    //console.log('hello!', socket.handshake.decoded_token.name);
 
     // in socket.io 1.0
     console.log('hello! ', socket.decoded_token.name);
@@ -47,11 +41,7 @@ module.exports.chat = function (io) {
             socket.leave(classId);
           });
 
-          //  socket.on('klasse', function (room) {
-          //    console.log('join klasse:' + room);
-          //    socket.join('mymyroom');
-//
-          //    });
+
           socket.on('chatMessageToSocketServer', function (msg, callback) {
             console.log('message received from (could be faked):' + msg.email + 'email from token (couldnt be faked):' + socket.decoded_token.name + ':classRoom:' + classId);
 
@@ -72,9 +62,6 @@ module.exports.chat = function (io) {
             msg.email = socket.decoded_token.name;
             socket.broadcast.to(classId).emit('broadcastToAll_chatMessage', msg);
           });
-
-
-          // END dbUser.getClassIdByEmail
         });
 
       } else {

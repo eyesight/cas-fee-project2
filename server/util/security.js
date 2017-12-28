@@ -1,3 +1,4 @@
+ "use strict";
 const jwt = require('jsonwebtoken');
 const dbUser = require('../db/dbUser.js');
 const dbKlasse = require('../db/dbKlasse.js');
@@ -169,7 +170,7 @@ function authorizeBackend(email, accessRight, callback) {
     }
     else {
 
-      for (x in authorRoles) {
+      for (let x in authorRoles) {
         console.log(x);
         console.dir(accessRight);
 

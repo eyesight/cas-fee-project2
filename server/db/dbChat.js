@@ -1,6 +1,3 @@
-/**
- * Created by awedag on 05.11.17.
- */
 "use strict";
 
 var db=require('./dbconnection'); //reference of dbconnection.js
@@ -39,10 +36,7 @@ class ChatModel extends ModelBase{
     this.message = message;
     this.sent_at = sentAt;
     this.saved_at = savedAt;
-    //this.sent_at = new Date(sendAt).toISOString().slice(0, 19).replace('T', ' ');
-    //this.sent_at = require('moment')(sendAt).format('YYYY-MM-DD HH:mm:ss');
-      //new Date(sendAt).toISOString().slice(0, 19).replace('T', ' '));
-  }
+   }
 }
 
 // create a user-object from a json-string
