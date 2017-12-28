@@ -6,7 +6,7 @@ import { ChatMessageComponent } from './chat-message/chat-message.component';
 import { ChatDateComponent } from './chat-date/chat-date.component';
 import { ChatComponent } from './chat.component';
 import { ChatRoutesModule } from './chat.routes';
-import { FromNowPipe } from './services/from-now.pipe';
+import { PipesModule } from '../_pipes/pipes.module';
 import { ProperTimePipe } from './services/proper-time.pipe';
 
 import { DirectivesModule } from '../_directives/directives.module';
@@ -22,14 +22,14 @@ import { PersonalDetailsContainerModule } from '../personal-details-container/pe
     CommonModule,
     ChatRoutesModule,
     DirectivesModule,
-    PersonalDetailsContainerModule
+    PersonalDetailsContainerModule,
+    PipesModule
   ],
   declarations: [
     ChatComponent,
     ChatAddmessageComponent,
     ChatMessageComponent,
     ChatDateComponent,
-    FromNowPipe,
     ProperTimePipe
   ],
   providers: [

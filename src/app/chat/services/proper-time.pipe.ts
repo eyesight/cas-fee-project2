@@ -16,7 +16,7 @@ export class ProperTimePipe implements PipeTransform {
     // return time as 14:53
     const ts = moment.utc(date);
     if (date) {
-      return ts.local().format('LTS');
+      return 'zugestellt um: ' + ts.local().format('LTS');
     } else {
       return 'Pendent';
     }
