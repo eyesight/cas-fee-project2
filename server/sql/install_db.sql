@@ -100,6 +100,7 @@ CREATE TABLE `chat` (
   `email` varchar(255),
   `message` text NOT NULL,
   `sent_at` datetime NOT NULL,
+  `saved_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
 )  ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
