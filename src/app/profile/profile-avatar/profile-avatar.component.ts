@@ -4,7 +4,7 @@ import {AlertService, UserService} from '../../_services/index';
 import {Avatar, UserAvatar} from '../../_models/user.model';
 
 import {ImageCompressService, IImage} from 'ng2-image-compress';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 import {UserContentService} from '../../_services/user-content.service';
 
 
@@ -13,7 +13,7 @@ import {UserContentService} from '../../_services/user-content.service';
   templateUrl: './profile-avatar.component.html'
 })
 export class ProfileAvatarComponent {
-  private _previewUrl: string;
+  public _previewUrl: string;
 
   @Input() set previewUrl(purl: string) {
     this._previewUrl = purl;
