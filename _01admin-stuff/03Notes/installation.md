@@ -4,14 +4,16 @@
 2) entpack (if not already) to dir and switch to dir
 3) npm install
 4) install db -> see ./server/readme.md
+5) start server:
+  - change to ./server 
+  - follow those readme instructions 
 
+6) if you have ng globally installed (npm install -g ) then just:
+ng serve 
+if not then switch to ./node_modules/@angular/cli/bin and type ng serve
 #Backend
 
 **Andy:**:
-- change to ./server 
-- follow those readme instructions 
-
-
 
 
 #Frontend-Utils
