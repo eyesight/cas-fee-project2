@@ -6,6 +6,7 @@ import {Avatar, UserAvatar} from '../../_models/user.model';
 import {ImageCompressService, IImage} from 'ng2-image-compress';
 import {Router} from '@angular/router';
 import {UserContentService} from '../../_services/user-content.service';
+import {avatarHeader} from "../../_helpers/avatar-header";
 
 
 @Component({
@@ -17,11 +18,13 @@ export class ProfileAvatarComponent {
 
   @Input() set previewUrl(purl: string) {
     this._previewUrl = purl;
-
   }
 
+  @Input() avatarFiletype: string;
+
+
   get previewUrl() {
-    return 'data:image/png;base64,' + this._previewUrl;
+    return avatarHeader(this.avatarFiletype) + this._previewUrl;
   }
 
   public form: FormGroup;
@@ -138,6 +141,7 @@ export class ProfileAvatarComponent {
             this.av.value = this.images[0].compressedImage.imageDataUrl.split(',')[1];
             this.av.filename = files.name;
             this.av.filetype = files.type;
+            this.avatarFiletype = files.name.match(/[0-9a-z]+$/i)[0];
             this.av.filesize = files.size;
             this.userAvatar.avatar = this.av;
 
