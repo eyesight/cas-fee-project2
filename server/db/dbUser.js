@@ -273,7 +273,7 @@ function getUserAuthorizationInfos(email,callback){
     if (callback) {
       if (!newDoc || newDoc.length <= 0 ) {
         newDoc = null;
-        err = 'SQL no Result';
+        err = err || 'SQL no Result';
       }
       else {
         if (newDoc.length > 1){
@@ -281,8 +281,12 @@ function getUserAuthorizationInfos(email,callback){
         }
       }
 
-      console.log('getUserAuthorizationInfosBGSH  erro?:' + err + ' or success:' + newDoc[0].is_approved);
-      callback(err, newDoc[0]);
+      console.log('getUserAuthorizationInfosBGSH  erro?:' + err );
+      if (err){
+       callback(err, null);
+      }else {
+        callback(err, newDoc[0]);
+      }
     }
   });
 }
