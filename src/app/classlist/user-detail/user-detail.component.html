@@ -13,8 +13,8 @@
               </ng-template>
 
           </div>
-        </div>
-        <div class="col-12 col-lg-6 zz-overlay__2-column">
+        </div >
+        <div class="col-12 col-lg-6 zz-overlay__2-column" *ngIf="!user.is_teacher">
           <h2 class="zz-title zz-title--h2">Informationen Kind</h2>
           <h3 class="zz-title--h3">Vorname Name</h3>
           <p>{{user.child_forename}} {{user.child_surname}}</p>
@@ -24,7 +24,8 @@
           <p>{{user.klasse_name}}</p>
         </div>
         <div class="col-12 col-lg-6 zz-overlay__2-column">
-          <h2 class="zz-title zz-title--h2">Informationen Eltern</h2>
+          <h2 class="zz-title zz-title--h2" *ngIf="user.is_teacher">Informationen Lehrer</h2>
+          <h2 class="zz-title zz-title--h2" *ngIf="!user.is_teacher">Informationen Eltern</h2>
           <h3 class="zz-title--h3">Vorname Name</h3>
           <p>{{user.parent_forename}} {{user.parent_surname}}</p>
           <h3 class="zz-title--h3">Adresse</h3>
@@ -37,13 +38,12 @@
           <h3 class="zz-title--h3">Registriert seit</h3>
           <p>{{user.register_date | properDate}}</p>
           <p>
-            <button class="zz-btn zz-btn--primary">
-              zu den Kontakten hinhzufügen
-            </button>
           </p>
           <p>
             <button class="zz-btn zz-btn--primary">
-              E-Mail schreiben
+               <a href="mailto:{{user.email}}">
+                 E-Mail schreiben
+               </a>
             </button>
           </p>
         </div>

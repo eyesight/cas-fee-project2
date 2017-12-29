@@ -1,18 +1,20 @@
 <div class="zz-chat__window">
   <div class="zz-chat__sender">
 
+    <div class="zz-table__line-wrapper zz-chat__sender-header">
+      <div class="zz-table__img-wrapper">
 
-    <div class="zz-table__img-wrapper">
-
-      <img class="zz-table__img" [src]="'data:image/png;base64,' + avatar?.avatar" *ngIf="avatar?.avatar; else falsyTemplate">
-      <ng-template #falsyTemplate>
-        <img class="zz-table__img" src="../../../assets/img/dummyPortrait.png">
-      </ng-template>
+        <img class="zz-table__img" [src]="'data:image/png;base64,' + avatar?.avatar"
+             *ngIf="avatar?.avatar; else falsyTemplate">
+        <ng-template #falsyTemplate>
+          <img class="zz-table__img" src="../../../assets/img/dummyPortrait.png">
+        </ng-template>
+      </div>
+      <p class="zz-chat__sender-text"><span class="zz-chat__txt-item ">{{message.email}}</span><span
+        class="zz-chat--line-right"></span>
+        <span
+          class="zz-chat__txt-item zz-infotext">{{message.saved_at | properTime }}</span></p>
     </div>
-
-    <p class="zz-chat__sender-text"><span class="zz-chat__txt-item ">{{message.email}}</span><span
-      class="zz-chat--line-right"></span><span
-      class="zz-chat__txt-item zz-infotext">{{message.saved_at | properTime }}</span></p>
   </div>
   <div class="zz-chat__message">
     <p class="zz-chat__message-text">{{message.message}}</p>
