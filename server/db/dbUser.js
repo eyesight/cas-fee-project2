@@ -271,7 +271,7 @@ function getUserAuthorizationInfos(email,callback){
   console.log('db:'+email);
   return db.query("select is_teacher, email, is_approved, is_active from users where email=?",[email], function(err, newDoc) {
     if (callback) {
-      if (newDoc.length <= 0 ) {
+      if (!newDoc || newDoc.length <= 0 ) {
         newDoc = null;
         err = 'SQL no Result';
       }
