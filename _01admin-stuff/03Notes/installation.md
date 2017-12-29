@@ -1,3 +1,10 @@
+
+#installation
+1) download project
+2) entpack (if not already) to dir and switch to dir
+3) npm install
+4) install db -> see ./server/readme.md
+
 #Backend
 
 **Andy:**:
