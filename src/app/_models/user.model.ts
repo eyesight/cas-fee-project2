@@ -89,6 +89,7 @@ export class User {
   klasse_description: string;
   klasse_start_at: string;
   klasse_end_at: string;
+  avatar_filetype: string;
   user_avatar: string;
   register_date: Date;
 

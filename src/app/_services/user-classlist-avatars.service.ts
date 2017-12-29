@@ -12,6 +12,7 @@ import {HttpWrapper} from './http-wrapper.service';
 import {DbService} from "./db.service";
 import {StorageKeys, StorageService} from "./storage.service";
 import {UserContentService} from "./user-content.service";
+import {avatarHeader} from "../_helpers/avatar-header";
 
 
 export class AvatarConfig {
@@ -101,7 +102,6 @@ export class ClasslistAvatarService {
         reject(e);
       }
     });
-
   }
 
   private prepareAvatars(avatars: UserClassListAvatars[]): UserClassListAvatars[] {
@@ -109,7 +109,7 @@ export class ClasslistAvatarService {
     avatars
       .filter((x) => x !== null)
       .map((x) => {
-      x.avatar = avatarFileTypes.find((f) => f.filetype === x.avatar_filetype).avatarHeader + x.avatar;
+        x.avatar = avatarHeader(x.avatar_filetype) + x.avatar;
     });
     return avatars;
   }
