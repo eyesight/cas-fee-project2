@@ -1,6 +1,6 @@
 <div class="zz-avatar__img-wrapper zz-avatar--img-large">
-  <img *ngIf="!previewUrl" src="assets/img/dummyPortrait.png" alt="" class="zz-avatar__img">
-  <img *ngIf="previewUrl " [src]="previewUrl" alt="" class="zz-avatar__img">
+  <img *ngIf="!_previewUrl" src="assets/img/dummyPortrait.png" alt="" class="zz-avatar__img">
+  <img *ngIf="_previewUrl " [src]="previewUrl" alt="" class="zz-avatar__img">
 </div>
 <form class="zz-avatar__wrapper" [formGroup]="form" (ngSubmit)="onSubmit()">
     <label class="zz-avatar__file-upload">
@@ -8,6 +8,6 @@
     <input class="zz-avatar__input" type="file" (change)="onFileChange($event)" #fileInput><i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i>
     </label>
     <button type="submit" class="zz-btn zz-btn--primary" [hidden]="!provFile || provFileHideSubmitButton" [disabled]="loading">
-       Bild austauschen
+       Bild speichern
     </button>
 </form>
