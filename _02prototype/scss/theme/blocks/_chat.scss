@@ -46,7 +46,8 @@
     margin-left:rem-calc(30px);
     &--vertical-align{
       padding-top:rem-calc(10px);
-
+      padding-bottom:rem-calc(10px);
+      margin-bottom:0;
     }
   }
 
