@@ -56,8 +56,14 @@
     z-index: 20;
   }
 
+  &__sender-header{
+    display: flex;
+    height: 45px;
+  }
+
   &__txt-item{
     color: $color-gray-dark;
+    padding-top: rem-calc(3px);
     padding-right: rem-calc(30px);
   }
 
@@ -66,13 +72,19 @@
     margin: 0 15px 0 -15px;
   }
 
+  &__sender-text {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: rem-calc(10px);
+  }
+
   &__message-input{
     resize: both;
     display:inline-block;
     border: solid 1px $color-primary-20;
     border-radius: 5px;
     padding: 10px;
-    min-height: 50px;
+    min-height: rem-calc(50px);
     max-height: 33vh;
     width: 100%;
   }
@@ -86,6 +98,7 @@
     word-wrap:break-word;
     overflow:hidden;
     height: auto;
+    margin-top:rem-calc(10px);
   }
 
   &--online{
