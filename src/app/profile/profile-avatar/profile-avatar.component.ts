@@ -58,10 +58,6 @@ export class ProfileAvatarComponent {
 
 
   onSubmit() {
-    //this.avatarObject.avatar = this.avatarUrl;
-    console.log('this.userAvatar.avatar');
-    // console.dir(this.userAvatar);
-//    this.userService.updateAvatar(this.avatarObject);
 
     this.userService.updateAvatar(this.userAvatar)
       .subscribe(
@@ -77,11 +73,6 @@ export class ProfileAvatarComponent {
                 this.alertService.error('Ein Problem ist aufgetreten, bitte versuchen Sie es nochmals', true);
               });
 
-          // setTimeout(() => {
-          //   this.provFile = false;
-          //
-          //
-          // }, 500);
         },
         error => {
           this.provFile = false;
@@ -109,10 +100,8 @@ export class ProfileAvatarComponent {
 
   onFileChange(event) {
     if (event.target.files && event.target.files[0]) {
-   //   const reader = new FileReader();
+
       const files = event.target.files[0];
-   //   const fileList = FileList;
-      // reader.readAsDataURL(files);
 
       console.log(event.target.files[0]);
 
@@ -136,9 +125,8 @@ export class ProfileAvatarComponent {
         ImageCompressService.filesToCompressedImageSource(event.target.files).then(observableImages => {
           observableImages.subscribe((image) => {
             this.images.push(image);
-            console.log(this.images);
+
             console.log('compression on success');
-            //  console.dir(image.compressedImage.imageDataUrl);
           }, (error) => {
             this.alertService.error('Beim Laden des Bildes ist ein Fehler aufgetreten. Bitte versuchen Sie es nochmals', false, 500);
             console.log('Error while converting');
@@ -146,7 +134,6 @@ export class ProfileAvatarComponent {
             this.processedImage = this.images[0];
             console.log('final on comporessed.length:' + this.images[0].compressedImage.imageDataUrl.length);
 
-            // if (this.images[0].compressedImage.imageDataUrl.length < this.avatarUrl.length) {
             console.log('filename:' + files.type);
             this.av.value = this.images[0].compressedImage.imageDataUrl.split(',')[1];
             this.av.filename = files.name;
@@ -158,7 +145,6 @@ export class ProfileAvatarComponent {
             this.provFile = true;
             this.previewUrl = this.images[0].compressedImage.imageDataUrl.split(',')[1];
 
-            //     console.dir(this.av);
           });
         });
 

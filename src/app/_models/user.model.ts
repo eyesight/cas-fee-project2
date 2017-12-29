@@ -53,7 +53,7 @@ export class UserApproveAnswer {
 export class UserClassListAvatars {
   id: number;
   email: string;
-  filename: string;
+  avatar_filetype: string;
   avatar: string;
 
 }
