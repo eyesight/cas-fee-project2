@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MessageDateBlock } from '../../_models/message.model';
-import { FromNowPipe } from '../services/from-now.pipe';
 
 @Component({
   selector: 'app-chat-date',

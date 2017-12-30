@@ -30,9 +30,9 @@ import { AlertService, AuthenticationService, UserService } from '../_services/i
     FormErrorMessagesComponent
   ],
   providers: [
-    AlertService,
-    AuthenticationService,
-    UserService
+ //   AlertService,
+ //   AuthenticationService,
+ //   UserService
   ]
 })
 export class DirectivesModule {}

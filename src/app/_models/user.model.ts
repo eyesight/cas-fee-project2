@@ -76,8 +76,8 @@ export class User {
   adress: string;
   zip: number;
   place: string;
-  tel_private: number;
-  tel_office: number;
+  tel_private: string;
+  tel_office: string;
 
   class_id: number;
 
@@ -93,10 +93,16 @@ export class User {
   user_avatar: string;
   register_date: Date;
 
-  get avatar() {
-    console.log('what is this?:' + this + 'and this.user_avatar.length?:' + this.user_avatar.length);
-    return 'data:image/png;base64,' + this.user_avatar;
-  }
+  teacher_user_id: number;
+  teacher_surname: string;
+  teacher_forename: string;
+  teacher_email: string;
+  teacher_zip: string;
+  teacher_place: string;
+  teacher_tel_private: string;
+  teacher_tel_office: string;
+  teacher_gender: string;
+
 }
 
 
