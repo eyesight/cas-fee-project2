@@ -11,9 +11,10 @@ import { NavComponent } from './header/nav/nav.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
+//import { LoginComponent } from './login/login.component';
 
 import { AppRoutingModule} from './app-routing.module';
+
 import { HttpModule, BaseRequestOptions } from '@angular/http';
 
 import { AuthGuard } from './_guards/auth.guards';
@@ -22,7 +23,6 @@ import { CanActivateProtectedPagesGuard } from './_guards/can-activate-protected
 
 import { AlertService, AuthenticationService, UserService, ErrorHandlerService, ErrorLoggerService } from './_services/index';
 import { DirectivesModule } from './_directives/directives.module';
-import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
 
 import { PersonalDetailsContainerModule } from './personal-details-container/personal-details-container.module';
 
@@ -42,6 +42,8 @@ import { NgDatepickerModule } from 'ng2-datepicker';
 import { ImageCompressService } from 'ng2-image-compress';
 import { The404Component } from './the404/the404.component';
 import { ClasslistAvatarService, DbServiceClasslistAvatar } from './_services/user-classlist-avatars.service';
+import {Router, RouterModule} from "@angular/router";
+import {LoginModule} from "./login/login.module";
 
 
 
@@ -52,8 +54,6 @@ import { ClasslistAvatarService, DbServiceClasslistAvatar } from './_services/us
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    LoginComponent,
-    ForgotPasswordComponent,
     The404Component
   ],
   imports: [
@@ -61,11 +61,14 @@ import { ClasslistAvatarService, DbServiceClasslistAvatar } from './_services/us
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    RouterModule,
+   // Router,
     DirectivesModule,
     HttpModule,
     BrowserAnimationsModule,
     NgDatepickerModule,
     PersonalDetailsContainerModule,
+    LoginModule,
     ProfileModule,
     RegistrationModule
   ],

@@ -14,8 +14,9 @@ export const ROUTES: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent, data: {title: 'Home'}, canActivate: [AuthGuard]},
   {
-    path: 'login', component: LoginComponent, data: {title: 'Logout'},
-    children: [{path: 'forgot-password', component: ForgotPasswordComponent}]
+    path: 'login',
+    loadChildren: './login/login.module#LoginModule',
+    canActivate: [RegistrationAuthGuard]
   },
   {
     path: 'registration',

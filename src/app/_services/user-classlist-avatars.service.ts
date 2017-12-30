@@ -12,6 +12,18 @@ import {HttpWrapper} from './http-wrapper.service';
 import {DbService} from "./db.service";
 import {StorageKeys, StorageService} from "./storage.service";
 import {UserContentService} from "./user-content.service";
+import {avatarHeader} from "../_helpers/avatar-header";
+
+
+export class AvatarConfig {
+  filetype: string;
+  avatarHeader: string;
+}
+
+export const avatarFileTypes: AvatarConfig[] = [
+  {filetype: 'png', avatarHeader: 'data:image/png;base64,'},
+  {filetype: 'jpg', avatarHeader: 'data:image/jpg;base64,'}
+];
 
 @Injectable()
 export class DbServiceClasslistAvatar extends DbService<UserClassListAvatars[]> {
@@ -28,14 +40,14 @@ export class ClasslistAvatarService {
     , private userContentService: UserContentService) {
     console.log('UserContentService constructed');
 
-      this.userContentService.getCurrentUserObserver().subscribe((userContent) => {
-        console.log('nav.component ngOnInit inside observer');
+    this.userContentService.getCurrentUserObserver().subscribe((userContent) => {
+      console.log('nav.component ngOnInit inside observer');
 
-        this.clear();
+      this.clear();
 
-      }, (error) => {
-        console.log('observer error on nav.component.getCurrentUserObserver:' + error );
-      });
+    }, (error) => {
+      console.log('observer error on nav.component.getCurrentUserObserver:' + error);
+    });
   }
 
 // TODO: make sure that observable gets removed
@@ -61,13 +73,13 @@ export class ClasslistAvatarService {
         .map((userAvatar: UserClassListAvatars[]) => {
           if (userAvatar) {
             // console.dir(userContent);
-            this.dbUserClAvatar.saveCurrentData(userAvatar);
+            const avatars = this.prepareAvatars(userAvatar);
+            this.dbUserClAvatar.saveCurrentData(avatars);
           }
           return userAvatar;
         });
     }
   }
-
 
   public clear() {
     this.dbUserClAvatar.removeCurrentData();
@@ -90,18 +102,15 @@ export class ClasslistAvatarService {
         reject(e);
       }
     });
-
   }
 
-  // public getCurrentClasslistAvatarObserver(): Observable<UserClassListAvatars[]> {
-  //   return this.dbUserClAvatar.getCurrentDataObserver();
-  // }
-  //
-  //
-  // public getCurrentClasslistAvatar(): UserClassListAvatars[] {
-  //   // console.log('userContentGetCurrentUser:' + this.userContentCache);
-  //   return this.dbUserClAvatar.getCurrentData();
-  // }
-
-
+  private prepareAvatars(avatars: UserClassListAvatars[]): UserClassListAvatars[] {
+   // console.dir(avatars[1]);
+    avatars
+      .filter((x) => x !== null)
+      .map((x) => {
+        x.avatar = avatarHeader(x.avatar_filetype) + x.avatar;
+    });
+    return avatars;
+  }
 }

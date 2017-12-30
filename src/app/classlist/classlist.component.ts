@@ -61,7 +61,7 @@ export class ClasslistComponent implements OnInit, OnDestroy {
                     if (x.email != null && x.avatar != null) {
                       const item = this.classlist.findIndex(el => el.email === x.email);
                       console.log('classlist: item:' + item + ':email:' + this.classlist[item].email);
-                      this.classlist[item].user_avatar = 'data:image/png;base64,' + x.avatar;
+                      this.classlist[item].user_avatar = x.avatar;
                     }
                   });
               },
@@ -86,16 +86,5 @@ export class ClasslistComponent implements OnInit, OnDestroy {
     console.log('approveAnswer in maincomponent:' + val);
     this.canDeactivate = val;
   }
-
-  /*
-   public onChecked(checked: boolean, item: User) {
-   console.log('onChecked in classlist');
-   item.is_approved = checked;
-   */
-  // this.classlistService.approveUser(checked)
-  //   .subscribe((x) => {console.log('approved')} );
-  //  item.lastModified = new Date();
-  //  this.snackBar.open('checked / unchecked item', null, { duration: 1500 });
-  // }
 
 }

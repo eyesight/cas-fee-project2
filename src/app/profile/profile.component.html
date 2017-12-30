@@ -9,7 +9,7 @@
   <section *ngIf="!isTeacher" class="col-12 col-xl-5 col-lg-6 zz-mod-container">
     <h2 class="zz-title zz-title--h2">Angaben Kind</h2>
     <div class="zz-mod-box">
-      <app-profile-avatar *ngIf="!isTeacher" class="zz-avatar" [previewUrl]="userContent.user_avatar" ></app-profile-avatar>
+      <app-profile-avatar *ngIf="!isTeacher" class="zz-avatar" [previewUrl]="userContent.user_avatar" [avatarFiletype]="userContent.avatar_filetype"></app-profile-avatar>
       <h3 class="zz-title--h3">Geschlecht</h3>
       <p>{{userContent.child_gender | gender:'de': true}}</p>
       <h3 class="zz-title--h3">Vorname Name</h3>

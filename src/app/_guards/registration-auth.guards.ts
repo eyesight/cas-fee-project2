@@ -10,7 +10,7 @@ export class RegistrationAuthGuard implements CanActivate {
     if (localStorage.getItem('currentUser')) {
 
       // if logged in so redirect to home page with the return url
-      this.router.navigate(['/home'], { queryParams: { returnUrl: state.url }});
+      this.router.navigate(['/home']);
       return false;
     }
     // logged in so return true

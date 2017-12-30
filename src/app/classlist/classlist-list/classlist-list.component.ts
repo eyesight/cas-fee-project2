@@ -76,7 +76,6 @@ export class ClasslistListComponent implements OnInit {
     } else {
       this.alert.show('Möchten Sie die Person wirklich ablehnen? Person kann danach das System nicht mehr benutzen', false);
     }
-    //  this.onChecked(item, checked);
   }
 
   public sendAnswer(val: UserApproveAnswer) {
@@ -87,9 +86,8 @@ export class ClasslistListComponent implements OnInit {
     if (val.changed) {
       this.onChecked(val.userItem, val.approve);
     } else {
-      // this.classlistList[this.classlistList.findIndex((x) => x === val.userItem)].is_approved = 1;
 
-      console.log('ix of :' + this.classlistList.findIndex((x) => x === val.userItem) + ' now it is: ' + this.classlistList[this.classlistList.findIndex((x) => x === val.userItem)].is_approved + ' make it back to:' + !val.approve);
+    //  console.log('ix of :' + this.classlistList.findIndex((x) => x === val.userItem) + ' now it is: ' + this.classlistList[this.classlistList.findIndex((x) => x === val.userItem)].is_approved + ' make it back to:' + !val.approve);
       this.classlistList[this.classlistList.findIndex((x) => x === val.userItem)].is_approved = !val.approve;
       this.classlistList = [...this.classlistList];
      // this.resetCheckBox(val.approve);
