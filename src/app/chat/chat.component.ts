@@ -10,6 +10,7 @@ import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
 import {UserAuthService} from '../_services/user-auth.service';
 import {AlertService} from '../_services/alert.service';
+import {AlertMessagesService} from '../_services/alert-messages.service';
 import {User, UserClassListAvatars} from '../_models/user.model';
 import {UserContentService} from '../_services/user-content.service';
 import {ClasslistAvatarService} from "../_services/user-classlist-avatars.service";
@@ -36,7 +37,8 @@ export class ChatComponent implements OnInit, OnDestroy {
     , private router: Router
     , private userAuthService: UserAuthService
     , private userContentService: UserContentService
-    , private alertService: AlertService) {
+    , private alertService: AlertService
+    , private alertMessagesService: AlertMessagesService) {
     console.log('chatComponent constructor');
   }
 
@@ -59,7 +61,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.chatAuthSub = this.chatService.authentication()
       .subscribe(res => {
         console.log('chat.component call authentication:' + res);
-        this.alertService.error('Bitte melden Sie sich neu an');
+        this.alertService.error(this.alertMessagesService.MessagesError.newlogin);
         setTimeout(() =>
           this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 3500);
       });
@@ -67,7 +69,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.chatErrorSub = this.chatService.readErrors()
       .subscribe(error => {
         console.log('chat.component call authentication:' + error);
-        this.alertService.error('Fehler ' + error, false, 1000);
+        this.alertService.error(this.alertMessagesService.MessagesError.error + error, false, 1000);
       });
 
     this.chatConnectionStateSub = this.chatService.connectionState()
@@ -75,9 +77,9 @@ export class ChatComponent implements OnInit, OnDestroy {
         console.log('connection:' + state);
         this.connectionState = state;
         if (state) {
-          this.alertService.success('Verbindung wieder hergestellt');
+          this.alertService.success(this.alertMessagesService.MessagesSuccess.reconnected);
         } else {
-          this.alertService.success('Verbindung unterbrochen');
+          this.alertService.success(this.alertMessagesService.MessagesSuccess.disconnected);
         }
 
         if (!this.message) {

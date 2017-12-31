@@ -1,6 +1,6 @@
 import {Component, ElementRef, Input, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {AlertService, UserService} from '../../_services/index';
+import {AlertService, UserService, AlertMessagesService} from '../../_services/index';
 import {Avatar, UserAvatar} from '../../_models/user.model';
 
 import {ImageCompressService, IImage} from 'ng2-image-compress';
@@ -44,9 +44,10 @@ export class ProfileAvatarComponent {
               private userService: UserService,
               private userContentService: UserContentService,
               private router: Router,
-              private alertService: AlertService) {
+              private alertService: AlertService,
+              private alertMessagesService: AlertMessagesService) {
+
     this.createForm();
-    // this.imcomOptions
   }
 
   createForm() {
@@ -68,12 +69,12 @@ export class ProfileAvatarComponent {
           this.provFileHideSubmitButton = true;
 
           console.log('ok:' + data + ':provFileHideButton:' + this.provFileHideSubmitButton);
-          this.alertService.success('Das Bild wurde erfolgreich gespeichert');
+          this.alertService.success(this.alertMessagesService.MessagesSuccess.imageSaved);
           this.userContentService.getUserContent()
             .subscribe(content => {
               },
               error => {
-                this.alertService.error('Ein Problem ist aufgetreten, bitte versuchen Sie es nochmals', true);
+                this.alertService.error(this.alertMessagesService.MessagesError.tryAgain, true);
               });
 
         },
@@ -82,12 +83,11 @@ export class ProfileAvatarComponent {
 
           console.log('profilbild error:' + error);
           if (error.match(/401/g)) {
-            this.alertService.error('Sie müssen sich neu anmelden', false, 1000);
+            this.alertService.error(this.alertMessagesService.MessagesError.newlogin, false, 1000);
             setTimeout(() =>
               this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 3500);
           } else {
-            this.alertService.error('Beim Laden des Bildes ist ein Fehler aufgetreten. Bitte versuchen Sie es nochmals', false, 500);
-
+            this.alertService.error(this.alertMessagesService.MessagesError.tryAgain, false, 500);
           }
 
         });
@@ -112,11 +112,11 @@ export class ProfileAvatarComponent {
 
 
       if (files.size > 300000) {
-        this.alertService.error('Das Bild ist zu gross. Es darf nicht grösser als 300 KB sein.', false, 500);
+        this.alertService.error(this.alertMessagesService.MessagesError.imageSize, false, 500);
         this.provFile = false;
         this.provFileHideSubmitButton = true;
       } else if (files.type !== ('image/jpeg') && files.type !== ('image/png')) {
-        this.alertService.error('Tut uns leid. Dieses Dateiformat wird zurzeit nicht unterstützt.', false, 500);
+        this.alertService.error(this.alertMessagesService.MessagesError.dateType, false, 500);
         this.provFile = false;
         this.provFileHideSubmitButton = true;
 
@@ -131,7 +131,7 @@ export class ProfileAvatarComponent {
 
             console.log('compression on success');
           }, (error) => {
-            this.alertService.error('Beim Laden des Bildes ist ein Fehler aufgetreten. Bitte versuchen Sie es nochmals', false, 500);
+            this.alertService.error(this.alertMessagesService.MessagesError.tryAgain, false, 500);
             console.log('Error while converting');
           }, () => {
             this.processedImage = this.images[0];

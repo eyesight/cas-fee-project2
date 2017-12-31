@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import {Route} from '@angular/router';
-import {ROUTES} from '../app.routes';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { AlertService, AuthenticationService } from '../_services/index';
+import { AlertService, AuthenticationService, AlertMessagesService } from '../_services/index';
 import {UserContentService} from '../_services/user-content.service';
 import { ErrorHandlerService } from '../_services/index';
 import {ClasslistAvatarService} from '../_services/user-classlist-avatars.service';
@@ -30,6 +28,7 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private userContentService: UserContentService,
     private alertService: AlertService,
+    private alertMessagesService: AlertMessagesService,
     private errorHandlerService: ErrorHandlerService,
     private classlistAvatarService: ClasslistAvatarService,
     private fb: FormBuilder) { }
@@ -68,7 +67,7 @@ export class LoginComponent implements OnInit {
             });
         },
         error => {
-          this.alertService.error(error, true, 500);
+          this.alertService.error(this.alertMessagesService.MessagesError.error + error, true, 500);
           this.loading = false;
         });
   }

@@ -70,17 +70,17 @@ export class RegistrationComponent implements OnInit {
       this.userService.create(this.formModel)
         .subscribe(
           data => {
-            this.alertService.success(this.alertMessagesService.getAlertMessageSuccess('register'), true, 500);
+            this.alertService.success(this.alertMessagesService.MessagesSuccess.register, true, 500);
             setTimeout(() => {
               this.router.navigate(['/login']);
             }, 1000);
           },
           error => {
             if (error.toString().match(/901/g)) {
-              this.alertService.error(this.alertMessagesService.getAlertMessageError('register901'), true, 500);
+              this.alertService.error(this.alertMessagesService.MessagesError.register901, true, 500);
 
             } else {
-              this.alertService.error(this.alertMessagesService.getAlertMessageError('register'), true, 500);
+              this.alertService.error(this.alertMessagesService.MessagesError.register, true, 500);
             }
             this.loading = false;
           });
