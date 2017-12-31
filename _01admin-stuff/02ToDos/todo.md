@@ -2,13 +2,6 @@
 - TODO: REST-API -> Arrays sollten einen Namen haben.
 Regel REST-Slides (Prio 1.5)
 
-- TODO: Error-messages als Service (Switch-liste), 
-Mapping von Fehlern zu lesbarem text. Switch über Fehler und Defaults
-CF
-
-- TODO: LEhrer im ClaslsistdetailsKind ausblenben
-AW
-
 - TODO: CSV-Datei erstellen in Klassenliste -> User-Details
 (Prio2)
 CF(+AW)
@@ -191,3 +184,10 @@ CF
  - TODO: Error-Message-Handler erstellen, resp. korrigieren (besteht ja schon z.T.)
  -> Errors in Console auslesen/Überschreiben
  -> CF(+AW)
+
+- TODO: Error-messages als Service (Switch-liste), 
+Mapping von Fehlern zu lesbarem text. Switch über Fehler und Defaults
+CF
+
+- TODO: LEhrer im ClaslsistdetailsKind ausblenben
+AW
