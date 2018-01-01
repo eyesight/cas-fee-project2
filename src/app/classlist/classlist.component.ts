@@ -1,15 +1,13 @@
-/**
- * Created by awedag on 14.10.17.
- */
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {User, UserClassListAvatars} from "../_models/user.model";
-import {ClasslistService} from "./service/classlist.service";
-import {Router} from "@angular/router";
-import {AlertService} from "../_services/alert.service";
-import {UserAuthService} from "../_services/user-auth.service";
-import {UserContentService} from "../_services/user-content.service";
-import {ClasslistAvatarService} from "../_services/user-classlist-avatars.service";
-import {Subscription} from "rxjs/Subscription";
+import {User, UserClassListAvatars} from '../_models/user.model';
+import {ClasslistService} from './service/classlist.service';
+import {Router} from '@angular/router';
+import {AlertService} from '../_services/alert.service';
+import {AlertMessagesService} from '../_services/alert-messages.service';
+import {UserAuthService} from '../_services/user-auth.service';
+import {UserContentService} from '../_services/user-content.service';
+import {ClasslistAvatarService} from '../_services/user-classlist-avatars.service';
+import {Subscription} from 'rxjs/Subscription';
 
 
 @Component({
@@ -29,6 +27,7 @@ export class ClasslistComponent implements OnInit, OnDestroy {
     , private router: Router
     , private userAuthService: UserAuthService
     , private alertService: AlertService
+    , private alertMessagesService: AlertMessagesService
     , private userContentService: UserContentService
   , private classlistAvatarService: ClasslistAvatarService) {
   }
@@ -38,7 +37,7 @@ export class ClasslistComponent implements OnInit, OnDestroy {
       .subscribe((uc) => {
         this.userCurrent = uc;
         if (!this.userCurrent) {
-          this.alertService.error('Sie müssen sich neu anmelden');
+          this.alertService.error(this.alertMessagesService.MessagesError.newlogin);
           setTimeout(() =>
             this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 3500);
           return;
@@ -67,12 +66,12 @@ export class ClasslistComponent implements OnInit, OnDestroy {
               },
               (error) => {
                 console.log('getClasslistAvatars: error:' + error);
-                this.alertService.error('Die Profilbilder können nicht geladen werden');
+                this.alertService.error(this.alertMessagesService.MessagesError.avatarNotLoaded);
               });
         },
         (error) => {
           console.log('classlist.component call authentication:' + error);
-          this.alertService.error('Sie müssen sich neu anmelden');
+          this.alertService.error(this.alertMessagesService.MessagesError.newlogin);
           setTimeout(() =>
             this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 3500);
         });

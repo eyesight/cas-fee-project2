@@ -5,7 +5,7 @@ import {User, UserPwdChange} from '../../_models/user.model';
 import {UserContentService} from '../../_services/user-content.service';
 import {CustomValidators} from '../../_validation/custom.validators';
 import {Router} from '@angular/router';
-import {AlertService, UserService} from '../../_services/index';
+import {AlertService, UserService, AlertMessagesService} from '../../_services/index';
 
 
 @Component({
@@ -23,7 +23,8 @@ export class ProfilePasswordChangeComponent implements OnInit {
               private UserContentService: UserContentService,
               private userService: UserService,
               private router: Router,
-              private alertService: AlertService) {
+              private alertService: AlertService,
+              private alertMessagesService: AlertMessagesService) {
   }
 
   ngOnInit() {
@@ -47,11 +48,11 @@ export class ProfilePasswordChangeComponent implements OnInit {
     this.userService.updatePassword(this.userObject)
       .subscribe(
         data => {
-          this.alertService.success('Daten wurden erfolgreich geändert', true);
+          this.alertService.success(this.alertMessagesService.MessagesSuccess.dataChange, true);
           this.router.navigate(['/profile']);
         },
         error => {
-          this.alertService.error('Das alte Passwort stimmt leider nicht oder das neue Passwort entspricht nicht den Richtlinien');
+          this.alertService.error(this.alertMessagesService.MessagesError.password);
         });
   }
 

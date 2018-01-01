@@ -11,7 +11,6 @@ import { NavComponent } from './header/nav/nav.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
-//import { LoginComponent } from './login/login.component';
 
 import { AppRoutingModule} from './app-routing.module';
 
@@ -42,8 +41,8 @@ import { NgDatepickerModule } from 'ng2-datepicker';
 import { ImageCompressService } from 'ng2-image-compress';
 import { The404Component } from './the404/the404.component';
 import { ClasslistAvatarService, DbServiceClasslistAvatar } from './_services/user-classlist-avatars.service';
-import {Router, RouterModule} from "@angular/router";
-import {LoginModule} from "./login/login.module";
+import { RouterModule} from '@angular/router';
+import {LoginModule} from './login/login.module';
 
 
 

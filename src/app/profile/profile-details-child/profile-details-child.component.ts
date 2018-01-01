@@ -4,7 +4,7 @@ import { User } from '../../_models/user.model';
 import { overlayAnimation } from '../../_animation/overlay.animation';
 import { UserContentService } from '../../_services/user-content.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlertService, UserService } from '../../_services/index';
+import { AlertService, UserService, AlertMessagesService } from '../../_services/index';
 import { DatepickerOptions } from 'ng2-datepicker';
 import * as deLocale from 'date-fns/locale/de';
 import * as moment from 'moment';
@@ -37,6 +37,7 @@ export class ProfileDetailsChildComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private alertService: AlertService,
+    private alertMessagesService: AlertMessagesService,
     private fb: FormBuilder
   ) {}
 
@@ -88,7 +89,7 @@ export class ProfileDetailsChildComponent implements OnInit {
     this.userService.update(this.userObject)
       .subscribe(
         data => {
-          this.alertService.success('Daten wurden erfolgreich geändert', false, 500);
+          this.alertService.success(this.alertMessagesService.MessagesSuccess.dataChange, true);
           // update the content in user-store
           this.userContentService.getUserContent()
             .subscribe( content => {
@@ -96,12 +97,12 @@ export class ProfileDetailsChildComponent implements OnInit {
                 this.router.navigate(['/profile']);
               },
               error => {
-                this.alertService.error('Ein Problem ist aufgetreten, bitte versuchen Sie es nochmals', false, 500);
+                this.alertService.error(this.alertMessagesService.MessagesError.tryAgain, true);
                 this.router.navigate(['/profile']);
               });
         },
         error => {
-          this.alertService.error(error);
+          this.alertService.error(this.alertMessagesService.MessagesError.tryAgain);
         });
   }
 
