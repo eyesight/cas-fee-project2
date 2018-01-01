@@ -63,7 +63,7 @@ export class ChatComponent implements OnInit, OnDestroy {
         console.log('chat.component call authentication:' + res);
         this.alertService.error(this.alertMessagesService.MessagesError.newlogin);
         setTimeout(() =>
-          this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 3500);
+          this.router.navigate(['relogin'], {queryParams: {returnUrl: this.router.url}}), 3500);
       });
 
     this.chatErrorSub = this.chatService.readErrors()

@@ -15,6 +15,10 @@ export const ROUTES: Routes = [
     canActivate: [RegistrationAuthGuard]
   },
   {
+    path: 'relogin',
+    loadChildren: './login/login.module#LoginModule'
+  },
+  {
     path: 'registration',
     loadChildren: './registration/registration.module#RegistrationModule',
     data: {title: 'Registration'},

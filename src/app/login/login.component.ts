@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
-import { AlertService, AuthenticationService, AlertMessagesService } from '../_services/index';
+import {AlertService, AuthenticationService, AlertMessagesService} from '../_services/index';
 import {UserContentService} from '../_services/user-content.service';
-import { ErrorHandlerService } from '../_services/index';
+import {ErrorHandlerService} from '../_services/index';
 import {ClasslistAvatarService} from '../_services/user-classlist-avatars.service';
 import {User} from '../_models/user.model';
 
@@ -14,7 +14,7 @@ import {User} from '../_models/user.model';
   selector: 'app-login',
   templateUrl: './login.component.html'
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, AfterViewInit {
   public model: any = {};
   public loading = false;
   public returnUrl: string;
@@ -22,19 +22,28 @@ export class LoginComponent implements OnInit {
   public formModel: User;
 
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private authenticationService: AuthenticationService,
-    private userContentService: UserContentService,
-    private alertService: AlertService,
-    private alertMessagesService: AlertMessagesService,
-    private errorHandlerService: ErrorHandlerService,
-    private classlistAvatarService: ClasslistAvatarService,
-    private fb: FormBuilder) { }
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private authenticationService: AuthenticationService,
+              private userContentService: UserContentService,
+              private alertService: AlertService,
+              private alertMessagesService: AlertMessagesService,
+              private errorHandlerService: ErrorHandlerService,
+              private classlistAvatarService: ClasslistAvatarService,
+              private fb: FormBuilder) {
+  }
 
   ngOnInit(): void {
     this.buildForm();
+    console.log('login:ngOnInit');
+    this.init();
+  }
+
+  ngAfterViewInit() {
+    console.log('login:ngAfterViewInit');
+  }
+
+  private init() {
     // reset login status
     this.authenticationService.logout();
     this.userContentService.clear();
@@ -42,29 +51,30 @@ export class LoginComponent implements OnInit {
 
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
   }
 
-  login() {
+  public login() {
     this.loading = true;
     this.formModel = this.loginForm.value;
 
     this.authenticationService.login(this.formModel.email, this.formModel.pwd)
-      .subscribe( data => {
+      .subscribe(data => {
 
           this.userContentService.getUserContent()
-            .subscribe( content => {
-              // found an angular error: if meanwhile the permission is changed to not allowed for the returnUrl
+            .subscribe(content => {
+                // found an angular error: if meanwhile the permission is changed to not allowed for the returnUrl
                 // the site doesnt move to home
-              if (data.user_can.length > 0) {
-                this.router.navigate([this.returnUrl]);
-              }else {
-                this.router.navigate(['/home']);
-              }
-            },
-            error => {
-              this.errorHandlerService.handleError(error);
-              this.loading = false;
-            });
+                if (data.user_can.length > 0) {
+                  this.router.navigate([this.returnUrl]);
+                } else {
+                  this.router.navigate(['/home']);
+                }
+              },
+              error => {
+                this.errorHandlerService.handleError(error);
+                this.loading = false;
+              });
         },
         error => {
           this.alertService.error(this.alertMessagesService.MessagesError.error + error, true, 500);
@@ -72,7 +82,7 @@ export class LoginComponent implements OnInit {
         });
   }
 
-  buildForm() {
+  private buildForm() {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.minLength(2)]],
       pwd: ['', [Validators.required, Validators.minLength(2)]]
@@ -83,6 +93,7 @@ export class LoginComponent implements OnInit {
   get formUsername() {
     return this.loginForm.get('email');
   }
+
   get formPassword() {
     return this.loginForm.get('pwd');
   }

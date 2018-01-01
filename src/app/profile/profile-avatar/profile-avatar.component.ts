@@ -85,7 +85,7 @@ export class ProfileAvatarComponent {
           if (error.match(/401/g)) {
             this.alertService.error(this.alertMessagesService.MessagesError.newlogin, false, 1000);
             setTimeout(() =>
-              this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 3500);
+              this.router.navigate(['relogin'], {queryParams: {returnUrl: this.router.url}}), 3500);
           } else {
             this.alertService.error(this.alertMessagesService.MessagesError.tryAgain, false, 500);
           }

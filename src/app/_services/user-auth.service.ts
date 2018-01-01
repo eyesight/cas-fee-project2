@@ -1,4 +1,3 @@
-
 import {Inject, Injectable} from '@angular/core';
 import {StorageService, StorageKeys} from './storage.service';
 
@@ -8,10 +7,10 @@ import {User, UserAuth} from '../_models/user.model';
 import {DbService} from './db.service';
 
 @Injectable()
-export class DbServiceUserAuth extends  DbService<UserAuth> {
-    constructor(@Inject(StorageService) storage) {
-      super(storage, StorageKeys.keyCurrentUser);
-    }
+export class DbServiceUserAuth extends DbService<UserAuth> {
+  constructor(@Inject(StorageService) storage) {
+    super(storage, StorageKeys.keyCurrentUser);
+  }
 }
 
 @Injectable()
@@ -20,7 +19,7 @@ export class UserAuthService {
   // private userAuthCache: UserAuth = null;
   //private dbUser: DbService<UserAuth> = null;
 
-  constructor(private dbUser: DbServiceUserAuth ) {
+  constructor(private dbUser: DbServiceUserAuth) {
     console.log('User-AuthService constructed :' + this.dbUser.storageKey);
     //this.dbUser = dbUser;
 
@@ -42,19 +41,9 @@ export class UserAuthService {
     //  this.storage.remove(StorageKeys.keyCurrentUser);
   }
 
-  // private getCurrentUser(): UserAuth {
-  //   // if (this.userAuthCache && this.userAuthCache.email) {
-  //   //   console.log('userAuth: getCurrentuser:email:' + this.userAuthCache.email);
-  //   // }
-  //   // if (this.userAuthCache === null) {
-  //   //   console.log('userAuth: getCurrentUser from dB');
-  //   //   this.userAuthCache = this.storage.read(StorageKeys.keyCurrentUser);
-  //   //   return this.userAuthCache;
-  //   // } else {
-  //   //   return this.userAuthCache;
-  //   // }
-  //   return this.dbUser.getCurrentData();
-  // }
+  public getCurrentUser() {
+    return this.dbUser.getCurrentData();
+  }
 
   public getCurrentUserJwt(): string {
     const userAuth = this.dbUser.getCurrentData();

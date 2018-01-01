@@ -29,17 +29,17 @@ export class ClasslistComponent implements OnInit, OnDestroy {
     , private alertService: AlertService
     , private alertMessagesService: AlertMessagesService
     , private userContentService: UserContentService
-  , private classlistAvatarService: ClasslistAvatarService) {
+    , private classlistAvatarService: ClasslistAvatarService) {
   }
 
   ngOnInit() {
-     this.userContentService.getCurrentUserObserver()
+    this.userContentService.getCurrentUserObserver()
       .subscribe((uc) => {
         this.userCurrent = uc;
         if (!this.userCurrent) {
           this.alertService.error(this.alertMessagesService.MessagesError.newlogin);
           setTimeout(() =>
-            this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 3500);
+            this.router.navigate(['relogin'], {queryParams: {returnUrl: this.router.url}}), 3500);
           return;
         }
       });
@@ -53,7 +53,7 @@ export class ClasslistComponent implements OnInit, OnDestroy {
           this.avatarSub = this.classlistAvatarService.getClasslistAvatars()
             .subscribe((resultAvatars) => {
                 console.log('result:' + resultAvatars.length);
-                resultAvatars.filter((x ) => x !== null)
+                resultAvatars.filter((x) => x !== null)
                   .map((x) => {
                     console.log('classlistavatars in subscribe: ' + x.email);
                     console.log('content avatars: length:' + x.avatar.length);
@@ -72,13 +72,16 @@ export class ClasslistComponent implements OnInit, OnDestroy {
         (error) => {
           console.log('classlist.component call authentication:' + error);
           this.alertService.error(this.alertMessagesService.MessagesError.newlogin);
+
           setTimeout(() =>
-            this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}}), 3500);
+            this.router.navigate(['relogin'], {queryParams: {returnUrl: this.router.url}}), 3500);
         });
   }
 
-  ngOnDestroy(){
-    this.avatarSub.unsubscribe();
+  ngOnDestroy() {
+    if (this.avatarSub) {
+      this.avatarSub.unsubscribe();
+    }
   }
 
   public approveAnswer(val: boolean) {
