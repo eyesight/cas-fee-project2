@@ -18,7 +18,7 @@ import { AppRoutingModule} from './app-routing.module';
 import { HttpModule, BaseRequestOptions } from '@angular/http';
 
 import { AuthGuard } from './_guards/auth.guards';
-import { RegistrationAuthGuard } from './_guards/registrationAuth.guards';
+import { RegistrationAuthGuard } from './_guards/registration-auth.guards';
 import { CanActivateProtectedPagesGuard } from './_guards/can-activate-protected-pages.guard';
 
 import { AlertService, AuthenticationService, UserService, ErrorHandlerService, ErrorLoggerService } from './_services/index';

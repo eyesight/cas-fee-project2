@@ -2,7 +2,7 @@ import {Routes} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './_guards/auth.guards';
-import {RegistrationAuthGuard} from './_guards/registrationAuth.guards';
+import {RegistrationAuthGuard} from './_guards/registration-auth.guards';
 import {ForgotPasswordComponent} from './login/forgot-password/forgot-password.component';
 import {CanActivateProtectedPagesGuard} from './_guards/can-activate-protected-pages.guard';
 import {The404Component} from './the404/the404.component';
