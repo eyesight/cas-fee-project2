@@ -5,12 +5,12 @@ export class AlertMessagesService {
   constructor() { }
 
   public  MessagesSuccess = {
-  register: 'Registrierung war erfolgreich',
+    register: 'Registrierung war erfolgreich',
     reconnected: 'Verbindung wieder hergestellt',
     disconnected: 'Verbindung unterbrochen',
     imageSaved: 'Das Bild wurde erfolgreich gespeichert',
     dataChange: 'Daten wurden erfolgreich geändert'
-};
+  };
 
   public MessagesError = {
     register: 'Da ist etwas schief gelaufen. Bitte prüfen Sie ihre Angaben nochmals und versuchen Sie es erneu',
@@ -22,7 +22,7 @@ export class AlertMessagesService {
     imageSize: 'Das Bild ist zu gross. Es darf nicht grösser als 300 KB sein.',
     dateType: 'Tut uns leid. Dieses Dateiformat wird zurzeit nicht unterstützt.',
     password: 'Das alte Passwort stimmt leider nicht oder das neue Passwort entspricht nicht den Richtlinien'
-};
+  };
 }
 
 

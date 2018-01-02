@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { overlayAnimation } from '../../_animation/overlay.animation';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CustomValidators } from '../../_validation/custom.validators';
 
 @Component({
   selector: 'app-profile-email-change',

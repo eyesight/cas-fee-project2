@@ -6,7 +6,7 @@ import {DatepickerOptions} from 'ng2-datepicker';
 import {User} from '../_models/user.model';
 import * as deLocale from 'date-fns/locale/de';
 import * as moment from 'moment';
-import {AlertService, UserService, AlertMessagesService} from '../_services/index';
+import {AlertService, UserService} from '../_services/index';
 
 @Component({
   selector: 'app-registration',
@@ -39,7 +39,6 @@ export class RegistrationComponent implements OnInit {
   constructor(private router: Router,
               private userService: UserService,
               private alertService: AlertService,
-              private alertMessagesService: AlertMessagesService,
               private fb: FormBuilder) {
     this.date = new Date(2012, 0, 1);
   }
@@ -70,17 +69,17 @@ export class RegistrationComponent implements OnInit {
       this.userService.create(this.formModel)
         .subscribe(
           data => {
-            this.alertService.success(this.alertMessagesService.MessagesSuccess.register, true, 500);
+            this.alertService.success('register', true, 500);
             setTimeout(() => {
               this.router.navigate(['/login']);
             }, 1000);
           },
           error => {
             if (error.toString().match(/901/g)) {
-              this.alertService.error(this.alertMessagesService.MessagesError.register901, true, 500);
+              this.alertService.error('register901', true, 500);
 
             } else {
-              this.alertService.error(this.alertMessagesService.MessagesError.register, true, 500);
+              this.alertService.error('register', true, 500);
             }
             this.loading = false;
           });

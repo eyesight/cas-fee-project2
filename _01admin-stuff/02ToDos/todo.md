@@ -1,4 +1,6 @@
 #TODO
+- TODO: haben alle hover-states auch ein focus-state? ->prüfen, ergänzen
+
 - TODO: REST-API -> Arrays sollten einen Namen haben.
 Regel REST-Slides (Prio 1.5)
 

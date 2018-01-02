@@ -1,7 +1,3 @@
-/**
- * Created by awedag on 12.10.17.
- */
-
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Router} from '@angular/router';
 import {ChatService} from '../_services/chat.service';
@@ -10,7 +6,6 @@ import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
 import {UserAuthService} from '../_services/user-auth.service';
 import {AlertService} from '../_services/alert.service';
-import {AlertMessagesService} from '../_services/alert-messages.service';
 import {User, UserClassListAvatars} from '../_models/user.model';
 import {UserContentService} from '../_services/user-content.service';
 import {ClasslistAvatarService} from "../_services/user-classlist-avatars.service";
@@ -37,8 +32,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     , private router: Router
     , private userAuthService: UserAuthService
     , private userContentService: UserContentService
-    , private alertService: AlertService
-    , private alertMessagesService: AlertMessagesService) {
+    , private alertService: AlertService) {
     console.log('chatComponent constructor');
   }
 
@@ -61,7 +55,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.chatAuthSub = this.chatService.authentication()
       .subscribe(res => {
         console.log('chat.component call authentication:' + res);
-        this.alertService.error(this.alertMessagesService.MessagesError.newlogin);
+        this.alertService.error('newlogin');
         setTimeout(() =>
           this.router.navigate(['relogin'], {queryParams: {returnUrl: this.router.url}}), 3500);
       });
@@ -69,7 +63,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.chatErrorSub = this.chatService.readErrors()
       .subscribe(error => {
         console.log('chat.component call authentication:' + error);
-        this.alertService.error(this.alertMessagesService.MessagesError.error + error, false, 1000);
+        this.alertService.error('error' + error, false, 1000);
       });
 
     this.chatConnectionStateSub = this.chatService.connectionState()
@@ -77,9 +71,9 @@ export class ChatComponent implements OnInit, OnDestroy {
         console.log('connection:' + state);
         this.connectionState = state;
         if (state) {
-          this.alertService.success(this.alertMessagesService.MessagesSuccess.reconnected);
+          this.alertService.success('reconnected');
         } else {
-          this.alertService.success(this.alertMessagesService.MessagesSuccess.disconnected);
+          this.alertService.success('disconnected');
         }
 
         if (!this.message) {

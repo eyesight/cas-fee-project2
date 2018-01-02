@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from '../../_models/user.model';
 import { overlayAnimation } from '../../_animation/overlay.animation';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from '../../_validation/custom.validators';
-import { AlertService, UserService, AlertMessagesService } from '../../_services/index';
+import { AlertService, UserService } from '../../_services/index';
 import { UserContentService } from '../../_services/user-content.service';
 
 @Component({
@@ -29,7 +29,6 @@ export class ProfileDetailsParentComponent implements OnInit {
     private UserContentService: UserContentService,
     private router: Router,
     private alertService: AlertService,
-    private alertMessagesService: AlertMessagesService,
     private userService: UserService,
     private userContentService: UserContentService,
     private fb: FormBuilder
@@ -99,7 +98,7 @@ export class ProfileDetailsParentComponent implements OnInit {
     this.userService.update(this.userObject)
       .subscribe(
         data => {
-          this.alertService.success(this.alertMessagesService.MessagesSuccess.dataChange, true);
+          this.alertService.success('dataChange', true);
           // update the content in user-store
           this.userContentService.getUserContent()
             .subscribe( content => {
@@ -107,12 +106,12 @@ export class ProfileDetailsParentComponent implements OnInit {
                 this.router.navigate(['/profile']);
               },
               error => {
-                this.alertService.error(this.alertMessagesService.MessagesError.tryAgain, true);
+                this.alertService.error('tryAgain', true);
                 this.router.navigate(['/profile']);
               });
         },
         error => {
-          this.alertService.error(this.alertMessagesService.MessagesError.tryAgain);
+          this.alertService.error('tryAgain');
         });
   }
 

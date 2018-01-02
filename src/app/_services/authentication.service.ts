@@ -10,9 +10,8 @@ import { UserAuthService } from './user-auth.service';
 
 @Injectable()
 export class AuthenticationService {
-  isLoggedin: boolean = false;
+  public isLoggedin: boolean = false;
   constructor(
-    //p rivate http: Http
     private httpWrp: HttpWrapper,
     private userAuthSrv: UserAuthService) {
 
@@ -22,7 +21,7 @@ export class AuthenticationService {
     }
   }
 
-  login(username: string, password: string): Observable<UserAuth> {
+  public login(username: string, password: string): Observable<UserAuth> {
     console.log('username:' + username);
 
     const userPwd = new UserPwd(username, password);
@@ -42,7 +41,7 @@ export class AuthenticationService {
 
   }
 
-  logout() {
+  public logout() {
     // remove user from local storage to log user out
     setTimeout(() => this.isLoggedin = false, 50);
     this.userAuthSrv.removeCurrentUser();

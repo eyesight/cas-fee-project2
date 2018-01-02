@@ -3,7 +3,6 @@ import {User, UserApproveAnswer, UserAuth} from '../../_models/user.model';
 import {ClasslistService} from '../service/classlist.service';
 import {MessageBoxComponent} from '../../_directives/message-box/message-box.component';
 import {AlertService} from '../../_services/alert.service';
-import {AlertMessagesService} from '../../_services/alert-messages.service';
 
 
 enum FIELDS {
@@ -60,8 +59,7 @@ export class ClasslistListComponent implements OnInit {
 
 
   constructor(private classlistService: ClasslistService,
-              private alertService: AlertService,
-              private alertMessagesService: AlertMessagesService) {
+              private alertService: AlertService) {
   }
 
   ngOnInit() {
@@ -108,7 +106,7 @@ export class ClasslistListComponent implements OnInit {
           console.log('approved');
         },
         (error) => {
-          this.alertService.error(this.alertMessagesService.MessagesError.error + error, false, 2000);
+          this.alertService.error('error' + error, false, 2000);
         });
     //  item.lastModified = new Date();
     //  this.snackBar.open('checked / unchecked item', null, { duration: 1500 });

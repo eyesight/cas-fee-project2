@@ -5,7 +5,6 @@ import { Klasse } from '../../_models/klasse.model';
 import { UserClassListAvatars} from '../../_models/user.model';
 import {ClasslistAvatarService} from "../../_services/user-classlist-avatars.service";
 import {AlertService} from "../../_services/alert.service";
-import {AlertMessagesService} from "../../_services/alert-messages.service";
 import {UserContentService} from "../../_services/user-content.service";
 
 
@@ -22,10 +21,8 @@ export class ChatMessageComponent implements OnInit {
   // avatars contain lot of data
   public avatar: UserClassListAvatars = null;
 
-   constructor( private classlistAvatarService: ClasslistAvatarService
-               , private alertService: AlertService
-              , private alertMessagesService: AlertMessagesService )
-   { }
+   constructor( private classlistAvatarService: ClasslistAvatarService,
+                private alertService: AlertService) { }
 
   ngOnInit() {
   //  console.log('asd:' + this.avatar.email);
@@ -41,7 +38,7 @@ export class ChatMessageComponent implements OnInit {
         },
         (error) => {
           console.log('getClasslistAvatars: error:' );
-          this.alertService.error(this.alertMessagesService.MessagesError.avatarNotLoaded);
+          this.alertService.error('avatarNotLoaded');
         })
   , 0);
 
