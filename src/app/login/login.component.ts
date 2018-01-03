@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   public login() {
     this.loading = true;
     this.formModel = this.loginForm.value;
+    this.formModel.email = this.formModel.email.toLowerCase();
 
     this.authenticationService.login(this.formModel.email, this.formModel.pwd)
       .subscribe(data => {
