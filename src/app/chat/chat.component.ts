@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit, OnDestroy, ViewChild, ElementRef, Directive} from '@angular/core';
 import {Router} from '@angular/router';
 import {ChatService} from '../_services/chat.service';
 import {MessageCallback, MessageDateBlock, MessageJson} from '../_models/message.model';
@@ -9,12 +9,17 @@ import {AlertService} from '../_services/alert.service';
 import {User, UserClassListAvatars} from '../_models/user.model';
 import {UserContentService} from '../_services/user-content.service';
 import {ClasslistAvatarService} from "../_services/user-classlist-avatars.service";
+import {AppScrollBottomDirective} from "../_directives/scroll-bottom.directive";
+import {AlertMessagesService} from "../_services/alert-messages.service";
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html'
 })
 export class ChatComponent implements OnInit, OnDestroy {
+
+
+  @ViewChild('ScrollTo') private scrollDirective: AppScrollBottomDirective;
 
   public messageItem: MessageDateBlock[] = [new MessageDateBlock(new Date)];
   public message: MessageJson[] = null;
@@ -32,7 +37,8 @@ export class ChatComponent implements OnInit, OnDestroy {
     , private router: Router
     , private userAuthService: UserAuthService
     , private userContentService: UserContentService
-    , private alertService: AlertService) {
+    , private alertService: AlertService
+  , private ams: AlertMessagesService) {
     console.log('chatComponent constructor');
   }
 
@@ -49,13 +55,14 @@ export class ChatComponent implements OnInit, OnDestroy {
       .subscribe(res => {
         res.success = true;
         this.addMessage(res);
+        this.scrollDirective.scrollNow();
       });
 
     // authentication returns only if there is a problem to solve
     this.chatAuthSub = this.chatService.authentication()
       .subscribe(res => {
         console.log('chat.component call authentication:' + res);
-        this.alertService.error('newlogin');
+        this.alertService.error(this.ams.MessagesError.newlogin);
         setTimeout(() =>
           this.router.navigate(['relogin'], {queryParams: {returnUrl: this.router.url}}), 3500);
       });
@@ -63,7 +70,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.chatErrorSub = this.chatService.readErrors()
       .subscribe(error => {
         console.log('chat.component call authentication:' + error);
-        this.alertService.error('error' + error, false, 1000);
+        this.alertService.error(error, false, 1000);
       });
 
     this.chatConnectionStateSub = this.chatService.connectionState()
@@ -71,9 +78,9 @@ export class ChatComponent implements OnInit, OnDestroy {
         console.log('connection:' + state);
         this.connectionState = state;
         if (state) {
-          this.alertService.success('reconnected');
+          this.alertService.success(this.ams.MessagesSuccess.reconnected);
         } else {
-          this.alertService.success('disconnected');
+          this.alertService.success(this.ams.MessagesSuccess.disconnected);
         }
 
         if (!this.message) {

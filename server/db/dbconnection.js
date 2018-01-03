@@ -7,7 +7,8 @@ var connection=mysql.createPool({
     port     :  '3306',
     user     : 'school',
     password : 'school',
-    database : 'school_test'
+    database : 'school_test',
+    charset  : 'utf8mb4'
 
 });
 module.exports=connection;

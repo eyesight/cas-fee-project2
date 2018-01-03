@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChatDateComponent } from './chat-date.component';
-import {FromNowPipe} from '../services/from-now.pipe';
-import {MessageDateBlock} from "../../_models/message.model";
-import * as moment from "moment";
+import {FromNowPipe} from '../../_pipes/from-now.pipe';
+import {MessageDateBlock} from '../../_models/message.model';
+import * as moment from 'moment';
 import _date = moment.unitOfTime._date;
-import {before} from "selenium-webdriver/testing";
+
 
 fdescribe('ChatDateComponent', () => {
   let component: ChatDateComponent;

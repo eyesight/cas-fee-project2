@@ -56,34 +56,4 @@ export class UserContentService {
    return this.dbUserContent.getCurrentData();
   }
 
-
-
-  // generateUpdatedUser(currentUserObject) {
-  //   let id = currentUserObject.id;
-  //   let email = currentUserObject.email;
-  //   let class_id = currentUserObject.class_id;
-  //   let user_name =  currentUserObject.user_name;
-  //   let parent_surname = currentUserObject.parent_surname;
-  //   let parent_forename = currentUserObject.parent_forename;
-  //   let parent_gender = currentUserObject.parent_gender;
-  //   let parent_language = currentUserObject.parent_language;
-  //   let child_surname = currentUserObject.child_surname;
-  //   let child_forename = currentUserObject.child_forename;
-  //   let child_gender = currentUserObject.child_gender;
-  //   let child_date_of_birth = currentUserObject.child_date_of_birth;
-  //   let adress = currentUserObject.adress;
-  //   let zip = currentUserObject.zip;
-  //   let place = currentUserObject.place;
-  //   let tel_private = currentUserObject.tel_private;
-  //   let tel_office = currentUserObject.tel_office;
-  //   let is_active = currentUserObject.is_active;
-  //   let is_teacher = currentUserObject.is_teacher;
-  //   let is_admin = currentUserObject.is_admin;
-  //   let is_approved = currentUserObject.is_approved;
-  //   let user_avatar = currentUserObject.user_avatar;
-  //   let user_can = currentUserObject.user_can;
-  //
-  //   return currentUserObject;
-  // }
-
 }

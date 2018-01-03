@@ -16,7 +16,7 @@ import {ProperTimePipe} from "./services/proper-time.pipe";
 import {ChatAddmessageComponent} from "./chat-addmessage/chat-addmessage.component";
 import {ChatDateComponent} from "./chat-date/chat-date.component";
 import {ChatMessageComponent} from "./chat-message/chat-message.component";
-import {FromNowPipe} from "./services/from-now.pipe";
+import {FromNowPipe} from "../_pipes/from-now.pipe";
 import {ChatService} from "../_services/chat.service";
 import {SocketWrapper} from "../_services/socket-wrapper.service";
 import {AppConfigClass} from "../_helpers/app.config";
@@ -24,7 +24,7 @@ import {User} from "../_models/user.model";
 import {Mock} from "protractor/built/driverProviders";
 import {PersonalDetailsContainerComponent} from "../personal-details-container/personal-details-container.component";
 import {AppScrollBottomDirective} from "../_directives/scroll-bottom.directive";
-import {UserContentDbService} from "../_services/user-content-db.service";
+import {UserContentService} from "../_services/user-content.service";
 import {UserContentDbServiceMock} from "../_services/user-content-db.service.mock";
 import {StorageService} from "../_services/storage.service";
 import {AlertService} from "../_services/alert.service";
@@ -36,11 +36,13 @@ fdescribe('ChatComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ChatComponent, ProperTimePipe, FromNowPipe, ChatDateComponent, ChatMessageComponent, ChatAddmessageComponent, PersonalDetailsContainerComponent, AppScrollBottomDirective],
-      providers: [AuthenticationService, MockBackend, BaseRequestOptions, ChatService, SocketWrapper, AppConfigClass, StorageService, AlertService,
+      declarations: [ChatComponent, ProperTimePipe, FromNowPipe, ChatDateComponent, ChatMessageComponent, ChatAddmessageComponent,
+        PersonalDetailsContainerComponent, AppScrollBottomDirective],
+      providers: [AuthenticationService, MockBackend, BaseRequestOptions, ChatService,
+        SocketWrapper, AppConfigClass, StorageService, AlertService,
         {provide: HttpWrapper, useClass: HttpWrapperServiceMock},
         {provide: UserAuthService, useClass: UserAuthServiceMock},
-        {provide: UserContentDbService, useClass: UserContentDbServiceMock},
+        {provide: UserContentService},
         {provide: ConnectionBackend, useClass: MockBackend},
         {
           provide: Http, useFactory: (mockBackend: ConnectionBackend, defaultOptions: BaseRequestOptions) => {
