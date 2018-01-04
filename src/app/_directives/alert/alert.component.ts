@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertService } from '../../_services/index';
+import { AlertService, AlertMessagesService } from '../../_services/index';
 import {Observable} from 'rxjs/Observable';
 
 @Component({
