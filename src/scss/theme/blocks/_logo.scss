@@ -3,6 +3,9 @@
 
   &__img{
     height:100%;
+    @include media-breakpoint-down(xs) {
+      height:69%;
+    }
   }
 
   &.zz-logo--position-center{
@@ -11,6 +14,10 @@
     .zz-logo__img{
       margin:auto;
     }
+  }
+
+  @include media-breakpoint-down(xs) {
+    padding-bottom: 0;
   }
 }
 

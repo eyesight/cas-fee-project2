@@ -6,3 +6,9 @@ Verzicht auf NG-Material (Versionsprobleme, codebloat)  gelöst mit einfachen ht
 Performance thoughts:
 - avatar appearance in chat is faster if loaded using a service delivering the image instead of creating a 
 separate component inputing each avatar (proper modularizing vs perf.)
+
+
+Zusammenarbeit via Git:
+- Zusammenarbeit gut; Aufteilung sinnvoll
+- Bei arbeiten mit Git unnötig viele commits, zu wenig git commit --amend gearbeitet, History ist recht unübersichtlich; das wäre in Zukunft und grösseren Projekten sinnvoll
+

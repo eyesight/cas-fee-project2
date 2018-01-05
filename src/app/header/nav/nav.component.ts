@@ -29,7 +29,12 @@ export class NavComponent implements OnInit {
       console.log('nav.component ngOnInit inside observer');
       this.userContent = userContent;
      // this.userAvatar = 'data:image/png;base64,' + this.userContent.user_avatar;
-      this.userAvatar =  avatarHeader(this.userContent.avatar_filetype) + this.userContent.user_avatar;
+      if(this.userContent.user_avatar){
+        this.userAvatar =  avatarHeader(this.userContent.avatar_filetype) + this.userContent.user_avatar;
+        console.log('avatar yes');
+      } else {
+        console.log('avatar no');
+      }
 
     }, (error) => {
       console.log('observer error on nav.component.getCurrentUserObserver:' + error );
