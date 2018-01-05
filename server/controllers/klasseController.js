@@ -1,10 +1,13 @@
 "use strict";
-const store = require("../db/dbKlasse");
+const klasse = require("../db/dbKlasse");
 const util = require("../util/security");
 
 module.exports.showKlasse = function(req, res){
   console.log('klasseControler');
-  store.getAllKlasseData(function(err, order) {
-    res.json(order);
-  });
+
+  // util.authorizesBackend(req.user.name, util.authorRoles.CLASSLIST,(authorization) =>  {
+  //
+  //   klasse.getAllKlasseData(function(err, order) {
+  //   res.json(order);
+  // });
 };

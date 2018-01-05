@@ -53,7 +53,7 @@ module.exports.getAllUserContents = function (req, res) {
 };
 
 module.exports.getUserKlasseList = function (req, res) {
-  console.log('KlassenListe');
+  console.log('getUserKlasseList');
 
   util.authorizesBackend(req.user.name, util.authorRoles.CLASSLIST,(authorization) =>  {
 
