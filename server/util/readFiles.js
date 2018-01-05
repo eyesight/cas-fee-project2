@@ -3,7 +3,7 @@ const fs = require('fs');
 
 /**
  * read many Files
- * path => '/blablabla'
+ * path => '/blablabla/'
  * files => array
  * email => array of emails used as a reference for the called
  * callback => callback function to be called after all

@@ -14,14 +14,14 @@ function isLoggedIn(req) {
 }
 
 function currentUser(req) {
-  console.log('req.user.name in currentuser:' + req.user.name);
+  console.log('currentUser:req.user.name:' + req.user.name);
   return req.user.name;
 
 }
 
 function createSessionToken(name, secret, options, callback) {
   if (!name) {
-    console.log('name is empty - cant create token');
+    console.log('createSessionToken: name is empty - cant create token');
     return "";
   }
   jwt.sign({name}, secret, options, (err, token) => {
@@ -33,20 +33,20 @@ function createSessionToken(name, secret, options, callback) {
 function handleRegister(req, res) {
 
   if (isLoggedIn(req)) {
-    console.log('security user is logged in');
+    console.log('handleRegister user is logged in');
     res.status("401").json(false);
   }
   else {
-    console.log('security is req.body:' + req.body.email);
+    console.log('handleRegister is req.body:' + req.body.email);
     if (!req.body.email || !req.body.pwd) {
       //console.dir(req);
-      console.log('security register-no-email-nopaassword');
+      console.log('handleRegister neither email nor password');
       res.status("401").json(false);
 
     }
     else {
       dbUser.register(req, function (err, valid) {
-        console.log('security register valid?:' + valid);
+        console.log('handleRegister dbUser.register valid?:' + valid);
         if (valid) {
           createSessionToken(req.body.email, req.app.get("jwt-secret"), req.app.get("jwt-sign"), (token) => res.json(token));
         }
@@ -65,22 +65,21 @@ function handleRegister(req, res) {
 
 function handleLogin(req, res) {
   if (isLoggedIn(req)) {
-    console.log('security user is logged in');
+    console.log('handleLogin: user is logged in');
     res.send(true);
   }
   else {
-    console.log('security is req.body:' + !req.body);
+    console.log('handleLogin: req.body:' + !req.body);
     if (!req.body.email || !req.body.pwd) {
       res.status("401").json(false);
     }
     else {
       dbUser.authenticate(req.body.email, req.body.pwd, function (err, valid) {
-        console.log('is valid:' + valid);
+        console.log('handleLogin dbUser.authenticate: is valid:' + valid);
         if (valid) {
           createSessionToken(req.body.email, req.app.get("jwt-secret"), req.app.get("jwt-sign"), (authToken) => {
 
             getUserRoles(req.body.email, (err, roles) => {
-              console.log('get user roles');
               authToken.user_can = roles || [];
               res.json(authToken);
               return;
@@ -154,22 +153,16 @@ function authorizeBackend(email, accessRight, callback) {
 
   getUserRoles(email, (err, authorRoles) => {
 
-
     if (err) {
       callback(false);
     }
     else {
-
       for (let x in authorRoles) {
-        console.log(x);
-        console.dir(accessRight);
-
         if (authorRoles[x] === accessRight) {
           callback(true);
           return;
         }
       }
-
       callback(false);
 
     }

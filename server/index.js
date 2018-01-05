@@ -28,12 +28,7 @@ app.set("jwt-secret", cryptoUtil.jwtSecret); //secret should be in a config file
 app.set("jwt-sign", {expiresIn: "2d", audience :"self", issuer : "school"});
 app.set("jwt-validate", {secret: cryptoUtil.jwtSecret, audience :"self", issuer : "school"});
 
-app.get('/', function(req, res){
-  // res.sendFile(__dirname + '/index.html');
-  //  res.send('<h1>Hello world</h1>');
-});
-
-
+// indexRoutes need to work without jwt
 app.use("/", require('./routes/indexRoutes.js'));
 
 // the jwt-validate copies the jwt-info part to the req to user (see jwt.sign method)
@@ -42,14 +37,12 @@ app.use(jwt( app.get("jwt-validate")));
 app.use("/api", require('./routes/appRoutes.js'));
 
 
-
 chat.chat(io);
 
 
 http.listen(3020, function(){
     console.log('listening on *:3020');
 });
-
 
 
 app.use(function (err, req, res, next) {

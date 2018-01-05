@@ -226,7 +226,7 @@ function getAllUserDetails(email, callback) {
 
 
 function getUserKlasseList(email, callback) {
-
+  console.log('getUserKlasseList:' + email);
   return db.query("select u.id, u.email,u.class_id, u.parent_surname, u.parent_forename, u.parent_forename, u.register_date, u.tel_private, u.tel_office, u.parent_language, " +
     "u.child_surname, u.child_forename,u.child_gender, u.child_date_of_birth,u.adress, u.zip, u.place, u.is_teacher, u.is_approved,  " +
     "k.name klasse_name, k.description klasse_description, k.start_at klasse_start_at, k.end_at klasse_end_at from users u, klasses k,  " +
@@ -247,7 +247,7 @@ function getUserKlasseList(email, callback) {
 }
 
 function getUserByEmail(email, callback) {
-  console.log('db:' + email);
+  console.log('getUserByEmail:' + email);
   return db.query("select encrypted_password, email from users where email=?", [email], function (err, newDoc) {
     if (callback) {
       if (newDoc.length <= 0) {
@@ -264,7 +264,7 @@ function getUserByEmail(email, callback) {
 }
 
 function getUserAuthorizationInfos(email, callback) {
-  console.log('db:' + email);
+  console.log('getUserAuthorizationInfos:' + email);
   return db.query("select is_teacher, email, is_approved, is_active from users where email=?", [email], function (err, newDoc) {
     if (callback) {
       if (!newDoc || newDoc.length <= 0) {
@@ -277,8 +277,8 @@ function getUserAuthorizationInfos(email, callback) {
         }
       }
 
-      console.log('getUserAuthorizationInfosBGSH  erro?:' + err);
       if (err) {
+        console.log('getUserAuthorizationInfos error?:' + err);
         callback(err, null);
       } else {
         callback(err, newDoc[0]);

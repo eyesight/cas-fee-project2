@@ -11,7 +11,7 @@ const readFiles = require("../util/readFiles");
 
 module.exports.avatarUpload = function (req, res) {
   let raw = new Buffer(req.body.avatar.value.toString(), 'base64');
-  console.log('uploadAvatar: filetype is:' + req.body.avatar.filename);
+  console.log('avatarUpload: filetype is:' + req.body.avatar.filename);
 
   let filename = req.user.name.replace(/@/i, '.');
   // get last item, ie: jpg
@@ -35,7 +35,6 @@ module.exports.avatarUpload = function (req, res) {
         }
       })
 
-
     }
   });
 };
@@ -50,7 +49,7 @@ module.exports.avatarGet = function (req, callback) {
       callback('error no data', null);
       return;
     }
-    console.log('filename avatar:' + filename);
+    console.log('avatarGet: filename avatar:' + filename);
 
     //let fullname = data;
 
@@ -58,7 +57,7 @@ module.exports.avatarGet = function (req, callback) {
 
 
         if (data) {
-          console.log('read avatars');
+          console.log('avatarGet');
           //   console.dir(data.toString());
           callback(err, new Buffer(data).toString('base64'), filename);
         } else {
@@ -74,7 +73,7 @@ module.exports.avatarGet = function (req, callback) {
 
 module.exports.avatarGetAllFromKlasse = function (req, res) {
 
-  console.log('read avatarks form class');
+  console.log('avatarGetAllFromKlasse');
 
   util.authorizesBackend(req.user.name, util.authorRoles.CLASSLIST, (authorization) => {
 
@@ -90,7 +89,6 @@ module.exports.avatarGetAllFromKlasse = function (req, res) {
           res.json([]);
           return;
         }
-        console.log('filename avatar: - delet this console' + data[0].avatar_filename);
         let files = data.map((x) => x.avatar_filename);
         console.log(files.length);
         let emails = data.map((x) => x.email);
@@ -99,13 +97,10 @@ module.exports.avatarGetAllFromKlasse = function (req, res) {
         readFiles.readManyFiles('./avatars/', files, emails, function (err, data) {
 
             if (data) {
-              console.log('read avatars from klasse');
-              //   console.dir(data.toString());
               let result = data.map((x) => ({
+                // filetype is png, jpg
                 email: x.email, avatar_filetype: x.filename.match(/[0-9a-z]+$/i)[0], avatar: new Buffer(x.data).toString('base64')
               }));
-             // console.log('fieltype:'+ result[0].avatar_filetype);
-           //   callback(err, new Buffer(data).toString('base64'));
               res.json(result);
 
             } else {
