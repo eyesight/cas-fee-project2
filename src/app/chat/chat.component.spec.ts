@@ -1,6 +1,3 @@
-/**
- * Created by awedag on 23.11.17.
- */
 import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
 
 import {MockBackend} from "@angular/http/testing";

@@ -1,6 +1,3 @@
-/**
- * Created by awedag on 14.10.17.
- */
 import { RouterModule } from '@angular/router';
 import { ChatComponent } from './chat.component';
 
