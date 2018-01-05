@@ -10,30 +10,14 @@ const bodyParser = require('body-parser');
 const jwt = require('express-jwt');
 const cryptoUtil = require('./util/cryptoUtil');
 
-//const multer = require('multer');
-//var upload = multer({ storage: multer.memoryStorage({}) })
-//const upload = multer({ dest: 'uploads/' }).single
+const db=require('./db/dbconnection'); //reference of dbconnection.js
 
-
-var db=require('./db/dbconnection'); //reference of dbconnection.js
-
-// test query
-//const store = require("./db/dbklasse");
-//store.doQuery();
-//const dbchat = require('./db/dbChat');
-//dbchat.getAllMessages('hansli@example.com',null);
-//const dbKlasse = require('./db/dbKlasse');
-//dbKlasse.getAllKlasses(null);
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, Authorization, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
 
-  /* res.header("Access-Control-Allow-Origin", "*");
-   res.header("Access-Control-Allow-Credentials", "true");
-   res.header("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept,Authorization, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
- */
   next();
 });
 

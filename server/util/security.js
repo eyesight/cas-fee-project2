@@ -9,18 +9,15 @@ const authorRoles = {
 }
 const standardRoles = [authorRoles.CHAT, authorRoles.CLASSLIST];
 
-
 function isLoggedIn(req) {
   return req.user != null;
 }
-
 
 function currentUser(req) {
   console.log('req.user.name in currentuser:' + req.user.name);
   return req.user.name;
 
 }
-
 
 function createSessionToken(name, secret, options, callback) {
   if (!name) {

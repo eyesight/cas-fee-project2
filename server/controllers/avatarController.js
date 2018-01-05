@@ -42,7 +42,7 @@ module.exports.avatarUpload = function (req, res) {
 
 module.exports.avatarGet = function (req, callback) {
 
-  console.log('read avatarks');
+  console.log('read avatars');
 
   dbUser.getAvatarFilenameByEmail(req.user.name, function (err, filename) {
 
@@ -125,7 +125,3 @@ module.exports.avatarGetAllFromKlasse = function (req, res) {
 
 };
 
-/*
- module.exports.avatarSendBar = function(req.res) {
-
- }*/

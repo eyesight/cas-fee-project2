@@ -47,7 +47,7 @@ module.exports.getAllUserContents = function (req, res) {
 
       res.json(user);
 
-    })
+    });
     return;
 
   });
@@ -73,26 +73,7 @@ module.exports.getUserKlasseList = function (req, res) {
   })
 
 };
-//
-// module.exports.getUserKlasseListAvatarsOnly = function (req, res) {
-//   console.log('KlassenListe');
-//
-//   util.authorizesBackend(req.user.name, util.authorRoles.CLASSLIST,(authorization) =>  {
-//
-//     if (authorization) {
-//       dbUser.getUserKlasseList(req.user.name, function (err, order) {
-//         res.json(order);
-//         return;
-//       });
-//     } else {
-//       console.log('not authroer');
-//
-//       res.status(403).json(false);
-//
-//     }
-//   })
-//
-// };
+
 
 module.exports.approveUser = function (req, res) {
   console.log('Approve User');
@@ -105,32 +86,9 @@ module.exports.approveUser = function (req, res) {
       res.json(true);
 
     }
-    /*if (err) {
-     res.status(err);
-     }
-     else {
-     res.json(order);
-     }*/
-
   });
 };
 
-
-/*
- module.exports.getUsers = function(req, res)
- {
- store.getAllUser(util.currentUser(req), function (err, orders) {
- res.json(orders || {});
- })
- }; */
-
-/*
- module.exports.createUser = function(req, res)
- {
- let order = store.addUser(req.body.name, util.currentUser(req), function(err, order) {
- res.json(order);
- });
- }; */
 
 module.exports.showUser = function (req, res) {
   dbUser.getUserById(req.params.id, util.currentUser(req), function (err, order) {
