@@ -1,6 +1,3 @@
-/**
- * Created by awedag on 27.11.17.
- */
 import {Inject, Injectable} from '@angular/core';
 import {Http, Headers, RequestOptions, Response} from '@angular/http';
 import {User, UserAuth, UserPwd} from '../_models/user.model';

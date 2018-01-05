@@ -1,7 +1,3 @@
-/**
- * Created by awedag on 29.12.17.
- */
-
 
 export class AvatarConfig {
   filetype: string;

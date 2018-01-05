@@ -1,7 +1,3 @@
-/**
- * Created by awedag on 17.10.17.
- */
-
 
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';

@@ -1,9 +1,3 @@
-/**
- * Created by awedag on 22.11.17.
- */
-/**
- * Created by awedag on 20.11.17.
- */
 
 
 import { Injectable } from '@angular/core';

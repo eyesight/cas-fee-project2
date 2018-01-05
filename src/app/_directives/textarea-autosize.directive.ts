@@ -1,6 +1,4 @@
-/**
- * Created by awedag on 17.11.17.
- */
+
 import {
   ElementRef, HostListener, Directive, AfterViewChecked
 } from '@angular/core';

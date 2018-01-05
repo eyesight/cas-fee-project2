@@ -1,6 +1,4 @@
-/**
- * Created by awedag on 21.11.17.
- */
+
 import {Injectable} from '@angular/core';
 import {AppConfigClass} from '../_helpers/app.config';
 import {UserAuthService} from './user-auth.service';

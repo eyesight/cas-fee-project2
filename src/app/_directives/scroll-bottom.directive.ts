@@ -1,6 +1,4 @@
-/**
- * Created by awedag on 20.11.17.
- */
+
 import {
   Directive, ElementRef, OnChanges, AfterContentInit, AfterViewChecked, HostListener, Input,
   ViewChild

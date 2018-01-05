@@ -1,7 +1,3 @@
-/**
- * Created by awedag on 17.10.17.
- */
-
 
 export class Message {
   messageId: string;
