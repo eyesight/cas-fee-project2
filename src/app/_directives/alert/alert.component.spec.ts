@@ -31,8 +31,9 @@ fdescribe('AlertComponent', () => {
 
   it('should return success-message', fakeAsync(() => {
     const alertService: AlertService = fixture.debugElement.injector.get(AlertService);
+    console.log('fixture.debugElement.injector.get(AlertMessagesService');
     const alertMessagesService: AlertMessagesService = fixture.debugElement.injector.get(AlertMessagesService);
-    alertService.success(alertMessagesService.MessagesSuccess['register']);
+    alertService.success(alertMessagesService.MessagesSuccess.register);
     tick(7500);
     fixture.detectChanges();
     const waiter = fixture.nativeElement.querySelector('.zz-alertbox--success').innerText;
