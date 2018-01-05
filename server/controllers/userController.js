@@ -23,7 +23,6 @@ module.exports.getAllUserDetails = function (req, res) {
   });
 };
 
-
 module.exports.getAllUserContents = function (req, res) {
   console.log('getAllUserDetails:req.user.name :' + req.user.name);
   dbUser.getAllUserDetails(req.user.name, function (err, user) {
@@ -53,7 +52,6 @@ module.exports.getAllUserContents = function (req, res) {
   });
 };
 
-
 module.exports.getUserKlasseList = function (req, res) {
   console.log('KlassenListe');
 
@@ -65,7 +63,7 @@ module.exports.getUserKlasseList = function (req, res) {
         return;
       });
     } else {
-      console.log('not authroer');
+      console.log('getUserKlasseList: not authorized');
 
       res.status(403).json(false);
 
@@ -73,7 +71,6 @@ module.exports.getUserKlasseList = function (req, res) {
   })
 
 };
-
 
 module.exports.approveUser = function (req, res) {
   console.log('Approve User');
@@ -89,15 +86,3 @@ module.exports.approveUser = function (req, res) {
   });
 };
 
-
-module.exports.showUser = function (req, res) {
-  dbUser.getUserById(req.params.id, util.currentUser(req), function (err, order) {
-    res.json(order);
-  });
-};
-
-module.exports.deleteUser = function (req, res) {
-  dbUser.deleteUser(req.params.id, util.currentUser(req), function (err, order) {
-    res.json(order);
-  });
-};
