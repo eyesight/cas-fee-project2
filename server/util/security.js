@@ -89,7 +89,7 @@ function handleLogin(req, res) {
           });
         }
         else {
-          console.log('security: 401');
+          console.log('handleLogin: 401');
           res.status("401").json(false);
         }
       });
@@ -98,15 +98,15 @@ function handleLogin(req, res) {
 }
 
 function handlePasswordChange(req, res) {
-  "use strict";
-  console.log('passwordchanger on server');
+
+  console.log('handlePasswordChange');
   if (req.body.pwd !== req.body.new_pwd) {
     dbUser.authenticate(req.user.name, req.body.pwd, function (err, valid) {
-      console.log('is a valid:' + valid);
+      console.log('handlePasswordChange: is a valid:' + valid);
       if (valid) {
         dbUser.updatePassword(req.user.name, req.body.new_pwd, function (err, valid) {
           "use strict";
-          console.log('err:' + err);
+          console.log('handlePasswordChange: err:' + err);
           if (err) {
             res.status('500').json(false);
             return;
@@ -116,13 +116,13 @@ function handlePasswordChange(req, res) {
         });
       }
       else {
-        console.log('security: 401');
+        console.log('handlePasswordChange: 401');
         res.status("401").json(false);
       }
     });
   }
   else {
-    console.log('new pwd is eq old pwd');
+    console.log('handlePasswordChange: new pwd is eq old pwd');
     res.status("401").json(false);
   }
 
@@ -158,6 +158,7 @@ function authorizeBackend(email, accessRight, callback) {
     }
     else {
       for (let x in authorRoles) {
+        // check accessRight if its in array authorRoles and if so return true (=authorized)
         if (authorRoles[x] === accessRight) {
           callback(true);
           return;

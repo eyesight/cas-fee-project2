@@ -88,7 +88,7 @@ function insertMessage(email, req, callback) {
     }
 
 
-    console.log('insertMessagePrepare:' + userId + ' message:' + chatModel.message + ':chatmodel.saved_at:' + chatModel.saved_at + ':' + chatModel.sent_at);
+    console.log('insertMessagePrepare:' + userId + ' message:' + chatModel.message.slice(0,10) + ' ...:chatmodel.saved_at:' + chatModel.saved_at + ':' + chatModel.sent_at);
 
     insertMessageDb(userId, classId, chatModel, function (err, doc) {
       if ((doc === null ) && !err) {
@@ -143,13 +143,13 @@ function dateHelper(dbitem) {
   return `DATE_FORMAT(${dbitem}, "%Y-%m-%dT%TZ") AS ${dbitem}`;
 }
 function insertMessageDb(userId, classId, chatModel, callback) {
-  var sf2 = "insert into chat (" + chatModel.getClassMembers().join(', ') + ") values( " + chatModel.getStringWithX('?').join(', ') + ")";
-  var sf = chatModel.mySqlGetInsertStatement('chat');
-  console.log('sf:' + sf);
-  return db.query(sf2, chatModel.getAttributeList(), function (err, newDoc) {
+  var sf = "insert into chat (" + chatModel.getClassMembers().join(', ') + ") values( " + chatModel.getStringWithX('?').join(', ') + ")";
+  return db.query(sf, chatModel.getAttributeList(), function (err, newDoc) {
 
     if (callback) {
-      console.log('err:' + err);
+      if(err) {
+        console.log('insertMessageDb: err:' + err);
+      }
       callback(err, newDoc);
     }
 

@@ -15,9 +15,9 @@ class ModelBase {
   }
 
    getStringWithX(s){
-    var result = [];
+    let result = [];
 
-    for (var i = 1; i <= Object.getOwnPropertyNames(this).length; i++) {
+    for (let i = 1; i <= Object.getOwnPropertyNames(this).length; i++) {
       result.push(s);
     }
     return result;
@@ -38,7 +38,6 @@ class ModelBase {
   }
 
   mySqlGetUpdateStatement(tablename, whereclause){
-    console.log("whereclause" + whereclause);
     return  "update "+tablename+" set "+this.getClassMembers().join('=?, ')+"=? where "+ this.manageWCL(whereclause);
   }
 

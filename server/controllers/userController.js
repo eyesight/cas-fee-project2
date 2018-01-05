@@ -4,14 +4,14 @@ const util = require("../util/security");
 const avatarController = require("./avatarController");
 
 module.exports.updateUser = function (req, res) {
-  console.log('req.user.name :' + req.user.name);
+  console.log('updateUser: req.user.name :' + req.user.name);
   dbUser.updateUser(req.user.name, dbUser.UserFromJson(req), function (err, user) {
     res.json(user);
   });
 };
 
 module.exports.getAllUserDetails = function (req, res) {
-  console.log('getAllUserDetails:req.user.name :' + req.user.name);
+  console.log('getAllUserDetails: req.user.name :' + req.user.name);
   dbUser.getAllUserDetails(req.user.name, function (err, user) {
     if (err) {
       res.status(400).json(false);

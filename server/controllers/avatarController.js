@@ -17,12 +17,10 @@ module.exports.avatarUpload = function (req, res) {
   // get last item, ie: jpg
   let filetype = [...req.body.avatar.filename.split('.')].pop();
   let fullname = filename + '.' + filetype;
-  console.log('uploadAvatar: filetype is:' + [...req.body.avatar.filename.split('.')].pop());
-  console.log('req.user.name :' + filename);
 
   fs.writeFile('./avatars/' + filename + '.' + filetype, raw, function (err) {
     if (err) {
-      console.log(err);
+      console.log('avatarUpload: err:' + err);
       res.status(400).json(false);
 
     }
@@ -41,12 +39,12 @@ module.exports.avatarUpload = function (req, res) {
 
 module.exports.avatarGet = function (req, callback) {
 
-  console.log('read avatars');
+  console.log('avatarGet');
 
   dbUser.getAvatarFilenameByEmail(req.user.name, function (err, filename) {
 
     if (err) {
-      callback('error no data', null);
+      callback('avatarGet: error no data', null);
       return;
     }
     console.log('avatarGet: filename avatar:' + filename);
@@ -57,8 +55,6 @@ module.exports.avatarGet = function (req, callback) {
 
 
         if (data) {
-          console.log('avatarGet');
-          //   console.dir(data.toString());
           callback(err, new Buffer(data).toString('base64'), filename);
         } else {
           callback('error no data', null, null);
@@ -90,9 +86,7 @@ module.exports.avatarGetAllFromKlasse = function (req, res) {
           return;
         }
         let files = data.map((x) => x.avatar_filename);
-        console.log(files.length);
         let emails = data.map((x) => x.email);
-        console.log(emails.length);
 
         readFiles.readManyFiles('./avatars/', files, emails, function (err, data) {
 

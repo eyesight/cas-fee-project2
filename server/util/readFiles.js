@@ -26,7 +26,7 @@ function readManyFiles (path, files, emails, callback) {
       err && (errors[k] = err);
       if( !err ) {
         let fileinfo = {data: data, email: emails[k], filename : file};
-        console.log('data:length, email, filename:' + fileinfo.data.length + ' ' + fileinfo.email + ' ' + fileinfo.filename);
+        console.log('readManyFiles: fileinfo:length, email, filename:' + fileinfo.data.length + ' ' + fileinfo.email + ' ' + fileinfo.filename);
         result[k] = fileinfo;
 
       }

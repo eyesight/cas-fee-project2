@@ -8,7 +8,6 @@ const util = require("../util/security");
 
 module.exports.chat = function (io) {
 
-
   io.set('authorization', socketioJwt.authorize({
     secret: cryptoUtil.jwtSecret,
     handshake: true
@@ -19,10 +18,9 @@ module.exports.chat = function (io) {
   }));
 
   io.on('connection', function (socket) {
-    console.log('a user connected');
 
     // in socket.io 1.0
-    console.log('hello! ', socket.decoded_token.name);
+    console.log('chat: user connected:', socket.decoded_token.name);
     const email = socket.decoded_token.name;
 
     util.authorizesBackend(email, util.authorRoles.CHAT, (authorization) => {
@@ -32,25 +30,25 @@ module.exports.chat = function (io) {
         dbUser.getClassIdByEmail(email, function (err, classId) {
 
           if (err) {
-            console.log('thats not good: getClassIdByEmail Failed:' + err);
+            console.log('chat: getClassIdByEmail failed:' + err);
           }
-          console.log('getClassIdByEmail:' + classId);
+          console.log('chat: getClassIdByEmail: classId:' + classId);
           socket.join(classId);
           socket.on('disconnect', function () {
-            console.log('user disconnected');
+            console.log('chat: user disconnected');
             socket.leave(classId);
           });
 
 
           socket.on('chatMessageToSocketServer', function (msg, callback) {
-            console.log('message received from (could be faked):' + msg.email + 'email from token (couldnt be faked):' + socket.decoded_token.name + ':classRoom:' + classId);
+            console.log('message received from (could be faked):' + msg.email + ' email from token (couldnt be faked):' + socket.decoded_token.name + ':classRoom:' + classId);
 
             if (!msg.saved_at) {
               msg.saved_at = (new Date()).toJSON();
             }
             // this is the callback
             dbChat.insertMessage(email, msg, (err, doc) => {
-              "Message recieved!", socket.decoded_token.name
+            //  "Message recieved!", socket.decoded_token.name
               if (err) {
                 callback(500, err);
               } else {
@@ -65,7 +63,7 @@ module.exports.chat = function (io) {
         });
 
       } else {
-        console.log('Chat: not authorized');
+        console.log('chat: not authorized');
         socket.disconnect(
 
         );
@@ -75,7 +73,7 @@ module.exports.chat = function (io) {
 }
 
 module.exports.getMessages = function (req, res) {
-  console.log('req.user.name :' + req.user.name);
+  console.log('getMessages: req.user.name :' + req.user.name);
 
   util.authorizesBackend(req.user.name, util.authorRoles.CHAT, (authorization) => {
 
@@ -85,7 +83,7 @@ module.exports.getMessages = function (req, res) {
         return;
       });
     } else {
-      console.log('Chat: not authorized');
+      console.log('chat: not authorized');
       res.status(403).json(false);
 
     }
