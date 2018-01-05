@@ -70,23 +70,23 @@ function registerUser(email, passwort, isTeacher, req, updateUserFunc, callback)
   }
 
   const user = new UserRegister(email, passwort, !!isTeacher);
-  console.log('dbUser=registerUser');
+  console.log('registerUser: email:' + email);
 
   return db.query("Insert into users ( email, encrypted_password, is_teacher) values(?,?,?)", [user.email, user.encrypted_password, user.is_teacher], function (err, newDoc) {
     if (callback) {
       if (err) {
-        console.log('error on register user exists already?' + err);
+        console.log('registerUser: error: user exists already?' + err);
         callback(901, false);
         return;
 
       }
       const um = UserFromJson(req);
       if (updateUserFunc !== null) {
-        console.log('error on register?' + err);
+        console.log('registerUser: error?' + err);
 
         updateUserFunc(email, um, callback);
       } else {
-        console.log('error on register?' + err);
+        console.log('registerUser: error?' + err);
         callback(err, newDoc);
       }
     }
@@ -95,7 +95,7 @@ function registerUser(email, passwort, isTeacher, req, updateUserFunc, callback)
 
 
 function updatePassword(email, newPasswort, callback) {
-  console.log(email, newPasswort);
+  console.log('updatePassword: email:' + email);
   if (!(email && newPasswort)) {
     callback("no user", null);
     return;
@@ -124,11 +124,10 @@ function updateAvatarFilename(email, filename, callback) {
 }
 
 function updateUser(email, userModel, callback) {
-  console.log(userModel.is_teacher);
+  console.log('updateUser: email:' + email);
+
   var sf = userModel.mySqlGetUpdateStatement('users', "email='" + email + "'");
-  // [user.getClassMembers()].
-  console.dir(sf);
-  console.dir(userModel.getAttributeList());
+
   return db.query(sf, userModel.getAttributeList(), function (err, newDoc) {
 
     if (callback) {
@@ -143,7 +142,7 @@ function updateUser(email, userModel, callback) {
 // callback(err, res)
 // to reject request res must be false!
 function register(req, callback) {
-  console.log('dbUSer.register');
+  console.log('register: email:' + req.body.email);
   const email = req.body.email;
   const password = req.body.pwd;
   const isTeacher = req.body.is_teacher;
@@ -174,17 +173,14 @@ function authenticate(email, password, callback) {
       callback('401', false);
     }
     else {
-      var pwd = cryptoUtil.hashPwd(password);
-      //   console.log('passwor: ' + doc[0].encrypted_password + ' password: ' + cryptoUtil.hashPwd(password));
       callback(err, doc && doc[0].encrypted_password === cryptoUtil.hashPwd(password));
-      //  callback(err, doc && true);
     }
 
   });
 }
 
 function getAllUserDetails(email, callback) {
-
+  console.log('getAllUserDetails: ' + email);
   return db.query("select u.id,  u.email,u.class_id, u.parent_surname, u.parent_forename, u.parent_gender, u.parent_language, " +
     "u.child_surname, u.child_forename,u.child_gender, u.child_date_of_birth, u.adress, u.zip, u.place, u.tel_private, u.tel_office, u.is_teacher, " +
     "k.name klasse_name, k.description klasse_description, k.start_at klasse_start_at, k.end_at klasse_end_at, k.teacher_user_id teacher_user_id, " +
@@ -194,7 +190,7 @@ function getAllUserDetails(email, callback) {
     "where ((u.class_id = k.id and t.class_id = u.class_id and COALESCE(NULL,u.is_teacher,0) = 0) " +
     "OR ( t.teacher_user_id = u.id AND u.is_teacher = 1 AND k.id = t.class_id)) and u.email=?", [email], function (err, newDoc) {
     if (callback) {
-      console.log('adsf');
+
       if (newDoc) {
         if (newDoc.length <= 0) {
           newDoc = null;
@@ -205,8 +201,6 @@ function getAllUserDetails(email, callback) {
             err = 'SQL SEVERE ERROR: more than one entry for user.email:' + email;
           }
         }
-        // callback(err, newDoc[0]);
-        //  return;
       } else {
         err = 'SQL SEVERE ERROR: no resultset:' + email;
         newDoc = null;
