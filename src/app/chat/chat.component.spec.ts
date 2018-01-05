@@ -24,13 +24,14 @@ import {User} from "../_models/user.model";
 import {Mock} from "protractor/built/driverProviders";
 import {PersonalDetailsContainerComponent} from "../personal-details-container/personal-details-container.component";
 import {AppScrollBottomDirective} from "../_directives/scroll-bottom.directive";
-import {UserContentService} from "../_services/user-content.service";
+import {DbServiceUserContent, UserContentService} from "../_services/user-content.service";
 import {UserContentDbServiceMock} from "../_services/user-content-db.service.mock";
 import {StorageService} from "../_services/storage.service";
 import {AlertService} from "../_services/alert.service";
 import {AlertMessagesService} from "../_services/alert-messages.service";
 import {ClasslistAvatarService} from "../_services/user-classlist-avatars.service";
 import {ClasslistAvatarServiceMock} from "../_services/user-classlist-avatars.service.mock";
+import {UserContentServiceMock} from "../_services/user-content.service.mock";
 
 
 fdescribe('ChatComponent', () => {
@@ -42,10 +43,10 @@ fdescribe('ChatComponent', () => {
       declarations: [ChatComponent, ProperTimePipe, FromNowPipe, ChatDateComponent, ChatMessageComponent, ChatAddmessageComponent,
         PersonalDetailsContainerComponent, AppScrollBottomDirective],
       providers: [AuthenticationService, MockBackend, BaseRequestOptions, ChatService,
-        SocketWrapper, AppConfigClass, StorageService, AlertService, AlertMessagesService,
+        SocketWrapper, AppConfigClass, StorageService, AlertService, AlertMessagesService, DbServiceUserContent,
         {provide: HttpWrapper, useClass: HttpWrapperServiceMock},
         {provide: UserAuthService, useClass: UserAuthServiceMock},
-        {provide: UserContentService},
+        {provide: UserContentService, useClass: UserContentServiceMock},
         {provide: ClasslistAvatarService, useClass: ClasslistAvatarServiceMock },
         {provide: ConnectionBackend, useClass: MockBackend},
         {

@@ -42,7 +42,25 @@ export class UserContentServiceMock {
   }
 
   public getCurrentUserObserver(): Observable<User> {
-    return this.dbUserContent.getCurrentDataObserver();
+   // return this.dbUserContent.getCurrentDataObserver();
+
+    return new Observable((observer) => {
+      try {
+        // check if data is already available -> next it
+        const content = this.httpWrp.get('/assets/mock/userContent.mock.json');
+
+        if (content) {
+          observer.next(content);
+        }
+
+      } catch (e) {
+        observer.error(e);
+      }
+      // remove observable
+      return () => {
+        // nothing to execute
+      };
+    });
   }
 
 

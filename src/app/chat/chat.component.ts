@@ -31,6 +31,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   private chatErrorSub: Subscription;
   private chatConnectionStateSub: Subscription;
   private resendSub: Subscription;
+  private userContentSub: Subscription;
   private client_uuid = 0;
 
   constructor(private chatService: ChatService
@@ -44,7 +45,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.chatService.setup();
-    this.userContentService.getCurrentUserObserver()
+    this.userContentSub =  this.userContentService.getCurrentUserObserver()
       .subscribe((uc) => this.userContent = uc);
     console.log('ngOnInit: userContent.email:' + this.userContent.email);
     // subscribe to receive the message using normale JSON adapter
@@ -101,6 +102,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.chatConnectionStateSub.unsubscribe();
     this.chatSub.unsubscribe();
     this.resendSub.unsubscribe();
+    this.userContentSub.unsubscribe();
 
   }
 
