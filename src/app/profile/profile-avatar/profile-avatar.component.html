@@ -1,6 +1,6 @@
 <div class="zz-avatar__img-wrapper zz-avatar--img-large">
-  <img *ngIf="!_previewUrl" src="assets/img/dummyPortrait.png" alt="" class="zz-avatar__img">
-  <img *ngIf="_previewUrl " [src]="previewUrl" alt="" class="zz-avatar__img">
+  <img *ngIf="!_previewUrl" src="assets/img/dummyPortrait.png" alt="Profilbild" class="zz-avatar__img">
+  <img *ngIf="_previewUrl " [src]="previewUrl" alt="Profilbild" class="zz-avatar__img">
 </div>
 <form class="zz-avatar__wrapper" [formGroup]="form" (ngSubmit)="onSubmit()">
     <label class="zz-avatar__file-upload">

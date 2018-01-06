@@ -1,5 +1,5 @@
 <div class="col-11 col-lg-11 col-xl-7 zz-overlay__content">
-  <main class="zz-overlay__content-inner">
+  <div class="zz-overlay__content-inner">
     <h1 class="zz-title zz-title--insideBox">Neue E-Mailadresse beantragen</h1>
     <div>
       <form [formGroup]="emailForm" (ngSubmit)="emailForm.valid" novalidate class="zz-overlay__text-wrapper">
@@ -29,6 +29,6 @@
       </form>
     </div>
     <button [routerLink]="['/profile']" aria-label="Close" class="zz-overlay__close-btn"></button>
-  </main>
+  </div>
 </div>
 
