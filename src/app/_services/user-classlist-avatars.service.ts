@@ -11,6 +11,7 @@ import {DbService} from "./db.service";
 import {StorageKeys, StorageService} from "./storage.service";
 import {UserContentService} from "./user-content.service";
 import {avatarHeader} from "../_helpers/avatar-header";
+import {Subscription} from "rxjs/Subscription";
 
 
 export class AvatarConfig {
@@ -32,6 +33,9 @@ export class DbServiceClasslistAvatar extends DbService<UserClassListAvatars[]> 
 
 @Injectable()
 export class ClasslistAvatarService {
+
+
+  private clavSub: Subscription = null;
 
   constructor(private httpWrp: HttpWrapper
     , private dbUserClAvatar: DbServiceClasslistAvatar
@@ -87,15 +91,15 @@ export class ClasslistAvatarService {
   public getAvatarFromEmail(email: string): Promise<UserClassListAvatars> {
     return new Promise((resolve, reject) => {
       try {
-        this.getClasslistAvatars()
-          .subscribe((resultAvatar) => {
+        this.clavSub = this.getClasslistAvatars().subscribe((resultAvatar) => {
             resolve(
               resultAvatar.find((x) => {
                 if (!x || !x.email) {
                   return false;
                 }
                 return x.email === email;
-              }));
+              })
+            );
           });
       } catch (e) {
         reject(e);

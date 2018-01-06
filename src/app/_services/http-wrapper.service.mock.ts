@@ -7,7 +7,7 @@ import {User, UserAuth, UserPwd} from '../_models/user.model';
 import {UserAuthService} from './user-auth.service';
 import {Observable} from "rxjs/Observable";
 
-// TODO: try to extend from http (didnt work in the first step, probably need to implement more functions
+// better not to extend from Http
 
 @Injectable()
 export class HttpWrapperServiceMock {

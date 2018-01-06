@@ -49,9 +49,7 @@ export class ChatService {
 
           }
         }
-        console.log("authetication any error: " + error);
-        //observer.next('Authentication ');
-        // TODO: decide what error this can be and if we need to throw it against the user
+        console.log("authetication any error: nothing to notify if error is empty" + error);
       });
       // observable is disposed
       return () => {

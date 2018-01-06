@@ -16,30 +16,11 @@ export class ClasslistService {
 
   public getClasslist(): Observable<User[]>  {
 
-// instead of json use JSON.strinfiy
+   // instead of json use JSON.strinfiy
     return this.httpWrp.get('/api/user/classlist')
       .map((result) => {this.classlistCache = result.classlist; console.log(result.classlist); return result.classlist; });
   }
 
-  /*public getClasslistAvatars(): Observable<UserClassListAvatars[]>  {
-
-// instead of json use JSON.strinfiy
-    return this.httpWrp.get('/api/user/classlistavatar');
-    //   .map((result) => {
-    //       console.log('result:' + result.length);
-    //       result.map((x) => {
-    //         console.log('classlistavatars in subscribe: ' + x.email);
-    //         console.log('content avatars: length:' + x.avatar.length)
-    //         if (  x.email != null && x.avatar != null) {
-    //           const item = this.classlistCache.findIndex(el => el.email === x.email);
-    //           console.log('classlist: item:' + item + ':email:' + this.classlistCache[item].email);
-    //           this.classlistCache[item].user_avatar = x.avatar;
-    //         }
-    //       });
-    //       return this.classlistCache;
-    //
-    // });
-  }*/
 
   public getUserDetail(id): User {
     console.log('getUserDetail:' + id);

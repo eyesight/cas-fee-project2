@@ -78,11 +78,6 @@ export class ChatComponent implements OnInit, OnDestroy {
       .subscribe(state => {
         console.log('connection:' + state);
         this.connectionState = state;
-        if (state) {
-          this.alertService.success(this.ams.MessagesSuccess.reconnected);
-        } else {
-          this.alertService.success(this.ams.MessagesSuccess.disconnected);
-        }
 
         if (!this.message) {
           this.onLoad();
