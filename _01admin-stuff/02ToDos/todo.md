@@ -8,9 +8,6 @@
 - TODO: Refactoring
 -> AW/CF
 
-- TODO: Abstände korrigieren, Feinheiten ausarbeiten in Sass/CSS
--> CF: Dezember
-
 - TODO: Accessability / ARIA 
 (Prio2)
 -> CF/AW:
@@ -193,3 +190,6 @@ AW
 
 - TODO: REST-API -> Arrays sollten einen Namen haben.
 Regel REST-Slides (Prio 1.5)
+
+- TODO: Abstände korrigieren, Feinheiten ausarbeiten in Sass/CSS
+-> CF: Dezember

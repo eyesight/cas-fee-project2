@@ -14,10 +14,10 @@
   </li>
   <li class="dropdown zz-nav__list-group-item">
     <button class="zz-nav__button" data-toggle="dropdown">
-      <img [src]="userAvatar" height="70px" alt="" *ngIf="userContent?.user_avatar; else falsyTemplate"
+      <img [src]="userAvatar" alt="Profilbild" *ngIf="userContent?.user_avatar; else falsyTemplate"
            class="zz-nav__image">
       <ng-template #falsyTemplate>
-        <img src="assets/img/dummyPortrait.png" height="70px" alt="" class="zz-nav__image">
+        <img src="assets/img/dummyPortrait.png" alt="Profilbild" class="zz-nav__image">
       </ng-template>
     </button>
     <div class="dropdown-menu dropdown-menu-righ zz-nav__dropdown-menu" aria-labelledby="navbarNavDropdown">
