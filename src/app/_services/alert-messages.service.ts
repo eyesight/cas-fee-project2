@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable()
 export class AlertMessagesService {
-  constructor() { }
+  constructor() {
+  }
 
-  public  MessagesSuccess = {
+  public MessagesSuccess = {
     register: 'Registrierung war erfolgreich',
     reconnected: 'Verbindung wieder hergestellt',
     disconnected: 'Verbindung unterbrochen',
@@ -21,8 +22,43 @@ export class AlertMessagesService {
     tryAgain: 'Ein Problem ist aufgetreten, bitte versuchen Sie es nochmals',
     imageSize: 'Das Bild ist zu gross. Es darf nicht grösser als 300 KB sein.',
     dateType: 'Tut uns leid. Dieses Dateiformat wird zurzeit nicht unterstützt.',
-    password: 'Das alte Passwort stimmt leider nicht oder das neue Passwort entspricht nicht den Richtlinien'
+    password: 'Das alte Passwort stimmt leider nicht oder das neue Passwort entspricht nicht den Richtlinien',
+    authorization: 'Sie haben keine Berechtigung für diesen Menupunkt. Ihre Bestätigung ist noch ausstehend'
   };
+
+  public MessageErrorRegex = [
+    {
+      regex: /401/g,
+      message: 'Funktion ist fehlgeschlagen - bitte melden Sie sich nochmals an'
+    },
+    {
+      regex: /901/g,
+      message: 'Email schon vergeben'
+    }
+  ];
+
+  public resolveRegexErrors(error: string): string {
+    console.log('error in resolveRegexError:' + error);
+    let errorreturn = '';
+    this.MessageErrorRegex.forEach((x) => {
+      try {
+        if (error.match(x.regex)) {
+          errorreturn = x.message;
+          return;
+        }
+      } catch (e) {
+        if (error.toString().match(x.regex)) {
+          errorreturn = x.message;
+          return;
+        }
+      }
+    });
+    if (errorreturn.length <= 0) {
+      return error;
+    } else {
+      return errorreturn;
+    }
+  }
 }
 
 

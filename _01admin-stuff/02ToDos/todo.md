@@ -1,9 +1,6 @@
 #TODO
 - TODO: haben alle hover-states auch ein focus-state? ->prüfen, ergänzen
 
-- TODO: REST-API -> Arrays sollten einen Namen haben.
-Regel REST-Slides (Prio 1.5)
-
 - TODO: FOUT berücksichtigen für das Laden eines Webfonts (=auf Folien unterricht), https://css-tricks.com/fout-foit-foft/
 -- Klass setzen mit fallback schrift und asny. nachladen, so dass Seitenaufbau nicht blockiert
 -> AW+CF  (Prio 1.5)
@@ -193,3 +190,6 @@ CF
 
 - TODO: LEhrer im ClaslsistdetailsKind ausblenben
 AW
+
+- TODO: REST-API -> Arrays sollten einen Namen haben.
+Regel REST-Slides (Prio 1.5)

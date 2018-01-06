@@ -54,8 +54,18 @@ export class AlertService {
       return this.alertMessagesService.MessagesError[x];
     });
     // if message is a key of array, return the value from alertMessagesService
-    message = (this.filtertMessage !== 'undefined' && this.filtertMessage !== null && this.filtertMessage.length !== 0) ? this.filtertMessage : message;
+    if (this.filtertMessage !== 'undefined' && this.filtertMessage !== null && this.filtertMessage.length !== 0)
+    {
+      message = this.filtertMessage ;
+    }  else {
+      // if (message.match(/401/g)) {
+      //   message = 'nicht autorisiert';
+      // }else {
+      //   message = 'Fehler';
+      // }
 
+      message = this.alertMessagesService.resolveRegexErrors(message);
+    }
     this.keepAfterNavigationChange = keepAfterNavigationChange;
     this.subject.next({ type: 'error', text: message });
     if (timeout > 0) {
