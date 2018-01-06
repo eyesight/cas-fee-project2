@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-the404',
@@ -13,7 +13,7 @@ export class The404Component implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-      this.router.navigate(['/home'])
+      this.router.navigate(['/home']);
     }, 5000);
   }
 }

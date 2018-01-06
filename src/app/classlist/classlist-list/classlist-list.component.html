@@ -4,7 +4,6 @@
   <tr>
     <th scope="col" colspan="3">Kind</th>
     <th scope="col" *ngIf="userCurrent.is_teacher; else falsyTemplate" colspan="5">Eltern</th>
-
     <ng-template #falsyTemplate>
       <th scope="col" colspan="4">Eltern</th>
     </ng-template>
@@ -37,7 +36,6 @@
   <tbody>
   <tr class="table--confirmed" [ngClass]="{'zz-table--me' : userCurrent.email === item.email}"
       *ngFor="let item of classlistList">
-
     <th scope="row">
       <div [routerLink]="['detail', item.id]" class="zz-table__img-wrapper">
         <img class="zz-table__img" [src]="item?.user_avatar" *ngIf="item?.user_avatar; else falsyTemplate">
@@ -70,11 +68,3 @@
   </tr>
   </tbody>
 </table>
-
-
-<!--
-cant delegate any element to another component-file as the table breaks due to the insertion of angular-tabs in the table's hierarchy
-   <app-classlist-item [userCurrent]="userCurrent" [item]="item"  *ngFor="let item of classlistList"></app-classlist-item>
-
-
--->

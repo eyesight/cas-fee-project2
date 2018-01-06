@@ -17,7 +17,6 @@ fdescribe('AlertComponent', () => {
     })
     .compileComponents();
   }));
-  // const alertservice = new AlertService;
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AlertComponent);

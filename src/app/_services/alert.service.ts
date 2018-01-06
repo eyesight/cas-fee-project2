@@ -12,7 +12,6 @@ export class AlertService {
   private keysOfSuccess = Object.keys(this.alertMessagesService.MessagesSuccess);
   private keysOfError = Object.keys(this.alertMessagesService.MessagesError);
 
-
   constructor(private router: Router,
               private alertMessagesService: AlertMessagesService) {
     // clear alert message on route change

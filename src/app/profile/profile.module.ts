@@ -19,9 +19,6 @@ import { ImageCompressService, ResizeOptions } from 'ng2-image-compress';
 
 import { PipesModule } from '../_pipes/pipes.module';
 
-import { AlertService } from '../_services/index';
-
-
 
 @NgModule({
   imports: [
@@ -44,8 +41,7 @@ import { AlertService } from '../_services/index';
   ],
   providers: [
     ImageCompressService,
-    ResizeOptions,
-    AlertService
+    ResizeOptions
   ],
 })
 export class ProfileModule { }

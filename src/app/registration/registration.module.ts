@@ -9,7 +9,9 @@ import { RegistrationRoutesModule } from './registration.routes';
 import { DirectivesModule } from '../_directives/directives.module';
 import { NgDatepickerModule } from 'ng2-datepicker';
 
+/*
 import { AlertService, AlertMessagesService } from '../_services/index';
+*/
 
 import { PipesModule } from '../_pipes/pipes.module';
 
@@ -30,8 +32,7 @@ import { PipesModule } from '../_pipes/pipes.module';
     TermsOfUseComponent
   ],
   providers: [
-    AlertService,
-    AlertMessagesService
+
   ]
 })
 export class RegistrationModule { }
