@@ -6,18 +6,18 @@
 </div>
 <div class="row justify-content-end zz-layout__row">
   <section *ngIf="!isTeacher" class="col-12 col-xl-5 col-lg-6 zz-mod-container">
-    <h2 class="zz-title zz-title--h2">Angaben Kind</h2>
+    <h2 class="zz-title zz-title-h2">Angaben Kind</h2>
     <div class="zz-mod-box">
       <app-profile-avatar *ngIf="!isTeacher" class="zz-avatar" [previewUrl]="userContent.user_avatar" [avatarFiletype]="userContent.avatar_filetype"></app-profile-avatar>
-      <h3 class="zz-title--h3">Geschlecht</h3>
+      <h3 class="zz-title-h3">Geschlecht</h3>
       <p>{{userContent.child_gender | gender:'de': true}}</p>
-      <h3 class="zz-title--h3">Vorname Name</h3>
+      <h3 class="zz-title-h3">Vorname Name</h3>
       <p>{{userContent.child_forename}} {{userContent.child_surname}}</p>
-      <h3 class="zz-title--h3">Geburtsdatum</h3>
+      <h3 class="zz-title-h3">Geburtsdatum</h3>
       <p>{{userContent.child_date_of_birth | properDate}} </p>
-      <h3 class="zz-title--h3">Klasse</h3>
+      <h3 class="zz-title-h3">Klasse</h3>
       <p>{{userContent.klasse_description}}</p>
-      <h3 class="zz-title--h3">Klassenlehrer</h3>
+      <h3 class="zz-title-h3">Klassenlehrer</h3>
       <p>{{userContent.teacher_gender | gender:'de'}} {{userContent.teacher_forename}} {{userContent.teacher_surname}}</p>
       <button [routerLink]="['profile-details-child']" class="zz-btn zz-btn--primary">
         Daten bearbeiten
@@ -25,22 +25,22 @@
     </div>
   </section>
   <section class="col-12 col-xl-5 col-lg-6 zz-mod-container">
-    <h2 *ngIf="!isTeacher" class="zz-title zz-title--h2">Angaben Eltern</h2>
-    <h2 *ngIf="isTeacher" class="zz-title zz-title--h2">Eigene Angaben</h2>
+    <h2 *ngIf="!isTeacher" class="zz-title zz-title-h2">Angaben Eltern</h2>
+    <h2 *ngIf="isTeacher" class="zz-title zz-title-h2">Eigene Angaben</h2>
     <div class="zz-mod-box">
       <app-profile-avatar *ngIf="isTeacher" class="zz-avatar" [previewUrl]="userContent.user_avatar" ></app-profile-avatar>
-      <h3 class="zz-title--h3">Anrede</h3>
+      <h3 class="zz-title-h3">Anrede</h3>
       <p>{{userContent.parent_gender | gender:'de'}}</p>
-      <h3 class="zz-title--h3">Vorname Name</h3>
+      <h3 class="zz-title-h3">Vorname Name</h3>
       <p>{{userContent.parent_forename}} {{userContent.parent_surname}}</p>
-      <h3 class="zz-title--h3">Adresse</h3>
+      <h3 class="zz-title-h3">Adresse</h3>
       <p>{{userContent.adress}}<br>
       {{userContent.zip}} {{userContent.place}}</p>
-      <h3 class="zz-title--h3">Telefonnummer</h3>
+      <h3 class="zz-title-h3">Telefonnummer</h3>
       <p>{{userContent.tel_private}}</p>
-      <h3 class="zz-title--h3">Telefon Geschäft</h3>
+      <h3 class="zz-title-h3">Telefon Geschäft</h3>
       <p>{{userContent.tel_office}}</p>
-      <h3 class="zz-title--h3">Sprache</h3>
+      <h3 class="zz-title-h3">Sprache</h3>
       <p>{{userContent.parent_language | language}}</p>
       <button [routerLink]="['profile-details-parent']" class="zz-btn zz-btn--primary">
         Daten bearbeiten
@@ -48,9 +48,9 @@
     </div>
   </section>
   <section class="col-12 col-xl-5 col-lg-6 zz-mod-container">
-    <h2 class="zz-title zz-title--h2">E-Mail/Username und Passwort</h2>
+    <h2 class="zz-title zz-title-h2">E-Mail/Username und Passwort</h2>
     <div class="zz-mod-box">
-      <h3 class="zz-title--h3">E-Mail/Username*</h3>
+      <h3 class="zz-title-h3">E-Mail/Username*</h3>
       <p>{{userContent.email}}</p>
       <p>* Bitte beachten Sie, dass wenn Sie die E-Mail adresse ändern möchten, die neuen Daten durch den Support geprüft und manuell freigeschaltet werden müssen. Dies kann einige Tage in anspruch nehmen.</p>
       <button class="zz-btn zz-btn--primary" [routerLink]="['profile-email']">

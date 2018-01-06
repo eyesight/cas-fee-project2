@@ -21,7 +21,8 @@ html {
 
 
     &:hover,
-    &:active{
+    &:active,
+    &:focus{
       color: $color-black;
       text-decoration: none;
     }

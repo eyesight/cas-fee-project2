@@ -6007,12 +6007,12 @@ html {
     position: absolute;
     top: -10px;
     border-radius: 20px 20px 20px 20px; }
-  .zz-title--h2 {
+  .zz-title-h2 {
     font-size: 1.6875rem; }
   .zz-title--insideBox:before {
     top: 40px; }
 
-.zz-title--h3 {
+.zz-title-h3 {
   font-weight: 600;
   font-size: 1rem;
   padding-top: 1rem; }

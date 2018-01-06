@@ -13,7 +13,7 @@
     border-radius:20px 20px 20px 20px;
   }
 
-  &--h2{
+  &-h2{
     font-size: $font-s-h2;
   }
   //TODO: find a formula to calculate the right left/top together with margin/padding of the surrounding layout
@@ -23,7 +23,7 @@
   }
 }
 
-.zz-title--h3{
+.zz-title-h3{
   font-weight: $font-semi-bold;
   font-size: $font-s-h3;
   padding-top:1rem;

@@ -10,13 +10,15 @@
         color: $color-gray-middle;
 
         &:hover,
+        &:focus,
         &:active,
         &.active {
           color: $color-primary;
         }
       }
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: $color-primary-20;
       }
 
@@ -39,12 +41,14 @@
         height: 20px;
         fill: $color-black;
 
-        &:hover {
+        &:hover,
+        &:focus{
           fill: $color-primary;
         }
       }
 
-      .zz-table__anchor-mail:hover{
+      .zz-table__anchor-mail:hover,
+      .zz-table__anchor-mail:focus{
         cursor: pointer;
         .zz-table__icon{
           fill: $color-primary;
@@ -88,6 +92,7 @@
     white-space: nowrap;
 
     &:hover,
+    &:focus,
     &:active,
     &.active {
       color: $color-primary;
@@ -108,7 +113,8 @@
     float:left;
   }
 
-  &__anchor-mail:hover{
+  &__anchor-mail:hover,
+  &__anchor-mail:focus{
     cursor: pointer;
     .zz-table__icon{
       fill: $color-primary;
@@ -151,7 +157,9 @@
   .active .zz-table--arrow-up,
   .active .zz-table--arrow-down,
   .zz-table__anchor:hover .zz-table--arrow-up,
-  .zz-table__anchor:hover .zz-table--arrow-down {
+  .zz-table__anchor:focus .zz-table--arrow-up,
+  .zz-table__anchor:hover .zz-table--arrow-down,
+  .zz-table__anchor:focus .zz-table--arrow-down{
     border-color: $color-primary;
   }
 }

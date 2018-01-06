@@ -25,7 +25,8 @@
     justify-content:flex-start;
     cursor: pointer;
 
-    &:hover{
+    &:hover,
+    &:focus{
       background-color:$color-primary-40;
     }
   }

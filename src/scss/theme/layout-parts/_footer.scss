@@ -20,7 +20,8 @@
       @extend .helper-underline-anim;
     }
 
-    &:hover:after {
+    &:hover:after,
+    &:focus:after{
       @extend .helper-underline-anim-hover;
     }
     &.active,

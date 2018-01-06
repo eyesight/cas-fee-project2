@@ -12,10 +12,6 @@
 (Prio2)
 -> CF/AW:
 
-- TODO: Kontrolle Benennung Klassen und HTML-Struktur
--> AW+CF:
-https://www.w3schools.com/html/html5_semantic_elements.asp
-
 - TODO: (auch wegen IE)  avatars png/jpg Thematik
 -> AW
 
@@ -193,3 +189,8 @@ Regel REST-Slides (Prio 1.5)
 
 - TODO: Abstände korrigieren, Feinheiten ausarbeiten in Sass/CSS
 -> CF: Dezember
+
+
+- TODO: Kontrolle Benennung Klassen und HTML-Struktur
+-> AW+CF:
+https://www.w3schools.com/html/html5_semantic_elements.asp
