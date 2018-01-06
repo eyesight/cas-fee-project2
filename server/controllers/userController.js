@@ -59,7 +59,7 @@ module.exports.getUserKlasseList = function (req, res) {
 
     if (authorization) {
       dbUser.getUserKlasseList(req.user.name, function (err, order) {
-        res.json(order);
+        res.json({classlist:order});
         return;
       });
     } else {

@@ -95,7 +95,7 @@ module.exports.avatarGetAllFromKlasse = function (req, res) {
                 // filetype is png, jpg
                 email: x.email, avatar_filetype: x.filename.match(/[0-9a-z]+$/i)[0], avatar: new Buffer(x.data).toString('base64')
               }));
-              res.json(result);
+              res.json({classlistavatar: result});
 
             } else {
               res.json([]);

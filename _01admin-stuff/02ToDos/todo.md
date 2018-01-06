@@ -4,12 +4,9 @@
 - TODO: REST-API -> Arrays sollten einen Namen haben.
 Regel REST-Slides (Prio 1.5)
 
-- TODO: CSV-Datei erstellen in Klassenliste -> User-Details
-(Prio2)
-CF(+AW)
-  
-- TODO: FOUT einbinden für das Laden eines Webfonts (=auf Folien unterricht), https://css-tricks.com/fout-foit-foft/
--> AW+CF 
+- TODO: FOUT berücksichtigen für das Laden eines Webfonts (=auf Folien unterricht), https://css-tricks.com/fout-foit-foft/
+-- Klass setzen mit fallback schrift und asny. nachladen, so dass Seitenaufbau nicht blockiert
+-> AW+CF  (Prio 1.5)
 
 - TODO: Refactoring
 -> AW/CF
@@ -47,6 +44,9 @@ Prio 2
  
 - TODO: Mobile-Navigation sollte per klick geschlossen werden (prio2)
 
+ - TODO: CSV-Datei erstellen in Klassenliste -> User-Details
+ (Prio2)
+ CF(+AW)
  
 --------------------------------------------------------------------------------
 DONE

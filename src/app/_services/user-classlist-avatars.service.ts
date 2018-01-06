@@ -68,7 +68,8 @@ export class ClasslistAvatarService {
 
     } else {
       return this.httpWrp.get('/api/user/classlistavatar')
-        .map((userAvatar: UserClassListAvatars[]) => {
+        .map(result => result.classlistavatar)
+        .map(( userAvatar: UserClassListAvatars[]) => {
           if (userAvatar) {
             // console.dir(userContent);
             const avatars = this.prepareAvatars(userAvatar);
