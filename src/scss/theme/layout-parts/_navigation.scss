@@ -38,7 +38,8 @@
       @extend .helper-underline-anim;
     }
 
-    &:hover:after{
+    &:hover:after,
+    &:focus:after{
       @extend .helper-underline-anim-hover;
     }
 
@@ -87,6 +88,7 @@
     &-item{
       padding: 1rem 1.5rem;
       &:hover,
+      &:focus,
       &:active,
       &.active{
         background-color:$color-primary-50;

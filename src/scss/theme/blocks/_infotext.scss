@@ -32,7 +32,8 @@
     border:none;
     background-color: $color-white;
 
-    &:hover{
+    &:hover,
+    &:focus{
       color: $color-black;
       cursor: pointer;
     }

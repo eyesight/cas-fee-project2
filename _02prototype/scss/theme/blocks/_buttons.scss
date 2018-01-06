@@ -5,7 +5,8 @@
     @extend .helper-underline-anim;
   }
 
-  &:hover:after{
+  &:hover:after,
+  &:focus:after{
     @extend .helper-underline-anim-hover;
   }
 
@@ -19,16 +20,19 @@
     min-width:rem-calc(200px);
     padding:0.75rem 1rem;
 
-    &:hover{
+    &:hover,
+    &:focus{
       background-color: $color-primary-70;
     }
-    &:hover:after{
+    &:hover:after,
+    &:focus:after{
       @extend .helper-underline-none;
     }
   }
   &:disabled{
     background-color: $color-primary-70;
-    &:hover{
+    &:hover,
+    &:focus{
       cursor:not-allowed;
     }
   }
@@ -44,7 +48,8 @@
     @extend .helper-underline-anim;
   }
 
-  &:hover:after{
+  &:hover:after,
+  &:focus:after{
     @extend .helper-underline-anim-hover;
   }
 
@@ -52,10 +57,12 @@
     background-color: $color-primary;
     color:white;
 
-    &:hover{
+    &:hover,
+    &:focus{
       background-color: $color-primary-70;
     }
-    &:hover:after{
+    &:hover:after,
+    &:focus:after{
       @extend .helper-underline-none;
     }
   }
