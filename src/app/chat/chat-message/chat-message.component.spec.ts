@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ChatMessageComponent} from './chat-message.component';
 import {ProperTimePipe} from "../services/proper-time.pipe";
-import {MessageJson} from "../../_models/message.model";
+import {ChatMessage} from "../../_models/message.model";
 import {
   ClasslistAvatarServiceMock
 } from "../../_services/user-classlist-avatars.service.mock";
@@ -50,7 +50,7 @@ fdescribe('ChatMessageComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ChatMessageComponent);
     component = fixture.componentInstance;
-    fixture.componentInstance.message = new MessageJson();
+    fixture.componentInstance.message = new ChatMessage();
 
     fixture.detectChanges();
   });

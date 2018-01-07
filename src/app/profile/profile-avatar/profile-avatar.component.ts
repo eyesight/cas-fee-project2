@@ -6,7 +6,7 @@ import {Avatar, UserAvatar} from '../../_models/user.model';
 import {ImageCompressService, IImage} from 'ng2-image-compress';
 import {Router} from '@angular/router';
 import {UserContentService} from '../../_services/user-content.service';
-import {avatarHeader} from "../../_helpers/avatar-header";
+import {avatarHeader} from '../../_helpers/avatar-header';
 
 
 @Component({
@@ -56,11 +56,6 @@ export class ProfileAvatarComponent {
     });
   }
 
-  // get avatar() {
-  //   return this.form.get('avatar');
-  // }
-
-
   onSubmit() {
 
     this.userService.updateAvatar(this.userAvatar)
@@ -68,7 +63,7 @@ export class ProfileAvatarComponent {
         data => {
           this.provFileHideSubmitButton = true;
 
-          console.log('ok:' + data + ':provFileHideButton:' + this.provFileHideSubmitButton);
+          console.log('profilAvatar: ok:' + data + ':provFileHideButton:' + this.provFileHideSubmitButton);
           this.alertService.success(this.alertMessagesService.MessagesSuccess.imageSaved);
           this.userContentService.getUserContent()
             .subscribe(content => {
@@ -81,7 +76,7 @@ export class ProfileAvatarComponent {
         error => {
           this.provFile = false;
 
-          console.log('profilbild error:' + error);
+          console.log('profilAvazar: error:' + error);
           if (error.match(/401/g)) {
             this.alertService.error(this.alertMessagesService.MessagesError.newlogin, false, 1000);
             setTimeout(() =>

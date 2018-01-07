@@ -20,21 +20,6 @@ export class HttpWrapperServiceMock {
     console.log('http wrapper mock');
     return this.http.get('/assets/mock/messageJson.json');
 
-/*
-      const observable = new Observable(observer => {
-
-      console.log('http wrapper mock');
-      this.http.get('/assets/mock/messageJson.json').subscribe((result) => {
-        console.dir(result);
-        observer.next(result);
-      });
-
-
-      return () => {
-        //    this.scktWrp.close();
-      };
-    });
-  return observable;*/
   }
 
   public postNoJWT(url: string, data: any): any {

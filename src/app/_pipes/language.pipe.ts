@@ -3,7 +3,7 @@ import { Pipe, PipeTransform} from '@angular/core';
 @Pipe({
   name: 'language'
 })
-export class genderLanguage implements PipeTransform {
+export class GenderLanguage implements PipeTransform {
 
   constructor() {}
 
@@ -13,9 +13,9 @@ export class genderLanguage implements PipeTransform {
       return;
     }
     value = value.toLowerCase();
-    switch(language){
+    switch (language) {
       case 'de':
-      switch(value){
+      switch (value) {
         case 'de':
           displayValue = 'Deutsch';
           break;
@@ -30,7 +30,7 @@ export class genderLanguage implements PipeTransform {
       }
       break;
       case 'en':
-        switch(value){
+        switch (value) {
           case 'de':
             displayValue = 'German';
             break;
@@ -45,7 +45,7 @@ export class genderLanguage implements PipeTransform {
         }
         break;
       case 'fr':
-        switch(value){
+        switch (value) {
           case 'de':
             displayValue = 'Allemand';
             break;
@@ -60,7 +60,7 @@ export class genderLanguage implements PipeTransform {
         }
         break;
       default:
-        switch(value){
+        switch (value) {
           case 'de':
             displayValue = 'Deutsch';
             break;

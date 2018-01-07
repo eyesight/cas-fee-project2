@@ -1,16 +1,15 @@
 import {Component, OnInit, OnDestroy, ViewChild, ElementRef, Directive} from '@angular/core';
 import {Router} from '@angular/router';
 import {ChatService} from '../_services/chat.service';
-import {MessageCallback, MessageDateBlock, MessageJson} from '../_models/message.model';
+import {MessageCallback, MessageDateBlock, ChatMessage} from '../_models/message.model';
 import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
 import {UserAuthService} from '../_services/user-auth.service';
 import {AlertService} from '../_services/alert.service';
-import {User, UserClassListAvatars} from '../_models/user.model';
+import {User} from '../_models/user.model';
 import {UserContentService} from '../_services/user-content.service';
-import {ClasslistAvatarService} from "../_services/user-classlist-avatars.service";
-import {AppScrollBottomDirective} from "../_directives/scroll-bottom.directive";
-import {AlertMessagesService} from "../_services/alert-messages.service";
+import {AppScrollBottomDirective} from '../_directives/scroll-bottom.directive';
+import {AlertMessagesService} from '../_services/alert-messages.service';
 
 @Component({
   selector: 'app-chat',
@@ -22,7 +21,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   @ViewChild('ScrollTo') private scrollDirective: AppScrollBottomDirective;
 
   public messageItem: MessageDateBlock[] = [new MessageDateBlock(new Date)];
-  public message: MessageJson[] = null;
+  public message: ChatMessage[] = null;
   public userContent: User = null;
   public connectionState = true;
   private socketSub: Subscription;
@@ -129,7 +128,7 @@ export class ChatComponent implements OnInit, OnDestroy {
         if (this.message) {
           console.log('resending.... ');
 
-          const msgResend: MessageJson[] = this.message.filter(x => !x.success);
+          const msgResend: ChatMessage[] = this.message.filter(x => !x.success);
           if (msgResend.length && this.connectionState) {
             console.log('resending amount of:' + msgResend.length);
             msgResend.forEach(x => this.sendMessageOverSocket(x));
@@ -138,7 +137,7 @@ export class ChatComponent implements OnInit, OnDestroy {
       });
   }
 
-  public onSend(newMessage: MessageJson) {
+  public onSend(newMessage: ChatMessage) {
     newMessage.email = this.userAuthService.getCurrentUsername();
     newMessage.sent_at = (new Date()).toJSON();
     newMessage.saved_at = null;
@@ -169,7 +168,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   }
 
-  private addMessage(messageJson: MessageJson) {
+  private addMessage(messageJson: ChatMessage) {
 
     // console.log('addMessage: ' + messageJson.sent_at);
     if (this.message) {
@@ -181,7 +180,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   }
 
-  private updateMessage(msg: MessageJson, clientId) {
+  private updateMessage(msg: ChatMessage, clientId) {
     if (this.message) {
       const ix = this.message.findIndex((x) => x.client_uuid === clientId);
       if (ix) {

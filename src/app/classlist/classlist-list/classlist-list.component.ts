@@ -1,8 +1,9 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild} from '@angular/core';
-import {User, UserApproveAnswer, UserAuth} from '../../_models/user.model';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild, OnDestroy} from '@angular/core';
+import {User, UserApproveAnswer} from '../../_models/user.model';
 import {ClasslistService} from '../service/classlist.service';
 import {MessageBoxComponent} from '../../_directives/message-box/message-box.component';
 import {AlertService} from '../../_services/alert.service';
+import {Subscription} from 'rxjs/Subscription';
 
 
 enum FIELDS {
@@ -10,7 +11,6 @@ enum FIELDS {
   C_SURNAME,
   P_FORENAME,
   P_SURNAME,
-
   PLACE
 }
 
@@ -31,7 +31,7 @@ declare function sfn(a: User, b: User): number;
   templateUrl: './classlist-list.component.html'
 })
 
-export class ClasslistListComponent implements OnInit {
+export class ClasslistListComponent implements OnInit, OnDestroy {
 
   public canDeactivate = true;
 
@@ -56,6 +56,7 @@ export class ClasslistListComponent implements OnInit {
   ];
   private sorFn = this.sfPF;
   public SortFields = FIELDS;
+  private approveSub: Subscription = null;
 
 
   constructor(private classlistService: ClasslistService,
@@ -65,6 +66,12 @@ export class ClasslistListComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  ngOnDestroy() {
+    if (this.approveSub ) {
+      this.approveSub.unsubscribe();
+    }
+  }
   showAlert(item: User, checked: any) {
     console.log('checked?' + checked.target.checked);
     this.classlistList[this.classlistList.findIndex((x) => x === item)].is_approved = checked.target.checked;
@@ -87,10 +94,9 @@ export class ClasslistListComponent implements OnInit {
       this.onChecked(val.userItem, val.approve);
     } else {
 
-    //  console.log('ix of :' + this.classlistList.findIndex((x) => x === val.userItem) + ' now it is: ' + this.classlistList[this.classlistList.findIndex((x) => x === val.userItem)].is_approved + ' make it back to:' + !val.approve);
+      // set approve back to what it was before
       this.classlistList[this.classlistList.findIndex((x) => x === val.userItem)].is_approved = !val.approve;
       this.classlistList = [...this.classlistList];
-     // this.resetCheckBox(val.approve);
     }
 
   }
@@ -101,16 +107,13 @@ export class ClasslistListComponent implements OnInit {
   }
 
   public onChecked(item: User, checked: boolean) {
-    this.classlistService.approveUser(item, (checked === true ? 1 : 0))
+    this.approveSub = this.classlistService.approveUser(item, (checked === true ? 1 : 0))
       .subscribe((x) => {
           console.log('approved');
         },
         (error) => {
           this.alertService.error('error' + error, false, 2000);
         });
-    //  item.lastModified = new Date();
-    //  this.snackBar.open('checked / unchecked item', null, { duration: 1500 });
-
   }
 
   public onSortGoal(id: number) {

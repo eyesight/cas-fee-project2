@@ -1,21 +1,11 @@
 
-export class Message {
-  messageId: string;
-  userName: string;
-  klasseName: string;
-  text: string;
-  createdAt: string;
-}
-
-export class MessageJson {
+export class ChatMessage {
   client_uuid: number;
   email: string;
   message: string;
   sent_at: string;
   success: boolean;
   saved_at: string;
-
-  constructor() {}
 
  // json cant have an methods!
 }
@@ -28,7 +18,7 @@ export class MessageDateBlock {
 
   date: Date;
   dateGroup: Date;
-  messages: MessageJson[];
+  messages: ChatMessage[];
 
   constructor(date: Date) {
     console.log('constructor of mi');

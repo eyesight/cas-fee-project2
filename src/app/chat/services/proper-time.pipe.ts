@@ -1,8 +1,5 @@
-/**
- * Created by awedag on 18.11.17.
- */
 
-import { Pipe, PipeTransform} from "@angular/core";
+import { Pipe, PipeTransform} from '@angular/core';
 import * as moment from 'moment';
 
 @Pipe({

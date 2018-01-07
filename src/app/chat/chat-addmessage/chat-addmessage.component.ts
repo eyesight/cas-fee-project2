@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output, ViewChild, ElementRef, Input} from '@angular/core';
-import { MessageJson } from '../../_models/message.model';
+import { ChatMessage } from '../../_models/message.model';
 
 
 @Component({
@@ -8,9 +8,9 @@ import { MessageJson } from '../../_models/message.model';
 })
 export class ChatAddmessageComponent implements OnInit {
   @Output()
-  public send: EventEmitter<MessageJson> = new EventEmitter<MessageJson>();
-  @Input() cState: boolean = true;
-  message: MessageJson = null;
+  public send: EventEmitter<ChatMessage> = new EventEmitter<ChatMessage>();
+  @Input() cState  = true;
+  message: ChatMessage = null;
 
   // create a reference to messageText inside the template
   @ViewChild('messageText') private messageText: ElementRef;
@@ -25,7 +25,7 @@ export class ChatAddmessageComponent implements OnInit {
     if (!newItemText) {
       return;
     }
-    const msg = new MessageJson();
+    const msg = new ChatMessage();
     msg.message = newItemText;
     msg.sent_at = Date();
     this.send.emit(msg);

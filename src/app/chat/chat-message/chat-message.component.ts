@@ -1,12 +1,9 @@
 import {Component, OnInit, Input, OnDestroy} from '@angular/core';
-
-import { MessageDateBlock, Message, MessageJson } from '../../_models/message.model';
-import { Klasse } from '../../_models/klasse.model';
+import { ChatMessage } from '../../_models/message.model';
 import { UserClassListAvatars} from '../../_models/user.model';
-import {ClasslistAvatarService} from "../../_services/user-classlist-avatars.service";
-import {AlertService} from "../../_services/alert.service";
-import {UserContentService} from "../../_services/user-content.service";
-import {Subscription} from "rxjs/Subscription";
+import {ClasslistAvatarService} from '../../_services/user-classlist-avatars.service';
+import {AlertService} from '../../_services/alert.service';
+import {Subscription} from 'rxjs/Subscription';
 
 
 @Component({
@@ -16,7 +13,7 @@ import {Subscription} from "rxjs/Subscription";
 export class ChatMessageComponent implements OnInit, OnDestroy {
 
   @Input()
-  public message: MessageJson;
+  public message: ChatMessage;
 
   // get avatars directly from service instead of passing them over as parameters using @Input to this component which takes too long as
   // avatars contain lot of data
@@ -34,7 +31,7 @@ export class ChatMessageComponent implements OnInit, OnDestroy {
     setTimeout(() => this.getAvatarFromEmail(this.message.email), 0);
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
      this.clavSub.unsubscribe();
   }
 

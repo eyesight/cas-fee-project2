@@ -9,8 +9,6 @@ import {DbService} from './db.service';
 import {StorageKeys, StorageService} from './storage.service';
 import {UserContentService} from './user-content.service';
 import {avatarHeader} from '../_helpers/avatar-header';
-import {Subscription} from 'rxjs/Subscription';
-
 
 export class AvatarConfig {
   filetype: string;
@@ -33,7 +31,6 @@ export class DbServiceClasslistAvatar extends DbService<UserClassListAvatars[]> 
 export class ClasslistAvatarService {
 
 
-  private clavSub: Subscription = null;
 
   constructor(private httpWrp: HttpWrapper
     , private dbUserClAvatar: DbServiceClasslistAvatar

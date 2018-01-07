@@ -11,7 +11,6 @@ export class ChatDateComponent implements OnInit {
   public messageItem: MessageDateBlock;
 
   constructor() {
-  // this.messageItem.createdAt = new Date('12:00').toDateString();
   }
 
   ngOnInit() {

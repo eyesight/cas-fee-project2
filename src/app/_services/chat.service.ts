@@ -1,10 +1,7 @@
 
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {MessageCallback, MessageJson} from '../_models/message.model';
-
-// need to import explicitly the map function of Rx!
-import 'rxjs/Rx';
+import {MessageCallback, ChatMessage} from '../_models/message.model';
 
 import {HttpWrapper} from './http-wrapper.service';
 import {SocketWrapper} from './socket-wrapper.service';
@@ -12,8 +9,7 @@ import {SocketWrapper} from './socket-wrapper.service';
 @Injectable()
 export class ChatService {
 
-  // see https://www.dev6.com/Angular2-WebSockets
-
+  // ChatService: establish websocket connections
   constructor(private httpWrp: HttpWrapper, private scktWrp: SocketWrapper) {
   }
 
@@ -30,6 +26,7 @@ export class ChatService {
     return this.httpWrp.get('/api/chat/getall');
   }
 
+  // iconnectionState: s server available?
   public connectionState(): Observable<boolean> {
     return this.scktWrp.onConnection();
   }
@@ -41,15 +38,14 @@ export class ChatService {
         if (error === 'Not authorized') {
           observer.next(error);
 
-        }
-        else if (error.data) {
+        } else if (error.data) {
           if (error.data.type === 'UnauthorizedError' || error.data.code === 'invalid_token') {
             // redirect user to login page perhaps?
             observer.next('User Token has expired');
 
           }
         }
-        console.log("authetication any error: nothing to notify if error is empty" + error);
+        console.log('authetication any error: nothing to notify if error is empty:' + error);
       });
       // observable is disposed
       return () => {
@@ -73,7 +69,7 @@ export class ChatService {
     return observable;
   }
 
-  public readMessages(): Observable<MessageJson> {
+  public readMessages(): Observable<ChatMessage> {
 
     const observable = new Observable(observer => {
       this.scktWrp.listen((data) => {
@@ -88,7 +84,7 @@ export class ChatService {
   }
 
 
-  public sendMessage(msg: MessageJson): Promise<MessageCallback> {
+  public sendMessage(msg: ChatMessage): Promise<MessageCallback> {
 
     const reference = this;
     console.log('send message :' + msg);

@@ -1,13 +1,12 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { UserService } from './user.service';
-import {MockBackend} from "@angular/http/testing";
-import {HttpWrapperServiceMock} from "./http-wrapper.service.mock";
-import {UserAuthServiceMock} from "./user-auth.service.mock";
-import {BaseRequestOptions, ConnectionBackend, Http} from "@angular/http";
-import {AuthenticationService} from "./authentication.service";
-import {HttpWrapper} from "./http-wrapper.service";
-import {UserAuthService} from "./user-auth.service";
+import {MockBackend} from '@angular/http/testing';
+import {HttpWrapperServiceMock} from './http-wrapper.service.mock';
+import {UserAuthServiceMock} from './user-auth.service.mock';
+import {BaseRequestOptions, ConnectionBackend, Http} from '@angular/http';
+import {HttpWrapper} from './http-wrapper.service';
+import {UserAuthService} from './user-auth.service';
 
 fdescribe('UserService', () => {
   beforeEach(() => {

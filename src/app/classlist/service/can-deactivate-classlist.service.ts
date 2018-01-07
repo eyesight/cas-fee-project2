@@ -2,8 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {CanDeactivate} from '@angular/router';
 import {Observer} from 'rxjs/Observer';
-import {ClasslistListComponent} from "../classlist-list/classlist-list.component";
-import {ClasslistComponent} from "../classlist.component";
+import {ClasslistComponent} from '../classlist.component';
 
 @Injectable()
 export class CanDeactivateClasslistService implements CanDeactivate<ClasslistComponent> {

@@ -16,29 +16,19 @@ export class DbServiceUserAuth extends DbService<UserAuth> {
 @Injectable()
 export class UserAuthService {
 
-  // private userAuthCache: UserAuth = null;
-  //private dbUser: DbService<UserAuth> = null;
-
   constructor(private dbUser: DbServiceUserAuth) {
     console.log('User-AuthService constructed :' + this.dbUser.storageKey);
-    //this.dbUser = dbUser;
 
-
-    //   this.userAuthCache = null;
   }
 
   public saveCurrentUser(data: UserAuth) {
-    //   this.userAuthCache = data;
     this.dbUser.saveCurrentData(data);
-    //  this.storage.write(StorageKeys.keyCurrentUser, data);
 
   }
 
   public removeCurrentUser() {
     console.log('remove current userAuth');
-    // this.userAuthCache = null;
     this.dbUser.removeCurrentData();
-    //  this.storage.remove(StorageKeys.keyCurrentUser);
   }
 
   public getCurrentUser() {
@@ -74,11 +64,6 @@ export class UserAuthService {
     }
     return userAuth.user_can;
   }
-
-  // public saveUserAuth(ua: UserAuth) {
-  //   this.saveCurrentUser(ua);
-  // }
-
 }
 
 

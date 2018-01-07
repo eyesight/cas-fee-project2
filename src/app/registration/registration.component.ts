@@ -7,7 +7,7 @@ import {User} from '../_models/user.model';
 import * as deLocale from 'date-fns/locale/de';
 import * as moment from 'moment';
 import {AlertService, UserService} from '../_services/index';
-import {AlertMessagesService} from "../_services/alert-messages.service";
+import {AlertMessagesService} from '../_services/alert-messages.service';
 
 @Component({
   selector: 'app-registration',
@@ -19,7 +19,7 @@ export class RegistrationComponent implements OnInit {
   public formModel: User;
   public data: any;
   public date: Date;
-  public submitted: boolean = false;
+  public submitted = false;
 
   options: DatepickerOptions = {
     minYear: 1980,
@@ -59,7 +59,7 @@ export class RegistrationComponent implements OnInit {
       this.formModel = this.registrationForm.value;
 
       // format the date of the child_date_of_birth with moment
-      this.data = moment(this.formModel.child_date_of_birth).locale('de-ch').format("YYYY-MM-DD");
+      this.data = moment(this.formModel.child_date_of_birth).locale('de-ch').format('YYYY-MM-DD');
 
       this.formModel.child_date_of_birth = this.data;
       this.formModel.email = this.formEmail.value;

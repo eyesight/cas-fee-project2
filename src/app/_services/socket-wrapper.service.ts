@@ -4,9 +4,9 @@ import {AppConfigClass} from '../_helpers/app.config';
 import {UserAuthService} from './user-auth.service';
 
 import * as io from 'socket.io-client';
-import {BehaviorSubject} from "rxjs/BehaviorSubject";
-import {Observable} from "rxjs/Observable";
-import {Subscription} from "rxjs/Subscription";
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {Observable} from 'rxjs/Observable';
+import {Subscription} from 'rxjs/Subscription';
 
 const socketError = 'error';
 const socketConnect = 'connect';
@@ -30,7 +30,7 @@ export class SocketWrapper {
   public setup(chnReceive: string = channelReceiveMessage, chnSend: string = channelSendMessage) {
     this.channelReceive = chnReceive;
     this.channelSend = chnSend;
-    console.log('socket token:' + this.userAuthService.getCurrentUserJwt());
+    console.log('SocketWrapper. setup: socket token:' + this.userAuthService.getCurrentUserJwt());
     this.socket = io(this.appConf.getConfig().apiUrl, {
       upgrade: true,
       query: 'token=' + this.userAuthService.getCurrentUserJwt()
@@ -57,9 +57,7 @@ export class SocketWrapper {
     } else {
       return null;
     }
-
   }
-
 
   public onError(callback) {
     if (this.socket) {
@@ -93,14 +91,12 @@ export class SocketWrapper {
 
   public sendPro<T>(msg): Promise<T> {
 
-    console.log('sendPro');
     return new Promise((resolve, reject) => {
-
       try {
         this.send(msg, (resp, name) => {
           console.log('swrp.send:' + resp);
           if (resp !== 200) {
-            console.log('on socket.emit error:' + resp);
+            console.log('socket-wrapper: sendPro: on socket.emit error:' + resp);
             reject('error');
           } else {
             resolve(name);

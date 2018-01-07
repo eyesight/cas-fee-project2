@@ -21,10 +21,8 @@ export class Avatar {
 }
 export class UserAvatar {
 
-  //avatar: string;
   name: string;
   avatar: Avatar;
-
 }
 
 

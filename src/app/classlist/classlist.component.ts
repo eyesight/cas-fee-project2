@@ -6,7 +6,7 @@ import {AlertService} from '../_services/alert.service';
 import {UserContentService} from '../_services/user-content.service';
 import {ClasslistAvatarService} from '../_services/user-classlist-avatars.service';
 import {Subscription} from 'rxjs/Subscription';
-import {AlertMessagesService} from "../_services/alert-messages.service";
+import {AlertMessagesService} from '../_services/alert-messages.service';
 
 
 @Component({
@@ -49,7 +49,6 @@ export class ClasslistComponent implements OnInit, OnDestroy {
 
           this.avatarSub = this.classlistAvatarService.getClasslistAvatars()
             .subscribe((resultAvatars) => {
-                console.log('result:' + resultAvatars.length);
                 resultAvatars.filter((x) => x !== null)
                   .map((x) => {
 

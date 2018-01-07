@@ -1,13 +1,8 @@
 
 import {Injectable} from '@angular/core';
-import {StorageService, StorageKeys} from './storage.service';
-
-import {Http, Headers, RequestOptions, Response} from '@angular/http';
-import {appConfig} from '../_helpers/app.config';
-import {User, UserAuth} from '../_models/user.model';
-import {Subscription} from "rxjs/Subscription";
-import {Observable} from "rxjs/Observable";
-import {Subject} from "rxjs/Subject";
+import {StorageService} from './storage.service';
+import {Observable} from 'rxjs/Observable';
+import {Subject} from 'rxjs/Subject';
 
 
 @Injectable()
@@ -25,7 +20,6 @@ export class DbService<T> {
   public saveCurrentData(data: T) {
     this.contentCache = data;
     console.log('storage for key:' + this.storageKey);
-   // console.log(this.contentCache);
     this.storage.write(this.storageKey, data);
     this.subject.next(data);
 
@@ -62,9 +56,7 @@ export class DbService<T> {
     });
   }
 
-
   public getCurrentData(): T {
-    // console.log('userContentGetCurrentData:' + this.contentCache);
     if (!this.contentCache) {
       this.contentCache = this.storage.read(this.storageKey);
       console.log('contentGetCurrentUserund jetzt:' + this.contentCache);
@@ -74,7 +66,5 @@ export class DbService<T> {
       return this.contentCache;
     }
   }
-
-
 }
 

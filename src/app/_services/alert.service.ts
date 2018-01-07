@@ -58,12 +58,6 @@ export class AlertService {
     {
       message = this.filtertMessage ;
     }  else {
-      // if (message.match(/401/g)) {
-      //   message = 'nicht autorisiert';
-      // }else {
-      //   message = 'Fehler';
-      // }
-
       message = this.alertMessagesService.resolveRegexErrors(message);
     }
     this.keepAfterNavigationChange = keepAfterNavigationChange;

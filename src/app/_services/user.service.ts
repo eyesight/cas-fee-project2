@@ -8,14 +8,6 @@ import { HttpWrapper } from './http-wrapper.service';
 export class UserService {
   constructor(private httpWrp: HttpWrapper) { }
 
-  public getAll() {
-    return this.httpWrp.get('/api/users');
-  }
-
-  public getById(id: number) {
-    return this.httpWrp.get('/api/users/' + id);
-  }
-
   public create(user: User) {
     return this.httpWrp.postNoJWT('/api/register', user);
   }

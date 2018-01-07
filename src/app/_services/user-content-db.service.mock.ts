@@ -1,9 +1,6 @@
 
 import {Injectable} from '@angular/core';
-import {StorageService, StorageKeys} from './storage.service';
-
-import {Http, Headers, RequestOptions, Response} from '@angular/http';
-import {appConfig} from '../_helpers/app.config';
+import {StorageService} from './storage.service';
 import {User} from '../_models/user.model';
 
 

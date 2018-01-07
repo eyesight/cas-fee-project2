@@ -20,7 +20,8 @@ import { AuthGuard } from './_guards/auth.guards';
 import { RegistrationAuthGuard } from './_guards/registration-auth.guards';
 import { CanActivateProtectedPagesGuard } from './_guards/can-activate-protected-pages.guard';
 
-import { AlertService, AlertMessagesService, AuthenticationService, UserService, ErrorHandlerService, ErrorLoggerService } from './_services/index';
+import { AlertService, AlertMessagesService, AuthenticationService,
+         UserService, ErrorHandlerService, ErrorLoggerService } from './_services/index';
 import { DirectivesModule } from './_directives/directives.module';
 
 import { PersonalDetailsContainerModule } from './personal-details-container/personal-details-container.module';

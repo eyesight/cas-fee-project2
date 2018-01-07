@@ -1,5 +1,5 @@
 
-// use flat model
+// use flat model (=> no hierarchies)
 
 export class Klasse {
   id: number;

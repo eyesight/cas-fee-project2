@@ -9,7 +9,6 @@ export class UserResolverService implements Resolve<User> {
   constructor(private classlistService: ClasslistService) {}
   resolve(route: ActivatedRouteSnapshot,
           state: RouterStateSnapshot): User {
-    console.log('we are inside user resolver: ' + route.paramMap.get('id'));
       return this.classlistService.getUserDetail(route.paramMap.get('id'));
     }
 

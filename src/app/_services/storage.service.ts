@@ -11,7 +11,7 @@ export class StorageService {
   }
 
   public  read(key: string ): any {
-    const obj:any = localStorage.getItem(key);
+    const obj: any = localStorage.getItem(key);
     return obj ?  JSON.parse(obj) : null;
 
   }

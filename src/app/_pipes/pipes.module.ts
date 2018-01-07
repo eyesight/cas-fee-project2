@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { FromNowPipe } from './from-now.pipe';
 import { ProperDatePipe } from './proper-date.pipe';
-import { genderPipe } from './gender.pipe';
-import { genderLanguage } from './language.pipe';
+import { GenderPipe } from './gender.pipe';
+import { GenderLanguage } from './language.pipe';
 
 
 
@@ -15,14 +15,14 @@ import { genderLanguage } from './language.pipe';
   declarations: [
     FromNowPipe,
     ProperDatePipe,
-    genderPipe,
-    genderLanguage
+    GenderPipe,
+    GenderLanguage
   ],
   exports: [
     FromNowPipe,
     ProperDatePipe,
-    genderPipe,
-    genderLanguage
+    GenderPipe,
+    GenderLanguage
   ],
   providers: [
   ]

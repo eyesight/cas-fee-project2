@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
-import {User, UserApprove, UserAuth, UserClassListAvatars, UserPwd} from '../../_models/user.model';
+import {User, UserApprove} from '../../_models/user.model';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import {HttpWrapper} from '../../_services/http-wrapper.service';

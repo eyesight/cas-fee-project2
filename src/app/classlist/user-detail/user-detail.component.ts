@@ -12,7 +12,6 @@ import {ActivatedRoute} from '@angular/router';
 export class UserDetailComponent implements OnInit {
   hidden = true;
 
-  //@Input()
   public user: User = null;
 
   constructor(private activatedRoute: ActivatedRoute) {

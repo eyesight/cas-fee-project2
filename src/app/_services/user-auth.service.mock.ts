@@ -1,10 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { StorageService, StorageKeys } from './storage.service';
-
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
-import { appConfig } from '../_helpers/app.config';
-import {User, UserAuth} from '../_models/user.model';
+import {UserAuth} from '../_models/user.model';
 
 
 @Injectable()
@@ -13,12 +9,12 @@ export class UserAuthServiceMock {
   private userAuthCache: UserAuth = null;
 
 
-  public saveCurrentUser(data: UserAuth){
+  public saveCurrentUser(data: UserAuth) {
     this.userAuthCache = data;
 
   }
 
-  public removeCurrentUser(){
+  public removeCurrentUser() {
   }
 
   private getCurrentUser(): UserAuth {

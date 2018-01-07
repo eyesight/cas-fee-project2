@@ -151,6 +151,7 @@ function register(req, callback) {
   }
   // check if proper email
   if (!emailRGX.test(email)) {
+    console.log('register: email is wrong');
     callback(400, false);
     return;
   }

@@ -1,11 +1,8 @@
 
-
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { appConfig } from '../_helpers/app.config';
-import {User, UserAuth, UserPwd} from '../_models/user.model';
 import {UserAuthService} from './user-auth.service';
-import {Observable} from "rxjs/Observable";
 
 
 @Injectable()

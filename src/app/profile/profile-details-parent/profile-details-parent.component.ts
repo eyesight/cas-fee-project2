@@ -34,7 +34,7 @@ export class ProfileDetailsParentComponent implements OnInit {
     private fb: FormBuilder
   ) { }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.userContent = this.UserContentService.getCurrentUser();
     this.buildForm();
   }

@@ -1,19 +1,23 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Route, Router} from '@angular/router';
 import {ROUTES} from '../../app.routes';
 import {User} from '../../_models/user.model';
-import {UserContentService} from "../../_services/user-content.service";
-import {avatarHeader} from "../../_helpers/avatar-header";
-import {AuthenticationService} from "../../_services/index";
-import {ClasslistAvatarService} from "../../_services/user-classlist-avatars.service";
+import {UserContentService} from '../../_services/user-content.service';
+import {avatarHeader} from '../../_helpers/avatar-header';
+import {AuthenticationService} from '../../_services/index';
+import {ClasslistAvatarService} from '../../_services/user-classlist-avatars.service';
+import {Subscription} from 'rxjs/Subscription';
+
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html'
 })
-export class NavComponent implements OnInit {
+
+export class NavComponent implements OnInit, OnDestroy {
   public navItems: Route[];
   public userContent: User;
   public userAvatar: string;
+  private userContentSub: Subscription = null;
 
   constructor(private userContentService: UserContentService,
               private authenticationService: AuthenticationService,
@@ -25,11 +29,11 @@ export class NavComponent implements OnInit {
   ngOnInit() {
     console.log('nav.component ngOnInit');
     this.userContent = null;
-    this.userContentService.getCurrentUserObserver().subscribe((userContent) => {
+    this.userContentSub = this.userContentService.getCurrentUserObserver().subscribe((userContent) => {
       console.log('nav.component ngOnInit inside observer');
       this.userContent = userContent;
      // this.userAvatar = 'data:image/png;base64,' + this.userContent.user_avatar;
-      if(this.userContent.user_avatar){
+      if (this.userContent.user_avatar) {
         this.userAvatar =  avatarHeader(this.userContent.avatar_filetype) + this.userContent.user_avatar;
         console.log('avatar yes');
       } else {
@@ -41,7 +45,13 @@ export class NavComponent implements OnInit {
     });
   }
 
-  public logout(){
+  ngOnDestroy() {
+    if (this.userContentSub) {
+      this.userContentSub.unsubscribe();
+    }
+  }
+
+  public logout() {
     this.authenticationService.logout();
     this.userContentService.clear();
     this.classlistAvatarService.clear();
