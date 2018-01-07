@@ -18,12 +18,13 @@ export class AlertMessagesService {
     register901: 'Diese Email wurde bereits vergeben',
     avatarNotLoaded: 'Die Profilbilder können nicht geladen werden',
     newlogin: 'Bitte melden Sie sich neu an',
-    error: 'Fehler ',
+    error: 'Funktion ist fehlgeschlagen - bitte versuchen Sie es nochmals oder melden sich beim Support',
     tryAgain: 'Ein Problem ist aufgetreten, bitte versuchen Sie es nochmals',
-    imageSize: 'Das Bild ist zu gross. Es darf nicht grösser als 300 KB sein.',
+    imageSize: 'Das Bild ist zu gross. Es darf nicht grösser als 190 KB sein.',
     dateType: 'Tut uns leid. Dieses Dateiformat wird zurzeit nicht unterstützt.',
-    password: 'Das alte Passwort stimmt leider nicht oder das neue Passwort entspricht nicht den Richtlinien',
-    authorization: 'Sie haben keine Berechtigung für diesen Menupunkt. Ihre Bestätigung ist noch ausstehend'
+    password: 'Das alte Passwort ist nicht korrekt oder das neue Passwort entspricht nicht den Richtlinien',
+    authorization: 'Sie haben keine Berechtigung für diesen Menupunkt. Ihre Bestätigung ist noch ausstehend',
+    login401: 'Funktion ist fehlgeschlagen - bitte versuchen Sie es nochmals'
   };
 
   public MessageErrorRegex = [

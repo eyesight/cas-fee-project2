@@ -1,6 +1,4 @@
 #TODO
-- TODO: haben alle hover-states auch ein focus-state? ->prüfen, ergänzen
-
 - TODO: FOUT berücksichtigen für das Laden eines Webfonts (=auf Folien unterricht), https://css-tricks.com/fout-foit-foft/
 -- Klass setzen mit fallback schrift und asny. nachladen, so dass Seitenaufbau nicht blockiert
 -> AW+CF  (Prio 1.5)
@@ -194,3 +192,5 @@ Regel REST-Slides (Prio 1.5)
 - TODO: Kontrolle Benennung Klassen und HTML-Struktur
 -> AW+CF:
 https://www.w3schools.com/html/html5_semantic_elements.asp
+
+- TODO: haben alle hover-states auch ein focus-state? ->prüfen, ergänzen

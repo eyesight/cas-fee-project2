@@ -4,7 +4,7 @@ import { User } from '../../_models/user.model';
 import { overlayAnimation } from '../../_animation/overlay.animation';
 import { UserContentService } from '../../_services/user-content.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlertService, UserService } from '../../_services/index';
+import { AlertService, UserService, AlertMessagesService } from '../../_services/index';
 import { DatepickerOptions } from 'ng2-datepicker';
 import * as deLocale from 'date-fns/locale/de';
 import * as moment from 'moment';
@@ -39,7 +39,8 @@ export class ProfileDetailsChildComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private alertService: AlertService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private alertMessagesService: AlertMessagesService
   ) {}
 
   ngOnInit(): void {
@@ -64,7 +65,7 @@ export class ProfileDetailsChildComponent implements OnInit {
     return this.childDetailsForm.get('child_date_of_birth');
   }
 
-  update() {
+  public update() {
     // add Value of Form into formModel to pass it to new userObject
     this.formModel = this.childDetailsForm.value;
 
@@ -90,7 +91,7 @@ export class ProfileDetailsChildComponent implements OnInit {
     this.userService.update(this.userObject)
       .subscribe(
         data => {
-          this.alertService.success('dataChange', true);
+          this.alertService.success(this.alertMessagesService.MessagesSuccess.dataChange, true);
           // update the content in user-store
           this.userContentService.getUserContent()
             .subscribe( content => {
@@ -98,16 +99,16 @@ export class ProfileDetailsChildComponent implements OnInit {
                 this.router.navigate(['/profile']);
               },
               error => {
-                this.alertService.error('tryAgain', true);
+                this.alertService.error(this.alertMessagesService.MessagesError.tryAgain, true);
                 this.router.navigate(['/profile']);
               });
         },
         error => {
-          this.alertService.error('tryAgain');
+          this.alertService.error(this.alertMessagesService.MessagesError.tryAgain);
         });
   }
 
-  buildForm() {
+  private buildForm() {
     this.childDetailsForm = this.fb.group({
       child_gender: [this.userContent.child_gender, [Validators.required]],
       child_forename: [this.userContent.child_forename, [Validators.required, Validators.minLength(2)]],

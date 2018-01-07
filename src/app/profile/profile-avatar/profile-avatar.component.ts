@@ -103,10 +103,7 @@ export class ProfileAvatarComponent {
 
       console.log(event.target.files[0]);
 
-      this.userAvatar
-
-
-      if (files.size > 300000) {
+      if (files.size > 190000) {
         this.alertService.error(this.alertMessagesService.MessagesError.imageSize, false, 500);
         this.provFile = false;
         this.provFileHideSubmitButton = true;
@@ -140,21 +137,11 @@ export class ProfileAvatarComponent {
             this.av.filesize = files.size;
             this.userAvatar.avatar = this.av;
 
-            //  this.previewUrl = this.images[0].compressedImage.imageDataUrl;
             this.provFile = true;
             this.previewUrl = this.images[0].compressedImage.imageDataUrl.split(',')[1];
 
           });
         });
-
-        // reader.onload = (evt: any) => {
-        //   this.previewUrl = evt.target.result;
-        //   this.provFile = true;
-        //   this.avatarUrl = this.previewUrl.split(',')[1];
-        //
-        //   console.log('in reader.onload 110:' + this.avatarUrl.length);
-        //   console.log('in reader.onload 1');
-        // };
       }
     }
   }

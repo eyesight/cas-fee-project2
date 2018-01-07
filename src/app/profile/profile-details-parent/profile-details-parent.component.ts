@@ -4,7 +4,7 @@ import { overlayAnimation } from '../../_animation/overlay.animation';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from '../../_validation/custom.validators';
-import { AlertService, UserService } from '../../_services/index';
+import { AlertService, UserService, AlertMessagesService } from '../../_services/index';
 import { UserContentService } from '../../_services/user-content.service';
 
 @Component({
@@ -32,7 +32,8 @@ export class ProfileDetailsParentComponent implements OnInit {
     private alertService: AlertService,
     private userService: UserService,
     private userContentService: UserContentService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private alertMessagesService: AlertMessagesService
   ) { }
 
   ngOnInit(): void {
@@ -76,7 +77,7 @@ export class ProfileDetailsParentComponent implements OnInit {
     return this.parentDetailsForm.get('tel_office');
   }
 
-  update() {
+  public update() {
     // add Value of Form into formModel to pass it to new userObject
     this.formModel = this.parentDetailsForm.value;
 
@@ -99,7 +100,7 @@ export class ProfileDetailsParentComponent implements OnInit {
     this.userService.update(this.userObject)
       .subscribe(
         data => {
-          this.alertService.success('dataChange', true);
+          this.alertService.success(this.alertMessagesService.MessagesSuccess.dataChange, true);
           // update the content in user-store
           this.userContentService.getUserContent()
             .subscribe( content => {
@@ -107,12 +108,12 @@ export class ProfileDetailsParentComponent implements OnInit {
                 this.router.navigate(['/profile']);
               },
               error => {
-                this.alertService.error('tryAgain', true);
+                this.alertService.error(this.alertMessagesService.MessagesError.tryAgain, true);
                 this.router.navigate(['/profile']);
               });
         },
         error => {
-          this.alertService.error('tryAgain');
+          this.alertService.error(this.alertMessagesService.MessagesError.tryAgain);
         });
   }
 

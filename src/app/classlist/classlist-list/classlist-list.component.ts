@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output, ViewChild, OnDestroy} fr
 import {User, UserApproveAnswer} from '../../_models/user.model';
 import {ClasslistService} from '../service/classlist.service';
 import {MessageBoxComponent} from '../../_directives/message-box/message-box.component';
-import {AlertService} from '../../_services/alert.service';
+import {AlertService, AlertMessagesService} from '../../_services/index';
 import {Subscription} from 'rxjs/Subscription';
 
 
@@ -60,7 +60,8 @@ export class ClasslistListComponent implements OnInit, OnDestroy {
 
 
   constructor(private classlistService: ClasslistService,
-              private alertService: AlertService) {
+              private alertService: AlertService,
+              private alertMessageService: AlertMessagesService) {
   }
 
   ngOnInit() {
@@ -112,7 +113,7 @@ export class ClasslistListComponent implements OnInit, OnDestroy {
           console.log('approved');
         },
         (error) => {
-          this.alertService.error('error' + error, false, 2000);
+          this.alertService.error(this.alertMessageService.MessagesError.error, false, 2000);
         });
   }
 

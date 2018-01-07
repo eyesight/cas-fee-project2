@@ -8,6 +8,7 @@ import {UserContentService} from '../_services/user-content.service';
 import {ErrorHandlerService} from '../_services/index';
 import {ClasslistAvatarService} from '../_services/user-classlist-avatars.service';
 import {User} from '../_models/user.model';
+import {AlertMessagesService} from '../_services/alert-messages.service';
 
 
 @Component({
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
               private authenticationService: AuthenticationService,
               private userContentService: UserContentService,
               private alertService: AlertService,
+              private alertMessagesService: AlertMessagesService,
               private errorHandlerService: ErrorHandlerService,
               private classlistAvatarService: ClasslistAvatarService,
               private fb: FormBuilder) {
@@ -77,7 +79,12 @@ export class LoginComponent implements OnInit, AfterViewInit {
               });
         },
         error => {
-          this.alertService.error('error' + error, true, 500);
+          if (error.toString().match(/401/g)) {
+            this.alertService.error(this.alertMessagesService.MessagesError.login401, true, 500);
+
+          } else {
+            this.alertService.error(this.alertMessagesService.MessagesError.error, true, 500);
+          }
           this.loading = false;
         });
   }

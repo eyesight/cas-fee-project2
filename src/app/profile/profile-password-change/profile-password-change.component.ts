@@ -5,7 +5,7 @@ import {User, UserPwdChange} from '../../_models/user.model';
 import {UserContentService} from '../../_services/user-content.service';
 import {CustomValidators} from '../../_validation/custom.validators';
 import {Router} from '@angular/router';
-import {AlertService, UserService} from '../../_services/index';
+import {AlertService, UserService, AlertMessagesService} from '../../_services/index';
 
 
 @Component({
@@ -24,7 +24,8 @@ export class ProfilePasswordChangeComponent implements OnInit {
               private UserContentService: UserContentService,
               private userService: UserService,
               private router: Router,
-              private alertService: AlertService) {
+              private alertService: AlertService,
+              private alertMessagesService: AlertMessagesService) {
   }
 
   ngOnInit() {
@@ -32,7 +33,7 @@ export class ProfilePasswordChangeComponent implements OnInit {
     this.buildForm();
   }
 
-  buildForm() {
+  private buildForm() {
     this.pwdForm = this.fb.group({
       oldPassword: ['', [Validators.required]],
       formPasswordConfirm: this.fb.group({
@@ -42,17 +43,17 @@ export class ProfilePasswordChangeComponent implements OnInit {
     });
   }
 
-  updatePwd() {
+  public updatePwd() {
     this.userObject.new_pwd = this.newPassword.value;
     this.userObject.pwd = this.oldPassword.value;
     this.userService.updatePassword(this.userObject)
       .subscribe(
         data => {
-          this.alertService.success('dataChange', true);
+          this.alertService.success(this.alertMessagesService.MessagesSuccess.dataChange, true);
           this.router.navigate(['/profile']);
         },
         error => {
-          this.alertService.error('password');
+          this.alertService.error(this.alertMessagesService.MessagesError.password);
         });
   }
 

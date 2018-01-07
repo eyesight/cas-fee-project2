@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {User, UserClassListAvatars} from '../_models/user.model';
+import {User} from '../_models/user.model';
 import {ClasslistService} from './service/classlist.service';
 import {Router} from '@angular/router';
 import {AlertService} from '../_services/alert.service';
@@ -61,7 +61,7 @@ export class ClasslistComponent implements OnInit, OnDestroy {
               },
               (error) => {
                 console.log('ClasslistComponent getClasslistAvatars: error:' + error);
-                this.alertService.error('avatarNotLoaded');
+                this.alertService.error(this.alertMessagesService.MessagesError.avatarNotLoaded);
               });
         },
         (error) => {

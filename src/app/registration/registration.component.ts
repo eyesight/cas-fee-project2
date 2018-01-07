@@ -51,7 +51,7 @@ export class RegistrationComponent implements OnInit {
     this.submitted = false;
   }
 
-  register() {
+  public register() {
     this.submitted = true;
 
     if (this.registrationForm.valid) {
@@ -71,7 +71,7 @@ export class RegistrationComponent implements OnInit {
       this.userService.create(this.formModel)
         .subscribe(
           data => {
-            this.alertService.success('register', true, 500);
+            this.alertService.success(this.alertMessagesService.MessagesSuccess.register, true, 500);
             setTimeout(() => {
               this.router.navigate(['/login']);
             }, 1000);
@@ -88,14 +88,14 @@ export class RegistrationComponent implements OnInit {
     }
   }
 
-  getklasse() {
+  private getklasse() {
     return this.userService.showKlasses()
       .subscribe((result) => {
         this.klasses = result;
       });
   }
 
-  buildForm() {
+  private buildForm() {
     this.registrationForm = this.fb.group({
       parent_forename: ['', [Validators.required, Validators.minLength(2)]],
       parent_surname: ['', [Validators.required, Validators.minLength(2)]],

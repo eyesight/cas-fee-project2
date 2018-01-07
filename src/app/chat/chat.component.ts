@@ -70,7 +70,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.chatErrorSub = this.chatService.readErrors()
       .subscribe(error => {
         console.log('chat.component call authentication:' + error);
-        this.alertService.error(error, false, 1000);
+        this.alertService.error(this.ams.MessagesError.error, false, 1000);
       });
 
     this.chatConnectionStateSub = this.chatService.connectionState()
