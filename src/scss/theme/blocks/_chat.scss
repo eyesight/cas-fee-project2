@@ -2,23 +2,23 @@
 
   &__box {
     @extend .helper-boxshadow;
+    margin-bottom: rem-calc(180px);
     padding-left:30px;
     padding-top:4px;
     padding-bottom:rem-calc(75px);
-    margin-bottom: rem-calc(180px);
   }
 
 
   &__bullet:before {
-    content:'';
-    width: rem-calc(15px);
-    height: 15px;
-    vertical-align: center;
     background-color: $color-primary-70;
-    position: absolute;
     border-radius:50%;
+    content:'';
+    height: 15px;
     margin-left:rem-calc(-8px);
     margin-top: rem-calc(15px);
+    position: absolute;
+    vertical-align: center;
+    width: rem-calc(15px);
   }
 
   &__timeline {
@@ -58,9 +58,9 @@
   }
 
   &__sender-header{
-    margin-top: rem-calc(3px);
     display: flex;
     height: 45px;
+    margin-top: rem-calc(3px);
   }
 
   &__txt-item{
@@ -70,8 +70,8 @@
   }
 
   &--line-right{
-    border-right: 1px solid $color-black;
     margin: 0 15px 0 -15px;
+    border-right: 1px solid $color-black;
   }
 
   &__sender-text {
@@ -81,13 +81,13 @@
   }
 
   &__message-input{
-    resize: both;
-    display:inline-block;
     border: solid 1px $color-primary-20;
     border-radius: 5px;
-    padding: 10px;
+    display:inline-block;
     min-height: rem-calc(50px);
     max-height: 33vh;
+    padding: 10px;
+    resize: both;
     width: 100%;
   }
 
@@ -95,22 +95,21 @@
     float: left;
   }
   &__message-text {
-    // word-break: break-all;
-    white-space:pre-wrap;
-    word-wrap:break-word;
-    overflow:hidden;
     height: auto;
     margin-top:rem-calc(10px);
+    overflow:hidden;
+    white-space:pre-wrap;
+    word-wrap:break-word;
   }
 
   &--online{
-    position: absolute;
-    margin: 0 15px;
-    padding: 0 30px 20px;
-    left: 0;
-    right: 0;
     bottom: 0;
     background-color: $color-primary-20;
+    left: 0;
+    margin: 0 15px;
+    position: absolute;
+    padding: 0 30px 20px;
+    right: 0;
   }
 
   &__connection-state {
@@ -118,9 +117,8 @@
   }
 
   &__box{
+    height: 40vh;
     overflow-y: scroll;
     overflow-x: hidden;
-    //height: rem-calc(450px);
-    height: 40vh;
   }
 }

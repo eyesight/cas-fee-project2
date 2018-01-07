@@ -18,12 +18,12 @@
   }
 
   &__list-group{
-    padding:1rem;
-    width: 100%;
-    margin-bottom:0;
+    cursor: pointer;
     display:flex;
     justify-content:flex-start;
-    cursor: pointer;
+    margin-bottom:0;
+    padding:1rem;
+    width: 100%;
 
     &:hover,
     &:focus{

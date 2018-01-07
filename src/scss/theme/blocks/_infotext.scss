@@ -3,8 +3,8 @@
   text-align: center;
 
   :first-child{
-    margin-top: 2rem;
     display: block;
+    margin-top: 2rem;
   }
 
   &__link{
@@ -18,14 +18,14 @@
   }
 
   &--form{
-    text-align: left;
-    padding-top: rem-calc(5px);
     color: $color-gray-middle;
+    padding-top: rem-calc(5px);
+    text-align: left;
   }
 
   .zz-infotext--inline{
-    margin-top: 0;
     display:inline;
+    margin-top: 0;
   }
 
   button{

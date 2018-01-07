@@ -1,8 +1,7 @@
 .zz-nav{
   &__list-group{
-
-    display: flex;
     align-items: center;
+    display: flex;
 
     @include media-breakpoint-down(sm) {
       display: block;
@@ -21,12 +20,11 @@
       padding-bottom:0;
 
       @include media-breakpoint-down(sm) {
+        border-top: 1px solid $color-gray-light;
         margin-right: 0;
         margin-left:0;
         padding-top:1rem;
         padding-bottom:1rem;
-        border-top: 1px solid $color-gray-light;
-
       }
     }
   }

@@ -41,20 +41,20 @@ html {
 
     .zz-layout{
       min-height:100%;
+      margin-bottom: rem-calc(-100px);
       padding-top: rem-calc(185px); //Header: 115p nav-bar + 50px padding
       padding-bottom: rem-calc(100px); //Footer: 25px footer + padding-bottom:25px + padding-top:50px
       padding-right: rem-calc(65px);
-      margin-bottom: rem-calc(-100px);
 
       @include media-breakpoint-down(sm) {
         padding-right: rem-calc(15px);
       }
 
       &.zz-layout--centered{
+        overflow:hidden;
         padding-left:0;
         padding-right:0;
         padding-top: rem-calc(50px);
-        overflow:hidden;
       }
     }
   }

@@ -38,8 +38,8 @@
       }
 
       .zz-table__icon {
-        height: 20px;
         fill: $color-black;
+        height: 20px;
 
         &:hover,
         &:focus{
@@ -86,9 +86,9 @@
   }
 
   &__anchor {
-    font-weight: $font-semi-bold;
     color: $color-black;
     cursor: pointer;
+    font-weight: $font-semi-bold;
     white-space: nowrap;
 
     &:hover,
@@ -108,9 +108,9 @@
   }
 
   &__icon {
-    width: 45px;
     fill: $color-gray-middle;
     float:left;
+    width: 45px;
   }
 
   &__anchor-mail:hover,
@@ -133,8 +133,8 @@
   }
 
   .table__checkbox {
-    width: 1.5rem;
     height: 1.5rem;
+    width: 1.5rem;
   }
 
   &--me {
@@ -149,9 +149,9 @@
 
   &--arrow-down {
     @extend .helper-arrow;
+    margin-bottom: 1px;
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
-    margin-bottom: 1px;
   }
 
   .active .zz-table--arrow-up,
