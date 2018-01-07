@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import { overlayAnimation } from '../../_animation/overlay.animation';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-email-change',
   templateUrl: './profile-email-change.component.html',
-  animations: [overlayAnimation],
-  host: { '[@overlayAnimation]': ''}
+  animations: [overlayAnimation]
 })
 export class ProfileEmailChangeComponent implements OnInit {
+  @HostBinding('@overlayAnimation') overlayAnimation;
+
   public emailForm: FormGroup;
 
   constructor(

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import {overlayAnimation} from '../../_animation/overlay.animation';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {User, UserPwdChange} from '../../_models/user.model';
@@ -11,10 +11,11 @@ import {AlertService, UserService} from '../../_services/index';
 @Component({
   selector: 'app-profile-password-change',
   templateUrl: './profile-password-change.component.html',
-  animations: [overlayAnimation],
-  host: {'[@overlayAnimation]': ''}
+  animations: [overlayAnimation]
 })
 export class ProfilePasswordChangeComponent implements OnInit {
+  @HostBinding('@overlayAnimation') overlayAnimation;
+
   public userContent: User;
   public pwdForm: FormGroup;
   public userObject = new UserPwdChange;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import { User } from '../../_models/user.model';
 import { overlayAnimation } from '../../_animation/overlay.animation';
 import { Router } from '@angular/router';
@@ -10,10 +10,11 @@ import { UserContentService } from '../../_services/user-content.service';
 @Component({
   selector: 'app-profile-details-parent',
   templateUrl: './profile-details-parent.component.html',
-  animations: [overlayAnimation],
-  host: { '[@overlayAnimation]': ''}
+  animations: [overlayAnimation]
 })
 export class ProfileDetailsParentComponent implements OnInit {
+  @HostBinding('@overlayAnimation') overlayAnimation;
+
   public user: User = null;
   public userContent: User = null;
   public parentDetailsForm: FormGroup;

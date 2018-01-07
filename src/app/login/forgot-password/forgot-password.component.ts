@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import { overlayAnimation } from '../../_animation/overlay.animation';
 
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
-  animations: [overlayAnimation],
-  host: { '[@overlayAnimation]': ''}
+  animations: [overlayAnimation]
 })
 export class ForgotPasswordComponent implements OnInit {
+  @HostBinding('@overlayAnimation') overlayAnimation;
+
 
   constructor() { }
 

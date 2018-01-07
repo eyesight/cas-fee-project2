@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../_models/user.model';
 import { overlayAnimation } from '../../_animation/overlay.animation';
@@ -12,12 +12,14 @@ import * as moment from 'moment';
 @Component({
   selector: 'app-profile-details-child',
   templateUrl: './profile-details-child.component.html',
-  animations: [overlayAnimation],
-  host: { '[@overlayAnimation]': ''}
+  animations: [overlayAnimation]
 })
 
 export class ProfileDetailsChildComponent implements OnInit {
-    public userContent: User;
+  @HostBinding('@overlayAnimation') overlayAnimation;
+
+
+  public userContent: User;
     public childDetailsForm: FormGroup;
     public formModel: User;
     public userObject = new User;

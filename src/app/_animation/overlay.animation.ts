@@ -12,7 +12,7 @@ export const overlayAnimation =
       backgroundColor: 'rgba(0, 0, 0, 0.8)',
       'z-index': 1050,
       overflow: 'auto',
-      'overflow-y':'scroll'
+      'overflow-y': 'scroll'
     })),
 
     // route 'enter' transition
