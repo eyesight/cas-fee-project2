@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 
 import { MessageDateBlock, Message, MessageJson } from '../../_models/message.model';
 import { Klasse } from '../../_models/klasse.model';
@@ -6,21 +6,24 @@ import { UserClassListAvatars} from '../../_models/user.model';
 import {ClasslistAvatarService} from "../../_services/user-classlist-avatars.service";
 import {AlertService} from "../../_services/alert.service";
 import {UserContentService} from "../../_services/user-content.service";
+import {Subscription} from "rxjs/Subscription";
 
 
 @Component({
   selector: 'app-chat-message',
   templateUrl: './chat-message.component.html'
 })
-export class ChatMessageComponent implements OnInit {
+export class ChatMessageComponent implements OnInit, OnDestroy {
 
   @Input()
   public message: MessageJson;
 
-  // get them directly here - otherwise we need to pass them over @Input to this component and that takes too long as
+  // get avatars directly from service instead of passing them over as parameters using @Input to this component which takes too long as
   // avatars contain lot of data
   public avatar: UserClassListAvatars = null;
 
+  // classlist Avatars
+  public  clavSub: Subscription = null;
    constructor( private classlistAvatarService: ClasslistAvatarService,
                 private alertService: AlertService) { }
 
@@ -29,18 +32,35 @@ export class ChatMessageComponent implements OnInit {
 
     // allow other tasks to finish first, not to cause an warn message -> [Violation] 'load' handler took 239ms
     // SetTimeout causes that the task is executed after all others
-    setTimeout(() =>
-    this.classlistAvatarService.getAvatarFromEmail(this.message.email)
-      .then((resultAvatar) => {
-          this.avatar =  resultAvatar;
-      //    this.avatar.avatar = 'data:image/png;base64,' + resultAvatar.avatar;
-          //console.log('avatar?:' + !!this.avatar);
-        },
-        (error) => {
-          console.log('getClasslistAvatars: error:' );
-          this.alertService.error('avatarNotLoaded');
-        })
-  , 0);
+  //   setTimeout(() =>
+  //   this.classlistAvatarService.getAvatarFromEmail(this.message.email)
+  //     .then((resultAvatar) => {
+  //         this.avatar =  resultAvatar;
+  //     //    this.avatar.avatar = 'data:image/png;base64,' + resultAvatar.avatar;
+  //         //console.log('avatar?:' + !!this.avatar);
+  //       },
+  //       (error) => {
+  //         console.log('getClasslistAvatars: error:' );
+  //         this.alertService.error('avatarNotLoaded');
+  //       })
+  // , 0);
+
+    setTimeout(() => this.getAvatarFromEmail(this.message.email), 0);
 
   }
+
+  ngOnDestroy(){
+     this.clavSub.unsubscribe();
+  }
+
+   private getAvatarFromEmail(email: string) {
+     this.clavSub = this.classlistAvatarService.getClasslistAvatars().subscribe((resultAvatar) => {
+       this.avatar = resultAvatar.find((x) => {
+         if (!x || !x.email) {
+           return false;
+         }
+         return x.email === email;
+       });
+     });
+   }
 }
