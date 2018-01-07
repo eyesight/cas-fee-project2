@@ -28,25 +28,10 @@ export class ChatMessageComponent implements OnInit, OnDestroy {
                 private alertService: AlertService) { }
 
   ngOnInit() {
-  //  console.log('asd:' + this.avatar.email);
 
     // allow other tasks to finish first, not to cause an warn message -> [Violation] 'load' handler took 239ms
     // SetTimeout causes that the task is executed after all others
-  //   setTimeout(() =>
-  //   this.classlistAvatarService.getAvatarFromEmail(this.message.email)
-  //     .then((resultAvatar) => {
-  //         this.avatar =  resultAvatar;
-  //     //    this.avatar.avatar = 'data:image/png;base64,' + resultAvatar.avatar;
-  //         //console.log('avatar?:' + !!this.avatar);
-  //       },
-  //       (error) => {
-  //         console.log('getClasslistAvatars: error:' );
-  //         this.alertService.error('avatarNotLoaded');
-  //       })
-  // , 0);
-
     setTimeout(() => this.getAvatarFromEmail(this.message.email), 0);
-
   }
 
   ngOnDestroy(){

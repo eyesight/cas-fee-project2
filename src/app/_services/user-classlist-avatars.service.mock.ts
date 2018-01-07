@@ -78,25 +78,6 @@ export class ClasslistAvatarServiceMock {
     this.dbUserClAvatar.removeCurrentData();
   }
 
-  public getAvatarFromEmail(email: string): Promise<UserClassListAvatars> {
-    return new Promise((resolve, reject) => {
-      try {
-        this.getClasslistAvatars()
-          .subscribe((resultAvatar) => {
-            resolve(
-              resultAvatar.find((x) => {
-                if (!x || !x.email) {
-                  return false;
-                }
-                return x.email === email;
-              }));
-          });
-      } catch (e) {
-        reject(e);
-      }
-    });
-  }
-
   private prepareAvatars(avatars: UserClassListAvatars[]): UserClassListAvatars[] {
    // console.dir(avatars[1]);
     avatars

@@ -3,7 +3,6 @@ import {User, UserClassListAvatars} from '../_models/user.model';
 import {ClasslistService} from './service/classlist.service';
 import {Router} from '@angular/router';
 import {AlertService} from '../_services/alert.service';
-import {UserAuthService} from '../_services/user-auth.service';
 import {UserContentService} from '../_services/user-content.service';
 import {ClasslistAvatarService} from '../_services/user-classlist-avatars.service';
 import {Subscription} from 'rxjs/Subscription';
@@ -20,11 +19,10 @@ export class ClasslistComponent implements OnInit, OnDestroy {
 
   public canDeactivate = true;
   public avatarSub: Subscription;
-
+  public classlistAvatars: Subscription;
 
   constructor(private classlistService: ClasslistService
     , private router: Router
-    , private userAuthService: UserAuthService
     , private alertService: AlertService
     , private userContentService: UserContentService
     , private classlistAvatarService: ClasslistAvatarService) {
@@ -41,8 +39,6 @@ export class ClasslistComponent implements OnInit, OnDestroy {
           return;
         }
       });
-
-    // console.log('this.userCurrent und jetzt:' + this.userCurrent.user_avatar);
 
     this.classlistService.getClasslist()
       .subscribe((result) => {
