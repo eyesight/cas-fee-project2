@@ -15,13 +15,13 @@ router.put("/user/update", userController.updateUser);
 router.get("/user/show", userController.getAllUserDetails);
 router.put("/user/avatar", avatarController.avatarUpload);
 router.get("/user/contents", userController.getAllUserContents);
+router.put("/user/approve", userController.approveUser);
+router.put("/user/passwordchange", security.handlePasswordChange);
 
 router.get("/chat/getall", chatController.getMessages);
 
-router.get("/user/classlist", userController.getUserKlasseList);
-router.get("/user/classlistavatar", avatarController.avatarGetAllFromKlasse);
-router.put("/user/approve", userController.approveUser);
+router.get("/classlist/all", klasseController.getKlasseListAll);
+router.get("/classlist/avatars", klasseController.getKlasseAvatarGetAll);
 
-router.put("/user/passwordchange", security.handlePasswordChange);
 
 module.exports = router;

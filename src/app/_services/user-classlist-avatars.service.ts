@@ -68,7 +68,7 @@ export class ClasslistAvatarService {
       });
 
     } else {
-      return this.httpWrp.get('/api/user/classlistavatar')
+      return this.httpWrp.get('/api/classlist/avatars')
         .map(result => result.classlistavatar)
         .map(( userAvatar: UserClassListAvatars[]) => {
           if (userAvatar) {

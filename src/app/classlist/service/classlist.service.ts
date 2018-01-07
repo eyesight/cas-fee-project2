@@ -17,7 +17,7 @@ export class ClasslistService {
   public getClasslist(): Observable<User[]>  {
 
    // instead of json use JSON.strinfiy
-    return this.httpWrp.get('/api/user/classlist')
+    return this.httpWrp.get('/api/classlist/all')
       .map((result) => {this.classlistCache = result.classlist; console.log(result.classlist); return result.classlist; });
   }
 
