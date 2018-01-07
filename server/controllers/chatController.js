@@ -19,7 +19,7 @@ module.exports.chat = function (io) {
 
   io.on('connection', function (socket) {
 
-    // in socket.io 1.0
+    // in socket.io 1.0 use decoded_token.name from jwt
     console.log('chat: user connected:', socket.decoded_token.name);
     const email = socket.decoded_token.name;
 
@@ -27,6 +27,7 @@ module.exports.chat = function (io) {
 
       if (authorization) {
 
+        // get chatroom (=class) from user
         dbUser.getClassIdByEmail(email, function (err, classId) {
 
           if (err) {
@@ -39,9 +40,9 @@ module.exports.chat = function (io) {
             socket.leave(classId);
           });
 
-
+          // listen on channel
           socket.on('chatMessageToSocketServer', function (msg, callback) {
-            console.log('message received from (could be faked):' + msg.email + ' email from token (couldnt be faked):' + socket.decoded_token.name + ':classRoom:' + classId);
+            console.log('message received from (could be faked as client can set this):' + msg.email + ' email from token (couldnt be faked):' + socket.decoded_token.name + ':classRoom:' + classId);
 
             if (!msg.saved_at) {
               msg.saved_at = (new Date()).toJSON();

@@ -46,8 +46,6 @@ module.exports.avatarGet = function (req, callback) {
     }
     console.log('avatarGet: filename avatar:' + filename);
 
-    //let fullname = data;
-
     fs.readFile('./avatars/' + filename, function (err, data) {
 
         if (data) {

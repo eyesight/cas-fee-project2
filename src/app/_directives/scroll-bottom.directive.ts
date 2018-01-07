@@ -1,9 +1,4 @@
-
-import {
-  Directive, ElementRef, OnChanges, AfterContentInit, AfterViewChecked, HostListener, Input,
-  ViewChild
-} from '@angular/core';
-
+import {  Directive, ElementRef, OnChanges, AfterContentInit } from '@angular/core';
 
 @Directive({
   selector: '[appScrollBottom]',
@@ -11,10 +6,10 @@ import {
 })
 
 export class AppScrollBottomDirective implements AfterContentInit, OnChanges {
-  // @ViewChild('scroll-bottom') private scrollBottom: ElementRef;
+
 
   private scrollBottom: any;
-  private scrollDiff: number;
+
 
   constructor(public element: ElementRef) {
     this.scrollBottom = this.element.nativeElement;
@@ -25,16 +20,8 @@ export class AppScrollBottomDirective implements AfterContentInit, OnChanges {
     this.scrollToBottom();
   }
 
-  // to wait for AfterViewChecked or AfterContentChecked is causing it to update even there is no real change on the DOM
-  // which then dizzies the user
-  // public ngAfterContentChecked() {
-  //  this.scrollToBottom();
-  // }
-
-
-  //@HostListener('change') ngOnChanges() {
-  // console.log('test');
-  // }
+  // to wait for AfterViewChecked or AfterContentChecked is causing it to update too oftern as there is no real change on the DOM
+  // can dizzy the user
 
   public ngOnChanges(changes) {
     console.log('scrollBottom: ngOnChanges');
@@ -54,6 +41,7 @@ export class AppScrollBottomDirective implements AfterContentInit, OnChanges {
     }, 200);
   }
 
+  // smoothScrolling fast down and then slows down a little bit - showing the user the the size of the thread
   private smoothScrolling(doSmooth: boolean): void {
 
     if (doSmooth) {

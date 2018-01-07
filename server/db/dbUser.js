@@ -366,8 +366,7 @@ function approveUser(username, req, callback) {
           console.log('teacher :' + username + ' approves user:' + userEmail + ' to : ' + approve);
 
           const sf = 'update users set is_approved = ? where email = ? and class_id = ?';
-          //const sf = c.mySqlGetSelectStatement('chat', 'class_id = ?', {'sent_at': dateHelper('sent_at'),'saved_at': dateHelper('saved_at')});
-          //console.log('getallMEssages:'+sf);
+
           return db.query(sf, [approve, userEmail, doc[0].class_id], function (err2, newDoc) {
             //console.dir(newDoc);
 

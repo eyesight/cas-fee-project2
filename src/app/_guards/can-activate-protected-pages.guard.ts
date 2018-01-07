@@ -4,7 +4,7 @@ import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot} from '@angular
 import {UserAuthService} from '../_services/user-auth.service';
 import {AlertService} from '../_services/alert.service';
 import {RoutesPermission} from '../_models/routes-permission';
-import {AlertMessagesService} from "../_services/alert-messages.service";
+import {AlertMessagesService} from '../_services/alert-messages.service';
 
 
 // map route to access_right
@@ -17,7 +17,7 @@ export const ROUTES_PERMISSION: RoutesPermission[] = [
 @Injectable()
 export class CanActivateProtectedPagesGuard implements CanActivate {
 
-  private accessRight = 'chat';
+
   private routesAccessRights = ROUTES_PERMISSION;
 
   constructor(private userAuthService: UserAuthService, private alertService: AlertService, private alertMessagesService: AlertMessagesService) {
@@ -25,7 +25,6 @@ export class CanActivateProtectedPagesGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot,
               state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    // console.log(route.routeConfig.path);
 
     const decision = this.permit(this.userAuthService.getCurrentCan(), this.routesAccessRights.find((x) => x.route === route.routeConfig.path).accessRight);
     if (!decision) {
