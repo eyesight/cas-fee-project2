@@ -1,17 +1,15 @@
 
 import {Inject, Injectable} from '@angular/core';
-import {Http, Headers, RequestOptions, Response} from '@angular/http';
-import {User, UserAuth, UserClassListAvatars, UserPwd} from '../_models/user.model';
-import {appConfig} from '../_helpers/app.config';
+import {UserClassListAvatars} from '../_models/user.model';
 
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import {HttpWrapper} from './http-wrapper.service';
-import {DbService} from "./db.service";
-import {StorageKeys, StorageService} from "./storage.service";
-import {UserContentService} from "./user-content.service";
-import {avatarHeader} from "../_helpers/avatar-header";
-import {Subscription} from "rxjs/Subscription";
+import {DbService} from './db.service';
+import {StorageKeys, StorageService} from './storage.service';
+import {UserContentService} from './user-content.service';
+import {avatarHeader} from '../_helpers/avatar-header';
+import {Subscription} from 'rxjs/Subscription';
 
 
 export class AvatarConfig {
@@ -52,7 +50,6 @@ export class ClasslistAvatarService {
     });
   }
 
-// TODO: make sure that observable gets removed
   public getClasslistAvatars(): Observable<UserClassListAvatars[]> {
 
     const clAvatar = this.dbUserClAvatar.getCurrentData();

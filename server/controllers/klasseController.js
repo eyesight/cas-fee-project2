@@ -2,12 +2,24 @@
 const klasse = require("../db/dbKlasse");
 const util = require("../util/security");
 
-module.exports.showKlasse = function(req, res){
-  console.log('klasseControler');
 
-  // util.authorizesBackend(req.user.name, util.authorRoles.CLASSLIST,(authorization) =>  {
-  //
-  //   klasse.getAllKlasseData(function(err, order) {
-  //   res.json(order);
-  // });
+
+module.exports.getUserKlasseList = function (req, res) {
+  console.log('getUserKlasseList');
+
+  util.authorizesBackend(req.user.name, util.authorRoles.CLASSLIST,(authorization) =>  {
+
+    if (authorization) {
+      dbUser.getUserKlasseList(req.user.name, function (err, order) {
+        res.json({classlist:order});
+        return;
+      });
+    } else {
+      console.log('getUserKlasseList: not authorized');
+
+      res.status(403).json(false);
+
+    }
+  })
+
 };

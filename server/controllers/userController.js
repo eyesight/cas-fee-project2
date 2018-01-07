@@ -52,25 +52,6 @@ module.exports.getAllUserContents = function (req, res) {
   });
 };
 
-module.exports.getUserKlasseList = function (req, res) {
-  console.log('getUserKlasseList');
-
-  util.authorizesBackend(req.user.name, util.authorRoles.CLASSLIST,(authorization) =>  {
-
-    if (authorization) {
-      dbUser.getUserKlasseList(req.user.name, function (err, order) {
-        res.json({classlist:order});
-        return;
-      });
-    } else {
-      console.log('getUserKlasseList: not authorized');
-
-      res.status(403).json(false);
-
-    }
-  })
-
-};
 
 module.exports.approveUser = function (req, res) {
   console.log('Approve User');

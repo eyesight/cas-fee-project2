@@ -6,6 +6,7 @@ import {AlertService} from '../_services/alert.service';
 import {UserContentService} from '../_services/user-content.service';
 import {ClasslistAvatarService} from '../_services/user-classlist-avatars.service';
 import {Subscription} from 'rxjs/Subscription';
+import {AlertMessagesService} from "../_services/alert-messages.service";
 
 
 @Component({
@@ -18,29 +19,31 @@ export class ClasslistComponent implements OnInit, OnDestroy {
   public userCurrent: User = null;
 
   public canDeactivate = true;
-  public avatarSub: Subscription;
-  public classlistAvatars: Subscription;
+  public avatarSub: Subscription = null;
+  public classlistAvatars: Subscription = null;
+  public userContentSub: Subscription = null;
 
   constructor(private classlistService: ClasslistService
     , private router: Router
     , private alertService: AlertService
+    , private alertMessagesService: AlertMessagesService
     , private userContentService: UserContentService
     , private classlistAvatarService: ClasslistAvatarService) {
   }
 
   ngOnInit() {
-    this.userContentService.getCurrentUserObserver()
+   this.userContentSub =  this.userContentService.getCurrentUserObserver()
       .subscribe((uc) => {
         this.userCurrent = uc;
         if (!this.userCurrent) {
-          this.alertService.error('newlogin');
+          this.alertService.error(this.alertMessagesService.MessagesError.newlogin);
           setTimeout(() =>
             this.router.navigate(['relogin'], {queryParams: {returnUrl: this.router.url}}), 3500);
           return;
         }
       });
 
-    this.classlistService.getClasslist()
+    this.classlistAvatars = this.classlistService.getClasslist()
       .subscribe((result) => {
           this.classlist = result;
 
@@ -49,8 +52,7 @@ export class ClasslistComponent implements OnInit, OnDestroy {
                 console.log('result:' + resultAvatars.length);
                 resultAvatars.filter((x) => x !== null)
                   .map((x) => {
-                    console.log('classlistavatars in subscribe: ' + x.email);
-                    console.log('content avatars: length:' + x.avatar.length);
+
                     if (x.email != null && x.avatar != null) {
                       const item = this.classlist.findIndex(el => el.email === x.email);
                       console.log('classlist: item:' + item + ':email:' + this.classlist[item].email);
@@ -59,13 +61,13 @@ export class ClasslistComponent implements OnInit, OnDestroy {
                   });
               },
               (error) => {
-                console.log('getClasslistAvatars: error:' + error);
+                console.log('ClasslistComponent getClasslistAvatars: error:' + error);
                 this.alertService.error('avatarNotLoaded');
               });
         },
         (error) => {
-          console.log('classlist.component call authentication:' + error);
-          this.alertService.error('newlogin');
+          console.log('ClasslistComponent classlist.component call authentication:' + error);
+          this.alertService.error(this.alertMessagesService.MessagesError.newlogin);
 
           setTimeout(() =>
             this.router.navigate(['relogin'], {queryParams: {returnUrl: this.router.url}}), 3500);
@@ -73,13 +75,12 @@ export class ClasslistComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.avatarSub) {
-      this.avatarSub.unsubscribe();
-    }
+    this.avatarSub.unsubscribe();
+    this.classlistAvatars.unsubscribe();
+    this.userContentSub.unsubscribe();
   }
 
   public approveAnswer(val: boolean) {
-    console.log('approveAnswer in maincomponent:' + val);
     this.canDeactivate = val;
   }
 
