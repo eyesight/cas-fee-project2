@@ -44,6 +44,8 @@ import { The404Component } from './the404/the404.component';
 import { ClasslistAvatarService, DbServiceClasslistAvatar } from './_services/user-classlist-avatars.service';
 import { RouterModule} from '@angular/router';
 import {LoginModule} from './login/login.module';
+import { ImpressumComponent } from './impressum/impressum.component';
+import { AgbComponent } from './agb/agb.component';
 
 
 
@@ -54,7 +56,9 @@ import {LoginModule} from './login/login.module';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    The404Component
+    The404Component,
+    ImpressumComponent,
+    AgbComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +66,6 @@ import {LoginModule} from './login/login.module';
     ReactiveFormsModule,
     AppRoutingModule,
     RouterModule,
-   // Router,
     DirectivesModule,
     HttpModule,
     BrowserAnimationsModule,

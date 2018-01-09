@@ -4,6 +4,9 @@ import {AuthGuard} from './_guards/auth.guards';
 import {RegistrationAuthGuard} from './_guards/registration-auth.guards';
 import {CanActivateProtectedPagesGuard} from './_guards/can-activate-protected-pages.guard';
 import {The404Component} from './the404/the404.component';
+import {ImpressumComponent} from './impressum/impressum.component'
+import {AgbComponent} from './agb/agb.component';
+
 
 export const ROUTES: Routes = [
 
@@ -42,9 +45,16 @@ export const ROUTES: Routes = [
     data: {title: 'Chat'},
     canActivate: [AuthGuard, CanActivateProtectedPagesGuard]
   },
+  {
+    path: 'impressum',
+    component: ImpressumComponent
+  },
+  {
+    path: 'agb',
+    component: AgbComponent
+  },
 
-
-  // otherwise redirect to home
+  // otherwise redirect to 404
   {path: '**', component: The404Component}
 
 ];
