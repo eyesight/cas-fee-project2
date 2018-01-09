@@ -13,9 +13,6 @@
 - TODO: (auch wegen IE)  avatars png/jpg Thematik
 -> AW
 
-- TODO (impressumg und ABGS): Lorem Ipsum text
--> AW/CF
-
 --------------------------------------------------------------------------------
 Prio 2
 -------------------------------------------------------------------------------
@@ -197,3 +194,7 @@ Regel REST-Slides (Prio 1.5)
 https://www.w3schools.com/html/html5_semantic_elements.asp
 
 - TODO: haben alle hover-states auch ein focus-state? ->prüfen, ergänzen
+
+
+- TODO (impressumg und ABGS): Lorem Ipsum text
+-> AW/CF
