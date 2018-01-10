@@ -408,7 +408,8 @@ function deleteUser(userId, username, callback) {
           && doc[0].is_teacher === 1) {
           console.log('delete by teacher :' + username + ' delete user:' + userId + 'classl:' + doc[0].class_id);
 
-          const sf = 'delete from users where id = ? and class_id = ? and is_approved = 0 and (select count(*) from chat where user_id = ?) = 0';
+          //  check if we should not delete if there are chats from user: and (select count(*) from chat where user_id = ?) = 0
+          const sf = 'delete from users where id = ? and class_id = ? and is_approved = 0';
 
           return db.query(sf, [userId, doc[0].class_id, userId ], function (err2, newDoc2) {
             //console.dir(newDoc);
