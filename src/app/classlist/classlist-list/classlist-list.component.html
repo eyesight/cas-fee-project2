@@ -30,7 +30,8 @@
       [class.zz-table--arrow-down]="sortGoals[SortFields.PLACE].down"></span></a>
     </th>
     <th scope="col">E-Mail</th>
-    <th *ngIf="userCurrent.is_teacher" scope="col">Bestätigt</th>
+    <th *ngIf="userCurrent.is_teacher" scope="col">Bestätigen</th>
+    <th *ngIf="userCurrent.is_teacher" scope="col">User Löschen</th>
   </tr>
   </thead>
   <tbody>
@@ -64,6 +65,9 @@
                (change)="showAlert(item, $event)">
         <!-- onChecked(item, $event) -->
       </ng-template>
+    </td>
+    <td *ngIf="userCurrent.is_teacher">
+      <button class="zz-btn zz-btn--primary">löschen</button>
     </td>
   </tr>
   </tbody>
