@@ -86,6 +86,16 @@ export class ClasslistListComponent implements OnInit, OnDestroy {
     }
   }
 
+  showAlertDelete(item: User, checked: any) {
+    console.log('showAlertDelete?' );
+
+    this.canDeactivate = false;
+    this.canDeactivateSend(this.canDeactivate);
+
+    this.alert.show('Möchten Sie die Person wirklich löschen? Person kann danach das System nicht mehr benutzen', false);
+
+  }
+
   public sendAnswer(val: UserApproveAnswer) {
     console.log('SendAnswer - ok?:' + val.approve + '::' + val.changed + '::' + val.userItem.email);
     this.canDeactivate = true;
@@ -115,6 +125,21 @@ export class ClasslistListComponent implements OnInit, OnDestroy {
         (error) => {
           this.alertService.error(this.alertMessageService.MessagesError.error, false, 2000);
         });
+  }
+
+  public sendAnswerOnDelete(val: UserApproveAnswer) {
+    console.log('SendAnswersendAnswerOnDelete - ok?:' + val.approve + '::' + val.changed + '::' + val.userItem.email);
+    this.canDeactivate = true;
+    this.canDeactivateSend(this.canDeactivate);
+
+    if (val.changed) {
+      //this.onChecked(val.userItem, val.approve);
+      // TODO :implement delete rest api and reload of page
+    } else {
+
+      // dont delete
+    }
+
   }
 
   public onSortGoal(id: number) {
