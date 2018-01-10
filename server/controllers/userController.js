@@ -67,3 +67,18 @@ module.exports.approveUser = function (req, res) {
   });
 };
 
+
+module.exports.deleteUser = function (req, res) {
+  console.log('Delete User');
+  dbUser.deleteUser(req.params.id, req.user.name, function (err, order) {
+    console.log('err:' + err);
+    if (err) {
+      res.status(err).json(false);
+
+    } else {
+      res.json(true);
+
+    }
+  });
+};
+

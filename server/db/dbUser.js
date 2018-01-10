@@ -349,6 +349,7 @@ function getAvatarFilenamesByEmail(email, callback) {
 function approveUser(username, req, callback) {
 
   console.log('approveUser - teacher:+' + username);
+  // get teacher infos
   return getUserIdByEmail(username, function (err, doc) {
     if (err) {
       callback(err, doc);
@@ -369,9 +370,6 @@ function approveUser(username, req, callback) {
           const sf = 'update users set is_approved = ? where email = ? and class_id = ?';
 
           return db.query(sf, [approve, userEmail, doc[0].class_id], function (err2, newDoc) {
-            //console.dir(newDoc);
-
-            console.log('newdoc:' + newDoc.affecRows);
 
             if (callback) {
               if (newDoc) {
@@ -381,6 +379,48 @@ function approveUser(username, req, callback) {
                 }
               }
               callback(err, newDoc);
+            }
+          });
+        } else {
+          callback(400, 'invalid Request');
+        }
+      }
+    }
+  });
+}
+
+
+
+function deleteUser(userId, username, callback) {
+
+  console.log('deleteUser - teacher:+' + username + '::'+ userId);
+  return getUserIdByEmail(username, function (err, doc) {
+    if (err) {
+      callback(err, doc);
+    }
+    else {
+      if (!doc) {
+        callback(err, doc);
+      }
+      else {
+
+        if (doc[0].is_teacher && doc[0].class_id && userId
+          && doc[0].is_teacher === 1) {
+          console.log('delete by teacher :' + username + ' delete user:' + userId + 'classl:' + doc[0].class_id);
+
+          const sf = 'delete from users where id = ? and class_id = ? and is_approved = 0 and (select count(*) from chat where user_id = ?) = 0';
+
+          return db.query(sf, [userId, doc[0].class_id, userId ], function (err2, newDoc2) {
+            //console.dir(newDoc);
+
+            console.log('newdoc:' + newDoc2.affecRows);
+            console.dir( newDoc2);
+            if (callback) {
+              if (err2 || newDoc2.affectedRows !== 1) {
+                callback(400,null);
+              } else {
+                callback(0, true);
+              }
             }
           });
         } else {
@@ -422,7 +462,8 @@ module.exports = {
   getAvatarFilenameByEmail: getAvatarFilenameByEmail,
   getAvatarFilenamesByEmail: getAvatarFilenamesByEmail,
   getAllUserDetails: getAllUserDetails,
-  approveUser: approveUser
+  approveUser: approveUser,
+  deleteUser: deleteUser
 };
 
 
