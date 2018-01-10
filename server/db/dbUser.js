@@ -414,8 +414,6 @@ function deleteUser(userId, username, callback) {
           return db.query(sf, [userId, doc[0].class_id, userId ], function (err2, newDoc2) {
             //console.dir(newDoc);
 
-            console.log('newdoc:' + newDoc2.affecRows);
-            console.dir( newDoc2);
             if (callback) {
               if (err2 || newDoc2.affectedRows !== 1) {
                 callback(400,null);
