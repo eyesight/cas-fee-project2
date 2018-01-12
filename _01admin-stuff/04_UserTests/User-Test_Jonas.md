@@ -1,4 +1,4 @@
-UX-Test mit Jonas
+User-Test mit Jonas
 
 Feedback/Ergebnis:
 
@@ -6,8 +6,8 @@ Feedback/Ergebnis:
 
 Jonas:
 
-Anrede sollte "Frau" und "Herr" sein, nicht "Mann"
-Datapicker: es sollte das Startdatum zurückgesetzt werdne, sonst muss man 1000 Mal klicken, bis man beim eigentlichen JAhr ist
+Anrede sollte "Frau" und "Herr" sein, nicht "Frau" und "Mann"
+Datapicker: es sollte das Startdatum zurückgesetzt werden, sonst muss man 1000 Mal klicken, bis man beim eigentlichen JAhr ist
 
 
 **Mail/Nachricht an Eltern**
