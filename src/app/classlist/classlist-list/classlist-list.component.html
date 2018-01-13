@@ -39,7 +39,7 @@
       *ngFor="let item of classlistList">
     <th scope="row">
       <div [routerLink]="['detail', item.id]" class="zz-table__img-wrapper">
-        <img class="zz-table__img" alt="Profilbild" [src]="item?.user_avatar" *ngIf="item?.user_avatar; else falsyTemplate">
+        <img class="zz-table__img zz-table__anchor" alt="Profilbild" [src]="item?.user_avatar" *ngIf="item?.user_avatar; else falsyTemplate">
         <ng-template #falsyTemplate>
           <img class="zz-table__img" alt="Profilbild" src="../../../assets/img/dummyPortrait.png">
         </ng-template>
