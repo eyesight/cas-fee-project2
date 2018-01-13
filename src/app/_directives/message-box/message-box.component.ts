@@ -1,14 +1,14 @@
 
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {User, UserApproveAnswer} from '../../_models/user.model';
 
 @Component({
   selector: 'app-message-box',
   templateUrl: './message-box.component.html'
 })
-export class MessageBoxComponent {
+export class MessageBoxComponent implements OnInit {
   hidden = true;
-  private messageText: string = null;
+  public messageText: string = null;
   private approve: UserApproveAnswer = new UserApproveAnswer;
 
   @Input()
@@ -17,10 +17,18 @@ export class MessageBoxComponent {
   @Output()
   public answer: EventEmitter<UserApproveAnswer> = new EventEmitter<UserApproveAnswer>();
 
+  constructor() {
+  }
+
+  ngOnInit() {
+    console.log('msboxng onOInit:' + this.userItem.email);
+  }
+
   show(msg: string, approve: boolean) {
     this.messageText = msg;
     this.hidden = false;
     this.approve.approve = approve;
+    console.log('msbox:' + this.userItem.email);
   }
 
   nok() {

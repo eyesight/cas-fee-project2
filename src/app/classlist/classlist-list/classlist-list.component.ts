@@ -74,7 +74,7 @@ export class ClasslistListComponent implements OnInit, OnDestroy {
     }
   }
   showAlert(item: User, checked: any) {
-    console.log('checked?' + checked.target.checked);
+    console.log('checked?' + checked.target.checked + 'user: to ' + item.email);
     this.classlistList[this.classlistList.findIndex((x) => x === item)].is_approved = checked.target.checked;
 
     this.canDeactivate = false;
@@ -92,7 +92,7 @@ export class ClasslistListComponent implements OnInit, OnDestroy {
     this.canDeactivate = false;
     this.canDeactivateSend(this.canDeactivate);
 
-    this.alert.show('Möchten Sie die Person wirklich löschen? Person kann danach das System nicht mehr benutzen', false);
+   // this.alert.show('Möchten Sie die Person wirklich löschen? Person kann danach das System nicht mehr benutzen', false);
 
   }
 
