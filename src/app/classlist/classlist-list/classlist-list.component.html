@@ -3,7 +3,7 @@
   <thead>
   <tr>
     <th scope="col" colspan="3">Kind</th>
-    <th scope="col" *ngIf="userCurrent.is_teacher; else falsyTemplate" colspan="5">Eltern</th>
+    <th scope="col" *ngIf="userCurrent.is_teacher; else falsyTemplate" colspan="6">Eltern</th>
     <ng-template #falsyTemplate>
       <th scope="col" colspan="4">Eltern</th>
     </ng-template>
@@ -37,14 +37,14 @@
   <tbody>
   <tr class="table--confirmed" [ngClass]="{'zz-table--me' : userCurrent.email === item.email}"
       *ngFor="let item of classlistList">
-    <th scope="row">
+    <td scope="row">
       <div [routerLink]="['detail', item.id]" class="zz-table__img-wrapper">
         <img class="zz-table__img" alt="Profilbild" [src]="item?.user_avatar" *ngIf="item?.user_avatar; else falsyTemplate">
         <ng-template #falsyTemplate>
           <img class="zz-table__img" alt="Profilbild" src="../../../assets/img/dummyPortrait.png">
         </ng-template>
       </div>
-    </th>
+    </td>
     <td><span class="zz-table__anchor" [routerLink]="['detail', item.id]">{{item.child_forename}}</span></td>
     <td>{{item.child_surname}}</td>
     <td>{{item.parent_forename}}</td>
@@ -70,7 +70,7 @@
       <div *ngIf="userCurrent.email === item.email; else falsyTemplate"></div>
       <ng-template #falsyTemplate>
         <app-message-box [userItem]="item" (answer)="sendAnswerOnDelete($event)"></app-message-box>
-        <button class="zz-btn zz-btn--primary"  (change)="showAlertDelete(item, $event)">löschen</button>
+        <button class="zz-btn zz-btn--primary" [id]="item.id" (click)="showAlertDelete(item, $event)">löschen</button>
       </ng-template>
     </td>
   </tr>

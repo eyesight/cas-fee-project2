@@ -86,8 +86,8 @@ export class ClasslistListComponent implements OnInit, OnDestroy {
     }
   }
 
-  showAlertDelete(item: User, checked: any) {
-    console.log('showAlertDelete?' );
+  showAlertDelete(item: User, event: any) {
+    console.dir(event.target.id);
 
     this.canDeactivate = false;
     this.canDeactivateSend(this.canDeactivate);
