@@ -13,6 +13,12 @@
 - TODO: (auch wegen IE)  avatars png/jpg Thematik
 -> AW
 
+- TODO: put - Request beim Approven so anpassen, dass /:id mitgegeben wird von user
+-> AW
+
+- TODO: @types/emojione in eigenen Code übernehmen
+-> AW
+
 --------------------------------------------------------------------------------
 Prio 2
 -------------------------------------------------------------------------------

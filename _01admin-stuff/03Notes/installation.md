@@ -2,7 +2,7 @@
 #installation
 Requirements:
 - node >= 7.9
-- Mysql (asure that STRICT_TRANS_TABLES is not configured in my.cnf)
+- Mysql (make sure that STRICT_TRANS_TABLES is not configured in my.cnf)
 - Windows / OSX Plattform
 
 - Anleitung
