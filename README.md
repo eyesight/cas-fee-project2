@@ -1,28 +1,51 @@
-# CasFeeProject2
+# CasFeeProject2: School
+School is a tool to organize and communicate between teachers, parents and children. 
 
+## Technologie stack
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.2.
 
-## Development server
+- Angular 5: Frontend Framework
+- Express.js: Backend Framework
+- Node.js: runtime environment
+- MySQL: Database
+- Sass: as style sheet language
+- Boostrat v4.0.0-beta.3: Framework for layouting
+- Open Sans: google-font
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## installation
+1) download project
+2) entpack (if not already) to dir and switch to dir
+3) npm install
+4) install db -> see ./server/readme.md
+5) start server:
+  - change to ./server 
+  - follow those readme instructions 
 
-## Code scaffolding
+6) if you have ng globally installed (npm install -g ) then just:
+ng serve 
+if not then switch to ./node_modules/@angular/cli/bin and type ng serve
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+to use the tool as registered user use:
+Benutzername: test@test.com
+Password: test99!
 
-## Build
+to use the tool as admin/teacher:
+Benutzername: lehrer@test.com
+Password: test99!
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## Modules
+Description of the modules can be found [here](https://github.com/eyesight/cas-fee-project2/blob/master/_01admin-stuff/00_modul-definition.md)
 
-## Running unit tests
+## Specials
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- User-Tests: 
+  - Person 1: Pictures and results can be found [here](https://github.com/eyesight/cas-fee-project2/blob/master/_04UserTests/User-Test_Jonas.md)
+- [e2e-Tests with puppeteer](https://github.com/eyesight/cas-fee-project2/blob/master/e2e_test_puppeteer)
 
-## Running end-to-end tests
+## Further informations
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
 
-## Further help
+## Authors
+- Andreas Wildisen
+- Claudia Friedrich
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

@@ -1,39 +1,51 @@
-#Security-Module
+#Funktionen/Module
 
-**Funktionen**:
+##Modul 1 Authentifizierung/Security-Modul
 - Login/Logout
 - Eltern erfassen ihre Daten, plus die Daten des Kindes
 - Sie wählen eine Klasse aus bestehender Liste (wurden vorgängig von Admin (=Schulhaus) erfasst. Admin von der Gruppe, Klasse ist der Lehrer.
 Danach sind sie via E-Mail und Passwort registriert
 - User wählt Klasse aus
-- User wählt aus, ob er Lehrer ist oder Eltern (optional)
-- User wird bestätigt von Admin (optional)
+- User wird bestätigt von Admin
+- Solange User nicht bestätigt ist, hat er eingeschränkte Rechte. D.h. er kann  nur sein Profil bearbeiten
 
-#Modul 1 Profil Verwaltung
+##Modul 2 Profil Verwaltung
 - User kann seine Daten updaten
-- Wenn User Admin ist, kann er Klassen erfasse (optional)
 
-#Modul 2 Klassenliste
+//noch nicht umgesetzt
+- Wenn User Admin ist, kann er Klassen erfasse 
+
+##Modul 2.2 Profilbild
+- User kann sein Profilbild hochladen/wechseln
+
+##Modul 3 Klassenliste
 - Liste der Klasse wird angezeigt; möglichkeit die (freigegebenen) )Daten jedes einzelnen zu lesen
+- Daten können Sortiert werden
+- User sieht nur die bestätigten User, die der gleichen Klassen zugeordnet sind
+- Seine eigenen Daten sind in der Liste optisch ausgezeichnet
+- Wenn User Admin ist, sieht er alle (bestätigte und unbestätigte) und hat die Möglichkeiten User zu aktivieren/deaktiviern und löschen
 
-#Modul 3 - Chat
+##Modul 4 - Chat
 Der Chat ist ein general-Channel. Jede/r sieht den gleichen Inhalt. Es gibt nur ein Chat-Menu (im Hauptmenu). 
 Alle können alles sehen.
 Zeitpunkt bei jedem Chat anzeigen.
 fakultativ: 
 - im Hauptmenu: Punkt Chat: Batch (anzahl unread messages). 
 
-1) Auswahl Chat-Partner (optional).
+1) Auswahl Chat-Partner (noch nicht umgesetzt).
 2) Laden bisheriger Chat
-3) Input für neue Chat-Message (keine Bilder verwenden)
-4) ev. Mit vorgefertigen Antworten, ev. Themenorientiert -> Auswahl treffen vor Chat, Vorgefertigte Antworten vorschlagen welche matchen könnten? (Elasticmatch)(Prio2)
+3) Input für neue Chat-Message
+4) ev. Mit vorgefertigen Antworten, ev. Themenorientiert -> Auswahl treffen vor Chat, Vorgefertigte Antworten vorschlagen welche matchen könnten? (Elasticmatch)(noch nicht umgesetzt)
 5) Implementieren Com over WebSockets
-6) Prio 2: Auswahl eines Icons/Profilbild
 
-#Modul 3.1 Chat: alter Verlauf nachladen (Optional)
-- Im Chat sieht man nur die letzten (3-10: tbd) Tage sofort. Sonst muss man weiterscrollen.
 
-#Modul 4 - Kalender (optional)
+
+###Module für nächste Sprints, noch nicht umgesetzt
+
+##Modul 4.1 Chat: alter Verlauf nachladen (Optional)
+- Im Chat sieht man nur die letzten (3-10: tbd) Tage sofort. Sonst muss man weiterscrollen. 
+
+##Modul 5 - Kalender (optional)
  1) Setzen eines Termines auf Kalender
  2) Termindetails: Name, Properties: Zeitpunkt/Ganztätig/Ganze Klasse/Schulferien (Generellster Termin - Broadcast)
  3) Einzeltermine gezielt an eltern, Kind: Entsprechende Personen einladen (Prio2)
@@ -49,8 +61,7 @@ fakultativ:
  11) Eltern- und Schüler können nichts eintragen
  12) Prio 2: möglichkeit die Termine als Outlook- oder ios-Termine erfassen
 
-
-#Modul 5 - Stundenplan (optional)
+##Modul 6 - Stundenplan (optional)
 - Kalender in Wochenübersicht (gleiche Ansicht, wie Termine)-
 - Jede Woche sieht gleich aus
 - Lehrer erfasst Stundenplan, mit Fächer und Lehrer in Farbe
@@ -58,7 +69,7 @@ fakultativ:
 - Schüler und Eltern können nicht editieren, nur lesen
 - Prio 2: möglichkeit die Termine als Outlook- oder ios-Termine erfassen
 
-#Modul 6 - Abwesenheitsliste (optional)
+##Modul 7 - Abwesenheitsliste (optional)
 - Wenn Massnahme ergriffen; Zählung wieder zurücksetzen, Verlauf wird nie gelöscht
 - Vorschläge für Interaktion (falkutativ) -> Möglichkeit Erfassung, was Passiert ist (was wurde unternommen, was ist Ergebnis)
 - Detailansicht, wann war SchülerIn abwesend
