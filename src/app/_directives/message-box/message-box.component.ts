@@ -11,7 +11,7 @@ export class MessageBoxComponent {
   public messageText: string = null;
 
   public subject: any;
-  public callback: any;
+  public callback: (boolean, T) => void;
 
   constructor() {
   }
