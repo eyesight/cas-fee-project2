@@ -19,7 +19,6 @@ export class UserContentService {
 
   constructor( private httpWrp: HttpWrapper, private dbUserContent: DbServiceUserContent) {
     console.log('UserContentService constructed');
-
   }
 
   public getUserContent(): Observable<User> {
@@ -35,7 +34,6 @@ export class UserContentService {
       });
   }
 
-
   public clear() {
     this.dbUserContent.removeCurrentData();
   }
@@ -44,9 +42,7 @@ export class UserContentService {
     return this.dbUserContent.getCurrentDataObserver();
   }
 
-
   public getCurrentUser(): User {
-    // console.log('userContentGetCurrentUser:' + this.userContentCache);
    return this.dbUserContent.getCurrentData();
   }
 

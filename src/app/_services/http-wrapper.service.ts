@@ -27,8 +27,8 @@ export class HttpWrapper {
   public put(url: string, data: any) {
     return this.http.put(appConfig.apiUrl + url, data, this.jwt()).map((response: Response) => response.json());
   }
-  public delete(url: string, ) {
-    return this.http.put(appConfig.apiUrl + url, this.jwt()).map((response: Response) => response.json());
+  public delete(url: string) {
+    return this.http.delete(appConfig.apiUrl + url, this.jwt()).map((response: Response) => response.json());
   }
 
 
