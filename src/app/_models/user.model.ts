@@ -25,7 +25,6 @@ export class UserAvatar {
   avatar: Avatar;
 }
 
-
 export class UserAuth {
   email: string;
   token: string;
@@ -40,12 +39,6 @@ export class UserAuth {
 export class UserApprove {
   email: string;
   approve: number;
-}
-
-export class UserApproveAnswer {
-  approve: boolean;
-  changed: boolean;
-  userItem: User;
 }
 
 export class UserClassListAvatars {
