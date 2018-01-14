@@ -37,7 +37,7 @@ export class ProfilePasswordChangeComponent implements OnInit {
     this.pwdForm = this.fb.group({
       oldPassword: ['', [Validators.required]],
       formPasswordConfirm: this.fb.group({
-        newPassword: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(15)]],
+        newPassword: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(15), CustomValidators.passwordCheck]],
         confirmNewPassword: ['', [Validators.required, CustomValidators.passwordCheck]]
       }, {validator: Validators.compose([CustomValidators.matcher('newPassword', 'confirmNewPassword')])})
     });

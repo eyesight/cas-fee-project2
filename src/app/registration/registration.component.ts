@@ -79,7 +79,6 @@ export class RegistrationComponent implements OnInit {
           error => {
             if (error.toString().match(/901/g)) {
               this.alertService.error(this.alertMessagesService.MessagesError.register901, true, 500);
-
             } else {
               this.alertService.error(this.alertMessagesService.MessagesError.register, true, 500);
             }
