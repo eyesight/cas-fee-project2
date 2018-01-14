@@ -19,20 +19,26 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Windows / OSX Plattform
 
 <h4>Anleitung</h4>
-1) download project
-2) entpack (if not already) to dir and switch to dir
-3) npm install
-4) install db -> see ./server/readme.md
-5) start server:
-  - change to directory ./server 
-  - npm install </li>
-  - install mysql (z.B. mit MAMP (osx))
-    - create database "school_development" & user/pw "school"
-    - run scripts under sql (it create and fills tables)
-  - start node server:
-  go to server dir 
-  *command:*
-  node index.js <br>
+<ol>
+  <li>download project</li>
+  <li>entpack (if not already) to dir and switch to dir</li>
+  <li>npm install</li>
+  <li>install db -> see ./server/readme.md</li>
+<li>start server:
+  <ul>
+  <li>change to directory ./server </li>
+  <li>npm install </li>
+  <li>install mysql (z.B. mit MAMP (osx))
+  </li><li>create database "school_development" & user/pw "school"
+  </li><li>run scripts under sql (it create and fills tables)
+  </li>
+  <li>start node server: <br>go to server dir  <br>
+                          *command:* <br>
+                          node index.js <br></li>
+  </ul>
+  </li>
+  </ol>
+  
 
 6) if you have ng globally installed (npm install -g ) then just:
 ng serve 
