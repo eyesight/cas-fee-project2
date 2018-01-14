@@ -11,10 +11,11 @@
     border: 1px solid $color-gray-light;
     left: calc(50% - 275px);
     max-width: 450px;
-    position: absolute;
+    position: fixed;
     padding: 1rem;
     pointer-events:auto;
-    top:0;
+    top: calc(50% - 100px);
+    vertical-align: middle;
     z-index: 1200;
     @include media-breakpoint-down(lg){
       left: calc(50% - 200px);
@@ -24,7 +25,6 @@
     }
     @include media-breakpoint-down(xs){
       left: 20%;
-      top:-100px;
       width: 240px;
     }
   }

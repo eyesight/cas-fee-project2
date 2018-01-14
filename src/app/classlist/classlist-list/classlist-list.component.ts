@@ -139,7 +139,9 @@ export class ClasslistListComponent implements OnInit, OnDestroy {
             });
         },
         (error) => {
-          this.alertService.error(this.alertMessageService.MessagesError.error, false);
+          (error.toString().match(/400/g)) ?
+            this.alertService.error(this.alertMessageService.MessagesError.deleteUser400, false) :
+            this.alertService.error(this.alertMessageService.MessagesError.error, false);
         });
   }
 
