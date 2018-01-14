@@ -16,7 +16,7 @@
 - TODO: put - Request beim Approven so anpassen, dass /:id mitgegeben wird von user
 -> AW
 
-- TODO: @types/emojione in eigenen Code übernehmen
+- TODO: @types/emojione types selber definieren wegen fehlenden vollst. Types
 -> AW
 
 --------------------------------------------------------------------------------

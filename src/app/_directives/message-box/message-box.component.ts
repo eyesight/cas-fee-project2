@@ -1,6 +1,5 @@
 
 import {Component} from '@angular/core';
-import {UserApproveAnswer} from '../../_models/user.model';
 
 
 @Component({
@@ -12,14 +11,14 @@ export class MessageBoxComponent {
   public messageText: string = null;
 
   public subject: any;
-  public callback: any;
+  public callback: (boolean, T) => void;
 
   constructor() {
   }
 
   public showMBox<T>(msg: string, subject: T, callback: (d: boolean, sub: T) => void ) {
     this.messageText = msg;
-    this.show()
+    this.show();
     this.subject = subject;
     this.callback = callback;
   }

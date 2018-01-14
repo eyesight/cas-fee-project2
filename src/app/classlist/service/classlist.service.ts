@@ -40,6 +40,7 @@ export class ClasslistService {
     userApprove.email = user.email;
     userApprove.approve = approve;
 // instead of json use JSON.strinfiy
+    // TODO: use correct REST API Syntac: provide the user as parameter in the url like on delete
     return this.httpWrp.put('/api/user/approve', userApprove)
       .map((x) => x);
   }
