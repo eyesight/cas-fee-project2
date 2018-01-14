@@ -28,7 +28,7 @@ export class ProfileAvatarComponent {
   }
 
   public form: FormGroup;
-  public loading: boolean = false;
+  public loading = false;
 
   public provFile = false;
   public provFileHideSubmitButton = true;
