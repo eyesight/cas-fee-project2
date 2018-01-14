@@ -70,7 +70,7 @@
     <td *ngIf="userCurrent.is_teacher">
       <div *ngIf="userCurrent.email === item.email; else falsyTemplate"></div>
       <ng-template #falsyTemplate>
-        <button class="zz-btn zz-btn--primary" (click)="showAlertDelete(item, $event)">löschen</button>
+        <button class="zz-btn zz-btn--primary" [id]="item.id" (click)="showAlertDelete(item, $event)">löschen</button>
       </ng-template>
     </td>
   </tr>
