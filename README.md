@@ -43,7 +43,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
          if not then switch to ./node_modules/@angular/cli/bin and type ng serve</li>
   </ul>
   
-<h4>User-Credentials</h4>
+<h4>Test-User</h4>
 to use the tool as registered user use:
 Benutzername: test@test.com
 Password: test99!
