@@ -32,7 +32,7 @@ declare function sfn(a: User, b: User): number;
   templateUrl: './classlist-list.component.html'
 })
 
-export class ClasslistListComponent implements OnInit, OnDestroy {
+export class ClasslistListComponent implements OnDestroy {
 
   public canDeactivate = true;
 
@@ -63,9 +63,6 @@ export class ClasslistListComponent implements OnInit, OnDestroy {
   constructor(private classlistService: ClasslistService,
               private alertService: AlertService,
               private alertMessageService: AlertMessagesService) {
-  }
-
-  ngOnInit() {
   }
 
 
@@ -129,6 +126,7 @@ export class ClasslistListComponent implements OnInit, OnDestroy {
   public toDelete(key: number) {
     this.classlistService.deleteUser(key)
       .subscribe((x) => {
+      // TODO: try to force classlist.component to do the following job (observing...):
           this.classlistService.getClasslist()
             .subscribe( (content) => {
                 this.classlistList = content;
