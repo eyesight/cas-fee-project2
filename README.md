@@ -13,12 +13,12 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Open Sans: google-font
 
 ## installation
-###Requirements:
+<h4>Requirements:</h4>
 - node >= 7.9
 - Mysql (make sure that STRICT_TRANS_TABLES is not configured in my.cnf)
 - Windows / OSX Plattform
 
-###Anleitung
+<h4>Anleitung</h4>
 1) download project
 2) entpack (if not already) to dir and switch to dir
 3) npm install
@@ -31,14 +31,14 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
     - run scripts under sql (it create and fills tables)
   - start node server:
   go to server dir 
-  <h5>command:</h5>
-  node index.js 
+  *command:*
+  node index.js <br>
 
 6) if you have ng globally installed (npm install -g ) then just:
 ng serve 
 if not then switch to ./node_modules/@angular/cli/bin and type ng serve
 
-###User-Credentials
+<h4>User-Credentials</h4>
 to use the tool as registered user use:
 Benutzername: test@test.com
 Password: test99!
