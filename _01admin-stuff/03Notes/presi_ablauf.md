@@ -13,7 +13,7 @@ Chrome (Eltern): test@test.com (Schüler ist noch nicht bestätigt, chats lösch
 
 Chrome: Eltern loggt sich ein und kann keine anderen Funktionen aufrufen, da noch nicht bestätigt.  Ausser Profil: Loggt sich wieder aus.
 
-Firefox: Lehrer Loggt sich ein und prüft Klassenliste. Bestätigt Eltern test. Löscht einen anderen Account (spam)
+Firefox: Lehrer Loggt sich ein und prüft Klassenliste. Sortierung zeigen. Bestätigt Eltern test. Löscht einen anderen Account (spam)
 
 1.1) Berechtigung:
 Chrome: Eltern loggt sich wieder ein und kann nun Klassenliste + chat verwenden.

@@ -8,15 +8,16 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Express.js: Backend Framework
 - Node.js: runtime environment
 - MySQL: Database
-- Sass: as style sheet language
+- Sass: as style sheet language (compiled to css)
 - Boostrat v4.0.0-beta.3: Framework for layouting
 - Open Sans: google-font
 
 ## installation
 <h4>Requirements:</h4>
-- node >= 7.9
-- Mysql (make sure that STRICT_TRANS_TABLES is not configured in my.cnf)
-- Windows / OSX Plattform
+<ul>
+<li> node >= 7.9</li>
+<li>Mysql (make sure that STRICT_TRANS_TABLES is not configured in my.cnf)</li>
+<li>Windows / OSX Plattform</li>
 
 <h4>Anleitung</h4>
 <ol>
@@ -63,6 +64,9 @@ Description of the modules can be found [here](https://github.com/eyesight/cas-f
 - [e2e-Tests with puppeteer](https://github.com/eyesight/cas-fee-project2/blob/master/e2e_test_puppeteer)
 
 ## Further informations
+Interested to see our production-history/first steps?
+- here you find some [mockups](https://github.com/eyesight/cas-fee-project2/blob/master/_01admin-stuff/01mockup_layouts) 
+- here you find our [prototype](https://github.com/eyesight/cas-fee-project2/blob/master/_02prototype) 
 
 
 ## Authors
