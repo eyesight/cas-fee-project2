@@ -20,12 +20,12 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 <li>Windows / OSX Plattform</li>
 
 <h4>Anleitung</h4>
-<ol>
-  <li>download project</li>
-  <li>entpack (if not already) to dir and switch to dir</li>
-  <li>npm install</li>
-  <li>install db -> see ./server/readme.md</li>
-<li>start server:
+<ul>
+  <li>1. download project</li>
+  <li>2. entpack (if not already) to dir and switch to dir</li>
+  <li>3. npm install</li>
+  <li>4. install db -> see ./server/readme.md</li>
+<li>5. start server:
   <ul>
   <li>change to directory ./server </li>
   <li>npm install </li>
@@ -38,13 +38,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
                           node index.js <br></li>
   </ul>
   </li>
-  </ol>
+  <li>6. if you have ng globally installed (npm install -g ) then just:
+         ng serve 
+         if not then switch to ./node_modules/@angular/cli/bin and type ng serve</li>
+  </ul>
   
-
-6) if you have ng globally installed (npm install -g ) then just:
-ng serve 
-if not then switch to ./node_modules/@angular/cli/bin and type ng serve
-
 <h4>User-Credentials</h4>
 to use the tool as registered user use:
 Benutzername: test@test.com
@@ -65,7 +63,7 @@ Description of the modules can be found [here](https://github.com/eyesight/cas-f
 
 ## Further informations
 Interested to see our production-history/first steps?
-- here you find some [mockups](https://github.com/eyesight/cas-fee-project2/blob/master/_01admin-stuff/01mockup_layouts) 
+- here you find some [mockups](https://github.com/eyesight/cas-fee-project2/tree/master/_01admin-stuff/01mockups_layout) 
 - here you find our [prototype](https://github.com/eyesight/cas-fee-project2/blob/master/_02prototype) 
 
 
