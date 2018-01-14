@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild, OnDestroy} from '@angular/core';
-import {User, UserApproveAnswer} from '../../_models/user.model';
+import {User} from '../../_models/user.model';
 import {ClasslistService} from '../service/classlist.service';
 import {MessageBoxComponent} from '../../_directives/message-box/message-box.component';
 import {AlertService, AlertMessagesService} from '../../_services/index';
@@ -80,6 +80,7 @@ export class ClasslistListComponent implements OnInit, OnDestroy {
     this.canDeactivate = false;
     this.canDeactivateSend(this.canDeactivate);
 
+    // callback callbed by messageBox which gets d = decision, s = subject (= User)
     const fnCallback = (d: boolean, s: User) => {  this.sendAnswer(checked.target.checked, d, s); }
     if (checked.target.checked) {
      // this.alert.show('Möchten Sie die Person wirklich bestätigen?', true);

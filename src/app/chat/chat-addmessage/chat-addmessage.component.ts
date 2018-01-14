@@ -1,8 +1,6 @@
 import {Component, EventEmitter, OnInit, Output, ViewChild, ElementRef, Input} from '@angular/core';
 import { ChatMessage } from '../../_models/message.model';
 import { shortnameToUnicode } from 'emojione';
-//import { shortnameToUnicode } from '../emojione-types';
-
 
 @Component({
   selector: 'app-chat-addmessage',
