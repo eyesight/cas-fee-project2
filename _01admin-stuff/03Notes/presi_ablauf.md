@@ -11,7 +11,7 @@ Chrome (Eltern): test@test.com (Schüler ist noch nicht bestätigt, chats lösch
 Chrome (Spam): spam@test.com um diesen löschen zu können
 1) Login, Registrierungsprozess und Klassenliste:
 
-
+Chrome: Kurz Registierung erwähnen - einmal Klicken. Ev. Terms of Use kurz anklicken.
 Chrome: Eltern loggt sich ein und kann keine anderen Funktionen aufrufen, da noch nicht bestätigt.  Ausser Profil: Loggt sich wieder aus.
 
 Firefox: Lehrer Loggt sich ein und prüft Klassenliste. Sortierung zeigen. Bestätigt Eltern test. Löscht einen anderen Account (spam)

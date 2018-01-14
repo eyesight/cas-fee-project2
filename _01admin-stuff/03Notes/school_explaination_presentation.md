@@ -1,3 +1,5 @@
+
+**Intro** (Andy)
 Thema: Kurz erläutern. 
 Organisationstool für Schulen mit involvierten Eltern (Kind) und Lehrer 
 UX: nicht fancy, sondern eher konservativ und vertrauensfördernd.
@@ -5,7 +7,7 @@ Zielpublikum: Eltern, ( Schüler), Lehrer (nicht speziell IT-Affine Personen)
 Rahmenbedingung: 1 Kind wird durch 1 Elternperson vertreten
 
 
-**Gut gelöst:**
+**Gut gelöst:** (Claudia)
 
 UX: Layout und Design Dokumente erstellt und dann als HTML/CSS Prototyp gebaut.
 Komponentenorientiert Aufteilen/Strukturieren - Schon zu Beginn eine gute Struktur geplant (Sass mit BEM-Mix)
@@ -24,7 +26,7 @@ Zusammenarbeit via Git:
 
 Präsentation: Notizen:
 
-**was würden wir anders machen:**
+**was würden wir anders machen:** (Andy)
 
 1. Wahl Server = Ruby on Rails; alles umbauen zu node-server. Damit mehr Javascript gelernt wird und dass beide in der Lage sind zu editieren.
 
@@ -43,7 +45,7 @@ UX: - wäre besser Bild über ein Popup zu laden und dort gezielt den User bei d
 git: 
 - Bei Arbeiten mit Git unnötig viele commits, zu wenig git commit --amend gearbeitet, History ist recht unübersichtlich; das wäre in Zukunft und grösseren Projekten sinnvoll
 
-**Was gelernt:**
+**Was gelernt:** (Claudia)
 
 Der Aufwand war schwer einzuschätzen und war massiv mehr, als gedacht. 
 Haben früh angefangen und trotztem bis zur Abgabe gebraucht. 
@@ -61,4 +63,4 @@ Wir wissen jetzt wo es in Zürich und Winterthur öffentliche Orte gibt mit W-La
 
 
 
-**Nun folgt DEMO:** siehe presi_ablauf
+**Nun folgt DEMO:** siehe presi_ablauf (Lehrer: (Andy), Eltern (Claudia))
