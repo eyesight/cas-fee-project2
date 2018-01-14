@@ -133,7 +133,7 @@ export class ClasslistListComponent implements OnInit, OnDestroy {
                 this.classlistList = content;
             },
             error => {
-              this.alertService.error(this.alertMessageService.MessagesError.tryAgain, false);
+              this.alertService.error(this.alertMessageService.MessagesError.error, false);
             });
         },
         (error) => {

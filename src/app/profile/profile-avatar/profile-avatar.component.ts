@@ -69,7 +69,7 @@ export class ProfileAvatarComponent {
             .subscribe(content => {
               },
               error => {
-                this.alertService.error(this.alertMessagesService.MessagesError.tryAgain, true);
+                this.alertService.error(this.alertMessagesService.MessagesError.error, true);
               });
 
         },
@@ -82,7 +82,7 @@ export class ProfileAvatarComponent {
             setTimeout(() =>
               this.router.navigate(['relogin'], {queryParams: {returnUrl: this.router.url}}), 3500);
           } else {
-            this.alertService.error(this.alertMessagesService.MessagesError.tryAgain, false, 500);
+            this.alertService.error(this.alertMessagesService.MessagesError.error, false, 500);
           }
 
         });
@@ -123,7 +123,7 @@ export class ProfileAvatarComponent {
 
             console.log('compression on success');
           }, (error) => {
-            this.alertService.error(this.alertMessagesService.MessagesError.tryAgain, false, 500);
+            this.alertService.error(this.alertMessagesService.MessagesError.error, false, 500);
             console.log('Error while converting');
           }, () => {
             this.processedImage = this.images[0];
