@@ -9,7 +9,7 @@ import {UserContentService} from '../_services/user-content.service';
 })
 export class ProfileComponent implements OnInit {
   public userContent: User;
-  public isTeacher: boolean = false;
+  public isTeacher = false;
 
   constructor(private UserContentService: UserContentService) {
   }

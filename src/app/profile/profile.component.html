@@ -28,7 +28,7 @@
     <h2 *ngIf="!isTeacher" class="zz-title zz-title-h2">Angaben Eltern</h2>
     <h2 *ngIf="isTeacher" class="zz-title zz-title-h2">Eigene Angaben</h2>
     <div class="zz-mod-box">
-      <app-profile-avatar *ngIf="isTeacher" class="zz-avatar" [previewUrl]="userContent.user_avatar" ></app-profile-avatar>
+      <app-profile-avatar *ngIf="isTeacher" class="zz-avatar" [previewUrl]="userContent.user_avatar" [avatarFiletype]="userContent.avatar_filetype"></app-profile-avatar>
       <h3 class="zz-title-h3">Anrede</h3>
       <p>{{userContent.parent_gender | gender:'de'}}</p>
       <h3 class="zz-title-h3">Vorname Name</h3>
