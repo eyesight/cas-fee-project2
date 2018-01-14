@@ -4,10 +4,11 @@
 Präsentation Projekt School auf Laptop:
 
 Vorbereitung:
+- clean database
 - 2 Browser offen mit je einem Login Screen
 Firefox: Lehrer@test.com - Loginscreen
 Chrome (Eltern): test@test.com (Schüler ist noch nicht bestätigt, chats löschen) - Loginscreen
-
+Chrome (Spam): spam@test.com um diesen löschen zu können
 1) Login, Registrierungsprozess und Klassenliste:
 
 
@@ -21,10 +22,10 @@ Chrome: Eltern loggt sich wieder ein und kann nun Klassenliste + chat verwenden.
 
 
 2) Profil:
-Chrome: Elter prüft seine Profildaten und ändert diese. 
+Chrome: Eltern prüft seine Profildaten und ändert diese. 
 
 
-3) hat:
+3) Chat:
 Chrome: Eltern chattet mit Lehrer
 Firefox: Lehrer: Antwortet zurück. Lehrer loggt sich aus
 
