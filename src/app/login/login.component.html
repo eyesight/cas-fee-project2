@@ -15,7 +15,7 @@
           </div>
           <div class="form-row">
             <div class="col-12 zz-form__group">
-              <label class="zz-form__label" for="password">Password</label>
+              <label class="zz-form__label" for="password">Passwort</label>
               <input id="password" class="zz-form__input" name="password" type="password" formControlName="pwd" [ngClass]="{ 'zz-form__input--error': formPassword.errors && (formPassword.dirty || formPassword.touched) }" placeholder="test99! (zum Testen)">
               <div *ngIf="formPassword.invalid && (formPassword.dirty || formPassword.touched)" class="zz-form__error">Passwort fehlt oder ist ungültig</div>
             </div>

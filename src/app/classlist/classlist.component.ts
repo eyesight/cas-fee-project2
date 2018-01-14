@@ -46,6 +46,7 @@ export class ClasslistComponent implements OnInit, OnDestroy {
     this.classlistAvatars = this.classlistService.getClasslist()
       .subscribe((result) => {
           this.classlist = result;
+          console.log(result);
 
           this.avatarSub = this.classlistAvatarService.getClasslistAvatars()
             .subscribe((resultAvatars) => {

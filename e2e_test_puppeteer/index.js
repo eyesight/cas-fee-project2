@@ -41,7 +41,7 @@ const puppeteer = require('puppeteer');
       await page.click('.zz-nav__dropdown-menu-item:first-child');
     } else{
       await page.click('.zz-navbar__button');
-      await page.click('.zz-nav__dropdown-menu-item:nth-of-type(1)');
+      await page.click('.zz-nav__list-group-item .zz-nav__dropdown-menu-item:nth-of-type(1)');
     }
 
     await page.waitFor(2000);

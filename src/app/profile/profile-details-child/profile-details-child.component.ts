@@ -99,12 +99,12 @@ export class ProfileDetailsChildComponent implements OnInit {
                 this.router.navigate(['/profile']);
               },
               error => {
-                this.alertService.error(this.alertMessagesService.MessagesError.tryAgain, true);
+                this.alertService.error(this.alertMessagesService.MessagesError.error, true);
                 this.router.navigate(['/profile']);
               });
         },
         error => {
-          this.alertService.error(this.alertMessagesService.MessagesError.tryAgain);
+          this.alertService.error(this.alertMessagesService.MessagesError.error);
         });
   }
 

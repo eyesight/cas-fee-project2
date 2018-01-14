@@ -4,6 +4,7 @@ import {ClasslistService} from '../service/classlist.service';
 import {MessageBoxComponent} from '../../_directives/message-box/message-box.component';
 import {AlertService, AlertMessagesService} from '../../_services/index';
 import {Subscription} from 'rxjs/Subscription';
+import {Router} from "@angular/router";
 
 
 enum FIELDS {
@@ -61,7 +62,7 @@ export class ClasslistListComponent implements OnInit, OnDestroy {
 
   constructor(private classlistService: ClasslistService,
               private alertService: AlertService,
-              private alertMessageService: AlertMessagesService ) {
+              private alertMessageService: AlertMessagesService) {
   }
 
   ngOnInit() {
@@ -92,10 +93,18 @@ export class ClasslistListComponent implements OnInit, OnDestroy {
     }
   }
 
-  showAlertDelete(item: User, event: any) {
-    const key = item.id;
-    console.log(event);
-    this.toDelete(key);
+  public showAlertDelete(item: User, event: any) {
+    let key: number = item.id;
+    this.canDeactivate = true;
+    if (Number(event.target.id) === key) {
+      this.alert.showMBox<User>('Möchten Sie die Person wirklich löschen?', item, (d, s) => {
+        (d) ? this.toDelete(key) : key = NaN;
+        this.canDeactivateSend(this.canDeactivate);
+      });
+    } else {
+      this.alertService.error(this.alertMessageService.MessagesError.error, false);
+      this.canDeactivateSend(this.canDeactivate);
+    }
   }
 
   public sendAnswer(approve: boolean, changed: boolean, userItem: User) {
@@ -118,14 +127,20 @@ export class ClasslistListComponent implements OnInit, OnDestroy {
   }
 
   public toDelete(key: number) {
-    console.log('delete:classlist:'+ key);
     this.classlistService.deleteUser(key)
       .subscribe((x) => {
-          console.log('deleted');
+          this.classlistService.getClasslist()
+            .subscribe( (content) => {
+                this.classlistList = content;
+            },
+            error => {
+              this.alertService.error(this.alertMessageService.MessagesError.error, false);
+            });
         },
         (error) => {
-          console.log('classlist: delete:error');
-          this.alertService.error(this.alertMessageService.MessagesError.error, false, 2000);
+          (error.toString().match(/400/g)) ?
+            this.alertService.error(this.alertMessageService.MessagesError.deleteUser400, false) :
+            this.alertService.error(this.alertMessageService.MessagesError.error, false);
         });
   }
 
@@ -138,15 +153,6 @@ export class ClasslistListComponent implements OnInit, OnDestroy {
           this.alertService.error(this.alertMessageService.MessagesError.error, false, 2000);
         });
   }
-
-  /*public sendAnswerOnDelete(key) {
-    console.log('sendAnswerOnDelete' + key);
-    if (key) {
-      this.toDelete(key);
-    } else {
-      console.log('an error');
-    }
-  }*/
 
   public onSortGoal(id: number) {
     if (this.sortGoals.length <= id) {

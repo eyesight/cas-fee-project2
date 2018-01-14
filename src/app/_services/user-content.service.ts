@@ -23,11 +23,9 @@ export class UserContentService {
 
   public getUserContent(): Observable<User> {
 
-// instead of json use JSON.strinfiy
     return this.httpWrp.get('/api/user/contents')
       .map((userContent: User) => {
         if (userContent) {
-          // console.dir(userContent);
           this.dbUserContent.saveCurrentData(userContent);
         }
         return userContent;

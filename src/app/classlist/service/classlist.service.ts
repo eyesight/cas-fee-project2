@@ -17,7 +17,7 @@ export class ClasslistService {
 
    // instead of json use JSON.strinfiy
     return this.httpWrp.get('/api/classlist/all')
-      .map((result) => {this.classlistCache = result.classlist; console.log(result.classlist); return result.classlist; });
+      .map((result) => {this.classlistCache = result.classlist; return result.classlist; });
   }
 
 
