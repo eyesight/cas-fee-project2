@@ -69,8 +69,7 @@
     <td *ngIf="userCurrent.is_teacher">
       <div *ngIf="userCurrent.email === item.email; else falsyTemplate"></div>
       <ng-template #falsyTemplate>
-        <app-message-box [userItem]="item" (answer)="sendAnswerOnDelete($event)"></app-message-box>
-        <button class="zz-btn zz-btn--primary"  (change)="showAlertDelete(item, $event)">löschen</button>
+        <button class="zz-btn zz-btn--primary" (click)="showAlertDelete(item, $event)">löschen</button>
       </ng-template>
     </td>
   </tr>

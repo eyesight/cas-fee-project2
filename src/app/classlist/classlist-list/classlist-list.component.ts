@@ -69,7 +69,7 @@ export class ClasslistListComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy() {
-    if (this.approveSub ) {
+   if (this.approveSub ) {
       this.approveSub.unsubscribe();
     }
   }
@@ -87,13 +87,9 @@ export class ClasslistListComponent implements OnInit, OnDestroy {
   }
 
   showAlertDelete(item: User, event: any) {
-    console.dir(event.target.id);
-
-    this.canDeactivate = false;
-    this.canDeactivateSend(this.canDeactivate);
-
-   // this.alert.show('Möchten Sie die Person wirklich löschen? Person kann danach das System nicht mehr benutzen', false);
-
+    const key = item.id;
+    console.log(event);
+    this.toDelete(key);
   }
 
   public sendAnswer(val: UserApproveAnswer) {
@@ -109,12 +105,23 @@ export class ClasslistListComponent implements OnInit, OnDestroy {
       this.classlistList[this.classlistList.findIndex((x) => x === val.userItem)].is_approved = !val.approve;
       this.classlistList = [...this.classlistList];
     }
-
   }
 
   public canDeactivateSend(val: boolean) {
     this.approveAnswer.emit(val);
 
+  }
+
+  public toDelete(key: number) {
+    console.log('delete:classlist:'+ key);
+    this.classlistService.deleteUser(key)
+      .subscribe((x) => {
+          console.log('deleted');
+        },
+        (error) => {
+          console.log('classlist: delete:error');
+          this.alertService.error(this.alertMessageService.MessagesError.error, false, 2000);
+        });
   }
 
   public onChecked(item: User, checked: boolean) {
@@ -127,20 +134,14 @@ export class ClasslistListComponent implements OnInit, OnDestroy {
         });
   }
 
-  public sendAnswerOnDelete(val: UserApproveAnswer) {
-    console.log('SendAnswersendAnswerOnDelete - ok?:' + val.approve + '::' + val.changed + '::' + val.userItem.email);
-    this.canDeactivate = true;
-    this.canDeactivateSend(this.canDeactivate);
-
-    if (val.changed) {
-      //this.onChecked(val.userItem, val.approve);
-      // TODO :implement delete rest api and reload of page
+  /*public sendAnswerOnDelete(key) {
+    console.log('sendAnswerOnDelete' + key);
+    if (key) {
+      this.toDelete(key);
     } else {
-
-      // dont delete
+      console.log('an error');
     }
-
-  }
+  }*/
 
   public onSortGoal(id: number) {
     if (this.sortGoals.length <= id) {

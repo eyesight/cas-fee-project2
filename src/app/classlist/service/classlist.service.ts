@@ -44,4 +44,10 @@ export class ClasslistService {
       .map((x) => x);
   }
 
+  public deleteUser(key: number): Observable<any>  {
+    console.log('classlistservice:' + key);
+// instead of json use JSON.strinfiy
+    return this.httpWrp.delete('/api/user/' + key)
+      .map((x) => x);
+  }
 }
