@@ -80,16 +80,15 @@ export class ClasslistListComponent implements OnInit, OnDestroy {
 
     this.canDeactivate = false;
     this.canDeactivateSend(this.canDeactivate);
+
+    const fnCallback = (d: boolean, s: User) => {  this.sendAnswer(checked.target.checked, d, s); }
     if (checked.target.checked) {
      // this.alert.show('Möchten Sie die Person wirklich bestätigen?', true);
-      this.alert.showMBox<User>('Möchten Sie die Person wirklich bestätigen?', item, (d, s) => {
-        console.log('callback from mbox:dec:' + d, ' subject:email:' + s.email);
-      });
+      this.alert.showMBox<User>('Möchten Sie die Person wirklich bestätigen?', item, fnCallback);
     } else {
       // this.alert.show('Möchten Sie die Person wirklich ablehnen? Person kann danach das System nicht mehr benutzen', false);
-      this.alert.showMBox<User>('Möchten Sie die Person wirklich ablehnen? Person kann danach das System nicht mehr benutzen?', item, (d, s) => {
-        console.log('callback from mbox:dec:' + d, ' subject:email:' + s.email);
-      });
+      this.alert.showMBox<User>('Möchten Sie die Person wirklich ablehnen? Person kann danach das System nicht mehr benutzen?'
+        , item, fnCallback);
     }
   }
 
@@ -107,17 +106,16 @@ export class ClasslistListComponent implements OnInit, OnDestroy {
     }
   }
 
-  public sendAnswer(val: UserApproveAnswer) {
-    console.log('SendAnswer - ok?:' + val.approve + '::' + val.changed + '::' + val.userItem.email);
+  public sendAnswer(approve: boolean, changed: boolean, userItem: User) {
     this.canDeactivate = true;
     this.canDeactivateSend(this.canDeactivate);
 
-    if (val.changed) {
-      this.onChecked(val.userItem, val.approve);
+    if (changed) {
+      this.onChecked(userItem, approve);
     } else {
 
       // set approve back to what it was before
-      this.classlistList[this.classlistList.findIndex((x) => x === val.userItem)].is_approved = !val.approve;
+      this.classlistList[this.classlistList.findIndex((x) => x === userItem)].is_approved = !approve;
       this.classlistList = [...this.classlistList];
     }
   }
@@ -148,7 +146,7 @@ export class ClasslistListComponent implements OnInit, OnDestroy {
   public onChecked(item: User, checked: boolean) {
     this.approveSub = this.classlistService.approveUser(item, (checked === true ? 1 : 0))
       .subscribe((x) => {
-          console.log('approved');
+          console.log('classlistService.approveUser succesfull');
         },
         (error) => {
           this.alertService.error(this.alertMessageService.MessagesError.error, false, 2000);
