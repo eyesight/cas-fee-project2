@@ -1,3 +1,4 @@
+<app-message-box></app-message-box>
 <table class="table table-responsive table-hover zz-table">
   <caption class="visuallyhidden">Liste der Teilnehmer</caption>
   <thead>
@@ -60,19 +61,19 @@
 
       <div *ngIf="userCurrent.email === item.email; else falsyTemplate"></div>
       <ng-template #falsyTemplate>
-        <app-message-box [userItem]="item" (answer)="sendAnswer($event)"></app-message-box>
+      <!--  <app-message-box [userItem]="item" (answer)="sendAnswer($event)"></app-message-box> -->
         <input class="table__checkbox" type="checkbox" aria-label="bestaetigung" [checked]="item.is_approved"
-               (change)="showAlert(item, $event)">
+               (change)="showAlertApprove(item, $event)">
         <!-- onChecked(item, $event) -->
       </ng-template>
     </td>
     <td *ngIf="userCurrent.is_teacher">
       <div *ngIf="userCurrent.email === item.email; else falsyTemplate"></div>
       <ng-template #falsyTemplate>
-        <app-message-box [userItem]="item" (answer)="sendAnswerOnDelete($event)"></app-message-box>
-        <button class="zz-btn zz-btn--primary"  (change)="showAlertDelete(item, $event)">löschen</button>
-      </ng-template>
-    </td>
-  </tr>
-  </tbody>
-</table>
+        <!--      <app-message-box [userItem]="item" (answer)="sendAnswerOnDelete($event)"></app-message-box> -->
+           <button class="zz-btn zz-btn--primary"  (change)="showAlertDelete(item, $event)">löschen</button>
+         </ng-template>
+       </td>
+     </tr>
+     </tbody>
+   </table>

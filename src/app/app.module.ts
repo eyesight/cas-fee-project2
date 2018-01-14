@@ -43,10 +43,9 @@ import { ImageCompressService } from 'ng2-image-compress';
 import { The404Component } from './the404/the404.component';
 import { ClasslistAvatarService, DbServiceClasslistAvatar } from './_services/user-classlist-avatars.service';
 import { RouterModule} from '@angular/router';
-import {LoginModule} from './login/login.module';
+import { LoginModule } from './login/login.module';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { AgbComponent } from './agb/agb.component';
-
 
 
 @NgModule({

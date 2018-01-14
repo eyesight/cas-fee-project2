@@ -1,6 +1,8 @@
 import {Component, EventEmitter, OnInit, Output, ViewChild, ElementRef, Input} from '@angular/core';
 import { ChatMessage } from '../../_models/message.model';
 import { shortnameToUnicode } from 'emojione';
+//import { shortnameToUnicode } from '../emojione-types';
+
 
 @Component({
   selector: 'app-chat-addmessage',
@@ -27,7 +29,7 @@ export class ChatAddmessageComponent implements OnInit {
       return;
     }
     const msg = new ChatMessage();
-    // convert text like :-) to real smiley using emojione
+    // convert text like :smile: to real smiley using emojione
     msg.message = shortnameToUnicode(newItemText);
 
     msg.sent_at = Date();

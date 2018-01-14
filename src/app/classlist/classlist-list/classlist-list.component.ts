@@ -61,7 +61,7 @@ export class ClasslistListComponent implements OnInit, OnDestroy {
 
   constructor(private classlistService: ClasslistService,
               private alertService: AlertService,
-              private alertMessageService: AlertMessagesService) {
+              private alertMessageService: AlertMessagesService ) {
   }
 
   ngOnInit() {
@@ -73,16 +73,22 @@ export class ClasslistListComponent implements OnInit, OnDestroy {
       this.approveSub.unsubscribe();
     }
   }
-  showAlert(item: User, checked: any) {
+  showAlertApprove(item: User, checked: any) {
     console.log('checked?' + checked.target.checked + 'user: to ' + item.email);
     this.classlistList[this.classlistList.findIndex((x) => x === item)].is_approved = checked.target.checked;
 
     this.canDeactivate = false;
     this.canDeactivateSend(this.canDeactivate);
     if (checked.target.checked) {
-      this.alert.show('Möchten Sie die Person wirklich bestätigen?', true);
+     // this.alert.show('Möchten Sie die Person wirklich bestätigen?', true);
+      this.alert.showMBox<User>('Möchten Sie die Person wirklich bestätigen?', item, (d, s) => {
+        console.log('callback from mbox:dec:' + d, ' subject:email:' + s.email);
+      });
     } else {
-      this.alert.show('Möchten Sie die Person wirklich ablehnen? Person kann danach das System nicht mehr benutzen', false);
+      // this.alert.show('Möchten Sie die Person wirklich ablehnen? Person kann danach das System nicht mehr benutzen', false);
+      this.alert.showMBox<User>('Möchten Sie die Person wirklich ablehnen? Person kann danach das System nicht mehr benutzen?', item, (d, s) => {
+        console.log('callback from mbox:dec:' + d, ' subject:email:' + s.email);
+      });
     }
   }
 

@@ -25,7 +25,8 @@ import { PipesModule } from '../_pipes/pipes.module';
     ClasslistListComponent,
     ClasslistComponent,
     UserDetailComponent,
-    MessageBoxComponent],
+    MessageBoxComponent
+  ],
   providers: [
     ClasslistService,
     UserResolverService,
