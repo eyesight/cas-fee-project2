@@ -19,6 +19,15 @@
 - TODO: @types/emojione types selber definieren wegen fehlenden vollst. Types
 -> AW
 
+- TODO: puppeteer: ev. kann man den Code noch effizienter schreiben 
+-> AW/CF
+
+- TODO: Alle TODO im Code aufsuchen, korrigieren
+-> AW/CF
+
+- TODO: müssen alle consolen raus?
+-> AW/CF
+  
 --------------------------------------------------------------------------------
 Prio 2
 -------------------------------------------------------------------------------
