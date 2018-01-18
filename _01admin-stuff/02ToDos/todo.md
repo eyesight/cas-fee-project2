@@ -27,6 +27,9 @@
 
 - TODO: müssen alle consolen raus?
 -> AW/CF
+
+- TODO: alles nochmals neu installieren auf einem anderen Compi.
+-> AW
   
 --------------------------------------------------------------------------------
 Prio 2
