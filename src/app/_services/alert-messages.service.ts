@@ -19,7 +19,7 @@ export class AlertMessagesService {
     avatarNotLoaded: 'Die Profilbilder können nicht geladen werden',
     newlogin: 'Bitte melden Sie sich neu an',
     error: 'Ein Problem ist aufgetreten, bitte versuchen Sie es nochmals oder melden sich beim Support',
-    errorImageSize: 'Ein Problem ist aufgetreten, Bild wurde zurückgewiesen',
+    errorImageSize: 'Ein Problem ist aufgetreten, Bild konnte nicht gespeichert werden',
     imageSize: 'Das Bild ist zu gross. Es darf nicht grösser als 190 KB sein.',
     dateType: 'Tut uns leid. Dieses Dateiformat wird zurzeit nicht unterstützt.',
     password: 'Das alte Passwort ist nicht korrekt oder das neue Passwort entspricht nicht den Richtlinien',
