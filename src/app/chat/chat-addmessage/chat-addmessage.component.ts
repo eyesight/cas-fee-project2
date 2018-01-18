@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output, ViewChild, ElementRef, Input} from '@angular/core';
 import { ChatMessage } from '../../_models/message.model';
 import { shortnameToUnicode } from 'emojione';
+import {ShortnameToUC} from "../../shared/emojione-short";
 
 @Component({
   selector: 'app-chat-addmessage',
@@ -12,11 +13,10 @@ export class ChatAddmessageComponent implements OnInit {
   @Input() cState  = true;
   message: ChatMessage = null;
 
-
   // create a reference to messageText inside the template
   @ViewChild('messageText') private messageText: ElementRef;
 
-  constructor() { }
+  constructor(private emojitransformer: ShortnameToUC) { }
 
   ngOnInit() {
   }
@@ -28,7 +28,8 @@ export class ChatAddmessageComponent implements OnInit {
     }
     const msg = new ChatMessage();
     // convert text like :smile: to real smiley using emojione
-    msg.message = shortnameToUnicode(newItemText);
+    //msg.message = shortnameToUnicode(newItemText);
+    msg.message = this.emojitransformer.transform(newItemText);
 
     msg.sent_at = Date();
     this.send.emit(msg);
