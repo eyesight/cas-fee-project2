@@ -11,7 +11,7 @@ module.exports.avatarUpload = function (req, res) {
   console.log('avatarUpload: filetype is:' + req.body.avatar.filename);
 
   let filename = req.user.name.replace(/@/i, '.');
-  // get last item, ie: jpg
+  // get last item if path, ie: jpg
   let filetype = [...req.body.avatar.filename.split('.')].pop();
   let fullname = filename + '.' + filetype;
 

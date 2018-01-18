@@ -7,8 +7,8 @@
 -> AW/CF
 
 - TODO: Accessability / ARIA 
-(Prio2)
--> CF/AW:
+(Prio 1.5)
+-> CF:
 
 - TODO: (auch wegen IE)  avatars png/jpg Thematik
 -> AW
@@ -19,17 +19,32 @@
 - TODO: @types/emojione types selber definieren wegen fehlenden vollst. Types
 -> AW
 
-- TODO: puppeteer: ev. kann man den Code noch effizienter schreiben 
+- TODO: puppeteer: ev. kann man den Code noch effizienter schreiben (Prio 1.5)
 -> AW/CF
 
 - TODO: Alle TODO im Code aufsuchen, korrigieren
--> AW/CF
+-> CF
 
 - TODO: müssen alle consolen raus?
--> AW/CF
+-> AW/CF (ev. Suntig)
+
+- TODO: Readme vervollständigen
+-> CF  
+
+- TODO: Database SQL-Install Initialdaten besser machen
+-> AW
 
 - TODO: alles nochmals neu installieren auf einem anderen Compi.
 -> AW
+  
+- TODO: Test bricht wenn am Montag oder Dientag gestartet
+-> AW 
+
+- TODO: alle Obs auf unsubscribes prüfen
+-> AW
+
+- TODO: alle Files nochmals durchgehen und finally alle Consolen wegschmeissen
+-> CF
   
 --------------------------------------------------------------------------------
 Prio 2

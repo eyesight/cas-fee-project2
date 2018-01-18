@@ -37,7 +37,6 @@ export class ProfileAvatarComponent {
   private processedImage: any;
   private images: Array<IImage> = [];
 
-
   @ViewChild('fileInput') fileInput: ElementRef;
 
   constructor(private fb: FormBuilder,
@@ -77,10 +76,13 @@ export class ProfileAvatarComponent {
           this.provFile = false;
 
           console.log('profilAvazar: error:' + error);
-          if (error.match(/401/g)) {
+          if (error.toString().match(/401/g)) {
             this.alertService.error(this.alertMessagesService.MessagesError.newlogin, false, 1000);
             setTimeout(() =>
               this.router.navigate(['relogin'], {queryParams: {returnUrl: this.router.url}}), 3500);
+          }   else if (error.toString().match(/413/g)) {
+            this.alertService.error(this.alertMessagesService.MessagesError.errorImageSize, false, 3500);
+
           } else {
             this.alertService.error(this.alertMessagesService.MessagesError.error, false, 500);
           }
@@ -128,8 +130,9 @@ export class ProfileAvatarComponent {
           }, () => {
             this.processedImage = this.images[0];
             console.log('final on comporessed.length:' + this.images[0].compressedImage.imageDataUrl.length);
-
+            console.log('originalFile:' + files.size);
             console.log('filename:' + files.type);
+
             this.av.value = this.images[0].compressedImage.imageDataUrl.split(',')[1];
             this.av.filename = files.name;
             this.av.filetype = files.type;
