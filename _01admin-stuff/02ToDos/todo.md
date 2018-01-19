@@ -30,9 +30,6 @@
 
 - TODO: alles nochmals neu installieren auf einem anderen Compi.
 -> AW
-  
-- TODO: Test bricht wenn am Montag oder Dientag gestartet
--> AW 
 
 - TODO: alle Obs auf unsubscribes prüfen
 -> AW
@@ -237,3 +234,7 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
 
 - TODO: put - Request beim Approven so anpassen, dass /:id mitgegeben wird von user
 -> AW
+
+  
+- TODO: Test bricht wenn am Montag oder Dientag gestartet
+-> AW 
