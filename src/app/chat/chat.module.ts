@@ -12,7 +12,7 @@ import { ProperTimePipe } from './services/proper-time.pipe';
 import { DirectivesModule } from '../_directives/directives.module';
 import { SocketWrapper } from '../_services/socket-wrapper.service';
 import { PersonalDetailsContainerModule } from '../personal-details-container/personal-details-container.module';
-import {ShortnameToUC} from "../shared/emojione-short";
+import {EmojiToUnicode} from "../shared/emojione-short";
 
 
 
@@ -34,7 +34,7 @@ import {ShortnameToUC} from "../shared/emojione-short";
   providers: [
     ChatService,
     SocketWrapper,
-    ShortnameToUC
+    EmojiToUnicode
   ]
 })
 export class ChatModule { }

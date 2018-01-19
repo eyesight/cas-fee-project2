@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output, ViewChild, ElementRef, Input} from '@angular/core';
 import { ChatMessage } from '../../_models/message.model';
 import { shortnameToUnicode } from 'emojione';
-import {ShortnameToUC} from "../../shared/emojione-short";
+import {EmojiToUnicode} from "../../shared/emojione-short";
 
 @Component({
   selector: 'app-chat-addmessage',
@@ -16,7 +16,7 @@ export class ChatAddmessageComponent implements OnInit {
   // create a reference to messageText inside the template
   @ViewChild('messageText') private messageText: ElementRef;
 
-  constructor(private emojitransformer: ShortnameToUC) { }
+  constructor(private emojitransformer: EmojiToUnicode) { }
 
   ngOnInit() {
   }
