@@ -17,7 +17,7 @@
 -> AW
 
 - TODO: @types/emojione types selber definieren wegen fehlenden vollst. Types
--> AW
+-> AW (remove npm unisntall emojione and uninstall types)
 
 - TODO: puppeteer: ev. kann man den Code noch effizienter schreiben (Prio 1.5)
 -> AW/CF
