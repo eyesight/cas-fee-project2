@@ -19,8 +19,8 @@ export class ChatAddmessageComponent implements OnInit {
 
   constructor(private emojitransformer: EmojiToUnicode
     , private alertService: AlertService
-    , private ams: AlertMessagesService)
-  { }
+    , private ams: AlertMessagesService) {
+  }
 
   ngOnInit() {
   }
@@ -30,7 +30,7 @@ export class ChatAddmessageComponent implements OnInit {
     if (!newItemText) {
       return;
     }
-    // 5000 characters are enough - dont wann crash the system or the db
+    // 5000 characters are enough - dont want to crash the system or the db
     if (newItemText.length > 5000) {
       this.alertService.error(this.ams.MessagesError.chatMaxLength, true);
       return;

@@ -12,12 +12,21 @@ fdescribe('ChatDateComponent', () => {
   let fixture: ComponentFixture<ChatDateComponent>;
   const today = new Date();
   const yesterday =  new Date(Date.now() + -1 * 24 * 3600 * 1000);
-  const lastTuesday =  new Date('2017-11-21');
+  // const lastTuesday =  new Date('2017-11-21');
 
+  const weekDayText = [
+    'letzten Montag'
+  , 'letzten Dienstag'
+  , 'letzten Mittwoch'
+  , 'letzten Donnerstag'
+  , 'letzten Freitag'
+  , 'letzten Samstag'
+  , 'letzten Sonntag'
+  ];
+
+  // today and yesterday are not interesting
   const before2days = new Date(new Date().getTime() - 60 * 60 * 24 * 2 * 1000)
-    , day = before2days.getDay()
-    , diffToMonday = before2days.getDate() - day + (day === 0 ? -6 : 1)
-    , lastMonday = new Date(before2days.setDate(diffToMonday))
+    , day = before2days.getDay();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -45,10 +54,10 @@ fdescribe('ChatDateComponent', () => {
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('.zz-chat__date').textContent).toBe('Gestern') ;
   });
-  it('should have correct date last Monday: ' + lastMonday, () => {
-    console.log('lastMonday:' + new Date(lastMonday));
-    fixture.componentInstance.messageItem = new MessageDateBlock(new Date(lastMonday));
+  it('should have correct date : ' + weekDayText[day - 1], () => {
+    console.log('last...day:' + new Date(new Date().getTime() - 60 * 60 * 24 * 2 * 1000));
+    fixture.componentInstance.messageItem = new MessageDateBlock(new Date(new Date().getTime() - 60 * 60 * 24 * 2 * 1000));
     fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('.zz-chat__date').textContent).toBe('letzten Montag') ;
+    expect(fixture.nativeElement.querySelector('.zz-chat__date').textContent).toBe(weekDayText[day - 1]) ;
   });
 });

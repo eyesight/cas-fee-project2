@@ -1,7 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChatAddmessageComponent } from './chat-addmessage.component';
-import {EmojiToUnicode} from "../../shared/emoji-to-unicode";
+import {EmojiToUnicode} from '../../shared/emoji-to-unicode';
+import {AlertMessagesService} from '../../_services/alert-messages.service';
+import {AlertService} from '../../_services/alert.service';
+import {RouterTestingModule} from "@angular/router/testing";
 
 fdescribe('ChatAddmessageComponent', () => {
   let component: ChatAddmessageComponent;
@@ -10,7 +13,8 @@ fdescribe('ChatAddmessageComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ChatAddmessageComponent ],
-      providers: [EmojiToUnicode]
+      providers: [EmojiToUnicode, AlertService, AlertMessagesService],
+      imports: [RouterTestingModule.withRoutes([])]
     })
     .compileComponents();
   }));

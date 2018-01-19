@@ -13,9 +13,6 @@
 - TODO: (auch wegen IE)  avatars png/jpg Thematik
 -> AW
 
-- TODO: put - Request beim Approven so anpassen, dass /:id mitgegeben wird von user
--> AW
-
 - TODO: puppeteer: ev. kann man den Code noch effizienter schreiben (Prio 1.5)
 -> AW/CF
 
@@ -43,7 +40,7 @@
 - TODO: alle Files nochmals durchgehen und finally alle Consolen wegschmeissen
 -> CF
 
-- TODO: wichtige Punkte erwähnen?
+- TODO: wichtige aber unsichtbare Punkte erwähnen?
 : clientseitige imagecompression, wenig codebloat: bootstrap nur grid, no ng-material,
  e2e_puppeter (ev. altes e2e dir löschen), Chat: reagiert wenn Server Off/Online
 -> CF 
@@ -237,3 +234,6 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
 
 - TODO: @types/emojione types selber definieren wegen fehlenden vollst. Types
 -> AW (remove npm unisntall emojione and uninstall types)
+
+- TODO: put - Request beim Approven so anpassen, dass /:id mitgegeben wird von user
+-> AW
