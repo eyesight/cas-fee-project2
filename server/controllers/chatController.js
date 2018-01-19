@@ -1,4 +1,3 @@
-
 "use strict";
 const socketioJwt = require('socketio-jwt');
 const cryptoUtil = require('../util/cryptoUtil');
@@ -49,9 +48,13 @@ module.exports.chat = function (io) {
             }
             // this is the callback
             dbChat.insertMessage(email, msg, (err, doc) => {
-            //  "Message recieved!", socket.decoded_token.name
+              //  "Message recieved!", socket.decoded_token.name
               if (err) {
-                callback(500, err);
+                if (err) {
+                  callback(err, false);
+                } else {
+                  callback(500, err);
+                }
               } else {
                 callback(200, {'server_saved_at': doc.saved_at});
               }
@@ -85,7 +88,7 @@ module.exports.getMessages = function (req, res) {
       });
     } else {
       console.log('chat: not authorized');
-      res.status(403).json(false);
+      res.status(401).json(false);
 
     }
   })

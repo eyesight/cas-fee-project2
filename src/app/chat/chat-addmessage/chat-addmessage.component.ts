@@ -33,9 +33,9 @@ export class ChatAddmessageComponent implements OnInit {
     this.send.emit(msg);
     this.messageText.nativeElement.value = '';
   }
-  //
-  // public  onSubmit( event: Event) {
-  //   event.preventDefault();
-  // }
+
+  public  onSubmit( event: Event) {
+    event.preventDefault();
+  }
 
 }

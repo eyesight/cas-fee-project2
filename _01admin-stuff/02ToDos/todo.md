@@ -16,9 +16,6 @@
 - TODO: put - Request beim Approven so anpassen, dass /:id mitgegeben wird von user
 -> AW
 
-- TODO: @types/emojione types selber definieren wegen fehlenden vollst. Types
--> AW (remove npm unisntall emojione and uninstall types)
-
 - TODO: puppeteer: ev. kann man den Code noch effizienter schreiben (Prio 1.5)
 -> AW/CF
 
@@ -236,3 +233,7 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
 
 - TODO (impressumg und ABGS): Lorem Ipsum text
 -> AW/CF
+
+
+- TODO: @types/emojione types selber definieren wegen fehlenden vollst. Types
+-> AW (remove npm unisntall emojione and uninstall types)

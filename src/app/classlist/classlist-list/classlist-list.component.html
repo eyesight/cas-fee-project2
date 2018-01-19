@@ -37,7 +37,7 @@
   </thead>
   <tbody>
   <tr class="table--confirmed" [ngClass]="{'zz-table--me' : userCurrent.email === item.email}"
-      *ngFor="let item of classlistList">
+       *ngFor="let item of (classlistList ? classlistList : [] ) ">
     <td scope="row">
       <div [routerLink]="['detail', item.id]" class="zz-table__img-wrapper">
         <img class="zz-table__img zz-table__anchor" alt="Profilbild" [src]="item?.user_avatar" *ngIf="item?.user_avatar; else falsyTemplate">

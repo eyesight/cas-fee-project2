@@ -75,9 +75,9 @@ export class ClasslistComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.avatarSub.unsubscribe();
-    this.classlistAvatars.unsubscribe();
-    this.userContentSub.unsubscribe();
+    if (this.avatarSub) { this.avatarSub.unsubscribe(); }
+    if (this.classlistAvatars) { this.classlistAvatars.unsubscribe(); }
+    if (this.userContentSub) { this.userContentSub.unsubscribe(); }
   }
 
   public approveAnswer(val: boolean) {

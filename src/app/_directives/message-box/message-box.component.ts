@@ -11,16 +11,18 @@ export class MessageBoxComponent {
   public messageText: string = null;
 
   public subject: any;
-  public callback: (boolean, T) => void;
+  public origin: boolean;
+  public callback: (o: boolean, d: boolean, T) => void;
 
   constructor() {
   }
 
-  public showMBox<T>(msg: string, subject: T, callback: (d: boolean, sub: T) => void ) {
+  public showMBox<T>(msg: string, o: boolean, subject: T, callback: (o: boolean, d: boolean, sub: T) => void ) {
     this.messageText = msg;
     this.show();
     this.subject = subject;
     this.callback = callback;
+    this.origin = o;
   }
 
   nok() {
@@ -33,7 +35,7 @@ export class MessageBoxComponent {
   }
   sendAnswer(decision: boolean) {
     if (this.callback) {
-      this.callback(decision, this.subject );
+      this.callback(this.origin, decision, this.subject );
     }
   }
 

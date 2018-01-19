@@ -64,11 +64,12 @@ function insertMessage(email, req, callback) {
   const chatModel = chatFromJson(req);
 
   dbUser.getUserIdByEmail(email, function (err, doc) {
-    if ((doc === null ) && !err) {
+    if ((doc === null ) || err || doc[0].id == undefined) {
       callback('401', 'unauthorized');
+      return;
     }
 
-    //console.dir(req);
+    console.dir('userid:' + doc[0].id);
     const userId = doc[0].id;
     const classId = doc[0].class_id;
     chatModel.user_id = userId;
@@ -92,7 +93,7 @@ function insertMessage(email, req, callback) {
 
     insertMessageDb(userId, classId, chatModel, function (err, doc) {
       if ((doc === null ) && !err) {
-        callback('500', 'cant insert message to database');
+        callback('500', false);
       }
       else {
         //  console.dir(doc);

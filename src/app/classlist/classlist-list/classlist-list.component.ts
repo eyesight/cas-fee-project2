@@ -78,15 +78,15 @@ export class ClasslistListComponent implements OnDestroy {
     this.canDeactivate = false;
     this.canDeactivateSend(this.canDeactivate);
 
-    // callback callbed by messageBox which gets d = decision, s = subject (= User)
-    const fnCallback = (d: boolean, s: User) => {  this.sendAnswer(checked.target.checked, d, s); }
+    // callback callbed by messageBox which gets o = original value, d = decision, s = subject (= User)
+    const fnCallback = (o: boolean, d: boolean, s: User) => {  this.sendAnswer(o, d, s); }
     if (checked.target.checked) {
      // this.alert.show('Möchten Sie die Person wirklich bestätigen?', true);
-      this.alert.showMBox<User>('Möchten Sie die Person wirklich bestätigen?', item, fnCallback);
+      this.alert.showMBox<User>('Möchten Sie die Person wirklich bestätigen?', checked.target.checked, item, fnCallback);
     } else {
       // this.alert.show('Möchten Sie die Person wirklich ablehnen? Person kann danach das System nicht mehr benutzen', false);
       this.alert.showMBox<User>('Möchten Sie die Person wirklich ablehnen? Person kann danach das System nicht mehr benutzen?'
-        , item, fnCallback);
+        , checked.target.checked, item, fnCallback);
     }
   }
 
@@ -94,8 +94,8 @@ export class ClasslistListComponent implements OnDestroy {
     let key: number = item.id;
     this.canDeactivate = true;
     if (Number(event.target.id) === key) {
-      this.alert.showMBox<User>('Möchten Sie die Person wirklich löschen?', item, (d, s) => {
-        (d) ? this.toDelete(key) : key = NaN;
+      this.alert.showMBox<number>('Möchten Sie die Person wirklich löschen?', false, key, (o,d, k) => {
+        (d) ? this.toDelete(k) : k = NaN;
         this.canDeactivateSend(this.canDeactivate);
       });
     } else {

@@ -90,13 +90,13 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     console.log('Chat: ng destroy');
-    this.socketSub.unsubscribe();
-    this.chatAuthSub.unsubscribe();
-    this.chatErrorSub.unsubscribe();
-    this.chatConnectionStateSub.unsubscribe();
-    this.chatSub.unsubscribe();
-    this.resendSub.unsubscribe();
-    this.userContentSub.unsubscribe();
+    if (this.socketSub) { this.socketSub.unsubscribe(); }
+    if (this.chatAuthSub) { this.chatAuthSub.unsubscribe(); }
+    if (this.chatErrorSub) { this.chatErrorSub.unsubscribe(); }
+    if (this.chatConnectionStateSub) { this.chatConnectionStateSub.unsubscribe(); }
+    if (this.chatSub) { this.chatSub.unsubscribe(); }
+    if (this.resendSub) { this.resendSub.unsubscribe(); }
+    if (this.userContentSub) { this.userContentSub.unsubscribe(); }
 
   }
 
@@ -104,6 +104,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     if (this.socketSub) {
       this.socketSub.unsubscribe();
     }
+    // get all messages for me (initial load)
     this.socketSub = this.chatService.load()
       .subscribe((result) => {
         if (!result) {
@@ -118,6 +119,13 @@ export class ChatComponent implements OnInit, OnDestroy {
         }
 
         this.messageItem = this.createMessageDateBlock();
+      },  error => {
+        if (error.toString().match(/401/g)) {
+          this.alertService.error(this.ams.MessagesError.authorization, true);
+          this.router.navigate(['/relogin']);
+        } else {
+          this.alertService.error(this.ams.MessagesError.error, true);
+        }
       });
   }
 
@@ -161,9 +169,15 @@ export class ChatComponent implements OnInit, OnDestroy {
         this.updateMessage(newMessage, newMessage.client_uuid);
       })
       .catch((err) => {
-        //   this.alertService.error('Fehler beim Senden',false, 1000);
-
-        console.log('Promise reject on chatServie.sendMessage');
+        if (err.toString().match(/401/g)) {
+          this.alertService.error(this.ams.MessagesError.authorization, true);
+          this.router.navigate(['/relogin']);
+        } else {
+          if (this.connectionState) {
+            this.alertService.error(this.ams.MessagesError.error, true);
+          }
+        }
+        console.log('Promise reject on chatServie.sendMessage:' + err.toString());
       });
 
   }
