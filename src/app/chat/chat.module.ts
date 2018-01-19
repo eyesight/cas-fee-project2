@@ -12,7 +12,7 @@ import { ProperTimePipe } from './services/proper-time.pipe';
 import { DirectivesModule } from '../_directives/directives.module';
 import { SocketWrapper } from '../_services/socket-wrapper.service';
 import { PersonalDetailsContainerModule } from '../personal-details-container/personal-details-container.module';
-import { EmojiToUnicode } from '../shared/emoji-to-unicode';
+import { EmojiToUnicode } from '../_services/emoji-to-unicode';
 
 
 

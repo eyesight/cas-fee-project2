@@ -29,7 +29,7 @@ import {AlertMessagesService} from "../_services/alert-messages.service";
 import {ClasslistAvatarService} from "../_services/user-classlist-avatars.service";
 import {ClasslistAvatarServiceMock} from "../_services/user-classlist-avatars.service.mock";
 import {UserContentServiceMock} from "../_services/user-content.service.mock";
-import {EmojiToUnicode} from "../shared/emoji-to-unicode";
+import {EmojiToUnicode} from "../_services/emoji-to-unicode";
 
 
 fdescribe('ChatComponent', () => {
