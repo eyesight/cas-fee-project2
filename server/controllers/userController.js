@@ -54,8 +54,13 @@ module.exports.getAllUserContents = function (req, res) {
 
 
 module.exports.approveUser = function (req, res) {
-  console.log('Approve User');
-  dbUser.approveUser(req.user.name, req, function (err, order) {
+  console.log('Approve User: ' + req.body.approve + ' :: ' + req.params.id);
+
+  if (req.body.approve === undefined || req.params.id === 0 ) {
+    res.status(500).json(false);
+    return;
+  }
+  dbUser.approveUser(req.params.id, req.user.name, req.body.approve, function (err, order) {
     console.log('err:' + err);
     if (err) {
       res.status(err).json(false);

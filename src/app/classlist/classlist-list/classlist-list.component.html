@@ -37,7 +37,7 @@
   </thead>
   <tbody>
   <tr class="table--confirmed" [ngClass]="{'zz-table--me' : userCurrent.email === item.email}"
-      *ngFor="let item of classlistList">
+       *ngFor="let item of (classlistList ? classlistList : [] ) ">
     <td scope="row">
       <div [routerLink]="['detail', item.id]" class="zz-table__img-wrapper">
         <img class="zz-table__img zz-table__anchor" alt="Profilbild" [src]="item?.user_avatar" *ngIf="item?.user_avatar; else falsyTemplate">
@@ -61,16 +61,14 @@
 
       <div *ngIf="userCurrent.email === item.email; else falsyTemplate"></div>
       <ng-template #falsyTemplate>
-      <!--  <app-message-box [userItem]="item" (answer)="sendAnswer($event)"></app-message-box> -->
         <input class="table__checkbox" type="checkbox" aria-label="bestaetigung" [checked]="item.is_approved"
                (change)="showAlertApprove(item, $event)">
-        <!-- onChecked(item, $event) -->
       </ng-template>
     </td>
     <td *ngIf="userCurrent.is_teacher">
       <div *ngIf="userCurrent.email === item.email; else falsyTemplate"></div>
       <ng-template #falsyTemplate>
-        <button class="zz-btn zz-btn--primary" [id]="item.id" (click)="showAlertDelete(item, $event)">löschen</button>
+        <button class="zz-btn zz-btn--primary" [ngClass]="{'zz-btn__disabled' : item.is_approved}" [id]="item.id" (click)="showAlertDelete(item, $event)">löschen</button>
       </ng-template>
     </td>
   </tr>

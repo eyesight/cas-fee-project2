@@ -29,6 +29,7 @@ import {AlertMessagesService} from "../_services/alert-messages.service";
 import {ClasslistAvatarService} from "../_services/user-classlist-avatars.service";
 import {ClasslistAvatarServiceMock} from "../_services/user-classlist-avatars.service.mock";
 import {UserContentServiceMock} from "../_services/user-content.service.mock";
+import {EmojiToUnicode} from "../shared/emoji-to-unicode";
 
 
 fdescribe('ChatComponent', () => {
@@ -40,7 +41,7 @@ fdescribe('ChatComponent', () => {
       declarations: [ChatComponent, ProperTimePipe, FromNowPipe, ChatDateComponent, ChatMessageComponent, ChatAddmessageComponent,
         PersonalDetailsContainerComponent, AppScrollBottomDirective],
       providers: [AuthenticationService, MockBackend, BaseRequestOptions, ChatService,
-        SocketWrapper, AppConfigClass, StorageService, AlertService, AlertMessagesService, DbServiceUserContent,
+        SocketWrapper, AppConfigClass, StorageService, AlertService, AlertMessagesService, DbServiceUserContent, EmojiToUnicode,
         {provide: HttpWrapper, useClass: HttpWrapperServiceMock},
         {provide: UserAuthService, useClass: UserAuthServiceMock},
         {provide: UserContentService, useClass: UserContentServiceMock},

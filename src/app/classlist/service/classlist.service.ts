@@ -34,21 +34,20 @@ export class ClasslistService {
     return user;
   }
 
-  public approveUser( user: User, approve: number): Observable<any>  {
+  public approveUser( userId: number, approve: number): Observable<any>  {
 
     const userApprove: UserApprove = new UserApprove;
-    userApprove.email = user.email;
+   // userApprove.email = user.email;
     userApprove.approve = approve;
 // instead of json use JSON.strinfiy
-    // TODO: use correct REST API Syntac: provide the user as parameter in the url like on delete
-    return this.httpWrp.put('/api/user/approve', userApprove)
+    return this.httpWrp.put('/api/user/approve/' + userId, userApprove)
       .map((x) => x);
   }
 
-  public deleteUser(key: number): Observable<any>  {
-    console.log('classlistservice:' + key);
+  public deleteUser(userId: number): Observable<any>  {
+    console.log('classlistservice:' + userId);
 // instead of json use JSON.strinfiy
-    return this.httpWrp.delete('/api/user/' + key)
+    return this.httpWrp.delete('/api/user/' + userId)
       .map((x) => x);
   }
 }

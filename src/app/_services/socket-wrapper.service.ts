@@ -97,7 +97,7 @@ export class SocketWrapper {
           console.log('swrp.send:' + resp);
           if (resp !== 200) {
             console.log('socket-wrapper: sendPro: on socket.emit error:' + resp);
-            reject('error');
+            reject(resp);
           } else {
             resolve(name);
           }

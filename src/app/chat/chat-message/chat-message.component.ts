@@ -32,7 +32,7 @@ export class ChatMessageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-     this.clavSub.unsubscribe();
+     if (this.clavSub) { this.clavSub.unsubscribe(); }
   }
 
    private getAvatarFromEmail(email: string) {

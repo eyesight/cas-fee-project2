@@ -30,7 +30,9 @@
       @extend .helper-underline-none;
     }
   }
-  &:disabled{
+
+  &:disabled,
+  &__disabled{
     background-color: $color-primary-70;
     &:hover,
     &:focus{

@@ -275,7 +275,11 @@ function getUserIdByEmail(email, callback) {
           err = 'SQL SEVERE ERROR: more than one entry for user.email:' + email;
         }
       }
-      callback(err, newDoc);
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(err, newDoc);
+      }
     }
   });
 }
@@ -345,8 +349,9 @@ function getAvatarFilenamesByEmail(email, callback) {
     });
 }
 
-
-function approveUser(username, req, callback) {
+// userId is the user to approve
+// username is the teacher (taken from jwt)
+function approveUser(userId, username, approve, callback) {
 
   console.log('approveUser - teacher:+' + username);
   // get teacher infos
@@ -359,23 +364,24 @@ function approveUser(username, req, callback) {
         callback(err, doc);
       }
       else {
-        const userEmail = req.body.email;
-        const approve = req.body.approve;
+       // const userEmail = req.body.email;
+       // const approve = req.body.approve;
 
-        if (doc[0].is_teacher && doc[0].class_id && userEmail
+        if (doc[0].is_teacher && doc[0].class_id && userId
           && doc[0].is_teacher === 1
           && (approve === 1 || approve === 0)) {
-          console.log('teacher :' + username + ' approves user:' + userEmail + ' to : ' + approve);
+          console.log('teacher :' + username + ' approves userId:' + userId + ' to : ' + approve);
 
-          const sf = 'update users set is_approved = ? where email = ? and class_id = ?';
+          const sf = 'update users set is_approved = ? where id = ? and class_id = ?';
 
-          return db.query(sf, [approve, userEmail, doc[0].class_id], function (err2, newDoc) {
+          return db.query(sf, [approve, userId, doc[0].class_id], function (err2, newDoc) {
 
             if (callback) {
               if (newDoc) {
                 if (newDoc.affectedRows !== 1) {
-                  newDoc = 'ASAS SQL SEVERE ERROR: more than one entry for user.email:' + userEmail;
+                  newDoc = 'ASAS SQL SEVERE ERROR: more than one entry for user.id:' + userId;
                   err = 400;
+
                 }
               }
               callback(err, newDoc);
