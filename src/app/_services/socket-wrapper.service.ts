@@ -82,8 +82,7 @@ export class SocketWrapper {
     if (this.connectionState) {
       return this.socket.emit(this.channelSend, msg, callback);
     } else {
-      throw new Error('no connection : message isnt send - socket.io has a problem that is sometimes ' +
-        ' looses messages once getting online again -> so thats why we dont even retry to send - cant take this responsibility');
+      throw new Error('no connection : message has not been sent');
     }
 
 

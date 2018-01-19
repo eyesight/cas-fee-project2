@@ -129,6 +129,8 @@ export class ChatComponent implements OnInit, OnDestroy {
       });
   }
 
+  // socket.io has a problem that is sometimes
+  // looses messages once getting online again -> so thats why we need to use own logic for resending
   private onResend(): Subscription {
 
     return Observable.interval(5000)

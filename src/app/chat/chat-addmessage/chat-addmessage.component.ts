@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output, ViewChild, ElementRef, Input} from '@angular/core';
 import { ChatMessage } from '../../_models/message.model';
-import { EmojiToUnicode } from '../../shared/emoji-to-unicode';
+import { EmojiToUnicode } from '../../_services/emoji-to-unicode';
 import {AlertService} from "../../_services/alert.service";
 import {AlertMessagesService} from "../../_services/alert-messages.service";
 
