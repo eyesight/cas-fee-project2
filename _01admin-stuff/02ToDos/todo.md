@@ -45,6 +45,11 @@
 
 - TODO: alle Files nochmals durchgehen und finally alle Consolen wegschmeissen
 -> CF
+
+- TODO: wichtige Punkte erwähnen?
+: clientseitige imagecompression, wenig codebloat: bootstrap nur grid, no ng-material,
+ e2e_puppeter (ev. altes e2e dir löschen), Chat: reagiert wenn Server Off/Online
+-> CF 
   
 --------------------------------------------------------------------------------
 Prio 2
