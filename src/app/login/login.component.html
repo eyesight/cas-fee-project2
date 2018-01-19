@@ -2,7 +2,7 @@
     <img src="assets/img/Logo.svg" alt="" class="zz-logo__img">
   </p>
   <div class="row justify-content-center zz-layout__row">
-    <main class="col-11 col-lg-8 col-xl-5 zz-mod-container">
+    <main role="main" class="col-11 col-lg-8 col-xl-5 zz-mod-container">
       <div class="zz-mod-box">
         <h1 class="zz-title zz-title--insideBox">Anmelden</h1>
         <form name="form" [formGroup]="loginForm" (ngSubmit)="loginForm.valid && login()" novalidate class="zz-form">

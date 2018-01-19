@@ -1,8 +1,4 @@
 #TODO
-- TODO: FOUT berücksichtigen für das Laden eines Webfonts (=auf Folien unterricht), https://css-tricks.com/fout-foit-foft/
--- Klass setzen mit fallback schrift und asny. nachladen, so dass Seitenaufbau nicht blockiert
--> AW+CF  (Prio 1.5)
-
 - TODO: Refactoring
 -> AW/CF
 
@@ -35,7 +31,7 @@
 -> AW
 
 - TODO: alles nochmals neu installieren auf einem anderen Compi.
--> AW
+-> AW/CF
   
 - TODO: Test bricht wenn am Montag oder Dientag gestartet
 -> AW 
@@ -231,3 +227,7 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
 
 - TODO (impressumg und ABGS): Lorem Ipsum text
 -> AW/CF
+
+- TODO: FOUT berücksichtigen für das Laden eines Webfonts (=auf Folien unterricht), https://css-tricks.com/fout-foit-foft/
+-- Klass setzen mit fallback schrift und asny. nachladen, so dass Seitenaufbau nicht blockiert
+-> AW+CF  (Prio 1.5)
