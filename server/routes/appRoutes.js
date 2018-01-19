@@ -15,7 +15,7 @@ router.put("/user/update", userController.updateUser);
 router.get("/user/show", userController.getAllUserDetails);
 router.put("/user/avatar", avatarController.avatarUpload);
 router.get("/user/contents", userController.getAllUserContents);
-router.put("/user/approve", userController.approveUser);
+router.put("/user/approve/:id", userController.approveUser);
 router.delete("/user/:id", userController.deleteUser);
 router.put("/user/passwordchange", security.handlePasswordChange);
 router.get("/chat/getall", chatController.getMessages);

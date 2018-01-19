@@ -143,7 +143,7 @@ export class ClasslistListComponent implements OnDestroy {
   }
 
   public onChecked(item: User, checked: boolean) {
-    this.approveSub = this.classlistService.approveUser(item, (checked === true ? 1 : 0))
+    this.approveSub = this.classlistService.approveUser(item.id, (checked === true ? 1 : 0))
       .subscribe((x) => {
           console.log('classlistService.approveUser succesfull');
         },

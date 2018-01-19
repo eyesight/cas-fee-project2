@@ -30,6 +30,10 @@
       @extend .helper-underline-none;
     }
   }
+  &__opaque {
+    opacity:0.5;
+  }
+
   &:disabled{
     background-color: $color-primary-70;
     &:hover,

@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChatAddmessageComponent } from './chat-addmessage.component';
+import {EmojiToUnicode} from "../../shared/emoji-to-unicode";
 
 fdescribe('ChatAddmessageComponent', () => {
   let component: ChatAddmessageComponent;
@@ -8,7 +9,8 @@ fdescribe('ChatAddmessageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChatAddmessageComponent ]
+      declarations: [ ChatAddmessageComponent ],
+      providers: [EmojiToUnicode]
     })
     .compileComponents();
   }));

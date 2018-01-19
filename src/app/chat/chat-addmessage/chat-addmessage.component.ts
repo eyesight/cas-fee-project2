@@ -1,6 +1,8 @@
 import {Component, EventEmitter, OnInit, Output, ViewChild, ElementRef, Input} from '@angular/core';
 import { ChatMessage } from '../../_models/message.model';
 import { EmojiToUnicode } from '../../shared/emoji-to-unicode';
+import {AlertService} from "../../_services/alert.service";
+import {AlertMessagesService} from "../../_services/alert-messages.service";
 
 @Component({
   selector: 'app-chat-addmessage',
@@ -15,7 +17,10 @@ export class ChatAddmessageComponent implements OnInit {
   // create a reference to messageText inside the template
   @ViewChild('messageText') private messageText: ElementRef;
 
-  constructor(private emojitransformer: EmojiToUnicode) { }
+  constructor(private emojitransformer: EmojiToUnicode
+    , private alertService: AlertService
+    , private ams: AlertMessagesService)
+  { }
 
   ngOnInit() {
   }
@@ -25,6 +30,12 @@ export class ChatAddmessageComponent implements OnInit {
     if (!newItemText) {
       return;
     }
+    // 5000 characters are enough - dont wann crash the system or the db
+    if (newItemText.length > 5000) {
+      this.alertService.error(this.ams.MessagesError.chatMaxLength, true);
+      return;
+    }
+
     const msg = new ChatMessage();
     // convert text like :-) to real smiley
     msg.message = this.emojitransformer.transform(newItemText);

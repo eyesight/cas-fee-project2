@@ -37,7 +37,6 @@ export class UserAuth {
 }
 
 export class UserApprove {
-  email: string;
   approve: number;
 }
 

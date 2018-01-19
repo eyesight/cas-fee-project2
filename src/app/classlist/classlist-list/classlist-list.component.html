@@ -61,16 +61,14 @@
 
       <div *ngIf="userCurrent.email === item.email; else falsyTemplate"></div>
       <ng-template #falsyTemplate>
-      <!--  <app-message-box [userItem]="item" (answer)="sendAnswer($event)"></app-message-box> -->
         <input class="table__checkbox" type="checkbox" aria-label="bestaetigung" [checked]="item.is_approved"
                (change)="showAlertApprove(item, $event)">
-        <!-- onChecked(item, $event) -->
       </ng-template>
     </td>
     <td *ngIf="userCurrent.is_teacher">
       <div *ngIf="userCurrent.email === item.email; else falsyTemplate"></div>
       <ng-template #falsyTemplate>
-        <button class="zz-btn zz-btn--primary" [id]="item.id" (click)="showAlertDelete(item, $event)">löschen</button>
+        <button class="zz-btn zz-btn--primary" [ngClass]="{'zz-btn__opaque' : item.is_approved}" [id]="item.id" (click)="showAlertDelete(item, $event)">löschen</button>
       </ng-template>
     </td>
   </tr>
