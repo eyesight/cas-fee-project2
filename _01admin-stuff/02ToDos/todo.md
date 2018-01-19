@@ -39,7 +39,8 @@
 
 - TODO: wichtige aber unsichtbare Punkte erwähnen?
 : clientseitige imagecompression, wenig codebloat: bootstrap nur grid, no ng-material,
- e2e_puppeter (ev. altes e2e dir löschen), Chat: reagiert wenn Server Off/Online
+ e2e_puppeter (ev. altes e2e dir löschen), Chat: reagiert wenn Server Off/Online,
+
 -> CF 
   
 --------------------------------------------------------------------------------
