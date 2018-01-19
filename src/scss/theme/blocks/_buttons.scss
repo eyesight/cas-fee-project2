@@ -32,8 +32,10 @@
   }
 
   &:disabled,
-  &__disabled{
+  &--disabled {
     background-color: $color-primary-70;
+  }
+  &:disabled{
     &:hover,
     &:focus{
       cursor:not-allowed;
