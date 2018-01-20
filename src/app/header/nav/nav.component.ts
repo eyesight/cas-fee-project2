@@ -30,6 +30,9 @@ export class NavComponent implements OnInit, OnDestroy {
   public ngOnInit() {
     console.log('nav.component ngOnInit');
     this.userContent = null;
+    if (this.userContentSub) {
+      this.userContentSub.unsubscribe();
+    }
     this.userContentSub = this.userContentService.getCurrentUserObserver().subscribe((userContent) => {
       console.log('nav.component ngOnInit inside observer');
       this.userContent = userContent;
