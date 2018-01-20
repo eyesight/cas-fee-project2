@@ -7,20 +7,20 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './profile-email-change.component.html',
   animations: [overlayAnimation]
 })
+
 export class ProfileEmailChangeComponent implements OnInit {
   @HostBinding('@overlayAnimation') overlayAnimation;
 
   public emailForm: FormGroup;
 
   constructor(
-    private fb: FormBuilder
-  ) { }
+    private fb: FormBuilder) { }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.buildForm();
   }
 
-  buildForm() {
+  private buildForm() {
     this.emailForm = this.fb.group({
       newEmail: ['', [Validators.required, Validators.email]],
       reason: ['', [Validators.required]]

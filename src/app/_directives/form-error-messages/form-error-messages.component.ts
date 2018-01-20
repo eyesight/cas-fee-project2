@@ -23,13 +23,13 @@ export class FormErrorMessagesComponent {
   @Input()
   private control: AbstractControlDirective | AbstractControl;
 
-  shouldShowErrors(): boolean {
+  public shouldShowErrors(): boolean {
     return this.control &&
       this.control.errors &&
       (this.control.dirty || this.control.touched);
   }
 
-  listOfErrors(): string[] {
+  public listOfErrors(): string[] {
     return Object.keys(this.control.errors)
       .map(field => this.getMessage(field, this.control.errors[field]));
   }

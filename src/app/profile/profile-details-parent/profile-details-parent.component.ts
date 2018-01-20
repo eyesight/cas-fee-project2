@@ -33,10 +33,9 @@ export class ProfileDetailsParentComponent implements OnInit {
     private userService: UserService,
     private userContentService: UserContentService,
     private fb: FormBuilder,
-    private alertMessagesService: AlertMessagesService
-  ) { }
+    private alertMessagesService: AlertMessagesService) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.userContent = this.UserContentService.getCurrentUser();
     this.buildForm();
   }
@@ -117,7 +116,7 @@ export class ProfileDetailsParentComponent implements OnInit {
         });
   }
 
-  buildForm() {
+  private buildForm() {
     this.parentDetailsForm = this.fb.group({
       parent_gender: [this.userContent.parent_gender, [Validators.required]],
       parent_forename: [this.userContent.parent_forename, [Validators.required, Validators.minLength(2)]],

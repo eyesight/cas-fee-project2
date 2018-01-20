@@ -15,11 +15,9 @@ module.exports.getAllUserDetails = function (req, res) {
   dbUser.getAllUserDetails(req.user.name, function (err, user) {
     if (err) {
       res.status(400).json(false);
-
     } else {
       res.json(user);
     }
-
   });
 };
 
@@ -33,7 +31,6 @@ module.exports.getAllUserContents = function (req, res) {
       return;
     }
     avatarController.avatarGet(req, (err, avatar, avatarfilename) => {
-
       console.log('getAllUserContents:after avatarget:' + user.email);
       // regex: $ matches end of string, i = ignore case
     if(avatarfilename){
@@ -41,17 +38,12 @@ module.exports.getAllUserContents = function (req, res) {
     }else{
       user.avatar_filetype = null;
     }
-
       user.user_avatar = avatar || null;
-
       res.json(user);
-
     });
     return;
-
   });
 };
-
 
 module.exports.approveUser = function (req, res) {
   console.log('Approve User: ' + req.body.approve + ' :: ' + req.params.id);
@@ -64,14 +56,11 @@ module.exports.approveUser = function (req, res) {
     console.log('err:' + err);
     if (err) {
       res.status(err).json(false);
-
     } else {
       res.json(true);
-
     }
   });
 };
-
 
 module.exports.deleteUser = function (req, res) {
   console.log('Delete User');
@@ -79,10 +68,8 @@ module.exports.deleteUser = function (req, res) {
     console.log('err:' + err);
     if (err) {
       res.status(err).json(false);
-
     } else {
       res.json(true);
-
     }
   });
 };

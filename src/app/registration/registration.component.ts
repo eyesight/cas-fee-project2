@@ -13,6 +13,7 @@ import {AlertMessagesService} from '../_services/alert-messages.service';
   selector: 'app-registration',
   templateUrl: './registration.component.html',
 })
+
 export class RegistrationComponent implements OnInit {
   public loading = false;
   public registrationForm: FormGroup;
@@ -45,7 +46,7 @@ export class RegistrationComponent implements OnInit {
     this.date = new Date(2012, 0, 1);
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.buildForm();
     this.getklasse();
     this.submitted = false;

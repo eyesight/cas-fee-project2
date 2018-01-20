@@ -1,8 +1,6 @@
-
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {MessageCallback, ChatMessage} from '../_models/message.model';
-
 import {HttpWrapper} from './http-wrapper.service';
 import {SocketWrapper} from './socket-wrapper.service';
 
@@ -82,7 +80,6 @@ export class ChatService {
     });
     return observable;
   }
-
 
   public sendMessage(msg: ChatMessage): Promise<MessageCallback> {
 

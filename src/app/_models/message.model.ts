@@ -1,4 +1,3 @@
-
 export class ChatMessage {
   client_uuid: number;
   email: string;
@@ -12,8 +11,8 @@ export class ChatMessage {
 
 export class MessageCallback {
   server_saved_at: string;
-
 }
+
 export class MessageDateBlock {
 
   date: Date;
@@ -26,7 +25,6 @@ export class MessageDateBlock {
     // causes to truncate time
     this.dateGroup = new Date(date.toDateString());
   }
-
 
 }
 

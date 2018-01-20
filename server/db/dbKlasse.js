@@ -37,7 +37,6 @@ function getAllKlasseData(callback) {
   });
 }
 
-
 function getKlasseListAll(email, callback) {
   console.log('getKlasseListAll:' + email);
   return db.query("select u.id, u.email,u.class_id, u.parent_surname, u.parent_forename, u.parent_forename, u.register_date, u.tel_private, u.tel_office, u.parent_language, " +

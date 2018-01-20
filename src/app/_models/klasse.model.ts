@@ -1,4 +1,3 @@
-
 // use flat model (=> no hierarchies)
 
 export class Klasse {

@@ -8,7 +8,7 @@ export class ProperDatePipe implements PipeTransform {
 
   constructor() {}
 
-  transform( date: string): string {
+  public transform( date: string): string {
     // return time as 14:53
     const ts = moment(date);
     if (date) {

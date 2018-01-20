@@ -7,7 +7,6 @@ import {CustomValidators} from '../../_validation/custom.validators';
 import {Router} from '@angular/router';
 import {AlertService, UserService, AlertMessagesService} from '../../_services/index';
 
-
 @Component({
   selector: 'app-profile-password-change',
   templateUrl: './profile-password-change.component.html',
@@ -28,7 +27,7 @@ export class ProfilePasswordChangeComponent implements OnInit {
               private alertMessagesService: AlertMessagesService) {
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.userContent = this.UserContentService.getCurrentUser();
     this.buildForm();
   }

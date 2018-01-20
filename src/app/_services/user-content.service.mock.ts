@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {User} from '../_models/user.model';
-
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import {HttpWrapper} from './http-wrapper.service';
@@ -10,7 +9,9 @@ import {DbServiceUserContent} from './user-content.service';
 @Injectable()
 export class UserContentServiceMock {
 
-  constructor( private httpWrp: HttpWrapper, private dbUserContent: DbServiceUserContent) {
+  constructor(
+    private httpWrp: HttpWrapper,
+    private dbUserContent: DbServiceUserContent) {
     console.log('UserContentServiceMock constructed');
 
   }
@@ -21,7 +22,6 @@ export class UserContentServiceMock {
     return this.httpWrp.get('/assets/mock/userContent.mock.json')
       .map((userContent: User) => {
         if (userContent) {
-          // console.dir(userContent);
           this.dbUserContent.saveCurrentData(userContent);
         }
         return userContent;
@@ -34,8 +34,6 @@ export class UserContentServiceMock {
   }
 
   public getCurrentUserObserver(): Observable<User> {
-   // return this.dbUserContent.getCurrentDataObserver();
-
     return new Observable((observer) => {
       try {
         // check if data is already available -> next it
@@ -55,9 +53,7 @@ export class UserContentServiceMock {
     });
   }
 
-
   public getCurrentUser(): User {
-    // console.log('userContentGetCurrentUser:' + this.userContentCache);
    return this.dbUserContent.getCurrentData();
   }
 

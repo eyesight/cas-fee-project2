@@ -11,8 +11,6 @@ import { NgDatepickerModule } from 'ng2-datepicker';
 
 import { PipesModule } from '../_pipes/pipes.module';
 
-
-
 @NgModule({
   imports: [
     CommonModule,

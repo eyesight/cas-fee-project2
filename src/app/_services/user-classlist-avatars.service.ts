@@ -1,7 +1,5 @@
-
 import {Inject, Injectable} from '@angular/core';
 import {UserClassListAvatars} from '../_models/user.model';
-
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import {HttpWrapper} from './http-wrapper.service';
@@ -30,11 +28,10 @@ export class DbServiceClasslistAvatar extends DbService<UserClassListAvatars[]> 
 @Injectable()
 export class ClasslistAvatarService {
 
-
-
-  constructor(private httpWrp: HttpWrapper
-    , private dbUserClAvatar: DbServiceClasslistAvatar
-    , private userContentService: UserContentService) {
+  constructor(
+    private httpWrp: HttpWrapper,
+    private dbUserClAvatar: DbServiceClasslistAvatar,
+    private userContentService: UserContentService) {
     console.log('UserContentService constructed');
 
     this.userContentService.getCurrentUserObserver().subscribe((userContent) => {
@@ -51,7 +48,6 @@ export class ClasslistAvatarService {
 
     const clAvatar = this.dbUserClAvatar.getCurrentData();
     if (clAvatar) {
-
       return new Observable((observer) => {
         try {
           observer.next(clAvatar);
@@ -69,7 +65,6 @@ export class ClasslistAvatarService {
         .map(result => result.classlistavatar)
         .map(( userAvatar: UserClassListAvatars[]) => {
           if (userAvatar) {
-            // console.dir(userContent);
             const avatars = this.prepareAvatars(userAvatar);
             this.dbUserClAvatar.saveCurrentData(avatars);
           }
@@ -82,9 +77,7 @@ export class ClasslistAvatarService {
     this.dbUserClAvatar.removeCurrentData();
   }
 
-
   private prepareAvatars(avatars: UserClassListAvatars[]): UserClassListAvatars[] {
-   // console.dir(avatars[1]);
     avatars
       .filter((x) => x !== null)
       .map((x) => {

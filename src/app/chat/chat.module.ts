@@ -14,8 +14,6 @@ import { SocketWrapper } from '../_services/socket-wrapper.service';
 import { PersonalDetailsContainerModule } from '../personal-details-container/personal-details-container.module';
 import { EmojiToUnicode } from '../_services/emoji-to-unicode';
 
-
-
 @NgModule({
   imports: [
     CommonModule,

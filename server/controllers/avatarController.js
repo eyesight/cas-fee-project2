@@ -1,10 +1,9 @@
-"use strict"
+"use strict";
 
 const multer = require('multer');
 const fs = require('fs');
 const dbUser = require("../db/dbUser");
 const util = require("../util/security");
-
 
 module.exports.avatarUpload = function (req, res) {
   let raw = new Buffer(req.body.avatar.value.toString(), 'base64');
@@ -19,7 +18,6 @@ module.exports.avatarUpload = function (req, res) {
     if (err) {
       console.log('avatarUpload: err:' + err);
       res.status(400).json(false);
-
     }
     else {
       dbUser.updateAvatarFilename(req.user.name, fullname, function (err) {
@@ -29,7 +27,6 @@ module.exports.avatarUpload = function (req, res) {
           res.json(true);
         }
       })
-
     }
   });
 };
@@ -55,8 +52,6 @@ module.exports.avatarGet = function (req, callback) {
         }
       }
     );
-
   });
-
 };
 

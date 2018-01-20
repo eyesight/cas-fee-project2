@@ -27,7 +27,6 @@ export class AlertMessagesService {
     login401: 'Der Benutzer ist nicht registriert oder das Passwort ist falsch',
     deleteUser400: 'Dieser Benutzer ist bestätigt. Um den Benutzer zu löschen müssen sie ihn zuerst sperren.',
     chatMaxLength: 'Ihr Text darf die Limite von 5000 Zeichen nicht überschreiben.'
-
   };
 }
 

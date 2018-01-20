@@ -69,12 +69,11 @@ module.exports.chat = function (io) {
       } else {
         console.log('chat: not authorized');
         socket.disconnect(
-
         );
       }
     });
   });
-}
+};
 
 module.exports.getMessages = function (req, res) {
   console.log('getMessages: req.user.name :' + req.user.name);
@@ -89,7 +88,6 @@ module.exports.getMessages = function (req, res) {
     } else {
       console.log('chat: not authorized');
       res.status(401).json(false);
-
     }
   })
 };

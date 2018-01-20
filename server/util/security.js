@@ -1,4 +1,4 @@
- "use strict";
+"use strict";
 const jwt = require('jsonwebtoken');
 const dbUser = require('../db/dbUser.js');
 const dbKlasse = require('../db/dbKlasse.js');
@@ -16,7 +16,6 @@ function isLoggedIn(req) {
 function currentUser(req) {
   console.log('currentUser:req.user.name:' + req.user.name);
   return req.user.name;
-
 }
 
 function createSessionToken(name, secret, options, callback) {
@@ -39,10 +38,8 @@ function handleRegister(req, res) {
   else {
     console.log('handleRegister is req.body:' + req.body.email);
     if (!req.body.email || !req.body.pwd) {
-      //console.dir(req);
       console.log('handleRegister neither email nor password');
       res.status("401").json(false);
-
     }
     else {
       dbUser.register(req, function (err, valid) {
@@ -125,7 +122,6 @@ function handlePasswordChange(req, res) {
     console.log('handlePasswordChange: new pwd is eq old pwd');
     res.status("401").json(false);
   }
-
 }
 
 function getUserRoles(email, callback) {
@@ -144,9 +140,7 @@ function getUserRoles(email, callback) {
         return;
       }
       callback('not authorized for main features', []);
-
     }
-
   });
 }
 function authorizeBackend(email, accessRight, callback) {
@@ -165,7 +159,6 @@ function authorizeBackend(email, accessRight, callback) {
         }
       }
       callback(false);
-
     }
   });
 }

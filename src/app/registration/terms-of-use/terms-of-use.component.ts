@@ -1,4 +1,4 @@
-import {Component, HostBinding, OnInit} from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { overlayAnimation } from '../../_animation/overlay.animation';
 
 @Component({
@@ -9,9 +9,8 @@ import { overlayAnimation } from '../../_animation/overlay.animation';
 export class TermsOfUseComponent implements OnInit {
   @HostBinding('@overlayAnimation') overlayAnimation;
 
-
   constructor() { }
 
-  ngOnInit() {
+  public ngOnInit() {
   }
 }

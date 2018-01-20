@@ -19,20 +19,20 @@ export class NavComponent implements OnInit, OnDestroy {
   public userAvatar: string;
   private userContentSub: Subscription = null;
 
-  constructor(private userContentService: UserContentService,
-              private authenticationService: AuthenticationService,
-              private classlistAvatarService: ClasslistAvatarService,
-              private router: Router  ) {
-    this.navItems = ROUTES.filter((route) => route.data);
+  constructor(
+    private userContentService: UserContentService,
+    private authenticationService: AuthenticationService,
+    private classlistAvatarService: ClasslistAvatarService,
+    private router: Router  ) {
+      this.navItems = ROUTES.filter((route) => route.data);
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     console.log('nav.component ngOnInit');
     this.userContent = null;
     this.userContentSub = this.userContentService.getCurrentUserObserver().subscribe((userContent) => {
       console.log('nav.component ngOnInit inside observer');
       this.userContent = userContent;
-     // this.userAvatar = 'data:image/png;base64,' + this.userContent.user_avatar;
       if (this.userContent.user_avatar) {
         this.userAvatar =  avatarHeader(this.userContent.avatar_filetype) + this.userContent.user_avatar;
         console.log('avatar yes');
@@ -45,7 +45,7 @@ export class NavComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy() {
     if (this.userContentSub) {
       this.userContentSub.unsubscribe();
     }

@@ -1,8 +1,6 @@
-
 import {Injectable} from '@angular/core';
 import {StorageService} from './storage.service';
 import {User} from '../_models/user.model';
-
 
 @Injectable()
 export class UserContentDbServiceMock {
@@ -17,7 +15,6 @@ export class UserContentDbServiceMock {
 
   public saveCurrentUser(data: User) {
     this.userContentCache = data;
-
   }
 
   public removeCurrentUser() {
@@ -31,6 +28,4 @@ export class UserContentDbServiceMock {
       return this.userContentCache;
     }
   }
-
-
 }

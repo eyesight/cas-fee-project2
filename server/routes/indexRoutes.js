@@ -1,7 +1,6 @@
 "use strict";
 const express = require('express');
 const indexController = require('../controllers/indexController');
-
 const router = express.Router();
 
 router.post('/api/register', function(req, res){

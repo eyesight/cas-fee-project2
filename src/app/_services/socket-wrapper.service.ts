@@ -1,8 +1,6 @@
-
 import {Injectable} from '@angular/core';
 import {AppConfigClass} from '../_helpers/app.config';
 import {UserAuthService} from './user-auth.service';
-
 import * as io from 'socket.io-client';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Observable} from 'rxjs/Observable';
@@ -24,7 +22,9 @@ export class SocketWrapper {
   private socketConnectionState = new BehaviorSubject<boolean>(false);
   private socketConnListener: Subscription;
 
-  constructor(private appConf: AppConfigClass, private userAuthService: UserAuthService) {
+  constructor(
+    private appConf: AppConfigClass,
+    private userAuthService: UserAuthService) {
   }
 
   public setup(chnReceive: string = channelReceiveMessage, chnSend: string = channelSendMessage) {
@@ -37,10 +37,8 @@ export class SocketWrapper {
     });
     this.socketConnListener = this.onConnection()
       .subscribe(state => {
-        //  console.log('connection:'  + state);
         if (this.connectionState !== state && state) {
           // reset buffer on once we connection back
-          // console.dir(this.socket);
           // this helps obviously that on emit the call always returns, after connection gets established again
           this.socket.sendBuffer = [];
         }
@@ -53,7 +51,6 @@ export class SocketWrapper {
       this.socket.on(socketConnect, () => this.socketConnectionState.next(true));
       this.socket.on(socketDisconnect, () => this.socketConnectionState.next(false));
       return this.socketConnectionState.asObservable();
-
     } else {
       return null;
     }
@@ -84,8 +81,6 @@ export class SocketWrapper {
     } else {
       throw new Error('no connection : message has not been sent');
     }
-
-
   }
 
   public sendPro<T>(msg): Promise<T> {

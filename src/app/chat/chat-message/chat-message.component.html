@@ -1,9 +1,7 @@
 <div class="zz-chat__window">
   <div class="zz-chat__sender">
-
     <div class="zz-table__line-wrapper zz-chat__sender-header">
       <div class="zz-table__img-wrapper">
-
         <img class="zz-table__img" alt="Profilbild" [src]="avatar?.avatar"
              *ngIf="avatar?.avatar; else falsyTemplate">
         <ng-template #falsyTemplate>

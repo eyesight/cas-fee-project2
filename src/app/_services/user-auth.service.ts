@@ -15,12 +15,10 @@ export class UserAuthService {
 
   constructor(private dbUser: DbServiceUserAuth) {
     console.log('User-AuthService constructed :' + this.dbUser.storageKey);
-
   }
 
   public saveCurrentUser(data: UserAuth) {
     this.dbUser.saveCurrentData(data);
-
   }
 
   public removeCurrentUser() {

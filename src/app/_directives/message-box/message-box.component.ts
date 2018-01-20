@@ -1,7 +1,6 @@
 
 import {Component} from '@angular/core';
 
-
 @Component({
   selector: 'app-message-box',
   templateUrl: './message-box.component.html'
@@ -9,7 +8,6 @@ import {Component} from '@angular/core';
 export class MessageBoxComponent {
   public hidden = true;
   public messageText: string = null;
-
   public subject: any;
   public origin: boolean;
   public callback: (o: boolean, d: boolean, T) => void;
@@ -25,24 +23,27 @@ export class MessageBoxComponent {
     this.origin = o;
   }
 
-  nok() {
+  public nok() {
     this.hide();
     this.sendAnswer(false);
   }
-  ok() {
+
+  public ok() {
     this.hide();
     this.sendAnswer(true);
   }
-  sendAnswer(decision: boolean) {
+
+  public sendAnswer(decision: boolean) {
     if (this.callback) {
       this.callback(this.origin, decision, this.subject );
     }
   }
 
-  show() {
+  public show() {
     this.hidden = false;
   }
-  hide() {
+
+  public hide() {
     this.hidden = true;
   }
 }

@@ -18,8 +18,7 @@ import * as moment from 'moment';
 export class ProfileDetailsChildComponent implements OnInit {
   @HostBinding('@overlayAnimation') overlayAnimation;
 
-
-  public userContent: User;
+    public userContent: User;
     public childDetailsForm: FormGroup;
     public formModel: User;
     public userObject = new User;
@@ -40,10 +39,9 @@ export class ProfileDetailsChildComponent implements OnInit {
     private userService: UserService,
     private alertService: AlertService,
     private fb: FormBuilder,
-    private alertMessagesService: AlertMessagesService
-  ) {}
+    private alertMessagesService: AlertMessagesService) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.userContent = this.userContentService.getCurrentUser();
 
     this.buildForm();

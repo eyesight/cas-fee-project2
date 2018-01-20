@@ -7,9 +7,7 @@ import {  Directive, ElementRef, OnChanges, AfterContentInit } from '@angular/co
 
 export class AppScrollBottomDirective implements AfterContentInit, OnChanges {
 
-
   private scrollBottom: any;
-
 
   constructor(public element: ElementRef) {
     this.scrollBottom = this.element.nativeElement;
@@ -22,7 +20,6 @@ export class AppScrollBottomDirective implements AfterContentInit, OnChanges {
 
   // to wait for AfterViewChecked or AfterContentChecked is causing it to update too oftern as there is no real change on the DOM
   // can dizzy the user
-
   public ngOnChanges(changes) {
     console.log('scrollBottom: ngOnChanges');
     this.scrollToBottom();
@@ -56,7 +53,6 @@ export class AppScrollBottomDirective implements AfterContentInit, OnChanges {
           this.element.nativeElement.scrollTop = this.element.nativeElement.scrollTop + (diff / 10);
 
           if (diff !== ( this.element.nativeElement.scrollHeight - this.element.nativeElement.scrollTop )) {
-
             setTimeout(() => {
               this.smoothScrolling(true);
             }, 10);
@@ -65,7 +61,6 @@ export class AppScrollBottomDirective implements AfterContentInit, OnChanges {
       }
     } else {
       this.element.nativeElement.scrollTop = this.element.nativeElement.scrollHeight;
-
     }
   }
 }

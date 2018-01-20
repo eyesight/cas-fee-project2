@@ -1,4 +1,3 @@
-
 import {
   ElementRef, HostListener, Directive, AfterViewChecked
 } from '@angular/core';
@@ -21,7 +20,7 @@ export class AppTextareaAutosizeDirective implements AfterViewChecked {
     }
   }
 
-  ngAfterViewChecked() {
+  public ngAfterViewChecked() {
     if (this.textAreaEl) {
       if (this.textAreaEl.value.length === 0) {
         this.textAreaEl.style.height = this.original;
@@ -36,7 +35,7 @@ export class AppTextareaAutosizeDirective implements AfterViewChecked {
 
   private resize(): void {
     if (this.textAreaEl) {
-      // TODO: try to find a better solution in setting a style-property
+
       const newHeight = this.textAreaEl.scrollHeight;
 
       if (this.minHeight === 0) {

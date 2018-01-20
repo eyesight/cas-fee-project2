@@ -5,7 +5,6 @@ import {ClasslistAvatarService} from '../../_services/user-classlist-avatars.ser
 import {AlertService} from '../../_services/alert.service';
 import {Subscription} from 'rxjs/Subscription';
 
-
 @Component({
   selector: 'app-chat-message',
   templateUrl: './chat-message.component.html'
@@ -24,14 +23,14 @@ export class ChatMessageComponent implements OnInit, OnDestroy {
    constructor( private classlistAvatarService: ClasslistAvatarService,
                 private alertService: AlertService) { }
 
-  ngOnInit() {
+  public ngOnInit() {
 
     // allow other tasks to finish first, not to cause an warn message -> [Violation] 'load' handler took 239ms
     // SetTimeout causes that the task is executed after all others
     setTimeout(() => this.getAvatarFromEmail(this.message.email), 0);
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy() {
      if (this.clavSub) { this.clavSub.unsubscribe(); }
   }
 

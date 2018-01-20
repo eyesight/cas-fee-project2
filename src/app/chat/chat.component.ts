@@ -17,7 +17,6 @@ import {AlertMessagesService} from '../_services/alert-messages.service';
 })
 export class ChatComponent implements OnInit, OnDestroy {
 
-
   @ViewChild('ScrollTo') private scrollDirective: AppScrollBottomDirective;
 
   public messageItem: MessageDateBlock[] = [new MessageDateBlock(new Date)];
@@ -42,7 +41,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     console.log('chatComponent constructor');
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.chatService.setup();
     this.userContentSub =  this.userContentService.getCurrentUserObserver()
       .subscribe((uc) => this.userContent = uc);
@@ -88,7 +87,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy() {
     console.log('Chat: ng destroy');
     if (this.socketSub) { this.socketSub.unsubscribe(); }
     if (this.chatAuthSub) { this.chatAuthSub.unsubscribe(); }
@@ -166,7 +165,6 @@ export class ChatComponent implements OnInit, OnDestroy {
         newMessage.saved_at = msg.server_saved_at;
         newMessage.success = true;
         console.log('then');
-        //    this.snackBar.open('Chat abgespeichert um:' + msg.server_saved_at, null, { duration: 500 });
 
         this.updateMessage(newMessage, newMessage.client_uuid);
       })
@@ -185,15 +183,12 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   private addMessage(messageJson: ChatMessage) {
-
-    // console.log('addMessage: ' + messageJson.sent_at);
     if (this.message) {
       this.message = [...this.message, messageJson];
     } else {
       this.message = [messageJson];
     }
     this.messageItem = this.createMessageDateBlock();
-
   }
 
   private updateMessage(msg: ChatMessage, clientId) {
