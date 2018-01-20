@@ -4,8 +4,6 @@ const dbUser = require("../db/dbUser");
 const util = require("../util/security");
 const readFiles = require("../util/readFiles");
 
-
-
 module.exports.getKlasseListAll = function (req, res) {
   console.log('getKlasseListAll');
 
@@ -18,14 +16,10 @@ module.exports.getKlasseListAll = function (req, res) {
       });
     } else {
       console.log('getKlasseListAll: not authorized');
-
       res.status(403).json(false);
-
     }
   })
-
 };
-
 
 module.exports.getKlasseAvatarGetAll = function (req, res) {
 
@@ -56,21 +50,16 @@ module.exports.getKlasseAvatarGetAll = function (req, res) {
                 email: x.email, avatar_filetype: x.filename.match(/[0-9a-z]+$/i)[0], avatar: new Buffer(x.data).toString('base64')
               }));
               res.json({classlistavatar: result});
-
             } else {
               res.json([]);
-
             }
           }
         );
       });
-
     } else {
       console.log('not authorized');
       res.status(403).json(false);
-
     }
   })
-
 };
 

@@ -23,5 +23,4 @@ router.get("/chat/getall", chatController.getMessages);
 router.get("/classlist/all", klasseController.getKlasseListAll);
 router.get("/classlist/avatars", klasseController.getKlasseAvatarGetAll);
 
-
 module.exports = router;

@@ -5,7 +5,6 @@
 // interpreted as properties in getOwnPropertyNAmes
 class ModelBase {
 
-
   getAttributeList() {
     return Object.values(this);
   }
@@ -21,7 +20,6 @@ class ModelBase {
       result.push(s);
     }
     return result;
-
   }
 
   manageWCL(whereclause) {
@@ -45,7 +43,6 @@ class ModelBase {
     return  "delete "+tablename+" where "+ this.manageWCL(whereclause);
 
   }
-
 }
 
 module.exports=ModelBase;

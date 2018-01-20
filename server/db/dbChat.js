@@ -9,20 +9,13 @@ var moment = require('moment');
 
 const dateZero = new Date("0000-00-00");
 
-
 function twoDigits(d) {
   if (0 <= d && d < 10) return "0" + d.toString();
   if (-10 < d && d < 0) return "-0" + (-1 * d).toString();
   return d.toString();
 }
 
-/**
- * …and then create the method to output the date string as desired.
- * Some people hate using prototypes this way, but if you are going
- * to apply this to more than one Date object, having it as a prototype
- * makes sense.
- **/
-
+// create the method to output the date string as desired.
 Date.prototype.toMysqlFormat = function () {
   return this.getUTCFullYear() + "-" + twoDigits(1 + this.getUTCMonth()) + "-" + twoDigits(this.getUTCDate()) + " " + twoDigits(this.getUTCHours()) + ":" + twoDigits(this.getUTCMinutes()) + ":" + twoDigits(this.getUTCSeconds());
 };
@@ -52,7 +45,6 @@ function chatFromJson(req) {
     r.sent_at,
     r.saved_at
   );
-
 }
 
 function insertMessage(email, req, callback) {
@@ -88,15 +80,12 @@ function insertMessage(email, req, callback) {
       chatModel.saved_at = (new Date()).toJSON();
     }
 
-
     console.log('insertMessagePrepare:' + userId + ' message:' + chatModel.message.slice(0,10) + ' ...:chatmodel.saved_at:' + chatModel.saved_at + ':' + chatModel.sent_at);
-
     insertMessageDb(userId, classId, chatModel, function (err, doc) {
       if ((doc === null ) && !err) {
         callback('500', false);
       }
       else {
-        //  console.dir(doc);
         callback(err, chatModel);
       }
     });

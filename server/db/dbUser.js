@@ -1,10 +1,9 @@
-'use strict'
+'use strict';
 
 const db = require('./dbconnection');
 const ModelBase = require('./dbModelBase');
 const crypto = require('crypto');
 const cryptoUtil = require('../util/cryptoUtil');
-
 
 const emailRGX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 class UserRegister {
@@ -14,7 +13,6 @@ class UserRegister {
     this.is_teacher = isTeacher;
   }
 }
-
 
 class UserModel extends ModelBase {
 
@@ -35,9 +33,7 @@ class UserModel extends ModelBase {
     this.tel_private = tel_private;
     this.tel_office = tel_office;
     this.is_active = 1;
-
     this.user_avatar = user_avatar;
-
   }
 }
 
@@ -92,7 +88,6 @@ function registerUser(email, passwort, isTeacher, req, updateUserFunc, callback)
     }
   });
 }
-
 
 function updatePassword(email, newPasswort, callback) {
   console.log('updatePassword: email:' + email);
@@ -168,7 +163,6 @@ function authenticate(email, password, callback) {
     callback(false);
     return;
   }
-
   this.getUserByEmail(email, function (err, doc) {
     if ((doc === null ) && !err) {
       callback('401', false);
@@ -176,7 +170,6 @@ function authenticate(email, password, callback) {
     else {
       callback(err, doc && doc[0].encrypted_password === cryptoUtil.hashPwd(password));
     }
-
   });
 }
 
@@ -191,7 +184,6 @@ function getAllUserDetails(email, callback) {
     "where ((u.class_id = k.id and t.class_id = u.class_id and COALESCE(NULL,u.is_teacher,0) = 0) " +
     "OR ( t.teacher_user_id = u.id AND u.is_teacher = 1 AND k.id = t.class_id)) and u.email=?", [email], function (err, newDoc) {
     if (callback) {
-
       if (newDoc) {
         if (newDoc.length <= 0) {
           newDoc = null;
@@ -205,7 +197,6 @@ function getAllUserDetails(email, callback) {
       } else {
         err = 'SQL SEVERE ERROR: no resultset:' + email;
         newDoc = null;
-
       }
       if (newDoc) {
         callback(err, newDoc[0]);
@@ -213,12 +204,10 @@ function getAllUserDetails(email, callback) {
       else {
         console.log('getAllUserDetails:erro:' + err || -1);
         callback(err, false);
-
       }
     }
   });
 }
-
 
 function getUserByEmail(email, callback) {
   console.log('getUserByEmail:' + email);
@@ -250,7 +239,6 @@ function getUserAuthorizationInfos(email, callback) {
           err = 'SQL SEVERE ERROR: more than one entry for user.email:' + email;
         }
       }
-
       if (err) {
         console.log('getUserAuthorizationInfos error?:' + err);
         callback(err, null);
@@ -260,7 +248,6 @@ function getUserAuthorizationInfos(email, callback) {
     }
   });
 }
-
 
 function getUserIdByEmail(email, callback) {
   console.log('getUserIdByEmail:' + email);
@@ -284,7 +271,6 @@ function getUserIdByEmail(email, callback) {
   });
 }
 
-
 function getClassIdByEmail(email, callback) {
   console.log('getClassIdByEmail:' + email);
   return db.query("select class_id from users where email=?", [email], function (err, newDoc) {
@@ -307,7 +293,6 @@ function getClassIdByEmail(email, callback) {
   });
 }
 
-
 function getAvatarFilenameByEmail(email, callback) {
   console.log('getAvatarFilenameByEmail:' + email);
   return db.query("select avatar_filename from users where email=?", [email], function (err, newDoc) {
@@ -329,7 +314,6 @@ function getAvatarFilenameByEmail(email, callback) {
     }
   });
 }
-
 
 function getAvatarFilenamesByEmail(email, callback) {
   console.log('getAvatarFilenamesByEmail:' + email);
@@ -364,9 +348,6 @@ function approveUser(userId, username, approve, callback) {
         callback(err, doc);
       }
       else {
-       // const userEmail = req.body.email;
-       // const approve = req.body.approve;
-
         if (doc[0].is_teacher && doc[0].class_id && userId
           && doc[0].is_teacher === 1
           && (approve === 1 || approve === 0)) {
@@ -395,8 +376,6 @@ function approveUser(userId, username, approve, callback) {
   });
 }
 
-
-
 function deleteUser(userId, username, callback) {
 
   console.log('deleteUser - teacher:+' + username + '::'+ userId);
@@ -409,7 +388,6 @@ function deleteUser(userId, username, callback) {
         callback(err, doc);
       }
       else {
-
         if (doc[0].is_teacher && doc[0].class_id && userId
           && doc[0].is_teacher === 1) {
           console.log('delete by teacher :' + username + ' delete user:' + userId + 'classl:' + doc[0].class_id);
@@ -418,8 +396,6 @@ function deleteUser(userId, username, callback) {
           const sf = 'delete from users where id = ? and class_id = ? and is_approved = 0';
 
           return db.query(sf, [userId, doc[0].class_id, userId ], function (err2, newDoc2) {
-            //console.dir(newDoc);
-
             if (callback) {
               if (err2 || newDoc2.affectedRows !== 1) {
                 callback(400,null);
@@ -441,15 +417,12 @@ function currentUser(req) {
   return req.user.name;
 }
 
-
 function createSessionToken(name, secret, options, callback) {
   if (!name) {
     return "";
   }
   jwt.sign({name}, secret, options, (err, token) => callback(token));
 }
-
-
 
 module.exports = {
   authenticate: authenticate,

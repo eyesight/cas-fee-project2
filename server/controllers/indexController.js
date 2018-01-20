@@ -7,7 +7,6 @@ module.exports.register = function(req, res) {
     security.handleRegister(req, res);
 };
 
-
 module.exports.login = function(req, res) {
   console.log('login');
   security.handleLogin(req, res);
