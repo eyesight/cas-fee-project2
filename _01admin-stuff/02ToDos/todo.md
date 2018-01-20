@@ -15,8 +15,6 @@
 - TODO: Alle TODO im Code aufsuchen, korrigieren
 -> CF
 
-- TODO: alles nochmals neu installieren auf einem anderen Compi.
--> AW/CF
   
 - TODO: alle Obs auf unsubscribes prüfen
 -> AW
@@ -242,3 +240,7 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
 
 - TODO: Database SQL-Install Initialdaten besser machen
 -> AW
+
+
+- TODO: alles nochmals neu installieren auf einem anderen Compi.
+-> AW/CF
