@@ -20,7 +20,7 @@ export class ClasslistComponent implements OnInit, OnDestroy {
 
   public canDeactivate = true;
   public avatarSub: Subscription = null;
-  public classlistAvatars: Subscription = null;
+  public classlistSub: Subscription = null;
   public userContentSub: Subscription = null;
 
   constructor(private classlistService: ClasslistService
@@ -43,7 +43,7 @@ export class ClasslistComponent implements OnInit, OnDestroy {
         }
       });
 
-    this.classlistAvatars = this.classlistService.getClasslist()
+    this.classlistSub = this.classlistService.getClasslistObserver()
       .subscribe((result) => {
           this.classlist = result;
           console.log(result);
@@ -76,7 +76,7 @@ export class ClasslistComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     if (this.avatarSub) { this.avatarSub.unsubscribe(); }
-    if (this.classlistAvatars) { this.classlistAvatars.unsubscribe(); }
+    if (this.classlistSub) { this.classlistSub.unsubscribe(); }
     if (this.userContentSub) { this.userContentSub.unsubscribe(); }
   }
 
