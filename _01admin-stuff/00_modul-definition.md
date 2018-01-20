@@ -10,7 +10,7 @@ Danach sind sie via E-Mail und Passwort registriert<br>
 - Solange User nicht bestätigt ist, hat er eingeschränkte Rechte. D.h. er kann  nur sein Profil bearbeiten<br>
 
 <h2>Modul Profil-Verwaltung</h2>
-- User kann seine Daten updaten<br>
+- User kann seine Daten bearbeiten<br>
 
 <h3>noch nicht umgesetzt</h3>
 - Wenn User Admin ist, kann er Klassen erfassen <br>
@@ -30,17 +30,20 @@ Der Chat ist ein general-Channel. Jede/r sieht den gleichen Inhalt. Es gibt nur 
 Alle können alles sehen.
 Zeitpunkt bei jedem Chat anzeigen.
 fakultativ: <br>
+- Laden bisheriger Chat
+- Input für neue Chat-Message
+- Implementieren Com over WebSockets
+
+<h3>noch nicht umgesetzt</h3>
 - im Hauptmenu: Punkt Chat: Batch (anzahl unread messages). <br>
-
-1) Auswahl Chat-Partner (noch nicht umgesetzt).
-2) Laden bisheriger Chat
-3) Input für neue Chat-Message
-4) ev. Mit vorgefertigen Antworten, ev. Themenorientiert -> Auswahl treffen vor Chat, Vorgefertigte Antworten vorschlagen welche matchen könnten? (Elasticmatch)(noch nicht umgesetzt)
-5) Implementieren Com over WebSockets
+- Auswahl Chat-Partner 
+- ev. Mit vorgefertigen Antworten, ev. Themenorientiert -> Auswahl treffen vor Chat, Vorgefertigte Antworten vorschlagen welche matchen könnten? (Elasticmatch)
 
 
 
-<h2>Module für nächste Sprints, noch nicht umgesetzt</h2>
+
+
+<h1>Module für nächste Sprints, noch nicht umgesetzt</h1>
 
 <h2>Modul Chat: alter Verlauf nachladen (Optional)</h2>
 - Im Chat sieht man nur die letzten (3-10: tbd) Tage sofort. Sonst muss man weiterscrollen. 

@@ -1,28 +1,29 @@
 User-Test mit Lehrerin (Roya)
 
-![alt text](/Usertest-Lehrerin1.png "Roya")
+![alt text](Usertest-Lehrerin1.png "Roya")
 
-![alt text](/Usertest-Lehrerin2.JPG "Roya")
+![alt text](Usertest-Lehrerin2.JPG "Roya")
 
 Vorbedingung: Login als Lehrerin: Benutzername: lehrer@test.com password: test99!
 
 
-1) Registrierungsprozess: Bestätige den Benutzer heidi@test.com
+**Registrierungsprozess: Bestätige den Benutzer heidi@test.com**
 
 hat geklappt
 
-2) Schreibe an heidi@test.com eine Email
+**Schreibe an heidi@test.com eine Email**
 
 hat geklappt
 
-3) Schreibe eine Kurzmitteilung an Zoe, dass sie ihr Turnzeug vergessen hat
+**Schreibe eine Kurzmitteilung an Zoe, dass sie ihr Turnzeug vergessen hat**
 
 Testbeschrieb zu unklar, konnte die Aufgabe so nicht lösen. Dachte, dass man müsse 
 einen indivduellen Chat schreiben können.
 
-4) Ändere Dein Passwort
+**Ändere Dein Passwort**
 
+hat geklappt
 
-5) Füge ein neues Profilbild ein
+**Füge ein neues Profilbild ein**
 
 Vergas zu "Bild austauschen", hat aber behauptet sie hätte geklickt.

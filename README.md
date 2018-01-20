@@ -84,16 +84,16 @@ to use the tool as admin/teacher:
 Description of the modules can be found [here](/_01admin-stuff/00_modul-definition.md)
 
 ## Testing
-- We made some Unit-test. Please run following
+We made some Unit-test. Please run following
 ```bash
   ng test
 ```
-Open in browser:[localhost:9876](http://localhost:9876/) 
+Open in browser: [localhost:9876](http://localhost:9876/) 
 
 
 - User-Tests: 
   - Person 1: Pictures and results can be found [here](/_01admin-stuff/04UserTests/User-Test_Jonas.md)
-  - Person 1: Pictures and results can be found [here](/_01admin-stuff/04UserTests/User-Test_Lehrerin.md)
+  - Person 2: Pictures and results can be found [here](/_01admin-stuff/04UserTests/User-Test_Lehrerin.md)
   
 - [e2e-Tests with puppeteer](/e2e_test_puppeteer)
 
