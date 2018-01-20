@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { AppTextareaAutosizeDirective } from './textarea-autosize.directive';
 import { AppScrollBottomDirective } from './scroll-bottom.directive';
 import { AlertComponent } from './alert/alert.component';

@@ -1,4 +1,3 @@
-
 import {Inject, Injectable} from '@angular/core';
 import {User} from '../_models/user.model';
 import {Observable} from 'rxjs/Observable';
@@ -17,7 +16,9 @@ export class DbServiceUserContent extends  DbService<User> {
 @Injectable()
 export class UserContentService {
 
-  constructor( private httpWrp: HttpWrapper, private dbUserContent: DbServiceUserContent) {
+  constructor(
+    private httpWrp: HttpWrapper,
+    private dbUserContent: DbServiceUserContent) {
     console.log('UserContentService constructed');
   }
 

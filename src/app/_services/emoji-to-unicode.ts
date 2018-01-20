@@ -1,9 +1,6 @@
-
-
 // create my own emojiclass: thanks to emojione
 // why: 1) i dont need all emojis (saves many 100KB), 2) dont need all the code, 3) important types where missing type
 export class EmojiToUnicode {
-
 
   private static asciiList = {
   '*\\0/*': '1f646',
@@ -125,50 +122,21 @@ export class EmojiToUnicode {
 
  private static   asciiRegexp = '(\\*\\\\0\\/\\*|\\*\\\\O\\/\\*|\\-___\\-|\\:\'\\-\\)|\'\\:\\-\\)|\'\\:\\-D|\\>\\:\\-\\)|>\\:\\-\\)|\'\\:\\-\\(|\\>\\:\\-\\(|>\\:\\-\\(|\\:\'\\-\\(|O\\:\\-\\)|0\\:\\-3|0\\:\\-\\)|0;\\^\\)|O;\\-\\)|0;\\-\\)|O\\:\\-3|\\-__\\-|\\:\\-Þ|\\:\\-Þ|\\<\\/3|<\\/3|\\:\'\\)|\\:\\-D|\'\\:\\)|\'\\=\\)|\'\\:D|\'\\=D|\\>\\:\\)|>\\:\\)|\\>;\\)|>;\\)|\\>\\=\\)|>\\=\\)|;\\-\\)|\\*\\-\\)|;\\-\\]|;\\^\\)|\'\\:\\(|\'\\=\\(|\\:\\-\\*|\\:\\^\\*|\\>\\:P|>\\:P|X\\-P|\\>\\:\\[|>\\:\\[|\\:\\-\\(|\\:\\-\\[|\\>\\:\\(|>\\:\\(|\\:\'\\(|;\\-\\(|\\>\\.\\<|>\\.<|#\\-\\)|%\\-\\)|X\\-\\)|\\\\0\\/|\\\\O\\/|0\\:3|0\\:\\)|O\\:\\)|O\\=\\)|O\\:3|B\\-\\)|8\\-\\)|B\\-D|8\\-D|\\-_\\-|\\>\\:\\\\|>\\:\\\\|\\>\\:\\/|>\\:\\/|\\:\\-\\/|\\:\\-\\.|\\:\\-P|\\:Þ|\\:Þ|\\:\\-b|\\:\\-O|O_O|\\>\\:O|>\\:O|\\:\\-X|\\:\\-#|\\:\\-\\)|\\(y\\)|\\<3|<3|\\:D|\\=D|;\\)|\\*\\)|;\\]|;D|\\:\\*|\\=\\*|\\:\\(|\\:\\[|\\=\\(|\\:@|;\\(|D\\:|\\:\\$|\\=\\$|#\\)|%\\)|X\\)|B\\)|8\\)|\\:\\/|\\:\\\\|\\=\\/|\\=\\\\|\\:L|\\=L|\\:P|\\=P|\\:b|\\:O|\\:X|\\:#|\\=X|\\=#|\\:\\)|\\=\\]|\\=\\)|\\:\\])';
 
-  private static regAscii = new RegExp("<object[^>]*>.*?<\/object>|<span[^>]*>.*?<\/span>|<(?:object|embed|svg|img|div|span|p|a)[^>]*>|((\\s|^)"+EmojiToUnicode.asciiRegexp+"(?=\\s|$|[!,.?]))", "gi");
-//private static regAsciiRisky = new RegExp("<object[^>]*>.*?<\/object>|<span[^>]*>.*?<\/span>|<(?:object|embed|svg|img|div|span|p|a)[^>]*>|(()"+ns.asciiRegexp+"())", "gi");
+ private static regAscii = new RegExp("<object[^>]*>.*?<\/object>|<span[^>]*>.*?<\/span>|<(?:object|embed|svg|img|div|span|p|a)[^>]*>|((\\s|^)"+EmojiToUnicode.asciiRegexp+"(?=\\s|$|[!,.?]))", "gi");
+// private static regAsciiRisky = new RegExp("<object[^>]*>.*?<\/object>|<span[^>]*>.*?<\/span>|<(?:object|embed|svg|img|div|span|p|a)[^>]*>|(()"+ns.asciiRegexp+"())", "gi");
 
   private tmpShortNames = [];
   private shortnames;
   private regShortNames;
   constructor() {
-
-    // for ( let emoji in EmojiToUnicode.emojiList) {
-    //   if (!EmojiToUnicode.emojiList.hasOwnProperty(emoji) || (emoji === '')) continue;
-    //   this.tmpShortNames.push(emoji.replace(/[+]/g, "\\$&"));
-    //   // for (let i = 0; i < EmojiToUnicode.emojiList[emoji].shortnames.length; i++) {
-    //   //   this.tmpShortNames.push(EmojiToUnicode.emojiList[emoji].shortnames[i].replace(/[+]/g, "\\$&"));
-    //   // }
-    // }
-    // this.shortnames = this.tmpShortNames.join('|');
-    // this.regShortNames = new RegExp("<object[^>]*>.*?<\/object>|<span[^>]*>.*?<\/span>|<(?:object|embed|svg|img|div|span|p|a)[^>]*>|("+this.shortnames+")", "gi");
-
   }
 
 
     public transform(str: string): string {
     // replace regular shortnames first
     let unicode;
-    // fname;
-
-
-
-      // // emojiList
-      // str = str.replace(this.regShortNames, function(shortname) {
-      //   if( (typeof shortname === 'undefined') || (shortname === '') || (!(shortname in EmojiToUnicode.emojiList)) ) {
-      //     // if the shortname doesnt exist just return the entire matchhju
-      //     console.log('1 :'+ shortname);
-      //     return shortname;
-      //
-      //   }
-      //   console.log('2:' + shortname);
-      //
-      //   unicode = EmojiToUnicode.emojiList[shortname].uc_output.toUpperCase();
-      //   return EmojiToUnicode.convert(unicode);
-      // });
 
     // if ascii smileys are turned on, then we'll replace them!
-
       const asciiRX = EmojiToUnicode.regAscii;
 
       str = str.replace(asciiRX, function(entire, m1, m2, m3) {
@@ -181,7 +149,6 @@ export class EmojiToUnicode {
         unicode = EmojiToUnicode.asciiList[m3].toUpperCase();
         return m2 + EmojiToUnicode.convert(unicode);
       });
-
 
     return str;
   }

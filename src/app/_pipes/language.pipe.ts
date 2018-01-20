@@ -3,11 +3,12 @@ import { Pipe, PipeTransform} from '@angular/core';
 @Pipe({
   name: 'language'
 })
+
 export class GenderLanguage implements PipeTransform {
 
   constructor() {}
 
-  transform( value: string, language: string = 'de'): string {
+  public transform( value: string, language: string = 'de'): string {
     let displayValue = '';
     if (!value) {
       return;
@@ -77,5 +78,4 @@ export class GenderLanguage implements PipeTransform {
     }
     return displayValue;
   }
-
 }

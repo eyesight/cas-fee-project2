@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 
-
 @Injectable()
 export class StorageService {
   constructor() {
   }
 
-  public  write(key: string, data: any) {
+  public write(key: string, data: any) {
     localStorage.setItem(key, JSON.stringify(data));
   }
 
-  public  read(key: string ): any {
+  public read(key: string ): any {
     const obj: any = localStorage.getItem(key);
     return obj ?  JSON.parse(obj) : null;
 
@@ -20,9 +19,7 @@ export class StorageService {
   }
 }
 
-
 export const StorageKeys = {
-
   keyCurrentUser : 'currentUser',
   keyCurrentUserContent : 'currentUserContent',
   keyCurrentUserClasslistAvatars : 'currentUserClasslistAvatars'

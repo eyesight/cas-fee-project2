@@ -1,13 +1,12 @@
 import { TestBed, inject } from '@angular/core/testing';
-
 import { AuthenticationService } from './authentication.service';
 import { HttpWrapperServiceMock } from './http-wrapper.service.mock';
 import { HttpWrapper } from './http-wrapper.service';
-import {BaseRequestOptions, ConnectionBackend, Http} from "@angular/http";
-import {MockBackend} from "@angular/http/testing";
-import {UserAuthServiceMock} from "./user-auth.service.mock";
-import {UserAuthService} from "./user-auth.service";
-import {UserAuth} from "../_models/user.model";
+import {BaseRequestOptions, ConnectionBackend, Http} from '@angular/http';
+import {MockBackend} from '@angular/http/testing';
+import {UserAuthServiceMock} from './user-auth.service.mock';
+import {UserAuthService} from './user-auth.service';
+import {UserAuth} from '../_models/user.model';
 
 fdescribe('AuthenticationService', () => {
   beforeEach(() => {
@@ -19,7 +18,6 @@ fdescribe('AuthenticationService', () => {
           return new Http(mockBackend, defaultOptions);
         }, deps: [MockBackend, BaseRequestOptions]},
       ]
-
     });
   });
 

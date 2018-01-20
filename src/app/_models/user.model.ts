@@ -19,8 +19,8 @@ export class Avatar {
   value: string;
   filesize: number;
 }
-export class UserAvatar {
 
+export class UserAvatar {
   name: string;
   avatar: Avatar;
 }
@@ -47,8 +47,8 @@ export class UserClassListAvatars {
   avatar: string;
 
 }
-export class User {
 
+export class User {
   id: number;
   email: string;
   pwd: string;
@@ -92,7 +92,6 @@ export class User {
   teacher_tel_private: string;
   teacher_tel_office: string;
   teacher_gender: string;
-
 }
 
 

@@ -1,4 +1,3 @@
-
 export class AvatarConfig {
   filetype: string;
   avatarHeader: string;

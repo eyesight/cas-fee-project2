@@ -25,9 +25,8 @@ export class AlertMessagesService {
     password: 'Das alte Passwort ist nicht korrekt oder das neue Passwort entspricht nicht den Richtlinien',
     authorization: 'Sie haben keine Berechtigung für diesen Menupunkt. Ihre Bestätigung ist noch ausstehend',
     login401: 'Der Benutzer ist nicht registriert oder das Passwort ist falsch',
-    deleteUser400: 'Dieser User war bereits bestätigt und hat informationen geteilt. Bitte lassen Sie ihn vom Administrator entfernen',
+    deleteUser400: 'Dieser User ist bereits bestätigt. Erst wenn er nicht mehr bestätigt ist, kann man ihn löschen',
     chatMaxLength: 'Ihr Text darf die Limite von 5000 Zeichen nicht überschreiben.'
-
   };
 }
 

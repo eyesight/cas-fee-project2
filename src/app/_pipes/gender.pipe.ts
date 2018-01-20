@@ -7,7 +7,7 @@ export class GenderPipe implements PipeTransform {
 
   constructor() {}
 
-  transform( value: string, language: string, child: boolean): string {
+  public transform( value: string, language: string, child: boolean): string {
     if (!value) {
       return;
     }
@@ -21,7 +21,7 @@ export class GenderPipe implements PipeTransform {
       } else {
         return 'Miss';
       }
-    }else if ( value === 'm' || value === 'h' || value === 'mann' || value === 'man'){
+    } else if ( value === 'm' || value === 'h' || value === 'mann' || value === 'man'){
       if ( language === 'de' ) {
         if ( child ) {
           return 'Junge';

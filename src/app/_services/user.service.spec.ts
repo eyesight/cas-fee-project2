@@ -1,5 +1,4 @@
 import { TestBed, inject } from '@angular/core/testing';
-
 import { UserService } from './user.service';
 import {MockBackend} from '@angular/http/testing';
 import {HttpWrapperServiceMock} from './http-wrapper.service.mock';

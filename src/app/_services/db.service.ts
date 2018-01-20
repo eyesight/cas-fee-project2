@@ -1,19 +1,18 @@
-
 import {Injectable} from '@angular/core';
 import {StorageService} from './storage.service';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
 
-
 @Injectable()
 export class DbService<T> {
-
 
   private subject = new Subject<T>();
 
   private contentCache: T = null;
 
-  constructor(private storage: StorageService, public storageKey: string) {
+  constructor(
+    private storage: StorageService,
+    public storageKey: string) {
     console.log('DbService constructed for key: ' + this.storageKey);
   }
 

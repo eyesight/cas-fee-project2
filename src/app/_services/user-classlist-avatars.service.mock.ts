@@ -1,14 +1,11 @@
-
 import {Injectable} from '@angular/core';
 import {UserClassListAvatars} from '../_models/user.model';
-
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import {HttpWrapper} from './http-wrapper.service';
 import {UserContentService} from './user-content.service';
 import {avatarHeader} from '../_helpers/avatar-header';
 import {DbServiceClasslistAvatar} from './user-classlist-avatars.service';
-
 
 export class AvatarConfig {
   filetype: string;
@@ -24,9 +21,10 @@ export const avatarFileTypes: AvatarConfig[] = [
 @Injectable()
 export class ClasslistAvatarServiceMock {
 
-  constructor(private httpWrp: HttpWrapper
-    , private dbUserClAvatar: DbServiceClasslistAvatar
-    , private userContentService: UserContentService) {
+  constructor(
+    private httpWrp: HttpWrapper,
+    private dbUserClAvatar: DbServiceClasslistAvatar,
+    private userContentService: UserContentService) {
     console.log('UserContentService constructed');
 
     this.userContentService.getCurrentUserObserver().subscribe((userContent) => {

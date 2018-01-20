@@ -1,13 +1,11 @@
-
 import { Injectable } from '@angular/core';
-import {UserAuth} from '../_models/user.model';
+import { UserAuth } from '../_models/user.model';
 
 
 @Injectable()
 export class UserAuthServiceMock {
 
   private userAuthCache: UserAuth = null;
-
 
   public saveCurrentUser(data: UserAuth) {
     this.userAuthCache = data;
@@ -31,7 +29,6 @@ export class UserAuthServiceMock {
       console.log('userAuth is null -> return null');
       return null;
     }
-    // console.dir(userAuth);
     return userAuth.token;
   }
 
@@ -42,12 +39,10 @@ export class UserAuthServiceMock {
       console.log('userAuth is null');
       return null;
     }
-    // console.dir(userAuth);
     return userAuth.email;
   }
 
   public saveUserAuth(ua: UserAuth) {
     this.saveCurrentUser(ua);
   }
-
 }

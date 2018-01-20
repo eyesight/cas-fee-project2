@@ -24,18 +24,15 @@ export class AuthenticationService {
     const userPwd = new UserPwd(username, password);
 
 // instead of json use JSON.strinfiy
-    // todo: add Type for Typesafety
     return this.httpWrp.postNoJWT('/api/authenticate', userPwd)
       .map((user: UserAuth) => {
         console.log('userAuth ist :' + user.email);
         if (user && user.token) {
-          // console.log(user.token);
           this.userAuthSrv.saveCurrentUser(user);
           this.isLoggedin = true;
         }
         return user;
       });
-
   }
 
   public logout() {
