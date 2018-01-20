@@ -6,6 +6,7 @@ import {HttpWrapper} from './http-wrapper.service';
 import {UserContentService} from './user-content.service';
 import {avatarHeader} from '../_helpers/avatar-header';
 import {DbServiceClasslistAvatar} from './user-classlist-avatars.service';
+import {Subscription} from "rxjs/Subscription";
 
 export class AvatarConfig {
   filetype: string;
@@ -21,13 +22,18 @@ export const avatarFileTypes: AvatarConfig[] = [
 @Injectable()
 export class ClasslistAvatarServiceMock {
 
+  private userContentSub: Subscription = null;
+
   constructor(
     private httpWrp: HttpWrapper,
     private dbUserClAvatar: DbServiceClasslistAvatar,
     private userContentService: UserContentService) {
     console.log('UserContentService constructed');
 
-    this.userContentService.getCurrentUserObserver().subscribe((userContent) => {
+    if (this.userContentSub) {
+      this.userContentSub.unsubscribe();
+    }
+    this.userContentSub = this.userContentService.getCurrentUserObserver().subscribe((userContent) => {
       console.log('nav.component ngOnInit inside observer');
 
       this.clear();
