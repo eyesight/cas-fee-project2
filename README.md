@@ -24,12 +24,18 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 <ul>
   <li>1. download project</li>
   <li>2. entpack (if not already) to dir and switch to dir</li>
-  <li>3. npm install</li>
-  <li>4. install db -> see ./server/readme.md</li>
+  <li>3. run:</li>
+  ```bash
+  npm install
+  ```
+  <li>4. install db </li>
 <li>5. start server:
   <ul>
   <li>change to directory ./server </li>
-  <li>npm install </li>
+  <li>run: </li>
+  ```bash
+    npm install
+    ```
   <li>install mysql (z.B. mit MAMP (osx))
   </li><li>create database "school_development" & user/pw "school"
   </li><li>run scripts under sql (it create and fills tables)
@@ -49,7 +55,6 @@ node index.js
   ```bash
   ng serve
   ```
-
           
    if not then switch to ./node_modules/@angular/cli/bin and type ./ng serve</li>
 </ul>
@@ -83,8 +88,8 @@ Description of the modules can be found [here](https://github.com/eyesight/cas-f
 Open in browser:[localhost:9876](http://localhost:9876/) 
 
 - User-Tests: 
-  - Person 1: Pictures and results can be found [here](./_01admin-stuff/_04UserTests/User-Test_Jonas.md)
-  - Person 1: Pictures and results can be found [here](./_01admin-stuff/_04UserTests/User-Test_Lehrerin.md)
+  - Person 1: Pictures and results can be found [here](/_01admin-stuff/04UserTests/User-Test_Jonas.md)
+  - Person 1: Pictures and results can be found [here](/_01admin-stuff/04UserTests/User-Test_Lehrerin.md)
   
 - [e2e-Tests with puppeteer](https://github.com/eyesight/cas-fee-project2/blob/master/e2e_test_puppeteer)
 
