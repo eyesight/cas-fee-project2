@@ -19,7 +19,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 <li> node >= 7.9</li>
 <li>Mysql (make sure that STRICT_TRANS_TABLES is not configured in my.cnf)</li>
 <li>Windows / OSX Plattform</li>
-
+</ul>
 <h4>Manual</h4>
 <ul>
   <li>1. download project</li>
@@ -30,7 +30,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   npm install
   ```
   <li>4. install db </li>
-<li>5. start server:
+  <li>5. start server:
   <ul>
   <li>change to directory ./server </li>
   <li>run: </li>
@@ -66,6 +66,7 @@ It runs on [localhost:4200](http://localhost:4200/)
   
 <h4>Testing</h4>
 to use the tool as registered user use:
+
 ```bash
   Benutzername: test@test.com
   Password: test99!
@@ -89,6 +90,7 @@ Description of the modules can be found [here](/_01admin-stuff/00_modul-definiti
 ```
 Open in browser:[localhost:9876](http://localhost:9876/) 
 
+
 - User-Tests: 
   - Person 1: Pictures and results can be found [here](/_01admin-stuff/04UserTests/User-Test_Jonas.md)
   - Person 1: Pictures and results can be found [here](/_01admin-stuff/04UserTests/User-Test_Lehrerin.md)
@@ -100,8 +102,8 @@ Open in browser:[localhost:9876](http://localhost:9876/)
  - avoid coadbloast: we reduced the bootstrap to just the pieces of code, we really needed. (NO ng-material)
  - chat shows user if he is on- or offline
  - good structure of the files: 
-  - all directories in the app with "_" are shared
-  - scss-files are in one directory and structured in config and theme (blocks)
+    - all directories in the app with "_" are shared
+    - scss-files are in one directory and structured in config and theme (blocks)
  - server and client have always the same information about the authentification-status of the current-user 
  - authentification and autorisation is made with simple solutions (using guards)
  - User is guided and with error- and success-messages

@@ -1,6 +1,6 @@
-<h1>Funktionen/Module</h1>
+<h1>Module: Definitionen</h1>
 
-<h2>Modul 1 Authentifizierung/Security-Modul</h2>
+<h2>Modul Authentifizierung/Security</h2>
 - Login/Logout<br>
 - Eltern erfassen ihre Daten, plus die Daten des Kindes<br>
 - Sie wählen eine Klasse aus bestehender Liste (wurden vorgängig von Admin (=Schulhaus) erfasst. Admin von der Gruppe, Klasse ist der Lehrer.<br>
@@ -9,23 +9,23 @@ Danach sind sie via E-Mail und Passwort registriert<br>
 - User wird bestätigt von Admin<br>
 - Solange User nicht bestätigt ist, hat er eingeschränkte Rechte. D.h. er kann  nur sein Profil bearbeiten<br>
 
-<h2>Modul 2 Profil Verwaltung</h2>
+<h2>Modul Profil-Verwaltung</h2>
 - User kann seine Daten updaten<br>
 
 <h3>noch nicht umgesetzt</h3>
-- Wenn User Admin ist, kann er Klassen erfasse <br>
+- Wenn User Admin ist, kann er Klassen erfassen <br>
 
-<h2>Modul 2.2 Profilbild</h2>
+<h2>Modul Profilbild</h2>
 - User kann sein Profilbild hochladen/wechseln<br>
 
-<h2>Modul 3 Klassenliste</h2>
-- Liste der Klasse wird angezeigt; möglichkeit die (freigegebenen) )Daten jedes einzelnen zu lesen<br>
+<h2>Modul Klassenliste</h2>
+- Liste der Klasse wird angezeigt; Möglichkeit die (freigegebenen) Daten jedes einzelnen zu lesen<br>
 - Daten können Sortiert werden<br>
 - User sieht nur die bestätigten User, die der gleichen Klassen zugeordnet sind<br>
 - Seine eigenen Daten sind in der Liste optisch ausgezeichnet<br>
 - Wenn User Admin ist, sieht er alle (bestätigte und unbestätigte) und hat die Möglichkeiten User zu aktivieren/deaktiviern und löschen<br>
 
-<h2>Modul 4 - Chat</h2>
+<h2>Modul Chat</h2>
 Der Chat ist ein general-Channel. Jede/r sieht den gleichen Inhalt. Es gibt nur ein Chat-Menu (im Hauptmenu). 
 Alle können alles sehen.
 Zeitpunkt bei jedem Chat anzeigen.
@@ -42,10 +42,10 @@ fakultativ: <br>
 
 <h2>Module für nächste Sprints, noch nicht umgesetzt</h2>
 
-<h2>Modul 4.1 Chat: alter Verlauf nachladen (Optional)</h2>
+<h2>Modul Chat: alter Verlauf nachladen (Optional)</h2>
 - Im Chat sieht man nur die letzten (3-10: tbd) Tage sofort. Sonst muss man weiterscrollen. 
 
-<h2>Modul 5 - Kalender (optional)</h2>
+<h2>Modul Kalender (optional)</h2>
  1) Setzen eines Termines auf Kalender<br>
  2) Termindetails: Name, Properties: Zeitpunkt/Ganztätig/Ganze Klasse/Schulferien (Generellster Termin - Broadcast)<br>
  3) Einzeltermine gezielt an eltern, Kind: Entsprechende Personen einladen (Prio2)<br>
@@ -61,7 +61,7 @@ fakultativ: <br>
  11) Eltern- und Schüler können nichts eintragen<br>
  12) Prio 2: möglichkeit die Termine als Outlook- oder ios-Termine erfassen<br>
 
-<h2>Modul 6 - Stundenplan (optional)</h2>
+<h2>Modul Stundenplan (optional)</h2>
 - Kalender in Wochenübersicht (gleiche Ansicht, wie Termine)-<br>
 - Jede Woche sieht gleich aus<br>
 - Lehrer erfasst Stundenplan, mit Fächer und Lehrer in Farbe<br>
@@ -69,7 +69,7 @@ fakultativ: <br>
 - Schüler und Eltern können nicht editieren, nur lesen<br>
 - Prio 2: möglichkeit die Termine als Outlook- oder ios-Termine erfassen<br>
 
-<h2>Modul 7 - Abwesenheitsliste (optional)</h2>
+<h2>Modul Abwesenheitsliste (optional)</h2>
 - Wenn Massnahme ergriffen; Zählung wieder zurücksetzen, Verlauf wird nie gelöscht<br>
 - Vorschläge für Interaktion (falkutativ) -> Möglichkeit Erfassung, was Passiert ist (was wurde unternommen, was ist Ergebnis)<br>
 - Detailansicht, wann war SchülerIn abwesend<br>

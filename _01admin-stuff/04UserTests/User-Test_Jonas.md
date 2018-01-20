@@ -1,6 +1,6 @@
 User-Test mit Jonas
 
-[UserTest_Jonas.jpg|alt=Jonas]
+![alt text](/UserTest_Jonas.jpg "Jonas")
 
 Feedback/Ergebnis:
 
