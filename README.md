@@ -40,7 +40,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   </li>
   <li>6. if you have ng globally installed (npm install -g ) then just:
          ng serve 
-         if not then switch to ./node_modules/@angular/cli/bin and type ng serve</li>
+         if not then switch to ./node_modules/@angular/cli/bin and type ./ng serve</li>
   </ul>
   
 <h4>Test-User</h4>

@@ -1,10 +1,9 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewChild, OnDestroy} from '@angular/core';
+import {Component, EventEmitter, Input, Output, ViewChild, OnDestroy} from '@angular/core';
 import {User} from '../../_models/user.model';
 import {ClasslistService} from '../service/classlist.service';
 import {MessageBoxComponent} from '../../_directives/message-box/message-box.component';
 import {AlertService, AlertMessagesService} from '../../_services/index';
 import {Subscription} from 'rxjs/Subscription';
-import {Router} from "@angular/router";
 
 
 enum FIELDS {
@@ -24,8 +23,6 @@ class SortClass {
   public down = false;
   public sortFn: (a: User, b: User) => number;
 }
-
-declare function sfn(a: User, b: User): number;
 
 @Component({
   selector: 'app-classlist-list',
@@ -58,6 +55,7 @@ export class ClasslistListComponent implements OnDestroy {
   private sorFn = this.sfPF;
   public SortFields = FIELDS;
   private approveSub: Subscription = null;
+  private deleteSub: Subscription = null;
 
 
   constructor(private classlistService: ClasslistService,
@@ -67,10 +65,14 @@ export class ClasslistListComponent implements OnDestroy {
 
 
   ngOnDestroy() {
-   if (this.approveSub ) {
+    if (this.approveSub) {
       this.approveSub.unsubscribe();
     }
+    if (this.deleteSub) {
+      this.deleteSub.unsubscribe();
+    }
   }
+
   showAlertApprove(item: User, checked: any) {
     console.log('checked?' + checked.target.checked + 'user: to ' + item.email);
     this.classlistList[this.classlistList.findIndex((x) => x === item)].is_approved = checked.target.checked;
@@ -79,9 +81,11 @@ export class ClasslistListComponent implements OnDestroy {
     this.canDeactivateSend(this.canDeactivate);
 
     // callback callbed by messageBox which gets o = original value, d = decision, s = subject (= User)
-    const fnCallback = (o: boolean, d: boolean, s: User) => {  this.sendAnswer(o, d, s); }
+    const fnCallback = (o: boolean, d: boolean, s: User) => {
+      this.sendAnswer(o, d, s);
+    };
     if (checked.target.checked) {
-     // this.alert.show('Möchten Sie die Person wirklich bestätigen?', true);
+      // this.alert.show('Möchten Sie die Person wirklich bestätigen?', true);
       this.alert.showMBox<User>('Möchten Sie die Person wirklich bestätigen?', checked.target.checked, item, fnCallback);
     } else {
       // this.alert.show('Möchten Sie die Person wirklich ablehnen? Person kann danach das System nicht mehr benutzen', false);
@@ -91,11 +95,13 @@ export class ClasslistListComponent implements OnDestroy {
   }
 
   public showAlertDelete(item: User, event: any) {
-    let key: number = item.id;
+    const key: number = item.id;
     this.canDeactivate = true;
     if (Number(event.target.id) === key) {
-      this.alert.showMBox<number>('Möchten Sie die Person wirklich löschen?', false, key, (o,d, k) => {
-        (d) ? this.toDelete(k) : k = NaN;
+      this.alert.showMBox<number>('Möchten Sie die Person wirklich löschen?', false, key, (o, d, k) => {
+        if (d) {
+          this.onDelete(k);
+        }
         this.canDeactivateSend(this.canDeactivate);
       });
     } else {
@@ -109,7 +115,7 @@ export class ClasslistListComponent implements OnDestroy {
     this.canDeactivateSend(this.canDeactivate);
 
     if (changed) {
-      this.onChecked(userItem, approve);
+      this.onApprove(userItem, approve);
     } else {
 
       // set approve back to what it was before
@@ -123,17 +129,13 @@ export class ClasslistListComponent implements OnDestroy {
 
   }
 
-  public toDelete(key: number) {
-    this.classlistService.deleteUser(key)
-      .subscribe((x) => {
-      // TODO: try to force classlist.component to do the following job (observing...):
-          this.classlistService.getClasslist()
-            .subscribe( (content) => {
-                this.classlistList = content;
-            },
-            error => {
-              this.alertService.error(this.alertMessageService.MessagesError.error, false);
-            });
+  public onDelete(key: number) {
+    if (this.deleteSub) {
+      this.deleteSub.unsubscribe();
+    }
+    this.deleteSub = this.classlistService.deleteUser(key)
+      .subscribe(() => {
+          console.log('classlistService.OnDelete successful');
         },
         (error) => {
           (error.toString().match(/400/g)) ?
@@ -142,12 +144,15 @@ export class ClasslistListComponent implements OnDestroy {
         });
   }
 
-  public onChecked(item: User, checked: boolean) {
+  public onApprove(item: User, checked: boolean) {
+    if (this.approveSub) {
+      this.approveSub.unsubscribe();
+    }
     this.approveSub = this.classlistService.approveUser(item.id, (checked === true ? 1 : 0))
-      .subscribe((x) => {
+      .subscribe(() => {
           console.log('classlistService.approveUser succesfull');
         },
-        (error) => {
+        () => {
           this.alertService.error(this.alertMessageService.MessagesError.error, false, 2000);
         });
   }

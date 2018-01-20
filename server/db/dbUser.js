@@ -393,11 +393,11 @@ function deleteUser(userId, username, callback) {
           console.log('delete by teacher :' + username + ' delete user:' + userId + 'classl:' + doc[0].class_id);
 
           //  check if we should not delete if there are chats from user: and (select count(*) from chat where user_id = ?) = 0
-          const sf = 'delete from users where id = ? and class_id = ? and is_approved = 0';
+          const sf = 'delete users, chat from users left join chat on  chat.user_id = users.id  where users.id = ? and users.class_id = ? and users.is_approved = 0';
 
           return db.query(sf, [userId, doc[0].class_id, userId ], function (err2, newDoc2) {
             if (callback) {
-              if (err2 || newDoc2.affectedRows !== 1) {
+              if (err2 || newDoc2.affectedRows === 0) {
                 callback(400,null);
               } else {
                 callback(0, true);
