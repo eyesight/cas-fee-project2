@@ -7,6 +7,7 @@ import {ImageCompressService, IImage} from 'ng2-image-compress';
 import {Router} from '@angular/router';
 import {UserContentService} from '../../_services/user-content.service';
 import {avatarHeader} from '../../_helpers/avatar-header';
+import {Subscription} from "rxjs/Subscription";
 
 
 @Component({
@@ -37,6 +38,8 @@ export class ProfileAvatarComponent {
   private av = new Avatar;
   private processedImage: any;
   private images: Array<IImage> = [];
+  private userContentSub: Subscription = null;
+  private compressSub: Subscription = null;
 
   @ViewChild('fileInput') fileInput: ElementRef;
 
@@ -65,7 +68,10 @@ export class ProfileAvatarComponent {
 
           console.log('profilAvatar: ok:' + data + ':provFileHideButton:' + this.provFileHideSubmitButton);
           this.alertService.success(this.alertMessagesService.MessagesSuccess.imageSaved);
-          this.userContentService.getUserContent()
+          if (this.userContentSub) {
+            this.userContentSub.unsubscribe();
+          }
+          this.userContentSub = this.userContentService.getUserContent()
             .subscribe(content => {
               },
               error => {
@@ -120,7 +126,10 @@ export class ProfileAvatarComponent {
         // reset
         this.images = [];
         ImageCompressService.filesToCompressedImageSource(event.target.files).then(observableImages => {
-          observableImages.subscribe((image) => {
+          if (this.compressSub) {
+            this.compressSub.unsubscribe();
+          }
+          this.compressSub = observableImages.subscribe((image) => {
             this.images.push(image);
 
             console.log('compression on success');
@@ -142,7 +151,6 @@ export class ProfileAvatarComponent {
 
             this.provFile = true;
             this.previewUrl = this.images[0].compressedImage.imageDataUrl.split(',')[1];
-
           });
         });
       }

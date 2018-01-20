@@ -35,6 +35,9 @@ export class SocketWrapper {
       upgrade: true,
       query: 'token=' + this.userAuthService.getCurrentUserJwt()
     });
+    if (this.socketConnListener) {
+      this.socketConnListener.unsubscribe();
+    }
     this.socketConnListener = this.onConnection()
       .subscribe(state => {
         if (this.connectionState !== state && state) {
@@ -104,6 +107,9 @@ export class SocketWrapper {
 
   public close() {
     this.socket.disconnect();
+    if (this.socketConnListener) {
+      this.socketConnListener.unsubscribe();
+    }
   }
 }
 
