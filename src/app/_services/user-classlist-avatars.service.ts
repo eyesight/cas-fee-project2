@@ -7,6 +7,7 @@ import {DbService} from './db.service';
 import {StorageKeys, StorageService} from './storage.service';
 import {UserContentService} from './user-content.service';
 import {avatarHeader} from '../_helpers/avatar-header';
+import {Subscription} from "rxjs/Subscription";
 
 export class AvatarConfig {
   filetype: string;
@@ -28,13 +29,17 @@ export class DbServiceClasslistAvatar extends DbService<UserClassListAvatars[]> 
 @Injectable()
 export class ClasslistAvatarService {
 
+  private avatarSub: Subscription = null;
   constructor(
     private httpWrp: HttpWrapper,
     private dbUserClAvatar: DbServiceClasslistAvatar,
     private userContentService: UserContentService) {
     console.log('UserContentService constructed');
 
-    this.userContentService.getCurrentUserObserver().subscribe((userContent) => {
+    if (this.avatarSub) {
+      this.avatarSub.unsubscribe();
+    }
+    this.avatarSub = this.userContentService.getCurrentUserObserver().subscribe((userContent) => {
       console.log('nav.component ngOnInit inside observer');
 
       this.clear();

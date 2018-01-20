@@ -11,13 +11,9 @@
 
 - TODO: puppeteer: ev. kann man den Code noch effizienter schreiben (Prio 1.5)
 -> AW/CF
-  
-- TODO: alle Obs auf unsubscribes prüfen
--> AW
 
 - TODO: alle Files nochmals durchgehen und finally alle Consolen wegschmeissen
 - TODO: müssen alle consolen raus? (ev. Suntig)
-
 -> CF
 
 - TODO: Readme vervollständigen
@@ -25,7 +21,6 @@
 : clientseitige imagecompression, wenig codebloat: bootstrap nur grid, no ng-material,
  e2e_puppeter (ev. altes e2e dir löschen), Chat: reagiert wenn Server Off/Online,
  ARIA/Accessability
-
 -> CF 
   
 --------------------------------------------------------------------------------
@@ -228,8 +223,6 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
 - TODO: Test bricht wenn am Montag oder Dientag gestartet
 -> AW 
 
-- TODO: Test bricht wenn am Montag oder Dientag gestartet
--> AW 
 
 - TODO: Database SQL-Install Initialdaten besser machen
 -> AW
@@ -241,3 +234,7 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
 
 - TODO: Alle TODO im Code aufsuchen, korrigieren
 -> CF
+
+  
+- TODO: alle Obs auf unsubscribes prüfen
+-> AW

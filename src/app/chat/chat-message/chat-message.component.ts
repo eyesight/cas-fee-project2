@@ -35,6 +35,7 @@ export class ChatMessageComponent implements OnInit, OnDestroy {
   }
 
   private getAvatarFromEmail(email: string) {
+    if (this.clavSub) { this.clavSub.unsubscribe(); }
     this.clavSub = this.classlistAvatarService.getClasslistAvatars().subscribe((resultAvatar) => {
       this.avatar = resultAvatar.find((x) => {
         if (!x || !x.email) {

@@ -8,6 +8,7 @@ import { AlertService, UserService, AlertMessagesService } from '../../_services
 import { DatepickerOptions } from 'ng2-datepicker';
 import * as deLocale from 'date-fns/locale/de';
 import * as moment from 'moment';
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'app-profile-details-child',
@@ -23,6 +24,8 @@ export class ProfileDetailsChildComponent implements OnInit {
     public formModel: User;
     public userObject = new User;
     public data: any;
+    private userServiceSub: Subscription = null;
+    private userContentSub: Subscription = null;
 
     options: DatepickerOptions = {
       minYear: 1980,
@@ -85,13 +88,20 @@ export class ProfileDetailsChildComponent implements OnInit {
     this.userObject.tel_private = this.userContent.tel_private;
     this.userObject.zip = this.userContent.zip;
 
+    if (this.userServiceSub) {
+      this.userServiceSub.unsubscribe();
+    }
     // update child - add message if succeeded or failed and go back to the profile-site
     this.userService.update(this.userObject)
       .subscribe(
         data => {
           this.alertService.success(this.alertMessagesService.MessagesSuccess.dataChange, true);
+
+          if (this.userContentSub) {
+            this.userContentSub.unsubscribe();
+          }
           // update the content in user-store
-          this.userContentService.getUserContent()
+          this.userContentSub = this.userContentService.getUserContent()
             .subscribe( content => {
                 // update data in parent-commponent (profile.component) via service
                 this.router.navigate(['/profile']);

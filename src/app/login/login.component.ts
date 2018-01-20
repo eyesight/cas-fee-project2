@@ -7,6 +7,7 @@ import {ErrorHandlerService} from '../_services/index';
 import {ClasslistAvatarService} from '../_services/user-classlist-avatars.service';
 import {User} from '../_models/user.model';
 import {AlertMessagesService} from '../_services/alert-messages.service';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
   public returnUrl: string;
   public loginForm: FormGroup;
   public formModel: User;
+  private authSub: Subscription = null;
+  private userContentSub: Subscription = null;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -57,10 +60,16 @@ export class LoginComponent implements OnInit, AfterViewInit {
     this.formModel = this.loginForm.value;
     this.formModel.email = this.formModel.email.toLowerCase();
 
-    this.authenticationService.login(this.formModel.email, this.formModel.pwd)
+    if (this.authSub) {
+      this.authSub.unsubscribe();
+    }
+    this.authSub = this.authenticationService.login(this.formModel.email, this.formModel.pwd)
       .subscribe(data => {
 
-          this.userContentService.getUserContent()
+          if (this.userContentSub) {
+            this.userContentSub.unsubscribe();
+          }
+          this.userContentSub = this.userContentService.getUserContent()
             .subscribe(content => {
                 if (data.user_can.length > 0) {
                   this.router.navigate([this.returnUrl]);

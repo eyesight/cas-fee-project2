@@ -6,6 +6,7 @@ import {UserContentService} from '../../_services/user-content.service';
 import {CustomValidators} from '../../_validation/custom.validators';
 import {Router} from '@angular/router';
 import {AlertService, UserService, AlertMessagesService} from '../../_services/index';
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'app-profile-password-change',
@@ -18,6 +19,7 @@ export class ProfilePasswordChangeComponent implements OnInit {
   public userContent: User;
   public pwdForm: FormGroup;
   public userObject = new UserPwdChange;
+  private updatePwdSub: Subscription = null;
 
   constructor(private fb: FormBuilder,
               private UserContentService: UserContentService,
@@ -45,7 +47,11 @@ export class ProfilePasswordChangeComponent implements OnInit {
   public updatePwd() {
     this.userObject.new_pwd = this.newPassword.value;
     this.userObject.pwd = this.oldPassword.value;
-    this.userService.updatePassword(this.userObject)
+
+    if (this.updatePwdSub) {
+      this.updatePwdSub.unsubscribe();
+    }
+    this.updatePwdSub = this.userService.updatePassword(this.userObject)
       .subscribe(
         data => {
           this.alertService.success(this.alertMessagesService.MessagesSuccess.dataChange, true);

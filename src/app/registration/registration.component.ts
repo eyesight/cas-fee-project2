@@ -8,6 +8,7 @@ import * as deLocale from 'date-fns/locale/de';
 import * as moment from 'moment';
 import {AlertService, UserService} from '../_services/index';
 import {AlertMessagesService} from '../_services/alert-messages.service';
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'app-registration',
@@ -21,6 +22,8 @@ export class RegistrationComponent implements OnInit {
   public data: any;
   public date: Date;
   public submitted = false;
+  private regSub: Subscription = null;
+  private klasseSub: Subscription = null;
 
   options: DatepickerOptions = {
     minYear: 1980,
@@ -48,7 +51,10 @@ export class RegistrationComponent implements OnInit {
 
   public ngOnInit(): void {
     this.buildForm();
-    this.getklasse();
+    if (this.klasseSub) {
+      this.klasseSub.unsubscribe();
+    }
+    this.klasseSub = this.getklasse();
     this.submitted = false;
   }
 
@@ -68,8 +74,10 @@ export class RegistrationComponent implements OnInit {
       this.formModel.register_date = this.date;
 
       this.loading = true;
-
-      this.userService.create(this.formModel)
+      if (this.regSub) {
+        this.regSub.unsubscribe();
+      }
+      this.regSub = this.userService.create(this.formModel)
         .subscribe(
           data => {
             this.alertService.success(this.alertMessagesService.MessagesSuccess.register, true, 500);

@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from '../../_validation/custom.validators';
 import { AlertService, UserService, AlertMessagesService } from '../../_services/index';
 import { UserContentService } from '../../_services/user-content.service';
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'app-profile-details-parent',
@@ -20,6 +21,8 @@ export class ProfileDetailsParentComponent implements OnInit {
   public parentDetailsForm: FormGroup;
   public formModel: User;
   public userObject = new User;
+  private userServiceSub: Subscription = null;
+  private userContentSub: Subscription = null;
 
   public languages: Array<{ content: string, label: string }> = [
     {content: 'de', label: 'Deutsch'},
@@ -96,12 +99,20 @@ export class ProfileDetailsParentComponent implements OnInit {
     this.userObject.zip = this.formModel.zip;
 
     // update child - add message if succeeded or failed and go back to the profile-site
-    this.userService.update(this.userObject)
+
+    if (this.userServiceSub) {
+      this.userServiceSub.unsubscribe();
+    }
+    this.userServiceSub = this.userService.update(this.userObject)
       .subscribe(
         data => {
           this.alertService.success(this.alertMessagesService.MessagesSuccess.dataChange, true);
+
+          if (this.userContentSub) {
+            this.userContentSub.unsubscribe();
+          }
           // update the content in user-store
-          this.userContentService.getUserContent()
+          this.userContentSub = this.userContentService.getUserContent()
             .subscribe( content => {
                 // update data in parent-commponent (profile.component) via service
                 this.router.navigate(['/profile']);
