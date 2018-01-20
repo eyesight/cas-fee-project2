@@ -16,6 +16,6 @@ export class ProperTimePipe implements PipeTransform {
     } else {
       return 'Pendent';
     }
-   // return moment(date).locale().format('LTS');
+    // return moment(date).locale().format('LTS');
   }
 }

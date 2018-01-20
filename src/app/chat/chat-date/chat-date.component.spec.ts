@@ -30,7 +30,7 @@ fdescribe('ChatDateComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ChatDateComponent, FromNowPipe ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

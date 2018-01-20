@@ -15,7 +15,7 @@ fdescribe('ChatAddmessageComponent', () => {
       providers: [EmojiToUnicode, AlertService, AlertMessagesService],
       imports: [RouterTestingModule.withRoutes([])]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

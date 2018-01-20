@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {ChatService} from '../_services/chat.service';
 import {MessageCallback, MessageDateBlock, ChatMessage} from '../_models/message.model';
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/interval';
 import {Subscription} from 'rxjs/Subscription';
 import {UserAuthService} from '../_services/user-auth.service';
 import {AlertService} from '../_services/alert.service';
@@ -16,6 +17,7 @@ import {AlertMessagesService} from '../_services/alert-messages.service';
   templateUrl: './chat.component.html'
 })
 export class ChatComponent implements OnInit, OnDestroy {
+
 
   @ViewChild('ScrollTo') private scrollDirective: AppScrollBottomDirective;
 
@@ -32,12 +34,13 @@ export class ChatComponent implements OnInit, OnDestroy {
   private userContentSub: Subscription;
   private client_uuid = 0;
 
-  constructor(private chatService: ChatService
-    , private router: Router
-    , private userAuthService: UserAuthService
-    , private userContentService: UserContentService
-    , private alertService: AlertService
-  , private ams: AlertMessagesService) {
+  constructor(
+    private chatService: ChatService,
+    private router: Router,
+    private userAuthService: UserAuthService,
+    private userContentService: UserContentService,
+    private alertService: AlertService,
+    private ams: AlertMessagesService) {
     console.log('chatComponent constructor');
   }
 
@@ -189,6 +192,7 @@ export class ChatComponent implements OnInit, OnDestroy {
       this.message = [messageJson];
     }
     this.messageItem = this.createMessageDateBlock();
+
   }
 
   private updateMessage(msg: ChatMessage, clientId) {

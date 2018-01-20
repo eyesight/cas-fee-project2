@@ -20,8 +20,8 @@ export class ChatMessageComponent implements OnInit, OnDestroy {
 
   // classlist Avatars
   public  clavSub: Subscription = null;
-   constructor( private classlistAvatarService: ClasslistAvatarService,
-                private alertService: AlertService) { }
+  constructor( private classlistAvatarService: ClasslistAvatarService,
+               private alertService: AlertService) { }
 
   public ngOnInit() {
 
@@ -31,17 +31,17 @@ export class ChatMessageComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy() {
-     if (this.clavSub) { this.clavSub.unsubscribe(); }
+    if (this.clavSub) { this.clavSub.unsubscribe(); }
   }
 
-   private getAvatarFromEmail(email: string) {
-     this.clavSub = this.classlistAvatarService.getClasslistAvatars().subscribe((resultAvatar) => {
-       this.avatar = resultAvatar.find((x) => {
-         if (!x || !x.email) {
-           return false;
-         }
-         return x.email === email;
-       });
-     });
-   }
+  private getAvatarFromEmail(email: string) {
+    this.clavSub = this.classlistAvatarService.getClasslistAvatars().subscribe((resultAvatar) => {
+      this.avatar = resultAvatar.find((x) => {
+        if (!x || !x.email) {
+          return false;
+        }
+        return x.email === email;
+      });
+    });
+  }
 }
