@@ -12,13 +12,6 @@
 - TODO: puppeteer: ev. kann man den Code noch effizienter schreiben (Prio 1.5)
 -> AW/CF
 
-- TODO: Alle TODO im Code aufsuchen, korrigieren
--> CF
-
-  
-- TODO: alle Obs auf unsubscribes prüfen
--> AW
-
 - TODO: alle Files nochmals durchgehen und finally alle Consolen wegschmeissen
 - TODO: müssen alle consolen raus? (ev. Suntig)
 
@@ -233,10 +226,7 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
   
 - TODO: Test bricht wenn am Montag oder Dientag gestartet
 -> AW 
->>>>>>> dfc82ef00fd7eca9ba6c62b2ae7af158160f7c60
 
-- TODO: Test bricht wenn am Montag oder Dientag gestartet
--> AW 
 
 - TODO: Database SQL-Install Initialdaten besser machen
 -> AW
@@ -244,3 +234,11 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
 
 - TODO: alles nochmals neu installieren auf einem anderen Compi.
 -> AW/CF
+
+
+- TODO: Alle TODO im Code aufsuchen, korrigieren
+-> CF
+
+  
+- TODO: alle Obs auf unsubscribes prüfen
+-> AW
