@@ -11,9 +11,6 @@ import { CanDeactivateClasslistService } from './service/can-deactivate-classlis
 import { PersonalDetailsContainerModule } from '../personal-details-container/personal-details-container.module';
 import { PipesModule } from '../_pipes/pipes.module';
 
-
-
-
 @NgModule({
   imports: [
     CommonModule,

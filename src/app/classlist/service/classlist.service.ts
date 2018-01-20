@@ -3,8 +3,8 @@ import {User, UserApprove} from '../../_models/user.model';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import {HttpWrapper} from '../../_services/http-wrapper.service';
-import {Subscription} from "rxjs/Subscription";
-import {Subject} from "rxjs/Subject";
+import {Subscription} from 'rxjs/Subscription';
+import {Subject} from 'rxjs/Subject';
 
 
 @Injectable()
@@ -13,13 +13,11 @@ export class ClasslistService {
   private classlistCache: User[] = null;
   private subject = new Subject<number>();
 
-  //private getClassListSub: Subscription;
-  constructor(private httpWrp: HttpWrapper) {
+  constructor(
+    private httpWrp: HttpWrapper) {
   }
 
-
   public getClasslistObserver(): Observable<User[]> {
-
 
     return new Observable((observer) => {
       let sub1: Subscription = null;
@@ -35,8 +33,7 @@ export class ClasslistService {
             sub2 = this.getClasslist()
               .subscribe((content) => observer.next(content),
                 (error) => observer.error(error));
-          }
-          ,
+          },
           (error) => {
             observer.error(error);
           });
@@ -57,7 +54,6 @@ export class ClasslistService {
         // nothing to execute
       };
     });
-
   }
 
   public getUserDetail(id): User {
@@ -93,12 +89,10 @@ export class ClasslistService {
   }
 
   private getClasslist(): Observable<User[]> {
-
     return this.httpWrp.get('/api/classlist/all')
       .map((result) => {
         this.classlistCache = result.classlist;
         return result.classlist;
       });
   }
-
 }

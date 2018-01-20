@@ -13,10 +13,6 @@ export class CanDeactivateClasslistService implements CanDeactivate<ClasslistCom
     });
     if (component) {
 
-     /* resultObserver.next(false);
-      resultObserver.complete();
-
-      return resultObs; */
      console.log('can?' + component.canDeactivate);
      return component.canDeactivate;
     }

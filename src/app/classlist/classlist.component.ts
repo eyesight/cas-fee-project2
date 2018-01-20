@@ -8,30 +8,30 @@ import {ClasslistAvatarService} from '../_services/user-classlist-avatars.servic
 import {Subscription} from 'rxjs/Subscription';
 import {AlertMessagesService} from '../_services/alert-messages.service';
 
-
 @Component({
   selector: 'app-classlist',
   templateUrl: './classlist.component.html'
 })
+
 export class ClasslistComponent implements OnInit, OnDestroy {
 
   public classlist: User[] = null;
   public userCurrent: User = null;
-
   public canDeactivate = true;
   public avatarSub: Subscription = null;
   public classlistSub: Subscription = null;
   public userContentSub: Subscription = null;
 
-  constructor(private classlistService: ClasslistService
-    , private router: Router
-    , private alertService: AlertService
-    , private alertMessagesService: AlertMessagesService
-    , private userContentService: UserContentService
-    , private classlistAvatarService: ClasslistAvatarService) {
+  constructor(
+    private classlistService: ClasslistService,
+    private router: Router,
+    private alertService: AlertService,
+    private alertMessagesService: AlertMessagesService,
+    private userContentService: UserContentService,
+    private classlistAvatarService: ClasslistAvatarService) {
   }
 
-  ngOnInit() {
+  public ngOnInit() {
    this.userContentSub =  this.userContentService.getCurrentUserObserver()
       .subscribe((uc) => {
         this.userCurrent = uc;
@@ -74,7 +74,7 @@ export class ClasslistComponent implements OnInit, OnDestroy {
         });
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy() {
     if (this.avatarSub) { this.avatarSub.unsubscribe(); }
     if (this.classlistSub) { this.classlistSub.unsubscribe(); }
     if (this.userContentSub) { this.userContentSub.unsubscribe(); }

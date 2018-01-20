@@ -18,7 +18,7 @@ export class UserDetailComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute) {
      this.user = activatedRoute.snapshot.data.user;
   }
-  ngOnInit() {
+  public ngOnInit() {
   }
 
 }

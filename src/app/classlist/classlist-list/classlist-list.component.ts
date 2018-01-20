@@ -14,7 +14,6 @@ enum FIELDS {
   PLACE
 }
 
-
 class SortClass {
   constructor() {
   }
@@ -58,13 +57,14 @@ export class ClasslistListComponent implements OnDestroy {
   private deleteSub: Subscription = null;
 
 
-  constructor(private classlistService: ClasslistService,
-              private alertService: AlertService,
-              private alertMessageService: AlertMessagesService) {
+  constructor(
+    private classlistService: ClasslistService,
+    private alertService: AlertService,
+    private alertMessageService: AlertMessagesService) {
   }
 
 
-  ngOnDestroy() {
+  public ngOnDestroy() {
     if (this.approveSub) {
       this.approveSub.unsubscribe();
     }
@@ -73,7 +73,7 @@ export class ClasslistListComponent implements OnDestroy {
     }
   }
 
-  showAlertApprove(item: User, checked: any) {
+  public showAlertApprove(item: User, checked: any) {
     console.log('checked?' + checked.target.checked + 'user: to ' + item.email);
     this.classlistList[this.classlistList.findIndex((x) => x === item)].is_approved = checked.target.checked;
 
@@ -85,12 +85,9 @@ export class ClasslistListComponent implements OnDestroy {
       this.sendAnswer(o, d, s);
     };
     if (checked.target.checked) {
-      // this.alert.show('Möchten Sie die Person wirklich bestätigen?', true);
       this.alert.showMBox<User>('Möchten Sie die Person wirklich bestätigen?', checked.target.checked, item, fnCallback);
     } else {
-      // this.alert.show('Möchten Sie die Person wirklich ablehnen? Person kann danach das System nicht mehr benutzen', false);
-      this.alert.showMBox<User>('Möchten Sie die Person wirklich ablehnen? Person kann danach das System nicht mehr benutzen?'
-        , checked.target.checked, item, fnCallback);
+      this.alert.showMBox<User>('Möchten Sie die Person wirklich ablehnen? Person kann danach das System nicht mehr benutzen?', checked.target.checked, item, fnCallback);
     }
   }
 
@@ -126,7 +123,6 @@ export class ClasslistListComponent implements OnDestroy {
 
   public canDeactivateSend(val: boolean) {
     this.approveAnswer.emit(val);
-
   }
 
   public onDelete(key: number) {
