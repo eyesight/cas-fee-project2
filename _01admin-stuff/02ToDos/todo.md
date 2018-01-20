@@ -11,10 +11,6 @@
 
 - TODO: puppeteer: ev. kann man den Code noch effizienter schreiben (Prio 1.5)
 -> AW/CF
-
-- TODO: Alle TODO im Code aufsuchen, korrigieren
--> CF
-
   
 - TODO: alle Obs auf unsubscribes prüfen
 -> AW
@@ -218,11 +214,9 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
 - TODO (impressumg und ABGS): Lorem Ipsum text
 -> AW/CF
 
-<<<<<<< HEAD
 - TODO: FOUT berücksichtigen für das Laden eines Webfonts (=auf Folien unterricht), https://css-tricks.com/fout-foit-foft/
 -- Klass setzen mit fallback schrift und asny. nachladen, so dass Seitenaufbau nicht blockiert
 -> AW+CF  (Prio 1.5)
-=======
 
 - TODO: @types/emojione types selber definieren wegen fehlenden vollst. Types
 -> AW (remove npm unisntall emojione and uninstall types)
@@ -233,7 +227,6 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
   
 - TODO: Test bricht wenn am Montag oder Dientag gestartet
 -> AW 
->>>>>>> dfc82ef00fd7eca9ba6c62b2ae7af158160f7c60
 
 - TODO: Test bricht wenn am Montag oder Dientag gestartet
 -> AW 
@@ -244,3 +237,7 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
 
 - TODO: alles nochmals neu installieren auf einem anderen Compi.
 -> AW/CF
+
+
+- TODO: Alle TODO im Code aufsuchen, korrigieren
+-> CF
