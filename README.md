@@ -25,6 +25,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   <li>1. download project</li>
   <li>2. entpack (if not already) to dir and switch to dir</li>
   <li>3. run:</li>
+  
   ```bash
   npm install
   ```
@@ -33,15 +34,16 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   <ul>
   <li>change to directory ./server </li>
   <li>run: </li>
+  
   ```bash
     npm install
-    ```
+   ```
   <li>install mysql (z.B. mit MAMP (osx))
   </li><li>create database "school_development" & user/pw "school"
   </li><li>run scripts under sql (it create and fills tables)
   </li>
   <li>start node server: 
-  <br>go to server dir  <br>
+  <br>go to server dir <br>
   enter to console:
   
 ```bash
@@ -63,7 +65,7 @@ It runs on [localhost:4200](http://localhost:4200/)
 
   
 <h4>Testing</h4>
-to use the tool as registered user use:<br>
+to use the tool as registered user use:
 ```bash
   Benutzername: test@test.com
   Password: test99!
@@ -78,7 +80,7 @@ to use the tool as admin/teacher:
 
 
 ## Modules
-Description of the modules can be found [here](https://github.com/eyesight/cas-fee-project2/blob/master/_01admin-stuff/00_modul-definition.md)
+Description of the modules can be found [here](/_01admin-stuff/00_modul-definition.md)
 
 ## Testing
 - We made some Unit-test. Please run following
@@ -91,7 +93,7 @@ Open in browser:[localhost:9876](http://localhost:9876/)
   - Person 1: Pictures and results can be found [here](/_01admin-stuff/04UserTests/User-Test_Jonas.md)
   - Person 1: Pictures and results can be found [here](/_01admin-stuff/04UserTests/User-Test_Lehrerin.md)
   
-- [e2e-Tests with puppeteer](https://github.com/eyesight/cas-fee-project2/blob/master/e2e_test_puppeteer)
+- [e2e-Tests with puppeteer](/e2e_test_puppeteer)
 
 ## Specials: the good ones
  - imagecompression on client-side
@@ -111,8 +113,8 @@ Open in browser:[localhost:9876](http://localhost:9876/)
 
 ## Further informations
 Interested to see our production-history/first steps?
-- here you find some [mockups](https://github.com/eyesight/cas-fee-project2/tree/master/_01admin-stuff/01mockups_layout) 
-- here you find our [prototype](https://github.com/eyesight/cas-fee-project2/blob/master/_02prototype) 
+- here you find some [mockups](/_01admin-stuff/01mockups_layout) 
+- here you find our [prototype](/_02prototype) 
 
 
 ## Authors

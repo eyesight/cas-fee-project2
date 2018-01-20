@@ -1,5 +1,8 @@
 User-Test mit Lehrerin (Roya)
 
+[Usertest-Lehrerin1.png|alt=Roya]
+
+[Usertest-Lehrerin2.JPG|alt=Roya]
 
 Vorbedingung: Login als Lehrerin: Benutzername: lehrer@test.com password: test99!
 
