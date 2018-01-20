@@ -9,10 +9,9 @@ import { overlayAnimation } from '../../_animation/overlay.animation';
 export class ForgotPasswordComponent implements OnInit {
   @HostBinding('@overlayAnimation') overlayAnimation;
 
-
   constructor() { }
 
-  ngOnInit() {
+  public ngOnInit() {
   }
 
 }

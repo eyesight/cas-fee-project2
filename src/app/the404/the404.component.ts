@@ -11,7 +11,7 @@ export class The404Component implements OnInit {
     private router: Router,
   ) { }
 
-  ngOnInit() {
+  public ngOnInit() {
     setTimeout(() => {
       this.router.navigate(['/home']);
     }, 5000);

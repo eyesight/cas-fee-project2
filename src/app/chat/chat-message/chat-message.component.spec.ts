@@ -1,25 +1,22 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
 import {ChatMessageComponent} from './chat-message.component';
-import {ProperTimePipe} from "../services/proper-time.pipe";
-import {ChatMessage} from "../../_models/message.model";
-import {
-  ClasslistAvatarServiceMock
-} from "../../_services/user-classlist-avatars.service.mock";
-import {ClasslistAvatarService, DbServiceClasslistAvatar} from "../../_services/user-classlist-avatars.service";
-import {AlertMessagesService} from "../../_services/alert-messages.service";
-import {AlertService} from "../../_services/alert.service";
-import {UserAuthServiceMock} from "../../_services/user-auth.service.mock";
-import {HttpWrapper} from "../../_services/http-wrapper.service";
-import {UserAuthService} from "../../_services/user-auth.service";
-import {HttpWrapperServiceMock} from "../../_services/http-wrapper.service.mock";
-import {BaseRequestOptions, ConnectionBackend, Http} from "@angular/http";
-import {MockBackend} from "@angular/http/testing";
-import {StorageService} from "../../_services/storage.service";
-import {UserContentDbServiceMock} from "../../_services/user-content-db.service.mock";
-import {DbServiceUserContent, UserContentService} from "../../_services/user-content.service";
-import {RouterTestingModule} from "@angular/router/testing";
-import {UserContentServiceMock} from "../../_services/user-content.service.mock";
+import {ProperTimePipe} from '../services/proper-time.pipe';
+import {ChatMessage} from '../../_models/message.model';
+import {ClasslistAvatarServiceMock} from '../../_services/user-classlist-avatars.service.mock';
+import {ClasslistAvatarService, DbServiceClasslistAvatar} from '../../_services/user-classlist-avatars.service';
+import {AlertMessagesService} from '../../_services/alert-messages.service';
+import {AlertService} from '../../_services/alert.service';
+import {UserAuthServiceMock} from '../../_services/user-auth.service.mock';
+import {HttpWrapper} from '../../_services/http-wrapper.service';
+import {UserAuthService} from '../../_services/user-auth.service';
+import {HttpWrapperServiceMock} from '../../_services/http-wrapper.service.mock';
+import {BaseRequestOptions, ConnectionBackend, Http} from '@angular/http';
+import {MockBackend} from '@angular/http/testing';
+import {StorageService} from '../../_services/storage.service';
+import {UserContentDbServiceMock} from '../../_services/user-content-db.service.mock';
+import {DbServiceUserContent, UserContentService} from '../../_services/user-content.service';
+import {RouterTestingModule} from '@angular/router/testing';
+import {UserContentServiceMock} from '../../_services/user-content.service.mock';
 
 fdescribe('ChatMessageComponent', () => {
   let component: ChatMessageComponent;

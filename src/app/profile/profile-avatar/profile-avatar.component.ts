@@ -13,6 +13,7 @@ import {avatarHeader} from '../../_helpers/avatar-header';
   selector: 'app-profile-avatar',
   templateUrl: './profile-avatar.component.html'
 })
+
 export class ProfileAvatarComponent {
   public _previewUrl: string;
 
@@ -49,13 +50,13 @@ export class ProfileAvatarComponent {
     this.createForm();
   }
 
-  createForm() {
+  public createForm() {
     this.form = this.fb.group({
       avatar: null
     });
   }
 
-  onSubmit() {
+  public onSubmit() {
 
     this.userService.updateAvatar(this.userAvatar)
       .subscribe(
@@ -70,7 +71,6 @@ export class ProfileAvatarComponent {
               error => {
                 this.alertService.error(this.alertMessagesService.MessagesError.error, true);
               });
-
         },
         error => {
           this.provFile = false;
@@ -94,11 +94,11 @@ export class ProfileAvatarComponent {
     }, 1000);
   }
 
-  clearFile() {
+  public clearFile() {
     this.provFile = false;
   }
 
-  onFileChange(event) {
+  public onFileChange(event) {
     if (event.target.files && event.target.files[0]) {
 
       const files = event.target.files[0];

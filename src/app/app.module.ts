@@ -33,10 +33,7 @@ import { HttpWrapper } from './_services/http-wrapper.service';
 import { UserAuthService, DbServiceUserAuth } from './_services/user-auth.service';
 import { StorageService } from './_services/storage.service';
 import { AppConfigClass } from './_helpers/app.config';
-import {
-  DbServiceUserContent,
-  UserContentService
-} from './_services/user-content.service';
+import { DbServiceUserContent, UserContentService } from './_services/user-content.service';
 
 import { NgDatepickerModule } from 'ng2-datepicker';
 import { ImageCompressService } from 'ng2-image-compress';

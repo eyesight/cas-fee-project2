@@ -10,7 +10,6 @@ import {Location} from '@angular/common';
 export class AgbComponent implements OnInit {
   @HostBinding('@overlayAnimation') overlayAnimation;
 
-
   constructor(private location: Location) { }
   public goback() {
     this.location.back(); // go back to previous location

@@ -14,11 +14,8 @@ import { ProfileEmailChangeComponent } from './profile-email-change/profile-emai
 import { NgDatepickerModule } from 'ng2-datepicker';
 
 import { ProfileRoutesModule } from './profile.routes';
-
 import { ImageCompressService, ResizeOptions } from 'ng2-image-compress';
-
 import { PipesModule } from '../_pipes/pipes.module';
-
 
 @NgModule({
   imports: [

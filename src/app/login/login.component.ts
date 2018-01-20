@@ -1,8 +1,6 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-
 import {AlertService, AuthenticationService} from '../_services/index';
 import {UserContentService} from '../_services/user-content.service';
 import {ErrorHandlerService} from '../_services/index';
@@ -10,18 +8,17 @@ import {ClasslistAvatarService} from '../_services/user-classlist-avatars.servic
 import {User} from '../_models/user.model';
 import {AlertMessagesService} from '../_services/alert-messages.service';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html'
 })
+
 export class LoginComponent implements OnInit, AfterViewInit {
   public model: any = {};
   public loading = false;
   public returnUrl: string;
   public loginForm: FormGroup;
   public formModel: User;
-
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -34,13 +31,13 @@ export class LoginComponent implements OnInit, AfterViewInit {
               private fb: FormBuilder) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.buildForm();
     console.log('login:ngOnInit');
     this.init();
   }
 
-  ngAfterViewInit() {
+  public ngAfterViewInit() {
     console.log('login:ngAfterViewInit');
   }
 

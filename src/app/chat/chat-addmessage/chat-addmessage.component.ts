@@ -1,8 +1,8 @@
 import {Component, EventEmitter, OnInit, Output, ViewChild, ElementRef, Input} from '@angular/core';
 import { ChatMessage } from '../../_models/message.model';
 import { EmojiToUnicode } from '../../_services/emoji-to-unicode';
-import {AlertService} from "../../_services/alert.service";
-import {AlertMessagesService} from "../../_services/alert-messages.service";
+import {AlertService} from '../../_services/alert.service';
+import {AlertMessagesService} from '../../_services/alert-messages.service';
 
 @Component({
   selector: 'app-chat-addmessage',
@@ -17,16 +17,16 @@ export class ChatAddmessageComponent implements OnInit {
   // create a reference to messageText inside the template
   @ViewChild('messageText') private messageText: ElementRef;
 
-  constructor(private emojitransformer: EmojiToUnicode
-    , private alertService: AlertService
-    , private ams: AlertMessagesService) {
+  constructor(
+    private emojitransformer: EmojiToUnicode,
+    private alertService: AlertService,
+    private ams: AlertMessagesService) {
   }
 
   ngOnInit() {
   }
 
   public onSend(newItemText) {
-   // const conformText = newItemText.replace(/(?:\r\n|\r|\n)/g, '<br>');
     if (!newItemText) {
       return;
     }

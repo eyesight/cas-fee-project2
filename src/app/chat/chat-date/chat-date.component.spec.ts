@@ -1,11 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ChatDateComponent } from './chat-date.component';
 import {FromNowPipe} from '../../_pipes/from-now.pipe';
 import {MessageDateBlock} from '../../_models/message.model';
 import * as moment from 'moment';
 import _date = moment.unitOfTime._date;
-
 
 fdescribe('ChatDateComponent', () => {
   let component: ChatDateComponent;
@@ -15,13 +13,13 @@ fdescribe('ChatDateComponent', () => {
   // const lastTuesday =  new Date('2017-11-21');
 
   const weekDayText = [
-    'letzten Montag'
-  , 'letzten Dienstag'
-  , 'letzten Mittwoch'
-  , 'letzten Donnerstag'
-  , 'letzten Freitag'
-  , 'letzten Samstag'
-  , 'letzten Sonntag'
+    'letzten Montag',
+    'letzten Dienstag',
+    'letzten Mittwoch',
+    'letzten Donnerstag',
+    'letzten Freitag',
+    'letzten Samstag',
+    'letzten Sonntag'
   ];
 
   // today and yesterday are not interesting

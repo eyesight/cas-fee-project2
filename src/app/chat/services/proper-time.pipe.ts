@@ -1,4 +1,3 @@
-
 import { Pipe, PipeTransform} from '@angular/core';
 import * as moment from 'moment';
 
@@ -18,8 +17,5 @@ export class ProperTimePipe implements PipeTransform {
       return 'Pendent';
     }
    // return moment(date).locale().format('LTS');
-
-
   }
-
 }

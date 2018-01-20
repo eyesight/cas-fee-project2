@@ -10,12 +10,14 @@ import {Location} from '@angular/common';
 export class ImpressumComponent implements OnInit {
   @HostBinding('@overlayAnimation') overlayAnimation;
 
-  constructor(private location: Location) { }
+  constructor(
+    private location: Location) { }
+
   public goback() {
     this.location.back(); // go back to previous location
   }
 
-  ngOnInit() {
+  public ngOnInit() {
   }
 
 }
