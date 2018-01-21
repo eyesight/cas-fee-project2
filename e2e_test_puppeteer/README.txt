@@ -1,4 +1,5 @@
 
+(make sure Client and Server are running)
 # Run `puppeteer`
 
 `node index.js`
