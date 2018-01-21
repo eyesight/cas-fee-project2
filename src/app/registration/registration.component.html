@@ -149,13 +149,13 @@
         <div class="form-row" formGroupName="formEMailConfirm">
           <div class="col-12 zz-form__group">
             <label class="zz-form__label" for="email">E-Mail (gilt als username)*</label>
-            <input id="email" class="zz-form__input" name="email" type="text" formControlName="email" aria-required="true"
+            <input id="email" class="zz-form__input" name="username" autocomplete="username" type="text" formControlName="email" aria-required="true"
                    [ngClass]="{ 'zz-form__input--error': (formEMailConfirm.invalid || formEmail.invalid) && (formEmail.dirty || formEmail.touched || submitted)}">
             <app-form-error-messages [control]="formEmail"></app-form-error-messages>
           </div>
           <div class="col-12 zz-form__group">
             <label class="zz-form__label" for="email-check">E-Mail wiederholen*</label>
-            <input id="email-check" class="zz-form__input" name="emailcheck" type="text" formControlName="confirmEmail" aria-required="true"
+            <input id="email-check" class="zz-form__input" name="username" autocomplete="username" type="text" formControlName="confirmEmail" aria-required="true"
                    [ngClass]="{ 'zz-form__input--error': formEMailConfirm.invalid && (formEMailConfirm.dirty || formEMailConfirm.touched || submitted)}">
             <div
               *ngIf="formEMailConfirm.invalid && formEMailConfirm.hasError('nomatch') && (formEMailConfirm.dirty || formEMailConfirm.touched)"
@@ -167,13 +167,13 @@
         <div class="form-row" formGroupName="formPasswordConfirm">
           <div class="col-12 zz-form__group">
             <label class="zz-form__label" for="password">Passwort*</label>
-            <input id="password" class="zz-form__input" name="password" type="password" formControlName="pwd" aria-required="true"
+            <input id="password" class="zz-form__input" name="new-password" autocomplete="new-password" type="password" formControlName="pwd" aria-required="true"
                    [ngClass]="{ 'zz-form__input--error': (formPasswordConfirm.invalid || formPassword.invalid) && (formPassword.dirty || formPassword.touched || submitted)}">
             <app-form-error-messages [control]="formPassword"></app-form-error-messages>
           </div>
           <div class="col-12 zz-form__group">
             <label class="zz-form__label" for="passwordcheck">Passwort wiederholen*</label>
-            <input id="passwordcheck" class="zz-form__input" name="passwordcheck" type="password" aria-required="true"
+            <input id="passwordcheck" class="zz-form__input" name="passwordcheck" type="password" name="new-password" autocomplete="new-password" aria-required="true"
                    formControlName="confirmPassword"
                    [ngClass]="{ 'zz-form__input--error': formPasswordConfirm.invalid && (formPasswordConfirm.dirty || formPasswordConfirm.touched || submitted)}">
             <div
