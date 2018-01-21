@@ -1,14 +1,4 @@
 #TODO
-- TODO: Accessability / ARIA 
-(Prio 1.5)
--> CF:
-
-- TODO: (auch wegen IE)  avatars png/jpg Thematik
--> AW
-
-- TODO: puppeteer: ev. kann man den Code noch effizienter schreiben (Prio 1.5)
--> AW/CF
-  
 --------------------------------------------------------------------------------
 Prio 2
 -------------------------------------------------------------------------------
@@ -32,6 +22,10 @@ Prio 2
  (Prio2)
  CF(+AW)
  
+ - TODO: Accessability / ARIA fertig machen (ist teilweise drin)
+ (Prio 1.5)
+ -> CF:
+   
 --------------------------------------------------------------------------------
 DONE
 -------------------------------------------------------------------------------
