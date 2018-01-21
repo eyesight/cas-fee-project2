@@ -91,7 +91,6 @@ export class SocketWrapper {
       try {
         this.send(msg, (resp, name) => {
           if (resp !== 200) {
-            console.log('socket-wrapper: sendPro: on socket.emit error:' + resp);
             reject(resp);
           } else {
             resolve(name);

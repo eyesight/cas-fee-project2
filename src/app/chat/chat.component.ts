@@ -68,7 +68,6 @@ export class ChatComponent implements OnInit, OnDestroy {
 
     this.chatErrorSub = this.chatService.readErrors()
       .subscribe(error => {
-        console.log('chat.component call authentication:' + error);
         this.alertService.error(this.ams.MessagesError.error, false, 1000);
       });
 
@@ -132,11 +131,8 @@ export class ChatComponent implements OnInit, OnDestroy {
     return Observable.interval(5000)
       .subscribe(() => {
         if (this.message) {
-          console.log('resending.... ');
-
           const msgResend: ChatMessage[] = this.message.filter(x => !x.success);
           if (msgResend.length && this.connectionState) {
-            console.log('resending amount of:' + msgResend.length);
             msgResend.forEach(x => this.sendMessageOverSocket(x));
           }
         }
@@ -173,7 +169,6 @@ export class ChatComponent implements OnInit, OnDestroy {
             this.alertService.error(this.ams.MessagesError.error, true);
           }
         }
-        console.log('Promise reject on chatServie.sendMessage:' + err.toString());
       });
 
   }

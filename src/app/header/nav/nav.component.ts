@@ -36,10 +36,7 @@ export class NavComponent implements OnInit, OnDestroy {
       this.userContent = userContent;
       if (this.userContent.user_avatar) {
         this.userAvatar =  avatarHeader(this.userContent.avatar_filetype) + this.userContent.user_avatar;
-      } else {
-        console.log('no avatar available');
       }
-
     }, (error) => {
       console.log('observer error on nav.component.getCurrentUserObserver:' + error );
     });

@@ -74,7 +74,6 @@ export class ClasslistListComponent implements OnDestroy {
   }
 
   public showAlertApprove(item: User, checked: any) {
-    console.log('checked?' + checked.target.checked + 'user: to ' + item.email);
     this.classlistList[this.classlistList.findIndex((x) => x === item)].is_approved = checked.target.checked;
 
     this.canDeactivate = false;
@@ -131,7 +130,6 @@ export class ClasslistListComponent implements OnDestroy {
     }
     this.deleteSub = this.classlistService.deleteUser(key)
       .subscribe(() => {
-          console.log('classlistService.OnDelete successful');
         },
         (error) => {
           (error.toString().match(/400/g)) ?
@@ -146,7 +144,6 @@ export class ClasslistListComponent implements OnDestroy {
     }
     this.approveSub = this.classlistService.approveUser(item.id, (checked === true ? 1 : 0))
       .subscribe(() => {
-          console.log('classlistService.approveUser succesfull');
         },
         () => {
           this.alertService.error(this.alertMessageService.MessagesError.error, false, 2000);

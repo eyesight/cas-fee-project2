@@ -58,12 +58,10 @@ export class ClasslistComponent implements OnInit, OnDestroy {
                   });
               },
               (error) => {
-                console.log('ClasslistComponent getClasslistAvatars: error:' + error);
                 this.alertService.error(this.alertMessagesService.MessagesError.avatarNotLoaded);
               });
         },
         (error) => {
-          console.log('ClasslistComponent classlist.component call authentication:' + error);
           this.alertService.error(this.alertMessagesService.MessagesError.newlogin);
 
           setTimeout(() =>

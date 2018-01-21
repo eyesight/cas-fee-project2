@@ -1,7 +1,4 @@
 #TODO
-- TODO: Refactoring
--> AW/CF
-
 - TODO: Accessability / ARIA 
 (Prio 1.5)
 -> CF:
@@ -11,10 +8,6 @@
 
 - TODO: puppeteer: ev. kann man den Code noch effizienter schreiben (Prio 1.5)
 -> AW/CF
-
-- TODO: alle Files nochmals durchgehen und finally alle Consolen wegschmeissen
-- TODO: müssen alle consolen raus? (ev. Suntig)
--> CF
   
 --------------------------------------------------------------------------------
 Prio 2
@@ -239,3 +232,12 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
  e2e_puppeter (ev. altes e2e dir löschen), Chat: reagiert wenn Server Off/Online,
  ARIA/Accessability
 -> CF 
+
+
+- TODO: alle Files nochmals durchgehen und finally alle Consolen wegschmeissen
+- TODO: müssen alle consolen raus? (ev. Suntig)
+-> CF
+
+- TODO: Refactoring
+-> AW/CF
+

@@ -43,12 +43,9 @@ export class ClasslistService {
       // remove observable
       return () => {
         if (sub1) {
-          console.log('getClasslistObserver:unsbus sub1');
           sub1.unsubscribe();
         }
         if (sub2) {
-          console.log('getClasslistObserver: unsbus sub2');
-
           sub2.unsubscribe();
         }
         // nothing to execute
@@ -57,15 +54,12 @@ export class ClasslistService {
   }
 
   public getUserDetail(id): User {
-    console.log('getUserDetail:' + id);
-
     if (!this.classlistCache) {
       return null;
     }
 
     const user = this.classlistCache
       .filter(x => x.id === Number.parseInt(id))[0];
-    console.log('user:' + user.id);
     return user;
   }
 
@@ -79,7 +73,6 @@ export class ClasslistService {
   }
 
   public deleteUser(userId: number): Observable<any> {
-    console.log('classlistservice:' + userId);
 // instead of json use JSON.strinfiy
     return this.httpWrp.delete('/api/user/' + userId)
       .map((x) => {

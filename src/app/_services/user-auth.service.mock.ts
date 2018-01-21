@@ -26,7 +26,6 @@ export class UserAuthServiceMock {
     const userAuth = this.getCurrentUser();
 
     if (!userAuth) {
-      console.log('userAuth is null -> return null');
       return null;
     }
     return userAuth.token;
@@ -36,7 +35,6 @@ export class UserAuthServiceMock {
     const userAuth = this.getCurrentUser();
 
     if (!userAuth) {
-      console.log('userAuth is null');
       return null;
     }
     return userAuth.email;

@@ -8,15 +8,15 @@
         <form name="form" [formGroup]="loginForm" (ngSubmit)="loginForm.valid && login()" novalidate class="zz-form">
           <div class="form-row">
             <div class="col-12 zz-form__group">
-              <label class="zz-form__label" for="email">Benutzername</label>
-              <input id="email" class="zz-form__input" name="eMail" type="text" aria-required="true" formControlName="email" [ngClass]="{ 'zz-form__input--error': formUsername.errors && (formUsername.dirty || formUsername.touched)}" placeholder="E-Mail">
+              <label class="zz-form__label" for="email">Benutzername (deine E-Mailadresse)</label>
+              <input id="email" class="zz-form__input" name="eMail" type="text" aria-required="true" formControlName="email" [ngClass]="{ 'zz-form__input--error': formUsername.errors && (formUsername.dirty || formUsername.touched)}">
               <div *ngIf="formUsername.invalid && (formUsername.dirty || formUsername.touched)" class="zz-form__error">Benutzername fehlt oder ist ungültig.</div>
             </div>
           </div>
           <div class="form-row">
             <div class="col-12 zz-form__group">
               <label class="zz-form__label" for="password">Passwort</label>
-              <input id="password" class="zz-form__input" name="password" type="password" aria-required="true" formControlName="pwd" [ngClass]="{ 'zz-form__input--error': formPassword.errors && (formPassword.dirty || formPassword.touched) }" placeholder="Passwort">
+              <input id="password" class="zz-form__input" name="password" type="password" aria-required="true" formControlName="pwd" [ngClass]="{ 'zz-form__input--error': formPassword.errors && (formPassword.dirty || formPassword.touched) }">
               <div *ngIf="formPassword.invalid && (formPassword.dirty || formPassword.touched)" class="zz-form__error">Passwort fehlt oder ist ungültig</div>
             </div>
           </div>

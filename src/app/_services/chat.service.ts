@@ -41,7 +41,6 @@ export class ChatService {
 
           }
         }
-        console.log('authetication any error: nothing to notify if error is empty:' + error);
       });
       // observable is disposed
       return () => {

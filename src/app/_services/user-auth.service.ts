@@ -32,7 +32,6 @@ export class UserAuthService {
     const userAuth = this.dbUser.getCurrentData();
 
     if (!userAuth) {
-      console.log('userAuth is null -> return null');
       return null;
     }
     return userAuth.token;
@@ -42,7 +41,6 @@ export class UserAuthService {
     const userAuth = this.dbUser.getCurrentData();
 
     if (!userAuth) {
-      console.log('userAuth is null');
       return null;
     }
     return userAuth.email;
@@ -52,7 +50,6 @@ export class UserAuthService {
     const userAuth = this.dbUser.getCurrentData();
 
     if (!userAuth) {
-      console.log('userAuth is null');
       return null;
     }
     return userAuth.user_can;
