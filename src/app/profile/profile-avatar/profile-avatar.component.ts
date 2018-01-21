@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnDestroy, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {AlertService, UserService, AlertMessagesService} from '../../_services/index';
 import {Avatar, UserAvatar} from '../../_models/user.model';
@@ -7,15 +7,14 @@ import {ImageCompressService, IImage} from 'ng2-image-compress';
 import {Router} from '@angular/router';
 import {UserContentService} from '../../_services/user-content.service';
 import {avatarHeader} from '../../_helpers/avatar-header';
-import {Subscription} from "rxjs/Subscription";
-
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-profile-avatar',
   templateUrl: './profile-avatar.component.html'
 })
 
-export class ProfileAvatarComponent {
+export class ProfileAvatarComponent implements OnDestroy{
   public _previewUrl: string;
 
   @Input() set previewUrl(purl: string) {
@@ -23,7 +22,6 @@ export class ProfileAvatarComponent {
   }
 
   @Input() avatarFiletype: string;
-
 
   get previewUrl() {
     return avatarHeader(this.avatarFiletype) + this._previewUrl;
@@ -40,6 +38,7 @@ export class ProfileAvatarComponent {
   private images: Array<IImage> = [];
   private userContentSub: Subscription = null;
   private compressSub: Subscription = null;
+  private avatarSub: Subscription = null;
 
   @ViewChild('fileInput') fileInput: ElementRef;
 
@@ -53,6 +52,18 @@ export class ProfileAvatarComponent {
     this.createForm();
   }
 
+  public ngOnDestroy() {
+    if (this.userContentSub) {
+      this.userContentSub.unsubscribe();
+    }
+    if (this.compressSub) {
+      this.compressSub.unsubscribe();
+    }
+    if (this.avatarSub) {
+      this.avatarSub.unsubscribe();
+    }
+  }
+
   public createForm() {
     this.form = this.fb.group({
       avatar: null
@@ -61,7 +72,10 @@ export class ProfileAvatarComponent {
 
   public onSubmit() {
 
-    this.userService.updateAvatar(this.userAvatar)
+    if (this.avatarSub) {
+      this.avatarSub.unsubscribe();
+    }
+    this.avatarSub = this.userService.updateAvatar(this.userAvatar)
       .subscribe(
         data => {
           this.provFileHideSubmitButton = true;

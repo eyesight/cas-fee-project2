@@ -41,7 +41,7 @@ export class ChatMessageComponent implements OnInit, OnDestroy {
         if (!x || !x.email) {
           return false;
         }
-        return x.email === email;
+        return x.email.toLowerCase() === email.toLowerCase();
       });
     });
   }

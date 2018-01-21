@@ -12,6 +12,7 @@ module.exports.avatarUpload = function (req, res) {
   let filetype = [...req.body.avatar.filename.split('.')].pop();
   let fullname = filename + '.' + filetype;
 
+  fullname = fullname.toLowerCase();
   fs.writeFile('./avatars/' + filename + '.' + filetype, raw, function (err) {
     if (err) {
       console.log('avatarUpload: err:' + err);
@@ -36,6 +37,11 @@ module.exports.avatarGet = function (req, callback) {
       callback('avatarGet: error no data', null);
       return;
     }
+    if (!filename) {
+        callback('error no data', null, null);
+        return;
+    }
+    filename = filename.toLowerCase();
     fs.readFile('./avatars/' + filename, function (err, data) {
 
         if (data) {

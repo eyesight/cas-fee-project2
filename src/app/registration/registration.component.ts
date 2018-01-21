@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CustomValidators} from '../_validation/custom.validators';
@@ -15,7 +15,7 @@ import {Subscription} from 'rxjs/Subscription';
   templateUrl: './registration.component.html',
 })
 
-export class RegistrationComponent implements OnInit {
+export class RegistrationComponent implements OnInit, OnDestroy {
   public loading = false;
   public registrationForm: FormGroup;
   public formModel: User;
@@ -56,6 +56,15 @@ export class RegistrationComponent implements OnInit {
     }
     this.klasseSub = this.getklasse();
     this.submitted = false;
+  }
+
+  public ngOnDestroy() {
+    if (this.klasseSub) {
+      this.klasseSub.unsubscribe();
+    }
+    if (this.regSub) {
+      this.regSub.unsubscribe();
+    }
   }
 
   public register() {

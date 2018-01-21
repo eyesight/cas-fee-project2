@@ -1,4 +1,4 @@
-import {Component, HostBinding, OnInit} from '@angular/core';
+import {Component, HostBinding, OnDestroy, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../_models/user.model';
 import { overlayAnimation } from '../../_animation/overlay.animation';
@@ -16,7 +16,7 @@ import {Subscription} from 'rxjs/Subscription';
   animations: [overlayAnimation]
 })
 
-export class ProfileDetailsChildComponent implements OnInit {
+export class ProfileDetailsChildComponent implements OnInit, OnDestroy {
   @HostBinding('@overlayAnimation') overlayAnimation;
 
     public userContent: User;
@@ -50,6 +50,14 @@ export class ProfileDetailsChildComponent implements OnInit {
     this.buildForm();
   }
 
+  public ngOnDestroy() {
+    if (this.userServiceSub) {
+      this.userServiceSub.unsubscribe();
+    }
+    if (this.userContentSub) {
+      this.userContentSub.unsubscribe();
+    }
+  }
   get formChildGender() {
     return this.childDetailsForm.get('child_gender');
   }

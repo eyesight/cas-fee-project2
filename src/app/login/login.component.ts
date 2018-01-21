@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AlertService, AuthenticationService} from '../_services/index';
@@ -14,7 +14,7 @@ import {Subscription} from 'rxjs/Subscription';
   templateUrl: './login.component.html'
 })
 
-export class LoginComponent implements OnInit, AfterViewInit {
+export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
   public model: any = {};
   public loading = false;
   public returnUrl: string;
@@ -37,6 +37,15 @@ export class LoginComponent implements OnInit, AfterViewInit {
   public ngOnInit(): void {
     this.buildForm();
     this.init();
+  }
+
+  public ngOnDestroy(): void {
+    if (this.authSub) {
+      this.authSub.unsubscribe();
+    }
+    if (this.userContentSub) {
+      this.userContentSub.unsubscribe();
+    }
   }
 
   public ngAfterViewInit() {

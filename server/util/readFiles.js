@@ -19,7 +19,9 @@ function readManyFiles (path, files, emails, callback) {
   let result = [], errors = [], l = files.length;
 
   files.forEach(function (file, k) {
-    fs.readFile(path + file, function (err, data) {
+    let fullname = path + file;
+    fullname.toLowerCase();
+    fs.readFile(fullname, function (err, data) {
       // decrease waiting files
       --l;
       // just skip errors and decrease valid files count

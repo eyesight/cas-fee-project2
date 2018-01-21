@@ -1,4 +1,4 @@
-import {Component, HostBinding, OnInit, Output} from '@angular/core';
+import {Component, HostBinding, OnDestroy, OnInit, Output} from '@angular/core';
 import { overlayAnimation } from '../../_animation/overlay.animation';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {User} from '../../_models/user.model';
@@ -12,7 +12,7 @@ import {Subscription} from 'rxjs/Subscription';
   animations: [overlayAnimation]
 })
 
-export class ProfileEmailChangeComponent implements OnInit {
+export class ProfileEmailChangeComponent implements OnInit, OnDestroy {
   @HostBinding('@overlayAnimation') overlayAnimation;
 
   public userContent: User;
@@ -34,6 +34,12 @@ export class ProfileEmailChangeComponent implements OnInit {
     this.userContentSub = this.UserContentService.getCurrentUserObserver().subscribe((data) => {
       this.userContent = data;
     });
+  }
+
+  public ngOnDestroy() {
+    if (this.userContentSub) {
+      this.userContentSub.unsubscribe();
+    }
   }
 
   private buildForm() {

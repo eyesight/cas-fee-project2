@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { User } from '../_models/user.model';
 import {UserContentService} from '../_services/user-content.service';
 import {Subscription} from "rxjs/Subscription";
@@ -8,7 +8,7 @@ import {Subscription} from "rxjs/Subscription";
   templateUrl: './personal-details-container.component.html'
 })
 
-export class PersonalDetailsContainerComponent implements OnInit {
+export class PersonalDetailsContainerComponent implements OnInit, OnDestroy {
   public userContent: User = null;
   public isTeacher = false;
 
@@ -28,6 +28,12 @@ export class PersonalDetailsContainerComponent implements OnInit {
     });
     // check if User is teacher or not
     this.isTeacher = (this.userContent.is_teacher === 1);
+  }
+
+  public ngOnDestroy(): void {
+    if (this.userContentSub) {
+      this.userContentSub.unsubscribe();
+    }
   }
 
 }

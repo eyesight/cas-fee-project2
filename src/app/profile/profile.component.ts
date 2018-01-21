@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {User} from '../_models/user.model';
 import {UserContentService} from '../_services/user-content.service';
 import {Subscription} from 'rxjs/Subscription';
@@ -7,7 +7,7 @@ import {Subscription} from 'rxjs/Subscription';
   selector: 'app-profile',
   templateUrl: './profile.component.html',
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
   public userContent: User;
   public isTeacher = false;
 
@@ -26,5 +26,10 @@ export class ProfileComponent implements OnInit {
      });
     // check if User is teacher or not
     this.isTeacher = (this.userContent.is_teacher === 1);
+  }
+  public ngOnDestroy() {
+    if (this.userContentSub) {
+      this.userContentSub.unsubscribe();
+    }
   }
 }
