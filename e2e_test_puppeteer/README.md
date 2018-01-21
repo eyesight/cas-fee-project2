@@ -1,3 +1,4 @@
+(make sure Client and Server are running)
 
 # Run `puppeteer`
 
@@ -21,4 +22,4 @@ It uses the Account of
 `test@test.com` <br>
 `test99!` <br>
 
-Please make shure, you didn't change password for this user - otherwise test won't work.
+Please make shure, you don't change password for this user - otherwise test won't work.

@@ -15,13 +15,6 @@
 - TODO: alle Files nochmals durchgehen und finally alle Consolen wegschmeissen
 - TODO: müssen alle consolen raus? (ev. Suntig)
 -> CF
-
-- TODO: Readme vervollständigen
-- TODO: wichtige aber unsichtbare Punkte erwähnen?
-: clientseitige imagecompression, wenig codebloat: bootstrap nur grid, no ng-material,
- e2e_puppeter (ev. altes e2e dir löschen), Chat: reagiert wenn Server Off/Online,
- ARIA/Accessability
--> CF 
   
 --------------------------------------------------------------------------------
 Prio 2
@@ -238,3 +231,11 @@ https://www.w3schools.com/html/html5_semantic_elements.asp
   
 - TODO: alle Obs auf unsubscribes prüfen
 -> AW
+
+
+- TODO: Readme vervollständigen
+- TODO: wichtige aber unsichtbare Punkte erwähnen?
+: clientseitige imagecompression, wenig codebloat: bootstrap nur grid, no ng-material,
+ e2e_puppeter (ev. altes e2e dir löschen), Chat: reagiert wenn Server Off/Online,
+ ARIA/Accessability
+-> CF 
