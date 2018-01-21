@@ -3,8 +3,7 @@
 <h2>Modul Authentifizierung/Security</h2>
 - Login/Logout<br>
 - Eltern erfassen ihre Daten, plus die Daten des Kindes<br>
-- Sie wählen eine Klasse aus bestehender Liste (wurden vorgängig von Admin (=Schulhaus) erfasst. Admin von der Gruppe, Klasse ist der Lehrer.<br>
-Danach sind sie via E-Mail und Passwort registriert<br>
+- Sie wählen eine Klasse aus bestehender Liste (wurden vorgängig von Admin (=Schulhaus) erfasst. Admin von der Gruppe, Klasse ist der Lehrer. Danach sind sie via E-Mail und Passwort registriert<br>
 - User wählt Klasse aus<br>
 - User wird bestätigt von Admin<br>
 - Solange User nicht bestätigt ist, hat er eingeschränkte Rechte. D.h. er kann  nur sein Profil bearbeiten<br>
