@@ -101,10 +101,10 @@ Open in browser: [localhost:9876](http://localhost:9876/)
  - imagecompression on client-side
  - avoid coadbloast: we reduced the bootstrap to just the pieces of code, we really needed. (NO ng-material)
  - chat shows user if he is on- or offline
- - good structure of the files: 
+ - good structuring of the files: 
     - all directories in the app with "_" are shared
     - scss-files are in one directory and structured in config and theme (blocks)
- - server and client have always the same information about the authentification-status of the current-user 
+ - server and client have always the same information about the authentification-status of the current user 
  - authentification and autorisation is made with simple solutions (using guards)
  - User is guided and with error- and success-messages
  

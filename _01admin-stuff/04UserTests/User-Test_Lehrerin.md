@@ -1,4 +1,4 @@
-User-Test mit Lehrerin (Roya)
+*User-Test mit Lehrerin (Roya)*
 
 ![alt text](Usertest-Lehrerin1.png "Roya")
 
@@ -6,6 +6,7 @@ User-Test mit Lehrerin (Roya)
 
 Vorbedingung: Login als Lehrerin: Benutzername: lehrer@test.com password: test99!
 
+*Feedback/Ergebnis:*
 
 **Registrierungsprozess: Bestätige den Benutzer heidi@test.com**
 
