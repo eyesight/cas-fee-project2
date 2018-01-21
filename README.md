@@ -67,14 +67,14 @@ node index.js
   ng serve
   ```
           
-   ()if not then switch to ./node_modules/@angular/cli/bin and type ./ng serve)</li>
+   (if not then switch to ./node_modules/@angular/cli/bin and type ./ng serve)</li>
 </ul>
 
 Open Browser - it runs on [localhost:4200](http://localhost:4200/) 
 
   
 <h3>Test-Accounts</h3>
-You can register yourselfe as new youser. But to use everything you need to be approved from the administrator. That's why we made some test-users.
+You can register yourselfe as new user. But to use everything you need to be approved from the administrator. That's why we made some test-users.
 
 To use the tool as registered and autorizised user:
 
