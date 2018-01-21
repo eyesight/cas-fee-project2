@@ -9,11 +9,12 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Node.js: runtime environment
 - MySQL: Database
 - Sass: as style sheet language (compiled to css)
-- We used BEM-Mixed as methodology
-- Boostrat v4.0.0-beta.3: Framework for layouting
+- We used BEM (BEM-Mixed) as methodology
+- Bootstrap v4.0.0-beta.3: Framework for layouting
 - Open Sans: google-font
+- authentication using jwt-token
 
-## installation
+## Installation-Manual
 <h3>Requirements:</h3>
 <ul>
 <li> node >= 7.9</li>
@@ -23,11 +24,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 <li>please make shure, you have installed angular cli globally
 
 ```bash
-  npm install -g angular-cli
+npm install -g @angular/cli
 ```
   </li>
 </ul>
-<h3>Manual</h3>
+<h3>Installation</h3>
 <h4>Install Client</h4>
 <ul>
   <li>download project or git clone from this repo</li>
@@ -49,7 +50,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   ```
   <li>install mysql (z.B. mit MAMP (osx))
   </li><li>run scripts under in MySql 
-  </li><li>this will create the database school_test and fills tables and creates a systemuser school for this database
+  </li><li>this will create the database school_test and fills tables and creates a system-user school for this database
   </li>
   <li>start node server: 
   <br>go to server dir <br>
@@ -61,7 +62,7 @@ node index.js
 
   </ul>
   <h4>Run Project</h4>
-  <li>if you have ng globally installed (npm install -g angular-cli) then run this command in the projects-root:
+  <li>if you have ng globally installed (npm install -g @angular/cli) then run this command in the projects-root:
   
   ```bash
   ng serve
@@ -74,7 +75,7 @@ Open Browser - it runs on [localhost:4200](http://localhost:4200/)
 
   
 <h3>Test-Accounts</h3>
-You can register yourselfe as new user. But to use everything you need to be approved from the administrator. That's why we made some test-users.
+You can register yourself as new user. But to use everything you need to be approved from the administrator. That's why we made some test-users.
 
 To use the tool as registered and autorizised user:
 
@@ -82,7 +83,6 @@ To use the tool as registered and autorizised user:
 Benutzername: test@test.com
 Password: test99!
 ```
-
 
 To use the tool as admin/teacher:
 ```bash
@@ -116,7 +116,7 @@ Open in browser: [localhost:9876](http://localhost:9876/)
     - all directories in the app with "_" are shared
     - scss-files are in one directory and structured in config and theme (blocks)
  - server and client have always the same information about the authorization-status of the current user 
- - authentification and authorization is made with simple solutions (using guards)
+ - authentication and authorization is made with simple solutions (using guards)
  - User is guided and with error- and success-messages
  
 ## Specials: things which we'd like to improve for the next release
@@ -128,7 +128,6 @@ Open in browser: [localhost:9876](http://localhost:9876/)
 Interested to see our production-history/first steps?
 - here you find some [mockups](/_01admin-stuff/01mockups_layout) 
 - here you find our [prototype](/_02prototype) 
-
 
 ## Authors
 - Andreas Wildisen
