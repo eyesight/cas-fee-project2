@@ -34,15 +34,10 @@
           <p>{{user.parent_language | language}}</p>
           <h3 class="zz-title-h3">Registriert seit</h3>
           <p>{{user.register_date | properDate}}</p>
-          <p>
-          </p>
-          <p>
-            <button class="zz-btn zz-btn--primary">
-               <a href="mailto:{{user.email}}">
-                 E-Mail schreiben
-               </a>
-            </button>
-          </p>
+          <h3 class="zz-title-h3">E-Mail</h3>
+           <a class="zz-anchor" href="mailto:{{user.email}}">
+             {{user.email}}
+           </a>
         </div>
         <button [routerLink]="['/classlist']" class="zz-overlay__close-btn"></button>
       </div>

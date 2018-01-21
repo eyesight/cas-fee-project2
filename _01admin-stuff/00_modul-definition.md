@@ -10,6 +10,7 @@
 
 <h2>Modul Profil-Verwaltung</h2>
 - User kann seine Daten bearbeiten<br>
+- User kann Passwort ändern<br>
 
 <h2>Modul Profilbild</h2>
 - User kann sein Profilbild hochladen/wechseln<br>
