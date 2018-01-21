@@ -8,7 +8,7 @@ import { AlertService, UserService, AlertMessagesService } from '../../_services
 import { DatepickerOptions } from 'ng2-datepicker';
 import * as deLocale from 'date-fns/locale/de';
 import * as moment from 'moment';
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-profile-details-child',

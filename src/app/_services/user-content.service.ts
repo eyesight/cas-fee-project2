@@ -19,7 +19,6 @@ export class UserContentService {
   constructor(
     private httpWrp: HttpWrapper,
     private dbUserContent: DbServiceUserContent) {
-    console.log('UserContentService constructed');
   }
 
   public getUserContent(): Observable<User> {

@@ -30,7 +30,6 @@ export class SocketWrapper {
   public setup(chnReceive: string = channelReceiveMessage, chnSend: string = channelSendMessage) {
     this.channelReceive = chnReceive;
     this.channelSend = chnSend;
-    console.log('SocketWrapper. setup: socket token:' + this.userAuthService.getCurrentUserJwt());
     this.socket = io(this.appConf.getConfig().apiUrl, {
       upgrade: true,
       query: 'token=' + this.userAuthService.getCurrentUserJwt()
@@ -91,7 +90,6 @@ export class SocketWrapper {
     return new Promise((resolve, reject) => {
       try {
         this.send(msg, (resp, name) => {
-          console.log('swrp.send:' + resp);
           if (resp !== 200) {
             console.log('socket-wrapper: sendPro: on socket.emit error:' + resp);
             reject(resp);

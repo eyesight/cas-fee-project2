@@ -41,14 +41,12 @@ export class ChatComponent implements OnInit, OnDestroy {
     private userContentService: UserContentService,
     private alertService: AlertService,
     private ams: AlertMessagesService) {
-    console.log('chatComponent constructor');
   }
 
   public ngOnInit() {
     this.chatService.setup();
     this.userContentSub =  this.userContentService.getCurrentUserObserver()
       .subscribe((uc) => this.userContent = uc);
-    console.log('ngOnInit: userContent.email:' + this.userContent.email);
     // subscribe to receive the message using normale JSON adapter
     this.onLoad();
 
@@ -63,7 +61,6 @@ export class ChatComponent implements OnInit, OnDestroy {
     // authentication returns only if there is a problem to solve
     this.chatAuthSub = this.chatService.authentication()
       .subscribe(res => {
-        console.log('chat.component call authentication:' + res);
         this.alertService.error(this.ams.MessagesError.newlogin);
         setTimeout(() =>
           this.router.navigate(['relogin'], {queryParams: {returnUrl: this.router.url}}), 3500);
@@ -77,7 +74,6 @@ export class ChatComponent implements OnInit, OnDestroy {
 
     this.chatConnectionStateSub = this.chatService.connectionState()
       .subscribe(state => {
-        console.log('connection:' + state);
         this.connectionState = state;
 
         if (!this.message) {
@@ -91,7 +87,6 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy() {
-    console.log('Chat: ng destroy');
     if (this.socketSub) { this.socketSub.unsubscribe(); }
     if (this.chatAuthSub) { this.chatAuthSub.unsubscribe(); }
     if (this.chatErrorSub) { this.chatErrorSub.unsubscribe(); }
@@ -99,7 +94,6 @@ export class ChatComponent implements OnInit, OnDestroy {
     if (this.chatSub) { this.chatSub.unsubscribe(); }
     if (this.resendSub) { this.resendSub.unsubscribe(); }
     if (this.userContentSub) { this.userContentSub.unsubscribe(); }
-
   }
 
   private onLoad() {
@@ -167,7 +161,6 @@ export class ChatComponent implements OnInit, OnDestroy {
       .then((msg: MessageCallback) => {
         newMessage.saved_at = msg.server_saved_at;
         newMessage.success = true;
-        console.log('then');
 
         this.updateMessage(newMessage, newMessage.client_uuid);
       })

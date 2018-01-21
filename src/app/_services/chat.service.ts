@@ -19,8 +19,6 @@ export class ChatService {
   // load all message using rest instead of sockets
   // return a promise that also spec is working properly
   public load(): Observable<any> {
-    console.log('load Observable message');
-
     return this.httpWrp.get('/api/chat/getall');
   }
 
@@ -84,8 +82,6 @@ export class ChatService {
   public sendMessage(msg: ChatMessage): Promise<MessageCallback> {
 
     const reference = this;
-    console.log('send message :' + msg);
-
     return this.scktWrp.sendPro<MessageCallback>(msg);
   }
 

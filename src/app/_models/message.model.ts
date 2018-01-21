@@ -20,7 +20,6 @@ export class MessageDateBlock {
   messages: ChatMessage[];
 
   constructor(date: Date) {
-    console.log('constructor of mi');
     this.date = date;
     // causes to truncate time
     this.dateGroup = new Date(date.toDateString());

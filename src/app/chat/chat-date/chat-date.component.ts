@@ -13,7 +13,7 @@ export class ChatDateComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit() {
+  public ngOnInit() {
   }
 
 }

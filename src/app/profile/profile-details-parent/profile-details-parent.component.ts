@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from '../../_validation/custom.validators';
 import { AlertService, UserService, AlertMessagesService } from '../../_services/index';
 import { UserContentService } from '../../_services/user-content.service';
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-profile-details-parent',

@@ -8,7 +8,7 @@ import * as deLocale from 'date-fns/locale/de';
 import * as moment from 'moment';
 import {AlertService, UserService} from '../_services/index';
 import {AlertMessagesService} from '../_services/alert-messages.service';
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-registration',

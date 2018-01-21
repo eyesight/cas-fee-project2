@@ -14,7 +14,6 @@ export class DbServiceUserAuth extends DbService<UserAuth> {
 export class UserAuthService {
 
   constructor(private dbUser: DbServiceUserAuth) {
-    console.log('User-AuthService constructed :' + this.dbUser.storageKey);
   }
 
   public saveCurrentUser(data: UserAuth) {
@@ -22,7 +21,6 @@ export class UserAuthService {
   }
 
   public removeCurrentUser() {
-    console.log('remove current userAuth');
     this.dbUser.removeCurrentData();
   }
 

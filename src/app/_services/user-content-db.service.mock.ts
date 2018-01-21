@@ -8,7 +8,6 @@ export class UserContentDbServiceMock {
   private userContentCache: User = new User;
 
   constructor(private storage: StorageService) {
-    console.log('User-UserContentDbService constructed');
     this.userContentCache.email = 'test@test.com';
 
   }
@@ -21,7 +20,6 @@ export class UserContentDbServiceMock {
   }
 
   public getCurrentUser(): User {
-    console.log('userContentGetCurrentUser:' + this.userContentCache);
     if (!this.userContentCache) {
       return this.userContentCache || null;
     } else {

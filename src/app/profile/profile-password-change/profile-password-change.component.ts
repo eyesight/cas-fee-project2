@@ -6,7 +6,7 @@ import {UserContentService} from '../../_services/user-content.service';
 import {CustomValidators} from '../../_validation/custom.validators';
 import {Router} from '@angular/router';
 import {AlertService, UserService, AlertMessagesService} from '../../_services/index';
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-profile-password-change',

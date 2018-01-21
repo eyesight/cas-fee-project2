@@ -28,14 +28,11 @@ export class ClasslistAvatarServiceMock {
     private httpWrp: HttpWrapper,
     private dbUserClAvatar: DbServiceClasslistAvatar,
     private userContentService: UserContentService) {
-    console.log('UserContentService constructed');
 
     if (this.userContentSub) {
       this.userContentSub.unsubscribe();
     }
     this.userContentSub = this.userContentService.getCurrentUserObserver().subscribe((userContent) => {
-      console.log('nav.component ngOnInit inside observer');
-
       this.clear();
 
     }, (error) => {
@@ -64,7 +61,6 @@ export class ClasslistAvatarServiceMock {
       return this.httpWrp.get('/assets/mock/messageJson.json')
         .map((userAvatar: UserClassListAvatars[]) => {
           if (userAvatar) {
-            // console.dir(userContent);
             const avatars = this.prepareAvatars(userAvatar);
             this.dbUserClAvatar.saveCurrentData(avatars);
           }

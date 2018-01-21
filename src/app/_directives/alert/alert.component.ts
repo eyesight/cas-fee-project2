@@ -13,7 +13,7 @@ export class AlertComponent implements OnInit {
   private mesSub: Subscription = null;
   constructor(private alertService: AlertService) { }
 
-  ngOnInit() {
+  public ngOnInit() {
     if (this.mesSub) {
       this.mesSub.unsubscribe();
     }

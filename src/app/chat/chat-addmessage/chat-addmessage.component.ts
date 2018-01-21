@@ -23,7 +23,7 @@ export class ChatAddmessageComponent implements OnInit {
     private ams: AlertMessagesService) {
   }
 
-  ngOnInit() {
+  public ngOnInit() {
   }
 
   public onSend(newItemText) {

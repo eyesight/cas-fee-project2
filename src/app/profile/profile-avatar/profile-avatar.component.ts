@@ -65,8 +65,6 @@ export class ProfileAvatarComponent {
       .subscribe(
         data => {
           this.provFileHideSubmitButton = true;
-
-          console.log('profilAvatar: ok:' + data + ':provFileHideButton:' + this.provFileHideSubmitButton);
           this.alertService.success(this.alertMessagesService.MessagesSuccess.imageSaved);
           if (this.userContentSub) {
             this.userContentSub.unsubscribe();
@@ -109,8 +107,6 @@ export class ProfileAvatarComponent {
 
       const files = event.target.files[0];
 
-      console.log(event.target.files[0]);
-
       if (files.size > 190000) {
         this.alertService.error(this.alertMessagesService.MessagesError.imageSize, false, 500);
         this.provFile = false;
@@ -131,17 +127,11 @@ export class ProfileAvatarComponent {
           }
           this.compressSub = observableImages.subscribe((image) => {
             this.images.push(image);
-
-            console.log('compression on success');
           }, (error) => {
             this.alertService.error(this.alertMessagesService.MessagesError.error, false, 500);
             console.log('Error while converting');
           }, () => {
             this.processedImage = this.images[0];
-            console.log('final on comporessed.length:' + this.images[0].compressedImage.imageDataUrl.length);
-            console.log('originalFile:' + files.size);
-            console.log('filename:' + files.type);
-
             this.av.value = this.images[0].compressedImage.imageDataUrl.split(',')[1];
             this.av.filename = files.name;
             this.av.filetype = files.type;

@@ -36,12 +36,10 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   public ngOnInit(): void {
     this.buildForm();
-    console.log('login:ngOnInit');
     this.init();
   }
 
   public ngAfterViewInit() {
-    console.log('login:ngAfterViewInit');
   }
 
   private init() {
@@ -98,7 +96,6 @@ export class LoginComponent implements OnInit, AfterViewInit {
       email: ['', [Validators.required, Validators.minLength(2)]],
       pwd: ['', [Validators.required, Validators.minLength(2)]]
     });
-    console.log(this.loginForm.invalid);
   }
 
   get formUsername() {

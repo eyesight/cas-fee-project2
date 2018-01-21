@@ -14,14 +14,12 @@ export class AppScrollBottomDirective implements AfterContentInit, OnChanges {
   }
 
   public ngAfterContentInit() {
-    console.log('ngAfterContentInit');
     this.scrollToBottom();
   }
 
   // to wait for AfterViewChecked or AfterContentChecked is causing it to update too oftern as there is no real change on the DOM
   // can dizzy the user
   public ngOnChanges(changes) {
-    console.log('scrollBottom: ngOnChanges');
     this.scrollToBottom();
   }
 

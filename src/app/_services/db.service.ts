@@ -13,12 +13,10 @@ export class DbService<T> {
   constructor(
     private storage: StorageService,
     public storageKey: string) {
-    console.log('DbService constructed for key: ' + this.storageKey);
   }
 
   public saveCurrentData(data: T) {
     this.contentCache = data;
-    console.log('storage for key:' + this.storageKey);
     this.storage.write(this.storageKey, data);
     this.subject.next(data);
 
@@ -38,7 +36,6 @@ export class DbService<T> {
           observer.next(content);
         }
         this.subject.asObservable().subscribe((dataContent) => {
-            console.log('getCurrentDataObserver.subscribe:length of av:' + dataContent);
             observer.next(dataContent);
           }
           ,
@@ -58,8 +55,6 @@ export class DbService<T> {
   public getCurrentData(): T {
     if (!this.contentCache) {
       this.contentCache = this.storage.read(this.storageKey);
-      console.log('contentGetCurrentUserund jetzt:' + this.contentCache);
-
       return this.contentCache;
     } else {
       return this.contentCache;

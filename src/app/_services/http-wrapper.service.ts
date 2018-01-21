@@ -15,7 +15,6 @@ export class HttpWrapper {
   }
 
   public postNoJWT(url: string, data: any): any {
-    console.log('postNoJWT' + appConfig.apiUrl + url);
     return this.http.post(appConfig.apiUrl + url, data).map((response: Response) => response.json());
   }
 

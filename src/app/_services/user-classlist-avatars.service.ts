@@ -34,14 +34,11 @@ export class ClasslistAvatarService {
     private httpWrp: HttpWrapper,
     private dbUserClAvatar: DbServiceClasslistAvatar,
     private userContentService: UserContentService) {
-    console.log('UserContentService constructed');
 
     if (this.avatarSub) {
       this.avatarSub.unsubscribe();
     }
     this.avatarSub = this.userContentService.getCurrentUserObserver().subscribe((userContent) => {
-      console.log('nav.component ngOnInit inside observer');
-
       this.clear();
 
     }, (error) => {

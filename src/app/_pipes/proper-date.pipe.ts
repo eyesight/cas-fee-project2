@@ -16,6 +16,5 @@ export class ProperDatePipe implements PipeTransform {
     } else {
       return 'Pendent';
     }
-   // return moment(date).locale().format('LTS');
   }
 }

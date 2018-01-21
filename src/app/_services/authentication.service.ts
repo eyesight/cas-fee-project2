@@ -19,14 +19,11 @@ export class AuthenticationService {
   }
 
   public login(username: string, password: string): Observable<UserAuth> {
-    console.log('username:' + username);
-
     const userPwd = new UserPwd(username, password);
 
 // instead of json use JSON.strinfiy
     return this.httpWrp.postNoJWT('/api/authenticate', userPwd)
       .map((user: UserAuth) => {
-        console.log('userAuth ist :' + user.email);
         if (user && user.token) {
           this.userAuthSrv.saveCurrentUser(user);
           this.isLoggedin = true;

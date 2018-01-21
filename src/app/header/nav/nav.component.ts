@@ -28,19 +28,16 @@ export class NavComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit() {
-    console.log('nav.component ngOnInit');
     this.userContent = null;
     if (this.userContentSub) {
       this.userContentSub.unsubscribe();
     }
     this.userContentSub = this.userContentService.getCurrentUserObserver().subscribe((userContent) => {
-      console.log('nav.component ngOnInit inside observer');
       this.userContent = userContent;
       if (this.userContent.user_avatar) {
         this.userAvatar =  avatarHeader(this.userContent.avatar_filetype) + this.userContent.user_avatar;
-        console.log('avatar yes');
       } else {
-        console.log('avatar no');
+        console.log('no avatar available');
       }
 
     }, (error) => {

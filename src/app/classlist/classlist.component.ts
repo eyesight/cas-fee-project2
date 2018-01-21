@@ -46,8 +46,6 @@ export class ClasslistComponent implements OnInit, OnDestroy {
     this.classlistSub = this.classlistService.getClasslistObserver()
       .subscribe((result) => {
           this.classlist = result;
-          console.log(result);
-
           this.avatarSub = this.classlistAvatarService.getClasslistAvatars()
             .subscribe((resultAvatars) => {
                 resultAvatars.filter((x) => x !== null)
@@ -55,7 +53,6 @@ export class ClasslistComponent implements OnInit, OnDestroy {
 
                     if (x.email != null && x.avatar != null) {
                       const item = this.classlist.findIndex(el => el.email === x.email);
-                      console.log('classlist: item:' + item + ':email:' + this.classlist[item].email);
                       this.classlist[item].user_avatar = x.avatar;
                     }
                   });

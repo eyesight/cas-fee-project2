@@ -12,12 +12,10 @@ export class HttpWrapperServiceMock {
   }
 
   public get(url: string): Observable<any> {
-    console.log('http wrapper mock');
     return this.http.get('/assets/mock/messageJson.json');
   }
 
   public postNoJWT(url: string, data: any): any {
-    console.log('postNoJWT' + appConfig.apiUrl + url);
     return  [{email : 'testemail@com.ex', token : 'TESTTOKEN' }];
   }
 
