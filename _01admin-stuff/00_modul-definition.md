@@ -34,4 +34,6 @@ Zeitpunkt bei jedem Chat anzeigen.
 - Auswahl Chat-Partner 
 - ev. Mit vorgefertigen Antworten, ev. Themenorientiert -> Auswahl treffen vor Chat, Vorgefertigte Antworten vorschlagen welche matchen könnten? (Elasticmatch)
 
+<h3>Weiteres</h3>
+
 [Hier finden Sie die optionalen Module, die nicht umgesetzt sind](00_modul-definition_optional.md) 

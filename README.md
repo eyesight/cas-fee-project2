@@ -30,15 +30,14 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   ```bash
   npm install
   ```
-  <li>4. install db </li>
-  <li>5. start server:
+  <li>4. start server and db:
   <ul>
   <li>change to directory ./server </li>
   <li>run: </li>
   
   ```bash
-    npm install
-   ```
+  npm install
+  ```
   <li>install mysql (z.B. mit MAMP (osx))
   </li><li>run scripts under in MySql 
   </li><li>this will create the database school_test and fills tables and creates a systemuser school for this database
@@ -53,7 +52,7 @@ node index.js
 
   </ul>
   </li>
-  <li>6. if you have ng globally installed (npm install -g ) then run this command in the projects-root:
+  <li>5. if you have ng globally installed (npm install -g ) then run this command in the projects-root:
   
   ```bash
   ng serve
@@ -66,18 +65,18 @@ It runs on [localhost:4200](http://localhost:4200/)
 
   
 <h4>Testing</h4>
-to use the tool as registered user use:
+to use the tool as registered user:
 
 ```bash
-  Benutzername: test@test.com
-  Password: test99!
+Benutzername: test@test.com
+Password: test99!
 ```
 
 
 to use the tool as admin/teacher:
 ```bash
-  Benutzername: lehrer@test.com
-  Password: test99!
+Benutzername: lehrer@test.com
+Password: test99!
 ```
 
 
@@ -87,7 +86,7 @@ Description of the modules can be found [here](/_01admin-stuff/00_modul-definiti
 ## Testing
 We wrote some Unit-tests and e2e-tests. For Unit-Tests run the following
 ```bash
-  ng test
+ng test
 ```
 Open in browser: [localhost:9876](http://localhost:9876/) 
 
