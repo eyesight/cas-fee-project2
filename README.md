@@ -124,7 +124,12 @@ Open in browser: [localhost:9876](http://localhost:9876/)
  - in the next release we divide the registration-page into several parts. It's a large form the user has to fill out. It would be more user-friendly as well
  - Our Git-History is a mess ...
 
-## Further informations
+## Further informations   
+
+Structuring: 
+  - Because we use Bootstrap as front-end framework, we use "zz-" as shortcut in our own classes. So we see asap which class is used for bootstrap and which are for our own styles
+  - We use "_" for the shared directories. The directories without "_" are the components
+
 Interested to see our production-history/first steps?
 - here you find some [mockups](/_01admin-stuff/01mockups_layout) 
 - here you find our [prototype](/_02prototype) 
