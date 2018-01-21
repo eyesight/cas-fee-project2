@@ -11,7 +11,7 @@
             <app-form-error-messages [control]="newEmail"></app-form-error-messages>
           </div>
           <div class="col-12 zz-form__group">
-            <label class="zz-form__label" for="email">Grund für die Änderunge</label>
+            <label class="zz-form__label" for="email">Grund für die Änderung</label>
             <textarea id="reason" class="zz-form__input" name="reason" type="text" formControlName="reason"
                       [ngClass]="{ 'zz-form__input--error': (emailForm.invalid || reason.invalid) && (reason.dirty || reason.touched)}"></textarea>
             <app-form-error-messages [control]="reason"></app-form-error-messages>
@@ -19,12 +19,13 @@
         </div>
         <div class="form-row">
           <button class="zz-btn zz-btn--primary" [disabled]="!emailForm.valid">
-            <a href="mailto:adminemail@test.com?subject=Beantragen neue E-Mailadresse&body=neue E-Mail: {{newEmail.value}}, Begründung:{{reason.value}}">neue E-Mail beantragen</a>
+            <a href="mailto:{{userContent.teacher_email}}?subject=Beantragen neue E-Mailadresse&body=neue E-Mail: {{newEmail.value}}, Begründung:{{reason.value}}">neue E-Mail beantragen</a>
           </button>
         </div>
         <div class="zz-infotext zz-infotext--form">
           <p>Hinweis: Es wird eine E-Mail in ihrem installierten E-Mailprogramm geöffnet und fügt den von Ihnen angegebenen Text ein. Falls etwas nicht klappen sollte, können Sie sich gerne direkt an den Administrator wenden:</p>
-          <p>E-Mail: emailadresse<br>Telefonnummer: telefonnummer</p>
+          <a class="zz-infotext__link zz-infotext--inline" href="mailto:{{userContent.teacher_email}}">E-Mail: {{userContent.teacher_email}}</a>
+          <p>Telefonnummer: {{userContent.teacher_tel_office}}</p>
         </div>
       </form>
     </div>

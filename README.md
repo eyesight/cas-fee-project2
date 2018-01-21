@@ -21,7 +21,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 <li> npm >= 5.5</li>
 <li>Mysql (make sure that STRICT_TRANS_TABLES is not configured in my.cnf) or use MAMP/XAMPP's MySql </li>
 <li>OSX Plattform / Windows</li>
-<li>please make shure, you have installed angular cli globally
+<li>please make sure, you have installed angular cli globally
 
 ```bash
 npm install -g @angular/cli
@@ -32,7 +32,7 @@ npm install -g @angular/cli
 <h4>Install Client</h4>
 <ul>
   <li>download project or git clone from this repo</li>
-  <li>entpack (if necessary) to dir and switch to dir</li>
+  <li>unpack (if necessary) to dir and switch to dir</li>
   <li>run:</li>
   
   ```bash
