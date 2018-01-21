@@ -22,18 +22,17 @@
 - Daten können Sortiert werden<br>
 - User sieht nur die bestätigten User, die der gleichen Klassen zugeordnet sind<br>
 - Seine eigenen Daten sind in der Liste optisch ausgezeichnet<br>
-- Wenn User Admin ist, sieht er alle (bestätigte und unbestätigte) und hat die Möglichkeiten User zu aktivieren/deaktiviern und löschen<br>
+- Wenn User Admin ist, sieht er alle (bestätigte und unbestätigte) und hat die Möglichkeiten User zu aktivieren/deaktivieren und zu löschen<br>
 
 <h2>Modul Chat</h2>
 Der Chat ist ein general-Channel. Jede/r sieht den gleichen Inhalt. Es gibt nur ein Chat-Menu (im Hauptmenu). 
 Alle können alles sehen.
 Zeitpunkt bei jedem Chat anzeigen.
-fakultativ: <br>
 - Laden bisheriger Chat
 - Input für neue Chat-Message
 - Implementieren Com over WebSockets
 
-<h3>noch nicht umgesetzt</h3>
+<h3>further Ideas</h3>
 - im Hauptmenu: Punkt Chat: Batch (anzahl unread messages). <br>
 - Auswahl Chat-Partner 
 - ev. Mit vorgefertigen Antworten, ev. Themenorientiert -> Auswahl treffen vor Chat, Vorgefertigte Antworten vorschlagen welche matchen könnten? (Elasticmatch)
@@ -45,7 +44,7 @@ fakultativ: <br>
 <h1>Module für nächste Sprints, noch nicht umgesetzt</h1>
 
 <h2>Modul Chat: alter Verlauf nachladen (Optional)</h2>
-- Im Chat sieht man nur die letzten (3-10: tbd) Tage sofort. Sonst muss man weiterscrollen. 
+- Im Chat sieht man nur die letzten Meldungen respektive Tage sofort. Sonst muss man weiterscrollen. 
 
 <h2>Modul Kalender (optional)</h2>
  1) Setzen eines Termines auf Kalender<br>
