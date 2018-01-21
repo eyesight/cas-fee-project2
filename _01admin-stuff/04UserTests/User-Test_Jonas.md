@@ -1,19 +1,19 @@
-#User-Test mit Jonas
+<h1>User-Test mit Jonas</h1>
 
 ![alt text](UserTest_Jonas.jpg "Jonas")
 
-#Feedback/Ergebnis:
+<h1>Feedback/Ergebnis:</h1>
 
-##Registrierung an der Schule Klasse 4ab
+<h2>Registrierung an der Schule Klasse 4ab</h2>
 
 Anrede sollte "Frau" und "Herr" sein, nicht "Frau" und "Mann"
 Datapicker: es sollte das Startdatum zurückgesetzt werden, sonst muss man 1000 Mal klicken, bis man beim eigentlichen JAhr ist
 
-##Schreiben Sie der Person Test eine Email
+<h2>Schreiben Sie der Person Test eine Email</h2>
 
 Hat geklappt 
 
-##Schreiben Sie eine Kurzmitteilung den Eltern von Test, dass er sein Turnzeug vergesse hat.
+<h2>Schreiben Sie eine Kurzmitteilung den Eltern von Test, dass er sein Turnzeug vergesse hat.</h2>
 
 Es ist nicht klar, dass das die E-Mail an Eltern gehen und nicht an Kind
 User-Details in Classslist und Tabelle sollte noch entsprechen gekenntzeichnet sein
@@ -22,14 +22,14 @@ Aufteilung in User-Details sollten mit Titel gekenntzeichnet sein (Title Kind un
 Kind = Name, Geburtstag, Klasse, Klassenlehrer
 Eltern = Name, Adresse, Telefonnummer, Sprache und Registrierung
 
-##Aendere Dein Passwort
+<h2>Aendere Dein Passwort</h2>
 
 Hat geklappt
 
-##Neues Profilbild hochlangen
+<h2>Neues Profilbild hochlangen</h2>
 
 Button "Bild austauschen" mit Speichern versehen, er versteht sonst nicht, warum das Bild nicht ausgetauscht ist, wenn er das Bild ladet
 
-##Sonstiges
+<h2>Sonstiges</h2>
 
 Footer: Links führen auf keine Page
