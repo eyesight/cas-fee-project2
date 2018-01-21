@@ -19,7 +19,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 <ul>
 <li> node >= 7.9</li>
 <li> npm >= 5.5</li>
-<li>Mysql (make sure that STRICT_TRANS_TABLES is not configured in my.cnf)</li>
+<li>Mysql (make sure that STRICT_TRANS_TABLES is not configured in my.cnf) or use MAMP/XAMPP's MySql </li>
 <li>OSX Plattform / Windows</li>
 <li>please make shure, you have installed angular cli globally
 
@@ -49,7 +49,7 @@ npm install -g @angular/cli
   npm install
   ```
   <li>install mysql (z.B. mit MAMP (osx))
-  </li><li>run scripts under in MySql 
+  </li><li>run scripts under dir /sql in MySql 
   </li><li>this will create the database school_test and fills tables and creates a system-user school for this database
   </li>
   <li>start node server: 

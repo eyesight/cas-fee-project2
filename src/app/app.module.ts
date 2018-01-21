@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import {Compiler, ErrorHandler, NgModule} from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -43,6 +43,7 @@ import { RouterModule} from '@angular/router';
 import { LoginModule } from './login/login.module';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { AgbComponent } from './agb/agb.component';
+import {JitCompiler} from "@angular/compiler";
 
 
 @NgModule({
@@ -93,6 +94,7 @@ import { AgbComponent } from './agb/agb.component';
     CanActivateProtectedPagesGuard,
     ErrorHandlerService,
     ErrorLoggerService,
+    { provide: Compiler, useExisting: JitCompiler },
     { provide: ErrorHandler, useClass: ErrorHandlerService }
   ],
 
