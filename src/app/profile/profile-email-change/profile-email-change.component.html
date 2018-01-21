@@ -18,9 +18,9 @@
           </div>
         </div>
         <div class="form-row">
-          <button class="zz-btn zz-btn--primary" [disabled]="!emailForm.valid">
-            <a href="mailto:{{userContent.teacher_email}}?subject=Beantragen neue E-Mailadresse&body=neue E-Mail: {{newEmail.value}}, Begründung:{{reason.value}}">neue E-Mail beantragen</a>
-          </button>
+          <a role="button" [ngClass]="{'zz-btn--disabled': emailForm.invalid}" class="zz-btn zz-btn--primary" href="mailto:{{userContent.teacher_email}}?subject=Beantragen neue E-Mailadresse&body=neue E-Mail: {{newEmail.value}}, Begruendung:{{reason.value}}">
+              neue E-Mail beantragen
+          </a>
         </div>
         <div class="zz-infotext zz-infotext--form">
           <p>Hinweis: Es wird eine E-Mail in ihrem installierten E-Mailprogramm geöffnet und fügt den von Ihnen angegebenen Text ein. Falls etwas nicht klappen sollte, können Sie sich gerne direkt an den Administrator wenden:</p>
