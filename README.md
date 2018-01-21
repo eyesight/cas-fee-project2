@@ -14,23 +14,32 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Open Sans: google-font
 
 ## installation
-<h4>Requirements:</h4>
+<h3>Requirements:</h3>
 <ul>
 <li> node >= 7.9</li>
 <li> npm >= 5.5</li>
 <li>Mysql (make sure that STRICT_TRANS_TABLES is not configured in my.cnf)</li>
 <li>OSX Plattform / Windows</li>
+<li>please make shure, you have installed angular cli globally
+
+```bash
+  npm install -g angular-cli
+```
+  </li>
 </ul>
-<h4>Manual</h4>
+<h3>Manual</h3>
+<h4>Install Client</h4>
 <ul>
-  <li>1. download project or git clone from this repo</li>
-  <li>2. entpack (if necessary) to dir and switch to dir</li>
-  <li>3. run:</li>
+  <li>download project or git clone from this repo</li>
+  <li>entpack (if necessary) to dir and switch to dir</li>
+  <li>run:</li>
   
   ```bash
   npm install
   ```
-  <li>4. start server and db:
+  
+  </ul>
+  <h4>Install Server and DB</h4>
   <ul>
   <li>change to directory ./server </li>
   <li>run: </li>
@@ -51,21 +60,23 @@ node index.js
 ```
 
   </ul>
-  </li>
-  <li>5. if you have ng globally installed (npm install -g ) then run this command in the projects-root:
+  <h4>Run Project</h4>
+  <li>if you have ng globally installed (npm install -g angular-cli) then run this command in the projects-root:
   
   ```bash
   ng serve
   ```
           
-   if not then switch to ./node_modules/@angular/cli/bin and type ./ng serve</li>
+   ()if not then switch to ./node_modules/@angular/cli/bin and type ./ng serve)</li>
 </ul>
 
-It runs on [localhost:4200](http://localhost:4200/) 
+Open Browser - it runs on [localhost:4200](http://localhost:4200/) 
 
   
-<h4>Testing</h4>
-to use the tool as registered user:
+<h3>Test-Accounts</h3>
+You can register yourselfe as new youser. But to use everything you need to be approved from the administrator. That's why we made some test-users.
+
+To use the tool as registered and autorizised user:
 
 ```bash
 Benutzername: test@test.com
@@ -73,7 +84,7 @@ Password: test99!
 ```
 
 
-to use the tool as admin/teacher:
+To use the tool as admin/teacher:
 ```bash
 Benutzername: lehrer@test.com
 Password: test99!
