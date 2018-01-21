@@ -128,7 +128,7 @@ Open in browser: [localhost:9876](http://localhost:9876/)
 
 Structuring: 
   - Because we use Bootstrap as front-end framework, we use "zz-" as shortcut in our own classes. So we see asap which class is used for bootstrap and which are for our own styles
-  - We use "_" for the shared directories. The directories without "_" are the components
+  - We use " _ " for the shared directories. The directories without "_" are the components
 
 Interested to see our production-history/first steps?
 - here you find some [mockups](/_01admin-stuff/01mockups_layout) 
