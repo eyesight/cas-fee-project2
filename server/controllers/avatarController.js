@@ -7,8 +7,6 @@ const util = require("../util/security");
 
 module.exports.avatarUpload = function (req, res) {
   let raw = new Buffer(req.body.avatar.value.toString(), 'base64');
-  console.log('avatarUpload: filetype is:' + req.body.avatar.filename);
-
   let filename = req.user.name.replace(/@/i, '.');
   // get last item if path, ie: jpg
   let filetype = [...req.body.avatar.filename.split('.')].pop();
@@ -33,16 +31,11 @@ module.exports.avatarUpload = function (req, res) {
 
 module.exports.avatarGet = function (req, callback) {
 
-  console.log('avatarGet');
-
   dbUser.getAvatarFilenameByEmail(req.user.name, function (err, filename) {
-
     if (err) {
       callback('avatarGet: error no data', null);
       return;
     }
-    console.log('avatarGet: filename avatar:' + filename);
-
     fs.readFile('./avatars/' + filename, function (err, data) {
 
         if (data) {

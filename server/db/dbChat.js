@@ -61,7 +61,6 @@ function insertMessage(email, req, callback) {
       return;
     }
 
-    console.dir('userid:' + doc[0].id);
     const userId = doc[0].id;
     const classId = doc[0].class_id;
     chatModel.user_id = userId;
@@ -80,7 +79,6 @@ function insertMessage(email, req, callback) {
       chatModel.saved_at = (new Date()).toJSON();
     }
 
-    console.log('insertMessagePrepare:' + userId + ' message:' + chatModel.message.slice(0,10) + ' ...:chatmodel.saved_at:' + chatModel.saved_at + ':' + chatModel.sent_at);
     insertMessageDb(userId, classId, chatModel, function (err, doc) {
       if ((doc === null ) && !err) {
         callback('500', false);
@@ -94,7 +92,6 @@ function insertMessage(email, req, callback) {
 
 function getAllMessages(username, callback) {
 
-  console.log('getAllMessages:+' + username);
   return dbUser.getUserIdByEmail(username, function (err, doc) {
     if (err) {
       callback(err, doc);

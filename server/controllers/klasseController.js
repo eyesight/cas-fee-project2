@@ -5,8 +5,6 @@ const util = require("../util/security");
 const readFiles = require("../util/readFiles");
 
 module.exports.getKlasseListAll = function (req, res) {
-  console.log('getKlasseListAll');
-
   util.authorizesBackend(req.user.name, util.authorRoles.CLASSLIST,(authorization) =>  {
 
     if (authorization) {
@@ -22,9 +20,6 @@ module.exports.getKlasseListAll = function (req, res) {
 };
 
 module.exports.getKlasseAvatarGetAll = function (req, res) {
-
-  console.log('getKlasseAvatarGetAll');
-
   util.authorizesBackend(req.user.name, util.authorRoles.CLASSLIST, (authorization) => {
 
     if (authorization) {

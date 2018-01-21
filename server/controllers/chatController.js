@@ -19,7 +19,6 @@ module.exports.chat = function (io) {
   io.on('connection', function (socket) {
 
     // in socket.io 1.0 use decoded_token.name from jwt
-    console.log('chat: user connected:', socket.decoded_token.name);
     const email = socket.decoded_token.name;
 
     util.authorizesBackend(email, util.authorRoles.CHAT, (authorization) => {
@@ -32,7 +31,6 @@ module.exports.chat = function (io) {
           if (err) {
             console.log('chat: getClassIdByEmail failed:' + err);
           }
-          console.log('chat: getClassIdByEmail: classId:' + classId);
           socket.join(classId);
           socket.on('disconnect', function () {
             console.log('chat: user disconnected');
@@ -41,8 +39,6 @@ module.exports.chat = function (io) {
 
           // listen on channel
           socket.on('chatMessageToSocketServer', function (msg, callback) {
-            console.log('message received from (could be faked as client can set this):' + msg.email + ' email from token (couldnt be faked):' + socket.decoded_token.name + ':classRoom:' + classId);
-
             if (!msg.saved_at) {
               msg.saved_at = (new Date()).toJSON();
             }
@@ -59,8 +55,6 @@ module.exports.chat = function (io) {
                 callback(200, {'server_saved_at': doc.saved_at});
               }
             });
-
-            console.log('socket.decode_token:' + socket.decoded_token.name);
             msg.email = socket.decoded_token.name;
             socket.broadcast.to(classId).emit('broadcastToAll_chatMessage', msg);
           });
@@ -76,8 +70,6 @@ module.exports.chat = function (io) {
 };
 
 module.exports.getMessages = function (req, res) {
-  console.log('getMessages: req.user.name :' + req.user.name);
-
   util.authorizesBackend(req.user.name, util.authorRoles.CHAT, (authorization) => {
 
     if (authorization) {

@@ -21,13 +21,9 @@ class KlasseModel extends ModelBase {
 }
 
 function getAllKlasseData(callback) {
-
-  console.log('getklasse from db');
   const c = new KlasseModel();
   const sf = c.mySqlGetSelectStatement('klasses');
   return db.query(sf, function (err, newDoc) {
-    console.log(newDoc);
-
     if (callback) {
       if (newDoc.length <= 0) {
         newDoc = null;
@@ -38,7 +34,6 @@ function getAllKlasseData(callback) {
 }
 
 function getKlasseListAll(email, callback) {
-  console.log('getKlasseListAll:' + email);
   return db.query("select u.id, u.email,u.class_id, u.parent_surname, u.parent_forename, u.parent_forename, u.register_date, u.tel_private, u.tel_office, u.parent_language, " +
     "u.child_surname, u.child_forename,u.child_gender, u.child_date_of_birth,u.adress, u.zip, u.place, u.is_teacher, u.is_approved,  " +
     "k.name klasse_name, k.description klasse_description, k.start_at klasse_start_at, k.end_at klasse_end_at from users u, klasses k,  " +

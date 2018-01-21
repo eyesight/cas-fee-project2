@@ -14,7 +14,6 @@ function isLoggedIn(req) {
 }
 
 function currentUser(req) {
-  console.log('currentUser:req.user.name:' + req.user.name);
   return req.user.name;
 }
 
@@ -24,7 +23,6 @@ function createSessionToken(name, secret, options, callback) {
     return "";
   }
   jwt.sign({name}, secret, options, (err, token) => {
-    console.log('token: ' + token);
     callback({email: name, token: token})
   });
 }
@@ -32,18 +30,15 @@ function createSessionToken(name, secret, options, callback) {
 function handleRegister(req, res) {
 
   if (isLoggedIn(req)) {
-    console.log('handleRegister user is logged in');
     res.status("401").json(false);
   }
   else {
-    console.log('handleRegister is req.body:' + req.body.email);
     if (!req.body.email || !req.body.pwd) {
       console.log('handleRegister neither email nor password');
       res.status("401").json(false);
     }
     else {
       dbUser.register(req, function (err, valid) {
-        console.log('handleRegister dbUser.register valid?:' + valid);
         if (valid) {
           createSessionToken(req.body.email, req.app.get("jwt-secret"), req.app.get("jwt-sign"), (token) => res.json(token));
         }
@@ -62,17 +57,14 @@ function handleRegister(req, res) {
 
 function handleLogin(req, res) {
   if (isLoggedIn(req)) {
-    console.log('handleLogin: user is logged in');
     res.send(true);
   }
   else {
-    console.log('handleLogin: req.body:' + !req.body);
     if (!req.body.email || !req.body.pwd) {
       res.status("401").json(false);
     }
     else {
       dbUser.authenticate(req.body.email, req.body.pwd, function (err, valid) {
-        console.log('handleLogin dbUser.authenticate: is valid:' + valid);
         if (valid) {
           createSessionToken(req.body.email, req.app.get("jwt-secret"), req.app.get("jwt-sign"), (authToken) => {
 
@@ -95,14 +87,10 @@ function handleLogin(req, res) {
 }
 
 function handlePasswordChange(req, res) {
-
-  console.log('handlePasswordChange');
   if (req.body.pwd !== req.body.new_pwd) {
     dbUser.authenticate(req.user.name, req.body.pwd, function (err, valid) {
-      console.log('handlePasswordChange: is a valid:' + valid);
       if (valid) {
         dbUser.updatePassword(req.user.name, req.body.new_pwd, function (err, valid) {
-          "use strict";
           console.log('handlePasswordChange: err:' + err);
           if (err) {
             res.status('500').json(false);
@@ -125,8 +113,6 @@ function handlePasswordChange(req, res) {
 }
 
 function getUserRoles(email, callback) {
-
-
   dbUser.getUserAuthorizationInfos(email, (err, authorInfos) => {
 
     if (err) {
@@ -164,9 +150,7 @@ function authorizeBackend(email, accessRight, callback) {
 }
 
 function getKlasseData(req, res) {
-  console.log('klassendaten aus security: ' + req);
   return dbKlasse.getAllKlasseData();
-
 }
 
 module.exports = {

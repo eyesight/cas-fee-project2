@@ -66,8 +66,6 @@ function registerUser(email, passwort, isTeacher, req, updateUserFunc, callback)
   }
 
   const user = new UserRegister(email, passwort, !!isTeacher);
-  console.log('registerUser: email:' + email);
-
   return db.query("Insert into users ( email, encrypted_password, is_teacher) values(?,?,?)", [user.email, user.encrypted_password, user.is_teacher], function (err, newDoc) {
     if (callback) {
       if (err) {
@@ -90,7 +88,6 @@ function registerUser(email, passwort, isTeacher, req, updateUserFunc, callback)
 }
 
 function updatePassword(email, newPasswort, callback) {
-  console.log('updatePassword: email:' + email);
   if (!(email && newPasswort)) {
     callback("no user", null);
     return;
@@ -100,26 +97,20 @@ function updatePassword(email, newPasswort, callback) {
 
   return db.query("update users set  encrypted_password = ? where email = ?", [user.encrypted_password, user.email], function (err, newDoc) {
     if (callback) {
-
       callback(err, newDoc);
-
     }
   });
 }
 
 function updateAvatarFilename(email, filename, callback) {
-
   return db.query("update users set  avatar_filename = ? where email = ?", [filename, email], function (err, newDoc) {
     if (callback) {
-
       callback(err, newDoc);
-
     }
   });
 }
 
 function updateUser(email, userModel, callback) {
-  console.log('updateUser: email:' + email);
 
   var sf = userModel.mySqlGetUpdateStatement('users', "email='" + email + "'");
 
@@ -137,7 +128,6 @@ function updateUser(email, userModel, callback) {
 // callback(err, res)
 // to reject request res must be false!
 function register(req, callback) {
-  console.log('register: email:' + req.body.email);
   const email = req.body.email;
   const password = req.body.pwd;
   const isTeacher = req.body.is_teacher;
@@ -158,7 +148,6 @@ function register(req, callback) {
 }
 
 function authenticate(email, password, callback) {
-  console.log('user.authenticate:' + email);
   if (!(email && password)) {
     callback(false);
     return;
@@ -174,7 +163,6 @@ function authenticate(email, password, callback) {
 }
 
 function getAllUserDetails(email, callback) {
-  console.log('getAllUserDetails: ' + email);
   return db.query("select u.id,  u.email,u.class_id, u.parent_surname, u.parent_forename, u.parent_gender, u.parent_language, " +
     "u.child_surname, u.child_forename,u.child_gender, u.child_date_of_birth, u.adress, u.zip, u.place, u.tel_private, u.tel_office, u.is_teacher, " +
     "k.name klasse_name, k.description klasse_description, k.start_at klasse_start_at, k.end_at klasse_end_at, k.teacher_user_id teacher_user_id, " +
@@ -210,7 +198,6 @@ function getAllUserDetails(email, callback) {
 }
 
 function getUserByEmail(email, callback) {
-  console.log('getUserByEmail:' + email);
   return db.query("select encrypted_password, email from users where email=?", [email], function (err, newDoc) {
     if (callback) {
       if (newDoc.length <= 0) {
@@ -227,7 +214,6 @@ function getUserByEmail(email, callback) {
 }
 
 function getUserAuthorizationInfos(email, callback) {
-  console.log('getUserAuthorizationInfos:' + email);
   return db.query("select is_teacher, email, is_approved, is_active from users where email=?", [email], function (err, newDoc) {
     if (callback) {
       if (!newDoc || newDoc.length <= 0) {
@@ -250,7 +236,6 @@ function getUserAuthorizationInfos(email, callback) {
 }
 
 function getUserIdByEmail(email, callback) {
-  console.log('getUserIdByEmail:' + email);
   return db.query("select id, class_id, is_teacher from users where email=?", [email], function (err, newDoc) {
     if (callback) {
       if (newDoc.length <= 0) {
@@ -272,7 +257,6 @@ function getUserIdByEmail(email, callback) {
 }
 
 function getClassIdByEmail(email, callback) {
-  console.log('getClassIdByEmail:' + email);
   return db.query("select class_id from users where email=?", [email], function (err, newDoc) {
     if (callback) {
       if (newDoc.length <= 0) {
@@ -294,7 +278,6 @@ function getClassIdByEmail(email, callback) {
 }
 
 function getAvatarFilenameByEmail(email, callback) {
-  console.log('getAvatarFilenameByEmail:' + email);
   return db.query("select avatar_filename from users where email=?", [email], function (err, newDoc) {
     if (callback) {
       if (newDoc.length <= 0) {
@@ -316,18 +299,15 @@ function getAvatarFilenameByEmail(email, callback) {
 }
 
 function getAvatarFilenamesByEmail(email, callback) {
-  console.log('getAvatarFilenamesByEmail:' + email);
   return db.query("select u.avatar_filename, u.email,u.class_id from users u, klasses k,  " +
     "(select class_id, is_teacher from users where email=?) pr1 " +
     "where u.class_id = k.id  and k.id = pr1.class_id  and ( (  pr1.is_teacher = 1) OR (u.is_approved = 1 and pr1.is_teacher = 0))",
     [email], function (err, newDoc) {
 
-
       if (callback) {
         if (newDoc.length <= 0) {
           newDoc = null;
         }
-
         callback(err, newDoc);
       }
     });
@@ -337,7 +317,6 @@ function getAvatarFilenamesByEmail(email, callback) {
 // username is the teacher (taken from jwt)
 function approveUser(userId, username, approve, callback) {
 
-  console.log('approveUser - teacher:+' + username);
   // get teacher infos
   return getUserIdByEmail(username, function (err, doc) {
     if (err) {
@@ -351,7 +330,6 @@ function approveUser(userId, username, approve, callback) {
         if (doc[0].is_teacher && doc[0].class_id && userId
           && doc[0].is_teacher === 1
           && (approve === 1 || approve === 0)) {
-          console.log('teacher :' + username + ' approves userId:' + userId + ' to : ' + approve);
 
           const sf = 'update users set is_approved = ? where id = ? and class_id = ?';
 
@@ -377,8 +355,6 @@ function approveUser(userId, username, approve, callback) {
 }
 
 function deleteUser(userId, username, callback) {
-
-  console.log('deleteUser - teacher:+' + username + '::'+ userId);
   return getUserIdByEmail(username, function (err, doc) {
     if (err) {
       callback(err, doc);
@@ -390,7 +366,6 @@ function deleteUser(userId, username, callback) {
       else {
         if (doc[0].is_teacher && doc[0].class_id && userId
           && doc[0].is_teacher === 1) {
-          console.log('delete by teacher :' + username + ' delete user:' + userId + 'classl:' + doc[0].class_id);
 
           //  check if we should not delete if there are chats from user: and (select count(*) from chat where user_id = ?) = 0
           const sf = 'delete users, chat from users left join chat on  chat.user_id = users.id  where users.id = ? and users.class_id = ? and users.is_approved = 0';

@@ -34,4 +34,6 @@ Button "Bild austauschen" mit Speichern versehen, er versteht sonst nicht, warum
 
 <h2>Sonstiges</h2>
 
-Footer: Links führen auf keine Page
+Footer: Links führen auf keine Page<br>
+(wurde umgesetzt)
+
